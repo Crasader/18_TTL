@@ -1,6 +1,7 @@
 *.user
 *.vs
 *.suo
+*.sdf
 Python_http_server
 runtime
 发布组件
@@ -33,3 +34,17 @@ Release
 /Server/系统模块/游戏组件/NN/机器人服务/Release_Unicode
 /Server/系统模块/游戏组件/NN/机器人服务/Debug
 /Server/系统模块/游戏组件/NN/机器人服务/Release
+/congcongclient/cocos2d
+/congcongclient/proj.android/.settings
+/congcongclient/proj.android/.externalToolBuilders
+/congcongclient/proj.android/assets
+/congcongclient/proj.android/gen
+/congcongclient/proj.android/bin
+/congcongclient/proj.android/obj
+/congcongclient/proj.android/libs/armeabi
+/congcongclient/proj.android/libs/armeabi-v7a
+/congcongclient/proj.win32/ClientHN_THJ.win32
+/congcongclient/proj.win32/Debug.win32
+/congcongclient/proj.win32/Debug.win32_tmp
+/congcongclient/proj.win32/res
+/congcongclient/proj.win32/packages
