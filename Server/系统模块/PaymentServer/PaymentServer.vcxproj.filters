@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header\PaymentSystem">
+      <UniqueIdentifier>{101cc10d-7ea8-4912-8938-24ba15248f08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\BusinessModule">
+      <UniqueIdentifier>{a3862a2b-9927-482e-abc7-1c3cff546c34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Configration">
+      <UniqueIdentifier>{caca3b30-619d-4514-b114-039f3e8c412a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source\PaymentSystem">
+      <UniqueIdentifier>{70c69087-2fb0-405b-bf37-433cd003143a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\BusinessModule">
+      <UniqueIdentifier>{a1250395-1f8e-41f8-9abc-e7b24ac87031}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Configration">
+      <UniqueIdentifier>{5076f1f4-71ad-4688-b0bb-665ebc703294}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header\Tcp">
+      <UniqueIdentifier>{f022a3f4-bd65-43c9-9566-297b5a0c1ec9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Tcp">
+      <UniqueIdentifier>{a47209f5-a552-401a-8669-6aed7af997f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\boost_http">
+      <UniqueIdentifier>{d4e0c80b-e9d1-4772-b08d-90dfa6273808}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\boost_http">
+      <UniqueIdentifier>{2589b2a4-5876-45db-b7c0-165a9e41fe44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\DataBase">
+      <UniqueIdentifier>{aaa47dd0-d645-49b6-837b-310a6e84002a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\DataBase">
+      <UniqueIdentifier>{90a9f597-0a92-4f53-8f78-44e868f3eb86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Json">
+      <UniqueIdentifier>{a13c98a2-e3cc-450a-ae88-135bb4a0922f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Json">
+      <UniqueIdentifier>{5f3a274c-adae-43a1-9e56-819f3dd7aeaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Tools">
+      <UniqueIdentifier>{ff424ef5-212f-4df9-92c1-fa7d62d08e60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\tinyxml">
+      <UniqueIdentifier>{85566d18-fa00-4e61-875d-e6a1abf77d5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\tinyxml">
+      <UniqueIdentifier>{5f3d1d90-1f55-4fa8-9f9a-b6e0ff780d58}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\stdafx.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TinyServerThread.hpp">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PaymentSystem\PaymentSystem.h">
+      <Filter>Header\PaymentSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BusinessModule\WorkerFactory.hpp">
+      <Filter>Header\BusinessModule</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ConstTypes.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\boost_http\connection.hpp">
+      <Filter>Header\boost_http</Filter>
+    </ClInclude>
+    <ClInclude Include="src\boost_http\connection_manager.hpp">
+      <Filter>Header\boost_http</Filter>
+    </ClInclude>
+    <ClInclude Include="src\boost_http\header.hpp">
+      <Filter>Header\boost_http</Filter>
+    </ClInclude>
+    <ClInclude Include="src\boost_http\mime_types.hpp">
+      <Filter>Header\boost_http</Filter>
+    </ClInclude>
+    <ClInclude Include="src\boost_http\reply.hpp">
+      <Filter>Header\boost_http</Filter>
+    </ClInclude>
+    <ClInclude Include="src\boost_http\request.hpp">
+      <Filter>Header\boost_http</Filter>
+    </ClInclude>
+    <ClInclude Include="src\boost_http\request_handler.hpp">
+      <Filter>Header\boost_http</Filter>
+    </ClInclude>
+    <ClInclude Include="src\boost_http\request_parser.hpp">
+      <Filter>Header\boost_http</Filter>
+    </ClInclude>
+    <ClInclude Include="src\boost_http\server.hpp">
+      <Filter>Header\boost_http</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Commads.hpp">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tcp\tcp_conection.hpp">
+      <Filter>Header\Tcp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tcp\security.hpp">
+      <Filter>Header\Tcp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tcp\tcp_event_hander.hpp">
+      <Filter>Header\Tcp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tcp\tcp_event_hander_thread.hpp">
+      <Filter>Header\Tcp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tcp\packet.h">
+      <Filter>Header\Tcp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tcp\tcp_event_sender.hpp">
+      <Filter>Header\Tcp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tcp\tcp_event_sender_thread.hpp">
+      <Filter>Header\Tcp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CMD_PaymentServer.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataBase\SqlServerConector.h">
+      <Filter>Header\DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TestMain.hpp">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tcp\tcp_server.hpp">
+      <Filter>Header\Tcp</Filter>
+    </ClInclude>
+    <ClInclude Include="src\json\json_batchallocator.h">
+      <Filter>Header\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="src\json\autolink.h">
+      <Filter>Header\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="src\json\config.h">
+      <Filter>Header\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="src\json\features.h">
+      <Filter>Header\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="src\json\forwards.h">
+      <Filter>Header\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="src\json\json.h">
+      <Filter>Header\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="src\json\reader.h">
+      <Filter>Header\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="src\json\value.h">
+      <Filter>Header\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="src\json\writer.h">
+      <Filter>Header\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tools\MD5.h">
+      <Filter>Header\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tools\Util.hpp">
+      <Filter>Header\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tinyxml2\tinystr.h">
+      <Filter>Header\tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tinyxml2\tinyxml.h">
+      <Filter>Header\tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Configration\PayConfigReader.h">
+      <Filter>Header\Configration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Configration\PayConfig.h">
+      <Filter>Header\Configration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tools\data_deque.hpp">
+      <Filter>Header\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BusinessModule\congcong.h">
+      <Filter>Header\BusinessModule</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BusinessModule\gansu.h">
+      <Filter>Header\BusinessModule</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PaymentSystem\PaymentWorker.h">
+      <Filter>Header\PaymentSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PaymentSystem\Products.hpp">
+      <Filter>Header\PaymentSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BusinessModule\weixin.h">
+      <Filter>Header\BusinessModule</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stdafx.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Configration\PayConfigReader.cpp">
+      <Filter>Source\Configration</Filter>
+    </ClCompile>
+    <ClCompile Include="src\boost_http\connection.cpp">
+      <Filter>Source\boost_http</Filter>
+    </ClCompile>
+    <ClCompile Include="src\boost_http\connection_manager.cpp">
+      <Filter>Source\boost_http</Filter>
+    </ClCompile>
+    <ClCompile Include="src\boost_http\mime_types.cpp">
+      <Filter>Source\boost_http</Filter>
+    </ClCompile>
+    <ClCompile Include="src\boost_http\reply.cpp">
+      <Filter>Source\boost_http</Filter>
+    </ClCompile>
+    <ClCompile Include="src\boost_http\request_handler.cpp">
+      <Filter>Source\boost_http</Filter>
+    </ClCompile>
+    <ClCompile Include="src\boost_http\request_parser.cpp">
+      <Filter>Source\boost_http</Filter>
+    </ClCompile>
+    <ClCompile Include="src\boost_http\server.cpp">
+      <Filter>Source\boost_http</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DataBase\SqlServerConector.cpp">
+      <Filter>Source\DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BusinessModule\WorkerFactory.cpp">
+      <Filter>Source\BusinessModule</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tcp\tcp_conection.cpp">
+      <Filter>Source\Tcp</Filter>
+    </ClCompile>
+    <ClCompile Include="src\json\json_reader.cpp">
+      <Filter>Source\Json</Filter>
+    </ClCompile>
+    <ClCompile Include="src\json\json_value.cpp">
+      <Filter>Source\Json</Filter>
+    </ClCompile>
+    <ClCompile Include="src\json\json_writer.cpp">
+      <Filter>Source\Json</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tools\MD5.cpp">
+      <Filter>Header\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tinyxml2\tinystr.cpp">
+      <Filter>Source\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tinyxml2\tinyxml.cpp">
+      <Filter>Source\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tinyxml2\tinyxmlerror.cpp">
+      <Filter>Source\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tinyxml2\tinyxmlparser.cpp">
+      <Filter>Source\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BusinessModule\congcong.cpp">
+      <Filter>Source\BusinessModule</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BusinessModule\gansu.cpp">
+      <Filter>Source\BusinessModule</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PaymentSystem\PaymentSystem.cpp">
+      <Filter>Source\PaymentSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PaymentSystem\PaymentWorker.cpp">
+      <Filter>Source\PaymentSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BusinessModule\weixin.cpp">
+      <Filter>Source\BusinessModule</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\json\json_internalarray.inl">
+      <Filter>Source\Json</Filter>
+    </None>
+    <None Include="src\json\json_internalmap.inl">
+      <Filter>Source\Json</Filter>
+    </None>
+    <None Include="src\json\json_valueiterator.inl">
+      <Filter>Source\Json</Filter>
+    </None>
+  </ItemGroup>
+</Project>

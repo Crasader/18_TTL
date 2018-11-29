@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\boost_http\connection.hpp" />
+    <ClInclude Include="src\boost_http\connection_manager.hpp" />
+    <ClInclude Include="src\boost_http\header.hpp" />
+    <ClInclude Include="src\boost_http\mime_types.hpp" />
+    <ClInclude Include="src\boost_http\reply.hpp" />
+    <ClInclude Include="src\boost_http\request.hpp" />
+    <ClInclude Include="src\boost_http\request_handler.hpp" />
+    <ClInclude Include="src\boost_http\request_parser.hpp" />
+    <ClInclude Include="src\boost_http\server.hpp" />
+    <ClInclude Include="src\BusinessModule\congcong.h" />
+    <ClInclude Include="src\BusinessModule\gansu.h" />
+    <ClInclude Include="src\BusinessModule\weixin.h" />
+    <ClInclude Include="src\BusinessModule\WorkerFactory.hpp" />
+    <ClInclude Include="src\CMD_PaymentServer.h" />
+    <ClInclude Include="src\Commads.hpp" />
+    <ClInclude Include="src\Configration\PayConfig.h" />
+    <ClInclude Include="src\Configration\PayConfigReader.h" />
+    <ClInclude Include="src\ConstTypes.h" />
+    <ClInclude Include="src\DataBase\SqlServerConector.h" />
+    <ClInclude Include="src\json\autolink.h" />
+    <ClInclude Include="src\json\config.h" />
+    <ClInclude Include="src\json\features.h" />
+    <ClInclude Include="src\json\forwards.h" />
+    <ClInclude Include="src\json\json.h" />
+    <ClInclude Include="src\json\json_batchallocator.h" />
+    <ClInclude Include="src\json\reader.h" />
+    <ClInclude Include="src\json\value.h" />
+    <ClInclude Include="src\json\writer.h" />
+    <ClInclude Include="src\PaymentSystem\PaymentSystem.h" />
+    <ClInclude Include="src\PaymentSystem\PaymentWorker.h" />
+    <ClInclude Include="src\PaymentSystem\Products.hpp" />
+    <ClInclude Include="src\stdafx.h" />
+    <ClInclude Include="src\Tcp\packet.h" />
+    <ClInclude Include="src\Tcp\security.hpp" />
+    <ClInclude Include="src\Tcp\tcp_conection.hpp" />
+    <ClInclude Include="src\Tcp\tcp_event_hander.hpp" />
+    <ClInclude Include="src\Tcp\tcp_event_hander_thread.hpp" />
+    <ClInclude Include="src\Tcp\tcp_event_sender.hpp" />
+    <ClInclude Include="src\Tcp\tcp_event_sender_thread.hpp" />
+    <ClInclude Include="src\Tcp\tcp_server.hpp" />
+    <ClInclude Include="src\TestMain.hpp" />
+    <ClInclude Include="src\TinyServerThread.hpp" />
+    <ClInclude Include="src\tinyxml2\tinystr.h" />
+    <ClInclude Include="src\tinyxml2\tinyxml.h" />
+    <ClInclude Include="src\Tools\data_deque.hpp" />
+    <ClInclude Include="src\Tools\MD5.h" />
+    <ClInclude Include="src\Tools\Util.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\boost_http\connection.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\boost_http\connection_manager.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\boost_http\mime_types.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\boost_http\reply.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\boost_http\request_handler.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\boost_http\request_parser.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\boost_http\server.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\BusinessModule\congcong.cpp" />
+    <ClCompile Include="src\BusinessModule\gansu.cpp" />
+    <ClCompile Include="src\BusinessModule\weixin.cpp" />
+    <ClCompile Include="src\BusinessModule\WorkerFactory.cpp" />
+    <ClCompile Include="src\Configration\PayConfigReader.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\DataBase\SqlServerConector.cpp" />
+    <ClCompile Include="src\json\json_reader.cpp" />
+    <ClCompile Include="src\json\json_value.cpp" />
+    <ClCompile Include="src\json\json_writer.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\PaymentSystem\PaymentSystem.cpp" />
+    <ClCompile Include="src\PaymentSystem\PaymentWorker.cpp" />
+    <ClCompile Include="src\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\Tcp\tcp_conection.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\tinyxml2\tinystr.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\tinyxml2\tinyxml.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\tinyxml2\tinyxmlerror.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\tinyxml2\tinyxmlparser.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\Tools\MD5.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\json\json_internalarray.inl" />
+    <None Include="src\json\json_internalmap.inl" />
+    <None Include="src\json\json_valueiterator.inl" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{741BF7E3-182B-4B6E-AAB6-08996444A1A0}</ProjectGuid>
+    <RootNamespace>PaymentServer</RootNamespace>
+    <WindowsTargetPlatformVersion>7.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141_xp</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141_xp</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>../../runtime/Debug/Ansi/</OutDir>
+    <IntDir>$(SolutionDir)/$(ProjectName)/$(Configuration)/</IntDir>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
+    <LibraryPath>$(ProjectDir)src/curl/debug;$(SolutionDir)../Boost_1_65_1_vc141/lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)src;$(ProjectDir)src/curl/include;$(SolutionDir)../Boost_1_65_1_vc141/include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>../../runtime/Release/Ansi/</OutDir>
+    <IntDir>$(SolutionDir)\$(ProjectName)\$(Configuration)/</IntDir>
+    <IncludePath>$(ProjectDir)src;$(ProjectDir)src/curl/include;$(SolutionDir)../Boost_1_65_1_vc141/include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)../Boost_1_65_1_vc141/lib;$(ProjectDir)src/curl/release;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PreprocessorDefinitions>NDEBUG;_WIN32_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <FullProgramDatabaseFile>true</FullProgramDatabaseFile>
+      <AdditionalDependencies>libcurl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(ProjectDir)src\curl\debug\libcurl.dll ..\..\runtime\Debug\Ansi\libcurl.dll /y
+copy $(ProjectDir)src\curl\debug\libcurl.pdb ..\..\runtime\Debug\Ansi\libcurl.pdb /y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PreprocessorDefinitions>NDEBUG;_WIN32_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <FullProgramDatabaseFile>true</FullProgramDatabaseFile>
+      <AdditionalDependencies>libcurl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+      <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(ProjectDir)src\curl\release\libcurl.dll ..\..\runtime\Release\Ansi\libcurl.dll /y
+copy $(ProjectDir)src\curl\release\libcurl.pdb ..\..\runtime\Release\Ansi\libcurl.pdb /y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
