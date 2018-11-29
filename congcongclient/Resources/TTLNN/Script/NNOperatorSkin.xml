@@ -1,0 +1,6 @@
+﻿<root>
+	<WidgetButton Name="NNOperator_SntachBanker" NomalTexture="TTLNN/Operator/NNOperator_ButtonSnatchBanker_0.png" PressTexture="AutoPress">
+	</WidgetButton>
+	<WidgetButton Name="NNOperator_Call" NomalTexture="TTLNN/Operator/NNOperator_ButtonCall_1.png" PressTexture="AutoPress">
+	</WidgetButton>
+</root>

@@ -1,0 +1,52 @@
+﻿<Widget Name="" SkinTempName="Empty">
+	<Widget Name="" SkinTempName="BtnFullEmpty"/>
+	<Widget Name="Promotion_ButtonBindCode" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/PromotionPanel/Promotion_ButtonBindCode.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="290 475"/>
+	</Widget>
+	
+	<Widget Name="Promotion_ButtonApply" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/PromotionPanel/Promotion_ButtonApply.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Enabled" Value="false"/>
+		<Property Key="Pos" Value="290 400"/>
+	</Widget>
+	
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/PromotionPanel/color_background.png"/>
+		<Property Key="Pos" Value="740 310"/>
+	</Widget>
+	
+	<Widget Name="Promotion_ButtonBind" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/PromotionPanel/Promotion_ButtonBind.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="740 165"/>
+	</Widget>
+	
+	<Widget Name="Promotion_Edit" SkinTempName="EditEmpty">
+		<Property Key="BackTexture" Value="GamePlaza/HomeScene/PromotionPanel/EditText_Background.png"/>
+		<Property Key="PlaceHolder" Value="请输入推荐码"/>
+		<Property Key="Pos" Value="740 275"/>
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="30"/>
+		<Property Key="Color" Value="90 23 0"/>
+		<Property Key="holderFontColor" Value="90 23 0"/>
+	</Widget>
+	
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/PromotionPanel/background.png"/>
+		<Property Key="Pos" Value="640 360"/>
+	</Widget>
+	
+	<Widget Name="Promotion_ButtonClose" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/PromotionPanel/Promotion_ButtonClose.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="1190 546"/>
+	</Widget>
+	
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/PromotionPanel/PromotionTitle.png"/>
+		<Property Key="Pos" Value="740 553"/>
+	</Widget>
+</Widget>

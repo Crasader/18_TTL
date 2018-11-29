@@ -1,0 +1,62 @@
+﻿ <root>
+	<WidgetNodeUI Name="GameNewRankListItem">
+		<Property Key="Size" Value="860 93"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<WidgetImagic Name="itembg" TextureInfo="GamePlaza/HomeScene/RankPanel/itemBg.png">
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Pos" Value="430 48"/>
+		</WidgetImagic>
+		
+		<WidgetTxt Name="Txt_No" ShowTxt="" FontName="" FontSize="36">
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Pos" Value="59 55"/>
+			<Property Key="Color" Value="255 255 255"/>
+		</WidgetTxt>
+
+		<WidgetImagic Name="Img_No_0" TextureInfo="GamePlaza/HomeScene/RankPanel/NoBackground.png">
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Pos" Value="58 56"/>
+		</WidgetImagic>
+		
+		<WidgetImagic Name="Img_No_1" TextureInfo="GamePlaza/HomeScene/RankPanel/No1.png">
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Pos" Value="58 56"/>
+		</WidgetImagic>
+
+		<WidgetImagic Name="Img_No_2" TextureInfo="GamePlaza/HomeScene/RankPanel/No2.png">
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Pos" Value="58 56"/>
+		</WidgetImagic>
+
+		<WidgetImagic Name="Img_No_3" TextureInfo="GamePlaza/HomeScene/RankPanel/No3.png">
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Pos" Value="58 56"/>
+		</WidgetImagic>
+
+		<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/RankPanel/headerBack.png">
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Pos" Value="152.90 50.32"/>
+		</WidgetImagic>
+
+		<WidgetImagic Name="sprite_icon" TextureInfo="GamePlaza/HomeScene/RankPanel/icon.png">
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Pos" Value="152.90 50.32"/>
+		</WidgetImagic>
+
+		<WidgetTxt Name="Txt_name" ShowTxt="" FontName="" FontSize="22">
+			<Property Key="Pos" Value="196.87 64.57"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="255 255 255"/>
+		</WidgetTxt>
+		<WidgetTxt Name="Txt_id" ShowTxt="" FontName="" FontSize="22">
+			<Property Key="Pos" Value="196.87 33.74"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="255 255 255"/>
+		</WidgetTxt>
+		<WidgetTxt Name="Txt_gold" ShowTxt="" FontName="" FontSize="22">
+			<Property Key="Pos" Value="728 52.71"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="255 255 255"/>
+		</WidgetTxt>
+	</WidgetNodeUI>
+ </root>

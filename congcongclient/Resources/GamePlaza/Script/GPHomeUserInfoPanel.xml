@@ -1,0 +1,101 @@
+<Widget Name="GPHomeUserInfoPanel" SkinTempName="Empty">
+	<Widget Name="" SkinTempName="BtnFullEmpty"/>
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/UserInfoPanel/background.png"/>
+		<Property Key="Pos" Value="640 360"/>
+	</Widget>
+
+	<Widget Name="Button_Close" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/UserInfoPanel/btn_close.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="900 514"/>
+	</Widget>
+	
+	<Widget Name="User_Avar1" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/UserInfoPanel/headbox.png"/>
+		<Property Key="Pos" Value="469.80 360.44"/>
+	</Widget>
+	
+	<Widget Name="User_Avar" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/UserInfoPanel/headbox.png"/>
+		<Property Key="Pos" Value="469.80 360.44"/>
+	</Widget>
+
+
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/UserInfoPanel/title.png"/>
+		<Property Key="Pos" Value="640 514"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/UserInfoPanel/title_nick.png"/>
+		<Property Key="Pos" Value="609.24 416.44"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/UserInfoPanel/title_sex.png"/>
+		<Property Key="Pos" Value="608.74 358.78"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/UserInfoPanel/title_Id.png"/>
+		<Property Key="Pos" Value="596.24 302.44"/>
+	</Widget>
+	
+	<Widget Name="Nick_Txt" SkinTempName="TxtName32Empty">
+		<Property Key="Font" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="32"/>
+		<Property Key="ShowTxt" Value=""/>
+		<Property Key="Pos" Value="662.28 416.44"/>
+		<Property Key="AnchorPos" Value="0 0.5"/>
+		<Property Key="Color" Value="255 255 255"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="TxtEmpty">
+		<Property Key="Font" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="32"/>
+		<Property Key="ShowTxt" Value="女"/>
+		<Property Key="Pos" Value="718.04 359.27"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="Color" Value="255 255 255"/>
+	</Widget>
+	
+
+	<Widget Name="" SkinTempName="TxtEmpty">
+		<Property Key="Font" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="32"/>
+		<Property Key="ShowTxt" Value="男"/>
+		<Property Key="Pos" Value="807.31 360.27"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="Color" Value="255 255 255"/>
+	</Widget>
+	
+	<Widget Name="Button_Cheak_Female" SkinTempName="public_CheckBox">
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/UserInfoPanel/selected.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/UserInfoPanel/unselected.png"/>
+		<UserInfo Key="Idex" Value="0"/>
+		<Property Key="Pos" Value="672.78 358.78"/>
+	</Widget>
+
+	<Widget Name="Button_Cheak_Male" SkinTempName="public_CheckBox">
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/UserInfoPanel/selected.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/UserInfoPanel/unselected.png"/>
+		<Property Key="Pos" Value="764.30 358.78"/>
+	</Widget>
+	
+	<Widget Name="ID_Txt" SkinTempName="TxtEmpty">
+		<Property Key="Font" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="32"/>
+		<Property Key="ShowTxt" Value="110"/>
+		<Property Key="Pos" Value="664.39 302.44"/>
+		<Property Key="AnchorPos" Value="0 0.5"/>
+		<Property Key="Color" Value="255 255 255"/>
+	</Widget>
+	
+
+	<Widget Name="Button_ok" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/UserInfoPanel/btn_ok.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="640.00 237.82"/>
+	</Widget>
+</Widget>

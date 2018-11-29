@@ -1,0 +1,45 @@
+<Widget Name="" SkinTempName="Empty">
+	<LoadSkin Skin="GamePlaza/Script/GPHomeMallPanelSkin.xml"/>
+	<Widget Name="" SkinTempName="BtnFullEmpty"/>
+	
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/MallPanel/background.png"/>
+		<Property Key="Pos" Value="640 360"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/MallPanel/title.png"/>
+		<Property Key="Pos" Value="640 585"/>
+	</Widget>
+
+	<Widget Name="Mall_Content" SkinTempName="MallContentListSkin">
+<!-- 		<Property Key="Size" Value="796 422"/> -->
+		<Property Key="Size" Value="750 380"/>
+		<Property Key="AnchorPos" Value="0.5 0"/>
+		<Property Key="Pos" Value="640 149"/>
+	</Widget>
+		
+	<Widget Name="Mall_ButtonClose" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/MallPanel/Btn_Close.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="1011 585"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/MallPanel/bottom_1.png"/>
+		<Property Key="Pos" Value="640 130"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>		
+	</Widget>
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/MallPanel/bottom_2.png"/>
+		<Property Key="Pos" Value="640 130"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>			
+	</Widget>
+	<!-- 
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/MallPanel/bottom_icon.png"/>
+		<Property Key="Pos" Value="640 130"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>			
+	</Widget> 
+	-->
+</Widget>

@@ -1,0 +1,30 @@
+﻿<root>
+ <WidgetNodeUI Name="UserMessageItem">
+		<Property Key="Size" Value="860 2000"/>
+		<WidgetTxt Name="ImgTxt" ShowTxt="
+		
+		这个是信息栏
+		
+		" FontName="" FontSize="24">
+			<Property Key="Color" Value="0 0 0"/>
+			<Property Key="Pos" Value= "530 700"/>
+			<Property Key = "Dimensions" Value = "860 2600"/>
+			<Property Key = "IsLeft" Value = "true"/>
+		</WidgetTxt>
+	</WidgetNodeUI>
+	
+	
+	<WidgetNodeUI Name="UserJoinItem">
+		<Property Key="Size" Value="860 2000"/>
+		<WidgetTxt Name="ImgTxt" ShowTxt="
+		
+		这个是招募栏
+		
+		" FontName="" FontSize="24">
+			<Property Key="Color" Value="0 0 0"/>
+			<Property Key="Pos" Value= "530 700"/>
+			<Property Key = "Dimensions" Value = "860 2600"/>
+			<Property Key = "IsLeft" Value = "true"/>
+		</WidgetTxt>
+	</WidgetNodeUI>
+ </root>

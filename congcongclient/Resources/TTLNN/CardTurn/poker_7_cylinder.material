@@ -1,0 +1,20 @@
+material card
+{
+	technique normal
+	{
+		pass 0
+		{
+			shader
+			{
+				vertexShader = TTLNN/CardTurn/cylinder.vert
+				fragmentShader = TTLNN/CardTurn/cylinder.frag
+				sampler u_sampler0
+				{
+					path = TTLNN/CardTurn/poker_7.png
+					wrapS = REPEAT
+					wrapT = REPEAT
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,26 @@
+<root>
+<LoadSkin Skin="TTLNN/Script/NNRoomDetailSkin.xml"/>
+<Widget Name="" SkinTempName="BtnFullEmpty"/>
+<Widget Name="" SkinTempName="ImagicEmpty">
+	<Property Key="ImagicTexture" Value="RoomDetail/background.png"/>
+	<Property Key="Pos" Value="640 360"/>
+	<Proprety Key="AnchorPos" Value="0.5 0.5"/>
+</Widget>
+
+<Widget Name="" SkinTempName="ImagicEmpty">
+	<Property Key="ImagicTexture" Value="RoomDetail/title_nn.png"/>
+	<Property Key="Pos" Value="640 610"/>
+	<Proprety Key="AnchorPos" Value="0.5 0.5"/>
+</Widget>
+
+<Widget Name="NNOperator_ButtonClose" SkinTempName="ButtonEmpty">
+	<Property Key="NomalTexture" Value="RoomDetail/btn_close.png"/>
+	<Property Key="PressTexture" Value="AutoPress"/>
+	<Property Key="Pos" Value="1056 610"/>
+</Widget>
+
+<Widget Name="NNOperateHelpListView" SkinTempName="HelpContentList">
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="Pos" Value="640 327"/>
+</Widget>
+</root>

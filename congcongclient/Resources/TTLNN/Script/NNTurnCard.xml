@@ -1,0 +1,38 @@
+
+<Widget Name="" SkinTempName="Empty">
+	<Proprety Key="AnchorPos" Value="0 0"/>
+	<Property Key="Pos" Value="0 0"/>
+	<Widget Name="" SkinTempName="BtnFullEmpty"/>
+	<Widget Name="NNTurnCardNode" SkinTempName="Empty">
+		<Property Key="Pos" Value="0 0"/>
+		<Proprety Key="AnchorPos" Value="0.5 0.5"/>
+	</Widget>
+	<Widget Name="CardImg_0" SkinTempName="ImagicEmpty">
+		<UserInfo Key="Image" Value="SG/PlayerCard/poker_"/>
+		<Property Key="ImagicTexture" Value="TTLNN/PlayerCard/poker_1.png"/>
+		<Property Key="Pos" Value="475 100"/>
+		<Proprety Key="AnchorPos" Value="0.5 0.5"/>
+		<Proprety Key="Visible" Value="false"/>
+	</Widget>
+	<Widget Name="CardImg_1" SkinTempName="ImagicEmpty">
+		<UserInfo Key="Image" Value="SG/PlayerCard/poker_"/>
+		<Property Key="ImagicTexture" Value="TTLNN/PlayerCard/poker_1.png"/>
+		<Property Key="Pos" Value="585 100"/>
+		<Proprety Key="AnchorPos" Value="0.5 0.5"/>
+		<Proprety Key="Visible" Value="false"/>
+	</Widget>
+	<Widget Name="CardImg_2" SkinTempName="ImagicEmpty">
+		<UserInfo Key="Image" Value="SG/PlayerCard/poker_"/>
+		<Property Key="ImagicTexture" Value="TTLNN/PlayerCard/poker_1.png"/>
+		<Property Key="Pos" Value="695 100"/>
+		<Proprety Key="AnchorPos" Value="0.5 0.5"/>
+		<Proprety Key="Visible" Value="false"/>
+	</Widget>
+	<Widget Name="CardImg_3" SkinTempName="ImagicEmpty">
+		<UserInfo Key="Image" Value="TTLNN/PlayerCard/poker_"/>
+		<Property Key="ImagicTexture" Value="TTLNN/PlayerCard/poker_1.png"/>
+		<Property Key="Pos" Value="805 100"/>
+		<Proprety Key="AnchorPos" Value="0.5 0.5"/>
+		<Proprety Key="Visible" Value="false"/>
+	</Widget>
+</Widget>

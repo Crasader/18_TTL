@@ -1,0 +1,37 @@
+<root>
+<WidgetNodeUI Name="GameRoomInfoListViewItem">
+	<Property Key="Size" Value="640 42"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<WidgetButton Name="Btn_Invitation" NomalTexture="GamePlaza/HomeScene/Btn_invite.png">
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="Pos" Value="600 10"/>
+		<Property Key="Visible" Value="true"/>
+	</WidgetButton>
+	<WidgetButton Name="Btn_RoomList_Join" NomalTexture="GamePlaza/HomeScene/Btn_RoomDetail.png">
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="AnchorPos" Value="0 0.5"/>
+		<Property Key="Pos" Value="10 10"/>
+		<WidgetTxt Name="Txt_RoomNo" ShowTxt="123456" FontName="" FontSize="18">
+			<Property Key="AnchorPos" Value="0 0"/>
+			<Property Key="Pos" Value="40 10"/>
+			<Property Key="Color" Value="255 0 0"/>
+		</WidgetTxt>
+		<WidgetTxt Name="Txt_RoundCount" ShowTxt="10" FontName="" FontSize="18">
+			<Property Key="AnchorPos" Value="0 0"/>
+			<Property Key="Pos" Value="200 10"/>
+			<Property Key="Color" Value="255 0 0"/>
+		</WidgetTxt>
+		<WidgetTxt Name="Txt_Score" ShowTxt="50" FontName="" FontSize="18">
+			<Property Key="AnchorPos" Value="0 0"/>
+			<Property Key="Pos" Value="300 10"/>
+			<Property Key="Color" Value="255 0 0"/>
+		</WidgetTxt>
+		<WidgetTxt Name="Txt_PlayerCount" ShowTxt="2/8人" FontName="" FontSize="18">
+			<Property Key="AnchorPos" Value="0 0"/>
+			<Property Key="Pos" Value="430 10"/>
+			<Property Key="Color" Value="255 0 0"/>
+		</WidgetTxt>
+	</WidgetButton>
+</WidgetNodeUI>
+</root>

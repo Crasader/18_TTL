@@ -1,0 +1,247 @@
+﻿ <root>
+	<LoadSkin Skin="Script/HNGamePrivateSkin.xml"/>
+	<Widget Name="PrivateDismissPlane" SkinTempName="Empty">
+		<Property Key="Pos" Value="640 360"/>
+		<Widget SkinTempName="BtnFullEmpty">
+		</Widget>
+		<Widget Name="" SkinTempName="ImagicEmpty">
+		    <Property Key="ImagicTexture" Value="public/bg.png"/>
+		</Widget>
+		
+		
+		<Widget Name="" SkinTempName="TxtEmpty">
+			<Property Key="FontSize" Value="35"/>
+			<Property Key="ShowTxt" Value="玩家"/>
+			<Property Key="Pos" Value="-215 65"/>
+			<Property Key="AnchorPos" Value="1 0.5"/>
+			<Property Key="Color" Value="139 69 19"/>
+		</Widget>
+		<Widget Name="DissPrivateName0" SkinTempName="TxtEmpty">
+			<Property Key="FontSize" Value="35"/>
+			<Property Key="ShowTxt" Value="名字名:"/>
+			<Property Key="Pos" Value="-30 65"/>
+			<Property Key="AnchorPos" Value="1 0.5"/>
+			<Property Key="Color" Value="139 69 19"/>
+		</Widget>
+		<Widget Name="" SkinTempName="TxtEmpty">
+			<Property Key="FontSize" Value="35"/>
+			<Property Key="ShowTxt" Value="提出了解散房间"/>
+			<Property Key="Pos" Value="250 65"/>
+			<Property Key="AnchorPos" Value="1 0.5"/>
+			<Property Key="Color" Value="139 69 19"/>
+		</Widget>
+		<Widget Name="" SkinTempName="TxtEmpty">
+			<Property Key="FontSize" Value="35"/>
+			<Property Key="ShowTxt" Value="是否同意？"/>
+			<Property Key="Pos" Value="90 10"/>
+			<Property Key="AnchorPos" Value="1 0.5"/>
+			<Property Key="Color" Value="139 69 19"/>
+		</Widget>
+		
+		
+		
+		<!-- <Widget Name="DissPrivateName0" SkinTempName="TxtEmpty">
+			<Property Key="FontSize" Value="35"/>
+			<Property Key="ShowTxt" Value="名字名:"/>
+			<Property Key="Pos" Value="-10 80"/>
+			<Property Key="AnchorPos" Value="1 0.5"/>
+			<Property Key="Color" Value="123 123 132"/>
+		</Widget> -->
+		<Widget Name="DissPrivateState0" SkinTempName="TxtEmpty">
+			<Property Key="FontSize" Value="35"/>
+			<Property Key="ShowTxt" Value="名字名字"/>
+			<UserInfo Key="Text0" Value="同意"/>
+			<UserInfo Key="Text1" Value="拒绝"/>
+			<Property Key="Pos" Value="10 80"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="123 123 123"/>
+			<Property Key="Visible" Value="false"/>
+		</Widget>
+		<Widget Name="DissPrivateName1" SkinTempName="TxtEmpty">
+			<Property Key="FontSize" Value="35"/>
+			<Property Key="ShowTxt" Value="名字:"/>
+			<Property Key="Color" Value="255 0 0"/>
+			<Property Key="Pos" Value="-10 40"/>
+			<Property Key="AnchorPos" Value="1 0.5"/>
+			<Property Key="Visible" Value="false"/>
+		</Widget>
+		<Widget Name="DissPrivateState1" SkinTempName="TxtEmpty">
+			<Property Key="FontSize" Value="35"/>
+			<Property Key="ShowTxt" Value="同意"/>
+			<UserInfo Key="Text0" Value="同意"/>
+			<UserInfo Key="Text1" Value="拒绝"/>
+			<Property Key="Pos" Value="10 40"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="123 123 123"/>
+			<Property Key="Visible" Value="false"/>
+		</Widget>
+		<Widget Name="DissPrivateName2" SkinTempName="TxtEmpty">
+			<Property Key="FontSize" Value="35"/>
+			<Property Key="ShowTxt" Value="名字:"/>
+			<Property Key="Color" Value="255 0 0"/>
+			<Property Key="Pos" Value="-10 0"/>
+			<Property Key="AnchorPos" Value="1 0.5"/>
+			<Property Key="Visible" Value="false"/>
+		</Widget>
+		<Widget Name="DissPrivateState2" SkinTempName="TxtEmpty">
+			<Property Key="FontSize" Value="35"/>
+			<Property Key="ShowTxt" Value="同意"/>
+			<UserInfo Key="Text0" Value="同意"/>
+			<UserInfo Key="Text1" Value="拒绝"/>
+			<Property Key="Pos" Value="10 0"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="123 123 123"/>
+			<Property Key="Visible" Value="false"/>
+		</Widget>
+		<Widget Name="DissPrivateName3" SkinTempName="TxtEmpty">
+			<Property Key="FontSize" Value="35"/>
+			<Property Key="ShowTxt" Value="名字:"/>
+			<Property Key="Color" Value="255 0 0"/>
+			<Property Key="Pos" Value="-10 -40"/>
+			<Property Key="AnchorPos" Value="1 0.5"/>
+			<Property Key="Visible" Value="false"/>
+		</Widget>
+		<Widget Name="DissPrivateState3" SkinTempName="TxtEmpty">
+			<Property Key="FontSize" Value="35"/>
+			<Property Key="ShowTxt" Value="同意"/>
+			<UserInfo Key="Text0" Value="同意"/>
+			<UserInfo Key="Text1" Value="拒绝"/>
+			<Property Key="Pos" Value="10 -40"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="123 123 123"/>
+			<Property Key="Visible" Value="false"/>
+		</Widget>
+		
+		<Widget Name="PrivateDismissAction" SkinTempName="Empty">
+			<Widget Name="Button_DismissPrivate" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="public/BUTTON1.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="-120 -120"/>
+			</Widget>
+			<Widget Name="Button_DismissPrivateNot" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="public/BUTTON2.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="120 -120"/>
+			</Widget>
+			<!-- <Widget Name="Button_DismissPrivate" SkinTempName="ButtonTxtEmpty">
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="-120 -120"/>
+				<Property Key="FontSize" Value="40"/>
+				<Property Key="ShowTxt" Value="同意解散"/>
+			</Widget>
+			<Widget Name="Button_DismissPrivateNot" SkinTempName="ButtonTxtEmpty">
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="120 -120"/>
+				<Property Key="FontSize" Value="40"/>
+				<Property Key="ShowTxt" Value="拒绝解散"/>
+			</Widget> -->
+		</Widget>
+	</Widget>
+	<!-- 结算详情界面 -->
+	<Widget Name="PrivateEndPlane" SkinTempName="Empty">
+		<Widget  SkinTempName="BtnFullEmpty">
+		</Widget>
+		<Property Key="Pos" Value="640 360"/>
+		<Property Key="Visible" Value="false"/>
+		<Widget SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="ScencePrivate/Back.png"/>	
+		</Widget>
+		<Widget SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="JieSuan/bg3.png"/>
+			<Property Key="Pos" Value="-13 25"/>
+		</Widget>
+		<!-- <Widget SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="JieSuan/over_jieshuUI_1.png"/>
+			<Property Key="AnchorPos" Value="0 0"/>
+			<Property Key="Pos" Value="-545 -200"/>
+		</Widget> -->
+		<Widget Name="RecordBack0" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="JieSuan/over_jieshuUI_2.png"/>
+			<Property Key="AnchorPos" Value="0 0"/>
+			<Property Key="Pos" Value="-545 -200"/>
+		</Widget>
+		<Widget Name="RecordBack1" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="JieSuan/over_jieshuUI_2.png"/>
+			<Property Key="AnchorPos" Value="0 0"/>
+			<Property Key="Pos" Value="-270 -200"/>
+		</Widget>
+		<Widget Name="RecordBack2" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="JieSuan/over_jieshuUI_2.png"/>
+			<Property Key="AnchorPos" Value="0 "/>
+			<Property Key="Pos" Value="0 -200"/>
+		</Widget>
+		<Widget Name="RecordBack3" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="JieSuan/over_jieshuUI_2.png"/>
+			<Property Key="AnchorPos" Value="0 0"/>
+			<Property Key="Pos" Value="270 -200"/>
+		</Widget>
+		
+		<!--大赢家-->
+		<Widget Name="Dayingjia0" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="JieSuan/dayingjia.png"/>
+			<Property Key="Pos" Value="-420 272"/>
+			<Property Key="Visible" Value="false"/>
+		</Widget>
+		<Widget Name="Dayingjia1"  SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="JieSuan/dayingjia.png"/>
+			<Property Key="Pos" Value="-145 272"/>
+			<Property Key="Visible" Value="false"/>
+		</Widget>
+		<Widget Name="Dayingjia2"  SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="JieSuan/dayingjia.png"/>
+			<Property Key="Pos" Value="125 272"/>
+			<Property Key="Visible" Value="false"/>
+		</Widget>
+		<Widget Name="Dayingjia3"  SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="JieSuan/dayingjia.png"/>
+			<Property Key="Pos" Value="395 272"/>
+			<Property Key="Visible" Value="false"/>
+		</Widget>
+		
+		<Widget Name="HNMJButton_GameExit" SkinTempName="ButtonEmpty">
+		    <Property Key="NomalTexture" Value="public/Button_Close.png"/>
+		    <Property Key="PressTexture" Value="AutoPress"/>
+			<Property Key="Pos" Value="565 310"/>
+			<Action Key="Hide" Value="PrivateEndPlane"/>
+		</Widget>
+		<Widget Name="PrivateEndPlayer0" SkinTempName="PrivateEndPlayerInfo33">
+			<Property Key="Pos" Value="-413 0"/>
+		</Widget>
+		<Widget Name="PrivateEndPlayer1" SkinTempName="PrivateEndPlayerInfo33">
+			<Property Key="Pos" Value="-138 0"/>
+		</Widget>
+		<Widget Name="PrivateEndPlayer2" SkinTempName="PrivateEndPlayerInfo33">
+			<Property Key="Pos" Value="134 0"/>
+		</Widget>
+		<Widget Name="PrivateEndPlayer3" SkinTempName="PrivateEndPlayerInfo33">
+			<Property Key="Pos" Value="407 0"/>
+		</Widget>
+		
+		<Widget Name="Button_PrivateAgagin" SkinTempName="ButtonTxtEmpty">
+			<Property Key="Visible" Value="false"/>
+			<Property Key="PressTexture" Value="AutoPress"/>
+			<Property Key="Pos" Value="-100 -310"/>
+			<Property Key="FontSize" Value="35"/>
+			<Property Key="ShowTxt" Value="再来一局"/>
+		</Widget>
+		<Widget Name="Button_PrivateWeiXinShare" SkinTempName="ButtonTxtEmpty">
+			<Property Key="Visible" Value="false"/>
+			<Property Key="PressTexture" Value="AutoPress"/>
+			<Property Key="Pos" Value="100 -310"/>
+			<Property Key="FontSize" Value="35"/>
+			<Property Key="ShowTxt" Value="微信分享"/>
+		</Widget>
+		<Widget Name="Button_PrivateZhanjiShare" SkinTempName="ButtonEmpty">
+			<Property Key="NomalTexture" Value="public/Button_Public.png"/>
+			<Property Key="PressTexture" Value="AutoPress"/>
+			<Property Key="Pos" Value="0 -260"/>
+			<Property Key="FontSize" Value="35"/>
+			<Property Key="ShowTxt" Value=""/>
+		</Widget>
+		<Widget SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="JieSuan/TXT.png"/>
+			<Property Key="Pos" Value="0 -340"/>
+		</Widget>
+	</Widget>
+	
+ </root>

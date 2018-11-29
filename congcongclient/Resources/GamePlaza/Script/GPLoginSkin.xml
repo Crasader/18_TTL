@@ -1,0 +1,41 @@
+﻿ <root>
+    <WidgetNodeUI Name="UserXieYiListItem">
+		<Property Key="Size" Value="1035 4640"/>
+      <!--用户协议不能用了
+		<WidgetImagic Name="" TextureInfo="GamePlaza/LoginScene/yonghuxieyi1.png">
+		    <Property Key="AnchorPos" Value="0.5 0"/>
+			<Property Key="Pos" Value="510 2320"/>
+		</WidgetImagic>
+		<WidgetImagic Name="" TextureInfo="GamePlaza/LoginScene/yonghuxieyi2.png">
+		    <Property Key="AnchorPos" Value="0.5 1"/>
+			<Property Key="Pos" Value="510 2320"/>
+		</WidgetImagic>
+    -->
+	</WidgetNodeUI>
+
+	<WidgetNode Name="Login_Animation" >
+		<Property Key="Visible" Value="true"/>
+		<UserInfo Key="Imagic" Value="GamePlaza/LoginScene/LoginAni"/>
+		<Visible Name="LoginActionStart" Visible="true" SaveAction="true">
+			<CallAction OtherNodeName="LoginAnimation" OtherActionName="Start">
+			</CallAction>
+			<CallAction OtherNodeName="LoginTitleAnimation" OtherActionName="Start">
+			</CallAction>
+		</Visible>
+		<WidgetAnimation Name="LoginAnimation">
+			<Property Key="Time" Value="0.1"/>
+			<Property Key="Loop" Value="false"/>
+			<RunAnim Name="Start" AnimName="GamePlaza/LoginScene/LoginAni/:1:28:.png" SaveAction="true">
+			</RunAnim>
+		</WidgetAnimation>
+		<WidgetImagic Name="LoginTitleAnimation" TextureInfo="GamePlaza/LoginScene/LoginAni/28.png">
+			<Property Key="Pos" Value="0 0"/>
+			<Visible Name="Start" Visible="false" SaveAction="true">
+				<WaiteTime Time="2.9">
+					<Visible Visible="true">
+					</Visible>
+				</WaiteTime>
+			</Visible>
+		</WidgetImagic>
+	</WidgetNode>
+ </root>

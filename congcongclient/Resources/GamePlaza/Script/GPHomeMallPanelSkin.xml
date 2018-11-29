@@ -1,0 +1,139 @@
+<root>
+	<WidgetList Name="MallContentListSkin">
+		<Property Key="Direction" Value="1"/>	
+		<Property Key="HideBack" Value="true"/>
+		<WidgetNodeUI Name="MallContentSkin">
+			<Property Key="Size" Value="796 600"/>
+			<WidgetNodeUI Name="MallItem_1">
+				<Property Key="Pos" Value="128 458"/>
+				<Property Key="Size" Value="204 282"/>
+				<WidgetButton Name="MallContentDetail_Button_1" NomalTexture="GamePlaza/HomeScene/MallPanel/itemBg.png" PressTexture="AutoPress">
+					<Property Key="Pos" Value="102 141"/>
+					<Property Key="AnchorPos" Value="0.5 0.5"/>
+					<UserInfo Key="amount" Value="1000"/>
+				</WidgetButton>
+				<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/MallPanel/gold_1.png">
+					<Property Key="Pos" Value="102 237"/>
+					<Property Key="AnchorPos" Value="0.5 0.5"/>
+				</WidgetImagic>
+				<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/MallPanel/box_1.png">
+					<Property Key="Pos" Value="102 161"/>
+					<Property Key="AnchorPos" Value="0.5 0.5"/>
+				</WidgetImagic>
+				<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/MallPanel/rm_1.png">
+					<Property Key="Pos" Value="102 65"/>
+				</WidgetImagic>
+			</WidgetNodeUI>
+
+			<WidgetNodeUI Name="MallItem_2">
+				<Property Key="Pos" Value="372 458"/>		
+				<Property Key="Size" Value="204 282"/>
+				<WidgetButton Name="MallContentDetail_Button_2" NomalTexture="GamePlaza/HomeScene/MallPanel/itemBg.png" PressTexture="AutoPress">
+					<Property Key="Pos" Value="102 141"/>
+					<Property Key="AnchorPos" Value="0.5 0.5"/>
+					<UserInfo Key="amount" Value="5000"/>
+				</WidgetButton>
+				<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/MallPanel/gold_2.png">
+					<Property Key="Pos" Value="102 237"/>
+					<Property Key="AnchorPos" Value="0.5 0.5"/>
+				</WidgetImagic>
+				<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/MallPanel/box_2.png">
+					<Property Key="Pos" Value="102 161"/>
+					<Property Key="AnchorPos" Value="0.5 0.5"/>
+				</WidgetImagic>
+				<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/MallPanel/rm_2.png">
+					<Property Key="Pos" Value="102 65"/>
+				</WidgetImagic>
+			</WidgetNodeUI>
+
+
+			<WidgetNodeUI Name="MallItem_3">
+				<Property Key="Pos" Value="619 458"/>		
+				<Property Key="Size" Value="204 282"/>
+				<WidgetButton Name="MallContentDetail_Button_3" NomalTexture="GamePlaza/HomeScene/MallPanel/itemBg.png" PressTexture="AutoPress">
+					<Property Key="Pos" Value="102 141"/>
+					<Property Key="AnchorPos" Value="0.5 0.5"/>
+					<UserInfo Key="amount" Value="10000"/>
+				</WidgetButton>
+				<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/MallPanel/gold_3.png">
+					<Property Key="Pos" Value="102 237"/>
+					<Property Key="AnchorPos" Value="0.5 0.5"/>
+				</WidgetImagic>
+				<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/MallPanel/box_3.png">
+					<Property Key="Pos" Value="102 161"/>
+					<Property Key="AnchorPos" Value="0.5 0.5"/>
+				</WidgetImagic>
+				<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/MallPanel/rm_3.png">
+					<Property Key="Pos" Value="102 65"/>
+				</WidgetImagic>
+			</WidgetNodeUI>
+
+			<WidgetNodeUI Name="MallItem_4">
+				<Property Key="Pos" Value="128 159"/>		
+				<Property Key="Size" Value="204 282"/>
+				<WidgetButton Name="MallContentDetail_Button_4" NomalTexture="GamePlaza/HomeScene/MallPanel/itemBg.png" PressTexture="AutoPress">
+					<Property Key="Pos" Value="102 141"/>
+					<Property Key="AnchorPos" Value="0.5 0.5"/>
+					<UserInfo Key="amount" Value="30000"/>
+				</WidgetButton>
+				<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/MallPanel/gold_4.png">
+					<Property Key="Pos" Value="102 237"/>
+					<Property Key="AnchorPos" Value="0.5 0.5"/>
+				</WidgetImagic>
+				<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/MallPanel/box_4.png">
+					<Property Key="Pos" Value="102 161"/>
+					<Property Key="AnchorPos" Value="0.5 0.5"/>
+				</WidgetImagic>
+				<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/MallPanel/rm_4.png">
+					<Property Key="Pos" Value="102 65"/>
+				</WidgetImagic>
+			</WidgetNodeUI>
+
+			<WidgetNodeUI Name="MallItem_5">
+				<Property Key="Pos" Value="372 159"/>		
+				<Property Key="Size" Value="204 282"/>
+				<WidgetButton Name="MallContentDetail_Button_5" NomalTexture="GamePlaza/HomeScene/MallPanel/itemBg.png" PressTexture="AutoPress">
+					<Property Key="Pos" Value="102 141"/>
+					<Property Key="AnchorPos" Value="0.5 0.5"/>
+					<UserInfo Key="amount" Value="50000"/>
+				</WidgetButton>
+				<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/MallPanel/gold_5.png">
+					<Property Key="Pos" Value="102 237"/>
+					<Property Key="AnchorPos" Value="0.5 0.5"/>
+				</WidgetImagic>
+				<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/MallPanel/box_5.png">
+					<Property Key="Pos" Value="102 161"/>
+					<Property Key="AnchorPos" Value="0.5 0.5"/>
+				</WidgetImagic>
+				<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/MallPanel/rm_5.png">
+					<Property Key="Pos" Value="102 65"/>
+				</WidgetImagic>
+			</WidgetNodeUI>
+
+			<WidgetNodeUI Name="MallItem_6">
+				<Property Key="Pos" Value="619 159"/>		
+				<Property Key="Size" Value="204 282"/>
+				<WidgetButton Name="MallContentDetail_Button_6" NomalTexture="GamePlaza/HomeScene/MallPanel/itemBg.png" PressTexture="AutoPress">
+					<Property Key="Pos" Value="102 141"/>
+					<Property Key="AnchorPos" Value="0.5 0.5"/>
+					<UserInfo Key="amount" Value="100000"/>
+				</WidgetButton>
+				<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/MallPanel/gold_6.png">
+					<Property Key="Pos" Value="102 237"/>
+					<Property Key="AnchorPos" Value="0.5 0.5"/>
+				</WidgetImagic>
+				<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/MallPanel/box_6.png">
+					<Property Key="Pos" Value="102 161"/>
+					<Property Key="AnchorPos" Value="0.5 0.5"/>
+				</WidgetImagic>
+				<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/MallPanel/rm_6.png">
+					<Property Key="Pos" Value="102 65"/>
+				</WidgetImagic>
+			</WidgetNodeUI>
+		</WidgetNodeUI>		
+	</WidgetList>
+
+	
+
+
+</root>

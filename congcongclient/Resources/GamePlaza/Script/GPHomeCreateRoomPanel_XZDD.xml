@@ -1,0 +1,47 @@
+<LoadSkin Skin="GamePlaza/Script/GPHomeCreateRoomPanel_XZDDSkin.xml"/>
+<Widget Name="GPHomeCreateRoomRulePanel_XZDD" SkinTempName="Empty">
+	<Widget Name="" SkinTempName="BtnFullEmpty"/>
+	<Widget Name="Bg" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/background.png"/>
+		<Property Key="Pos" Value="640 360"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/title.png"/>
+		<Property Key="Pos" Value="640 594"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+	</Widget>
+	<!--关闭房间按钮-->
+	<Widget Name="Btn_Close_XZDD" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/btn_close.png"/> 
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="900 594"/>
+		<Action key ="Hide" Value="GPHomeCreateRoomRulePanel_SRLF"/>
+	</Widget>
+
+	<!--创建房间按钮-->
+	<Widget Name="Btn_RuleCreateRoom_XZDD" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/CreateRoom_Btn.png"/> 
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="655.61 122.70"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>		
+	</Widget>
+	<!--玩家规则-->
+	<Widget Name="GamePlayerListView_XZDD" SkinTempName="List">
+		<Property Key="Size" Value="500 342"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Pos" Value="422 208"/>
+		<Property Key="Direction" Value="1"/>	
+		<Property Key="HideBack" Value="true"/>
+		<Widget Name="PlayerItem" SkinTempName="GamePlayerRuleListItem_XZDD">
+		</Widget>
+	</Widget>
+
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/MallPanel/bottom_2.png"/>
+		<Property Key="Pos" Value="640 181.30"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+	</Widget>
+ 
+</Widget>

@@ -1,0 +1,20 @@
+﻿ <root>
+ <Widget Name="" SkinTempName="Empty">
+	<Widget Name="" SkinTempName="BtnFullEmpty"/>
+	<Widget Name="UpDataNoticeMsgBack" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="public/updatabg.png"/>
+		<Property Key="Pos" Value="640 370"/>
+	</Widget>
+	<Widget Name="UpDataNoticeMsg1" SkinTempName="TxtEmpty">
+		<Property Key="ShowTxt" Value="果酱棋牌更新版本"/>
+		<Property Key="Pos" Value="640 370"/>
+		<Property Key="FontSize" Value="36"/>
+		<Property Key="Color" Value="15 94 153"/>
+	</Widget>
+	<Widget Name="UpDataButton_Ok" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="public/btn_ok.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="640 250"/>
+	</Widget>
+</Widget>		
+ </root>

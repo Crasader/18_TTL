@@ -1,0 +1,68 @@
+<Widget Name="" SkinTempName="Empty">
+	<LoadSkin Skin="GamePlaza/Script/GPHomeHelpPanelSkin.xml"/>
+	<Widget Name="" SkinTempName="BtnFullEmpty"/>
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/HelpPanel/Help_Background.png"/>
+		<Property Key="Pos" Value="640 360"/>
+	</Widget>
+	
+	<Widget Name="Help_Button_0" SkinTempName="public_CheckBox">
+		<UserInfo Key="Index" Value="0"/>
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/HelpPanel/Help_ButtonNormal_GameDiscription.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/HelpPanel/Help_ButtonSelected_GameDiscription.png"/>
+		<Property Key="Pos" Value="295 530"/>
+		<Property Key="Checked" Value="true"/>
+	</Widget>
+	
+	<Widget Name="Help_Button_1" SkinTempName="public_CheckBox">
+		<UserInfo Key="Index" Value="1"/>
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/HelpPanel/Help_ButtonNormal_GameRule.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/HelpPanel/Help_ButtonSelected_GameRule.png"/>
+		<Property Key="Pos" Value="295 450"/>
+	</Widget>
+	
+	<Widget Name="Help_Button_2" SkinTempName="public_CheckBox">
+		<UserInfo Key="Index" Value="2"/>
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/HelpPanel/Help_ButtonNormal_CreateRoom.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/HelpPanel/Help_ButtonSelected_CreateRoom.png"/>
+		<Property Key="Pos" Value="295 370"/>
+	</Widget>
+	
+	<Widget Name="Help_Button_3" SkinTempName="public_CheckBox">
+		<UserInfo Key="Index" Value="3"/>
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/HelpPanel/Help_ButtonNormal_EnterRoom.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/HelpPanel/Help_ButtonSelected_EnterRoom.png"/>
+		<Property Key="Pos" Value="295 290"/>
+	</Widget>
+	
+	<Widget Name="Help_Button_4" SkinTempName="public_CheckBox">
+		<UserInfo Key="Index" Value="4"/>
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/HelpPanel/Help_ButtonNormal_PlayDiscription.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/HelpPanel/Help_ButtonSelected_PlayDiscription.png"/>
+		<Property Key="Pos" Value="295 210"/>
+	</Widget>
+	
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/HelpPanel/Help_ColorBackground.png"/>
+		<Property Key="Pos" Value="735 360"/>
+	</Widget>
+	
+	<Widget Name="" SkinTempName="Empty">
+		<Property Key="Pos" Value="315 560"/>
+		<Widget Name="Help_Content" SkinTempName="HelpContentSkin">
+			<Property Key="AnchorPos" Value="0 1"/>
+			<Property Key="Size" Value="850 400"/>
+		</Widget>
+	</Widget>
+	
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/HelpPanel/Help_Title.png"/>
+		<Property Key="Pos" Value="750 600"/>
+	</Widget>
+	
+	<Widget Name="Help_ButtonClose" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/HelpPanel/Help_ButtonClose.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="1190 590"/>
+	</Widget>
+</Widget>

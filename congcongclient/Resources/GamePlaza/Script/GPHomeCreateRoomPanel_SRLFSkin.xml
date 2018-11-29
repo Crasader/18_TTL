@@ -1,0 +1,260 @@
+<root>
+	<WidgetNodeUI Name="GamePlayerRuleListItem">
+		<Property Key="AnchorPos" Value="0 0"/>	
+		<Property Key="Size" Value="430 590"/>
+		<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/CreateRoomPanel/title_1.png">
+			<Property Key="Pos" Value="6.49 557"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>	
+		</WidgetImagic>
+
+		<WidgetCheckBox Name="FangJianSeDing_CB" UnSelectTexture="GamePlaza/HomeScene/CreateRoomPanel/unselected.png" SelectTexture="GamePlaza/HomeScene/CreateRoomPanel/selected.png">
+			<Property Key="Pos" Value="148.52 557"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>	
+		</WidgetCheckBox>
+
+		<WidgetTxt Name="" ShowTxt="允许陌生人加入" FontName="" FontSize="24">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="188.52 557"/>
+		</WidgetTxt>
+
+		<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/CreateRoomPanel/title_2.png">
+			<Property Key="Pos" Value="6.49 511.12"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>	
+		</WidgetImagic>
+
+		<WidgetCheckBox Name="ShiSiZhang_CB" UnSelectTexture="GamePlaza/HomeScene/CreateRoomPanel/unselected.png" SelectTexture="GamePlaza/HomeScene/CreateRoomPanel/selected.png">
+			<Property Key="Pos" Value="148.52 513.48"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>			
+		</WidgetCheckBox>
+
+
+		<WidgetTxt Name="" ShowTxt="十三张牌" FontName="" FontSize="24">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="188.52 513.48"/>
+		</WidgetTxt>
+		<!--八张牌按钮注掉-->
+		<WidgetCheckBox Name="BaZhang_CB" UnSelectTexture="GamePlaza/HomeScene/CreateRoomPanel/unselected.png" SelectTexture="GamePlaza/HomeScene/CreateRoomPanel/selected.png"> 
+			<Property Key="Pos" Value="287.11 513.48"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>				 
+		</WidgetCheckBox>
+
+		<WidgetTxt Name="" ShowTxt="七张牌" FontName="" FontSize="24">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="327.11 513.48"/>
+		</WidgetTxt>
+
+		<WidgetCheckBox Name="XueZanDaoDi_CB" UnSelectTexture="GamePlaza/HomeScene/CreateRoomPanel/unselected.png" SelectTexture="GamePlaza/HomeScene/CreateRoomPanel/selected.png">
+			<Property Key="Pos" Value="148.52 470.82"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+		</WidgetCheckBox>
+
+		<WidgetTxt Name="" ShowTxt="血战到底" FontName="" FontSize="24">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="188.52 470.82"/>
+		</WidgetTxt>
+
+		<WidgetCheckBox Name="TuiDaoHu_CB" UnSelectTexture="GamePlaza/HomeScene/CreateRoomPanel/unselected.png" SelectTexture="GamePlaza/HomeScene/CreateRoomPanel/selected.png">
+			<Property Key="AnchorPos" Value="0 0.5"/>		
+			<Property Key="Pos" Value="287.11 470.82"/>	
+		</WidgetCheckBox>
+
+		<WidgetTxt Name="" ShowTxt="推到胡" FontName="" FontSize="24">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="327.11 470.82"/>
+		</WidgetTxt>
+
+		<WidgetCheckBox Name="DianGangHuaDianPao_CB" UnSelectTexture="GamePlaza/HomeScene/CreateRoomPanel/unselected.png" SelectTexture="GamePlaza/HomeScene/CreateRoomPanel/selected.png">
+			<Property Key="Pos" Value="148.52 428.16"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>			
+		</WidgetCheckBox>
+
+		<WidgetTxt Name="" ShowTxt="杠花点炮" FontName="" FontSize="24">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="188.52 428.16"/>
+		</WidgetTxt>
+
+		<WidgetCheckBox Name="DianGangHuaZhiMo_CB" UnSelectTexture="GamePlaza/HomeScene/CreateRoomPanel/unselected.png" SelectTexture="GamePlaza/HomeScene/CreateRoomPanel/selected.png">
+			<Property Key="Pos" Value="287.11 428.16"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>				
+		</WidgetCheckBox>
+
+		<WidgetTxt Name="" ShowTxt="杠花自摸" FontName="" FontSize="24">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="327.11 428.16"/>
+		</WidgetTxt>
+
+
+		<WidgetCheckBox Name="GuaFengXiaYu_CB" UnSelectTexture="GamePlaza/HomeScene/CreateRoomPanel/unselected.png" SelectTexture="GamePlaza/HomeScene/CreateRoomPanel/selected.png">
+			<Property Key="Pos" Value="148.52 385.50"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>			
+		</WidgetCheckBox>
+
+		<WidgetTxt Name="" ShowTxt="刮风下雨" FontName="" FontSize="24">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="188.52 385.50"/>
+		</WidgetTxt>
+
+		<WidgetCheckBox Name="JiaPiao_CB" UnSelectTexture="GamePlaza/HomeScene/CreateRoomPanel/unselected.png" SelectTexture="GamePlaza/HomeScene/CreateRoomPanel/selected.png">
+			<Property Key="Pos" Value="287.11 385.50"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>				
+		</WidgetCheckBox>
+
+		<WidgetTxt Name="" ShowTxt="加飘" FontName="" FontSize="24">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="327.11 385.50"/>
+		</WidgetTxt>
+
+		<WidgetCheckBox Name="ZiMoJiaDi_CB" UnSelectTexture="GamePlaza/HomeScene/CreateRoomPanel/unselected.png" SelectTexture="GamePlaza/HomeScene/CreateRoomPanel/selected.png">
+			<Property Key="Pos" Value="148.52 342.84"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>			
+		</WidgetCheckBox>
+
+
+		<WidgetTxt Name="" ShowTxt="自摸加底" FontName="" FontSize="24">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="188.52 342.84"/>
+		</WidgetTxt>
+
+		<WidgetCheckBox Name="ZiMoJiaFan_CB" UnSelectTexture="GamePlaza/HomeScene/CreateRoomPanel/unselected.png" SelectTexture="GamePlaza/HomeScene/CreateRoomPanel/selected.png">
+			<Property Key="Pos" Value="287.11 342.84"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>			
+		</WidgetCheckBox>
+
+		<WidgetTxt Name="" ShowTxt="自摸加番" FontName="" FontSize="24">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="327.11 342.84"/>
+		</WidgetTxt>
+
+		<WidgetCheckBox Name="HaiDiLao_CB" UnSelectTexture="GamePlaza/HomeScene/CreateRoomPanel/unselected.png" SelectTexture="GamePlaza/HomeScene/CreateRoomPanel/selected.png">
+			<Property Key="Pos" Value="148.52 257.53"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>			
+		</WidgetCheckBox>
+
+		<WidgetTxt Name="" ShowTxt="海底捞" FontName="" FontSize="24">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="188.52 257.53"/>
+		</WidgetTxt>
+
+		<WidgetCheckBox Name="HaiDiPao_CB" UnSelectTexture="GamePlaza/HomeScene/CreateRoomPanel/unselected.png" SelectTexture="GamePlaza/HomeScene/CreateRoomPanel/selected.png">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="287.11 257.53"/>
+		</WidgetCheckBox>
+
+		<WidgetTxt Name="" ShowTxt="" FontName="" FontSize="24">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="327.11 257.53"/>
+		</WidgetTxt>
+
+
+		<WidgetCheckBox Name="SanRen_CB" UnSelectTexture="GamePlaza/HomeScene/CreateRoomPanel/unselected.png" SelectTexture="GamePlaza/HomeScene/CreateRoomPanel/selected.png">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="147.5 300.19"/>
+		</WidgetCheckBox>
+
+		<WidgetTxt Name="" ShowTxt="3人" FontName="" FontSize="24">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="187.5 300.19"/>
+		</WidgetTxt>
+
+
+		<WidgetCheckBox Name="LiangRen_CB" UnSelectTexture="GamePlaza/HomeScene/CreateRoomPanel/unselected.png" SelectTexture="GamePlaza/HomeScene/CreateRoomPanel/selected.png">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="286.04 300.19"/>
+		</WidgetCheckBox>
+
+		<WidgetTxt Name="" ShowTxt="2人" FontName="" FontSize="24">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="326.04 300.19"/>
+		</WidgetTxt>
+
+		<WidgetCheckBox Name="SiFan_CB" UnSelectTexture="GamePlaza/HomeScene/CreateRoomPanel/unselected.png" SelectTexture="GamePlaza/HomeScene/CreateRoomPanel/selected.png">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="147.50 214.87"/>
+		</WidgetCheckBox>
+
+		<WidgetTxt Name="" ShowTxt="4番" FontName="" FontSize="24">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="187.50 214.87"/>
+		</WidgetTxt>
+
+		<WidgetCheckBox Name="SanFan_CB" UnSelectTexture="GamePlaza/HomeScene/CreateRoomPanel/unselected.png" SelectTexture="GamePlaza/HomeScene/CreateRoomPanel/selected.png">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="228.81 214.87"/>
+		</WidgetCheckBox>
+
+		<!-- <WidgetTxt Name="" ShowTxt="3番" FontName="" FontSize="24"> -->
+			<!-- <Property Key="AnchorPos" Value="0 0.5"/> -->
+			<!-- <Property Key="Pos" Value="268.81 214.87"/> -->
+		<!-- </WidgetTxt> -->
+ 
+
+		<WidgetCheckBox Name="LiangFan_CB" UnSelectTexture="GamePlaza/HomeScene/CreateRoomPanel/unselected.png" SelectTexture="GamePlaza/HomeScene/CreateRoomPanel/selected.png">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="310.04 214.87"/>	
+		</WidgetCheckBox>
+
+		<!-- <WidgetTxt Name="" ShowTxt="2番" FontName="" FontSize="24"> -->
+			<!-- <Property Key="AnchorPos" Value="0 0.5"/> -->
+			<!-- <Property Key="Pos" Value="350.04 214.87"/> -->
+		<!-- </WidgetTxt> -->
+
+ 		<WidgetButton Name="Btn_SRLF_CreateRoom_GameScore" NomalTexture="GamePlaza/HomeScene/CreateRoomPanel/CreateRoom_EditBox.png" PressTexture="AutoPress">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="148.03 172.77"/>
+		</WidgetButton>
+ 		<WidgetTxt Name="SRLF_CreateRoom_GameScore_Txt" ShowTxt="0" FontName="" FontSize="24">
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Pos" Value="222.82 172.77"/>
+		</WidgetTxt>
+		<WidgetButton Name="Btn_SRLF_EnterNum_GameScore" NomalTexture="GamePlaza/HomeScene/CreateRoomPanel/CreateRoom_EditBox.png" PressTexture="AutoPress">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="148.03 127.95"/>
+		</WidgetButton>
+		<WidgetTxt Name="SRLF_CreateRoom_EnterNum_Txt" ShowTxt="0" FontName="" FontSize="24">
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Pos" Value="222.82 127.95"/>
+		</WidgetTxt>
+
+		<WidgetButton Name="Btn_CreateRoom_OutNum" NomalTexture="GamePlaza/HomeScene/CreateRoomPanel/CreateRoom_EditBox.png" PressTexture="AutoPress">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="148.03 81.80"/>
+		</WidgetButton>
+
+		<WidgetTxt Name="SRLF_CreateRoom_OutNum_Txt" ShowTxt="0" FontName="" FontSize="24">
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Pos" Value="222.82 81.80"/>
+		</WidgetTxt>
+
+		<WidgetTxt Name="" ShowTxt="元宝" FontName="public/text.ttf" FontSize="24">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="304.11 172.77"/>
+		</WidgetTxt>
+
+		<WidgetTxt Name="" ShowTxt="元宝" FontName="public/text.ttf" FontSize="24">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="304.11 127.95"/>
+			<Property Key="Color" Value="255 255 255"/>			
+		</WidgetTxt>
+
+		<WidgetTxt Name="" ShowTxt="元宝" FontName="public/text.ttf" FontSize="24">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="304.11 81.80"/>
+			<Property Key="Color" Value="255 255 255"/>
+		</WidgetTxt>
+
+		<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/CreateRoomPanel/title_4.png">
+			<Property Key="Pos" Value="6.49 172.77"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+		</WidgetImagic>
+
+		<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/CreateRoomPanel/title_3.png">
+			<Property Key="Pos" Value="6.49 127.95"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+		</WidgetImagic>
+
+		<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/CreateRoomPanel/title_5.png">
+			<Property Key="Pos" Value="6.49 81.80"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+		</WidgetImagic>	
+	</WidgetNodeUI>
+</root>

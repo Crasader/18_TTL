@@ -1,0 +1,145 @@
+<Widget Name="" SkinTempName="Empty">
+	<LoadSkin Skin="GamePlaza/Script/GPHomeCreateRoomPanel_XJSkin.xml"/>
+	<Widget Name="" SkinTempName="BtnFullEmpty"/>
+	<!-- 背景 -->
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/background1.png"/>
+		<Property Key="Pos" Value="640 360"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/title.png"/>
+		<Property Key="Pos" Value="640 540"/>
+	</Widget>
+	<!--关闭房间按钮-->
+	<Widget Name="XJ_CreateRoom_ButtonClose" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/btn_close.png"/> 
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="900 540"/>
+	</Widget>
+	<!--创建房间按钮-->
+	<Widget Name="XJ_CreateRoom_ButtonConfirm" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/CreateRoom_Btn.png"/> 
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="640 204"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/title_1.png"/>
+		<Property Key="Pos" Value="446.50 446.57"/>
+		<Property Key="AnchorPos" Value="0 0.5"/>
+	</Widget>
+
+	<!-- 是否允许陌生人加入 -->
+	<Widget Name="XJ_CreateRoom_GameRule" SkinTempName="public_CheckBox">
+		<UserInfo Key="Index" Value="1"/>
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
+		<Property Key="AnchorPos" Value="0 0.5"/>
+		<Property Key="Pos" Value="589 446.57"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="TxtEmpty">
+		<Property Key="Font" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="24"/>
+		<Property Key="ShowTxt" Value="是否允许陌生人加入"/>
+		<Property Key="Pos" Value="629 446.57"/>
+		<Property Key="AnchorPos" Value="0 0.5"/>
+		<Property Key="Color" Value="255 255 255"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/title_4.png"/>
+		<Property Key="Pos" Value="446.50 392.80"/>
+		<Property Key="AnchorPos" Value="0 0.5"/>
+	</Widget>
+
+	<!--底分-->
+	<Widget Name="XJ_CreateRoom_GameScore_Btn" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/CreateRoom_EditBox.png"/> 
+		<Property Key="PressTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/CreateRoom_EditBox.png"/> 
+		<Property Key="Pos" Value="592 392.80"/>
+		<Property Key="AnchorPos" Value="0 0.5"/>
+		<UserInfo Key="ScoreType" Value="1"/>
+	</Widget>
+	<Widget Name="XJ_CreateRoom_GameScore_Txt" SkinTempName="TxtEmpty">
+		<Property Key="Font" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="30"/>
+		<Property Key="ShowTxt" Value="10"/>
+		<Property Key="Pos" Value="662.84 392.80"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="Color" Value="255 255 255"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/title_3.png"/>
+		<Property Key="Pos" Value="446.50 339.53"/>
+		<Property Key="AnchorPos" Value="0 0.5"/>
+	</Widget>
+	<!--入场限制-->
+	<Widget Name="XJ_CreateRoom_EnterNum_Btn" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/CreateRoom_EditBox.png"/> 
+		<Property Key="PressTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/CreateRoom_EditBox.png"/> 
+		<Property Key="Pos" Value="592 339.53"/>
+		<UserInfo Key="ScoreType" Value="2"/>
+		<Property Key="AnchorPos" Value="0 0.5"/>		
+	</Widget>
+	<Widget Name="XJ_CreateRoom_EnterNum_Txt" SkinTempName="TxtEmpty">
+		<Property Key="Font" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="30"/>
+		<Property Key="ShowTxt" Value="200"/>
+		<Property Key="Pos" Value="662.84 339.53"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="Color" Value="255 255 255"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/title_5.png"/>
+		<Property Key="Pos" Value="446.50 285.76"/>
+		<Property Key="AnchorPos" Value="0 0.5"/>
+	</Widget>
+	<!--离场限制-->
+	<Widget Name="XJ_CreateRoom_OutNum_Btn" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/CreateRoom_EditBox.png"/> 
+		<Property Key="PressTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/CreateRoom_EditBox.png"/> 
+		<Property Key="Pos" Value="592 285.76"/>
+		<Property Key="AnchorPos" Value="0 0.5"/>
+		<UserInfo Key="ScoreType" Value="3"/>
+	</Widget>
+	<Widget Name="XJ_CreateRoom_OutNum_Txt" SkinTempName="TxtEmpty">
+		<Property Key="Font" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="30"/>
+		<Property Key="ShowTxt" Value="100"/>
+		<Property Key="Pos" Value="662.84 285.76"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="Color" Value="255 255 255"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="TxtEmpty">
+		<Property Key="Font" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="30"/>
+		<Property Key="ShowTxt" Value="元宝"/>
+		<Property Key="Pos" Value="744.13 392.80"/>
+		<Property Key="AnchorPos" Value="0 0.5"/>
+		<Property Key="Color" Value="255 255 255"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="TxtEmpty">
+		<Property Key="Font" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="30"/>
+		<Property Key="ShowTxt" Value="元宝"/>
+		<Property Key="Pos" Value="744.13 339.53"/>
+		<Property Key="AnchorPos" Value="0 0.5"/>
+		<Property Key="Color" Value="255 255 255"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="TxtEmpty">
+		<Property Key="Font" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="30"/>
+		<Property Key="ShowTxt" Value="元宝"/>
+		<Property Key="Pos" Value="744.13 285.76"/>
+		<Property Key="AnchorPos" Value="0 0.5"/>
+		<Property Key="Color" Value="255 255 255"/>
+	</Widget>
+	
+</Widget>

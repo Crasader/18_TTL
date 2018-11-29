@@ -1,0 +1,149 @@
+﻿<LoadSkin Skin="GamePlaza/Script/GPHomeExSceneSkin.xml"/>
+<Widget  Name="HomeExScenePlane" SkinTempName="Empty">
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeExScene/HomeEx_Background.png"/>
+		<Property Key="Pos" Value="640 360"/>
+	</Widget>
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeExScene/HomeEx_BackgroundTitle.png"/>
+		<Property Key="Pos" Value="640 666.5"/>
+	</Widget>
+	
+	<!-- 头像 -->
+	<Widget Name="HomeEx_Avatar" SkinTempName="HomeEx_AvatarSkin">
+		<Property Key="Pos" Value="100 645"/>
+	</Widget>
+	
+	<!-- 昵称 -->
+	<Widget Name="HomeEx_NickName" SkinTempName="TxtEmpty">
+		<Property Key="AnchorPos" Value="0 0.5"/>
+		<Property Key="FontSize" Value="24"/>
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="Color" Value="255 255 255"/>
+		<Property Key="ShowTxt" Value="123456"/>
+		<Property Key="Pos" Value="170 670"/>
+	</Widget>	
+	<!-- ID -->
+	<Widget Name="" SkinTempName="TxtEmpty">
+		<Property Key="AnchorPos" Value="1 0.5"/>
+		<Property Key="FontSize" Value="24"/>
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="ShowTxt" Value="ID:"/>
+		<Property Key="Color" Value="255 255 255"/>
+		<Property Key="Pos" Value="205 640"/>
+	</Widget>
+	<Widget Name="HomeEx_UserID" SkinTempName="TxtEmpty">
+		<Property Key="AnchorPos" Value="0 0.5"/>
+		<Property Key="FontSize" Value="24"/>
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="Color" Value="255 255 255"/>
+		<Property Key="Pos" Value="210 640"/>
+	</Widget>
+	
+	<!-- 顶部按钮 -->
+	<Widget Name="HomeEx_ButtonSetting" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeExScene/HomeEx_ButtonSetting.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="AnchorPos" Value="0.5 0"/>
+		<Property Key="Pos" Value="1130 625"/>
+	</Widget>
+	<Widget Name="HomeEx_ButtonHelp" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeExScene/HomeEx_ButtonHelp.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="AnchorPos" Value="0.5 0"/>
+		<Property Key="Pos" Value="1065 625"/>
+	</Widget>
+	<Widget Name="HomeEx_ButtonService" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeExScene/HomeEx_ButtonService.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="AnchorPos" Value="0.5 0"/>
+		<Property Key="Pos" Value="1000 625"/>
+	</Widget>
+	<Widget Name="HomeEx_ButtonRecord" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeExScene/HomeEx_ButtonRecord.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="AnchorPos" Value="0.5 0"/>
+		<Property Key="Pos" Value="935 625"/>
+	</Widget>
+	<Widget Name="HomeEx_ButtonPromotion" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeExScene/HomeEx_ButtonPromotion.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="AnchorPos" Value="0.5 0"/>
+		<Property Key="Pos" Value="870 625"/>
+	</Widget>
+	<Widget Name="HomeEx_ButtonShare" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeExScene/HomeEx_ButtonShare.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="AnchorPos" Value="0.5 0"/>
+		<Property Key="Pos" Value="805 625"/>
+	</Widget>
+	<Widget Name="HomeEx_ButtonMall" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeExScene/HomeEx_ButtonMall.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="Pos" Value="670 670"/>
+	</Widget>
+	
+	<!-- 金币 -->
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeExScene/HomeEx_GoldDiamond_BG.png"/>
+		<Property Key="Pos" Value="460 690"/>
+	</Widget>
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeExScene/HomeEx_GoldSign.png"/>
+		<Property Key="Pos" Value="360 690"/>
+	</Widget>
+	<Widget Name="HomeEx_GoldCount" SkinTempName="TxtEmpty">
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="FontSize" Value="25"/>
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="Color" Value="255 255 255"/>
+		<Property Key="Pos" Value="460 690"/>
+	</Widget>
+	
+	<!-- 房卡 -->
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeExScene/HomeEx_GoldDiamond_BG.png"/>
+		<Property Key="Pos" Value="460 645"/>
+	</Widget>
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeExScene/HomeEx_DiamondSign.png"/>
+		<Property Key="Pos" Value="360 645"/>
+	</Widget>
+	<Widget Name="HomeEx_DiamondCount" SkinTempName="TxtEmpty">
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="FontSize" Value="25"/>
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="Color" Value="255 255 255"/>
+		<Property Key="Pos" Value="460 645"/>
+	</Widget>
+	
+	<!-- 返回 -->
+	<Widget Name="HomeEx_ButtonBack" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeExScene/HomeEx_ButtonBack.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="Pos" Value="50 540"/>
+	</Widget>
+	
+	<!-- 子游戏相关 -->
+	<Widget Name="HomeEx_ButtonMatch" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeExScene/HomeEx_ButtonMatch.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="Pos" Value="1040 500"/>
+	</Widget>
+	<Widget Name="HomeEx_ButtonEnterRoom" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeExScene/HomeEx_ButtonEnterRoom.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="Pos" Value="1040 380"/>
+	</Widget>
+	<Widget Name="HomeEx_ButtonCreateRoom" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeExScene/HomeEx_ButtonCreateRoom.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="Pos" Value="1040 260"/>
+	</Widget>
+</Widget>
+	

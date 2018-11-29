@@ -1,0 +1,19 @@
+﻿ <root>
+ 
+	<!-- 税收提示 -->
+	<WidgetTxt Name="NNGameTax" ShowTxt="1000" FontName="" FontSize="38">
+		<Property Key="Color" Value="250 252 0"/>
+		<Property Key="Visible" Value="false"/>
+		<Visible Visible="true" Name="Start" SaveAction="true">
+			<SetPos Pos="640 440">
+			</SetPos>
+			<WaiteTime Time="2.35" >
+				<Visible Visible="false">
+				</Visible>
+			</WaiteTime>
+			<MoveBy Time="0.55" Pos="0 80">
+			</MoveBy>
+		</Visible>
+	</WidgetTxt>
+	
+ </root>

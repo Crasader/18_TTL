@@ -1,0 +1,59 @@
+<LoadSkin Skin="TTLNN/Script/NNCalculateSkin.xml"/>
+<Widget Name="" SkinTempName="BtnFullEmpty"/>
+<Widget Name="" SkinTempName="ImagicEmpty">
+	<Property Key="ImagicTexture" Value="TTLNN/GameScene/NNGameScene_BG.jpg"/>
+	<Property Key="Pos" Value="640 360"/>
+	<Property Key="Scale" Value="0.666"/>
+</Widget>
+
+<Widget Name="NNCalculate_ButtonShare" SkinTempName="ButtonEmpty">
+	<Property Key="NomalTexture" Value="TTLNN/Calculate/NNCalculate_ButtonShare.png"/>
+	<Property Key="PressTexture" Value="AutoPress"/>
+	<Property Key="Pos" Value="340 65"/>
+</Widget>
+
+<Widget Name="NNCalculate_ButtonBackPlaza" SkinTempName="ButtonEmpty">
+	<Property Key="NomalTexture" Value="TTLNN/Calculate/NNCalculate_ButtonBackPlaza.png"/>
+	<Property Key="PressTexture" Value="AutoPress"/>
+	<Property Key="Pos" Value="940 65"/>
+</Widget>
+
+<Widget Name="NNCalculate_0" SkinTempName="NNCalculateSingle">
+	<Property Key="Pos" Value="180 465"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+</Widget>
+
+<Widget Name="NNCalculate_1" SkinTempName="NNCalculateSingle">
+	<Property Key="Pos" Value="480 465"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+</Widget>
+
+<Widget Name="NNCalculate_2" SkinTempName="NNCalculateSingle">
+	<Property Key="Pos" Value="780 465"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+</Widget>
+
+<Widget Name="NNCalculate_3" SkinTempName="NNCalculateSingle">
+	<Property Key="Pos" Value="1080 465"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+</Widget>
+
+<Widget Name="NNCalculate_4" SkinTempName="NNCalculateSingle">
+	<Property Key="Pos" Value="180 250"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+</Widget>
+
+<Widget Name="NNCalculate_5" SkinTempName="NNCalculateSingle">
+	<Property Key="Pos" Value="480 250"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+</Widget>
+
+<Widget Name="NNCalculate_6" SkinTempName="NNCalculateSingle">
+	<Property Key="Pos" Value="780 250"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+</Widget>
+
+<Widget Name="NNCalculate_7" SkinTempName="NNCalculateSingle">
+	<Property Key="Pos" Value="1080 250"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+</Widget>

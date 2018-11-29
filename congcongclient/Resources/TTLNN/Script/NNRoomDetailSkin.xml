@@ -1,0 +1,15 @@
+<root>
+	<WidgetList Name="HelpContentList">
+		<Property Key="Direction" Value="1"/>	
+ 		<Property Key="HideBack" Value="true"/>
+		<Property Key="Size" Value="747 472"/>
+		<WidgetNodeUI Name="MallContentSkin">
+			<Property Key="Size" Value="747 500.8"/>
+			<WidgetImagic Name="" TextureInfo="RoomDetail/nnhelpinfo.png">
+				<Property Key="AnchorPos" Value="0 0"/>
+				<Property Key="Pos" Value="0 0"/>
+				<Property Key="Scale" Value="0.8"/>
+			</WidgetImagic>
+		</WidgetNodeUI>
+	</WidgetList>
+</root>

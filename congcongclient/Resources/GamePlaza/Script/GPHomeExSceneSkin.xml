@@ -1,0 +1,5 @@
+ <root>
+    <WidgetNode Name="HomeEx_AvatarSkin">
+		<Property Key="Size" Value="90 90"/>
+	</WidgetNode>
+ </root>

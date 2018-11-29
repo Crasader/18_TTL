@@ -1,0 +1,39 @@
+ <root>
+	<WidgetNodeUI Name="RankListItem">
+		<Property Key="Size" Value="350 130"/>
+		<Property Key="Pos" Value="0 0"/>
+		<WidgetButton Name="Button_ShowTotal" NomalTexture="ScenceGameRecord/tiao2.png" PressTexture="AutoPress">
+			<Property Key="Pos" Value="590 60"/>
+			<Property Key="ScaleX" Value="0.9"/>
+		</WidgetButton>
+	</WidgetNodeUI>
+	<WidgetNode Name="SpeakerTxtNode">
+			<UserInfo Key="Pos_2" Value="-200 0"/>
+			<Property Key="AnchorPos" Value="0 0"/>
+			<Property Key="Visible" Value="true"/>
+			<WidgetImagic Name="SpeakerBg" TextureInfo="GamePlaza/HomeScene/SpeakerBg.png">
+				<Property Key="Pos" Value="0 0"/>
+				<Property Key="AnchorPos" Value="0 0"/>
+				<Property Key="Visible" Value="true"/>
+			</WidgetImagic>
+			<WidgetLayout Name="SpeakerLayoutNode">
+				<Property Key="ClippingEnabled" Value="true"/>
+				<Property Key="Size" Value="1000 40"/>
+				<Property Key="AnchorPos" Value="0 0.5"/>
+				<Property Key="Pos" Value="30 15"/>
+				<Property Key="HideBack" Value="false"/>
+				<WidgetNode Name="TxtNode">
+					<Property Key="Pos" Value="30 30"/>
+					<WidgetTxt Name="SpeakerTxt" ShowTxt="1000" FontName="" FontSize="24">
+						<Property Key="ShowTxt" Value="果酱棋牌欢迎你!"/>
+						<Property Key="AnchorPos" Value="0 0.5"/>
+						<Property Key="Color" Value="255 255 255"/>
+					</WidgetTxt>
+				</WidgetNode>
+			</WidgetLayout>
+			<WidgetImagic Name="SpeakerIcon" TextureInfo="GamePlaza/HomeScene/laba.png">
+				<Property Key="Pos" Value="30 25"/>
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
+			</WidgetImagic>	
+		</WidgetNode>
+ </root>

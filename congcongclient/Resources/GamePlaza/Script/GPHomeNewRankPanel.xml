@@ -1,0 +1,42 @@
+<root>
+<LoadSkin Skin="GamePlaza/Script/GPHomeNewRankSkin.xml"/>
+<Widget Name="" SkinTempName="Empty">
+	<Widget Name="" SkinTempName="BtnFullEmpty"/>
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/RankPanel/background.png"/>
+		<Property Key="Pos" Value="640 360"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/RankPanel/title.png"/>
+		<Property Key="Pos" Value="640 605"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/RankPanel/title_rank.png"/>
+		<Property Key="Pos" Value="272 546"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/RankPanel/title_player.png"/>
+		<Property Key="Pos" Value="379 546"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/RankPanel/title_gold.png"/>
+		<Property Key="Pos" Value="971 546"/>
+	</Widget>
+	<Widget Name="Button_Close" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/RankPanel/btn_close.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="1040 604"/>
+	</Widget>
+
+	<Widget Name="RankListView" SkinTempName="List">
+		<Property Key="Size" Value="860 422"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Pos" Value="213 101"/>
+		<Property Key="HideBack" Value="false"/>
+	</Widget>
+</Widget>
+</root>

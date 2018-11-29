@@ -1,0 +1,52 @@
+<LoadSkin Skin="GamePlaza/Script/GPHomeRoomListPanel_TLJSkin.xml"/>
+<Widget Name="" SkinTempName="Empty">
+	<Property Key="Pos" Value="0 0"/>
+	<Property Key="AnchorPos" Value="0 0"/>
+	<Widget Name="" SkinTempName="BtnFullEmpty"/>
+	<Widget Name="Bg" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/RoomList/background.png"/>
+		<Property Key="Pos" Value="640 360"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/RoomList/title_tlj.png"/>
+		<Property Key="Pos" Value="640 605"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+	</Widget>
+
+	<!--关闭房间按钮-->
+	<Widget Name="Btn_Close_TLJ" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/RoomList/btn_close.png"/> 
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="1040 605"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>		
+	</Widget>
+	<!--刷新按钮-->
+	<Widget Name="Btn_Refresh_TLJ" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/RoomList/btn_fresh.png"/> 
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="931.51 605"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>			
+	</Widget>
+	<!--加入房间按钮-->
+	<Widget Name="Btn_Join_TLJ" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/RoomList/btn_joinRoom.png"/> 
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="843.45 140.35"/>
+	</Widget>
+	<!--创建房间按钮-->
+	<Widget Name="Btn_createRoom_TLJ" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/RoomList/btn_createRoom.png"/> 
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="436.76 140.35"/>
+	</Widget>
+	<!--房间列表-->
+	<Widget Name="GameListView_TLJ" SkinTempName="List">
+		<Property Key="Size" Value="860 388"/>
+		<Property Key="AnchorPos" Value="0 1"/>
+		<Property Key="Pos" Value="213 566"/>
+		<Property Key="Direction" Value="1"/>	
+    	<Property Key="HideBack" Value="true"/>
+	</Widget>
+ 
+ </Widget>

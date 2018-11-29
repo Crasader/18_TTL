@@ -1,0 +1,25 @@
+﻿ <root>
+	<ScriptValueFloat Key="UseWidth" Value="1280"/>
+	<ScriptValueFloat Key="UseHeight" Value="720"/>
+ 	<ScriptValueStr Key="address" Value="192.168.43.6"/>
+	<!-- <ScriptValueStr Key="address" Value="114.115.164.158"/> -->
+	<!-- <ScriptValueStr Key="address" Value="127.0.0.1"/> -->
+	<!-- <ScriptValueStr Key="address" Value="192.168.43.6"/> -->
+	<ScriptValueInt Key="Port" Value="8300"/>
+	<ScriptValueStr Key="Host" Value=""/>
+	<ScriptValueStr Key="PCImei" Value="17"/>
+	<ScriptValueInt Key="GameKind" Value="27"/>
+	
+	<ScriptValueBool Key="PlayLoginAnimation" Value="false"/>
+	<ScriptValueStr Key="public_notice_str" Value="PublicNotice"/>
+	<ScriptValueStr Key="UITest" Value=""/>
+	<ScriptValueInt Key="UITestMaskAple" Value="150"/>
+	<ScriptValueInt Key="UITestMaskAple" Value="150"/>
+	
+	<ScriptValueInt Key="GameType" Value="1"/>
+	<ScriptValueInt Key="IndexMin" Value="1"/>
+	<ScriptValueInt Key="IndexMax" Value="10"/>
+	<ScriptValueInt Key="Account" Value="1"/>
+	<ScriptValueBool Key="AccountLocked" Value="false"/>
+	<ScriptValueInt Key="PlazaVersion" Value="2003"/>
+ </root>

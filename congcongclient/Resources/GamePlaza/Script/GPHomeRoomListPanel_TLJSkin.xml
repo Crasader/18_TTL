@@ -1,0 +1,74 @@
+<root>
+<WidgetNodeUI Name="GameRoomInfoListItem_TLJ">
+	<Property Key="Size" Value="858.00 112"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<WidgetNodeUI Name="GameRoomInfoListItem_TLJ_0">
+		<Property Key="Visible" Value="false"/>
+		<Property Key="Size" Value="354 112"/>
+		<Property Key="Pos" Value="244 56"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<WidgetButton Name="ButtonJionRomByIDLeft_TLJ" NomalTexture="GamePlaza/HomeScene/RoomList/listviewItemBg.png">
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Pos" Value="177 56"/>
+		</WidgetButton>
+
+		<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/RoomList/gold.png">
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Pos" Value="33.81 67.50"/>
+		</WidgetImagic>
+	
+		<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/RoomList/people.png">
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Pos" Value="237 67"/>
+		</WidgetImagic>
+
+ 		<WidgetTxt Name="RuleText1" ShowTxt="5人桌" FontName="" FontSize="18">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="59 67"/>
+		</WidgetTxt>
+		<WidgetTxt Name="SitCountText1" ShowTxt="300" FontName="" FontSize="18">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="253 67"/>
+		</WidgetTxt>
+		<WidgetTxt Name="MinScoreText1" ShowTxt="底注:300 入场:300 离场:300" FontName="" FontSize="18">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="17 17.5"/>
+		</WidgetTxt>
+	</WidgetNodeUI>	
+
+	<WidgetNodeUI Name="GameRoomInfoListItem_TLJ_1">
+		<Property Key="Visible" Value="false"/>
+		<Property Key="Size" Value="354 112"/>
+		<Property Key="Pos" Value="656 56"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>		
+		<WidgetButton Name="ButtonJionRomByIDRight_TLJ" NomalTexture="GamePlaza/HomeScene/RoomList/listviewItemBg.png">
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Pos" Value="177 56"/>
+		</WidgetButton>
+		
+		<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/RoomList/gold.png">
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Pos" Value="33.81 67.50"/>
+		</WidgetImagic>
+	
+		<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/RoomList/people.png">
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Pos" Value="237 67"/>
+		</WidgetImagic>
+
+ 		<WidgetTxt Name="RuleText2" ShowTxt="5人桌" FontName="" FontSize="18">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="59 67"/>
+		</WidgetTxt>
+		<WidgetTxt Name="SitCountText2" ShowTxt="300" FontName="" FontSize="18">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="253 67"/>
+		</WidgetTxt>
+		<WidgetTxt Name="MinScoreText2" ShowTxt="底注:300 入场:300 离场:300" FontName="" FontSize="18">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="17 17.5"/>
+		</WidgetTxt>
+	</WidgetNodeUI>	
+</WidgetNodeUI>
+
+</root>

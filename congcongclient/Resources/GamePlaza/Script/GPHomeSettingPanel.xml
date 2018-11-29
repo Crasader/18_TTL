@@ -1,0 +1,44 @@
+<Widget Name="" SkinTempName="Empty">
+	<Widget Name="" SkinTempName="BtnFullEmpty"/>
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/SettingPanel/background.png"/>
+		<Property Key="Pos" Value="640 360"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/SettingPanel/title.png"/>
+		<Property Key="Pos" Value="640 514"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/SettingPanel/title_music.png"/>
+		<Property Key="AnchorPos" Value="0 0.5"/>
+		<Property Key="Pos" Value="385 396"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/SettingPanel/title_effect.png"/>
+		<Property Key="AnchorPos" Value="0 0.5"/>
+		<Property Key="Pos" Value="385 327"/>
+	</Widget>
+
+	<Widget Name="music_silder_Node" SkinTempName="Empty">
+		<Property Key="Pos" Value="669 397"/>
+	</Widget>
+
+	<Widget Name="effect_silder_Node" SkinTempName="Empty">
+		<Property Key="Pos" Value="669 324"/>
+	</Widget>
+
+	<Widget Name="Button_ChangeAccount" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/SettingPanel/Button_ChangeAccount.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="640 249"/>
+	</Widget>
+	
+	<Widget Name="Button_Close" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/SettingPanel/Button_Close.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="900 514"/>
+	</Widget>
+</Widget>
