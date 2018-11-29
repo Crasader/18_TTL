@@ -1,0 +1,898 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Game">
+      <UniqueIdentifier>{09f68235-1989-4168-8a01-88320c00a671}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlaza">
+      <UniqueIdentifier>{469775e4-a3b6-4231-a3fb-8b369722d608}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlaza\main">
+      <UniqueIdentifier>{b275697e-a204-42ae-b523-bc9a6b2248b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlaza\LoadingScene">
+      <UniqueIdentifier>{c7f17a07-4ff9-47fb-9622-6f4405f05dae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlaza\LoginScene">
+      <UniqueIdentifier>{6e3ba899-81a4-4336-bca3-92551478d45f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlaza\HomeScene">
+      <UniqueIdentifier>{36852097-8355-405b-990f-f1b28526fbc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlaza\HomeScene\ExitPanel">
+      <UniqueIdentifier>{5bc410bc-179d-49c9-8718-e20d00bdebad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlaza\HomeScene\SettingPanel">
+      <UniqueIdentifier>{d854782f-d14d-4b7d-bf23-5a1a86da9ba1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlaza\HomeScene\SharePanel">
+      <UniqueIdentifier>{22a583d2-66f5-40ce-b89f-25696531599a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlaza\HomeScene\RaidersPanel">
+      <UniqueIdentifier>{164a6adb-e032-43de-9135-0f8dde6546c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlaza\HomeScene\EnterRoomPanel">
+      <UniqueIdentifier>{9e9701ab-c515-4da5-8f68-a9010d3384b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlaza\HomeScene\CreateRoomPanel">
+      <UniqueIdentifier>{e74f0371-8333-4f78-a1b3-6475cc75be95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlaza\HomeScene\PromotionPanel">
+      <UniqueIdentifier>{006bd25e-044c-4c47-9ba1-6c2cb918cc87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlaza\HomeScene\MorePanel">
+      <UniqueIdentifier>{42412e01-9f48-42f1-81bf-10b19bca4fd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlaza\HomeScene\ServicePanel">
+      <UniqueIdentifier>{f0b673ff-26d4-4598-b1fc-85150a01c862}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlaza\HomeScene\MallPanel">
+      <UniqueIdentifier>{d3c2ccb3-7112-4383-83ed-241466696752}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlaza\HomeScene\RecordPanel">
+      <UniqueIdentifier>{1dffc7fb-06b9-49b4-bb2f-d5438952f828}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlaza\GameManager">
+      <UniqueIdentifier>{6885b005-d58d-45da-8a35-af525d7a95ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlaza\HomeScene\HelpPanel">
+      <UniqueIdentifier>{ca4abe08-6114-48e1-b968-69fa466ec86c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlaza\HomeScene\RankPanel">
+      <UniqueIdentifier>{fb67be19-a3e3-4575-987a-b752a1dd4a69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\TTLNN">
+      <UniqueIdentifier>{f14a0f55-50e6-42d0-944d-b8d873bf0f92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\SRLF">
+      <UniqueIdentifier>{f5c56c60-04a2-4b8e-8053-15ccebf85c79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\MENJI">
+      <UniqueIdentifier>{0e23fe2c-aafc-4249-a192-a119056e0bf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\MENJI\Animation">
+      <UniqueIdentifier>{9d0e7fd6-6fb1-40d6-a6e1-684ef5869b12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\MENJI\Calculate">
+      <UniqueIdentifier>{c62fb085-3efc-4ee4-9d62-cf62ddb54ad5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\MENJI\ChipContainer">
+      <UniqueIdentifier>{b73e6225-1e2e-416b-a917-73b5302b5224}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\MENJI\DismissRoom">
+      <UniqueIdentifier>{f2d401de-6a45-4b5b-b2ee-d9f8e27f51d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\MENJI\Info">
+      <UniqueIdentifier>{14286b4c-51fa-4984-b6df-cf4d21ea7a6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\MENJI\Logic">
+      <UniqueIdentifier>{75d79315-5425-4638-9d00-27d6b79a42a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\MENJI\Player">
+      <UniqueIdentifier>{2f403714-d8fb-4662-91fd-1f8a0f2dce1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\MENJI\Setting">
+      <UniqueIdentifier>{d63a11c9-b1dc-4b32-98af-4877f9ef3f8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\MENJI\SoundFun">
+      <UniqueIdentifier>{b1953c3a-0817-40bc-8f09-37836c813ad4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\MENJI\Touch">
+      <UniqueIdentifier>{f248d9c6-db09-4a82-9033-55c159d86657}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlaza\HomeScene\EditNumPanel">
+      <UniqueIdentifier>{fecd2d60-4406-41d7-ac93-dfe9d60e52c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\WZQ">
+      <UniqueIdentifier>{13ad5b3c-5232-4fac-840d-91590f5beb9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\MENJI\HelpInfo">
+      <UniqueIdentifier>{f2f101d2-94f9-4f28-9a8d-097fc1b94915}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\SG">
+      <UniqueIdentifier>{6db75db6-ca1c-4822-82bb-1b5ecf23df25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\SG\Calculate">
+      <UniqueIdentifier>{719a9fef-c010-4b4e-bdae-9c0cc5f6be14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\SG\DismissRoom">
+      <UniqueIdentifier>{8e5b0b55-f47e-4c43-b4b9-8976b7a56700}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\SG\GameLogic">
+      <UniqueIdentifier>{b82b25da-a68f-4b6b-8526-4d7c6c664b7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\SG\GameScene">
+      <UniqueIdentifier>{a45e311b-d4a7-40a4-959f-ab903d09999c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\SG\Operator">
+      <UniqueIdentifier>{03e5abb9-bf7b-43b6-9f63-ec4ee8439161}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\SG\Player">
+      <UniqueIdentifier>{a9938e95-1362-44fd-b5d6-6c2dab6a9a3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\SG\Protocol">
+      <UniqueIdentifier>{b0f5e669-a0cf-4cf0-ba2f-9bc57ddac796}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\SG\Sound">
+      <UniqueIdentifier>{36cf64be-e0a5-4650-9cf4-fd1d06783f9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\SG\Touch">
+      <UniqueIdentifier>{c40a5202-b9b7-4175-a0f3-42ae6b631546}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\XZDD">
+      <UniqueIdentifier>{35d69d4c-6261-42d1-84d1-fdaed038a663}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\TTLNN\TurnCardAction">
+      <UniqueIdentifier>{e6320847-3e2a-4102-99f9-b8ad1d5f4fe2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CommonHeader">
+      <UniqueIdentifier>{b67fa787-224c-4186-9908-9d3e2a94e60d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Classes\GamePlaza\Main\AppDelegate.h">
+      <Filter>GamePlaza\main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\GPSceneManager.h">
+      <Filter>GamePlaza</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\LoginScene\GPLoginScene.h">
+      <Filter>GamePlaza\LoginScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\LoadingScene\GPLoadingScene.h">
+      <Filter>GamePlaza\LoadingScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\GPHomeScene.h">
+      <Filter>GamePlaza\HomeScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\ExitPanel\GPHomeExitPanel.h">
+      <Filter>GamePlaza\HomeScene\ExitPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\SettingPanel\GPHomeSettingPanel.h">
+      <Filter>GamePlaza\HomeScene\SettingPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\SharePanel\GPHomeSharePanel.h">
+      <Filter>GamePlaza\HomeScene\SharePanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\RaidersPanel\GPHomeRaidersPanel.h">
+      <Filter>GamePlaza\HomeScene\RaidersPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\EnterRoomPanel\GPHomeEnterRoomPanel.h">
+      <Filter>GamePlaza\HomeScene\EnterRoomPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\Promotion\GPHomePromotionPanel.h">
+      <Filter>GamePlaza\HomeScene\PromotionPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\GPHomeHeader.h">
+      <Filter>GamePlaza\HomeScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\MorePanel\GPHomeMorePanel.h">
+      <Filter>GamePlaza\HomeScene\MorePanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\ServicePanel\GPHomeServicePanel.h">
+      <Filter>GamePlaza\HomeScene\ServicePanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\MallPanel\GPHomeMallPanel.h">
+      <Filter>GamePlaza\HomeScene\MallPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\RecordPanel\GPHomeRecordPanel.h">
+      <Filter>GamePlaza\HomeScene\RecordPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\GameManager\GPGameManager.h">
+      <Filter>GamePlaza\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\GameManager\GPGameLink.h">
+      <Filter>GamePlaza\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\HelpPanel\GPHomeHelpPanel.h">
+      <Filter>GamePlaza\HomeScene\HelpPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\RankPanel\GPHomeRankPanel.h">
+      <Filter>GamePlaza\HomeScene\RankPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>GamePlaza\main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Calculate\NNCalculate.h">
+      <Filter>Game\TTLNN</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\CommonHeader\NNCommonHeader.h">
+      <Filter>Game\TTLNN</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\DismissRoom\NNDismissRoom.h">
+      <Filter>Game\TTLNN</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\GameLogic\NNGameLogic.h">
+      <Filter>Game\TTLNN</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\GameScene\NNGameScene.h">
+      <Filter>Game\TTLNN</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\GameScene\NNRoomDetail.h">
+      <Filter>Game\TTLNN</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\GameScene\NNRoomInfo.h">
+      <Filter>Game\TTLNN</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Operator\NNOperator.h">
+      <Filter>Game\TTLNN</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Player\NNCardAnimation.h">
+      <Filter>Game\TTLNN</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Player\NNPlayer.h">
+      <Filter>Game\TTLNN</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Player\NNPlayerCard.h">
+      <Filter>Game\TTLNN</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Player\NNPlayerPanel.h">
+      <Filter>Game\TTLNN</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Protocol\CMD_NN.h">
+      <Filter>Game\TTLNN</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Setting\NNSetting.h">
+      <Filter>Game\TTLNN</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Sound\NNSound.h">
+      <Filter>Game\TTLNN</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Touch\NNGameScene_Touch.h">
+      <Filter>Game\TTLNN</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeCreateRoomPanel_NN.h">
+      <Filter>GamePlaza\HomeScene\CreateRoomPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SRLF\CMD_SRLF.h">
+      <Filter>Game\SRLF</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameLogic.h">
+      <Filter>Game\SRLF</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence.h">
+      <Filter>Game\SRLF</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFPlayer.h">
+      <Filter>Game\SRLF</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFSoundFun.h">
+      <Filter>Game\SRLF</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeCreateRoomPanel_SRLF.h">
+      <Filter>GamePlaza\HomeScene\CreateRoomPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\CMD_TLJ.h">
+      <Filter>Game\MENJI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\TLJGameScence.h">
+      <Filter>Game\MENJI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\TLJHeaders.h">
+      <Filter>Game\MENJI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\Animation\TLJAnimation.h">
+      <Filter>Game\MENJI\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\Calculate\TLJCalculateDetailPanel.h">
+      <Filter>Game\MENJI\Calculate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\Calculate\TLJCalculatePanel.h">
+      <Filter>Game\MENJI\Calculate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\ChipContainer\TLJChipContainer.h">
+      <Filter>Game\MENJI\ChipContainer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\DismissRoom\TLJDismissRoom.h">
+      <Filter>Game\MENJI\DismissRoom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\DismissRoom\TLJDismissRoomConfirm.h">
+      <Filter>Game\MENJI\DismissRoom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\Info\TLJInfoPanel.h">
+      <Filter>Game\MENJI\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\Logic\TLJGameLogic.h">
+      <Filter>Game\MENJI\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\Player\TLJPlayer.h">
+      <Filter>Game\MENJI\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\Player\TLJPlayer_Card.h">
+      <Filter>Game\MENJI\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\Player\TLJPlayer_Panel.h">
+      <Filter>Game\MENJI\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\Setting\TLJSettingPanel.h">
+      <Filter>Game\MENJI\Setting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\SoundFun\TLJSoundFun.h">
+      <Filter>Game\MENJI\SoundFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\Touch\TLJGameScence_Touch.h">
+      <Filter>Game\MENJI\Touch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeCreateRoomPanel_TLJ.h">
+      <Filter>GamePlaza\HomeScene\CreateRoomPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_NN.h">
+      <Filter>GamePlaza\HomeScene\CreateRoomPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_SRLF.h">
+      <Filter>GamePlaza\HomeScene\CreateRoomPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_TLJ.h">
+      <Filter>GamePlaza\HomeScene\CreateRoomPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\EditNumPanel\GPHomeEditNumPanel.h">
+      <Filter>GamePlaza\HomeScene\EditNumPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_SG.h">
+      <Filter>GamePlaza\HomeScene\CreateRoomPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_WZQ.h">
+      <Filter>GamePlaza\HomeScene\CreateRoomPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\WZQ\CMD_WZQ.h">
+      <Filter>Game\WZQ</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameLogic.h">
+      <Filter>Game\WZQ</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence.h">
+      <Filter>Game\WZQ</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDPlayer.h">
+      <Filter>Game\WZQ</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDSoundFun.h">
+      <Filter>Game\WZQ</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\Operate\TLJOperate.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\UserInfoPanel\GPHomeUserInfoPanel.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFRoomDetail.h">
+      <Filter>Game\SRLF</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\HelpInfo\TLJRoomDetail.h">
+      <Filter>Game\MENJI\HelpInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFSetting.h">
+      <Filter>Game\SRLF</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeCreateRoomPanel_SG.h">
+      <Filter>GamePlaza\HomeScene\CreateRoomPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\Calculate\SGCalculate.h">
+      <Filter>Game\SG\Calculate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\DismissRoom\SGDismissRoom.h">
+      <Filter>Game\SG\DismissRoom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\GameLogic\SGGameLogic.h">
+      <Filter>Game\SG\GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\GameScene\SGRoomDetail.h">
+      <Filter>Game\SG\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\GameScene\SGRoomInfo.h">
+      <Filter>Game\SG\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\Touch\SGGameScene_Touch.h">
+      <Filter>Game\SG\Touch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\Sound\SGSound.h">
+      <Filter>Game\SG\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\Protocol\CMD_SG.h">
+      <Filter>Game\SG\Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\Player\SGPlayerPanel.h">
+      <Filter>Game\SG\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\Player\SGCardAnimation.h">
+      <Filter>Game\SG\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\Player\SGPlayer.h">
+      <Filter>Game\SG\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\Player\SGPlayerCard.h">
+      <Filter>Game\SG\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\Operator\SGOperator.h">
+      <Filter>Game\SG\Operator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\GameScene\SGGameScence.h">
+      <Filter>Game\SG\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\BtnTurnLayer.h">
+      <Filter>GamePlaza\HomeScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\XZDD\Arryh.h">
+      <Filter>Game\XZDD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\XZDD\CMD_XZDD.h">
+      <Filter>Game\XZDD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameLogic.h">
+      <Filter>Game\XZDD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence.h">
+      <Filter>Game\XZDD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDPlayer.h">
+      <Filter>Game\XZDD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDSoundFun.h">
+      <Filter>Game\XZDD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_XZDD.h">
+      <Filter>GamePlaza\HomeScene\CreateRoomPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeCreateRoomPanel_XZDD.h">
+      <Filter>GamePlaza\HomeScene\CreateRoomPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\CardBackTurn.h">
+      <Filter>Game\TTLNN\TurnCardAction</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\CardFrontTurn.h">
+      <Filter>Game\TTLNN\TurnCardAction</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\CardMidTurn.h">
+      <Filter>Game\TTLNN\TurnCardAction</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\CardTurnAction.h">
+      <Filter>Game\TTLNN\TurnCardAction</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\CardTurnOption.h">
+      <Filter>Game\TTLNN\TurnCardAction</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\CardTurnTouch.h">
+      <Filter>Game\TTLNN\TurnCardAction</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\TurnCardNode.h">
+      <Filter>Game\TTLNN\TurnCardAction</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\GameScene\NNTurnCard.h">
+      <Filter>Game\TTLNN</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CommonHeader\CommonHeader.h">
+      <Filter>CommonHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CommonHeader\LocalConstant.h">
+      <Filter>CommonHeader</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Classes\GamePlaza\Main\AppDelegate.cpp">
+      <Filter>GamePlaza\main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\GPSceneManager.cpp">
+      <Filter>GamePlaza</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\LoginScene\GPLoginScene.cpp">
+      <Filter>GamePlaza\LoginScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\LoadingScene\GPLoadingScene.cpp">
+      <Filter>GamePlaza\LoadingScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\LoginScene\GPLoginScene_LoginSink.cpp">
+      <Filter>GamePlaza\LoginScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\GPHomeScene.cpp">
+      <Filter>GamePlaza\HomeScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\GPHomeScene_Button.cpp">
+      <Filter>GamePlaza\HomeScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\ExitPanel\GPHomeExitPanel.cpp">
+      <Filter>GamePlaza\HomeScene\ExitPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\SettingPanel\GPHomeSettingPanel.cpp">
+      <Filter>GamePlaza\HomeScene\SettingPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\SharePanel\GPHomeSharePanel.cpp">
+      <Filter>GamePlaza\HomeScene\SharePanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\RaidersPanel\GPHomeRaidersPanel.cpp">
+      <Filter>GamePlaza\HomeScene\RaidersPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\EnterRoomPanel\GPHomeEnterRoomPanel.cpp">
+      <Filter>GamePlaza\HomeScene\EnterRoomPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\Promotion\GPHomePromotionPanel.cpp">
+      <Filter>GamePlaza\HomeScene\PromotionPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\MorePanel\GPHomeMorePanel.cpp">
+      <Filter>GamePlaza\HomeScene\MorePanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\ServicePanel\GPHomeServicePanel.cpp">
+      <Filter>GamePlaza\HomeScene\ServicePanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\MallPanel\GPHomeMallPanel.cpp">
+      <Filter>GamePlaza\HomeScene\MallPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\RecordPanel\GPHomeRecordPanel.cpp">
+      <Filter>GamePlaza\HomeScene\RecordPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\GameManager\GPGameManager.cpp">
+      <Filter>GamePlaza\GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\GameManager\GPGameLink.cpp">
+      <Filter>GamePlaza\GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\HelpPanel\GPHomeHelpPanel.cpp">
+      <Filter>GamePlaza\HomeScene\HelpPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\RankPanel\GPHomeRankPanel.cpp">
+      <Filter>GamePlaza\HomeScene\RankPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>GamePlaza\main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\Calculate\NNCalculate.cpp">
+      <Filter>Game\TTLNN</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\DismissRoom\NNDismissRoom.cpp">
+      <Filter>Game\TTLNN</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\GameLogic\NNGameLogic.cpp">
+      <Filter>Game\TTLNN</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\GameScene\NNGameScene.cpp">
+      <Filter>Game\TTLNN</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\GameScene\NNRoomDetail.cpp">
+      <Filter>Game\TTLNN</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\GameScene\NNRoomInfo.cpp">
+      <Filter>Game\TTLNN</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\Operator\NNOperator.cpp">
+      <Filter>Game\TTLNN</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\Player\NNCardAnimation.cpp">
+      <Filter>Game\TTLNN</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\Player\NNPlayer.cpp">
+      <Filter>Game\TTLNN</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\Player\NNPlayerCard.cpp">
+      <Filter>Game\TTLNN</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\Player\NNPlayerPanel.cpp">
+      <Filter>Game\TTLNN</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\Setting\NNSetting.cpp">
+      <Filter>Game\TTLNN</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\Sound\NNSound.cpp">
+      <Filter>Game\TTLNN</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\Touch\NNGameScene_Touch.cpp">
+      <Filter>Game\TTLNN</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeCreateRoomPanel_NN.cpp">
+      <Filter>GamePlaza\HomeScene\CreateRoomPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameLogic.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence_Button.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence_CB.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence_Command.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence_Master.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence_Net.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence_Player.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence_Private.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence_Record.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence_Set.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence_Touch.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFPlayer.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFPlayer_Card.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFPlayer_Master.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFSoundFun.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeCreateRoomPanel_SRLF.cpp">
+      <Filter>GamePlaza\HomeScene\CreateRoomPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\TLJGameScence.cpp">
+      <Filter>Game\MENJI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\Animation\TLJAnimation.cpp">
+      <Filter>Game\MENJI\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\Calculate\TLJCalculateDetailPanel.cpp">
+      <Filter>Game\MENJI\Calculate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\Calculate\TLJCalculatePanel.cpp">
+      <Filter>Game\MENJI\Calculate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\ChipContainer\TLJChipContainer.cpp">
+      <Filter>Game\MENJI\ChipContainer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\DismissRoom\TLJDismissRoom.cpp">
+      <Filter>Game\MENJI\DismissRoom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\DismissRoom\TLJDismissRoomConfirm.cpp">
+      <Filter>Game\MENJI\DismissRoom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\Info\TLJInfoPanel.cpp">
+      <Filter>Game\MENJI\Info</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\Logic\TLJGameLogic.cpp">
+      <Filter>Game\MENJI\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\Player\TLJPlayer.cpp">
+      <Filter>Game\MENJI\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\Player\TLJPlayer_Card.cpp">
+      <Filter>Game\MENJI\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\Player\TLJPlayer_Panel.cpp">
+      <Filter>Game\MENJI\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\Setting\TLJSettingPanel.cpp">
+      <Filter>Game\MENJI\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\SoundFun\TLJSoundFun.cpp">
+      <Filter>Game\MENJI\SoundFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\Touch\TLJGameScence_Touch.cpp">
+      <Filter>Game\MENJI\Touch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeCreateRoomPanel_TLJ.cpp">
+      <Filter>GamePlaza\HomeScene\CreateRoomPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_NN.cpp">
+      <Filter>GamePlaza\HomeScene\CreateRoomPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_SRLF.cpp">
+      <Filter>GamePlaza\HomeScene\CreateRoomPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_TLJ.cpp">
+      <Filter>GamePlaza\HomeScene\CreateRoomPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\EditNumPanel\GPHomeEditNumPanel.cpp">
+      <Filter>GamePlaza\HomeScene\EditNumPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_SG.cpp">
+      <Filter>GamePlaza\HomeScene\CreateRoomPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_WZQ.cpp">
+      <Filter>GamePlaza\HomeScene\CreateRoomPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameLogic.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence_Button.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence_CB.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence_Command.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence_Master.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence_Net.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence_Player.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence_Private.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence_Record.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence_Set.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence_Touch.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDPlayer.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDPlayer_Card.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDPlayer_Master.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDSoundFun.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\Operate\TLJOperate.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\UserInfoPanel\GPHomeUserInfoPanel.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFRoomDetail.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\HelpInfo\TLJRoomDetail.cpp">
+      <Filter>Game\MENJI\HelpInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFSetting.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeCreateRoomPanel_SG.cpp">
+      <Filter>GamePlaza\HomeScene\CreateRoomPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\Calculate\SGCalculate.cpp">
+      <Filter>Game\SG\Calculate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\DismissRoom\SGDismissRoom.cpp">
+      <Filter>Game\SG\DismissRoom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\GameLogic\SGGameLogic.cpp">
+      <Filter>Game\SG\GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\GameScene\SGRoomDetail.cpp">
+      <Filter>Game\SG\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\GameScene\SGRoomInfo.cpp">
+      <Filter>Game\SG\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\Touch\SGGameScene_Touch.cpp">
+      <Filter>Game\SG\Touch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\Sound\SGSound.cpp">
+      <Filter>Game\SG\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\Player\SGCardAnimation.cpp">
+      <Filter>Game\SG\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\Player\SGPlayer.cpp">
+      <Filter>Game\SG\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\Player\SGPlayerCard.cpp">
+      <Filter>Game\SG\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\Player\SGPlayerPanel.cpp">
+      <Filter>Game\SG\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\Operator\SGOperator.cpp">
+      <Filter>Game\SG\Operator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\GameScene\SGGameScence.cpp">
+      <Filter>Game\SG\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\BtnTurnLayer.cpp">
+      <Filter>GamePlaza\HomeScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameLogic.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence_Button.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence_CB.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence_Command.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence_Master.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence_Net.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence_Player.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence_Private.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence_Record.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence_Set.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence_Touch.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDPlayer.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDPlayer_Card.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDPlayer_Master.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDSoundFun.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_XZDD.cpp">
+      <Filter>GamePlaza\HomeScene\CreateRoomPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeCreateRoomPanel_XZDD.cpp">
+      <Filter>GamePlaza\HomeScene\CreateRoomPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\CardBackTurn.cpp">
+      <Filter>Game\TTLNN\TurnCardAction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\CardFontTurn.cpp">
+      <Filter>Game\TTLNN\TurnCardAction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\CardMidTurn.cpp">
+      <Filter>Game\TTLNN\TurnCardAction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\CardTurnAction.cpp">
+      <Filter>Game\TTLNN\TurnCardAction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\CardTurnTouch.cpp">
+      <Filter>Game\TTLNN\TurnCardAction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\TurnCardNode.cpp">
+      <Filter>Game\TTLNN\TurnCardAction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\GameScene\NNTurnCard.cpp">
+      <Filter>Game\TTLNN</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CommonHeader\LocalConstant.cpp">
+      <Filter>CommonHeader</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

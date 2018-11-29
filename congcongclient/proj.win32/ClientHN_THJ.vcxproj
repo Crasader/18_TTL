@@ -1,0 +1,421 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C4D520E0-1B78-4EFC-A4BA-547F9B1116C2}</ProjectGuid>
+    <RootNamespace>test_win32</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>ClientHN_THJ</ProjectName>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0'">v120</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v120_xp</PlatformToolset>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0'">v120</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v120_xp</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\cocos2d\cocos\2d\cocos2dx.props" />
+    <Import Project="..\cocos2d\cocos\2d\cocos2d_headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\cocos2d\cocos\2d\cocos2dx.props" />
+    <Import Project="..\cocos2d\cocos\2d\cocos2d_headers.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration).win32\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration).win32_tmp\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration).win32\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration).win32_tmp\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LibraryPath>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\win32-specific\icon\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;$(EngineRoot);..\GameLib;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <DisableSpecificWarnings>4996;4251;4005;4819;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>pthreadVCE2.lib;GameLib.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);$(_COCOS_LIB_PATH_WIN32_END)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <PreLinkEvent>
+      <Command>
+      </Command>
+    </PreLinkEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup>
+    <CustomBuildStep>
+      <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
+xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
+      </Command>
+      <Outputs>$(TargetName).cab</Outputs>
+      <Inputs>$(TargetFileName)</Inputs>
+    </CustomBuildStep>
+    <Link>
+      <ProgramDatabaseFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
+    </Link>
+    <ClCompile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeaderFile>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4996;4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libcurl_imp.lib;websockets.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);$(_COCOS_LIB_PATH_WIN32_END)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <PreLinkEvent>
+      <Command>
+      </Command>
+    </PreLinkEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\cocos2d\cocos\2d\libcocos2d.vcxproj">
+      <Project>{98a51ba8-fc3a-415b-ac8f-8c7bd464e93e}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\cocos2d\cocos\editor-support\spine\proj.win32\libSpine.vcxproj">
+      <Project>{b7c2a162-dec9-4418-972e-240ab3cbfcae}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\cocos2d\external\Box2D\proj.win32\libbox2d.vcxproj">
+      <Project>{929480e7-23c0-4df6-8456-096d71547116}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\Animation\TLJAnimation.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\Calculate\TLJCalculateDetailPanel.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\Calculate\TLJCalculatePanel.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\ChipContainer\TLJChipContainer.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\CMD_TLJ.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\DismissRoom\TLJDismissRoom.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\DismissRoom\TLJDismissRoomConfirm.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\HelpInfo\TLJRoomDetail.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\Info\TLJInfoPanel.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\Logic\TLJGameLogic.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\Operate\TLJOperate.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\Player\TLJPlayer.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\Player\TLJPlayer_Card.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\Player\TLJPlayer_Panel.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\Setting\TLJSettingPanel.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\SoundFun\TLJSoundFun.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\TLJGameScence.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\TLJHeaders.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\MENJI\Touch\TLJGameScence_Touch.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\Calculate\SGCalculate.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\DismissRoom\SGDismissRoom.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\GameLogic\SGGameLogic.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\GameScene\SGGameScence.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\GameScene\SGRoomDetail.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\GameScene\SGRoomInfo.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\Operator\SGOperator.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\Player\SGCardAnimation.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\Player\SGPlayer.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\Player\SGPlayerCard.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\Player\SGPlayerPanel.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\Protocol\CMD_SG.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\Sound\SGSound.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SG\Touch\SGGameScene_Touch.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SRLF\CMD_SRLF.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameLogic.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFPlayer.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFRoomDetail.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFSetting.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFSoundFun.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Calculate\NNCalculate.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\CommonHeader\NNCommonHeader.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\DismissRoom\NNDismissRoom.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\GameLogic\NNGameLogic.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\GameScene\NNGameScene.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\GameScene\NNRoomDetail.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\GameScene\NNRoomInfo.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\GameScene\NNTurnCard.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Operator\NNOperator.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Player\NNCardAnimation.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Player\NNPlayer.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Player\NNPlayerCard.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Player\NNPlayerPanel.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Protocol\CMD_NN.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Setting\NNSetting.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Sound\NNSound.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Touch\NNGameScene_Touch.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\CardBackTurn.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\CardFrontTurn.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\CardMidTurn.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\CardTurnAction.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\CardTurnOption.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\CardTurnTouch.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\TurnCardNode.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\WZQ\CMD_WZQ.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameLogic.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDPlayer.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDSoundFun.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\XZDD\Arryh.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\XZDD\CMD_XZDD.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameLogic.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDPlayer.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDSoundFun.h" />
+    <ClInclude Include="..\Classes\CommonHeader\CommonHeader.h" />
+    <ClInclude Include="..\Classes\CommonHeader\LocalConstant.h" />
+    <ClInclude Include="..\Classes\GamePlaza\GameManager\GPGameLink.h" />
+    <ClInclude Include="..\Classes\GamePlaza\GameManager\GPGameManager.h" />
+    <ClInclude Include="..\Classes\GamePlaza\GPSceneManager.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\BtnTurnLayer.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeCreateRoomPanel_NN.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeCreateRoomPanel_SG.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeCreateRoomPanel_SRLF.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeCreateRoomPanel_TLJ.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeCreateRoomPanel_XZDD.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_NN.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_SG.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_SRLF.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_TLJ.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_WZQ.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_XZDD.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\EditNumPanel\GPHomeEditNumPanel.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\EnterRoomPanel\GPHomeEnterRoomPanel.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\ExitPanel\GPHomeExitPanel.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\GPHomeHeader.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\GPHomeScene.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\HelpPanel\GPHomeHelpPanel.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\MallPanel\GPHomeMallPanel.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\MorePanel\GPHomeMorePanel.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\Promotion\GPHomePromotionPanel.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\RaidersPanel\GPHomeRaidersPanel.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\RankPanel\GPHomeRankPanel.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\RecordPanel\GPHomeRecordPanel.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\ServicePanel\GPHomeServicePanel.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\SettingPanel\GPHomeSettingPanel.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\SharePanel\GPHomeSharePanel.h" />
+    <ClInclude Include="..\Classes\GamePlaza\HomeScene\UserInfoPanel\GPHomeUserInfoPanel.h" />
+    <ClInclude Include="..\Classes\GamePlaza\LoadingScene\GPLoadingScene.h" />
+    <ClInclude Include="..\Classes\GamePlaza\LoginScene\GPLoginScene.h" />
+    <ClInclude Include="..\Classes\GamePlaza\Main\AppDelegate.h" />
+    <ClInclude Include="main.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\Animation\TLJAnimation.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\Calculate\TLJCalculateDetailPanel.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\Calculate\TLJCalculatePanel.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\ChipContainer\TLJChipContainer.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\DismissRoom\TLJDismissRoom.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\DismissRoom\TLJDismissRoomConfirm.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\HelpInfo\TLJRoomDetail.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\Info\TLJInfoPanel.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\Logic\TLJGameLogic.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\Operate\TLJOperate.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\Player\TLJPlayer.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\Player\TLJPlayer_Card.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\Player\TLJPlayer_Panel.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\Setting\TLJSettingPanel.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\SoundFun\TLJSoundFun.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\TLJGameScence.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\MENJI\Touch\TLJGameScence_Touch.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\Calculate\SGCalculate.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\DismissRoom\SGDismissRoom.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\GameLogic\SGGameLogic.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\GameScene\SGGameScence.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\GameScene\SGRoomDetail.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\GameScene\SGRoomInfo.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\Operator\SGOperator.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\Player\SGCardAnimation.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\Player\SGPlayer.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\Player\SGPlayerCard.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\Player\SGPlayerPanel.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\Sound\SGSound.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SG\Touch\SGGameScene_Touch.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameLogic.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence_Button.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence_CB.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence_Command.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence_Master.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence_Net.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence_Player.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence_Private.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence_Record.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence_Set.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFGameScence_Touch.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFPlayer.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFPlayer_Card.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFPlayer_Master.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFRoomDetail.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFSetting.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\SRLF\SRLFSoundFun.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\Calculate\NNCalculate.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\DismissRoom\NNDismissRoom.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\GameLogic\NNGameLogic.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\GameScene\NNGameScene.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\GameScene\NNRoomDetail.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\GameScene\NNRoomInfo.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\GameScene\NNTurnCard.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\Operator\NNOperator.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\Player\NNCardAnimation.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\Player\NNPlayer.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\Player\NNPlayerCard.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\Player\NNPlayerPanel.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\Setting\NNSetting.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\Sound\NNSound.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\Touch\NNGameScene_Touch.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\CardBackTurn.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\CardFontTurn.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\CardMidTurn.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\CardTurnAction.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\CardTurnTouch.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\TTLNN\TurnCardAction\TurnCardNode.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameLogic.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence_Button.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence_CB.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence_Command.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence_Master.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence_Net.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence_Player.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence_Private.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence_Record.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence_Set.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDGameScence_Touch.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDPlayer.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDPlayer_Card.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDPlayer_Master.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\WZQ\WZQDSoundFun.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameLogic.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence_Button.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence_CB.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence_Command.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence_Master.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence_Net.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence_Player.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence_Private.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence_Record.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence_Set.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDGameScence_Touch.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDPlayer.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDPlayer_Card.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDPlayer_Master.cpp" />
+    <ClCompile Include="..\Classes\ClientHN_THJ\Game\XZDD\XZDDSoundFun.cpp" />
+    <ClCompile Include="..\Classes\CommonHeader\LocalConstant.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\GameManager\GPGameLink.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\GameManager\GPGameManager.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\GPSceneManager.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\BtnTurnLayer.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeCreateRoomPanel_NN.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeCreateRoomPanel_SG.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeCreateRoomPanel_SRLF.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeCreateRoomPanel_TLJ.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeCreateRoomPanel_XZDD.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_NN.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_SG.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_SRLF.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_TLJ.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_WZQ.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\CreateRoomPanel\GPHomeRoomListPanel_XZDD.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\EditNumPanel\GPHomeEditNumPanel.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\EnterRoomPanel\GPHomeEnterRoomPanel.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\ExitPanel\GPHomeExitPanel.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\GPHomeScene.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\GPHomeScene_Button.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\HelpPanel\GPHomeHelpPanel.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\MallPanel\GPHomeMallPanel.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\MorePanel\GPHomeMorePanel.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\Promotion\GPHomePromotionPanel.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\RaidersPanel\GPHomeRaidersPanel.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\RankPanel\GPHomeRankPanel.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\RecordPanel\GPHomeRecordPanel.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\ServicePanel\GPHomeServicePanel.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\SettingPanel\GPHomeSettingPanel.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\SharePanel\GPHomeSharePanel.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\HomeScene\UserInfoPanel\GPHomeUserInfoPanel.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\LoadingScene\GPLoadingScene.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\LoginScene\GPLoginScene.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\LoginScene\GPLoginScene_LoginSink.cpp" />
+    <ClCompile Include="..\Classes\GamePlaza\Main\AppDelegate.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
