@@ -23,7 +23,6 @@
 	<ScriptValueStr Key="HuRight_ZiMo" Value="自摸 "/>
 	<ScriptValueStr Key="HuRight_PingHu" Value="平胡 "/>
 	
-	
 	<ScriptValueStr Key="HU_TYPE_ZIMO" Value="  自摸"/>
 	<ScriptValueStr Key="HU_TYPE_JIEPAO" Value="  接炮"/>
 	<ScriptValueStr Key="HU_TYPE_FANGPAO" Value="  放炮"/>
@@ -68,28 +67,18 @@
 	<ScriptValueStr Key="TLJGameTalkTxt9" Value="太不公平了你的牌为什么总是那么好"/>
 
 	<ScriptValueStr Key="GPHomeSpeakerTxt" Value="果酱棋牌，欢迎您的到来！"/>
-    <ScriptValueStr Key="GameGold" Value="金币"/>
-    <ScriptValueStr Key="GameAddGold" Value="用户充值金币"/>
-	<!--<ScriptValueStr Key="GameTalkTxt9" Value="怎么又断线了啊，网络怎么这么差啊"/>
-	<ScriptValueStr Key="GameTalkTxt0" Value=""/>
-	<ScriptValueStr Key="GameTalkTxt1" Value="快点出牌啊"/>
-	<ScriptValueStr Key="GameTalkTxt2" Value="遇到叼神了"/>
-	<ScriptValueStr Key="GameTalkTxt3" Value="必须点个赞"/>
-	<ScriptValueStr Key="GameTalkTxt4" Value="打张牌来碰嘛"/>
-	<ScriptValueStr Key="GameTalkTxt5" Value="麻将有首歌，上碰下自摸"/>
-	<ScriptValueStr Key="GameTalkTxt6" Value="想哭都哭不出来"/>
-	<ScriptValueStr Key="GameTalkTxt7" Value="套路好深哦"/>
-	<ScriptValueStr Key="GameTalkTxt8" Value="这牌太漂亮了"/>
-	<ScriptValueStr Key="GameTalkTxt9" Value="我已经抑制不住我的洪荒之力了"/> -->
-	<ScriptValueStr Key="CCWeiXinSharTitle" Value="果酱娱乐"/>
-	<ScriptValueStr Key="CCWeiXinShare_introduce" Value="果酱娱乐,乐在其中"/>
+	<ScriptValueStr Key="CCWeiXinShare_Game_Name" Value="果酱棋牌"/>
+	<ScriptValueStr Key="CCWeiXinShare_Server_Name" Value="牛翻天"/>
+	<ScriptValueStr Key="CCWeiXinShare_introduce" Value="让我们一起来玩耍"/>
 	<ScriptValueStr Key="CCWeiXinShare_OK" Value="分享成功"/>
 	<ScriptValueStr Key="CCWeiXinShare_Cancel" Value="分享取消"/>
 	<ScriptValueStr Key="StringKey" Value="#"/>
-	<ScriptValueStr Key="CCWeiXinShare_NN_Name" Value="拼十"/>
-	<ScriptValueStr Key="CCWeiXinSharDes" Value="【#】 房号:[#],#速度来玩吧!"/>
+	<ScriptValueStr Key="CCWeiXinSharTitle" Value="【#】[房号:#],人数:#,#,底分#,#局"/>
+	<ScriptValueStr Key="CCWeiXinSharDes" Value="房主:#,牛牛#倍,#倍推注,让我们一起玩耍吧!"/>
 	<ScriptValueStr Key="CCWeiXinSharUrl" Value="http://www.baidu.com"/>
-
+	
+    <ScriptValueStr Key="GameGold" Value="金币"/>
+    <ScriptValueStr Key="GameAddGold" Value="用户充值金币"/>
 <!-- 解散房间 -->
 	<ScriptValueStr Key="DisMissRoom_Ask" Value="游戏尚未开始，解散房间将不会扣除钻石，确定解散房间吗?"/>
 	<ScriptValueStr Key="DisMissRoom_Wait" Value="玩家申请解散房间，等待其他玩家做出选择，超出1分钟未做选择，则默认同意，房间自动解散."/>

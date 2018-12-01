@@ -61,72 +61,68 @@
 
 	<!-- 底分1 -->
 	<Widget Name="Check_CreateRoom_DiFen1" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
 		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
 		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="960 557"/>
+		<Property Key="Pos" Value="945 557"/>
 		<Property Key="AnchorPos" Value="0 0"/>
 	</Widget>
 
 	<Widget Name="Txt_CreateRoom_DiFen1" SkinTempName="TxtEmpty">
 		<Property Key="Font" Value="public/text.ttf"/>
 		<Property Key="FontSize" Value="24"/>
-		<Property Key="ShowTxt" Value="1"/>
-		<Property Key="Pos" Value="1005 557"/>
+		<Property Key="ShowTxt" Value="1/2"/>
+		<Property Key="Pos" Value="987 557"/>
 		<Property Key="AnchorPos" Value="0 0"/>
 		<Property Key="Color" Value="255 100 100"/>
 	</Widget>
 
 	<!-- 底分2 -->
 	<Widget Name="Check_CreateRoom_DiFen2" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
 		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
 		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="1040 557"/>
+		<Property Key="Pos" Value="1025 557"/>
 		<Property Key="AnchorPos" Value="0 0"/>
 	</Widget>
 
 	<Widget Name="Txt_CreateRoom_DiFen2" SkinTempName="TxtEmpty">
 		<Property Key="Font" Value="public/text.ttf"/>
 		<Property Key="FontSize" Value="24"/>
-		<Property Key="ShowTxt" Value="2"/>
-		<Property Key="Pos" Value="1085 557"/>
+		<Property Key="ShowTxt" Value="2/4"/>
+		<Property Key="Pos" Value="1067 557"/>
 		<Property Key="AnchorPos" Value="0 0"/>
 		<Property Key="Color" Value="255 100 100"/>
 	</Widget>
 
 	<!-- 底分3 -->
 	<Widget Name="Check_CreateRoom_DiFen3" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
 		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
 		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="1125 557"/>
+		<Property Key="Pos" Value="1110 557"/>
 		<Property Key="AnchorPos" Value="0 0"/>
 	</Widget>
 
 	<Widget Name="Txt_CreateRoom_DiFen3" SkinTempName="TxtEmpty">
 		<Property Key="Font" Value="public/text.ttf"/>
 		<Property Key="FontSize" Value="24"/>
-		<Property Key="ShowTxt" Value="4"/>
-		<Property Key="Pos" Value="1170 557"/>
+		<Property Key="ShowTxt" Value="4/8"/>
+		<Property Key="Pos" Value="1152 557"/>
 		<Property Key="AnchorPos" Value="0 0"/>
 		<Property Key="Color" Value="255 100 100"/>
 	</Widget>
 
 	<!-- 底分4 -->
 	<Widget Name="Check_CreateRoom_DiFen4" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
 		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
 		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="1205 557"/>
+		<Property Key="Pos" Value="1190 557"/>
 		<Property Key="AnchorPos" Value="0 0"/>
 	</Widget>
 
 	<Widget Name="Txt_CreateRoom_DiFen4" SkinTempName="TxtEmpty">
 		<Property Key="Font" Value="public/text.ttf"/>
 		<Property Key="FontSize" Value="24"/>
-		<Property Key="ShowTxt" Value="5"/>
-		<Property Key="Pos" Value="1245 557"/>
+		<Property Key="ShowTxt" Value="5/10"/>
+		<Property Key="Pos" Value="1227 557"/>
 		<Property Key="AnchorPos" Value="0 0"/>
 		<Property Key="Color" Value="255 100 100"/>
 	</Widget>
@@ -517,7 +513,7 @@
 	<Widget Name="" SkinTempName="TxtEmpty">
 		<Property Key="Font" Value="public/text.ttf"/>
 		<Property Key="FontSize" Value="24"/>
-		<Property Key="ShowTxt" Value="牛牛×4 牛九×3 牛八×2"/>
+		<Property Key="ShowTxt" Value="牛牛×3 牛九×3 牛八×2"/>
 		<Property Key="Color" Value="255 100 100"/>
 		<Property Key="Pos" Value="930 235.5"/>
 		<Property Key="AnchorPos" Value="0 0"/>
