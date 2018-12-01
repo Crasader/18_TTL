@@ -31,6 +31,7 @@
 #define TIME_SEND_SYSTEM_MESSAGE	10L								    //系统消息时间
 #define TIME_LOAD_SENSITIVE_WORD	5L									//加载敏感词时间
 
+#define NN_GAME_KIND_ID 27
 //////////////////////////////////////////////////////////////////////////////////
 
 //构造函数
@@ -582,7 +583,7 @@ bool CAttemperEngineSink::OnEventTimer(DWORD dwTimerID, WPARAM wBindParam)
 								//分配判断
 								switch (m_pGameServiceOption->wKindID)
 								{
-								case 21:
+								case NN_GAME_KIND_ID:
 									if (((m_pGameServiceAttrib->wChairCount<MAX_CHAIR) && wUserSitCount>=4) || wUserSitCount == 0 || TableUserInfo.wTableAndroidCount != 0) continue;
 								default:
 									if ((m_pGameServiceAttrib->wChairCount<MAX_CHAIR) && wUserSitCount>(TableUserInfo.wMinUserCount - 1)) continue;
@@ -603,7 +604,7 @@ bool CAttemperEngineSink::OnEventTimer(DWORD dwTimerID, WPARAM wBindParam)
 									IAndroidUserItem * pIAndroidUserItem=AndroidInitiative.pIAndroidUserFree[j];
 									switch (m_pGameServiceOption->wKindID)
 									{
-									case 21: {
+									case NN_GAME_KIND_ID: {
 										auto tableInfo = (PrivateTableInfo*)(pTableFrame->GetTableInfoExtra());
 										if (tableInfo == nullptr) {
 											continue;
@@ -623,7 +624,7 @@ bool CAttemperEngineSink::OnEventTimer(DWORD dwTimerID, WPARAM wBindParam)
 
 							//私人场
 							if (m_pGameServiceOption->wServerType == GAME_GENRE_EDUCATE) {
-								if (m_pGameServiceOption->wKindID == 21) {
+								if (m_pGameServiceOption->wKindID == NN_GAME_KIND_ID) {
 									//坐下处理
 									for (WORD j = 0; j < AndroidInitiative.wFreeUserCount; j++)
 									{

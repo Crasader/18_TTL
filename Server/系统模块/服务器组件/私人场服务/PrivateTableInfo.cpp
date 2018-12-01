@@ -66,8 +66,8 @@ void PrivateTableInfo::restValue(int ncharCout)
 	fOfflinePastTime = 0;
 	bPlayCoutIdex = 0;
 	bGameTypeIdex = 0;
-	bGameRuleIdex = 0;
-	cbRoomType = Type_Private;
+	dwGameRuleIdex = 0;
+	bRoomType = Type_Private;
 	dwPlayCout = 0;
 	dwRoomNum = 0;
 	//dwCreaterUserID = 0;

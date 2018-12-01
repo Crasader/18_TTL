@@ -271,7 +271,7 @@ bool PriaveteGame::SendTableData(ITableFrame*	pITableFrame, WORD wMainCmdID, WOR
 
 void PriaveteGame::CreatePrivateCost(PrivateTableInfo* pTableInfo)
 {
-	if (pTableInfo->cbRoomType == Type_Private)
+	if (pTableInfo->bRoomType == Type_Private)
 	{
 		//DONE: 这里扣除了房卡或金币
 		DBR_GR_Create_Private_Cost kNetInfo;
@@ -290,7 +290,7 @@ void PriaveteGame::CreatePrivateCost(PrivateTableInfo* pTableInfo)
 		}
         m_pIDataBaseEngine->PostDataBaseRequest(0L,DBR_GR_CREATE_PRIVAT_COST,0L,&kNetInfo,sizeof(kNetInfo));
 	}
-	if (pTableInfo->cbRoomType == Type_Public)
+	if (pTableInfo->bRoomType == Type_Public)
 	{
 		for (int i = 0;i<pTableInfo->pITableFrame->GetSitUserCount();i++)
 		{
@@ -301,7 +301,7 @@ void PriaveteGame::CreatePrivateCost(PrivateTableInfo* pTableInfo)
 			DBR_GR_Create_Private_Cost kNetInfo;
 			kNetInfo.dwUserID = pTableInfo->pITableFrame->GetTableUserItem(i)->GetUserID();
             kNetInfo.dwCost = pTableInfo->dwPlayCost;
-            kNetInfo.dwCostType = pTableInfo->cbRoomType;
+            kNetInfo.dwCostType = pTableInfo->bRoomType;
             m_pIDataBaseEngine->PostDataBaseRequest(0L,DBR_GR_CREATE_PRIVAT_COST,0L,&kNetInfo,sizeof(kNetInfo));
 		}
 	}
@@ -679,9 +679,9 @@ bool PriaveteGame::OnEventCreatePrivate(WORD wRequestID, IServerUserItem * pISer
 	pCurrTableInfo->setRoomNum(iRandNum);
     pCurrTableInfo->pITableFrame->SetCreateUserID(pIServerUserItem->GetUserID());
 	pCurrTableInfo->kHttpChannel = kChannel;
-	pCurrTableInfo->cbRoomType = pPrivate->cbRoomType;
+	pCurrTableInfo->bRoomType = pPrivate->cbRoomType;
     pCurrTableInfo->dwGameKindID = pPrivate->dwGameKindID;
-	pCurrTableInfo->bGameRuleIdex = pPrivate->bGameRuleIdex;
+	pCurrTableInfo->dwGameRuleIdex = pPrivate->bGameRuleIdex;
 	pCurrTableInfo->bGameTypeIdex = pPrivate->bGameTypeIdex;
 	pCurrTableInfo->bPlayCoutIdex = pPrivate->bPlayCoutIdex;
 
@@ -711,7 +711,7 @@ bool PriaveteGame::OnEventCreatePrivate(WORD wRequestID, IServerUserItem * pISer
 	pInfo.PlayCount = m_kPrivateInfo.bPlayCout[pPrivate->bPlayCoutIdex];
 
 	pICurrTableFrame->SetPrivateInfo(pCurrTableInfo->bGameTypeIdex,
-		pCurrTableInfo->bGameRuleIdex,
+		pCurrTableInfo->dwGameRuleIdex,
 		&pInfo);
 
 	pICurrTableFrame->SetCreateUserID(pCurrTableInfo->pITableFrame->GetCreateUserID());
@@ -784,11 +784,11 @@ bool PriaveteGame::OnTCPNetworkSubCreatePrivate(VOID * pData, WORD wDataSize, IS
 			{
 				continue;
 			}
-			if(pTableInfo.cbRoomType != Type_Public)
+			if(pTableInfo.bRoomType != Type_Public)
 			{
 				continue;
 			}
-			if (m_pTableInfo[wTableID].bGameRuleIdex != pCMDInfo->bGameRuleIdex 
+			if (m_pTableInfo[wTableID].dwGameRuleIdex != pCMDInfo->bGameRuleIdex 
 				|| m_pTableInfo[wTableID].bGameTypeIdex != pCMDInfo->bGameTypeIdex )
 			{
 				continue;
@@ -859,13 +859,13 @@ bool PriaveteGame::OnTCPNetworkSubAgainEnter(VOID * pData, WORD wDataSize, IServ
 	}
 	DBR_GR_Create_Private kDBRInfo;
 	ZeroMemory(&kDBRInfo,sizeof(kDBRInfo));
-	kDBRInfo.cbRoomType = pTableInfo->cbRoomType;
+	kDBRInfo.cbRoomType = pTableInfo->bRoomType;
 	kDBRInfo.dwUserID = pIServerUserItem->GetUserID();
 	kDBRInfo.wKindID = m_pGameServiceAttrib->wKindID;
 	kDBRInfo.dwCost = (DWORD)m_kPrivateInfo.lPlayCost[pTableInfo->bPlayCoutIdex];
 	kDBRInfo.dwAgaginTable = pIServerUserItem->GetTableID();
 	kDBRInfo.bGameTypeIdex = pTableInfo->bGameTypeIdex;
-	kDBRInfo.bGameRuleIdex = pTableInfo->bGameRuleIdex;
+	kDBRInfo.bGameRuleIdex = pTableInfo->dwGameRuleIdex;
 
 #if defined(PLATFORM_CONGCONG)
     kDBRInfo.bPassionationMode  = pTableInfo->bPassionationMode;	//激情模式开关
@@ -1369,7 +1369,7 @@ bool PriaveteGame::OnEventGameEnd(ITableFrame *pITableFrame,WORD wChairID, IServ
 		return true;
 	}
 	//ZeroMemory(pTableInfo->cbLastOfflineReadyState,sizeof(pTableInfo->cbLastOfflineReadyState));
-	if (pTableInfo->cbRoomType == Type_Private)
+	if (pTableInfo->bRoomType == Type_Private)
 	{
 		//在第一句游戏结束的时候扣除房费
 		if (pTableInfo->dwFinishPlayCout == 0
@@ -1422,7 +1422,7 @@ bool PriaveteGame::OnEventGameEnd(ITableFrame *pITableFrame,WORD wChairID, IServ
 			ClearRoom(pTableInfo);
 		}
 	}
-	else if (pTableInfo->cbRoomType == Type_Public)
+	else if (pTableInfo->bRoomType == Type_Public)
 	{
 		CreatePrivateCost(pTableInfo);
 		DismissRoom(pTableInfo);
@@ -1456,12 +1456,14 @@ void PriaveteGame::sendPrivateRoomInfo(IServerUserItem * pIServerUserItem,Privat
 	ASSERT(pTableInfo); if (!pTableInfo) return;
 
 	CMD_GF_Private_Room_Info kNetInfo;
-	kNetInfo.cbRoomType = pTableInfo->cbRoomType;
+	kNetInfo.bRoomType = pTableInfo->bRoomType;
 	kNetInfo.bStartGame = pTableInfo->bStart;
+	kNetInfo.bCurPeopleNum = pTableInfo->pITableFrame->GetSitUserCount();
+	kNetInfo.bMaxPeopleNum = pTableInfo->getChairCout();
 	kNetInfo.dwRoomNum = pTableInfo->dwRoomNum;
 	kNetInfo.dwPlayCout = pTableInfo->dwStartPlayCout;
 	kNetInfo.dwCreateUserID = pTableInfo->pITableFrame->GetCreateUserID();
-	kNetInfo.bGameRuleIdex = pTableInfo->bGameRuleIdex;
+	kNetInfo.dwGameRuleIdex = pTableInfo->dwGameRuleIdex;
 	kNetInfo.bGameTypeIdex = pTableInfo->bGameTypeIdex;
 	kNetInfo.bPlayCoutIdex = pTableInfo->bPlayCoutIdex;
 	kNetInfo.dwPlayTotal = pTableInfo->dwPlayCout;
@@ -1804,7 +1806,7 @@ bool PriaveteGame::OnTCPNetworkSubInqureTables(VOID * pData, WORD wDataSize, ISe
             continue;
         }
 		//不是非私人场
-		if( pTableInfo.cbRoomType != Type_Private) {
+		if( pTableInfo.bRoomType != Type_Private) {
 			continue;
 		}
 
@@ -1837,7 +1839,7 @@ bool PriaveteGame::OnTCPNetworkSubInqureTables(VOID * pData, WORD wDataSize, ISe
 		dt_body.bChairSum = static_cast<BYTE>(pTableInfo.getChairCout());
 		dt_body.dwCreateUserID = pTableInfo.pITableFrame->GetCreateUserID();             //房主
 		dt_body.dwTableNum = pTableInfo.dwRoomNum;                 //房号
-		dt_body.dwGameRuleIdex = pTableInfo.bGameRuleIdex;           //游戏规则
+		dt_body.dwGameRuleIdex = pTableInfo.dwGameRuleIdex;           //游戏规则
 
 #if defined(PLATFORM_CONGCONG)
         dt_body.bBloodFightMode = pTableInfo.bBloodFightMode;

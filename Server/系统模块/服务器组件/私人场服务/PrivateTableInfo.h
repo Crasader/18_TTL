@@ -39,14 +39,14 @@ public:
     float fAgainPastTime;
     std::string kHttpChannel;
 
-    BYTE cbRoomType;
+    BYTE bRoomType;
 
     DWORD dwStartPlayCout;
     DWORD dwFinishPlayCout;
 
     BYTE bPlayCoutIdex; //玩家局数
     BYTE bGameTypeIdex; //游戏类型
-    DWORD bGameRuleIdex; //游戏规则
+    DWORD dwGameRuleIdex; //游戏规则
 
     //BYTE cbLastOfflineReadyState[MAX_CHAIR]; //上次断线状态
     SCORE lPlayerWinLose[MAX_CHAIR];
