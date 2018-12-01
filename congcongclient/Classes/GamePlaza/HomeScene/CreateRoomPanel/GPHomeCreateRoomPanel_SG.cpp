@@ -92,7 +92,7 @@ void GPHomeCreateRoomPanel_SG::Button_Confirm(cocos2d::Ref*, WidgetUserInfo*)
 	createRoom.bPlayCoutIdex = 0;
 	createRoom.bGameTypeIdex = 3;
 	//if(m_bAllowedStrangerQiangZhuang)
-	createRoom.bGameRuleIdex = m_GameRuleIndex;
+	createRoom.dwGameRuleIdex = m_GameRuleIndex;
 	createRoom.bAllowedStrangerJoin = m_bAllowedStrangerJoin;
 	createRoom.dwEnterMatchNum = utility::parseInt(WidgetFun::getText(this,"SG_CreateRoom_EnterNum_Txt"));
 	createRoom.dwBaseScore = utility::parseInt(WidgetFun::getText(this,"SG_CreateRoom_GameScore_Txt"));

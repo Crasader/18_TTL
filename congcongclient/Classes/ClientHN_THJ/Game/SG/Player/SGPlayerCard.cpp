@@ -275,7 +275,7 @@ void SGPlayerCard::sendPlayerCard()
 		SGGameScence::Instance().updateUserInfo();
 		SGOperator::Instance().show(SGGameScence::Instance().getGameStatus());
 		SGOperator::Instance().showTimes(TIME_FOR_USER_SPLIT_CARD);
-		for (int index = 0; index < m_TempCards.size(); ++index) {
+		for (size_t index = 0; index < m_TempCards.size(); ++index) {
 			if (this == m_TempCards.at(index)->getParent()) {
 				removeChild(m_TempCards.at(index));
 			}
@@ -346,7 +346,7 @@ void SGPlayerCard::sendPlayerCardAdd()
 		SGGameScence::Instance().updateUserInfo();
 		SGOperator::Instance().show(SGGameScence::Instance().getGameStatus());
 		SGOperator::Instance().showTimes(TIME_FOR_USER_SPLIT_CARD);
-		for (int index = 0; index < m_TempCards.size(); ++index) {
+		for (size_t index = 0; index < m_TempCards.size(); ++index) {
 			if (this == m_TempCards.at(index)->getParent()) {
 				removeChild(m_TempCards.at(index));
 			}

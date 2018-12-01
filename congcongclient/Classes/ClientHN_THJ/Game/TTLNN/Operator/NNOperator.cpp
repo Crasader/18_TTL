@@ -435,7 +435,7 @@ void NNOperator::Button_Ready(cocos2d::Ref*, WidgetUserInfo*)
 void NNOperator::Button_WeiXin(cocos2d::Ref*, WidgetUserInfo*)
 {
 	std::string kCCWeiXinSharDes = utility::getScriptReplaceValue("CCWeiXinSharDes",
-		ScriptData<std::string>("CCWeiXinShare_NN_Name").Value(),
+		ScriptData<std::string>("CCWeiXinShare_Server_Name").Value(),
 		(int)NNRoomInfo::Instance().getRoomInfo().dwRoomNum,
 		NNRoomInfo::Instance().getRoomInfoView(true));
 	MissionWeiXin::Instance().shareTextWeiXin(kCCWeiXinSharDes,MissionWeiXin::SHARE_SESSION);
@@ -489,7 +489,7 @@ void NNOperator::Button_CuoCard(cocos2d::Ref*, WidgetUserInfo*)
 void NNOperator::Button_Hint(cocos2d::Ref*, WidgetUserInfo*)
 {
     NNPlayerCard_Entity cards = NNGameScene::Instance().getLocalPlayer()->getPlayerCards();
-    TTLNN::NNCardType_Result result = NNGameLogic::checkNNType(cards.cards, NNRoomInfo::Instance().getRoomInfo().bGameRuleIdex);
+    TTLNN::NNCardType_Result result = NNGameLogic::checkNNType(cards.cards, NNRoomInfo::Instance().getRoomInfo().dwGameRuleIdex);
 
     std::vector<int> temp;
     temp.clear();

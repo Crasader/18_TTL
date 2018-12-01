@@ -78,32 +78,32 @@ void XZDDGameScence::setPrivateInfo(CMD_GF_Private_Room_Info* pNetInfo)//ÉèÖÃ·¿¼
  	m_kPrivateRoomInfo = *pNetInfo;
 	WidgetFun::setText(this,"RoomID",utility::toString(pNetInfo->dwRoomNum));//ÉèÖÃ·¿¼äºÅ
 	std::vector<std::string> vRuleNam;
-	std::string temp = FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_HUAN3_))?"ÑªÕ½»»ÈýÕÅ":"ÑªÕ½Âé½«";
+	std::string temp = FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_HUAN3_))?"ÑªÕ½»»ÈýÕÅ":"ÑªÕ½Âé½«";
 	if(temp != "")
 	vRuleNam.push_back(temp);
-	temp = FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_GUOSHOUHU_))?"¹ýÊÖºú":"¹ýÐ¡ºú´ó";
+	temp = FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_GUOSHOUHU_))?"¹ýÊÖºú":"¹ýÐ¡ºú´ó";
 	if(temp != "")
 	vRuleNam.push_back(temp);
-	temp = FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_D_G_H_ZIMO_))?"µã¸Ü»¨(×ÔÃþ)":"µã¸Ü»¨(·ÅÅÚ)";
+	temp = FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_D_G_H_ZIMO_))?"µã¸Ü»¨(×ÔÃþ)":"µã¸Ü»¨(·ÅÅÚ)";
 	if(temp != "")
 	vRuleNam.push_back(temp);
-	temp = FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_ZI_MO_JIADI_))?"×ÔÃþ¼Óµ×":"×ÔÃþ¼Ó·¬";
+	temp = FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_ZI_MO_JIADI_))?"×ÔÃþ¼Óµ×":"×ÔÃþ¼Ó·¬";
 	if(temp != "")
 	vRuleNam.push_back(temp);
-	//ruleNam += FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_ZI_MO_JIAFAN_))?"×ÔÃþ¼Ó·¬\n":"";
-	temp = FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_HAI_DI_LAO_))?"º£µ×ÀÌ":"";
+	//ruleNam += FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_ZI_MO_JIAFAN_))?"×ÔÃþ¼Ó·¬\n":"";
+	temp = FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_HAI_DI_LAO_))?"º£µ×ÀÌ":"";
 	if(temp != "")
 	vRuleNam.push_back(temp);
-	temp = FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_MEN_Q_))?"ÃÅÇå":"";
+	temp = FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_MEN_Q_))?"ÃÅÇå":"";
 	if(temp != "")
 	vRuleNam.push_back(temp);
-	temp = FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_ZHONG_ZHANG_))?"ÖÐÕÅ":"";
+	temp = FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_ZHONG_ZHANG_))?"ÖÐÕÅ":"";
 	if(temp != "")
 	vRuleNam.push_back(temp);
-	temp = FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_YI_JIU_))?"çÛ¾Å":"";
+	temp = FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_YI_JIU_))?"çÛ¾Å":"";
 	if(temp != "")
 	vRuleNam.push_back(temp);
-	temp = FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_Jiang_dui_))?"½«¶Ô":"";
+	temp = FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_Jiang_dui_))?"½«¶Ô":"";
 	if(temp != "")
 	vRuleNam.push_back(temp);
 	temp = "4·¬";
@@ -131,19 +131,19 @@ void XZDDGameScence::friendPrivateInfo()//ÉèÖÃ·¿¼äË½ÓÐÐÅÏ¢
 {
 	//m_kPrivateRoomInfo = *pNetInfo;
 	std::string resultRule ="";
-	resultRule +=FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_HUAN3_))?"ÑªÕ½»»ÈýÕÅ":"ÑªÕ½Âé½«";
-	resultRule +=FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_GUOSHOUHU_))?",¹ýÊÖºú":",¹ýÐ¡ºú´ó";
-	resultRule +=FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_D_G_H_ZIMO_))?",µã¸Ü»¨(×ÔÃþ)":",µã¸Ü»¨(·ÅÅÚ)";
-	resultRule +=FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_ZI_MO_JIADI_))?",×ÔÃþ¼Óµ×":",×ÔÃþ¼Ó·¬";
-	//ruleNam += FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_ZI_MO_JIAFAN_))?"×ÔÃþ¼Ó·¬\n":"";
-	resultRule +=FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_HAI_DI_LAO_))?",º£µ×ÀÌ":"";
-	resultRule +=FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_MEN_Q_))?",ÃÅÇå":"";
-	resultRule +=FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_ZHONG_ZHANG_))?",ÖÐÕÅ":"";
-	resultRule +=FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_YI_JIU_))?",çÛ¾Å":"";
-	resultRule +=FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_Jiang_dui_))?",½«¶Ô":"";
+	resultRule +=FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_HUAN3_))?"ÑªÕ½»»ÈýÕÅ":"ÑªÕ½Âé½«";
+	resultRule +=FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_GUOSHOUHU_))?",¹ýÊÖºú":",¹ýÐ¡ºú´ó";
+	resultRule +=FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_D_G_H_ZIMO_))?",µã¸Ü»¨(×ÔÃþ)":",µã¸Ü»¨(·ÅÅÚ)";
+	resultRule +=FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_ZI_MO_JIADI_))?",×ÔÃþ¼Óµ×":",×ÔÃþ¼Ó·¬";
+	//ruleNam += FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_ZI_MO_JIAFAN_))?"×ÔÃþ¼Ó·¬\n":"";
+	resultRule +=FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_HAI_DI_LAO_))?",º£µ×ÀÌ":"";
+	resultRule +=FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_MEN_Q_))?",ÃÅÇå":"";
+	resultRule +=FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_ZHONG_ZHANG_))?",ÖÐÕÅ":"";
+	resultRule +=FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_YI_JIU_))?",çÛ¾Å":"";
+	resultRule +=FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_Jiang_dui_))?",½«¶Ô":"";
 	resultRule +=",4·¬";
 	resultRule +=utility::toString(",µ××¢£º", m_kPrivateRoomInfo.dwBaseScore);
-	std::string resultTitle =FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_HUAN3_))?"ÑªÕ½»»ÈýÕÅ":"ÑªÕ½Âé½«";
+	std::string resultTitle =FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex, _MASK_(GPHomeCreateRoomPanel_XZDD::GAME_RULE_HUAN3_))?"ÑªÕ½»»ÈýÕÅ":"ÑªÕ½Âé½«";
 	std::string kCCWeiXinSharDes = utility::getScriptReplaceValue("CCWeiXinSharDes",
 	utility::a_u8(resultTitle),(int)m_kPrivateRoomInfo.dwRoomNum,utility::a_u8(resultRule));
 	MissionWeiXin::Instance().shareTextWeiXin(kCCWeiXinSharDes,MissionWeiXin::SHARE_SESSION);

@@ -478,7 +478,7 @@ void SGOperator::Button_ShowCard(cocos2d::Ref*, WidgetUserInfo*)
 void SGOperator::Button_Hint(cocos2d::Ref*, WidgetUserInfo*)
 {
     SGPlayerCard_Entity cards = SGGameScence::Instance().getLocalPlayer()->getPlayerCards();
-    SG::SGCardType_Result result = SGGameLogic::checkSGType(cards.cards, SGRoomInfo::Instance().getRoomInfo().bGameRuleIdex);
+    SG::SGCardType_Result result = SGGameLogic::checkSGType(cards.cards, SGRoomInfo::Instance().getRoomInfo().dwGameRuleIdex);
 
     //std::vector<int> temp;
     //temp.clear();

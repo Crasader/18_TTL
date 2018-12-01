@@ -176,6 +176,7 @@ bool CServerItem::OnSocketSubMatchJoinResoult(void* data, int dataSize)
 
 	if (mIServerMatchSink)
 	{
+		//TODO:这里可能有问题
 		mIServerMatchSink->OnSocketSubMatchJoinResolt((bool)pNetInfo->wSucess);
 	}
 	return true;

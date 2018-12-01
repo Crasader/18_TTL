@@ -142,7 +142,7 @@ void SGDismissRoom::show(SG_DismissRoom_Type type, CMD_GF_Private_Dismiss_Info* 
 			bool isPlayerChosed = false;
 
 			std::string text = utility::a_u8("待确认");
-			for (int index = 0; index < pInfo->dwDissUserCout; ++index) {
+			for (size_t index = 0; index < pInfo->dwDissUserCout; ++index) {
 				if (pInfo->dwDissChairID[index] == chairIndex) {
 					isPlayerChosed = true;
 					text = utility::a_u8("同意");
@@ -150,7 +150,7 @@ void SGDismissRoom::show(SG_DismissRoom_Type type, CMD_GF_Private_Dismiss_Info* 
 				}
 			}
 
-			for (int index = 0; !isPlayerChosed && index < pInfo->dwNotAgreeUserCout; ++index) {
+			for (size_t index = 0; !isPlayerChosed && index < pInfo->dwNotAgreeUserCout; ++index) {
 				if (pInfo->dwNotAgreeChairID[index] == chairIndex) {
 					isPlayerChosed = true;
 					text = utility::a_u8("拒绝");

@@ -232,7 +232,7 @@ namespace JniFun
 		{  
 			jstring jurl = minfo.env->NewStringUTF(kFileName.c_str());
 			minfo.env->CallStaticVoidMethod(minfo.classID, minfo.methodID,jurl); 
-			cocos2d::log("JniFun call startSoundRecord over!");
+			cocos2d::log("JniFun call startSoundRecord over! filename=%s", kFileName.c_str());
 
 			minfo.env->DeleteLocalRef(minfo.classID);  
 		}  
@@ -256,8 +256,7 @@ namespace JniFun
 			jstring jFileName = (jstring)minfo.env->CallStaticObjectMethod(minfo.classID, minfo.methodID); 
 			const char *newStr = minfo.env->GetStringUTFChars(jFileName, 0);
 			str = newStr;
-			cocos2d::log("JniFun call stopSoundRecord over :");
-			cocos2d::log("%s",str.c_str());
+			cocos2d::log("JniFun call stopSoundRecord over! filename=%s", str.c_str());
 			minfo.env->ReleaseStringUTFChars(jFileName, newStr);
 			minfo.env->DeleteLocalRef(minfo.classID); 
 		}  

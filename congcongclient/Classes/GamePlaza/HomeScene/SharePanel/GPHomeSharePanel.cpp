@@ -41,25 +41,25 @@ void GPHomeSharePanel::hide()
 
 void GPHomeSharePanel::Button_ShareToFriend(cocos2d::Ref* pRef, WidgetUserInfo* pInfo)
 {
-	std::string strUrl = utility::a_u8("http://114.115.164.158:8080/EvokeApp.html");
-	std::string strTitle = ScriptData<std::string>("CCWeiXinSharTitle").Value();
+	std::string strUrl = utility::a_u8("http://114.115.164.158:8080/evokeapp.html");
+	std::string strTitle = ScriptData<std::string>("CCWeiXinShare_Game_Name").Value();
 	std::string strIntroduce = ScriptData<std::string>("CCWeiXinShare_introduce").Value();
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-	MissionWeiXin::Instance().shareUrlWeiXin(strUrl,strTitle,strIntroduce);
+	MissionWeiXin::Instance().shareUrlWeiXin(strUrl,strTitle,strIntroduce, MissionWeiXin::SHARE_SESSION);
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-	MissionWeiXin::Instance().shareUrlWeiXin(strUrl,strTitle,strIntroduce);
+	MissionWeiXin::Instance().shareUrlWeiXin(strUrl,strTitle,strIntroduce, MissionWeiXin::SHARE_SESSION);
 #endif
 }
 
 void GPHomeSharePanel::Button_ShareToFriendCircle(cocos2d::Ref* pRef, WidgetUserInfo* pInfo)
 {
-	std::string strUrl = utility::a_u8("http://114.115.164.158:8080/EvokeApp.html");
-	std::string strTitle = ScriptData<std::string>("CCWeiXinSharTitle").Value();
+	std::string strUrl = utility::a_u8("http://114.115.164.158:8080/evokeapp.html");
+	std::string strTitle = ScriptData<std::string>("CCWeiXinShare_Game_Name").Value();
 	std::string strIntroduce = ScriptData<std::string>("CCWeiXinShare_introduce").Value();
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-	MissionWeiXin::Instance().shareUrlWeiXin(strUrl, strTitle, strIntroduce);
+	MissionWeiXin::Instance().shareUrlWeiXin(strUrl, strTitle, strIntroduce, MissionWeiXin::SHARE_MOMENTS);
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-	MissionWeiXin::Instance().shareUrlWeiXin(strUrl, strTitle, strIntroduce);
+	MissionWeiXin::Instance().shareUrlWeiXin(strUrl, strTitle, strIntroduce, MissionWeiXin::SHARE_MOMENTS);
 #endif
 }
 

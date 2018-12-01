@@ -21,6 +21,17 @@
 
 FV_SINGLETON_STORAGE(NNGameScene);
 
+//最小说话时间1秒,少于1秒可能会引起崩溃
+#define MIN_SPEAK_TIME 1.f
+//最大说话时间
+#define MAX_SPEAK_TIME 5.f
+//说话的时间间隔, 间隔太短会引起初始化的问题
+#define INTERVAL_SPEAK_TIME 1.f
+
+dword NNGameScene::_dwSpeak_time_begin = 0;
+dword NNGameScene::_dwSpeak_time_end = 0;
+dword NNGameScene::_dwSpeak_time_interval = 0;
+
 NNGameScene::NNGameScene()
 	:GameBase(NULL, NULL)
 {
@@ -458,17 +469,23 @@ void NNGameScene::Button_Setting(cocos2d::Ref*, WidgetUserInfo*)
 
 void NNGameScene::Button_TalkBegin(cocos2d::Ref*, WidgetUserInfo*)
 {
-	if (cocos2d::UserDefault::getInstance()->getBoolForKey("isRecordStart", false)) {
-		JniFun::stopSoundRecord();
-		cocos2d::UserDefault::getInstance()->setBoolForKey("isRecordStart", false);
+	//说话已经开始
+	if (_dwSpeak_time_begin != 0) {
 		return;
 	}
-	SoundFun::Instance().PaseBackMusic();
+	//间隔太短
+	if (_dwSpeak_time_interval != 0) {
+		return;
+	}
+	if (_dwSpeak_time_begin == 0) {
+		_dwSpeak_time_begin = time(nullptr);
+	}
 
-	cocos2d::UserDefault::getInstance()->setBoolForKey("isRecordStart", true);
+	SoundFun::Instance().PaseBackMusic();
 	JniFun::startSoundRecord();
-	int iTimeID = TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(NNGameScene::TalkEnd, this), 5.0f)->iIdex;
-	WidgetFun::setWidgetUserInfo(this, "NNGameScene_ButtonTalk", "TimeID", utility::toString(iTimeID));
+	//最大时间到了自动结束说话
+	int iTimeID_max = TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(NNGameScene::TalkEnd, this), MAX_SPEAK_TIME)->iIdex;
+	WidgetFun::setWidgetUserInfo(this, "NNGameScene_ButtonTalk", "iTimeID_max", utility::toString(iTimeID_max));
 }
 
 void NNGameScene::TalkEnd()
@@ -476,17 +493,53 @@ void NNGameScene::TalkEnd()
 	Button_TalkEnd(NULL, NULL);
 }
 
+void NNGameScene::TalkInterval()
+{
+	_dwSpeak_time_interval = 0;
+	std::string strTimeIDInterval = WidgetFun::getWidgetUserInfo(this, "NNGameScene_ButtonTalk", "iTimeID_interval");
+	if (strTimeIDInterval != WidgetNotFindUserInfo) {
+		TimeManager::Instance().removeByID(utility::parseInt(strTimeIDInterval));
+		CCLOG("removeByID(utility::parseInt(strTimeIDInterval))");
+	}
+}
+
 void NNGameScene::Button_TalkEnd(cocos2d::Ref*, WidgetUserInfo*)
 {
-	SoundFun::Instance().ResumeBackMusic();
-	if (!cocos2d::UserDefault::getInstance()->getBoolForKey("isRecordStart", false)) {
+	if (_dwSpeak_time_begin == 0) {
 		return;
 	}
-	cocos2d::UserDefault::getInstance()->setBoolForKey("isRecordStart", false);
-	int iTimeID = utility::parseInt(WidgetFun::getWidgetUserInfo(this, "NN_GameScene_ButtonTalk", "TimeID"));
-	TimeManager::Instance().removeByID(iTimeID);
+	_dwSpeak_time_end = time(nullptr);
+	if (_dwSpeak_time_end - _dwSpeak_time_begin < MIN_SPEAK_TIME) {
+		CCLOG("TalkEnd _dwSpeak_time_end - _dwSpeak_time_begin < MIN_SPEAK_TIME");
+		std::string strTimeIDMin = WidgetFun::getWidgetUserInfo(this, "NNGameScene_ButtonTalk", "iTimeID_min");
+		//如果狂点, 可能会多次触发最小时间计时器, 只让他生效一次
+		if (strTimeIDMin == WidgetNotFindUserInfo) {
+			int nTimeID_min = TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(NNGameScene::TalkEnd, this), MIN_SPEAK_TIME)->iIdex;
+			WidgetFun::setWidgetUserInfo(this, "NNGameScene_ButtonTalk", "iTimeID_min", utility::toString(nTimeID_min));
+		}
+		return;
+	}
+	std::string TimeID_min = WidgetFun::getWidgetUserInfo(this, "NNGameScene_ButtonTalk", "iTimeID_min");
+	if (TimeID_min != WidgetNotFindUserInfo) {
+		TimeManager::Instance().removeByID(utility::parseInt(TimeID_min));
+		CCLOG("removeByID(utility::parseInt(TimeID_min))");
+	}
+	std::string strTimeID_max = WidgetFun::getWidgetUserInfo(this, "NNGameScene_ButtonTalk", "iTimeID_max");
+	if (strTimeID_max != WidgetNotFindUserInfo) {
+		TimeManager::Instance().removeByID(utility::parseInt(strTimeID_max));
+		CCLOG("removeByID(utility::parseInt(strTimeID_max))");
+	}
+	_dwSpeak_time_begin = 0;
+	_dwSpeak_time_end = 0;
+	_dwSpeak_time_interval = INTERVAL_SPEAK_TIME;
+	int nTimeID_interval = TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(NNGameScene::TalkInterval, this), _dwSpeak_time_interval)->iIdex;
+	WidgetFun::setWidgetUserInfo(this, "NNGameScene_ButtonTalk", "iTimeID_interval", utility::toString(nTimeID_interval));
+
+	SoundFun::Instance().ResumeBackMusic();
 	std::string kFileName = JniFun::stopSoundRecord();
-	sendTalkFile(getLocalPlayer()->GetChairID(), kFileName);
+	if (kFileName != "") {
+		sendTalkFile(getLocalPlayer()->GetChairID(), kFileName);
+	}
 }
 
 void NNGameScene::Button_DropBanker(cocos2d::Ref*, WidgetUserInfo*)
@@ -547,13 +600,98 @@ void NNGameScene::Button_ChongZhi(cocos2d::Ref*, WidgetUserInfo*)
 
 void NNGameScene::Button_Share(cocos2d::Ref*, WidgetUserInfo*)
 {
-	dword roomNO = NNRoomInfo::Instance().getRoomInfo().dwRoomNum;
-	std::string strUrl = utility::a_u8(utility::toString("http://114.115.164.158:8080/EvokeApp.html?room_id=", roomNO));
-	std::string strTitle = ScriptData<std::string>("CCWeiXinSharTitle").Value();
+	std::string strUrl = utility::a_u8(utility::toString("http://114.115.164.158:8080/evokeapp.html?refresh=0&room_id=", (int)m_RoomInfo.dwRoomNum));
+
+	std::string strPepleNum = utility::toString(getGamePlayerCount(), "/", (int)m_RoomInfo.bMaxPeopleNum);
+	std::string strRoomType = "";
+	switch (m_RoomInfo.bGameTypeIdex) {
+		case TTLNN::NNGameType_NNBanker: {
+			strRoomType.append(utility::a_u8("牛牛上庄"));
+			break;
+		}
+		case TTLNN::NNGameType_HostBanker: {
+			strRoomType.append(utility::a_u8("固定庄家"));
+			break;
+		}
+		case TTLNN::NNGameType_SnatchBanker: {
+			strRoomType.append(utility::a_u8("自由抢庄"));
+			break;
+		}
+		case TTLNN::NNGameType_SnatchBankerShowCard: {
+			strRoomType.append(utility::a_u8("明牌抢庄"));
+			break;
+		}
+		case TTLNN::NNGameType_AllCompare: {
+			strRoomType.append(utility::a_u8("通比牛牛"));
+			break;
+		}
+		case TTLNN::NNGameType_NNRatio: {
+			strRoomType.append(utility::a_u8("牛几赔几"));
+			break;
+		}
+		default:
+			break;
+	}
+
+	std::string strBaseScore = "";
+	if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_Score_0))) {
+		strBaseScore.append("1");
+		if (m_RoomInfo.bGameTypeIdex != TTLNN::NNGameType_AllCompare) {
+			strBaseScore.append("/2");
+		}
+	} else if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_Score_1))) {
+		strBaseScore.append("2");
+		if (m_RoomInfo.bGameTypeIdex != TTLNN::NNGameType_AllCompare) {
+			strBaseScore.append("/4");
+		}
+	} else if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_Score_2))) {
+		strBaseScore.append("4");
+		if (m_RoomInfo.bGameTypeIdex != TTLNN::NNGameType_AllCompare) {
+			strBaseScore.append("/8");
+		}
+	} else {
+		strBaseScore.append("5");
+		if (m_RoomInfo.bGameTypeIdex != TTLNN::NNGameType_AllCompare) {
+			strBaseScore.append("/10");
+		}
+	}
+	auto game_info = GPGameLink::Instance().getCurrentGameInfo();
+	std::string strRound = "";
+	strRound = utility::toString(game_info.bPlayCout[m_RoomInfo.bPlayCoutIdex]);
+
+	std::string strTitle = utility::getScriptReplaceValue("CCWeiXinSharTitle",
+		ScriptData<std::string>("CCWeiXinShare_Server_Name").Value(),
+		m_RoomInfo.dwRoomNum,
+		strPepleNum,
+		strRoomType,
+		strBaseScore,
+		strRound); 
+
+	//倍数
+	int bNNBeiShu;
+	//牛牛4倍
+	if(FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_Ratio_0))) {
+		bNNBeiShu = 4;
+	} else {
+		bNNBeiShu = 3;
+	}
+	
+	int nTuiZhu = 0;
+	if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZRatio_0))) {
+		nTuiZhu = TuiZhuBeiShu_0;
+	} else if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZRatio_1))) {
+		nTuiZhu = TuiZhuBeiShu_1;
+	} else if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZRatio_2))) {
+		nTuiZhu = TuiZhuBeiShu_2;
+	} else if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZRatio_3))) {
+		nTuiZhu = TuiZhuBeiShu_3;
+	}
+
+	auto* player =  getLocalPlayer();
 	std::string stDes = utility::getScriptReplaceValue("CCWeiXinSharDes",
-		ScriptData<std::string>("CCWeiXinShare_NN_Name").Value(),
-		(int)roomNO,
-		NNRoomInfo::Instance().getRoomInfoView(true));
+		player->GetNickName(),
+		bNNBeiShu,
+		nTuiZhu);
 
 	MissionWeiXin::Instance().shareUrlWeiXin(strUrl, strTitle, stDes);
 }
@@ -700,7 +838,7 @@ void NNGameScene::sendShowCard()
 {
 	//亮牌移除最后一张牌
 	//NNPlayerCard_Entity cards = NNGameScene::Instance().getLocalPlayer()->getPlayerCards();
-	//TTLNN::NNCardType_Result result = NNGameLogic::checkNNType(cards.cards, NNRoomInfo::Instance().getRoomInfo().bGameRuleIdex);
+	//TTLNN::NNCardType_Result result = NNGameLogic::checkNNType(cards.cards, NNRoomInfo::Instance().getRoomInfo().dwGameRuleIdex);
 	TTLNN::CMD_C_UserShowCard showCard;
 	zeromemory(&showCard, sizeof(showCard));
 

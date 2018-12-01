@@ -454,6 +454,7 @@ BYTE XZDDPlayer::getCanGangCard()// ÷≈∆≈≈–Ú
 	XZDD::CGameLogic::Instance().SwitchToCardIndex(m_kHandCardData,m_kHandCardCout,cardIndex);
 	for(BYTE i=0;i<34;i++)
 		if(cardIndex[i]==4) return i;
+	return 0;
 }
 
 void XZDDPlayer::showHuanPai(int nGameType /*= GAME_TYPE_CHENGDU*/)//œ‘ æªª≈∆

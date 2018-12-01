@@ -84,8 +84,8 @@ void WZQDGameScence::setPrivateInfo(CMD_GF_Private_Room_Info* pNetInfo)//…Ë÷√∑øº
 	WidgetFun::setVisible(this,"RoomNum",false);
 
 	//std::vector<std::string> kRuleList;
-	//pushGameRule(kRuleList,pNetInfo->bGameRuleIdex,GAME_RULE_XZ,true);//≈–∂œ≤¢Õ∆»Îœ‡”¶µƒ”Œœ∑πÊ‘Ú
-	//pushGameRule(kRuleList,pNetInfo->bGameRuleIdex,GAME_RULE_XL,true);
+	//pushGameRule(kRuleList,pNetInfo->dwGameRuleIdex,GAME_RULE_XZ,true);//≈–∂œ≤¢Õ∆»Îœ‡”¶µƒ”Œœ∑πÊ‘Ú
+	//pushGameRule(kRuleList,pNetInfo->dwGameRuleIdex,GAME_RULE_XL,true);
 
 	for (int i=0;i<MAX_GAME_RULE;i++)
 	{
@@ -251,11 +251,11 @@ void WZQDGameScence::XZDDButton_WeiXinFriend(cocos2d::Ref*,WidgetUserInfo*)//“™«
 	return;
 	std::string kHNWeiXinSharDes,kGameTypeStr;
 
-	if (FvMask::HasAny(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GAME_RULE_XZ)))
+	if (FvMask::HasAny(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GAME_RULE_XZ)))
 	{
 		kGameTypeStr = ScriptData<std::string>("SCMJRule2").Value();
 	}
-	if (FvMask::HasAny(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GAME_RULE_XL)))
+	if (FvMask::HasAny(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GAME_RULE_XL)))
 	{
 		kGameTypeStr = ScriptData<std::string>("SCMJRule3").Value();
 	}

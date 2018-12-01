@@ -206,10 +206,17 @@ public:
 #endif
 public:
 	static void setJoinWithRoomNO(dword dwNnmber) {
+		CCLOG("setJoinWithRoomNO dwNnmber = %d", dwNnmber);
 		_room_number = dwNnmber;
 	}
 	static dword getJoinWithRoomNO() {
 		return _room_number;
+	}
+	static void setConectedServer(bool bConected) {
+		_is_conected_server = bConected;
+	}
+	static bool getConecetedServer() {
+		return _is_conected_server;
 	}
 public:
 	SCORE getGameDiFen();
@@ -243,7 +250,7 @@ protected:
 	//////////////////////////////////////////////////////////////////////////
 	//玩家通过分享加入房间的房号
 	static dword _room_number;
-
+	static bool _is_conected_server;
 	//////////////////////////////////////////////////////////////////////////
 };
 

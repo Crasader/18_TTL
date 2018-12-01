@@ -414,7 +414,7 @@ struct CMD_GR_Create_Private
 	byte							cbGameType;								//游戏类型
 	byte							bPlayCoutIdex;							//游戏局数
 	byte							bGameTypeIdex;							//游戏类型
-	dword						bGameRuleIdex;							//游戏规则
+	dword						dwGameRuleIdex;							//游戏规则
 	char							stHttpChannel[LEN_NICKNAME];			//http获取
 
 
@@ -443,30 +443,34 @@ struct CMD_GR_Join_Private
 //私人场房间信息
 struct CMD_GF_Private_Room_Info
 {	
-	byte			bPlayCoutIdex;		//玩家局数0 1，  8 或者16局
-	byte			bGameTypeIdex;		//游戏类型
-	dword			bGameRuleIdex;		//游戏规则
-	byte			bStartGame;
-	dword			dwPlayCout;			//游戏局数
-	dword			dwRoomNum;
-	dword			dwCreateUserID;
-	dword			dwPlayTotal;		//总局数	
-	byte			cbRoomType;	
-	dword           dwBaseScore;        //底注
-	dword           dwEnterMatchNum;    //入场限制
-	dword           dwOutMatchNum;      //离场限制
+	byte bPlayCoutIdex;//玩家局数0 1，  8 或者16局
+	byte bGameTypeIdex;//游戏类型
+	byte bRoomType;
+	byte bStartGame;
+	byte bCurPeopleNum;//当前人数
+	byte bMaxPeopleNum;//最大人数
+	dword dwGameRuleIdex;//游戏规则
+	dword dwPlayCout;//游戏局数
+	dword dwRoomNum;
+	dword dwCreateUserID;
+	dword dwPlayTotal;	//总局数	
+	dword dwBaseScore;//底注
+	dword dwEnterMatchNum;//入场限制
+	dword dwOutMatchNum; //离场限制
 	std::vector<int>	kWinLoseScore;
 
 	CMD_GF_Private_Room_Info& operator=(CMD_GF_Private_Room_Info& val) {
 		this->bPlayCoutIdex = val.bPlayCoutIdex;
 		this->bGameTypeIdex = val.bGameTypeIdex;
+		this->bRoomType = val.bRoomType;
 		this->bStartGame = val.bStartGame;
-		this->bGameRuleIdex = val.bGameRuleIdex;
+		this->bCurPeopleNum = val.bCurPeopleNum;
+		this->bMaxPeopleNum = val.bMaxPeopleNum;
+		this->dwGameRuleIdex = val.dwGameRuleIdex;
 		this->dwPlayCout = val.dwPlayCout;
 		this->dwRoomNum = val.dwRoomNum;
 		this->dwCreateUserID = val.dwCreateUserID;
 		this->dwPlayTotal = val.dwPlayTotal;
-		this->cbRoomType = val.cbRoomType;
 		this->dwBaseScore = val.dwBaseScore;
 		this->dwEnterMatchNum = val.dwEnterMatchNum;
 		this->dwOutMatchNum = val.dwOutMatchNum;
@@ -481,13 +485,15 @@ struct CMD_GF_Private_Room_Info
 	{
 		Stream_VALUE(bPlayCoutIdex);
 		Stream_VALUE(bGameTypeIdex);
-		Stream_VALUE(bGameRuleIdex);
+		Stream_VALUE(bRoomType);
 		Stream_VALUE(bStartGame);
+		Stream_VALUE(bCurPeopleNum);
+		Stream_VALUE(bMaxPeopleNum);
+		Stream_VALUE(dwGameRuleIdex);
 		Stream_VALUE(dwPlayCout);
 		Stream_VALUE(dwRoomNum);
 		Stream_VALUE(dwCreateUserID);
 		Stream_VALUE(dwPlayTotal);
-		Stream_VALUE(cbRoomType);
 		Stream_VALUE(dwBaseScore);
 		Stream_VALUE(dwEnterMatchNum);
 		Stream_VALUE(dwOutMatchNum);

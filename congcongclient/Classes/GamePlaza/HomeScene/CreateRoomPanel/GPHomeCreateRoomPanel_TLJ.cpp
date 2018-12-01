@@ -90,7 +90,7 @@ void GPHomeCreateRoomPanel_TLJ::Button_Confirm(cocos2d::Ref*, WidgetUserInfo*)
 	createRoom.cbGameType = Type_Private;
 	createRoom.bPlayCoutIdex = 0;
 	createRoom.bGameTypeIdex = 4;
-	createRoom.bGameRuleIdex = m_GameRuleIndex;
+	createRoom.dwGameRuleIdex = m_GameRuleIndex;
 	createRoom.bAllowedStrangerJoin = m_bAllowedStrangerJoin;
 	createRoom.dwEnterMatchNum = utility::parseInt(WidgetFun::getText(this,"TLJ_CreateRoom_EnterNum_Txt"));
 	createRoom.dwBaseScore = utility::parseInt(WidgetFun::getText(this,"TLJ_CreateRoom_GameScore_Txt"));

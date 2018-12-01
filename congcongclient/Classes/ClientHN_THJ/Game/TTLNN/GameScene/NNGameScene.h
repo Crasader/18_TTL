@@ -87,6 +87,7 @@ public:
 	void Button_Setting(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_TalkBegin(cocos2d::Ref*, WidgetUserInfo*);
 	void TalkEnd();
+	void TalkInterval();
 	void Button_TalkEnd(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_DropBanker(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_ButtonMessage(cocos2d::Ref*, WidgetUserInfo*);
@@ -150,4 +151,7 @@ private:
 	WORD m_BankerRatio;
 	NNPlayer* m_Players[MAX_PLAYER];
 	std::vector<int> m_SelectCards;
+	static dword _dwSpeak_time_begin;
+	static dword _dwSpeak_time_end;
+	static dword _dwSpeak_time_interval;
 };

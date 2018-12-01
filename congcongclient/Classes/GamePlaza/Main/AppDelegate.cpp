@@ -94,7 +94,7 @@ void AppDelegate::applicationWillEnterForeground()
 	SoundFun::Instance().SetSoundBackground(sound_volume);
 
 	dword dwRoomNO = GameManagerBase::getJoinWithRoomNO();
-	if (dwRoomNO != 0) {
+	if (GameManagerBase::getConecetedServer() && dwRoomNO != 0) {
 		CCLOG("applicationWillEnterForeground dwRoomNo=%d", dwRoomNO);
 		GPGameLink::Instance().JoinRoom(utility::toString(dwRoomNO));
 	}

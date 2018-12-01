@@ -28,7 +28,7 @@ public:
 	//»ìÂÒÆË¿Ë
 	static void RandCardData(BYTE cbCardData[], BYTE cbMaxCount);
 
-	static SG::SGCardType_Result checkSGType(BYTE cbCardData[],DWORD bGameRuleIdex);
+	static SG::SGCardType_Result checkSGType(BYTE cbCardData[],DWORD dwGameRuleIdex);
 
 	static bool isCardValid(BYTE cardData);
 

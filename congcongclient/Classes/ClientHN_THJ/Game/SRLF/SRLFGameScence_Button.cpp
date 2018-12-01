@@ -72,7 +72,7 @@ void SRLFGameScence::initButton()
 void SRLFGameScence::SRLFButton_Ready(cocos2d::Ref*,WidgetUserInfo* pUserInfo)
 {
 	sendReady();
-	for (int i=0;i<DF::shared()->GetGamePlayer();i++)
+	for (size_t i=0;i<DF::shared()->GetGamePlayer();i++)
 	{
 		getPlayerByChairID(i)->defaultState();
 	}
@@ -461,34 +461,34 @@ void SRLFGameScence::SRLFButton_friendPrivateInfo(cocos2d::Ref*,WidgetUserInfo*)
 	std::string resultRule ="";
 	int renShu = 0;
 	int cardShu = 0;
-	if(FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_3_REN))) //人数
+	if(FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_3_REN))) //人数
 		renShu = 3;
-	if(FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_2_REN))) //人数
+	if(FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_2_REN))) //人数
 		renShu = 2;
-	if(FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_14CARDS))) //14张牌
+	if(FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_14CARDS))) //14张牌
 		cardShu = 13;
-	if(FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_8CARDS))) //8张牌
+	if(FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_8CARDS))) //8张牌
 		cardShu = 7;
 	std::string ruleName="";
-	if(FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_XZDD))) //
+	if(FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_XZDD))) //
 		ruleName =" 血战";
-	else if(FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_TDH))) //
+	else if(FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_TDH))) //
 		ruleName =" 推倒";
 	resultRule += utility::toString(renShu,"人",cardShu,"张",ruleName);
-	if (FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_ZIMO_JIADI))) 
+	if (FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_ZIMO_JIADI))) 
 		resultRule +="自摸底";
-	else if(FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_ZIMO_JIAFAN))) 
+	else if(FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_ZIMO_JIAFAN))) 
 		resultRule +="自摸番";
 	std::string gangHuaName ="";
-	if(FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_DGH_DP))) //
+	if(FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_DGH_DP))) //
 		resultRule +="点杠炮";
-	else if(FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_DGH_ZM))) //
+	else if(FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_DGH_ZM))) //
 		resultRule +="点杠花";
-	if(FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_JP))) //
+	if(FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_JP))) //
 		resultRule +="加飘";
-	if (FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_GFXY))) 
+	if (FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_GFXY))) 
 		resultRule +="下雨";
-	if (FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_HAIDI_LAO)))
+	if (FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_HAIDI_LAO)))
 		resultRule +="海底";
 	resultRule += utility::toString("底注：",m_kPrivateRoomInfo.dwBaseScore);
 	std::string kCCWeiXinSharDes = utility::getScriptReplaceValue("CCWeiXinSharDes",

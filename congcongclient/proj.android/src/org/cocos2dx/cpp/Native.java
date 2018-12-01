@@ -25,7 +25,9 @@ public class Native extends Cocos2dxHelper
 	public static native void onWxShareResult(String Error);
 
 	public static native String getAppID();
-	
+
+	private static final String TAG = "Native";
+
 	public static void LoginWX(String APP_ID, String AppSecret)
 	{
 		Intent intent = new Intent(Cocos2dxActivity.getContext(), WXEntryActivity.class);
@@ -94,7 +96,6 @@ public class Native extends Cocos2dxHelper
 			@Override
 			public void run()
 			{
-
 				Log.d("versionUpdate", "3333");
 				QYFun.getInstance().showVersionUpdate(url, info, size, isUpdate);
 			}
@@ -133,9 +134,17 @@ public class Native extends Cocos2dxHelper
 
 	public static String stopSoundRecord()
 	{
-		recorder.stop();//
-		recorder.release(); //
-		recorder = null;
+		try {
+			recorder.setOnErrorListener(null);  
+			recorder.setOnInfoListener(null);    
+			recorder.setPreviewDisplay(null);  
+			recorder.stop();
+			recorder.release();
+			recorder = null;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return "";
+		}
 		return filePath;
 	}
 }

@@ -345,7 +345,7 @@ void GPHomeCreateRoomPanel_NN::Button_Confirm(cocos2d::Ref*, WidgetUserInfo*)
 	createRoom.cbGameType = Type_Private;
 	createRoom.bPlayCoutIdex = _nRoundIndex;
 	createRoom.bGameTypeIdex = _nGameType;
-	createRoom.bGameRuleIdex = _nGameRuleIndex;
+	createRoom.dwGameRuleIdex = _nGameRuleIndex;
 	createRoom.bAllowedStrangerJoin = _bAllowedStrangerJoin;
 	createRoom.dwEnterMatchNum = _dwEnterMatchNum; // utility::parseInt(WidgetFun::getText(this, "NN_CreateRoom_EnterNum_Txt"));
 	createRoom.dwBaseScore = _dwBaseScore;//utility::parseInt(WidgetFun::getText(this,"NN_CreateRoom_GameScore_Txt"));

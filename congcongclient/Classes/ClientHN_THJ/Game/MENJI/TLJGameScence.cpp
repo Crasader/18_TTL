@@ -995,20 +995,20 @@ void TLJGameScence::updateRoomInfo()
 	WidgetFun::setText(WidgetFun::getChildWidget(this,"RoomId"),utility::a_u8(kRoomId));
 	changeBettingBtnImagic(m_wCurrentTimes);
 
-	//if(m_RoomInfo.bGameRuleIdex))
-	if(FvMask::HasAny(m_RoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_TLJ::GAME_RULE_COMMON))){
+	//if(m_RoomInfo.dwGameRuleIdex))
+	if(FvMask::HasAny(m_RoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_TLJ::GAME_RULE_COMMON))){
 		WidgetFun::setVisible(this,"Rule1",true);
 	}else{
 		WidgetFun::setVisible(this,"Rule1",false);
 	}
 
-	if(FvMask::HasAny(m_RoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_TLJ::GAME_RULE_PASSION))){
+	if(FvMask::HasAny(m_RoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_TLJ::GAME_RULE_PASSION))){
 		WidgetFun::setVisible(this,"Rule2",true);
 	}else{
 		WidgetFun::setVisible(this,"Rule2",false);
 	}
 
-	if(FvMask::HasAny(m_RoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_TLJ::GAME_RULE_BRAISED))){
+	if(FvMask::HasAny(m_RoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_TLJ::GAME_RULE_BRAISED))){
 		WidgetFun::setVisible(this,"Rule3",true);
 	}else{
 		WidgetFun::setVisible(this,"Rule3",false);
@@ -1030,13 +1030,13 @@ void TLJGameScence::updateRoomInfo()
 std::string TLJGameScence::getRoomInfoText(bool forShare /*= false*/)
 {
 	std::string resultStr("");
-	if(FvMask::HasAny(m_RoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_TLJ::GAME_RULE_COMMON))){
+	if(FvMask::HasAny(m_RoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_TLJ::GAME_RULE_COMMON))){
 		resultStr+="普通模式";
 	}
-	if(FvMask::HasAny(m_RoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_TLJ::GAME_RULE_PASSION))){
+	if(FvMask::HasAny(m_RoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_TLJ::GAME_RULE_PASSION))){
 		resultStr+="激情模式";
 	}
-	if(FvMask::HasAny(m_RoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_TLJ::GAME_RULE_BRAISED))){
+	if(FvMask::HasAny(m_RoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_TLJ::GAME_RULE_BRAISED))){
 		resultStr+="必焖三圈";
 	}
 	resultStr+=utility::toString("底注:",m_RoomInfo.dwBaseScore);

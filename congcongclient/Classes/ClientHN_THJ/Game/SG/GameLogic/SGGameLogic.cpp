@@ -37,7 +37,7 @@ void SGGameLogic::RandCardData(BYTE cbCardData[], BYTE cbMaxCount)
 	}
 }
 
-SG::SGCardType_Result SGGameLogic::checkSGType(BYTE cbCardData[],DWORD bGameRuleIdex) {
+SG::SGCardType_Result SGGameLogic::checkSGType(BYTE cbCardData[],DWORD dwGameRuleIdex) {
 	for (int index = 0; index < MAX_HAND_CARD; ++index) {
 		ASSERT(isCardValid(cbCardData[index]));
 	}

@@ -196,17 +196,17 @@ std::string NNRoomInfo::getRoomInfoText(bool forShare /*= false*/)
     }
 
 	text.append(utility::a_u8("µ×·Ö:"));
-	if (FvMask::HasAny(m_RoomInfo.bGameRuleIdex, _MASK_(TTLNN::NNGameRule_Score_0))){
+	if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_Score_0))){
 		text.append("1");
 		if (m_RoomInfo.bGameTypeIdex != TTLNN::NNGameType_AllCompare) {
 			text.append("/2");
 		}
-	} else if (FvMask::HasAny(m_RoomInfo.bGameRuleIdex, _MASK_(TTLNN::NNGameRule_Score_1))){
+	} else if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_Score_1))){
 		text.append("2");
 		if (m_RoomInfo.bGameTypeIdex != TTLNN::NNGameType_AllCompare) {
 			text.append("/4");
 		}
-	} else if (FvMask::HasAny(m_RoomInfo.bGameRuleIdex, _MASK_(TTLNN::NNGameRule_Score_2))){
+	} else if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_Score_2))){
 		text.append("4");
 		if (m_RoomInfo.bGameTypeIdex != TTLNN::NNGameType_AllCompare) {
 			text.append("/8");
@@ -225,15 +225,34 @@ std::string NNRoomInfo::getRoomInfoText(bool forShare /*= false*/)
 	text.append(utility::toString(game_info.bPlayCout[m_RoomInfo.bPlayCoutIdex]));
 	text.append(split);
 
+	//Å£Å£4±¶
+	if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_Ratio_0))) {
+		text.append(utility::a_u8("Å£Å£4±¶"));
+	} else {
+		text.append(utility::a_u8("Å£Å£3±¶"));
+	}
+	text.append(split);
+
+	if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZRatio_0))) {
+		text.append(utility::a_u8(utility::toString(TuiZhuBeiShu_0, "±¶ÍÆ×¢")));
+	} else if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZRatio_1))) {
+		text.append(utility::a_u8(utility::toString(TuiZhuBeiShu_1, "±¶ÍÆ×¢")));
+	} else if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZRatio_2))) {
+		text.append(utility::a_u8(utility::toString(TuiZhuBeiShu_2, "±¶ÍÆ×¢")));
+	} else if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZRatio_3))) {
+		text.append(utility::a_u8(utility::toString(TuiZhuBeiShu_3, "±¶ÍÆ×¢")));
+	}
+	text.append(split);
+
 	if (m_RoomInfo.bGameTypeIdex == TTLNN::NNGameType_HostBanker) {
 		text.append(utility::a_u8("×¯¼Ò·ÖÊý:"));
-		if (FvMask::HasAny(m_RoomInfo.bGameRuleIdex, _MASK_(TTLNN::NNGameRule_BankerScore_0))){
+		if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_BankerScore_0))){
 			text.append(utility::a_u8("²»ÏÞ"));
-		} else if (FvMask::HasAny(m_RoomInfo.bGameRuleIdex, _MASK_(TTLNN::NNGameRule_BankerScore_1))){
+		} else if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_BankerScore_1))){
 			text.append(utility::toString(100 + m_RoomInfo.kWinLoseScore.at(0), "/100"));
-		} else if (FvMask::HasAny(m_RoomInfo.bGameRuleIdex, _MASK_(TTLNN::NNGameRule_BankerScore_2))){
+		} else if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_BankerScore_2))){
 			text.append(utility::toString(150 + m_RoomInfo.kWinLoseScore.at(0), "/150"));
-		} else if (FvMask::HasAny(m_RoomInfo.bGameRuleIdex, _MASK_(TTLNN::NNGameRule_BankerScore_3))){
+		} else if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_BankerScore_3))){
 			text.append(utility::toString(200 + m_RoomInfo.kWinLoseScore.at(0), "/200"));
 		}	
 	}

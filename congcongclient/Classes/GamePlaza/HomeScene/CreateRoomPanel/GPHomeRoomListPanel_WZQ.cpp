@@ -205,7 +205,7 @@ void GPHomeRoomListPanel_WZQ::Button_CreateRoom(cocos2d::Ref*, WidgetUserInfo*)
 	CMD_GR_Create_Private kSendNet;
 	zeromemory(&kSendNet, sizeof(kSendNet));
 	kSendNet.cbGameType = Type_Private;
-	kSendNet.bGameRuleIdex = 0;
+	kSendNet.dwGameRuleIdex = 0;
 	kSendNet.bAllowedStrangerJoin =true;//是否允许陌生人加入
 	kSendNet.bPassionationMode = false;//激情模式开关
 	kSendNet.bBloodFightMode =false;//血战到底开关

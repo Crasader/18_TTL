@@ -207,10 +207,10 @@ void GPHomeScene::Button_Invitation(cocos2d::Ref*, WidgetUserInfo* pUserInfo)
 {
 	int iRecordChildID = utility::parseInt(WidgetFun::getUserInfoValue(pUserInfo, "RoomID"));
 	//dword roomNO = NNRoomInfo::Instance().getRoomInfo().dwRoomNum;
-	std::string strUrl = utility::a_u8(utility::toString("http://114.115.164.158:8080/EvokeApp.html?room_id=", iRecordChildID));
+	std::string strUrl = utility::a_u8(utility::toString("http://114.115.164.158:8080/evokeapp.html?refresh=0&room_id=", iRecordChildID));
 	std::string strTitle = ScriptData<std::string>("CCWeiXinSharTitle").Value();
 	std::string stDes = utility::getScriptReplaceValue("CCWeiXinSharDes",
-		ScriptData<std::string>("CCWeiXinShare_NN_Name").Value(),
+		ScriptData<std::string>("CCWeiXinShare_Server_Name").Value(),
 		(int)iRecordChildID,
 		NNRoomInfo::Instance().getRoomInfoView(true));
 

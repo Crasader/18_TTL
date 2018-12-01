@@ -662,7 +662,7 @@ void SGGameScence::sendBet(WORD bet)
 void SGGameScence::sendShowCard()
 {
 	SGPlayerCard_Entity cards = SGGameScence::Instance().getLocalPlayer()->getPlayerCards();
-	SG::SGCardType_Result result = SGGameLogic::checkSGType(cards.cards, SGRoomInfo::Instance().getRoomInfo().bGameRuleIdex);
+	SG::SGCardType_Result result = SGGameLogic::checkSGType(cards.cards, SGRoomInfo::Instance().getRoomInfo().dwGameRuleIdex);
 	SG::CMD_C_UserShowCard showCard;
 	zeromemory(&showCard, sizeof(showCard));
 	showCard.result = result;

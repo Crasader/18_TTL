@@ -58,6 +58,7 @@ void GPGameLink::OnSocketSubPrivateInfo(CMD_GR_Private_Info* pNetInfo)
         }
 	default:
 		{
+			GameManagerBase::setConectedServer(true);
 			dword dwRoomNO = GameManagerBase::getJoinWithRoomNO();
 			CCLOG("OnSocketSubPrivateInfo dwRoomNo=%d", dwRoomNO);
 			if (dwRoomNO != 0) {
@@ -83,7 +84,7 @@ void GPGameLink::OnSocketSubPrivateRoomInfo(CMD_GF_Private_Room_Info* pNetInfo)
 void GPGameLink::OnSocketSubPrivateEnd(CMD_GF_Private_End_Info* pNetInfo)
 {
 	UserInfo::Instance().setPrivateInGameServerID(-1);
-	//TODO:显示结算面板
+	//DONE:显示结算面板
 	GPHomeScene::Instance().showGameCalculate(pNetInfo);
 }
 

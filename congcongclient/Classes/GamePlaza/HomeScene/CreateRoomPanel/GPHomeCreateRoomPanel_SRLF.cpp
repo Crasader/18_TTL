@@ -401,14 +401,14 @@ void GPHomeCreateRoomPanel_SRLF::Button_Confirm(cocos2d::Ref*, WidgetUserInfo*)
 	CMD_GR_Create_Private kSendNet;
 	zeromemory(&kSendNet, sizeof(kSendNet));
 	kSendNet.cbGameType = Type_Private;
-	kSendNet.bGameRuleIdex = 0;
-	FvMask::Add(kSendNet.bGameRuleIdex, m_GameRuleJoinMoShenRen );//允许陌生人加入	
-	FvMask::Add(kSendNet.bGameRuleIdex, m_GameRuleCardsNum );//牌张数	
-	FvMask::Add(kSendNet.bGameRuleIdex, m_GameRuleHuPaiWanFa );//胡牌	
-	FvMask::Add(kSendNet.bGameRuleIdex, m_GameRuleDianGangHua );//点杠花	
-	FvMask::Add(kSendNet.bGameRuleIdex, m_GameRuleFanShuWanFa );//番数目	
-	FvMask::Add(kSendNet.bGameRuleIdex, m_GameRulePlayerNum );//人数	
-	FvMask::Add(kSendNet.bGameRuleIdex, m_GameRuleFanMaxNum );//番数最大值
+	kSendNet.dwGameRuleIdex = 0;
+	FvMask::Add(kSendNet.dwGameRuleIdex, m_GameRuleJoinMoShenRen );//允许陌生人加入	
+	FvMask::Add(kSendNet.dwGameRuleIdex, m_GameRuleCardsNum );//牌张数	
+	FvMask::Add(kSendNet.dwGameRuleIdex, m_GameRuleHuPaiWanFa );//胡牌	
+	FvMask::Add(kSendNet.dwGameRuleIdex, m_GameRuleDianGangHua );//点杠花	
+	FvMask::Add(kSendNet.dwGameRuleIdex, m_GameRuleFanShuWanFa );//番数目	
+	FvMask::Add(kSendNet.dwGameRuleIdex, m_GameRulePlayerNum );//人数	
+	FvMask::Add(kSendNet.dwGameRuleIdex, m_GameRuleFanMaxNum );//番数最大值
 	kSendNet.bAllowedStrangerJoin = FvMask::HasAny(m_GameRuleJoinMoShenRen,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_YXMSRJOIN));//是否允许陌生人加入
 	kSendNet.bPassionationMode = false;//激情模式开关
 	kSendNet.bBloodFightMode =FvMask::HasAny(m_GameRuleHuPaiWanFa,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_XZDD));//血战到底开关

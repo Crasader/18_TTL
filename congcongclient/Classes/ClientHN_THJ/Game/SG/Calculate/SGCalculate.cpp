@@ -55,7 +55,7 @@ void SGCalculate::hide()
 void SGCalculate::update(CMD_GF_Private_End_Info* pInfo)
 {
 	int nodeIndex = 0;
-	for (int index = 0; index < SG_GAME_PLAYER; ++index) {
+	for (size_t index = 0; index < SG_GAME_PLAYER; ++index) {
 		SGPlayer* player = SGGameScence::Instance().getPlayerByChairID(index);
 		if (player->isValid()) {
 			auto playerNode = WidgetFun::getChildWidget(this, utility::toString("SGCalculate_", nodeIndex++));

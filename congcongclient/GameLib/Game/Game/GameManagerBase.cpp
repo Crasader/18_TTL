@@ -22,6 +22,7 @@ GameManagerBase* GameManagerBase::g_GameMan = nullptr;
 #define WAITING_FLUSH_TABLE	1000.0f
 
 dword GameManagerBase::_room_number = 0;
+bool GameManagerBase::_is_conected_server = false;
 
 GameManagerBase::GameManagerBase()
 	: mCServerItem(NULL)
@@ -627,11 +628,11 @@ void GameManagerBase::onWeiXinResult(int result)
 			{
 				case 0:
 					//public static final int ERR_OK = 0;//微信分享成功
-					NoticeMsg::Instance().ShowTopMsg(utility::getScriptString("CCWeiXinShare_OK"));
+					NoticeMsg::Instance().ShowTopMsg(ScriptData<std::string>("CCWeiXinShare_OK").Value());
 					break;
 				case -2:
 					//public static final int ERR_USER_CANCEL = -2;
-					NoticeMsg::Instance().ShowTopMsg(utility::getScriptString("CCWeiXinShare_Cancel"));
+					NoticeMsg::Instance().ShowTopMsg(ScriptData<std::string>("CCWeiXinShare_Cancel").Value());
 					break;
 					//public static final int ERR_COMM = -1;
 					//public static final int ERR_SENT_FAILED = -3;

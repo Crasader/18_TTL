@@ -49,45 +49,45 @@ void SRLFGameScence::setPrivateInfo(CMD_GF_Private_Room_Info* pNetInfo)//ÉèÖÃ·¿¼
 	std::string roomRule ="";
 	int renShu = 0;
 	int cardShu = 0;
-	if(FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_3_REN))) //ÈËÊý
+	if(FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_3_REN))) //ÈËÊý
 		renShu = 3;
-	if(FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_2_REN))) //ÈËÊý
+	if(FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_2_REN))) //ÈËÊý
 		renShu = 2;
-	if(FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_14CARDS))) //14ÕÅÅÆ
+	if(FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_14CARDS))) //14ÕÅÅÆ
 		cardShu = 13;
-	if(FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_8CARDS))) //8ÕÅÅÆ
+	if(FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_8CARDS))) //8ÕÅÅÆ
 		cardShu = 7;
 	std::string ruleName ="";
-	if(FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_XZDD))) //
+	if(FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_XZDD))) //
 		ruleName =" ÑªÕ½";
-	else if(FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_TDH))) //
+	else if(FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_TDH))) //
 		ruleName =" ÍÆµ¹";
 
 	std::string ziMoName ="";
-	if (FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_ZIMO_JIADI))) 
+	if (FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_ZIMO_JIADI))) 
 		ziMoName ="×ÔÃþµ×";
-	else if(FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_ZIMO_JIAFAN))) 
+	else if(FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_ZIMO_JIAFAN))) 
 		ziMoName ="×ÔÃþ·¬";
 	
 	WidgetFun::setText(this,"RoomNum",utility::a_u8(utility::toString(renShu,"ÈË",cardShu,"ÕÅ",ruleName," ",ziMoName)));
 	WidgetFun::setVisible(this,"RoomNum",true);
 	
 	std::string gangHuaName ="";
-	if(FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_DGH_DP))) //
+	if(FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_DGH_DP))) //
 		gangHuaName ="µã¸ÜÅÚ";
-	else if(FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_DGH_ZM))) //
+	else if(FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_DGH_ZM))) //
 		gangHuaName ="µã¸Ü»¨";
 
 	std::string jiaPiaoName ="";
-	if(FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_JP))) //
+	if(FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_JP))) //
 		jiaPiaoName ="¼ÓÆ®";
 
 	std::string xiaYuName ="";
-	if (FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_GFXY))) 
+	if (FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_GFXY))) 
 		xiaYuName ="ÏÂÓê";
 
 	std::string haiDiName ="";
-	if (FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_HAIDI_LAO)))
+	if (FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_HAIDI_LAO)))
 		haiDiName ="º£µ×";
 
 	WidgetFun::setText(this,"RoomGameRule0",utility::a_u8(utility::toString(gangHuaName," ",jiaPiaoName," ",xiaYuName)));
@@ -96,11 +96,11 @@ void SRLFGameScence::setPrivateInfo(CMD_GF_Private_Room_Info* pNetInfo)//ÉèÖÃ·¿¼
 	WidgetFun::setVisible(this,"RoomGameRule1",true);
 	WidgetFun::setText(this,"RoomGameRule1",utility::a_u8(utility::toString("µ××¢£º",pNetInfo->dwBaseScore)));
 	
-	if(FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_3_REN))) //ÈËÊý
+	if(FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_3_REN))) //ÈËÊý
 		m_pPlayerCount = 3;
-	if(FvMask::HasAll(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_2_REN))) //ÈËÊý
+	if(FvMask::HasAll(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_2_REN))) //ÈËÊý
 		m_pPlayerCount = 2;
-	m_dwGameRuleIdex = m_kPrivateRoomInfo.bGameRuleIdex;
+	m_dwGameRuleIdex = m_kPrivateRoomInfo.dwGameRuleIdex;
 	//showPiao();
 }
 
@@ -258,11 +258,11 @@ void SRLFGameScence::SRLFButton_WeiXinFriend(cocos2d::Ref*,WidgetUserInfo*)//ÒªÇ
 {
 	std::string kHNWeiXinSharDes,kGameTypeStr;
 
-	if (FvMask::HasAny(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GAME_RULE_XZ)))
+	if (FvMask::HasAny(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GAME_RULE_XZ)))
 	{
 		kGameTypeStr = ScriptData<std::string>("SCMJRule2").Value();
 	}
-	if (FvMask::HasAny(m_kPrivateRoomInfo.bGameRuleIdex,_MASK_(GAME_RULE_XL)))
+	if (FvMask::HasAny(m_kPrivateRoomInfo.dwGameRuleIdex,_MASK_(GAME_RULE_XL)))
 	{
 		kGameTypeStr = ScriptData<std::string>("SCMJRule3").Value();
 	}
