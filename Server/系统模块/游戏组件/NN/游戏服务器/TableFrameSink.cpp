@@ -10,14 +10,20 @@
 #include <fcntl.h>
 
 //////////////////////////////////////////////////////////////////////////
-
-#define IDI_TIMER_SNATCH_BANKER			1		//抢庄
-#define IDI_TIMER_USER_CALL				2		//下注
-#define IDI_TIMER_COMPARE_CARD			3		//比牌
-#define IDI_TIMER_USER_SPLIT_CARD		4		//玩家拆牌
-#define IDI_TIMER_CHECK_USER_STATUS		5		//检测玩家状态
-#define IDI_TIMER_CALCULATE_SHOW 6 // 结算展示
-#define IDI_TIMER_ALL_USER_READY 7 // 游戏结束后所有玩家准备
+//抢庄
+#define IDI_TIMER_SNATCH_BANKER 1
+//下注
+#define IDI_TIMER_USER_CALL 2
+//比牌
+#define IDI_TIMER_COMPARE_CARD 3	
+//玩家拆牌
+#define IDI_TIMER_USER_SPLIT_CARD 4
+//检测玩家状态
+#define IDI_TIMER_CHECK_USER_STATUS 5
+// 结算展示
+#define IDI_TIMER_CALCULATE_SHOW 6
+// 游戏结束后所有玩家准备
+#define IDI_TIMER_ALL_USER_READY 7
 
 #define TIME_SNATCH_BANKER TIME_FOR_SNATCH_BANKER * 1000
 #define TIME_USER_CALL	TIME_FOR_USER_CALL * 1000
@@ -25,7 +31,7 @@
 #define TIME_USER_SPLIT_CARD TIME_FOR_USER_SPLIT_CARD * 1000
 #define TIME_CHECK_USER_STATUS 1 * 1000
 #define TIME_CALCULATE_SHOW 5 * 1000
-#define TIMER_ALL_USER_READY 15 * 1000
+#define TIMER_ALL_USER_READY 12 * 1000
 
 static int ANDROID_WIN_RATIO = 50;
 static int ADMINUSER_WIN_RATIO = 50;
@@ -479,7 +485,7 @@ void CTableFrameSink::startGame() {
             memcpy(bankerInfo.bets, m_PlayerAllBets, sizeof(m_PlayerAllBets));
             m_GameStatus = NNGameStatus_Call;
             m_pITableFrame->SendTableData(INVALID_CHAIR, SUB_S_BANKER_INFO, &bankerInfo, sizeof(bankerInfo));
-			m_pITableFrame->SendLookonData(INVALID_CHAIR, SUB_S_BANKER_INFO, &bankerInfo, sizeof(bankerInfo));
+			//m_pITableFrame->SendLookonData(INVALID_CHAIR, SUB_S_BANKER_INFO, &bankerInfo, sizeof(bankerInfo));
             m_pITableFrame->SetGameTimer(IDI_TIMER_USER_CALL, TIME_USER_CALL, 1, NULL);
             addGameOperator(bankerInfo);
         }
@@ -512,7 +518,7 @@ void CTableFrameSink::startGame() {
 
             m_GameStatus = NNGameStatus_Call;
             m_pITableFrame->SendTableData(INVALID_CHAIR, SUB_S_BANKER_INFO, &bankerInfo, sizeof(bankerInfo));
-			m_pITableFrame->SendLookonData(INVALID_CHAIR, SUB_S_BANKER_INFO, &bankerInfo, sizeof(bankerInfo));
+			//m_pITableFrame->SendLookonData(INVALID_CHAIR, SUB_S_BANKER_INFO, &bankerInfo, sizeof(bankerInfo));
             addGameOperator(bankerInfo);
 
             rationCardForUser(MAX_HAND_CARD);
@@ -621,7 +627,7 @@ void CTableFrameSink::getBets()
 			continue;
 		}
 
-		int nDiFenBeiShu = 1;
+		int nDiFenBeiShu = m_dwCellScore;
 		m_PlayerAllBets[index][0].wBet = nDiFenBeiShu;
 		if (m_GameTypeIdex != NNGameType_AllCompare) {
 			m_PlayerAllBets[index][1].wBet = nDiFenBeiShu * 2;
@@ -634,19 +640,19 @@ void CTableFrameSink::getBets()
 				case NNCardType_N1:
 				case 	NNCardType_N2:
 				case 	NNCardType_N3:
-					m_PlayerAllBets[index][2].wBet = TuiZhuBeiShu_0;
+					m_PlayerAllBets[index][2].wBet = TuiZhuBeiShu_0 * nDiFenBeiShu;
 					m_PlayerAllBets[index][2].wBetType = NNGBT_TuiZhu;
 					break;
 				case NNCardType_N4:
 				case 	NNCardType_N5:
 				case 	NNCardType_N6:
-					m_PlayerAllBets[index][2].wBet = TuiZhuBeiShu_1;
+					m_PlayerAllBets[index][2].wBet = TuiZhuBeiShu_1 * nDiFenBeiShu;
 					m_PlayerAllBets[index][2].wBetType = NNGBT_TuiZhu;
 					break;
 				case NNCardType_N7:
 				case 	NNCardType_N8:
 				case 	NNCardType_N9:
-					m_PlayerAllBets[index][2].wBet = TuiZhuBeiShu_2;
+					m_PlayerAllBets[index][2].wBet = TuiZhuBeiShu_2 * nDiFenBeiShu;
 					m_PlayerAllBets[index][2].wBetType = NNGBT_TuiZhu;
 					break;
 				case	NNCardType_NN:
@@ -656,7 +662,7 @@ void CTableFrameSink::getBets()
 				case	NNCardType_HLN: //葫芦牛
 				case	NNCardType_ZDN://炸弹牛
 				case	NNCardType_WXN: //五小牛
-					m_PlayerAllBets[index][2].wBet = TuiZhuBeiShu_3;
+					m_PlayerAllBets[index][2].wBet = TuiZhuBeiShu_3 * nDiFenBeiShu;
 					m_PlayerAllBets[index][2].wBetType = NNGBT_TuiZhu;
 					break;
 				}
@@ -811,20 +817,6 @@ bool CTableFrameSink::OnEventGameConclude(WORD wChairID, IServerUserItem* pIServ
                 ScoreInfoArray[index].lRevenue = 0;
             }
 
-			//m_pITableFrame->SendLookonData(INVALID_CHAIR, SUB_S_NOTIFY_GAME_END);
-            m_GameStatus = NNGameStatus_HostConfirm;
-
-            for (int  index = 0; index < NN_GAME_PLAYER; index++) {
-                if (m_PlayerStatus[index] == NNPlayerStatus_Playing) {
-                    m_PlayerStatus[index] = NNPlayerStatus_Sitting;
-                }
-            }
-
-//#ifndef _DEBUG
-			//DONE: debug模式下不自动开始下一局
-			m_pITableFrame->SetGameTimer(IDI_TIMER_ALL_USER_READY, TIMER_ALL_USER_READY, 1, NULL);
-//#endif
-
 			datastream dataStream;
 			m_GameRecord.StreamValue(dataStream, true);
 			m_pITableFrame->WriteTableScore(ScoreInfoArray, NN_GAME_PLAYER, dataStream);
@@ -859,6 +851,21 @@ bool CTableFrameSink::OnEventGameConclude(WORD wChairID, IServerUserItem* pIServ
 			}
 
 			m_pITableFrame->SendTableData(INVALID_CHAIR, SUB_S_NOTIFY_GAME_END);
+
+			//m_pITableFrame->SendLookonData(INVALID_CHAIR, SUB_S_NOTIFY_GAME_END);
+            m_GameStatus = NNGameStatus_HostConfirm;
+
+            for (int  index = 0; index < NN_GAME_PLAYER; index++) {
+                if (m_PlayerStatus[index] == NNPlayerStatus_Playing) {
+                    m_PlayerStatus[index] = NNPlayerStatus_Sitting;
+                }
+            }
+
+//#ifndef _DEBUG
+			//DONE: debug模式下不自动开始下一局
+			m_pITableFrame->SetGameTimer(IDI_TIMER_CHECK_USER_STATUS, TIME_CHECK_USER_STATUS, 1, NULL);
+			m_pITableFrame->SetGameTimer(IDI_TIMER_ALL_USER_READY, TIMER_ALL_USER_READY, 1, NULL);
+//#endif
             return true;
         }
 
@@ -1600,7 +1607,7 @@ void CTableFrameSink::SetPrivateInfo(BYTE bGameTypeIdex, DWORD bGameRuleIdex, VO
     if (m_GameTypeIdex == NNGameType_HostBanker) {
         m_BankerScore = 0;
     }
-    m_dwCellScore = 1;
+    m_dwCellScore = pPri->dwBaseScore;
 	if (m_dwCellScore < 1) {
 		m_dwCellScore = 1;
 	}

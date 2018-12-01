@@ -1,6 +1,8 @@
 #ifndef CMD_SPARROW_HEAD_FILE
 #define CMD_SPARROW_HEAD_FILE
+
 #include <vector>
+
 //////////////////////////////////////////////////////////////////////////
 //公共宏定义
 #pragma pack(1)
