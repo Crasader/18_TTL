@@ -30,7 +30,7 @@ void CGPBeginnerMission::done()
 
 void CGPBeginnerMission::onEventTCPSocketLink()
 {
-	PLAZZ_PRINTF("CGPSignInMission::onEventTCPSocketLink\n");
+	CCLOG("CGPSignInMission::onEventTCPSocketLink\n");
 
 	//变量定义
 	CGlobalUserInfo * pGlobalUserInfo=CGlobalUserInfo::GetInstance();
@@ -65,17 +65,17 @@ void CGPBeginnerMission::onEventTCPSocketLink()
 
 void CGPBeginnerMission::onEventTCPSocketShut()
 {
-	PLAZZ_PRINTF("CGPBeginnerMission::onEventTCPSocketShut\n");
+	CCLOG("CGPBeginnerMission::onEventTCPSocketShut\n");
 }
 
 void CGPBeginnerMission::onEventTCPSocketError(int errorCode)
 {
-	PLAZZ_PRINTF("CGPBeginnerMission::onEventTCPSocketError code[%d]\n", errorCode);
+	CCLOG("CGPBeginnerMission::onEventTCPSocketError code[%d]\n", errorCode);
 }
 
 bool CGPBeginnerMission::onEventTCPSocketRead(int main, int sub, void* data, int size) 
 {
-	PLAZZ_PRINTF("CGPBeginnerMission::onEventTCPSocketRead main:%d sub:%d size:%d\n", main, sub, size);
+	CCLOG("CGPBeginnerMission::onEventTCPSocketRead main:%d sub:%d size:%d\n", main, sub, size);
 	if (main != MDM_GP_USER_SERVICE)
 	{
 		return false;
@@ -100,7 +100,7 @@ bool CGPBeginnerMission::onEventTCPSocketRead(int main, int sub, void* data, int
 
 bool CGPBeginnerMission::onSubQueryInfoResult(void* data, int size )
 {
-	PLAZZ_PRINTF("CGPBeginnerMission::onSubQueryInfoResult");
+	CCLOG("CGPBeginnerMission::onSubQueryInfoResult");
 	if (size != sizeof(CMD_GP_BeginnerInfo))
 	{
 		ASSERT(false);
@@ -117,7 +117,7 @@ bool CGPBeginnerMission::onSubQueryInfoResult(void* data, int size )
 
 bool CGPBeginnerMission::onSubDoneResult(void* data, int size)
 {
-	PLAZZ_PRINTF("CGPBeginnerMission::onSubDoneResult");
+	CCLOG("CGPBeginnerMission::onSubDoneResult");
 	CMD_GP_BeginnerResult* pNetInfo = (CMD_GP_BeginnerResult*)data;
 
 	CGlobalUserInfo * pGlobalUserInfo=CGlobalUserInfo::GetInstance();

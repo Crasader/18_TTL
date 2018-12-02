@@ -44,7 +44,10 @@ MCWebReq::MCWebReq()
 	 request->setRequestData(kData.c_str(),kData.size());
 	 request->setRequestType(cocos2d::network::HttpRequestEx::Type::POST);
 
-	 utility::log("web url:%s",request->getUrl());
+#ifdef _DEBUG
+	 CCLOG("web url:%s",request->getUrl());
+#endif // _DEBUG
+
 	 request->setResponseCallback(CC_CALLBACK_2(MCWebReq::resCallBack,this));
 	 cocos2d::network::HttpClientEx::getInstance()->sendImmediate(request);
 	 request->release();
@@ -134,7 +137,7 @@ MCWebReq::MCWebReq()
 	 for (unsigned int i = 0; i < buffer->size(); i++){
 		 str.push_back((*buffer)[i]);
 	 }
-	 utility::log("XQ5WebReq::getParseResData Sucess = %s",str.c_str());
+	 CCLOG("XQ5WebReq::getParseResData Sucess = %s",str.c_str());
 	 return str;
  }
 

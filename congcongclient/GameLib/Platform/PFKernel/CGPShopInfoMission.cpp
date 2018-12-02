@@ -34,7 +34,7 @@ void CGPShopInfoMission::CB_GetShopInfoList()
 
 void CGPShopInfoMission::Net_ShopInfoList( void* data, int dataSize )
 {
-	PLAZZ_PRINTF("CGPShopInfoMission::Net_ShopInfoList\n");
+	CCLOG("CGPShopInfoMission::Net_ShopInfoList\n");
 
 	datastream kStream(data,dataSize);
 	CMD_GP_BackShopInfo kNetInfo;

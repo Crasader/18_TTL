@@ -33,7 +33,7 @@ void CGPPasswordMission::modifyInsure(const char* szSrc, const char* szDst)
 
 void CGPPasswordMission::onEventTCPSocketLink()
 {
-	PLAZZ_PRINTF("CGPPasswordMission::onEventTCPSocketLink\n");
+	CCLOG("CGPPasswordMission::onEventTCPSocketLink\n");
 
 	
 	switch (mMissionType)
@@ -82,17 +82,17 @@ void CGPPasswordMission::onEventTCPSocketLink()
 
 void CGPPasswordMission::onEventTCPSocketShut()
 {
-	PLAZZ_PRINTF("CGPPasswordMission::onEventTCPSocketShut\n");
+	CCLOG("CGPPasswordMission::onEventTCPSocketShut\n");
 }
 
 void CGPPasswordMission::onEventTCPSocketError(int errorCode)
 {
-	PLAZZ_PRINTF("CGPPasswordMission::onEventTCPSocketError code[%d]\n", errorCode);
+	CCLOG("CGPPasswordMission::onEventTCPSocketError code[%d]\n", errorCode);
 }
 
 bool CGPPasswordMission::onEventTCPSocketRead(int main, int sub, void* data, int size) 
 {
-	PLAZZ_PRINTF("CGPPasswordMission::onEventTCPSocketRead main:%d sub:%d size:%d\n", main, sub, size);
+	CCLOG("CGPPasswordMission::onEventTCPSocketRead main:%d sub:%d size:%d\n", main, sub, size);
 	if (main != MDM_GP_USER_SERVICE)
 	{
 		return false;

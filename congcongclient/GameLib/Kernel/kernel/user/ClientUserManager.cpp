@@ -132,17 +132,16 @@ IClientUserItem * CPlazaUserManager::ActiveUserItem(const tagUserInfo & UserInfo
 {
 	//变量定义
 	CClientUserItem * pClientUserItem=(CClientUserItem*)SearchUserByUserID(UserInfo.dwUserID);
-	if (!pClientUserItem)
-	{
+	if (!pClientUserItem) {
 		pClientUserItem=new CClientUserItem;
-		if (pClientUserItem==0) return 0;
+		if (pClientUserItem==nullptr) 
+			return nullptr;
 
 		//插入用户
-		ASSERT(pClientUserItem!=0);
+		ASSERT(pClientUserItem);
 		m_UserItemActive.push_back(pClientUserItem);
 	}
-
-
+ 
 	pClientUserItem->m_szUserNote[0]=0;
 	pClientUserItem->m_cbCompanion=CP_NORMAL; 
 
@@ -151,13 +150,12 @@ IClientUserItem * CPlazaUserManager::ActiveUserItem(const tagUserInfo & UserInfo
 	memcpy(&pClientUserItem->m_CustomFaceInfo,&CustomFaceInfo,sizeof(CustomFaceInfo));
 
  	//更新通知
- 	ASSERT(m_pIUserManagerSink!=0);
- 	if (m_pIUserManagerSink!=0) m_pIUserManagerSink->OnUserItemAcitve(pClientUserItem);
-
+ 	ASSERT(m_pIUserManagerSink);
+ 	if (m_pIUserManagerSink!=nullptr)
+		m_pIUserManagerSink->OnUserItemAcitve(pClientUserItem);
 
 	return pClientUserItem;
 }
-
 
 //重置用户
 bool CPlazaUserManager::ResetUserItem()
@@ -205,7 +203,7 @@ CClientUserItem * CPlazaUserManager::getPool()
 //删除用户
 bool CPlazaUserManager::DeleteUserItem(IClientUserItem * pIClientUserItem)
 {
-	PLAZZ_PRINTF("CPlazaUserManager::DeleteUserItem\n");
+	CCLOG("CPlazaUserManager::DeleteUserItem\n");
 	//查找用户
 	CClientUserItem * pUserItemActive=0;
 	for (int i=0,l=(int)m_UserItemActive.size();i<l;i++)
@@ -237,7 +235,7 @@ bool CPlazaUserManager::DeleteUserItem(IClientUserItem * pIClientUserItem)
 
 bool CPlazaUserManager::DeleteAllUserItemButOne(IClientUserItem * pIClientUserItem)
 {
-	PLAZZ_PRINTF("CPlazaUserManager::DeleteAllUserItemButSelf \n");
+	CCLOG("CPlazaUserManager::DeleteAllUserItemButSelf \n");
 	//查找用户
 	CClientUserItem * pUserItemActive = 0;
 	for (int i = 0, l = (int)m_UserItemActive.size(); i < l; i++)
@@ -303,7 +301,7 @@ bool CPlazaUserManager::UpdateUserItemScore(IClientUserItem * pIClientUserItem, 
 //更新状态
 bool CPlazaUserManager::UpdateUserItemStatus(IClientUserItem * pIClientUserItem, const tagUserStatus * pUserStatus)
 {
-	PLAZZ_PRINTF("CPlazaUserManager::UpdateUserItemStatus\n");
+	CCLOG("CPlazaUserManager::UpdateUserItemStatus\n");
 	//效验参数
 	ASSERT(pUserStatus!=0);
 	ASSERT(pIClientUserItem!=0);

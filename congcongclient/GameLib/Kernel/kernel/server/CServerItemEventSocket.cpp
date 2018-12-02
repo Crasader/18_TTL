@@ -5,7 +5,7 @@
 //////////////////////////////////////////////////////////////////////////
 void CServerItem::onEventTCPSocketLink()
 {
-	PLAZZ_PRINTF("CServerItem::onEventTCPSocketLink\n");
+	CCLOG("CServerItem::onEventTCPSocketLink\n");
 
 	SetGameStatus(ServiceStatus_ServiceIng);
 	SendLogonPacket();
@@ -13,7 +13,7 @@ void CServerItem::onEventTCPSocketLink()
 
 void CServerItem::onEventTCPSocketShut()
 {
-	PLAZZ_PRINTF("CServerItem::onEventTCPSocketShut\n");
+	CCLOG("CServerItem::onEventTCPSocketShut\n");
 
 	if (mIServerItemSink)
 		mIServerItemSink->OnGFServerClose(("CServerItem::onEventTCPSocketShut()"));
@@ -23,7 +23,7 @@ void CServerItem::onEventTCPSocketShut()
 
 void CServerItem::onEventTCPSocketError(int errorCode)
 {
-	PLAZZ_PRINTF("CServerItem::onEventTCPSocketError err:%d\n");
+	CCLOG("CServerItem::onEventTCPSocketError err:%d\n");
 
 	if (mIServerItemSink)
 		mIServerItemSink->onEventTCPSocketError(errorCode);

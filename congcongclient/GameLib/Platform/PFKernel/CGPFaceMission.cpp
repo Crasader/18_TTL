@@ -31,7 +31,7 @@ void CGPFaceMission::setToCustomFace(uint32 custom[FACE_CX*FACE_CY])
 
 void CGPFaceMission::onEventTCPSocketLink()
 {
-	PLAZZ_PRINTF("CGPFaceMission::onEventTCPSocketLink\n");
+	CCLOG("CGPFaceMission::onEventTCPSocketLink\n");
 
 	
 	switch (mMissionType)
@@ -90,17 +90,17 @@ void CGPFaceMission::onEventTCPSocketLink()
 
 void CGPFaceMission::onEventTCPSocketShut()
 {
-	PLAZZ_PRINTF("CGPFaceMission::onEventTCPSocketShut\n");
+	CCLOG("CGPFaceMission::onEventTCPSocketShut\n");
 }
 
 void CGPFaceMission::onEventTCPSocketError(int errorCode)
 {
-	PLAZZ_PRINTF("CGPFaceMission::onEventTCPSocketError code[%d]\n", errorCode);
+	CCLOG("CGPFaceMission::onEventTCPSocketError code[%d]\n", errorCode);
 }
 
 bool CGPFaceMission::onEventTCPSocketRead(int main, int sub, void* data, int size) 
 {
-	PLAZZ_PRINTF("CGPFaceMission::onEventTCPSocketRead main:%d sub:%d size:%d\n", main, sub, size);
+	CCLOG("CGPFaceMission::onEventTCPSocketRead main:%d sub:%d size:%d\n", main, sub, size);
 	if (main != MDM_GP_USER_SERVICE)
 	{
 		return false;

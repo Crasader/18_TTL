@@ -33,7 +33,7 @@ void CGPMessageMission::getRankAward(int iRankNumber)
 
 void CGPMessageMission::onEventTCPSocketLink()
 {
-	PLAZZ_PRINTF("CGPMessageMission::onEventTCPSocketLink\n");
+	CCLOG("CGPMessageMission::onEventTCPSocketLink\n");
 
 	//变量定义
 	CGlobalUserInfo * pGlobalUserInfo=CGlobalUserInfo::GetInstance();
@@ -58,17 +58,17 @@ void CGPMessageMission::onEventTCPSocketLink()
 
 void CGPMessageMission::onEventTCPSocketShut()
 {
-	PLAZZ_PRINTF("CGPMessageMission::onEventTCPSocketShut\n");
+	CCLOG("CGPMessageMission::onEventTCPSocketShut\n");
 }
 
 void CGPMessageMission::onEventTCPSocketError(int errorCode)
 {
-	PLAZZ_PRINTF("CGPMessageMission::onEventTCPSocketError code[%d]\n", errorCode);
+	CCLOG("CGPMessageMission::onEventTCPSocketError code[%d]\n", errorCode);
 }
 
 bool CGPMessageMission::onEventTCPSocketRead(int main, int sub, void* data, int size) 
 {
-	PLAZZ_PRINTF("CGPMessageMission::onEventTCPSocketRead main:%d sub:%d size:%d\n", main, sub, size);
+	CCLOG("CGPMessageMission::onEventTCPSocketRead main:%d sub:%d size:%d\n", main, sub, size);
 	if (main != MDM_GP_USER_SERVICE)
 	{
 		return false;

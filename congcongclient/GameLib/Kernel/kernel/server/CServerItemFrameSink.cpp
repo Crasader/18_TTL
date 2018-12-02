@@ -10,7 +10,7 @@ IRoomFrameSink* IRoomFrameSink::getInterface()
 //游戏已准备好
 void CServerItem::OnGFGameReady()
 {
-	PLAZZ_PRINTF("CServerItem::OnGFGameReady\n");
+	CCLOG("CServerItem::OnGFGameReady\n");
 	//变量定义
 	word wTableID=m_pMeUserItem->GetTableID();
 	word wChairID=m_pMeUserItem->GetChairID();
@@ -40,7 +40,7 @@ void CServerItem::OnGFGameReady()
 //游戏关闭
 void CServerItem::OnGFGameClose(int iExitCode)
 {
-	PLAZZ_PRINTF("flow->OnGFGameClose %d\n", iExitCode);
+	CCLOG("flow->OnGFGameClose %d\n", iExitCode);
 
 	restSeverState();
 
@@ -53,7 +53,7 @@ void CServerItem::OnGFGameClose(int iExitCode)
 
 void CServerItem::OnGFRoomClose(int iExitCode)
 {
-	PLAZZ_PRINTF("flow->OnGFRoomClose %d\n", iExitCode);
+	CCLOG("flow->OnGFRoomClose %d\n", iExitCode);
 
 	if (mIClientKernelSink){
 		mIClientKernelSink->CloseRoomClient();

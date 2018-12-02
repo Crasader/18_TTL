@@ -41,7 +41,7 @@ void CCallMission::stop()
 }
 void CCallMission::onEventTCPSocketLink()
 {
-	utility::log(utility::toString(m_kClassName,":onEventTCPSocketLink").c_str());
+	CCLOG("%s onEventTCPSocketLink self", m_kClassName.c_str());
 
 	if (m_kLinkCallFun.size() == 0)
 	{
@@ -54,7 +54,7 @@ void CCallMission::onEventTCPSocketLink()
 }
 void CCallMission::onEventTCPSocketShut()
 {
-	utility::log(utility::toString(m_kClassName,":onEventTCPSocketShut").c_str());
+	CCLOG("%s onEventTCPSocketShut self", m_kClassName.c_str());
 
 	if (m_kLinkCallFun.size())
 	{
@@ -63,7 +63,7 @@ void CCallMission::onEventTCPSocketShut()
 }
 void CCallMission::onEventTCPSocketError(int errorCode)
 {
-	utility::log(utility::toString(m_kClassName,":onEventTCPSocketShut").c_str());
+	utility::log(utility::toString(m_kClassName,":onEventTCPSocketShut errorCode=", errorCode).c_str());
 
 	if (m_kLinkCallFun.size())
 	{
@@ -72,7 +72,7 @@ void CCallMission::onEventTCPSocketError(int errorCode)
 }
 bool CCallMission::onEventTCPSocketRead(int main, int sub, void* data, int dataSize)
 {
-	utility::log(utility::toString(m_kClassName,":onEventTCPSocketRead").c_str());
+	utility::log(utility::toString(m_kClassName,":onEventTCPSocketRead main =", main, ", sub=", sub).c_str());
 
 	for (int i = 0;i<(int)m_kNetCallFun.size();i++)
 	{

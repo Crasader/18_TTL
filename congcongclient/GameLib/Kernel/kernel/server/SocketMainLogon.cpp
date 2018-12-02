@@ -21,7 +21,7 @@ bool CServerItem::OnSocketMainLogon(int sub, void* data, int dataSize)
 //登录成功
 bool CServerItem::OnSocketSubLogonSuccess(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CServerItem::OnSocketSubLogonSuccess\n"));
+	CCLOG(("CServerItem::OnSocketSubLogonSuccess\n"));
 
 	mIsQuickSitDown = false;
 
@@ -37,7 +37,7 @@ bool CServerItem::OnSocketSubLogonSuccess(void* data, int dataSize)
 //登录失败
 bool CServerItem::OnSocketSubLogonFailure(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CServerItem::OnSocketSubLogonFailure\n"));
+	CCLOG(("CServerItem::OnSocketSubLogonFailure\n"));
 	CMD_GR_LogonError* pGameServer = (CMD_GR_LogonError*)data;
 	if (mIStringMessageSink)
 	{
@@ -52,7 +52,7 @@ bool CServerItem::OnSocketSubLogonFailure(void* data, int dataSize)
 //登录完成
 bool CServerItem::OnSocketSubLogonFinish(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CServerItem::OnSocketSubLogonFinish\n"));
+	CCLOG(("CServerItem::OnSocketSubLogonFinish\n"));
 
 	//设置状态
 	SetServiceStatus(ServiceStatus_ServiceIng);
@@ -72,7 +72,7 @@ bool CServerItem::OnSocketSubLogonFinish(void* data, int dataSize)
 //更新提示
 bool CServerItem::OnSocketSubUpdateNotify(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CServerItem::OnSocketSubUpdateNotify\n"));
+	CCLOG(("CServerItem::OnSocketSubUpdateNotify\n"));
 	CMD_GR_UpdateNotify* pNetInfo = (CMD_GR_UpdateNotify*)data;
 	
 	IntermitConnect(true);

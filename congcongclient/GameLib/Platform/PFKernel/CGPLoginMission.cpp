@@ -106,7 +106,7 @@ bool CGPLoginMission::sendLoginVisitor(const CMD_GP_VisitorLogon& VisitorAccount
 //发送登陆信息
 bool CGPLoginMission::sendLoginAccount(const CMD_GP_LogonAccounts& LoginAccount)
 {
-	PLAZZ_PRINTF(("CGPLoginMission::sendLoginAccount\n"));
+	CCLOG(("CGPLoginMission::sendLoginAccount\n"));
 	//保存密码
 	CGlobalUserInfo * pGlobalUserInfo=CGlobalUserInfo::GetInstance();
 	tagGlobalUserData * pGlobalUserData=pGlobalUserInfo->GetGlobalUserData();
@@ -126,7 +126,7 @@ bool CGPLoginMission::sendLoginGameID(const CMD_GP_LogonByUserID& LoginGameID)
 //发送注册信息
 bool CGPLoginMission::sendRegisterPacket(const CMD_GP_RegisterAccounts& RegisterAccount)
 {
-	PLAZZ_PRINTF(("CGPLoginMission::sendRegisterPacket\n"));
+	CCLOG(("CGPLoginMission::sendRegisterPacket\n"));
 
 	CGlobalUserInfo * pGlobalUserInfo=CGlobalUserInfo::GetInstance();
 	tagGlobalUserData * pGlobalUserData=pGlobalUserInfo->GetGlobalUserData();
@@ -153,7 +153,7 @@ void CGPLoginMission::sendUpdateServerInfo()
 
 void CGPLoginMission::onEventTCPSocketLink()
 {
-	PLAZZ_PRINTF(("CGPLoginMission::onEventTCPSocketLink\n"));
+	CCLOG(("CGPLoginMission::onEventTCPSocketLink\n"));
 
 	switch (mMissionType)
 	{
@@ -185,19 +185,19 @@ void CGPLoginMission::onEventTCPSocketLink()
 
 void CGPLoginMission::onEventTCPSocketShut()
 {
-	PLAZZ_PRINTF(("CGPLoginMission::onEventTCPSocketShut\n"));
+	CCLOG(("CGPLoginMission::onEventTCPSocketShut\n"));
 }
 
 void CGPLoginMission::onEventTCPSocketError(int errorCode)
 {
-	PLAZZ_PRINTF(("CGPLoginMission::onEventTCPSocketError code[%d]\n"), errorCode);
+	CCLOG(("CGPLoginMission::onEventTCPSocketError code[%d]\n"), errorCode);
 	if (mIGPLoginMissionSink)
 		mIGPLoginMissionSink->onGPError(errorCode);
 }
 
 bool CGPLoginMission::onEventTCPSocketRead(int main, int sub, void* data, int size) 
 {
-	PLAZZ_PRINTF(("onEventTCPSocketRead main:%d sub:%d size:%d\n"), main, sub, size);
+	CCLOG(("onEventTCPSocketRead main:%d sub:%d size:%d\n"), main, sub, size);
 	switch (main)
 	{
 	//case SUB_MB_LOGON_GAMEID:	return onSocketMainLogon(sub, data, size);
@@ -237,7 +237,7 @@ bool CGPLoginMission::onSocketMainLogon(int sub, void* data, int size)
 //登录成功
 bool CGPLoginMission::onSocketSubLogonSuccess(void* data, int size)
 {
-	PLAZZ_PRINTF(("CGPLoginMission::onSocketSubLogonSuccess\n"));
+	CCLOG(("CGPLoginMission::onSocketSubLogonSuccess\n"));
 
 	//登陆成功
 	CMD_GP_LogonSuccess* pData = (CMD_GP_LogonSuccess*)data;
@@ -269,7 +269,7 @@ bool CGPLoginMission::onSocketSubLogonSuccess(void* data, int size)
 //登录失败
 bool CGPLoginMission::onSocketSubLogonFailure(void* data, int size)
 {
-	PLAZZ_PRINTF(("CGPLoginMission::onSocketSubLogonFailure\n"));
+	CCLOG(("CGPLoginMission::onSocketSubLogonFailure\n"));
 
 	DBR_GP_LogonError* pNetInfo =(DBR_GP_LogonError*)data;
 	//显示消息
@@ -282,7 +282,7 @@ bool CGPLoginMission::onSocketSubLogonFailure(void* data, int size)
 //升级提示
 bool CGPLoginMission::onSocketSubUpdateNotify(void* data, int size)
 {
-	PLAZZ_PRINTF(("CGPLoginMission::onSocketSubUpdateNotify\n"));
+	CCLOG(("CGPLoginMission::onSocketSubUpdateNotify\n"));
 	//效验参数
 	CMD_GP_UpdateNotify* pNetInfo =(CMD_GP_UpdateNotify*)data;
 	NoticeMsgBox::Instance().setDownLoadURL(pNetInfo->szDownLoadHttp);
@@ -295,14 +295,14 @@ bool CGPLoginMission::onSocketSubUpdateNotify(void* data, int size)
 //登录失败(密保卡)
 bool CGPLoginMission::onSocketSubLogonValidateMBCard(void* data, int size)
 {
-	PLAZZ_PRINTF(("CGPLoginMission::onSocketSubLogonValidateMBCard\n"));
+	CCLOG(("CGPLoginMission::onSocketSubLogonValidateMBCard\n"));
 	return true;
 }
 
 //登录完成
 bool CGPLoginMission::onSocketSubLogonFinish(void* data, int size)
 {
-	PLAZZ_PRINTF(("CGPLoginMission::onSocketSubLogonFinish\n"));
+	CCLOG(("CGPLoginMission::onSocketSubLogonFinish\n"));
 
 	//DONE: 没有必要断开连接吧
 	//stop();
@@ -363,7 +363,7 @@ bool CGPLoginMission::onSocketMainServerList(int sub, void* data, int size)
 //种类信息
 bool CGPLoginMission::onSocketListType(void* data, int size)
 {
-	PLAZZ_PRINTF(("CGPLoginMission::onSocketListType\n"));
+	CCLOG(("CGPLoginMission::onSocketListType\n"));
 	//QY
 	return true;
 }
@@ -371,7 +371,7 @@ bool CGPLoginMission::onSocketListType(void* data, int size)
 //类型信息
 bool CGPLoginMission::onSocketListKind(void* data, int size)
 {
-	PLAZZ_PRINTF(("CGPLoginMission::onSocketListKind\n"));
+	CCLOG(("CGPLoginMission::onSocketListKind\n"));
 	////更新数据
 	int itemSize = sizeof(tagGameKind);
 
@@ -391,7 +391,7 @@ bool CGPLoginMission::onSocketListKind(void* data, int size)
 // 房间列表
 bool CGPLoginMission::onSocketListServer(void* data, int size)
 {
-	PLAZZ_PRINTF(("CGPLoginMission::onSocketListServer\n"));
+	CCLOG(("CGPLoginMission::onSocketListServer\n"));
 	////更新数据
 	int itemSize = sizeof(tagGameServer);
 
@@ -409,7 +409,7 @@ bool CGPLoginMission::onSocketListServer(void* data, int size)
 //比赛列表
 bool CGPLoginMission::onSocketListMatch(void* data, int size)
 {
-	PLAZZ_PRINTF(("CGPLoginMission::onSocketListMatch\n"));
+	CCLOG(("CGPLoginMission::onSocketListMatch\n"));
 	int itemSize = sizeof(tagGameMatch);
 
 	ASSERT(size%itemSize==0);
@@ -439,7 +439,7 @@ bool CGPLoginMission::onSocketListMatch(void* data, int size)
 // 列表完成
 bool CGPLoginMission::onSocketListFinish(void* data, int size)
 {
-	PLAZZ_PRINTF(("CGPLoginMission::onSocketListFinish\n"));
+	CCLOG(("CGPLoginMission::onSocketListFinish\n"));
 
 	pSevList->OnEventListFinish();
 
@@ -448,7 +448,7 @@ bool CGPLoginMission::onSocketListFinish(void* data, int size)
 //列表配置
 bool CGPLoginMission::onSocketListConfig(void* data, int size)
 {
-	PLAZZ_PRINTF(("CGPLoginMission::onSocketListConfig\n"));
+	CCLOG(("CGPLoginMission::onSocketListConfig\n"));
 
 	CMD_GP_ListConfig* pListConfig = (CMD_GP_ListConfig*)data;
 	return true;
@@ -461,7 +461,7 @@ bool CGPLoginMission::onSocketListConfig(void* data, int size)
 //类型在线
 bool CGPLoginMission::onSocketKindOnline(void* data, int size)
 {
-	PLAZZ_PRINTF(("CGPLoginMission::onSocketKindOnline\n"));
+	CCLOG(("CGPLoginMission::onSocketKindOnline\n"));
 
 	//变量定义
 	
@@ -472,7 +472,7 @@ bool CGPLoginMission::onSocketKindOnline(void* data, int size)
 //房间在线
 bool CGPLoginMission::onSocketServerOnline(void* data, int size)
 {
-	PLAZZ_PRINTF(("CGPLoginMission::onSocketServerOnline\n"));
+	CCLOG(("CGPLoginMission::onSocketServerOnline\n"));
 
 	//变量定义
 	
@@ -483,7 +483,7 @@ bool CGPLoginMission::onSocketServerOnline(void* data, int size)
 // 在线更新完成
 bool CGPLoginMission::onSocketOnlineFinish(void* data, int size)
 {
-	PLAZZ_PRINTF(("CGPLoginMission::onSocketOnlineFinish\n"));
+	CCLOG(("CGPLoginMission::onSocketOnlineFinish\n"));
 
 	return true;
 }
@@ -493,8 +493,8 @@ bool CGPLoginMission::onSocketOnlineFinish(void* data, int size)
 //视频配置
 bool CGPLoginMission::onSocketVideoOption(void* data, int size)
 {
-	PLAZZ_PRINTF(("CGPLoginMission::onSocketVideoOption\n"));
+	CCLOG(("CGPLoginMission::onSocketVideoOption\n"));
 
-	PLAZZ_PRINTF("onSocketVideoOption");
+	CCLOG("onSocketVideoOption");
 	return true;
 }

@@ -46,7 +46,7 @@ bool CServerItem::OnSocketMainUser(int sub, void* data, int dataSize)
 //请求失败
 bool CServerItem::OnSocketSubRequestFailure(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CServerItem::OnSocketSubRequestFailure\n"));
+	CCLOG(("CServerItem::OnSocketSubRequestFailure\n"));
 	//变量定义
 	CMD_GR_RequestFailure * pRequestFailure=(CMD_GR_RequestFailure *)data;
 
@@ -66,9 +66,8 @@ bool CServerItem::OnSocketSubRequestFailure(void* data, int dataSize)
 //用户进入
 bool CServerItem::OnSocketSubUserEnter(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CServerItem::OnSocketSubUserEnter\n"));
+	CCLOG(("CServerItem::OnSocketSubUserEnter."));
 
-	int n = sizeof(tagUserInfoHead);
 	//变量定义
 	tagUserInfo kUserInfo;
 	tagCustomFaceInfo CustomFaceInfo;
@@ -168,7 +167,7 @@ bool CServerItem::OnSocketSubUserEnter(void* data, int dataSize)
 //用户积分
 bool CServerItem::OnSocketSubUserScore(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CServerItem::OnSocketSubUserScore\n"));
+	CCLOG(("CServerItem::OnSocketSubUserScore\n"));
 	//效验参数
 	ASSERT(dataSize==sizeof(CMD_GR_UserScore));
 	if (dataSize<sizeof(CMD_GR_UserScore)) return false;
@@ -193,7 +192,7 @@ bool CServerItem::OnSocketSubUserScore(void* data, int dataSize)
 //用户状态
 bool CServerItem::OnSocketSubUserStatus(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("CServerItem::OnSocketSubUserStatus\n");
+	CCLOG("CServerItem::OnSocketSubUserStatus\n");
 
 	ASSERT(dataSize>=sizeof(CMD_GR_UserStatus));
 	if (dataSize<sizeof(CMD_GR_UserStatus)) return false;
@@ -247,7 +246,7 @@ bool CServerItem::OnSocketSubUserStatus(void* data, int dataSize)
 //用户聊天
 bool CServerItem::OnSocketSubUserChat(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CServerItem::OnSocketSubUserChat\n"));
+	CCLOG(("CServerItem::OnSocketSubUserChat\n"));
 
 	return true;
 
@@ -256,7 +255,7 @@ bool CServerItem::OnSocketSubUserChat(void* data, int dataSize)
 //用户表情
 bool CServerItem::OnSocketSubExpression(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CServerItem::OnSocketSubExpression\n"));
+	CCLOG(("CServerItem::OnSocketSubExpression\n"));
 
 	return true;
 
@@ -265,7 +264,7 @@ bool CServerItem::OnSocketSubExpression(void* data, int dataSize)
 //用户私聊
 bool CServerItem::OnSocketSubWisperUserChat(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CServerItem::OnSocketSubWisperUserChat\n"));
+	CCLOG(("CServerItem::OnSocketSubWisperUserChat\n"));
 
 	return true;
 
@@ -274,7 +273,7 @@ bool CServerItem::OnSocketSubWisperUserChat(void* data, int dataSize)
 //私聊表情
 bool CServerItem::OnSocketSubWisperExpression(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CServerItem::OnSocketSubWisperExpression\n"));
+	CCLOG(("CServerItem::OnSocketSubWisperExpression\n"));
 
 	return true;
 
@@ -285,7 +284,7 @@ bool CServerItem::OnSocketSubWisperExpression(void* data, int dataSize)
 //道具成功
 bool CServerItem::OnSocketSubPropertySuccess(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CServerItem::OnSocketSubPropertySuccess\n"));
+	CCLOG(("CServerItem::OnSocketSubPropertySuccess\n"));
 	
 	return true;
 
@@ -294,7 +293,7 @@ bool CServerItem::OnSocketSubPropertySuccess(void* data, int dataSize)
 //道具失败
 bool CServerItem::OnSocketSubPropertyFailure(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CServerItem::OnSocketSubPropertyFailure\n"));
+	CCLOG(("CServerItem::OnSocketSubPropertyFailure\n"));
 	
 	return true;
 	
@@ -303,7 +302,7 @@ bool CServerItem::OnSocketSubPropertyFailure(void* data, int dataSize)
 //道具效应
 bool CServerItem::OnSocketSubPropertyEffect(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CServerItem::OnSocketSubPropertyEffect\n"));
+	CCLOG(("CServerItem::OnSocketSubPropertyEffect\n"));
 	
 	return true;
 	
@@ -312,7 +311,7 @@ bool CServerItem::OnSocketSubPropertyEffect(void* data, int dataSize)
 //道具消息
 bool CServerItem::OnSocketSubPropertyMessage(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CServerItem::OnSocketSubPropertyMessage\n"));
+	CCLOG(("CServerItem::OnSocketSubPropertyMessage\n"));
 	
 
 	return true;
@@ -321,7 +320,7 @@ bool CServerItem::OnSocketSubPropertyMessage(void* data, int dataSize)
 //道具喇叭
 bool CServerItem::OnSocketSubPropertyTrumpet(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CServerItem::OnSocketSubPropertyTrumpet\n"));
+	CCLOG(("CServerItem::OnSocketSubPropertyTrumpet\n"));
 	
 
 	return true;
@@ -330,7 +329,7 @@ bool CServerItem::OnSocketSubPropertyTrumpet(void* data, int dataSize)
 //喜报消息
 bool CServerItem::OnSocketSubGladMessage(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CServerItem::OnSocketSubGladMessage\n"));
+	CCLOG(("CServerItem::OnSocketSubGladMessage\n"));
 
 	return true;
 }

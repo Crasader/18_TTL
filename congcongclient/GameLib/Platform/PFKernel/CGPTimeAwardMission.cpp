@@ -56,17 +56,17 @@ void CGPTimeAwardMission::onEventTCPSocketLink()
 
 void CGPTimeAwardMission::onEventTCPSocketShut()
 {
-	PLAZZ_PRINTF("CGPTimeAwardMission::onEventTCPSocketShut\n");
+	CCLOG("CGPTimeAwardMission::onEventTCPSocketShut\n");
 }
 
 void CGPTimeAwardMission::onEventTCPSocketError(int errorCode)
 {
-	PLAZZ_PRINTF("CGPTimeAwardMission::onEventTCPSocketError code[%d]\n", errorCode);
+	CCLOG("CGPTimeAwardMission::onEventTCPSocketError code[%d]\n", errorCode);
 }
 
 bool CGPTimeAwardMission::onEventTCPSocketRead(int main, int sub, void* data, int size) 
 {
-	PLAZZ_PRINTF("CGPTimeAwardMission::onEventTCPSocketRead main:%d sub:%d size:%d\n", main, sub, size);
+	CCLOG("CGPTimeAwardMission::onEventTCPSocketRead main:%d sub:%d size:%d\n", main, sub, size);
 	if (main != MDM_GP_REMOTE_SERVICE)
 	{
 		return false;

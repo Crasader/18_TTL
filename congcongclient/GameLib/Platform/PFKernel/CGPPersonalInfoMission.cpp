@@ -41,7 +41,7 @@ void CGPPersonalInfoMission::requesttPersionInfo()
 
 void CGPPersonalInfoMission::onEventTCPSocketLink()
 {
-	PLAZZ_PRINTF("CGPPasswordMission::onEventTCPSocketLink\n");
+	CCLOG("CGPPasswordMission::onEventTCPSocketLink\n");
 
 
 	switch (mMissionType)
@@ -93,17 +93,17 @@ void CGPPersonalInfoMission::onEventTCPSocketLink()
 
 void CGPPersonalInfoMission::onEventTCPSocketShut()
 {
-	PLAZZ_PRINTF("CGPPersonalInfoMission::onEventTCPSocketShut\n");
+	CCLOG("CGPPersonalInfoMission::onEventTCPSocketShut\n");
 }
 
 void CGPPersonalInfoMission::onEventTCPSocketError(int errorCode)
 {
-	PLAZZ_PRINTF("CGPPersonalInfoMission::onEventTCPSocketError code[%d]\n", errorCode);
+	CCLOG("CGPPersonalInfoMission::onEventTCPSocketError code[%d]\n", errorCode);
 }
 
 bool CGPPersonalInfoMission::onEventTCPSocketRead(int main, int sub, void* data, int size)
 {
-	PLAZZ_PRINTF("CGPPasswordMission::onEventTCPSocketRead main:%d sub:%d size:%d\n", main, sub, size);
+	CCLOG("CGPPasswordMission::onEventTCPSocketRead main:%d sub:%d size:%d\n", main, sub, size);
 	if (main != MDM_GP_USER_SERVICE)
 	{
 		return false;

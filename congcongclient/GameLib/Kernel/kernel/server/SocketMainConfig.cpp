@@ -24,7 +24,7 @@ bool CServerItem::OnSocketMainConfig(int sub, void* data, int dataSize)
 //列表配置
 bool CServerItem::OnSocketSubConfigColumn(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CServerItem::OnSocketSubConfigColumn\n"));
+	CCLOG(("CServerItem::OnSocketSubConfigColumn\n"));
 
 	//变量定义
 	//PACKET_AIDE_DATA(data);
@@ -50,7 +50,7 @@ bool CServerItem::OnSocketSubConfigColumn(void* data, int dataSize)
 //房间配置
 bool CServerItem::OnSocketSubConfigServer(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CServerItem::OnSocketSubConfigServer\n"));
+	CCLOG(("CServerItem::OnSocketSubConfigServer\n"));
 
 	//效验数据
 	ASSERT(dataSize==sizeof(CMD_GR_ConfigServer));
@@ -81,7 +81,7 @@ bool CServerItem::OnSocketSubConfigServer(void* data, int dataSize)
 //道具配置
 bool CServerItem::OnSocketSubConfigOrder(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CServerItem::OnSocketSubConfigOrder\n"));
+	CCLOG(("CServerItem::OnSocketSubConfigOrder\n"));
 
 	////变量定义
 	//PACKET_AIDE_DATA(data);
@@ -109,7 +109,7 @@ bool CServerItem::OnSocketSubConfigOrder(void* data, int dataSize)
 //配置玩家权限	
 bool CServerItem::OnSocketSubConfigMmber(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CServerItem::OnSocketSubConfigMmber\n"));
+	CCLOG(("CServerItem::OnSocketSubConfigMmber\n"));
 	
 	if (mIServerItemSink)
 		mIServerItemSink->OnGRConfigUserRight();
@@ -121,7 +121,7 @@ bool CServerItem::OnSocketSubConfigMmber(void* data, int dataSize)
 //配置完成
 bool CServerItem::OnSocketSubConfigFinish(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CServerItem::OnSocketSubConfigFinish\n"));
+	CCLOG(("CServerItem::OnSocketSubConfigFinish\n"));
 
 	if (mIServerItemSink)
 		mIServerItemSink->OnGRConfigFinish();

@@ -36,7 +36,7 @@ void CGPSignInMission::award()
 
 void CGPSignInMission::onEventTCPSocketLink()
 {
-	PLAZZ_PRINTF("CGPSignInMission::onEventTCPSocketLink\n");
+	CCLOG("CGPSignInMission::onEventTCPSocketLink\n");
 
 	//变量定义
 	CGlobalUserInfo * pGlobalUserInfo=CGlobalUserInfo::GetInstance();
@@ -80,17 +80,17 @@ void CGPSignInMission::onEventTCPSocketLink()
 
 void CGPSignInMission::onEventTCPSocketShut()
 {
-	PLAZZ_PRINTF("CGPSignInMission::onEventTCPSocketShut\n");
+	CCLOG("CGPSignInMission::onEventTCPSocketShut\n");
 }
 
 void CGPSignInMission::onEventTCPSocketError(int errorCode)
 {
-	PLAZZ_PRINTF("CGPSignInMission::onEventTCPSocketError code[%d]\n", errorCode);
+	CCLOG("CGPSignInMission::onEventTCPSocketError code[%d]\n", errorCode);
 }
 
 bool CGPSignInMission::onEventTCPSocketRead(int main, int sub, void* data, int size) 
 {
-	PLAZZ_PRINTF("CGPSignInMission::onEventTCPSocketRead main:%d sub:%d size:%d\n", main, sub, size);
+	CCLOG("CGPSignInMission::onEventTCPSocketRead main:%d sub:%d size:%d\n", main, sub, size);
 	if (main != MDM_GP_USER_SERVICE)
 	{
 		return false;
@@ -115,7 +115,7 @@ bool CGPSignInMission::onEventTCPSocketRead(int main, int sub, void* data, int s
 
 bool CGPSignInMission::onSubQueryInfoResult(void* data, int size )
 {
-	PLAZZ_PRINTF("CGPSignInMission::onSubQueryInfoResult");
+	CCLOG("CGPSignInMission::onSubQueryInfoResult");
 	if (size != sizeof(CMD_GP_CheckInInfo))
 	{
 		ASSERT(false);
@@ -132,7 +132,7 @@ bool CGPSignInMission::onSubQueryInfoResult(void* data, int size )
 
 bool CGPSignInMission::onSubDoneResult(void* data, int size)
 {
-	PLAZZ_PRINTF("CGPSignInMission::onSubDoneResult");
+	CCLOG("CGPSignInMission::onSubDoneResult");
 	CMD_GP_CheckInResult* pNetInfo = (CMD_GP_CheckInResult*)data;
 
 	CGlobalUserInfo * pGlobalUserInfo=CGlobalUserInfo::GetInstance();

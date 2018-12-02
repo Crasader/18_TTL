@@ -21,7 +21,7 @@ void CGPUnderWriteMission::modifyUnderWrite(char szUnderWrite[LEN_UNDER_WRITE])
 
 void CGPUnderWriteMission::onEventTCPSocketLink()
 {
-	PLAZZ_PRINTF("CGPUnderWriteMission::onEventTCPSocketLink\n");
+	CCLOG("CGPUnderWriteMission::onEventTCPSocketLink\n");
 
 	//用户信息
 	CGlobalUserInfo * pGlobalUserInfo=CGlobalUserInfo::GetInstance();
@@ -31,17 +31,17 @@ void CGPUnderWriteMission::onEventTCPSocketLink()
 
 void CGPUnderWriteMission::onEventTCPSocketShut()
 {
-	PLAZZ_PRINTF("CGPUnderWriteMission::onEventTCPSocketShut\n");
+	CCLOG("CGPUnderWriteMission::onEventTCPSocketShut\n");
 }
 
 void CGPUnderWriteMission::onEventTCPSocketError(int errorCode)
 {
-	PLAZZ_PRINTF("CGPUnderWriteMission::onEventTCPSocketError code[%d]\n", errorCode);
+	CCLOG("CGPUnderWriteMission::onEventTCPSocketError code[%d]\n", errorCode);
 }
 
 bool CGPUnderWriteMission::onEventTCPSocketRead(int main, int sub, void* data, int size) 
 {
-	PLAZZ_PRINTF("CGPUnderWriteMission::onEventTCPSocketRead main:%d sub:%d size:%d\n", main, sub, size);
+	CCLOG("CGPUnderWriteMission::onEventTCPSocketRead main:%d sub:%d size:%d\n", main, sub, size);
 	if (main != MDM_GP_USER_SERVICE)
 	{
 		return false;

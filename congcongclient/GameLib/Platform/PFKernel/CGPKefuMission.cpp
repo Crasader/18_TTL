@@ -25,17 +25,17 @@ void CGPKefuMission::onEventTCPSocketLink()
 
 void CGPKefuMission::onEventTCPSocketShut()
 {
-	PLAZZ_PRINTF("CGPKefuMission::onEventTCPSocketShut\n");
+	CCLOG("CGPKefuMission::onEventTCPSocketShut\n");
 }
 
 void CGPKefuMission::onEventTCPSocketError(int errorCode)
 {
-	PLAZZ_PRINTF("CGPKefuMission::onEventTCPSocketError code[%d]\n", errorCode);
+	CCLOG("CGPKefuMission::onEventTCPSocketError code[%d]\n", errorCode);
 }
 
 bool CGPKefuMission::onEventTCPSocketRead(int main, int sub, void* data, int size) 
 {
-	PLAZZ_PRINTF("CGPKefuMission::onEventTCPSocketRead main:%d sub:%d size:%d\n", main, sub, size);
+	CCLOG("CGPKefuMission::onEventTCPSocketRead main:%d sub:%d size:%d\n", main, sub, size);
 	if (main != MDM_GP_USER_SERVICE)
 	{
 		return false;

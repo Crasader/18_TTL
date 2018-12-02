@@ -21,7 +21,7 @@ void CGPMachineMission::modifyMachine(const char* szInsurePassword, uint8 cbBind
 
 void CGPMachineMission::onEventTCPSocketLink()
 {
-	PLAZZ_PRINTF("CGPMachineMission::onEventTCPSocketLink\n");
+	CCLOG("CGPMachineMission::onEventTCPSocketLink\n");
 
 	//变量定义
 	CGlobalUserInfo * pGlobalUserInfo=CGlobalUserInfo::GetInstance();
@@ -49,17 +49,17 @@ void CGPMachineMission::onEventTCPSocketLink()
 
 void CGPMachineMission::onEventTCPSocketShut()
 {
-	PLAZZ_PRINTF("CGPMachineMission::onEventTCPSocketShut\n");
+	CCLOG("CGPMachineMission::onEventTCPSocketShut\n");
 }
 
 void CGPMachineMission::onEventTCPSocketError(int errorCode)
 {
-	PLAZZ_PRINTF("CGPMachineMission::onEventTCPSocketError code[%d]\n", errorCode);
+	CCLOG("CGPMachineMission::onEventTCPSocketError code[%d]\n", errorCode);
 }
 
 bool CGPMachineMission::onEventTCPSocketRead(int main, int sub, void* data, int size) 
 {
-	PLAZZ_PRINTF("CGPMachineMission::onEventTCPSocketRead main:%d sub:%d size:%d\n", main, sub, size);
+	CCLOG("CGPMachineMission::onEventTCPSocketRead main:%d sub:%d size:%d\n", main, sub, size);
 	if (main != MDM_GP_USER_SERVICE)
 	{
 		return false;

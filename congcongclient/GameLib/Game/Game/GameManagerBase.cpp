@@ -130,13 +130,13 @@ int GameManagerBase::connectGameServerByServerID(int iServerID)
 
 int GameManagerBase::connectGameServer(CGameServerItem* pGameServerItem)
 {
-	utility::log("GameManagerBase::connectGameServer");
+	CCLOG("GameManagerBase::connectGameServer");
 
 	//DONE:这里修改了断线重连,没有必要每次断开连接
 	if (pGameServerItem != nullptr &&
 		mGameServerItem != nullptr &&
 		mGameServerItem->m_GameServer.wServerID == pGameServerItem->m_GameServer.wServerID) {
-		utility::log("GameManagerBase::connectGameServer already conected");
+		CCLOG("GameManagerBase::connectGameServer already conected");
 		if (mCServerItem->IsService()) {
 			return ServiceStatus_ServiceIng;
 		}
@@ -146,7 +146,7 @@ int GameManagerBase::connectGameServer(CGameServerItem* pGameServerItem)
 		disconnectServer();
 	}
 
-	utility::log("GameManagerBase::connectGameServer connectServer");
+	CCLOG("GameManagerBase::connectGameServer connectServer");
 	mGameServerItem = pGameServerItem;
 	
 	connectServer();
@@ -218,13 +218,13 @@ void GameManagerBase::OnGameItemDelete(CGameListItem * pGameListItem)
 //请求失败
 void GameManagerBase::onGRRequestFailure(const std::string& szDescribeString)
 {
-	PLAZZ_PRINTF(("GameManager::onGRRequestFailure"));
+	CCLOG(("GameManager::onGRRequestFailure"));
 }
 
 //登陆成功
 void GameManagerBase::OnGRLogonSuccess(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("GameManager::OnGRLogonSuccess"));
+	CCLOG(("GameManager::OnGRLogonSuccess"));
 
 	//效验参数
 	ASSERT(dataSize==sizeof(CMD_GR_LogonSuccess));
@@ -244,13 +244,13 @@ void GameManagerBase::OnGRLogonSuccess(void* data, int dataSize)
 //登陆失败
 void GameManagerBase::OnGRLogonFailure(long lErrorCode, const std::string& sDescribeString)
 {
-	PLAZZ_PRINTF(("GameManager::OnGRLogonFailure"));
+	CCLOG(("GameManager::OnGRLogonFailure"));
 }
 
 //登陆完成
 void GameManagerBase::OnGRLogonFinish()
 {
-	PLAZZ_PRINTF(("GameManager::OnGRLogonFinish"));
+	CCLOG(("GameManager::OnGRLogonFinish"));
 
 	m_eInReconnect = ReconnectStatus_NULL;
 	TimeManager::Instance().removeByFun(TIME_CALLBACK(GameManagerBase::closeClinet,this));
@@ -293,7 +293,7 @@ void GameManagerBase::CB_GameLogonFinsh()
 void GameManagerBase::OnGRUpdateNotify(byte cbMustUpdate, const std::string& szDownHttp)
 {
 	NoticeMsg::Instance().ShowTopMsg("Update");
-	PLAZZ_PRINTF(("GameManager::OnGRUpdateNotify"));
+	CCLOG(("GameManager::OnGRUpdateNotify"));
 	NoticeMsgBox::Instance().setDownLoadURL(szDownHttp.c_str());
 	NoticeMsgBox::Instance().show();
 	//JniFun::showWebView(szDownHttp.c_str());
@@ -305,12 +305,12 @@ void GameManagerBase::OnGRUpdateNotify(byte cbMustUpdate, const std::string& szD
 //列表配置
 void GameManagerBase::OnGRConfigColumn()
 {
-	PLAZZ_PRINTF(("GameManager::OnGRConfigColumn"));
+	CCLOG(("GameManager::OnGRConfigColumn"));
 }
 //房间配置
 void GameManagerBase::OnGRConfigServer()
 {
-	PLAZZ_PRINTF(("GameManager::OnGRConfigServer"));
+	CCLOG(("GameManager::OnGRConfigServer"));
 	//创建桌子
 	if (!mCServerItem) return;
 	word tChairCount = mCServerItem->GetServerAttribute().wChairCount;
@@ -319,18 +319,18 @@ void GameManagerBase::OnGRConfigServer()
 //道具配置
 void GameManagerBase::OnGRConfigProperty()
 {
-	PLAZZ_PRINTF(("OnGRConfigProperty\n"));
+	CCLOG(("OnGRConfigProperty\n"));
 }
 //玩家权限配置
 void GameManagerBase::OnGRConfigUserRight()
 {
-	PLAZZ_PRINTF(("OnGRConfigUserRight\n"));
+	CCLOG(("OnGRConfigUserRight\n"));
 }
 
 //配置完成
 void GameManagerBase::OnGRConfigFinish()
 {
-	PLAZZ_PRINTF(("OnGRConfigFinish\n"));
+	CCLOG(("OnGRConfigFinish\n"));
 
 }
 
@@ -340,16 +340,16 @@ void GameManagerBase::OnGRConfigFinish()
 //用户进入
 void GameManagerBase::OnGRUserEnter(IClientUserItem* pIClientUserItem)
 {
-	PLAZZ_PRINTF(("GameManager::OnGRUserEnter"));
+	CCLOG(("GameManager::OnGRUserEnter"));
 
 	char szDescribe[256] = { 0 };
 	sprintf(szDescribe, ("OnGRUserEnter:%s\n"), pIClientUserItem->GetNickName());
-	//PLAZZ_PRINTF(szDescribe);
+	//CCLOG(szDescribe);
 }
 //用户更新
 void GameManagerBase::OnGRUserUpdate(IClientUserItem* pIClientUserItem)
 {
-	PLAZZ_PRINTF(("GameManager::OnGRUserUpdate"));
+	CCLOG(("GameManager::OnGRUserUpdate"));
 
 	if (pIClientUserItem == IServerItem::get()->GetMeUserItem())
 	{
@@ -358,7 +358,7 @@ void GameManagerBase::OnGRUserUpdate(IClientUserItem* pIClientUserItem)
 //用户删除
 void GameManagerBase::OnGRUserDelete(IClientUserItem* pIClientUserItem)
 {
-	PLAZZ_PRINTF("GameManager::OnGRUserDelete");
+	CCLOG("GameManager::OnGRUserDelete");
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -367,25 +367,25 @@ void GameManagerBase::OnGRUserDelete(IClientUserItem* pIClientUserItem)
 //用户邀请
 void GameManagerBase::OnGFUserInvite(const std::string& szMessage)
 {
-	PLAZZ_PRINTF("GameManager::OnGFUserInvite");
+	CCLOG("GameManager::OnGFUserInvite");
 }
 //用户邀请失败
 void GameManagerBase::OnGFUserInviteFailure(const std::string& szMessage)
 {
-	PLAZZ_PRINTF("GameManager::OnGFUserInviteFailure");
+	CCLOG("GameManager::OnGFUserInviteFailure");
 }
 
 //房间退出
 void GameManagerBase::OnGFServerClose(const std::string& szMessage)
 {
-	PLAZZ_PRINTF("ServerScene::OnGFServerClose");
+	CCLOG("ServerScene::OnGFServerClose");
 
 }
 
 //启动游戏
 bool GameManagerBase::StartGame()
 {
-	PLAZZ_PRINTF("GameManager::StartGame");
+	CCLOG("GameManager::StartGame");
 
 	this->CreateKernel();
 
@@ -400,7 +400,7 @@ void GameManagerBase::setPrivateServerSink(IServerPrivateSink* PrivateServerSink
 //创建游戏内核
 bool GameManagerBase::CreateKernel()
 {
-	PLAZZ_PRINTF("GameManager::CreateKernel");
+	CCLOG("GameManager::CreateKernel");
 
 	setCurGameKindID(mGameServerItem->m_GameServer.wKindID);
 	IClientKernelSink* pKernelSink = CreateGame();

@@ -33,7 +33,7 @@ void CGPExchangeMission::CB_ExchangeList()
 
 void CGPExchangeMission::Net_ExchangeHuaFeiList( void* data, int dataSize )
 {
-	PLAZZ_PRINTF("CGPExchangeHuaFeiMission::Net_ExchangeHuaFeiList\n");
+	CCLOG("CGPExchangeHuaFeiMission::Net_ExchangeHuaFeiList\n");
 
 	datastream kStream(data,dataSize);
 	CMD_GP_BackExchangeHuaFei kNetInfo;

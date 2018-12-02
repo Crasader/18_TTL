@@ -348,13 +348,13 @@ bool CSocketEngine::unpack(byte* data, int start, int length)
 	
 
 	//if (SOCKET_CHECK)
-	//	PLAZZ_PRINTF("Main:%d Sub:%d Size:%d\n", main, sub, length);
+	//	CCLOG("Main:%d Sub:%d Size:%d\n", main, sub, length);
 
 	
 	
 	if (main == 0 && sub == 1)
 	{
-		//PLAZZ_PRINTF("REV-HEART\n");
+		//CCLOG("REV-HEART\n");
 	}
 	else
 	{
@@ -363,7 +363,7 @@ bool CSocketEngine::unpack(byte* data, int start, int length)
 			bool bHandle = mISocketEngineSink->onEventTCPSocketRead(main, sub, mBufUnPack, length);
 
 			//if (!bHandle)
-			//	PLAZZ_PRINTF("no match: main:%d sub:%d size:%d\n", main, sub, length);
+			//	CCLOG("no match: main:%d sub:%d size:%d\n", main, sub, length);
 			return bHandle;
 		}
 	}

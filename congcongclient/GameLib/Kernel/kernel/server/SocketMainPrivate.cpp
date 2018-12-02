@@ -17,7 +17,7 @@ bool CServerItem::OnSocketMainPrivate(int sub, void* data, int dataSize)
 //
 bool CServerItem::OnSocketSubPrivateInfo(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("CServerItem::OnSocketSubPrivateInfo\n");
+	CCLOG("CServerItem::OnSocketSubPrivateInfo\n");
 
 	CMD_GR_Private_Info private_game_Info;
 
@@ -33,7 +33,7 @@ bool CServerItem::OnSocketSubPrivateInfo(void* data, int dataSize)
 //
 bool CServerItem::OnSocketSubPrivateCreateSuceess(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("CServerItem::OnSocketSubPrivateCreateSuceess\n");
+	CCLOG("CServerItem::OnSocketSubPrivateCreateSuceess\n");
 
 	ASSERT(dataSize==sizeof(CMD_GR_Create_Private_Sucess));
 	if(dataSize!=sizeof(CMD_GR_Create_Private_Sucess)) return false;
@@ -49,7 +49,7 @@ bool CServerItem::OnSocketSubPrivateCreateSuceess(void* data, int dataSize)
 }
 bool CServerItem::OnSocketSubPrivateRoomInfo(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("CServerItem::OnSocketSubPrivateRoomInfo\n");
+	CCLOG("CServerItem::OnSocketSubPrivateRoomInfo\n");
 
 	datastream kDataStream(data,dataSize);
 	CMD_GF_Private_Room_Info kNetInfo;
@@ -67,7 +67,7 @@ bool CServerItem::OnSocketSubPrivateRoomInfo(void* data, int dataSize)
 }
 bool CServerItem::OnSocketSubPrivateEnd(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("CServerItem::OnSocketSubPrivateEnd\n");
+	CCLOG("CServerItem::OnSocketSubPrivateEnd\n");
 
 	datastream kDataStream(data,dataSize);
 	CMD_GF_Private_End_Info kNetInfo;
@@ -85,7 +85,7 @@ bool CServerItem::OnSocketSubPrivateEnd(void* data, int dataSize)
 }
 bool CServerItem::OnSocketSubPrivateDismissInfo(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("CServerItem::OnSocketSubPrivateDismissInfo\n");
+	CCLOG("CServerItem::OnSocketSubPrivateDismissInfo\n");
 
 	ASSERT(dataSize==sizeof(CMD_GF_Private_Dismiss_Info));
 	if(dataSize!=sizeof(CMD_GF_Private_Dismiss_Info)) return false;

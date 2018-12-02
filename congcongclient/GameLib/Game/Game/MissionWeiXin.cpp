@@ -25,7 +25,7 @@ void MissionWeiXin::logonWeiXin()
 	std::string access_token = cocos2d::UserDefault::getInstance()->getStringForKey("access_token");
 	std::string refresh_token = cocos2d::UserDefault::getInstance()->getStringForKey("refresh_token");
 	std::string openid = cocos2d::UserDefault::getInstance()->getStringForKey("openid","");
-	utility::log("access_token=%s, refresh_token=%s",access_token.c_str(), refresh_token.c_str());
+	CCLOG("access_token=%s, refresh_token=%s",access_token.c_str(), refresh_token.c_str());
 	if (access_token != "" && openid != "") {
 		Req_UserInfo(access_token, openid);
 	} else {
@@ -72,12 +72,14 @@ void MissionWeiXin::Req_Access_token(std::string param)
 	std::vector<std::string> kVector = utility::split(param,":");
 	if (kVector.size() != 2)
 	{
-		utility::log("Req_Access_token (kVector.size() != 2");
+		CCLOG("Req_Access_token (kVector.size() != 2");
 		return ;
 	}
 	std::string kUrl = "https://api.weixin.qq.com/sns/oauth2/access_token?";
 
-	utility::log("m_kWxAppId= %s, m_kWxAppSecret=%s", m_kWxAppId.c_str(), m_kWxAppSecret.c_str(), kVector[0].c_str(), kVector[1].c_str());
+#ifdef _DEBUG
+	CCLOG("m_kWxAppId= %s, m_kWxAppSecret=%s, code=%s, grant_type=%s", m_kWxAppId.c_str(), m_kWxAppSecret.c_str(), kVector[0].c_str(), kVector[1].c_str());
+#endif
 
 	MCWebReq::pushValue(kUrl,"appid", m_kWxAppId);
 	MCWebReq::pushValue(kUrl,"secret", m_kWxAppSecret);

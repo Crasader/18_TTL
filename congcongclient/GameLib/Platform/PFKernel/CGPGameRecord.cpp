@@ -20,7 +20,7 @@ void CGPGameRecordMission::setMissionSink(CGGameRecordSink* pIGPKefuMissionSink)
 
 void CGPGameRecordMission::GetGameRecordList(int iUserID)
 {
-	PLAZZ_PRINTF("CGPGameRecordMission::GetGameRecordList\n");
+	CCLOG("CGPGameRecordMission::GetGameRecordList\n");
 
 	addLinkCallFun(CC_CALLBACK_0(CGPGameRecordMission::CB_GetGameRecordList,this,iUserID));
 
@@ -28,7 +28,7 @@ void CGPGameRecordMission::GetGameRecordList(int iUserID)
 }
 void CGPGameRecordMission::CB_GetGameRecordList(int iUserID)
 {
-	PLAZZ_PRINTF("CGPGameRecordMission::CB_GetGameRecordList\n");
+	CCLOG("CGPGameRecordMission::CB_GetGameRecordList\n");
 	CMD_GP_GetGameRecordList kNetInfo;
 	kNetInfo.dwUserID = iUserID;
 
@@ -36,7 +36,7 @@ void CGPGameRecordMission::CB_GetGameRecordList(int iUserID)
 }
 void CGPGameRecordMission::Net_GetGameRecordList(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("CGPGameRecordMission::Net_GetGameRecordList\n");
+	CCLOG("CGPGameRecordMission::Net_GetGameRecordList\n");
 
 	datastream kDataStream(data,dataSize);
 	tagPrivateRandTotalRecordList kNetInfo;
@@ -52,7 +52,7 @@ void CGPGameRecordMission::Net_GetGameRecordList(void* data, int dataSize)
 
 void CGPGameRecordMission::GetGameRecordListEx(int iUserID)
 {
-	PLAZZ_PRINTF("CGPGameRecordMission::GetGameRecordListEx\n");
+	CCLOG("CGPGameRecordMission::GetGameRecordListEx\n");
 
 	addLinkCallFun(CC_CALLBACK_0(CGPGameRecordMission::CB_GetGameRecordListEx, this, iUserID));
 
@@ -61,7 +61,7 @@ void CGPGameRecordMission::GetGameRecordListEx(int iUserID)
 
 void CGPGameRecordMission::CB_GetGameRecordListEx(int iUserID)
 {
-	PLAZZ_PRINTF("CGPGameRecordMission::CB_GetGameRecordListEx\n");
+	CCLOG("CGPGameRecordMission::CB_GetGameRecordListEx\n");
 	CMD_GP_GetGameRecordList kNetInfo;
 	kNetInfo.dwUserID = iUserID;
 
@@ -70,7 +70,7 @@ void CGPGameRecordMission::CB_GetGameRecordListEx(int iUserID)
 
 void CGPGameRecordMission::Net_GetGameRecordListEx(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("CGPGameRecordMission::Net_GetGameRecordListEx\n");
+	CCLOG("CGPGameRecordMission::Net_GetGameRecordListEx\n");
 
 	datastream kDataStream(data, dataSize);
 	tagGameRecordListEx kNetInfo;
@@ -86,7 +86,7 @@ void CGPGameRecordMission::Net_GetGameRecordListEx(void* data, int dataSize)
 
 void CGPGameRecordMission::GetPrivateRandTotalRecord(int iRecordID)
 {
-	PLAZZ_PRINTF("CGPGameRecordMission::GetGameRecordVideo\n");
+	CCLOG("CGPGameRecordMission::GetGameRecordVideo\n");
 
 	addLinkCallFun(CC_CALLBACK_0(CGPGameRecordMission::CB_PrivateRandTotalRecord,this,iRecordID));
 
@@ -118,7 +118,7 @@ void CGPGameRecordMission::Net_PrivateRandTotalRecord(void* data, int dataSize)
 
 void CGPGameRecordMission::GetPrivateRandChildRecord(int iChildRecordID)
 {
-	PLAZZ_PRINTF("CGPGameRecordMission::GetPrivateRandChildRecord\n");
+	CCLOG("CGPGameRecordMission::GetPrivateRandChildRecord\n");
 
 	addLinkCallFun(CC_CALLBACK_0(CGPGameRecordMission::CB_PrivateRandChildRecord,this,iChildRecordID));
 

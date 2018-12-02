@@ -423,11 +423,7 @@ namespace WidgetFun
 	void setVisible(cocos2d::Node* pNode,std::string kName,bool bVisible)
 	{
 		cocos2d::Node* pTempNode = getChildWidget(pNode,kName);
-		if (!pTempNode)
-		{
-			utility::log("setVisible");
-			utility::log(kName.c_str());
-		}
+		CCAssert(pTempNode, utility::toString("setVisible failed name =", kName.c_str()).c_str());
 		setVisible(pTempNode,bVisible);
 	}
 	bool isWidgetVisble( cocos2d::Node* pNode,std::string kName )

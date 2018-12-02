@@ -53,7 +53,7 @@ void CGPInsureMission::enable(const char* szLogonPass, const char* szInsurePass)
 
 void CGPInsureMission::onEventTCPSocketLink()
 {
-	PLAZZ_PRINTF("CGPInsureMission::onEventTCPSocketLink\n");
+	CCLOG("CGPInsureMission::onEventTCPSocketLink\n");
 
 
 	switch (mMissionType)
@@ -142,17 +142,17 @@ void CGPInsureMission::onEventTCPSocketLink()
 
 void CGPInsureMission::onEventTCPSocketShut()
 {
-	PLAZZ_PRINTF("CGPInsureMission::onEventTCPSocketShut\n");
+	CCLOG("CGPInsureMission::onEventTCPSocketShut\n");
 }
 
 void CGPInsureMission::onEventTCPSocketError(int errorCode)
 {
-	PLAZZ_PRINTF("CGPInsureMission::onEventTCPSocketError code[%d]\n", errorCode);
+	CCLOG("CGPInsureMission::onEventTCPSocketError code[%d]\n", errorCode);
 }
 
 bool CGPInsureMission::onEventTCPSocketRead(int main, int sub, void* data, int size)
 {
-	PLAZZ_PRINTF("CGPInsureMission::onEventTCPSocketRead main:%d sub:%d size:%d\n", main, sub, size);
+	CCLOG("CGPInsureMission::onEventTCPSocketRead main:%d sub:%d size:%d\n", main, sub, size);
 	if (main != MDM_GP_USER_SERVICE)
 	{
 		return false;

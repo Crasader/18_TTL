@@ -121,7 +121,7 @@ bool CServerItem::PerformQuickSitDown()
 //执行旁观
 bool CServerItem::PerformLookonAction(word wTableID, word wChairID)
 {
-	PLAZZ_PRINTF("CServerItem::PerformLookonAction...\n");
+	CCLOG("CServerItem::PerformLookonAction...\n");
 
 	if (!IsService())
 		return false;
@@ -167,7 +167,7 @@ bool CServerItem::PerformLookonAction(word wTableID, word wChairID)
 	//设置界面
 	m_TableFrame.VisibleTable(wTableID);
 
-	PLAZZ_PRINTF("CServerItem::PerformLookonAction send\n");
+	CCLOG("CServerItem::PerformLookonAction send\n");
 	//发送命令
 	SendLookonPacket(wTableID,wChairID);
 
@@ -177,7 +177,7 @@ bool CServerItem::PerformLookonAction(word wTableID, word wChairID)
 //执行起立
 bool CServerItem::PerformStandUpAction()
 {
-	PLAZZ_PRINTF("CServerItem::PerformStandUpAction...\n");
+	CCLOG("CServerItem::PerformStandUpAction...\n");
 
 	if (!IsService())
 		return false;
@@ -187,7 +187,7 @@ bool CServerItem::PerformStandUpAction()
 
 
 	//设置界面
-	PLAZZ_PRINTF("CServerItem::PerformStandUpAction send\n");
+	CCLOG("CServerItem::PerformStandUpAction send\n");
 	//发送命令
 	SendStandUpPacket(m_pMeUserItem->GetTableID(),m_pMeUserItem->GetChairID(),FALSE);
 
@@ -197,7 +197,7 @@ bool CServerItem::PerformStandUpAction()
 //执行坐下
 bool CServerItem::PerformSitDownAction(word wTableID, word wChairID, bool bEfficacyPass, const char * psw)
 {
-	PLAZZ_PRINTF("CServerItem::PerformSitDownAction...\n");
+	CCLOG("CServerItem::PerformSitDownAction...\n");
 
 	if (!IsService())
 		return false;
@@ -216,7 +216,7 @@ bool CServerItem::PerformSitDownAction(word wTableID, word wChairID, bool bEffic
 	mFindTableID=INVALID_TABLE;
 
 
-	PLAZZ_PRINTF("CServerItem::PerformSitDownAction send... wTableID =%d  wCharID =%d \n,", wTableID, wChairID);
+	CCLOG("CServerItem::PerformSitDownAction send... wTableID =%d  wCharID =%d \n,", wTableID, wChairID);
 	//发送命令
 	SendSitDownPacket(INVALID_TABLE,INVALID_CHAIR,szPassword);
 
@@ -226,7 +226,7 @@ bool CServerItem::PerformSitDownAction(word wTableID, word wChairID, bool bEffic
 //执行购买
 bool CServerItem::PerformBuyProperty(byte cbRequestArea,const char* pszNickName, word wItemCount, word wPropertyIndex)
 {
-	PLAZZ_PRINTF("CServerItem::PerformBuyProperty...\n");
+	CCLOG("CServerItem::PerformBuyProperty...\n");
 
 	if (!IsService())
 		return false;

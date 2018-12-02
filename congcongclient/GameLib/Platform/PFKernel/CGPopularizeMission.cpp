@@ -16,14 +16,14 @@ void CGPopularizeMission::setMissionSink(CGPopularizeSink* sink)
 
 void CGPopularizeMission::GetPopularizeList(BYTE bPopularizeType, DWORD gameKindID)
 {
-	PLAZZ_PRINTF("CGPopularizeMission::GetPopularizeList\n");
+	CCLOG("CGPopularizeMission::GetPopularizeList\n");
 	addLinkCallFun(CC_CALLBACK_0(CGPopularizeMission::CB_GetPopularizeList, this, bPopularizeType, gameKindID));
 	start();
 }
 
 void CGPopularizeMission::CB_GetPopularizeList(BYTE bPopularizeType, DWORD gameKindID)
 {
-	PLAZZ_PRINTF("CGPopularizeMission::CB_GetPopularizeList\n");
+	CCLOG("CGPopularizeMission::CB_GetPopularizeList\n");
 	CMD_GP_PopularizeList kNetInfo;
 	kNetInfo.bPopularizeType = bPopularizeType;
 	kNetInfo.dwGameKindID = gameKindID;
@@ -32,7 +32,7 @@ void CGPopularizeMission::CB_GetPopularizeList(BYTE bPopularizeType, DWORD gameK
 
 void CGPopularizeMission::Net_GetPopularizeList(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("CGPopularizeMission::Net_GetPopularizeList\n");
+	CCLOG("CGPopularizeMission::Net_GetPopularizeList\n");
 
 	datastream kDataStream(data, dataSize);
 	CMD_GP_PopularizeListRes kNetInfo;
@@ -46,14 +46,14 @@ void CGPopularizeMission::Net_GetPopularizeList(void* data, int dataSize)
 
 void CGPopularizeMission::PopularizeBind(std::string popularizeCode)
 {
-	PLAZZ_PRINTF("CGPopularizeMission::GetPopularizeList\n");
+	CCLOG("CGPopularizeMission::GetPopularizeList\n");
 	addLinkCallFun(CC_CALLBACK_0(CGPopularizeMission::CB_PopularizeBind, this, popularizeCode));
 	start();
 }
 
 void CGPopularizeMission::CB_PopularizeBind(std::string popularizeCode)
 {
-	PLAZZ_PRINTF("CGPopularizeMission::CB_PopularizeBind\n");
+	CCLOG("CGPopularizeMission::CB_PopularizeBind\n");
 	CMD_GP_PopularizeBind kNetInfo;
 	memset(&kNetInfo, 0, sizeof(kNetInfo)); 
 	memcpy(kNetInfo.szPopularizeCode, popularizeCode.c_str(), sizeof(kNetInfo.szPopularizeCode));
@@ -62,7 +62,7 @@ void CGPopularizeMission::CB_PopularizeBind(std::string popularizeCode)
 
 void CGPopularizeMission::Net_PopularizeBind(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("CGPopularizeMission::Net_PopularizeBind\n");
+	CCLOG("CGPopularizeMission::Net_PopularizeBind\n");
 	
 	CCASSERT(dataSize == sizeof(CMD_GP_PopularizeBindRes), "PopularizeBindRes Error!");
 	CMD_GP_PopularizeBindRes kNetInfo;
@@ -75,14 +75,14 @@ void CGPopularizeMission::Net_PopularizeBind(void* data, int dataSize)
 
 void CGPopularizeMission::PopularizeHttp(int Version)
 {
-	PLAZZ_PRINTF("CGPopularizeMission::PopularizeHttp\n");
+	CCLOG("CGPopularizeMission::PopularizeHttp\n");
 	addLinkCallFun(CC_CALLBACK_0(CGPopularizeMission::CB_PopularizeHttp, this, Version));
 	start();
 }
 
 void CGPopularizeMission::CB_PopularizeHttp(int Version )
 {
-	PLAZZ_PRINTF("CGPopularizeMission::CB_PopularizeHttp\n");
+	CCLOG("CGPopularizeMission::CB_PopularizeHttp\n");
 	CMD_GP_PopularizeHttp kNetInfo;
 	memset(&kNetInfo, 0, sizeof(kNetInfo)); 
 	kNetInfo.dwVersion = Version;
@@ -91,7 +91,7 @@ void CGPopularizeMission::CB_PopularizeHttp(int Version )
 
 void CGPopularizeMission::Net_PopularizeHttp(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("CGPopularizeMission::Net_PopularizeHttp\n");
+	CCLOG("CGPopularizeMission::Net_PopularizeHttp\n");
 
 	CCASSERT(dataSize == sizeof(CMD_GP_PopularizeHttpRes), "PopularizeHttpRes Error!");
 	CMD_GP_PopularizeHttpRes kNetInfo;

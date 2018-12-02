@@ -13,7 +13,7 @@ IServerItem* IServerItem::create()
 	}
 
 	__gServerItemRefCount++;
-	PLAZZ_PRINTF("IServerItem::create ref:%d\n", __gServerItemRefCount);
+	CCLOG("IServerItem::create ref:%d\n", __gServerItemRefCount);
 
 	return __gServerItem;
 }
@@ -30,7 +30,7 @@ void IServerItem::destory()
 			__gServerItem = 0;
 		}
 	}
-	PLAZZ_PRINTF("IServerItem::destory ref:%d\n", __gServerItemRefCount);
+	CCLOG("IServerItem::destory ref:%d\n", __gServerItemRefCount);
 
 }
 
@@ -203,7 +203,7 @@ bool CServerItem::ConnectServer(CGameServerItem * pGameServerItem,word wAVServer
 	}
 
 	//创建组件
-	PLAZZ_PRINTF("Connect %s",mGameServer.szServerAddr);
+	CCLOG("Connect %s",mGameServer.szServerAddr);
 	if (!mSocketEngine->connect(mGameServer.szServerAddr, mGameServer.wServerPort))
 	{
 		if (mIStringMessageSink)
@@ -567,7 +567,7 @@ bool CServerItem::OnSocketSystemMessage(int sub, void* data, int dataSize)
 
 bool CServerItem::OnSocketSystemNotify(int sub, void* data, int dataSize)
 {
-	PLAZZ_PRINTF("CServerItem::OnSocketSystemNotify:%d\n",dataSize);
+	CCLOG("CServerItem::OnSocketSystemNotify:%d\n",dataSize);
 	CMD_MB_System_Notify_C * pGameSystem=(CMD_MB_System_Notify_C *)data;
     //TODO:发送跑马灯
 	NoticeMsg::Instance().setSystemMessage(pGameSystem->szInfo);

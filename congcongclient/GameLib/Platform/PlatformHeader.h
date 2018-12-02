@@ -1,7 +1,6 @@
 #ifndef PLATFORMHEADER_H_
 #define PLATFORMHEADER_H_
 
-// 
 #include "Platform/PFDefine/data/GlobalUnits.h"
 #include "Platform/PFDefine/data/GlobalUserInfo.h"
 #include "Platform/PFDefine/data/OptionParameter.h"
@@ -24,7 +23,8 @@
 #include "Tools/tools/Convert.h"
 
 #include "cocos2d.h"
-#define PLAZZ_PRINTF cocos2d::log
+
+//////////////////////////////////////////////////////////////////////////
 
 #include "Platform/PFDefine/msg/CMD_GameServer.h"
 #include "Platform/PFDefine/msg/CMD_LogonServer.h"

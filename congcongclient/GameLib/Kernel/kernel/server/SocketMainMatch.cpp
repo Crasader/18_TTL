@@ -29,7 +29,7 @@ void CServerItem::sendExitMacth()
 //比赛费用
 bool CServerItem::OnSocketSubMatchFee(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("CServerItem::OnSocketSubMatchFee\n");
+	CCLOG("CServerItem::OnSocketSubMatchFee\n");
 
 	CMD_GR_Match_Fee *pNetInfo = (CMD_GR_Match_Fee*)data;
 
@@ -49,7 +49,7 @@ bool CServerItem::OnSocketSubMatchFee(void* data, int dataSize)
 //参赛人数
 bool CServerItem::OnSocketSubMatchNum(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("CServerItem::OnSocketSubMatchNum\n");
+	CCLOG("CServerItem::OnSocketSubMatchNum\n");
 
 	ASSERT(dataSize==sizeof(CMD_GR_Match_Num));
 	if(dataSize!=sizeof(CMD_GR_Match_Num)) return false;
@@ -65,7 +65,7 @@ bool CServerItem::OnSocketSubMatchNum(void* data, int dataSize)
 }
 bool CServerItem::OnSocketSubMatchInfo(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("CServerItem::OnSocketSubMatchInfo\n");
+	CCLOG("CServerItem::OnSocketSubMatchInfo\n");
 
 	ASSERT(dataSize==sizeof(CMD_GR_Match_Info));
 	if(dataSize!=sizeof(CMD_GR_Match_Info)) return false;
@@ -81,7 +81,7 @@ bool CServerItem::OnSocketSubMatchInfo(void* data, int dataSize)
 }
 bool CServerItem::OnSocketSubWaitTip(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("CServerItem::OnSocketSubWaitTip\n");
+	CCLOG("CServerItem::OnSocketSubWaitTip\n");
 
 	ASSERT(dataSize==sizeof(CMD_GR_Match_Wait_Tip) || dataSize==0);
 	if(dataSize!=sizeof(CMD_GR_Match_Wait_Tip) && dataSize!=0) return false;
@@ -103,7 +103,7 @@ bool CServerItem::OnSocketSubWaitTip(void* data, int dataSize)
 }
 bool CServerItem::OnSocketSubMatchResult(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("CServerItem::OnSocketSubMatchResult\n");
+	CCLOG("CServerItem::OnSocketSubMatchResult\n");
 
 	ASSERT(dataSize==sizeof(CMD_GR_MatchResult));
 	if(dataSize!=sizeof(CMD_GR_MatchResult)) return false;
@@ -119,7 +119,7 @@ bool CServerItem::OnSocketSubMatchResult(void* data, int dataSize)
 }
 bool CServerItem::OnSocketSubMatchStatus(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("CServerItem::OnSocketSubMatchStatus\n");
+	CCLOG("CServerItem::OnSocketSubMatchStatus\n");
 
 	ASSERT(dataSize==sizeof(byte));
 	if(dataSize!=sizeof(byte)) return false;
@@ -133,7 +133,7 @@ bool CServerItem::OnSocketSubMatchStatus(void* data, int dataSize)
 }
 bool CServerItem::OnSocketSubMatchGoldUpdate(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("CServerItem::OnSocketSubMatchGoldUpdate\n");
+	CCLOG("CServerItem::OnSocketSubMatchGoldUpdate\n");
 
 	ASSERT(dataSize==sizeof(CMD_GR_MatchGoldUpdate));
 	if(dataSize!=sizeof(CMD_GR_MatchGoldUpdate)) return false;
@@ -156,7 +156,7 @@ bool CServerItem::OnSocketSubMatchGoldUpdate(void* data, int dataSize)
 }
 bool CServerItem::OnSocketSubMatchEliminate(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("CServerItem::OnSocketSubMatchEliminate\n");
+	CCLOG("CServerItem::OnSocketSubMatchEliminate\n");
 
 	if (mIServerMatchSink)
 	{
@@ -167,7 +167,7 @@ bool CServerItem::OnSocketSubMatchEliminate(void* data, int dataSize)
 }
 bool CServerItem::OnSocketSubMatchJoinResoult(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("CServerItem::OnSocketSubMatchJoinResoult\n");
+	CCLOG("CServerItem::OnSocketSubMatchJoinResoult\n");
 
 	ASSERT(dataSize==sizeof(CMD_GR_Match_JoinResoult));
 	if(dataSize!=sizeof(CMD_GR_Match_JoinResoult)) return false;

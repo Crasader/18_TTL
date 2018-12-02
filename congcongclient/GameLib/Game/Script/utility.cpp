@@ -48,34 +48,35 @@ namespace utility
 	}
 	void log(const char * format, ...)
 	{
+#ifdef _DEBUG
 		va_list args;
-		va_start(args, format); 
+		va_start(args, format);
 
 		const int iMaxLenght = 1024;
 		char buf[iMaxLenght];
 		vsnprintf(buf, iMaxLenght-3, format, args);
-		strcat(buf, "\n");	
+		strcat(buf, "\n");
 		strcat(buf, "\0");
 
 		std::string kStr = utility::toString(s_kTime," ",buf);
+		cocos2d::log("%s", buf);
+
 		if (s_kDebugFileName != "")
 		{
 			std::string kPathTxt = getDebugFileName();
-			FILE* file = fopen(kPathTxt.c_str(), "rb+"); 
+			FILE* file = fopen(kPathTxt.c_str(), "rb+");
 			if (!file)
 			{
-				file = fopen(kPathTxt.c_str(), "wb+");   
+				file = fopen(kPathTxt.c_str(), "wb+");
 			}
-			if (file) {   
+			if (file) {
 				fseek(file, 0L, SEEK_END);
-				fwrite(kStr.c_str(), sizeof(char), strlen(kStr.c_str()), file);  
-				fclose(file);    
+				fwrite(kStr.c_str(), sizeof(char), strlen(kStr.c_str()), file);
+				fclose(file);
 			}
-
 		}
-		cocos2d::log("%s",buf);
-		
 		va_end(args);
+#endif
 	}
 	void saveFilePath(std::string kStr)
 	{

@@ -22,7 +22,7 @@ void CGMatchMission::setMissionSink(ICGMatchMissionSink* pSink)
 
 void CGMatchMission::PerformSignupMatch(int iGamerServerID)
 {
-	PLAZZ_PRINTF("CGMatchMission::PerformSignupMatch\n");
+	CCLOG("CGMatchMission::PerformSignupMatch\n");
 
 	addLinkCallFun(CC_CALLBACK_0(CGMatchMission::CB_SignupMatch,this));
 
@@ -44,7 +44,7 @@ void CGMatchMission::PerformSignupMatch(int iGamerServerID)
 }
 void CGMatchMission::PerformUnSignupMatch(int iGamerServerID)
 {
-	PLAZZ_PRINTF("CGMatchMission::PerformUnSignupMatch\n");
+	CCLOG("CGMatchMission::PerformUnSignupMatch\n");
 
 	addLinkCallFun(CC_CALLBACK_0(CGMatchMission::CB_SignupMatch,this));
 
@@ -65,7 +65,7 @@ void CGMatchMission::PerformUnSignupMatch(int iGamerServerID)
 }
 void CGMatchMission::CB_SignupMatch()
 {
-	PLAZZ_PRINTF("CGMatchMission::CB_SignupMatch\n");
+	CCLOG("CGMatchMission::CB_SignupMatch\n");
 	//报名比赛
 	if(m_bSignup==true)
 	{
@@ -116,7 +116,7 @@ void CGMatchMission::CB_SignupMatch()
 }
 void CGMatchMission::Net_SignupResult(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("CGMatchMission::Net_MatchAward");
+	CCLOG("CGMatchMission::Net_MatchAward");
 
 	//提取数据
 	CMD_GP_MatchSignupResult * pMatchSignupResult = (CMD_GP_MatchSignupResult *)data;

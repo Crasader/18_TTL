@@ -14,7 +14,7 @@ bool CServerItem::OnSocketSubUserTalk(void* data, int dataSize)
 //游戏状态
 bool CServerItem::OnSocketSubGameStatus(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("flow->CClientKernel::OnSocketSubGameStatus\n");
+	CCLOG("flow->CClientKernel::OnSocketSubGameStatus\n");
 
 	//效验参数
 	ASSERT(dataSize==sizeof(CMD_GF_GameStatus));
@@ -30,7 +30,7 @@ bool CServerItem::OnSocketSubGameStatus(void* data, int dataSize)
 //游戏场景
 bool CServerItem::OnSocketSubGameScene(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("flow->CClientKernel::OnSocketSubGameScene1");
+	CCLOG("flow->CClientKernel::OnSocketSubGameScene1");
 
 	//效验状态
 	ASSERT(m_pMeUserItem!=0);
@@ -40,14 +40,14 @@ bool CServerItem::OnSocketSubGameScene(void* data, int dataSize)
 		return true;
 	//场景处理
 	bool bLookonUser=(m_pMeUserItem->GetUserStatus()==US_LOOKON);
-	PLAZZ_PRINTF("flow->CClientKernel::OnSocketSubGameScene3");
+	CCLOG("flow->CClientKernel::OnSocketSubGameScene3");
 	return mIClientKernelSink->OnEventSceneMessage(mGameStatus,bLookonUser,data,dataSize);
 }
 
 //旁观状态
 bool CServerItem::OnSocketSubLookonStatus(void* data, int dataSize)
 {
-	PLAZZ_PRINTF("flow->CClientKernel::OnSocketSubLookonStatus\n");
+	CCLOG("flow->CClientKernel::OnSocketSubLookonStatus\n");
 
 	return true;
 
@@ -72,7 +72,7 @@ void CServerItem::SetGameStatus(byte cbGameStatus)
 }
 void CServerItem::SetClientKernelSink(IClientKernelSink*	pIClientKernelSink)
 {
-	PLAZZ_PRINTF("CServerItem::SetClientKernelSink");
+	CCLOG("CServerItem::SetClientKernelSink");
 	if (mIClientKernelSink)
 	{
 		mIClientKernelSink->clearInfo();

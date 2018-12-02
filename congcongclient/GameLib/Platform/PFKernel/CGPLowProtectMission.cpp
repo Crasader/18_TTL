@@ -42,7 +42,7 @@ void CGPLowProtectMission::CB_obtainLowProtect()
 
 void CGPLowProtectMission::Net_requickLowProtectInfo(void * data, int size)
 {
-	PLAZZ_PRINTF("CGPLowProtectMission::onRequickLowProtectInfo");
+	CCLOG("CGPLowProtectMission::onRequickLowProtectInfo");
 	if (size != sizeof(CMD_GP_BaseEnsureParamter))
 	{
 		ASSERT(false);
@@ -59,7 +59,7 @@ void CGPLowProtectMission::Net_requickLowProtectInfo(void * data, int size)
 
 void CGPLowProtectMission::Net_onObtainLowProtect(void * data, int size)
 {
-	PLAZZ_PRINTF("CGPLowProtectMission::Net_onObtainLowProtect");
+	CCLOG("CGPLowProtectMission::Net_onObtainLowProtect");
 
 	CMD_GP_BaseEnsureResult* pNetInfo = (CMD_GP_BaseEnsureResult*)data;
 

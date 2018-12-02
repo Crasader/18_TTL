@@ -18,7 +18,7 @@ bool CServerItem::OnSocketMainSystem(int sub, void* data, int dataSize)
 //系统消息
 bool CServerItem::OnSocketSubSystemMessage(void* data, int wDataSize)
 {
-	PLAZZ_PRINTF(("CGPLoginMission::OnSocketSubSystemMessage\n"));
+	CCLOG(("CGPLoginMission::OnSocketSubSystemMessage\n"));
 
 	CMD_CM_SystemMessage * pSystemMessage=(CMD_CM_SystemMessage *)data;
 	word wHeadSize=sizeof(CMD_CM_SystemMessage)-sizeof(pSystemMessage->szString);
@@ -84,6 +84,6 @@ bool CServerItem::OnSocketSubSystemMessage(void* data, int wDataSize)
 //动作消息
 bool CServerItem::OnSocketSubActionMessage(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CGPLoginMission::OnSocketSubActionMessage\n"));
+	CCLOG(("CGPLoginMission::OnSocketSubActionMessage\n"));
 	return true;
 }

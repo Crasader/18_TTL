@@ -59,7 +59,7 @@ void GameBase::sendReady()
 //发送函数
 bool GameBase::SendSocketData( word wSubCmdID)
 {
-	utility::log("GameBase::SendSocketData ",(int)wSubCmdID);
+	utility::log("GameBase::SendSocketData %d", (int)wSubCmdID);
 	return IServerItem::get()->SendSocketData(MDM_GF_GAME,wSubCmdID);
 }
 //发送函数

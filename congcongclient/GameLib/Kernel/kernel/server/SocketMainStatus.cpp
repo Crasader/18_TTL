@@ -16,7 +16,7 @@ bool CServerItem::OnSocketMainStatus(int sub, void* data, int dataSize)
 //桌子信息
 bool CServerItem::OnSocketSubStatusTableInfo(void* data, int dataSize)
 {
-	PLAZZ_PRINTF(("CServerItem::OnSocketSubStatusTableInfo(void* data, int dataSize)\n"));
+	CCLOG(("CServerItem::OnSocketSubStatusTableInfo(void* data, int dataSize)\n"));
 	
 	//变量定义
 	return true;
