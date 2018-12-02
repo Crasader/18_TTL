@@ -34,6 +34,8 @@ bool GPHomeScene::init()
 		return false;
 	}
 
+	utility::setDebugFileName(utility::toString("nft_test", time(nullptr)));
+
 	WidgetScenceXMLparse homeScript("GamePlaza/Script/GPHomeScene.xml", this);
 	initButton();
 	initPaoMaDeng();
