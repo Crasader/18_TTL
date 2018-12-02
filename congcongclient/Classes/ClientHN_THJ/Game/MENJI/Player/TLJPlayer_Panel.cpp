@@ -71,7 +71,7 @@ void TLJPlayer_Panel::showPlayerAvatar(TLJPlayer& player)
 	auto playerAvatarNode = WidgetFun::getChildWidget(WidgetFun::getChildWidget(this, utility::toString("TLJPlayerNode_", visioChairID)), "TLJPlayerHeader");
 	auto pClip = cocos2d::ClippingNode::create();
 	auto sprite = cocos2d::Sprite::create("Game/TLJ/TLJPlayer/avatar_male.png");
-	auto stencil = cocos2d::Sprite::create("Game/TLJ/TLJPlayer/Avatar.png");
+	auto stencil = cocos2d::Sprite::create("GamePlaza/HomeScene/Avar.png");
 	pClip->setStencil(stencil);
 	pClip->addChild(sprite);
 	pClip->setInverted(false);

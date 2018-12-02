@@ -84,7 +84,7 @@ bool CSocketEngine::connect(const char* url, int port)
 {
 	initValue();
 
-	cocos2d::log("Connect addr = %s , port = %d" ,url, port );
+	cocos2d::log("CSocketEngine connect addr = %s , port = %d" ,url, port );
 
 	return mSocket.connect(url, port) == 0;
 }
@@ -94,7 +94,7 @@ bool CSocketEngine::disconnect()
 {
 	//恢复数据
 	initValue();
-
+	cocos2d::log("CSocketEngine disconnect");
 	mSocket.disconnect();
 	return true;
 }

@@ -140,6 +140,8 @@ void GPLoginScene::onWxLoginSuccess(WxUserInfo kWxUserInfo)
 	// Î¢ÐÅÐÔ±ð
 	pGlobalUserData->cbGender = kWxUserInfo.sex;
 	strncpy(pGlobalUserData->szHeadHttp,kWxUserInfo.headimgurl.c_str(), countarray(pGlobalUserData->szHeadHttp));
+
+	CCLOG("onWxLoginSuccess headimgurl = %s", kWxUserInfo.headimgurl.c_str());
 	//UserDefault::sharedUserDefault()->setStringForKey("headimgurl",kWxUserInfo.headimgurl.c_str());
 	//UserDefault::sharedUserDefault()->flush();
 #endif

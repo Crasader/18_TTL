@@ -33,9 +33,9 @@ public:
 public:
 	void OnImagic();
 	void GetImagic(cocos2d::network::HttpClientEx *sender, cocos2d::network::HttpResponseEx *response);
-public:
-	cocos2d::Texture2D* getDownTexture(std::string kFile);
 	void addDown(cocos2d::ui::ImageView* pSprite,std::string kUrl,int iUserID,bool bSameSize = true);
+protected:
+	cocos2d::Texture2D* getDownTexture(std::string kFile);
 	void addDown(cocos2d::ui::ImageView* pSprite,std::string kUrl,std::string kFileName,bool bSameSize = true);
 	void upTime(float fTime);
 public:

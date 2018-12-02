@@ -8,6 +8,7 @@ void GPLoginScene::onGPLoginSuccess()
 	cocos2d::UserDefault::getInstance()->setStringForKey("Accounts", pGlobalUserData->szAccounts);
 	cocos2d::UserDefault::getInstance()->setStringForKey("Password", m_kPssword);
 	GPSceneManager::Instance().InHomeScene();
+	CCLOG("onGPLoginSuccess getHeadHttp = %s", UserInfo::Instance().getHeadHttp().c_str());
 	UserInfo::Instance().modeHeadHttp(UserInfo::Instance().getHeadHttp());
 }
 
@@ -44,9 +45,10 @@ void GPLoginScene::onGPPopularizeHttpRes(const CMD_GP_PopularizeHttpRes& pNetInf
 	auto vStr = utility::split(pNetInfo.szPopularizeHttp,";");
 	int startIndex = utility::parseInt(vStr[1]);
 	int endIndex =utility::parseInt(vStr[2]);
+	CCAssert(false, "called onGPPopularizeHttpRes");
 	for (int i=startIndex;i<=endIndex;i++) 
 	{
 		auto pNode = cocos2d::Sprite::create();
-		ImagicDownManager::Instance().addDown(pNode,utility::toString(vStr[0],i,".png"),utility::toString("GuangGao_",i),true);
+		//ImagicDownManager::Instance().addDown(pNode,utility::toString(vStr[0],i,".png"),utility::toString("GuangGao_",i));
 	}
 }

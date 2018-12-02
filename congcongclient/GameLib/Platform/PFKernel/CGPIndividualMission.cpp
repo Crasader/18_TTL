@@ -163,6 +163,7 @@ void CGPIndividualMission::sendModifyInfo()
 
 	//发送数据
 	word wSendSize=sizeof(CMD_GP_ModifyIndividual)+SendPacket.GetDataSize();
+	CCLOG("SUB_GP_MODIFY_INDIVIDUAL size=%d", wSendSize);
 	send(MDM_GP_USER_SERVICE,SUB_GP_MODIFY_INDIVIDUAL,cbBuffer,wSendSize);
 }
 void CGPIndividualMission::modifyName(std::string kName)
@@ -227,7 +228,7 @@ void CGPIndividualMission::modifyHeadHttp(std::string kHttp)
 {
 	addLinkCallFun(CC_CALLBACK_0(CGPIndividualMission::CB_modifyHeadHttp,this,kHttp));
 	//TODO:这里也没有必要重新连接吧
-	//start();
+	start();
 }
 
 void CGPIndividualMission::CB_modifyHeadHttp(std::string kHttp)

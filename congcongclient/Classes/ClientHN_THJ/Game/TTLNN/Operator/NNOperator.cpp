@@ -293,10 +293,29 @@ void NNOperator::showCallButtons()
 		if (temp[index].wBet == 0)
 			continue;
 		posIndex++;
-		auto pSnatchButton = WidgetManager::Instance().createWidget("NNOperator_Call", pCallNode);
-		pSnatchButton->setPosition(centerPos + addPos * posIndex);
-		WidgetFun::setWidgetUserInfo(pSnatchButton, "NNOperator_Call_Bets", utility::toString(temp[index].wBet, "_", temp[index].wBetType));
-		WidgetFun::setButtonImagic(pSnatchButton, utility::toString(image, temp[index].wBet, ".png"), true);
+
+		//if (temp[index].wBetType != TTLNN::NNGameBetType::NNGBT_TuiZhu) {
+			auto pSnatchButton = WidgetManager::Instance().createWidget("NNOperator_Call", pCallNode);
+			pSnatchButton->setPosition(centerPos + addPos * posIndex);
+			WidgetFun::setWidgetUserInfo(pSnatchButton, "NNOperator_Call_Bets", utility::toString(temp[index].wBet, "_", temp[index].wBetType));
+			WidgetFun::setButtonImagic(pSnatchButton, utility::toString(image, temp[index].wBet, ".png"), true);
+		//} else {
+		//	auto pSnatchButton0 = WidgetManager::Instance().createWidget("NNOperator_Call_TuiZhu0", pCallNode);
+		//	auto pSnatchButton1 = WidgetManager::Instance().createWidget("NNOperator_Call_TuiZhu1", pCallNode);
+		//	auto pos = centerPos + addPos * posIndex;
+		//	pSnatchButton0->setPosition(pos.x - 5, pos.y);
+		//	pSnatchButton1->setPosition(pos.x + 5, pos.y);
+		//	std::string strImagePath = WidgetFun::getWidgetUserInfo(pCallNode, "Image_TuiZhu");
+		//	if (temp[index].wBet >= 10) {
+		//		int first = temp[index].wBet / 10;
+		//		int second = temp[index].wBet % 10;
+		//		WidgetFun::setButtonImagic(pSnatchButton0, utility::toString(strImagePath, first, ".png"), false);
+		//		auto* pNum2 = WidgetFun::getChildWidgetByName(pSnatchButton1, "TuiZhu_1");
+		//		WidgetFun::setButtonImagic(pSnatchButton1, utility::toString(strImagePath, second, ".png"), false);
+		//	}
+		//	WidgetFun::setWidgetUserInfo(pSnatchButton0, "NNOperator_Call_Bets", utility::toString(temp[index].wBet, "_", temp[index].wBetType));
+		//	WidgetFun::setWidgetUserInfo(pSnatchButton1, "NNOperator_Call_Bets", utility::toString(temp[index].wBet, "_", temp[index].wBetType));
+		//}
 	}
 
 	pCallNode->setVisible(true);

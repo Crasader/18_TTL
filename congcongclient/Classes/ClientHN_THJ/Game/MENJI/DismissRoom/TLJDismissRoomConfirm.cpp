@@ -83,7 +83,7 @@ void TLJDismissRoomConfirm::updateInfo()
 		if (playerAvatarNode != nullptr) {
 			auto pClip = cocos2d::ClippingNode::create();
 			auto sprite = cocos2d::Sprite::create("Game/TLJ/TLJPlayer/avatar_male.png");
-			auto stencil = cocos2d::Sprite::create("Game/TLJ/TLJPlayer/Avatar.png");
+			auto stencil = cocos2d::Sprite::create("GamePlaza/HomeScene/Avar.png");
 			auto size = stencil->getContentSize();
 			stencil->setScale(playerAvatarNode->getContentSize().width / size.width * 0.75f);
 			pClip->setAlphaThreshold(.7f);

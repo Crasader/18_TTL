@@ -137,7 +137,7 @@ protected:
 #pragma endregion
 
 private:
-	cocos2d::Node* avatar;
+	cocos2d::Node* _img_head;
 	ssize_t m_selectedItemIndex;
 	//cocos2d::CCLabelTTF* m_pSpriteSpeaker;
 	CGPopularizeMission m_kPopularizeMission;

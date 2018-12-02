@@ -37,7 +37,7 @@ public:
 public:
 	virtual void GameBackScence();
 
-	static Node* getCircleAvatar(cocos2d::Node* pRootNode, const std::string& filename, const Size& targetSize, const Vec2& position);
+	static Node* createCircleAvatar(cocos2d::Node* pRootNode, const std::string& filename, const std::string& stencilPath, const Vec2& position);
 
 protected:
 	int m_iScenceTimeID;

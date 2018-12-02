@@ -83,24 +83,26 @@ void GPSceneManager::InHomeExScene(int gameKindID)
 	//GPHomeExScene::Instance().show(gameKindID);
 }
 
-Node* GPSceneManager::getCircleAvatar(cocos2d::Node* pRootNode, const std::string& filename, const Size& targetSize,  const Vec2& position)
+Node* GPSceneManager::createCircleAvatar(cocos2d::Node* pRootNode, const std::string& filename, const std::string& stencilPath, const Vec2& position)
 {
 	auto pClip = ClippingNode::create();
 	auto sprite = Sprite::create(filename);
 	auto viewSize = sprite->getContentSize();
-	if (viewSize.height < targetSize.height || viewSize.width < targetSize.width) {
-		auto scaleHeight = targetSize.height * 1.f / viewSize.height;
-		auto scaleWidth = targetSize.width * 1.f / viewSize.width;
+	auto stencil = Sprite::create(stencilPath);
+	auto stSize = stencil->getContentSize();
+
+	if (viewSize.height < stSize.height || viewSize.width < stSize.width) {
+		auto scaleHeight = stSize.height * 0.76f / viewSize.height;
+		auto scaleWidth = stSize.width * 0.76f / viewSize.width;
 		auto targetScale = utility::Max(scaleWidth, scaleHeight);
 		sprite->setScale(targetScale);
 	}else{
-		auto scaleHeight = viewSize.height * 1.f / targetSize.height;
-		auto scaleWidth  = viewSize.width * 1.f / targetSize.width;
+		auto scaleHeight = viewSize.height * 0.76f / stSize.height;
+		auto scaleWidth  = viewSize.width * 0.76f / stSize.width;
 		auto targetScale = utility::Min(scaleWidth, scaleHeight);
 		sprite->setScale(targetScale);
 	}
-	auto stencil = Sprite::create(filename);
-	//stencil->setScale(1.1f,1.1f);
+	stencil->setScale(0.83f,0.83f);
 	pClip->setAlphaThreshold(.7f);
 	pClip->setStencil(stencil);
 	pClip->addChild(sprite);

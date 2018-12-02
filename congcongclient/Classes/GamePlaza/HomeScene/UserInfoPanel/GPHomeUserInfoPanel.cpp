@@ -12,6 +12,7 @@
 
 FV_SINGLETON_STORAGE(GPHomeUserInfoPanel);
 GPHomeUserInfoPanel::GPHomeUserInfoPanel()
+	: _spUserHread(nullptr)
 {
 	init();
 }
@@ -29,9 +30,16 @@ bool GPHomeUserInfoPanel::init() {
 	WidgetManager::addButtonCB("Button_Close", this, button_selector(GPHomeUserInfoPanel::Button_Close));
 	WidgetManager::addButtonCB("Button_ok", this, button_selector(GPHomeUserInfoPanel::Button_Close));
 	UserInfo::Instance().addUpPlayerInfoCB(this, QY_CALLFUNC_SELECTOR(GPHomeUserInfoPanel::onUserInfo));
+	if (_spUserHread == nullptr) {
+		auto spHead = WidgetFun::getChildWidgetByName(this, "User_Avar1");
+		auto pos = Vec2(spHead->getContentSize().width/2, spHead->getContentSize().height/2);
+		WidgetFun::setImagic(WidgetFun::getChildWidgetByName(this, "User_Avar"), "GamePlaza/HomeScene/Tou_OutSide.png", true);
+		std::string headPath = "GamePlaza/HomeScene/avatar_male.png";
+		std::string stencilPath = "GamePlaza/HomeScene/UserInfoPanel/headbox.png";
+		_spUserHread = createCircleAvatar(spHead,	headPath,	stencilPath, pos);
+	}
 	return true;
 }
-
 
 void GPHomeUserInfoPanel::show()
 {
@@ -46,11 +54,7 @@ void GPHomeUserInfoPanel::hide()
 
 void GPHomeUserInfoPanel::onUserInfo()
 {
-	WidgetFun::setImagic(WidgetFun::getChildWidgetByName(this,"User_Avar1"),"GamePlaza/HomeScene/avatar_male.png",true);
-	WidgetFun::setImagic(WidgetFun::getChildWidgetByName(this,"User_Avar"),"GamePlaza/HomeScene/Tou_OutSide.png",true);
-	auto pos = WidgetFun::getChildWidgetByName(this,"User_Avar1")->getPosition();
-	auto avar = GPSceneManager::getCircleAvatar(WidgetFun::getChildWidgetByName(this,"User_Avar1"), "GamePlaza/HomeScene/avatar_male.png", cocos2d::Size(146,146),  pos);
-	ImagicDownManager::Instance().addDown(avar,UserInfo::Instance().getHeadHttp(),UserInfo::Instance().getUserID());
+	ImagicDownManager::Instance().addDown(_spUserHread,UserInfo::Instance().getHeadHttp(),UserInfo::Instance().getUserID());
 	WidgetFun::setText(this,"ID_Txt",utility::toString(UserInfo::Instance().getUserID()));
 	WidgetFun::setText(this,"Nick_Txt",utility::toString(UserInfo::Instance().getUserNicName()));
 	if((int)UserInfo::Instance().getGender() == UserSex::US_Male)
@@ -69,19 +73,22 @@ void GPHomeUserInfoPanel::onUserInfo()
 	}
 }
 
-cocos2d::Node* GPHomeUserInfoPanel::getCircleAvatar(cocos2d::Node* pRootNode, const std::string& filename, const cocos2d::Size& targetSize,  const cocos2d::Vec2& position)
+cocos2d::Node* GPHomeUserInfoPanel::createCircleAvatar(cocos2d::Node* pRootNode, const std::string& filename, const std::string& stencilPath, const cocos2d::Vec2& position)
 {
 	auto pClip = cocos2d::ClippingNode::create();
 	auto sprite = cocos2d::Sprite::create(filename);
 	auto viewSize = sprite->getContentSize();
-	if (viewSize.height < targetSize.height || viewSize.width < targetSize.width) {
-		auto scaleHeight = targetSize.height * 1.f / viewSize.height;
-		auto scaleWidth = targetSize.width * 1.f / viewSize.width;
+	auto stencil = cocos2d::Sprite::create(stencilPath);
+	auto ctSize = stencil->getContentSize();
+
+	if (viewSize.height < ctSize.height || viewSize.width < ctSize.width) {
+		auto scaleHeight = ctSize.height * 0.9f / viewSize.height;
+		auto scaleWidth = ctSize.width * 0.9f / viewSize.width;
 		auto targetScale = utility::Max(scaleWidth, scaleHeight);
 		sprite->setScale(targetScale);
 	}
-	auto stencil = cocos2d::Sprite::create("GamePlaza/Avatar.png");
-	stencil->setScale(1.1f,1.1f);
+	
+	stencil->setScale(1.2f,1.2f);
 	pClip->setAlphaThreshold(.7f);
 	pClip->setStencil(stencil);
 	pClip->addChild(sprite);
@@ -90,7 +97,6 @@ cocos2d::Node* GPHomeUserInfoPanel::getCircleAvatar(cocos2d::Node* pRootNode, co
 	pClip->setPosition(position);
 	return sprite;
 }
-
 
 void GPHomeUserInfoPanel::Button_Close(cocos2d::Ref*, WidgetUserInfo*)
 {

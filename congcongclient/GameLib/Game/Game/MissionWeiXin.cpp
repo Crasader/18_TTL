@@ -139,6 +139,9 @@ void MissionWeiXin::Rsp_UserInfo(rapidjson::Document* pDoc)
 	kWxUserInfo.country = MCWebReq::getDataValueStr(pDoc,"country");
 	kWxUserInfo.headimgurl = MCWebReq::getDataValueStr(pDoc,"headimgurl");
 	kWxUserInfo.unionid = MCWebReq::getDataValueStr(pDoc,"unionid");
+
+	CCLOG("kWxUserInfo.headimgurl=%s", kWxUserInfo.headimgurl.c_str());
+
 	//sex 1 表示男 2 表示女 0 表示未知
 	if (kWxUserInfo.sex == 2)
 	{

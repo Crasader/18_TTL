@@ -126,7 +126,7 @@ cocos2d::Texture2D* ImagicDownManager::getDownTexture(std::string kFile)
 	}
 	return NULL;
 }
-void ImagicDownManager::addDown(cocos2d::Node* pNode,std::string kUrl,int iUserID,bool bSameSize )
+void ImagicDownManager::addDown(cocos2d::Node* pNode,std::string kUrl,int iUserID)
 {
 	int iIdex = 0;
 	for (size_t i = 0;i<kUrl.size();i++)
@@ -147,12 +147,16 @@ void ImagicDownManager::addDown(cocos2d::Node* pNode,std::string kUrl,int iUserI
 			break;
 		}
 		pos = kUrl.find(strSrc, (pos+desLen));
-	}  
-	std::string kFileName = utility::toString(iUserID,"Idex",iIdex);
-	kFileName = cocos2d::FileUtils::getInstance()->getWritablePath()+kFileName+".png";
-	addDown(pNode,kUrl,kFileName,bSameSize);
+	}
+	std::string kFileName = utility::toString(iUserID, "Idex", iIdex);
+
+	CCLOG("ImagicDownManager addDown url=%s, kFileName=%s", kUrl.c_str(), kFileName.c_str());
+
+	//kUrl = "http://thirdwx.qlogo.cn/mmopen/vi_32/lw1fyI8wG2egId7ZQLaP3OAq8KRsqTFibda3IQHkicRAgibpusIKuZ8fLsXzmqJ63KjHHZib8ZSUzspPwIGlyAClFg/132";
+
+	addDown(pNode, kUrl, kFileName);
 }
-void ImagicDownManager::addDown(cocos2d::Node* pNode,std::string kUrl,std::string kFileName,bool bSameSize )
+void ImagicDownManager::addDown(cocos2d::Node* pNode,std::string kUrl,std::string kFileName,bool bSameSize, bool bAbsulutePath)
 {
 	if (kUrl == "")
 	{
@@ -162,10 +166,14 @@ void ImagicDownManager::addDown(cocos2d::Node* pNode,std::string kUrl,std::strin
 	cocos2d::Menu* pButtonSprite = dynamic_cast<cocos2d::Menu*>(pNode);
 	if (!pSprite && !pButtonSprite)
 	{
-		CCASSERT(false,"");
+		CCASSERT(false,"ImagicDownManager::addDown !pSprite && !pButtonSprite");
 		return;
 	}
-	kFileName = cocos2d::FileUtils::getInstance()->getWritablePath()+kFileName+".png";
+
+	if (!bAbsulutePath) {
+		kFileName = cocos2d::FileUtils::getInstance()->getWritablePath() + kFileName + ".png";
+	}
+
 	std::string StrSavePath = kFileName;
 	if (cocos2d::CCTextureCache::sharedTextureCache()->addImage(StrSavePath.c_str()))
 	{
@@ -175,6 +183,7 @@ void ImagicDownManager::addDown(cocos2d::Node* pNode,std::string kUrl,std::strin
 		}
 		if (pButtonSprite)
 		{
+			CCASSERT(false, "ImagicDownManager::addDown pButtonSprite");
 			//WidgetFun::setButtonImagic(pButtonSprite,StrSavePath,StrSavePath,StrSavePath);
 		}
 		return;

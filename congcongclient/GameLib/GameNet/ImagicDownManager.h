@@ -33,11 +33,10 @@ public:
 public:
 	void OnImagic();
 	void GetImagic(cocos2d::network::HttpClientEx *sender, cocos2d::network::HttpResponseEx *response);
-public:
+	void addDown(cocos2d::Node* pNode,std::string kUrl,int iUserID);
+protected:
+	void addDown(cocos2d::Node* pNode,std::string kUrl,std::string kFileName,bool bSameSize = true,bool bAbsulutePath = false);
 	cocos2d::Texture2D* getDownTexture(std::string kFile);
-	void addDown(cocos2d::Node* pNode,std::string kUrl,int iUserID,bool bSameSize = true);
-	//void addDown(cocos2d::Node* pNode,std::string kUrl,int iUserID,bool bSameSize = true);
-	void addDown(cocos2d::Node* pNode,std::string kUrl,std::string kFileName,bool bSameSize = true);
 	void upTime(float fTime);
 public:
 	int m_iIdexCout;

@@ -13,7 +13,7 @@ FV_SINGLETON_STORAGE(GPHomeScene);
 GPHomeScene::GPHomeScene()
 	: m_selectedItemIndex(0)
 	//,m_pSpriteSpeaker(NULL)
-	, avatar(NULL)
+	, _img_head(NULL)
 	, m_kPopularizeMission(ScriptData<std::string>("address").Value().c_str(), ScriptData<int>("Port").Value())
 	, _nCurrentGameKindID(ScriptData<int>("GameKind").Value())
 {
@@ -39,9 +39,17 @@ bool GPHomeScene::init()
 	initPaoMaDeng();
 	initPopupPanels();
 
-	auto pos = WidgetFun::getChildWidgetByName(this,"Img_HeaderBG")->getPosition();
-	avatar = GPSceneManager::getCircleAvatar(WidgetFun::getChildWidgetByName(this,"Img_HeaderBG"), "GamePlaza/HomeScene/avatar_male.png", Size(65, 65),pos);//Vec2(65, 647)
-	WidgetFun::setImagic(WidgetFun::getChildWidgetByName(this,"Img_HeaderBG"),"GamePlaza/HomeScene/avatar_male.png",true);
+	if (_img_head == nullptr) {
+		auto pHeadBG = WidgetFun::getChildWidgetByName(this, "Img_HeaderBG");
+
+		auto pos = Vec2(pHeadBG->getContentSize().width/2 + 2, pHeadBG->getContentSize().height/2 - 2);
+		std::string headPath = "GamePlaza/HomeScene/avatar_male.png";
+		std::string stencilPath = "GamePlaza/HomeScene/avatar_male.png";
+
+		_img_head = GPSceneManager::createCircleAvatar(WidgetFun::getChildWidgetByName(this,"Button_Header"), headPath, stencilPath, pos);
+
+		WidgetFun::setImagic(pHeadBG,"GamePlaza/HomeScene/avatar_male.png",true);
+	}
 	float sound_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("sound_volume", LocalContant::DEFAULT_SOUND);
 	float effect_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("effect_volume", LocalContant::DEFAULT_EFFECT);
 	CocosDenshion::SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(sound_volume);
@@ -447,7 +455,7 @@ void GPHomeScene::flushUserInfo()
 	//WidgetFun::setText(this, "Home_RoomCardNum",UserInfo::Instance().getUserInsure());
 	WidgetFun::setText(this, "Home_GoldNum",UserInfo::Instance().getUserScore());
 	flushPlayerLevel();
-	ImagicDownManager::Instance().addDown(avatar,UserInfo::Instance().getHeadHttp(), UserInfo::Instance().getUserID());
+	ImagicDownManager::Instance().addDown(_img_head,UserInfo::Instance().getHeadHttp(), UserInfo::Instance().getUserID());
 }
 
 #pragma region CGPopularizeSink

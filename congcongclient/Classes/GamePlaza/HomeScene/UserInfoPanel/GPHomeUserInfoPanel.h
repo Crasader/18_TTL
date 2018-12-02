@@ -17,7 +17,11 @@ public:
 	void show();
 	void hide();
 	void onUserInfo();
-	cocos2d::Node* getCircleAvatar(cocos2d::Node* pRootNode, const std::string& filename, const cocos2d::Size& targetSize,  const cocos2d::Vec2& position);
+	cocos2d::Node* createCircleAvatar(cocos2d::Node* pRootNode, const std::string& filename, const std::string& stencilPath, const cocos2d::Vec2& position);
 
 	void Button_Close(cocos2d::Ref*, WidgetUserInfo*);
+
+protected:
+	//Íæ¼ÒÍ·Ïñ
+	cocos2d::Node* _spUserHread;
 };
