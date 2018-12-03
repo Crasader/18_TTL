@@ -98,7 +98,8 @@ bool SRLFGameScence::StartRecord(datastream kDataStream)
 		{
 			return false;
 		}
-		m_kReqPlayerInfo.query(kRecordPlayer.dwUserID);
+		//TODO:干掉了玩家信息查询
+		//m_kReqPlayerInfo.query(kRecordPlayer.dwUserID);
 		pPlayer->defaultState();
 		pPlayer->setGameRecord(true);
 		pPlayer->PlayerEnter();
@@ -192,7 +193,8 @@ void SRLFGameScence::NextRecordAction()
 }
 void SRLFGameScence::onGPAccountInfoHttpIP(dword dwUserID, std::string strIP,std::string strHttp)
 {
-	GameBase::onGPAccountInfoHttpIP(dwUserID,strIP,strHttp);
+	//TODO:干掉了玩家信息查询
+	//GameBase::onGPAccountInfoHttpIP(dwUserID,strIP,strHttp);
 
 	if (!m_pGameRecord)
 	{
