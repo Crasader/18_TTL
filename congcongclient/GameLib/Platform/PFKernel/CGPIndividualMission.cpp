@@ -9,11 +9,11 @@ CGPIndividualMission::CGPIndividualMission(const char* url, int port)
 , mMissionType(0)
 {
 	mIGPIndividualMissionSink = 0;
-	addNetCall(CC_CALLBACK_2(CGPIndividualMission::onSubUserAccountInfo,this),SUB_GP_QUERY_ACCOUNTINFO);
-	addNetCall(CC_CALLBACK_2(CGPIndividualMission::onSubUserIndividual,this),SUB_GP_USER_INDIVIDUAL);
-	addNetCall(CC_CALLBACK_2(CGPIndividualMission::onSubSpreaderResoult,this),SUB_GP_SPREADER_RESOULT);
-	addNetCall(CC_CALLBACK_2(CGPIndividualMission::onSubOperateSuccess,this),SUB_GP_OPERATE_SUCCESS);
-	addNetCall(CC_CALLBACK_2(CGPIndividualMission::onSubOperateFailure,this),SUB_GP_OPERATE_FAILURE);
+	addNetCall(CC_CALLBACK_2(CGPIndividualMission::onSubUserAccountInfo, this), SUB_GP_QUERY_ACCOUNTINFO);
+	addNetCall(CC_CALLBACK_2(CGPIndividualMission::onSubUserIndividual, this), SUB_GP_USER_INDIVIDUAL);
+	addNetCall(CC_CALLBACK_2(CGPIndividualMission::onSubSpreaderResoult, this), SUB_GP_SPREADER_RESOULT);
+	addNetCall(CC_CALLBACK_2(CGPIndividualMission::onSubOperateSuccess, this), SUB_GP_OPERATE_SUCCESS);
+	addNetCall(CC_CALLBACK_2(CGPIndividualMission::onSubOperateFailure, this), SUB_GP_OPERATE_FAILURE);
 }
 
 // 设置回调接口
@@ -23,13 +23,13 @@ void CGPIndividualMission::setMissionSink(IGPIndividualMissionSink* pIGPIndividu
 }
 
 // 查询个人资料
-void CGPIndividualMission::query(int iAccountID)
+void CGPIndividualMission::QUERY_GP_USER_INDIVIDUAL(int iAccountID)
 {
-	addLinkCallFun(CC_CALLBACK_0(CGPIndividualMission::CB_query,this,iAccountID));
+	addLinkCallFun(CC_CALLBACK_0(CGPIndividualMission::CB_GP_USER_INDIVIDUAL,this,iAccountID));
 	//TODO:这里也没有必要重新连接吧
 	start();
 }
-void CGPIndividualMission::CB_query(int iAccountID)
+void CGPIndividualMission::CB_GP_USER_INDIVIDUAL(int iAccountID)
 {
 	mMissionType = MISSION_INDIVIDUAL_QUERY;
 	//变量定义
@@ -70,7 +70,6 @@ void CGPIndividualMission::CB_queryAccountInfo(int iAccountID)
 
 	QueryIndividual.dwUserID=iAccountID;
 	send(MDM_GP_USER_SERVICE,SUB_GP_QUERY_ACCOUNTINFO,&QueryIndividual,sizeof(QueryIndividual));
-	
 }
 void CGPIndividualMission::sendModifyInfo()
 {
@@ -220,7 +219,6 @@ void CGPIndividualMission::CB_modifySpreader(std::string kSpreaderID)
 
 	//发送数据
 	send(MDM_GP_USER_SERVICE,SUB_GP_MODIFY_SPREADER,&kNetInfo,sizeof(kNetInfo));
-
 }
 void CGPIndividualMission::modifyHeadHttp(std::string kHttp)
 {
@@ -297,13 +295,12 @@ void CGPIndividualMission::onSubUserAccountInfo(void* data, int size)
 		strcpy(pGlobalUserData->szNickName, utility::a_u8((char*)pAccountInfo->szNickName).c_str());
 		strncpy(pGlobalUserData->szAccounts, ((char*)pAccountInfo->szAccounts), countarray(pGlobalUserData->szAccounts));
 		strncpy(pGlobalUserData->szLogonIP, ((char*)pAccountInfo->szLogonIp), countarray(pGlobalUserData->szLogonIP));
-		//金币信息
-		pGlobalUserInfo->upPlayerInfo();
 	}
 	if (mIGPIndividualMissionSink)
 	{
 		mIGPIndividualMissionSink->onGPAccountInfo(pAccountInfo);
 	}
+
 	//TODO:这个自动断开连接显得莫名其妙
 	//stop();
 }
@@ -367,8 +364,9 @@ void CGPIndividualMission::onSubUserIndividual(void* data, int size)
 		{
 			strncpy(pGlobalUserData->szLogonIP, (kIP.c_str()), kIP.size());
 		}
-		if (kHttp != "")
+		if (kHttp.size() != 0)
 		{
+			CCLOG("Copy headUrl = %s", kHttp.c_str());
 			strncpy(pGlobalUserData->szHeadHttp, (kHttp.c_str()), kHttp.size());
 		}
 		if (kChannel != "")
@@ -377,11 +375,6 @@ void CGPIndividualMission::onSubUserIndividual(void* data, int size)
 		}
 		//金币信息
 		pGlobalUserInfo->upPlayerInfo();
-		std::string& strHeadUrl = UserInfo::Instance().getHeadHttp();
-		CCLOG("onGPLoginSuccess getHeadHttp = %s", strHeadUrl.c_str());
-		if (strHeadUrl.size() != 0 && strcmp(strHeadUrl.c_str(), kHttp.c_str() ) != 0) {
-			UserInfo::Instance().modeHeadHttp(UserInfo::Instance().getHeadHttp());
-		}
 	}
 
 	if (bUpdate && mIGPIndividualMissionSink)

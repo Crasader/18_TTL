@@ -21,7 +21,6 @@
 		<Property Key="Pos" Value="469.80 360.44"/>
 	</Widget>
 
-
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/UserInfoPanel/title.png"/>
 		<Property Key="Pos" Value="640 514"/>

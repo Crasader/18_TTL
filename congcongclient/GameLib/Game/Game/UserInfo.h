@@ -23,6 +23,7 @@ struct UserCallInfo
 class UserInfo
 	:public GlobalUserInfoSink
 	,public ICGUserInGameServerInfoSink
+	,public IGPIndividualMissionSink
 	,public TimeNode 
 	,public FvSingleton<UserInfo>
 {
@@ -50,7 +51,7 @@ public:
 	std::string getUserIP();
 	void setPhoneNumber(std::string strNumber);
 	std::string getPhoneNumber();
-	void checkInGameServer();
+	//void checkInGameServer();
 	void setPrivateInGameServerID(int iServerID);
 	void setUserRight(dword dwRight);
 	void setMasterRight(dword dwRight);

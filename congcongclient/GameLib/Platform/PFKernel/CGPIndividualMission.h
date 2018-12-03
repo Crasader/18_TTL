@@ -42,10 +42,8 @@ struct tagModifyIndividual
 //////////////////////////////////////////////////////////////////////////
 // 用户资料修改提示
 //////////////////////////////////////////////////////////////////////////
-class IGPIndividualMissionSink
+struct IGPIndividualMissionSink
 {
-public:
-	virtual ~IGPIndividualMissionSink(){}
 	virtual void onGPIndividualInfo(int type){}
 	virtual void onGPAccountInfo(CMD_GP_UserAccountInfo* pAccountInfo){}
 	virtual void onGPAccountInfoHttpIP(dword dwUserID, std::string strIP,std::string strHttp){}
@@ -76,9 +74,9 @@ public:
 	void setMissionSink(IGPIndividualMissionSink* pIGPIndividualMissionSink);
 
 	// 查询个人资料
-	void query(int iAccountID);
+	void QUERY_GP_USER_INDIVIDUAL(int iAccountID);
 
-	void CB_query(int iAccountID);
+	void CB_GP_USER_INDIVIDUAL(int iAccountID);
 
 	// 查询个人资料
 	void queryAccountInfo(int iAccountID = -1);

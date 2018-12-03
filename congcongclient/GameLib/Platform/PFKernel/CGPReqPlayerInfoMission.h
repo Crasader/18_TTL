@@ -26,9 +26,9 @@ public:
 	// 设置回调接口
 	void setMissionSink(ICGPReqPlayerInfoSink* pReqPlayerInfoSink);
 
-	void query(int iAccountID);
-	void CB_queryInfo(int iAccountID);
-	void Net_queryInfo(void* data, int dataSize);
+	void QUERY_GP_USER_INDIVIDUAL(int iAccountID);
+	void CB_GP_USER_INDIVIDUAL(int iAccountID);
+	void ON_GP_USER_INDIVIDUAL(void* data, int dataSize);
 	//////////////////////////////////////////////////////////////////////////
 	//查询头像url
 	void requreUserInfoSingle(byte infoType);

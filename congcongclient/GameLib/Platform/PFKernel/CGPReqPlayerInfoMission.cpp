@@ -7,7 +7,7 @@ CGPReqPlayerInfoMission::CGPReqPlayerInfoMission(const char* url, int port)
 
 	_CallMission = new CCallMission("CGPReqPlayerInfoMission", url, port);
 	
-	_CallMission->addNetCall(CC_CALLBACK_2(CGPReqPlayerInfoMission::Net_queryInfo,this), SUB_GP_USER_INDIVIDUAL);
+	_CallMission->addNetCall(CC_CALLBACK_2(CGPReqPlayerInfoMission::ON_GP_USER_INDIVIDUAL,this), SUB_GP_USER_INDIVIDUAL);
 	_CallMission->addNetCall(CC_CALLBACK_2(CGPReqPlayerInfoMission::onUserInfoSingle, this), SUB_GP_QUERY_INDIVIDUAL_SINGLE_RET);
 }
 
@@ -24,15 +24,15 @@ void CGPReqPlayerInfoMission::setMissionSink(ICGPReqPlayerInfoSink* pReqPlayerIn
 {
 	mIGPReqPlayerInfoSink = pReqPlayerInfoSink;
 }
-void CGPReqPlayerInfoMission::query(int iAccountID)
+void CGPReqPlayerInfoMission::QUERY_GP_USER_INDIVIDUAL(int iAccountID)
 {
 	utility::log(utility::toString("CGPReqPlayerInfoMission::query, id=", iAccountID).c_str());
 	if (_CallMission) {
-		_CallMission->addLinkCallFun(CC_CALLBACK_0(CGPReqPlayerInfoMission::CB_queryInfo, this, iAccountID));
+		_CallMission->addLinkCallFun(CC_CALLBACK_0(CGPReqPlayerInfoMission::CB_GP_USER_INDIVIDUAL, this, iAccountID));
 		_CallMission->start();
 	}
 }
-void CGPReqPlayerInfoMission::CB_queryInfo(int iAccountID)
+void CGPReqPlayerInfoMission::CB_GP_USER_INDIVIDUAL(int iAccountID)
 {
 	CCLOG("CGPReqPlayerInfoMission::CB_queryInfo\n");
 	if (!_CallMission) {
@@ -43,7 +43,7 @@ void CGPReqPlayerInfoMission::CB_queryInfo(int iAccountID)
 	QueryIndividual.dwUserID = iAccountID;
 	_CallMission->send(MDM_GP_USER_SERVICE, SUB_GP_QUERY_INDIVIDUAL, &QueryIndividual, sizeof(QueryIndividual));
 }
-void CGPReqPlayerInfoMission::Net_queryInfo(void* data, int dataSize)
+void CGPReqPlayerInfoMission::ON_GP_USER_INDIVIDUAL(void* data, int dataSize)
 {
 	CCLOG("CGPReqPlayerInfoMission::Net_queryInfo\n");
 	if (mIGPReqPlayerInfoSink) {

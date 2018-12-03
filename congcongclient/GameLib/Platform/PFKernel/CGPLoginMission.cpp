@@ -302,15 +302,16 @@ bool CGPLoginMission::onSocketSubLogonFinish(void* data, int size)
 {
 	CCLOG(("CGPLoginMission::onSocketSubLogonFinish\n"));
 
-	//DONE: 没有必要断开连接吧
-	//stop();
-
 	if (mIGPLoginMissionSink)
 		mIGPLoginMissionSink->onGPLoginComplete();
 
 	CGlobalUserInfo * pGlobalUserInfo=CGlobalUserInfo::GetInstance();
 	tagGlobalUserData * pGlobalUserData=pGlobalUserInfo->GetGlobalUserData();
+
 	pGlobalUserInfo->LoginSucess();
+
+	//DONE: 没有必要断开连接吧
+	//stop();
 
 	return true;
 }

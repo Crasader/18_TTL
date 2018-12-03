@@ -447,8 +447,7 @@ void GPHomeScene::removeGamepanels()
 
 void GPHomeScene::onLogonSucess()
 {
-	UserInfo::Instance().reqIndividual();
-	UserInfo::Instance().reqAccountInfo();
+
 }
 
 void GPHomeScene::flushUserInfo()
@@ -458,7 +457,20 @@ void GPHomeScene::flushUserInfo()
 	//WidgetFun::setText(this, "Home_RoomCardNum",UserInfo::Instance().getUserInsure());
 	WidgetFun::setText(this, "Home_GoldNum",UserInfo::Instance().getUserScore());
 	flushPlayerLevel();
-	ImagicDownManager::Instance().addDown(_img_head,UserInfo::Instance().getHeadHttp(), UserInfo::Instance().getUserID());
+
+	if (UserInfo::Instance().getHeadHttp() != "") {
+		ImagicDownManager::Instance().addDown(_img_head,UserInfo::Instance().getHeadHttp(), UserInfo::Instance().getUserID());
+		std::string headUrl = "";
+		headUrl = cocos2d::UserDefault::getInstance()->getStringForKey("headimgurl", "");
+		CCLOG("onGPLoginSuccess getHeadHttp = %s", headUrl.c_str());
+		if (headUrl != "") {
+			UserDefault::sharedUserDefault()->setStringForKey("headimgurl", "");
+			UserInfo::Instance().modeHeadHttp(UserInfo::Instance().getHeadHttp());
+		}
+	} else {
+		//TODO:不得已而为之, 同时发送AccountInfo请求和Individual请求可能导致后面这个链接已经重连了
+		UserInfo::Instance().reqIndividual();
+	}
 }
 
 #pragma region CGPopularizeSink

@@ -2,7 +2,7 @@
 
 void GPLoginScene::onGPLoginSuccess()
 {
-	cocos2d::log("kuili:-----GPLogonScence::onGPLoginSuccess call---------");
+	utility::log("GPLogonScence::onGPLoginSuccess");
 	CGlobalUserInfo * pGlobalUserInfo = CGlobalUserInfo::GetInstance();
 	tagGlobalUserData * pGlobalUserData = pGlobalUserInfo->GetGlobalUserData();
 	cocos2d::UserDefault::getInstance()->setStringForKey("Accounts", pGlobalUserData->szAccounts);

@@ -112,7 +112,7 @@ void GamePlayer::setHeadNode(cocos2d::Node* pHeadNode)
 void GamePlayer::requesUserInfo()
 {
 	if (m_pUserItem) {
-		m_kRequestMissionHead->query(m_pUserItem->GetUserID());
+		m_kRequestMissionHead->QUERY_GP_USER_INDIVIDUAL(m_pUserItem->GetUserID());
 	}
 }
 void GamePlayer::requestHeadInfo()

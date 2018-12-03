@@ -142,7 +142,7 @@ void GPLoginScene::onWxLoginSuccess(WxUserInfo kWxUserInfo)
 	strncpy(pGlobalUserData->szHeadHttp,kWxUserInfo.headimgurl.c_str(), countarray(pGlobalUserData->szHeadHttp));
 
 	CCLOG("onWxLoginSuccess headimgurl = %s", kWxUserInfo.headimgurl.c_str());
-	//UserDefault::sharedUserDefault()->setStringForKey("headimgurl",kWxUserInfo.headimgurl.c_str());
+	UserDefault::sharedUserDefault()->setStringForKey("headimgurl",kWxUserInfo.headimgurl.c_str());
 	//UserDefault::sharedUserDefault()->flush();
 #endif
 }

@@ -52,14 +52,6 @@ byte UserInfo::getGender()
 {
 	return CGlobalUserInfo::GetInstance()->getGender();
 }
-void UserInfo::modeGender(byte cbGender)
-{
-	m_kIndividualMissionHead.modifyGender(cbGender);
-}
-void UserInfo::modeName(std::string strName)
-{
-	m_kIndividualMissionHead.modifyName(strName);
-}
 void UserInfo::modeHeadHttp(std::string strHttp)
 {
 	m_kIndividualMissionHead.modifyHeadHttp(strHttp);
@@ -76,7 +68,6 @@ std::string UserInfo::getUserIP()
 {
 	return CGlobalUserInfo::GetInstance()->GetGlobalUserData()->szLogonIP;
 }
-
 std::string UserInfo::getUserNicName()
 {
 	return CGlobalUserInfo::GetInstance()->getNickName();
@@ -93,9 +84,15 @@ SCORE UserInfo::getUserInsure()
 {
 	return CGlobalUserInfo::GetInstance()->getUserInsure();
 }
+//最丑陋的方式限制刷新
+int count = 0;
 void UserInfo::reqIndividual()
 {
-	m_kIndividualMission.query(getUserID());
+	if (count < 3) {
+		utility::log("UserInfo::reqIndividual() count = %d", count);
+		m_kIndividualMissionHead.QUERY_GP_USER_INDIVIDUAL(getUserID());
+		count++;
+	}
 }
 void UserInfo::upPlayerInfo()
 {
@@ -112,7 +109,7 @@ void UserInfo::LoginSucess()
 	{
 		((*itor).pPoint->*(*itor).pFun)();
 	}
-	checkInGameServer();
+	//checkInGameServer();
 	reqAccountInfo();
 }
 void UserInfo::addLoginSucessCB(cocos2d::Ref* pPoint,QYSEL_CallFunc pFun)
@@ -180,15 +177,15 @@ std::string UserInfo::getPhoneNumber()
 {
 	return CGlobalUserInfo::GetInstance()->getPhoneNumber();
 }
-void UserInfo::checkInGameServer()
-{
-	int iServerID = cocos2d::UserDefault::sharedUserDefault()->getIntegerForKey("InGameServerID",-1);
-	CGameServerItem* pServer = pSevList->SearchGameServer(iServerID);
-	if (pServer && pServer->IsPrivateRoom())
-	{
-		pGameMan->connectGameServerByServerID(iServerID);
-	}
-}
+//void UserInfo::checkInGameServer()
+//{
+//	int iServerID = cocos2d::UserDefault::sharedUserDefault()->getIntegerForKey("InGameServerID",-1);
+//	CGameServerItem* pServer = pSevList->SearchGameServer(iServerID);
+//	if (pServer && pServer->IsPrivateRoom())
+//	{
+//		pGameMan->connectGameServerByServerID(iServerID);
+//	}
+//}
 void UserInfo::setPrivateInGameServerID(int iServerID)
 {
 	cocos2d::UserDefault::sharedUserDefault()->setIntegerForKey("InGameServerID",iServerID);

@@ -497,7 +497,7 @@ void GameManagerBase::StartGameReconnect()
 }
 void GameManagerBase::onEventTCPSocketError(int errorCode)
 {
-	UserInfo::Instance().checkInGameServer();
+	//UserInfo::Instance().checkInGameServer();
 	TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(GameManagerBase::closeClinet,this), 3.0f);
 }
 void GameManagerBase::closeClinet()
@@ -628,11 +628,11 @@ void GameManagerBase::onWeiXinResult(int result)
 			{
 				case 0:
 					//public static final int ERR_OK = 0;//微信分享成功
-					NoticeMsg::Instance().ShowTopMsg(ScriptData<std::string>("CCWeiXinShare_OK").Value());
+					//NoticeMsg::Instance().ShowTopMsg(utility::a_u8("分享成功"));
 					break;
 				case -2:
 					//public static final int ERR_USER_CANCEL = -2;
-					NoticeMsg::Instance().ShowTopMsg(ScriptData<std::string>("CCWeiXinShare_Cancel").Value());
+					//NoticeMsg::Instance().ShowTopMsg(utility::a_u8("分享取消"));
 					break;
 					//public static final int ERR_COMM = -1;
 					//public static final int ERR_SENT_FAILED = -3;
