@@ -861,11 +861,11 @@ bool CTableFrameSink::OnEventGameConclude(WORD wChairID, IServerUserItem* pIServ
                 }
             }
 
-//#ifndef _DEBUG
+#ifndef _DEBUG
 			//DONE: debug模式下不自动开始下一局
 			m_pITableFrame->SetGameTimer(IDI_TIMER_CHECK_USER_STATUS, TIME_CHECK_USER_STATUS, 1, NULL);
 			m_pITableFrame->SetGameTimer(IDI_TIMER_ALL_USER_READY, TIMER_ALL_USER_READY, 1, NULL);
-//#endif
+#endif
             return true;
         }
 

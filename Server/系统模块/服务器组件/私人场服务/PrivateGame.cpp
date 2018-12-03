@@ -926,8 +926,8 @@ bool PriaveteGame::OnTCPNetworkSubDismissPrivate(VOID * pData, WORD wDataSize, I
 	CMD_GR_Dismiss_Private* pCMDInfo = (CMD_GR_Dismiss_Private*)pData;
 
 	PrivateTableInfo* pTableInfo = getTableInfoByTableID(pIServerUserItem->GetTableID());
-	ASSERT(pTableInfo);
-	if (!pTableInfo) return false;
+	ASSERT(pTableInfo); if (!pTableInfo) return false;
+
 	if (!pTableInfo->bStart && pTableInfo->pITableFrame->GetCreateUserID() != pIServerUserItem->GetUserID())
 	{
 		return true;
@@ -1468,12 +1468,11 @@ void PriaveteGame::sendPrivateRoomInfo(IServerUserItem * pIServerUserItem,Privat
 	kNetInfo.bPlayCoutIdex = pTableInfo->bPlayCoutIdex;
 	kNetInfo.dwPlayTotal = pTableInfo->dwPlayCout;
 	kNetInfo.kWinLoseScore.resize(pTableInfo->pITableFrame->GetChairCount());
-	
-#if defined(ROOM_ONLY_COST_GOLD)
-
 	kNetInfo.dwBaseScore = pTableInfo->dwBaseScore;
 	kNetInfo.dwEnterMatchNum = pTableInfo->dwEnterMatchNum;
 	kNetInfo.dwOutMatchNum = pTableInfo->dwOutMatchNum;
+	
+#if defined(ROOM_ONLY_COST_GOLD)
 
      ITableFrame* pTableFrame = pTableInfo->pITableFrame;
 
