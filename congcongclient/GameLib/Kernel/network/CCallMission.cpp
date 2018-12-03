@@ -9,6 +9,7 @@ CCallMission::CCallMission(std::string kName,const char* url, int port)
 
 CCallMission::~CCallMission()
 {
+	stop();
 	clearCall();
 }
 

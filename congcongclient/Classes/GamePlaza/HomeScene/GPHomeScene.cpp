@@ -447,6 +447,7 @@ void GPHomeScene::removeGamepanels()
 
 void GPHomeScene::onLogonSucess()
 {
+	UserInfo::Instance().reqIndividual();
 	UserInfo::Instance().reqAccountInfo();
 }
 

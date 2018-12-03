@@ -45,7 +45,7 @@ void NNPlayerPanel::showPlayer(NNPlayer& player)
             }
         }
 
-        ImagicDownManager::Instance().addDown(WidgetFun::getChildWidget(playerNode, "NNPlayer_Avatar"), player.GetHeadHttp(), player.GetUserID());
+		player.setHeadNode(playerNode);
 
         WidgetFun::setVisible(playerNode, "NNPlayer_BankerBG", NNGameScene::Instance().isBankerUser(player));
         WidgetFun::setVisible(playerNode, "NNPlayer_Banker", NNGameScene::Instance().isBankerUser(player));

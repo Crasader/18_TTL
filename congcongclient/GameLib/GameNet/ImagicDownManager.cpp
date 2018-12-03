@@ -128,27 +128,7 @@ cocos2d::Texture2D* ImagicDownManager::getDownTexture(std::string kFile)
 }
 void ImagicDownManager::addDown(cocos2d::Node* pNode,std::string kUrl,int iUserID)
 {
-	int iIdex = 0;
-	for (size_t i = 0;i<kUrl.size();i++)
-	{
-		iIdex += kUrl[i];
-	}
-	std::string strSrc = "/0";
-	std::string strDes = "/132";
-	std::string::size_type pos = 0;  
-	std::string::size_type srcLen = strSrc.size();  
-	std::string::size_type desLen = strDes.size();  
-	pos=kUrl.find(strSrc, pos);   
-	while (pos != std::string::npos)
-	{  
-		if (kUrl.find(strSrc, (pos+desLen)) == std::string::npos)
-		{
-			kUrl.replace(pos, srcLen, strDes);
-			break;
-		}
-		pos = kUrl.find(strSrc, (pos+desLen));
-	}
-	std::string kFileName = utility::toString(iUserID, "Idex", iIdex);
+	std::string kFileName = utility::toString(iUserID, "Idex", iUserID);
 
 	CCLOG("ImagicDownManager addDown url=%s, kFileName=%s", kUrl.c_str(), kFileName.c_str());
 

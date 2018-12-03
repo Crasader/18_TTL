@@ -45,10 +45,6 @@ void GameBase::LocalPlayerEnter()
 		sendReady();
 	}
 }
-void GameBase::upSelfPlayerInfo()
-{
-
-}
 GamePlayer* GameBase::getGamePlayerByUserItem(IClientUserItem * pIClientUserItem)
 {
 	std::vector<GamePlayer*>::iterator itor = m_kPlayers.begin();
@@ -96,7 +92,9 @@ void GameBase::addGamePlayerToList(GamePlayer* pPlayer)
 	pPlayer->PlayerEnter();
 	pPlayer->upPlayerInfo();
 	pPlayer->upPlayerState();
-	m_kReqPlayerInfo.query(pPlayer->GetUserID());
+	pPlayer->requesUserInfo();
+	//TODO:干掉了查询
+	//m_kReqPlayerInfo.query(pPlayer->GetUserID());
 }
 void GameBase::removeGamePlayerToList(GamePlayer* pPlayer)
 {
@@ -150,65 +148,53 @@ bool GameBase::IsPrivateGame()
 void GameBase::OnEventUserEnter(IClientUserItem * pIClientUserItem, bool bLookonUser)
 {
 	GamePlayer* pPlayer = getGamePlayerByUserItem(pIClientUserItem);
-	if (pPlayer)
-	{
-		m_kReqPlayerInfo.query(pIClientUserItem->GetUserID());
+	if (pPlayer) {
+		//TODO:干掉了查询
+		//m_kReqPlayerInfo.query(pIClientUserItem->GetUserID());
+		pPlayer->requesUserInfo();
 		pPlayer->upPlayerInfo();
 		return;
 	}
 	IClientUserItem * pMeItem = IServerItem::get()->GetMeUserItem();
-	if (!pMeItem)
-	{
+	if (!pMeItem) {
 		return;
 	}
-	if (pMeItem->GetTableID() != pIClientUserItem->GetTableID())
-	{
+	if (pMeItem->GetTableID() != pIClientUserItem->GetTableID()) {
 		return;
 	}
-	if (pIClientUserItem->GetUserStatus() == US_LOOKON)
-	{
+	if (pIClientUserItem->GetUserStatus() == US_LOOKON) {
 		return;
 	}
-	if (IServerItem::get()->GetMeUserItem() == pIClientUserItem)
-	{
-		CCAssert(m_pSelfPlayer == NULL,"");
+	//如果是自己进入桌子
+	if (IServerItem::get()->GetMeUserItem() == pIClientUserItem) {
+		CCAssert(m_pSelfPlayer == nullptr,"");
 		m_pSelfPlayer = CreatePlayer(pIClientUserItem);
 		addGamePlayerToList(m_pSelfPlayer);
 #if defined(ENTER_GTAME_STATE_READY)
 		LocalPlayerEnter();
 #endif
 		upSelfPlayerInfo();
-
 		int iIdex = 0;
-		while(true)
-		{
+		while(true) {
 			IClientUserItem* pTempUserItem = IServerItem::get()->GetTableUserItem(iIdex);
 			iIdex++;
-			if (!pTempUserItem)
-			{
+			if (!pTempUserItem) {
 				break;
 			}
-			if (pTempUserItem->GetTableID() != pMeItem->GetTableID())
-			{
+			if (pTempUserItem->GetTableID() != pMeItem->GetTableID()) {
 				continue;
 			}
-			if (pTempUserItem->GetUserStatus() == US_LOOKON)
-			{
+			if (pTempUserItem->GetUserStatus() == US_LOOKON) {
 				continue;
 			}
-			
-			if (pTempUserItem == pIClientUserItem)
-			{
+			if (pTempUserItem == pIClientUserItem) {
 				continue;
 			}
 			GamePlayer* pTempPlayer = CreatePlayer(pTempUserItem);
 			addGamePlayerToList(pTempPlayer);
 		}
-	}
-	else
-	{
-		if (m_pSelfPlayer)
-		{
+	} else {
+		if (m_pSelfPlayer) {
 			GamePlayer* pTempPlayer = CreatePlayer(pIClientUserItem);
 			addGamePlayerToList(pTempPlayer);
 		}
@@ -273,30 +259,27 @@ void GameBase::OnEventCustomFace(IClientUserItem * pIClientUserItem, bool bLooko
 		pPlayer->upPlayerInfo();
 	}
 }
-void GameBase::onGPAccountInfo(CMD_GP_UserAccountInfo* pNetInfo)
-{
 
-}
-void GameBase::onGPAccountInfoHttpIP(dword dwUserID, std::string strIP,std::string strHttp)
-{
-
-	GamePlayer * pPlayer = getPlayerByUserID(dwUserID);
-	if (!pPlayer)
-	{
-		return;
-	}
-	IClientUserItem * pIClientUserItem = pPlayer->getUserItem(false);
-	if (!pIClientUserItem)
-	{
-		return;
-	}
-
-	//获取用户
-	tagUserInfo * pUserInfo=pIClientUserItem->GetUserInfo();
-	tagCustomFaceInfo * pCustomFaceInfo=pIClientUserItem->GetCustomFaceInfo();
-
-	strncpy(pUserInfo->szLogonIP,strIP.c_str(), countarray(pUserInfo->szLogonIP));
-	strncpy(pUserInfo->szHeadHttp,strHttp.c_str(), countarray(pUserInfo->szHeadHttp));
-
-	pPlayer->upPlayerInfo();
-}
+//void GameBase::on_GP_UserIndividual(dword dwUserID, std::string strIP,std::string strHttp)
+//{
+//
+//	GamePlayer * pPlayer = getPlayerByUserID(dwUserID);
+//	if (!pPlayer)
+//	{
+//		return;
+//	}
+//	IClientUserItem * pIClientUserItem = pPlayer->getUserItem(false);
+//	if (!pIClientUserItem)
+//	{
+//		return;
+//	}
+//
+//	//获取用户
+//	tagUserInfo * pUserInfo=pIClientUserItem->GetUserInfo();
+//	tagCustomFaceInfo * pCustomFaceInfo=pIClientUserItem->GetCustomFaceInfo();
+//
+//	strncpy(pUserInfo->szLogonIP,strIP.c_str(), countarray(pUserInfo->szLogonIP));
+//	strncpy(pUserInfo->szHeadHttp,strHttp.c_str(), countarray(pUserInfo->szHeadHttp));
+//
+//	pPlayer->upPlayerInfo();
+//}

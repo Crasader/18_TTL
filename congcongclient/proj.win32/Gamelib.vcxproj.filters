@@ -82,6 +82,9 @@
     <Filter Include="Game\Sound\amr_nb">
       <UniqueIdentifier>{429fce9b-8b63-4025-99f1-87c171e76b11}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameNet\dowload">
+      <UniqueIdentifier>{9242de06-4502-434d-afc0-00383913bee1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\GameLib\Game\Sound\ArmFun.h">
@@ -699,9 +702,6 @@
     <ClInclude Include="..\GameLib\GameNet\cocosHttp\HttpResponseEx.h">
       <Filter>GameNet\cocosHttp</Filter>
     </ClInclude>
-    <ClInclude Include="..\GameLib\GameNet\ImagicDownManager.h">
-      <Filter>GameNet</Filter>
-    </ClInclude>
     <ClInclude Include="..\GameLib\GameNet\MCWebReq.h">
       <Filter>GameNet</Filter>
     </ClInclude>
@@ -1044,13 +1044,16 @@
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPopularizeMission.h">
       <Filter>Kernel\Platform\PFKernel</Filter>
     </ClInclude>
-    <ClInclude Include="..\GameLib\GameNet\ImagicViewDownManager.h">
-      <Filter>GameNet</Filter>
-    </ClInclude>
     <ClInclude Include="..\GameLib\Game\Game\NoticeMsgBox.h">
       <Filter>Game\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PlatformHeader.h" />
+    <ClInclude Include="..\GameLib\GameNet\ImagicDownManager.h">
+      <Filter>GameNet\dowload</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GameLib\GameNet\ImagicViewDownManager.h">
+      <Filter>GameNet\dowload</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\GameLib\Game\Sound\ArmFun.cpp">
@@ -1611,9 +1614,6 @@
     <ClCompile Include="..\GameLib\GameNet\cocosHttp\HttpClientEx.cpp">
       <Filter>GameNet\cocosHttp</Filter>
     </ClCompile>
-    <ClCompile Include="..\GameLib\GameNet\ImagicDownManager.cpp">
-      <Filter>GameNet</Filter>
-    </ClCompile>
     <ClCompile Include="..\GameLib\GameNet\MCWebReq.cpp">
       <Filter>GameNet</Filter>
     </ClCompile>
@@ -1872,14 +1872,17 @@
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGPopularizeMission.cpp">
       <Filter>Kernel\Platform\PFKernel</Filter>
     </ClCompile>
-    <ClCompile Include="..\GameLib\GameNet\ImagicViewDownManager.cpp">
-      <Filter>GameNet</Filter>
-    </ClCompile>
     <ClCompile Include="..\GameLib\Game\Game\NoticeMsgBox.cpp">
       <Filter>Game\Game</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Game\Game\ScenceManagerBase.cpp">
       <Filter>Game\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GameLib\GameNet\ImagicDownManager.cpp">
+      <Filter>GameNet\dowload</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GameLib\GameNet\ImagicViewDownManager.cpp">
+      <Filter>GameNet\dowload</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

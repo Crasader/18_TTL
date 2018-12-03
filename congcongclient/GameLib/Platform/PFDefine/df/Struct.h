@@ -245,6 +245,19 @@ struct tagTimeInfo
 	dword						dwEndGameTimer;							//离开游戏时间
 };
 
+//用户单项信息
+struct tagUserInfoSingle
+{
+	byte bInfoType;//查询的类型
+};
+
+//用户单项信息
+struct tagUserInfoSingleRet
+{
+	byte bInfoType;//查询的类型
+	word wLen;//长度
+};
+
 //用户信息
 struct tagUserInfo
 {

@@ -186,13 +186,18 @@ struct CMD_GP_CustomFaceInfo
 #define SUB_GP_BASEENSURE_PARAMETER   262								//低保参数
 #define SUB_GP_BASEENSURE_RESULT    263									//低保结果
 
-
 //个人资料
 #define SUB_GP_USER_INDIVIDUAL		301									//个人资料
 #define	SUB_GP_QUERY_INDIVIDUAL		302									//查询信息
 #define SUB_GP_MODIFY_INDIVIDUAL	303									//修改资料
 #define SUB_GP_QUERY_ACCOUNTINFO	304									//个人信息
 #define SUB_GP_QUERY_INGAME_SEVERID	305									//游戏状态
+
+//////////////////////////////////////////////////////////////////////////
+//查询单项信息
+#define SUB_GP_QUERY_INDIVIDUAL_SINGLE 306
+#define SUB_GP_QUERY_INDIVIDUAL_SINGLE_RET 307
+//////////////////////////////////////////////////////////////////////////
 
 //银行服务
 #define SUB_GP_USER_SAVE_SCORE		400									//存款操作

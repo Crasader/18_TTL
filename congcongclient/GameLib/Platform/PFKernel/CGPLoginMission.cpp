@@ -257,8 +257,6 @@ bool CGPLoginMission::onSocketSubLogonSuccess(void* data, int size)
 	pGlobalUserData->cbInsureEnabled = pData->cbInsureEnabled;
 	strcpy(pGlobalUserData->szNickName, utility::a_u8((char*)pData->szNickName).c_str());
 	strncpy(pGlobalUserData->szAccounts, ((char*)pData->szAccounts), countarray(pGlobalUserData->szAccounts));
-	//金币信息
-	pGlobalUserInfo->upPlayerInfo();
 
 	if (mIGPLoginMissionSink)
 		mIGPLoginMissionSink->onGPLoginSuccess();

@@ -48,7 +48,6 @@ namespace utility
 	}
 	void log(const char * format, ...)
 	{
-#ifdef _DEBUG
 		va_list args;
 		va_start(args, format);
 
@@ -76,7 +75,6 @@ namespace utility
 			}
 		}
 		va_end(args);
-#endif
 	}
 	void saveFilePath(std::string kStr)
 	{

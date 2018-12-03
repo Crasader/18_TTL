@@ -173,9 +173,7 @@ void CServerItem::OnUserItemUpdate(IClientUserItem* pIClientUserItem, const tagU
 
 void CServerItem::OnUserItemUpdate(IClientUserItem* pIClientUserItem, const tagUserStatus& LastStatus)
 {
-	//TODO:这里会产生很多冗余消息
-
-	CCLOG("CServerItem::OnUserItemUpdate.");
+	utility::log("CServerItem::OnUserItemUpdate.");
 	//变量定义
 	tagUserInfo * pUserInfo=pIClientUserItem->GetUserInfo();
 	tagUserInfo * pMeUserInfo=m_pMeUserItem->GetUserInfo();
@@ -186,22 +184,22 @@ void CServerItem::OnUserItemUpdate(IClientUserItem* pIClientUserItem, const tagU
 	word wNowChairID=pIClientUserItem->GetChairID(),wLastChairID=LastStatus.wChairID;
 	byte cbNowStatus=pIClientUserItem->GetUserStatus(),cbLastStatus=LastStatus.cbUserStatus;
 
-	// 更新界面上的 分数
+	// 更新界面上的分数
 	if (mIServerItemSink) {
-		CCLOG("CServerItem::OnUserItemUpdate 更新界面上的 分数 ");
+		utility::log("CServerItem::OnUserItemUpdate 更新界面上的分数\n");
 		mIServerItemSink->OnGRUserUpdate(pIClientUserItem);
 	}
 	
 	//桌子离开
 	if ((wLastTableID!=INVALID_TABLE)&&((wLastTableID!=wNowTableID)||(wLastChairID!=wNowChairID))) {
-		CCLOG("CServerItem::OnUserItemUpdate 桌子离开 ");
+		utility::log("CServerItem::OnUserItemUpdate 桌子离开\n");
 		IClientUserItem * pITableUserItem=m_TableFrame.GetClientUserItem(wLastTableID,wLastChairID);
 		if (pITableUserItem==pIClientUserItem) m_TableFrame.SetClientUserItem(wLastTableID,wLastChairID,0);
 	}
 
 	//桌子加入
 	if ((wNowTableID!=INVALID_TABLE)&&(cbNowStatus!=US_LOOKON)&&((wNowTableID!=wLastTableID)||(wNowChairID!=wLastChairID))) {
-		CCLOG("CServerItem::OnUserItemUpdate 桌子加入 ");
+		utility::log("CServerItem::OnUserItemUpdate 桌子加入\n");
 		//厌恶判断（黑名单）
 		if(pUserInfo->dwUserID != pMeUserInfo->dwUserID && cbNowStatus == US_SIT && pMeUserInfo->wTableID == wNowTableID) {
 			//变量定义
@@ -213,13 +211,13 @@ void CServerItem::OnUserItemUpdate(IClientUserItem* pIClientUserItem, const tagU
 	
 	//桌子状态
 	if ((m_TableFrame.GetChairCount() < MAX_CHAIR)&&(wNowTableID!=INVALID_TABLE)&&(wNowTableID==wLastTableID)&&(wNowChairID==wLastChairID)) {
-		CCLOG("CServerItem::OnUserItemUpdate 桌子状态 ");
+		utility::log("CServerItem::OnUserItemUpdate 桌子状态\n");
 		m_TableFrame.UpdateTableView(wNowTableID);
 	}
 	
 	//离开通知
 	if ((wLastTableID!=INVALID_TABLE)&&((wNowTableID!=wLastTableID)||(wNowChairID!=wLastChairID))) {
-		CCLOG("CServerItem::OnUserItemUpdate 离开通知 ");
+		utility::log("CServerItem::OnUserItemUpdate 离开通知\n");
 		//游戏通知
 		if ((pMeUserInfo->wTableID!=INVALID_TABLE)&&(pUserInfo->wTableID==pMeUserInfo->wTableID))
 		{
@@ -233,16 +231,16 @@ void CServerItem::OnUserItemUpdate(IClientUserItem* pIClientUserItem, const tagU
 		pMeUserStatus == cbLastStatus &&
 		cbLastStatus == US_SIT &&
 		pGameMan->getInCenter()) {
-		CCLOG("CServerItem::OnUserItemUpdate 玩家自己从大厅返回游戏 ");
+		utility::log("CServerItem::OnUserItemUpdate 玩家自己从大厅返回游戏\n");
 		pGameMan->CreateGame();
 		IServerItem::get()->OnGFGameReady();
 	}
 
-	//加入处理 
+	//加入处理
 	//TODO:这个加入处理看起来相当怪异,下面有一个相同的判断
 	if ((wNowTableID==INVALID_TABLE)&&((wNowTableID!=wLastTableID)||(wNowChairID!=wLastChairID))) {
 		if (m_pMeUserItem==pIClientUserItem) {
-			CCLOG("CServerItem::OnUserItemUpdate 加入处理1 ");
+			utility::log("CServerItem::OnUserItemUpdate 加入处理1\n");
 			//设置变量
 			m_wReqTableID=INVALID_TABLE;
 			m_wReqChairID=INVALID_CHAIR;
@@ -254,7 +252,7 @@ void CServerItem::OnUserItemUpdate(IClientUserItem* pIClientUserItem, const tagU
 	if ((wNowTableID!=INVALID_TABLE)&&((wNowTableID!=wLastTableID)||(wNowChairID!=wLastChairID))) {
 		//自己判断
 		if (m_pMeUserItem==pIClientUserItem) {
-			CCLOG("CServerItem::OnUserItemUpdate 加入处理2 ");
+			utility::log("CServerItem::OnUserItemUpdate 加入处理2\n");
 			//设置变量
 			m_wReqTableID=INVALID_TABLE;
 			m_wReqChairID=INVALID_CHAIR;
@@ -267,7 +265,7 @@ void CServerItem::OnUserItemUpdate(IClientUserItem* pIClientUserItem, const tagU
 		
 		//游戏通知
 		if ((m_pMeUserItem!=pIClientUserItem)&&(pMeUserInfo->wTableID==wNowTableID)) {
-			CCLOG("CServerItem::OnUserItemUpdate 用户进入通知 ");
+			utility::log("CServerItem::OnUserItemUpdate 用户进入通知\n");
 			ASSERT(wNowChairID!=INVALID_CHAIR);
 			if (mIClientKernelSink)
 				mIClientKernelSink->OnEventUserEnter(pIClientUserItem, pIClientUserItem->GetUserStatus() == US_LOOKON);
@@ -278,7 +276,7 @@ void CServerItem::OnUserItemUpdate(IClientUserItem* pIClientUserItem, const tagU
 	
 	//状态改变
 	if ((wNowTableID!=INVALID_TABLE)&&(wNowTableID==wLastTableID)&&(pMeUserInfo->wTableID==wNowTableID)) {
-		CCLOG("CServerItem::OnUserItemUpdate 状态改变 ");
+		utility::log("CServerItem::OnUserItemUpdate 状态改变\n");
 		//游戏通知
 		tagUserStatus UserStatus;
 		UserStatus.wTableID=wNowTableID;

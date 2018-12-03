@@ -8,11 +8,10 @@
 
 GameBase::GameBase(unsigned int iType,unsigned int iOption)
 	:m_pSelfPlayer(NULL)
-	,m_kReqPlayerInfo(ScriptData<std::string>("address").Value().c_str(),ScriptData<int>("Port").Value())
 	,m_iGameType(iType)
 	,m_iGameOption(iOption)
 {
-	m_kReqPlayerInfo.setMissionSink(this);
+
 }
 GameBase::~GameBase()
 {

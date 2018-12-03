@@ -377,12 +377,11 @@ void CGPIndividualMission::onSubUserIndividual(void* data, int size)
 		}
 		//金币信息
 		pGlobalUserInfo->upPlayerInfo();
-	}
-
-	std::string& strHeadUrl = UserInfo::Instance().getHeadHttp();
-	CCLOG("onGPLoginSuccess getHeadHttp = %s", strHeadUrl.c_str());
-	if (strHeadUrl != "" && strHeadUrl != kHttp) {
-		UserInfo::Instance().modeHeadHttp(UserInfo::Instance().getHeadHttp());
+		std::string& strHeadUrl = UserInfo::Instance().getHeadHttp();
+		CCLOG("onGPLoginSuccess getHeadHttp = %s", strHeadUrl.c_str());
+		if (strHeadUrl.size() != 0 && strcmp(strHeadUrl.c_str(), kHttp.c_str() ) != 0) {
+			UserInfo::Instance().modeHeadHttp(UserInfo::Instance().getHeadHttp());
+		}
 	}
 
 	if (bUpdate && mIGPIndividualMissionSink)
@@ -391,7 +390,6 @@ void CGPIndividualMission::onSubUserIndividual(void* data, int size)
 	//通知
 	if (mIGPIndividualMissionSink)
 		mIGPIndividualMissionSink->onGPIndividualInfo(mMissionType);
-
 	//TODO:这个自动断开连接显得莫名其妙
 	//stop();
 }

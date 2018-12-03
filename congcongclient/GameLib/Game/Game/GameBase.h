@@ -26,7 +26,6 @@ typedef std::vector<NET_CBInfo> NET_CBInfoList;
 class GameBase
 	:public cocos2d::Node
 	,public IClientKernelSink
-	,public ICGPReqPlayerInfoSink
 {
 public:
 	GameBase(unsigned int iType,unsigned int iOption);
@@ -101,8 +100,6 @@ public:
 	//用户头像
 	virtual void OnEventCustomFace(IClientUserItem * pIClientUserItem, bool bLookonUser);
 
-	virtual void onGPAccountInfo(CMD_GP_UserAccountInfo* pNetInfo);
-	virtual void onGPAccountInfoHttpIP(dword dwUserID, std::string strIP,std::string strHttp);
 	//私人房
 public:
 	virtual void OnSocketSubPrivateRoomInfo(CMD_GF_Private_Room_Info* pNetInfo);
@@ -129,7 +126,7 @@ protected:
 	virtual void DeletePlayer(GamePlayer* pPlayer);
 public:
 	virtual void LocalPlayerEnter();
-	virtual void upSelfPlayerInfo();
+	virtual void upSelfPlayerInfo() {};
 public:
 	GamePlayer* getGamePlayerByUserItem(IClientUserItem * pIClientUserItem);
 	GamePlayer* getPlayerByChairID( word wChairID );
@@ -148,7 +145,7 @@ protected:
 	std::vector<GamePlayer*> m_kPlayers;
 	NET_CBInfoList m_kCBInfoList;
 
-	CGPReqPlayerInfoMission		m_kReqPlayerInfo;
+	//CGPReqPlayerInfoMission		m_kReqPlayerInfo;
 	std::vector<GamePlayer*>	m_kPoolPlayer;
 
 	unsigned int m_iGameType;

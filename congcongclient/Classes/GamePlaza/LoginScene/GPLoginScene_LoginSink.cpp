@@ -8,8 +8,6 @@ void GPLoginScene::onGPLoginSuccess()
 	cocos2d::UserDefault::getInstance()->setStringForKey("Accounts", pGlobalUserData->szAccounts);
 	cocos2d::UserDefault::getInstance()->setStringForKey("Password", m_kPssword);
 	GPSceneManager::Instance().InHomeScene();
-	CCLOG("onGPLoginSuccess getHeadHttp = %s", UserInfo::Instance().getHeadHttp().c_str());
-	UserInfo::Instance().modeHeadHttp(UserInfo::Instance().getHeadHttp());
 }
 
 void GPLoginScene::onGPLoginComplete()
