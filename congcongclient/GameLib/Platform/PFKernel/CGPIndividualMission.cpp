@@ -1,7 +1,6 @@
 #include "CGPIndividualMission.h"
 #include "Kernel/kernel/server/IServerItem.h"
-
-
+#include "Game/Game//UserInfo.h"
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -28,7 +27,7 @@ void CGPIndividualMission::query(int iAccountID)
 {
 	addLinkCallFun(CC_CALLBACK_0(CGPIndividualMission::CB_query,this,iAccountID));
 	//TODO:这里也没有必要重新连接吧
-	//start();
+	start();
 }
 void CGPIndividualMission::CB_query(int iAccountID)
 {
@@ -56,7 +55,7 @@ void CGPIndividualMission::queryAccountInfo(int iAccountID)
 
 	addLinkCallFun(CC_CALLBACK_0(CGPIndividualMission::CB_queryAccountInfo,this,iAccountID));
 	//TODO:这里也没有必要重新连接吧
-	//start();
+	start();
 }
 void CGPIndividualMission::CB_queryAccountInfo(int iAccountID)
 {
@@ -75,7 +74,6 @@ void CGPIndividualMission::CB_queryAccountInfo(int iAccountID)
 }
 void CGPIndividualMission::sendModifyInfo()
 {
-
 	//变量定义
 	byte cbBuffer[SIZE_PACK_DATA];
 	zeromemory(cbBuffer,sizeof(cbBuffer));
@@ -96,14 +94,14 @@ void CGPIndividualMission::sendModifyInfo()
 	//用户昵称
 	if (mModifyIndividual.szNickName[0]!=0 && countarray(mModifyIndividual.szNickName) >= 6)
 	{
-		PLAZZ_PRINTF(("szNickName:%s \n"), mModifyIndividual.szNickName);
+		CCLOG(("szNickName:%s \n"), mModifyIndividual.szNickName);
 		SendPacket.AddPacket(mModifyIndividual.szNickName,DTP_GP_UI_NICKNAME);
 	}
 
 	//个性签名
 	if (mModifyIndividual.szUnderWrite[0]!=0)
 	{
-		PLAZZ_PRINTF(("szUnderWrite:%s \n"), mModifyIndividual.szUnderWrite);
+		CCLOG(("szUnderWrite:%s \n"), mModifyIndividual.szUnderWrite);
 		SendPacket.AddPacket(mModifyIndividual.szUnderWrite,DTP_GP_UI_UNDER_WRITE);
 	}
 
@@ -149,7 +147,7 @@ void CGPIndividualMission::sendModifyInfo()
 		SendPacket.AddPacket(mModifyIndividual.szDwellingPlace,DTP_GP_UI_DWELLING_PLACE);
 	}
 
-	//详细地址
+	//头像url地址
 	if (mModifyIndividual.szHeadHttp[0]!=0) 
 	{
 		SendPacket.AddPacket(mModifyIndividual.szHeadHttp,DTP_GP_UI_HEAD_HTTP);
@@ -170,7 +168,7 @@ void CGPIndividualMission::modifyName(std::string kName)
 {
 	addLinkCallFun(CC_CALLBACK_0(CGPIndividualMission::CB_modifyName,this,kName));
 	//TODO:这里也没有必要重新连接吧
-	//start();
+	start();
 }
 void CGPIndividualMission::CB_modifyName(std::string kName)
 {
@@ -188,7 +186,7 @@ void CGPIndividualMission::modifyGender(byte gender)
 {
 	addLinkCallFun(CC_CALLBACK_0(CGPIndividualMission::CB_modifyGender,this,gender));
 	//TODO:这里也没有必要重新连接吧
-	//start();
+	start();
 }
 void CGPIndividualMission::CB_modifyGender(byte gender)
 {
@@ -202,7 +200,7 @@ void CGPIndividualMission::modifySpreader(std::string kSpreaderID)
 {
 	addLinkCallFun(CC_CALLBACK_0(CGPIndividualMission::CB_modifySpreader,this,kSpreaderID));
 	//TODO:这里也没有必要重新连接吧
-	//start();
+	start();
 }
 void CGPIndividualMission::CB_modifySpreader(std::string kSpreaderID)
 {
@@ -246,7 +244,7 @@ void CGPIndividualMission::modifyUserChannel(std::string szUserChannel)
 {
 	addLinkCallFun(CC_CALLBACK_0(CGPIndividualMission::CB_modifyUserChannel,this,szUserChannel));
 	//TODO:这里也没有必要重新连接吧
-	//start();
+	start();
 }
 void CGPIndividualMission::CB_modifyUserChannel(std::string szUserChannel)
 {
@@ -265,7 +263,7 @@ void CGPIndividualMission::modifyPhoneNumber( std::string kPhoneNumber )
 {
 	addLinkCallFun(CC_CALLBACK_0(CGPIndividualMission::CB_modifyPhoneNumber,this,kPhoneNumber));
 	//TODO:这里也没有必要重新连接吧
-	//start();
+	start();
 }
 void CGPIndividualMission::CB_modifyPhoneNumber(std::string kPhoneNumber)
 {
@@ -279,7 +277,7 @@ void CGPIndividualMission::CB_modifyPhoneNumber(std::string kPhoneNumber)
 // 个人信息
 void CGPIndividualMission::onSubUserAccountInfo(void* data, int size)
 {
-	PLAZZ_PRINTF("CGPIndividualMission::onSubUserAccountInfo\n");
+	CCLOG("CGPIndividualMission::onSubUserAccountInfo\n");
 
 	//变量定义
 	CMD_GP_UserAccountInfo * pAccountInfo=(CMD_GP_UserAccountInfo *)data;
@@ -308,16 +306,14 @@ void CGPIndividualMission::onSubUserAccountInfo(void* data, int size)
 	}
 	//TODO:这个自动断开连接显得莫名其妙
 	//stop();
-
 }
 // 个人信息
 void CGPIndividualMission::onSubUserIndividual(void* data, int size)
 {
-	PLAZZ_PRINTF("CGPIndividualMission::onSubUserIndividual\n");
+	CCLOG("CGPIndividualMission::onSubUserIndividual\n");
 
 	CMD_GP_UserIndividual* pModifyIndividual = (CMD_GP_UserIndividual*)data;
-
-
+	
 	void * pDataBuffer=NULL;
 	tagDataDescribe DataDescribe;
 	CRecvPacketHelper RecvPacket(pModifyIndividual+1,size-sizeof(CMD_GP_UserIndividual));
@@ -383,20 +379,25 @@ void CGPIndividualMission::onSubUserIndividual(void* data, int size)
 		pGlobalUserInfo->upPlayerInfo();
 	}
 
+	std::string& strHeadUrl = UserInfo::Instance().getHeadHttp();
+	CCLOG("onGPLoginSuccess getHeadHttp = %s", strHeadUrl.c_str());
+	if (strHeadUrl != "" && strHeadUrl != kHttp) {
+		UserInfo::Instance().modeHeadHttp(UserInfo::Instance().getHeadHttp());
+	}
+
 	if (bUpdate && mIGPIndividualMissionSink)
 		mIGPIndividualMissionSink->onGPAccountInfoHttpIP(pModifyIndividual->dwUserID,kIP,kHttp);
-
 
 	//通知
 	if (mIGPIndividualMissionSink)
 		mIGPIndividualMissionSink->onGPIndividualInfo(mMissionType);
+
 	//TODO:这个自动断开连接显得莫名其妙
 	//stop();
-
 }
 void CGPIndividualMission::onSubSpreaderResoult(void* data, int size)
 {
-	PLAZZ_PRINTF("CGPIndividualMission::onSubSpreaderResoult\n");
+	CCLOG("CGPIndividualMission::onSubSpreaderResoult\n");
 	//变量定义
 	CMD_GP_SpreaderResoult * pOperateSuccess=(CMD_GP_SpreaderResoult *)data;
 
@@ -425,7 +426,7 @@ void CGPIndividualMission::onSubSpreaderResoult(void* data, int size)
 // 操作成功
 void CGPIndividualMission::onSubOperateSuccess(void* data, int size)
 {
-	PLAZZ_PRINTF("CGPIndividualMission::onSubOperateSuccess\n");
+	CCLOG("CGPIndividualMission::onSubOperateSuccess\n");
 	//变量定义
 	CMD_GP_OperateSuccess * pOperateSuccess=(CMD_GP_OperateSuccess *)data;
 
@@ -512,13 +513,12 @@ void CGPIndividualMission::onSubOperateSuccess(void* data, int size)
 		mIGPIndividualMissionSink->onGPIndividualSuccess(mMissionType, pOperateSuccess->szDescribeString);
 	//TODO:这个自动断开连接显得莫名其妙
 	//stop();
-
 }
 
 // 操作失败
 void CGPIndividualMission::onSubOperateFailure(void* data, int size)
 {
-	PLAZZ_PRINTF("CGPIndividualMission::onSubOperateFailure\n");
+	CCLOG("CGPIndividualMission::onSubOperateFailure\n");
 	//效验参数
 	CMD_GP_OperateFailure * pOperateFailure=(CMD_GP_OperateFailure *)data;
 	ASSERT(size>=(sizeof(CMD_GP_OperateFailure)-sizeof(pOperateFailure->szDescribeString)));

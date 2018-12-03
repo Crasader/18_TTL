@@ -1,9 +1,10 @@
 #include <sstream>
+#include <platform/CCCommon.h>
+
 #include "QPCipher.h"
 #include "CSocketEngine.h"
-#include <platform/CCCommon.h>
 #include "Platform/PlatformHeader.h"
-
+#include "Game/Script/utility.h"
 
 using namespace std;
 //////////////////////////////////////////////////////////////////////////
@@ -94,7 +95,6 @@ bool CSocketEngine::disconnect()
 {
 	//恢复数据
 	initValue();
-	cocos2d::log("CSocketEngine disconnect");
 	mSocket.disconnect();
 	return true;
 }
@@ -105,6 +105,9 @@ bool CSocketEngine::send(int main, int sub, void* data, int dataSize)
 	if (!isAlive())
 		return false;
 	//构造数据
+	if (main != MDM_KN_COMMAND && sub != SUB_KN_DETECT_SOCKET) {
+		utility::log("CSocketEngine::send main=%d, sub=%d, size=%d", main, sub, dataSize);
+	}
 	unsigned char cbDataBuffer[SOCKET_TCP_BUFFER];
 	TCP_Head * pHead = (TCP_Head *)cbDataBuffer;
 	pHead->CommandInfo.wMainCmdID = main;
@@ -174,7 +177,7 @@ void CSocketEngine::onSocketData(void* data, int dataSize)
 	}
 	if (nRecvSize + dataSize >= SIZE_TCP_BUFFER)
 	{
-		cocos2d::log("nRecvSize + dataSize >= SIZE_TCP_BUFFER");
+		utility::log("CSocketEngine::onSocketData nRecvSize + dataSize >= SIZE_TCP_BUFFER size=%d", dataSize);
 		disconnect();
 		return;
 	}
@@ -259,33 +262,29 @@ void CSocketEngine::onSocketData(void* data, int dataSize)
 	for (int i = 0;i<(int)kTempCommad.size();i++)
 	{
 		TempCommandRec* pCommand = kTempCommad[i];
-		if (pCommand->Command.wMainCmdID == MDM_KN_COMMAND && pCommand->Command.wSubCmdID == SUB_KN_DETECT_SOCKET)
-		{
+		if (pCommand->Command.wMainCmdID == MDM_KN_COMMAND && pCommand->Command.wSubCmdID == SUB_KN_DETECT_SOCKET) {
 			send(MDM_KN_COMMAND, SUB_KN_DETECT_SOCKET, pCommand->pDataBuffer, pCommand->wDataSize);
-			if (mISocketEngineSink)
-			{
+			if (mISocketEngineSink) {
 				mISocketEngineSink->onEventTCPHeartTick();
 			}
 			continue;
+		} else {
+			utility::log("CSocketEngine::onSocketData main=%d sub = %d", pCommand->Command.wMainCmdID, pCommand->Command.wSubCmdID);
 		}
-		else
-		{
-			cocos2d::log("REV- --main command---- %d -- Sub Command ----%d---\n", pCommand->Command.wMainCmdID, pCommand->Command.wSubCmdID);
-		}
-		if (mISocketEngineSink != 0)
-		{
-			bool bHandle = mISocketEngineSink->onEventTCPSocketRead(pCommand->Command.wMainCmdID, pCommand->Command.wSubCmdID, pCommand->pDataBuffer, pCommand->wDataSize);
+		if (mISocketEngineSink != 0) {
+			bool bHandle = mISocketEngineSink->onEventTCPSocketRead(pCommand->Command.wMainCmdID,
+				pCommand->Command.wSubCmdID,
+				pCommand->pDataBuffer,
+				pCommand->wDataSize);
 
-			if (!bHandle)
-			{
-				CCASSERT(false,"");
+			if (!bHandle) {
+				utility::log("CSocketEngine::onSocketData handle failed!! main=%d sub = %d", pCommand->Command.wMainCmdID, pCommand->Command.wSubCmdID, pCommand->wDataSize);
 				disconnect();
 				break;
 			}
 		}
 	}
-	for (int i = 0;i<(int)kTempCommad.size();i++)
-	{
+	for (size_t i = 0;i<kTempCommad.size();i++) {
 		delete  kTempCommad[i];
 	}
 	kTempCommad.clear(); 

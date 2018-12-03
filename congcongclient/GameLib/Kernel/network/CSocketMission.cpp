@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Kernel/network/CSocketMission.h"
+#include "Game/Script/utility.h"
 
 CSocketMission::CSocketMission(const char* url, int port)
 {
@@ -40,9 +41,9 @@ bool CSocketMission::start()
 	return false;
 }
 
-
 void CSocketMission::stop()
 {
+	utility::log("CSocketMission::stop() url=%s, port=%d", mUrl, mPort);
 	mSocketEngine->disconnect();
 }
 
