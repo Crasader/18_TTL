@@ -5452,20 +5452,20 @@ VOID CAttemperEngineSink::OnEventUserLogon(IServerUserItem * pIServerUserItem, b
 		//}
 
 		//×À×Ó×´Ì¬
-		CMD_GR_TableInfo TableInfo;
-		TableInfo.wTableCount=(WORD)m_TableFrameArray.GetCount();
-		ASSERT(TableInfo.wTableCount<CountArray(TableInfo.TableStatusArray));
-		for (WORD i=0;i<TableInfo.wTableCount;i++)
-		{
-			CTableFrame * pTableFrame=m_TableFrameArray[i];
-			TableInfo.TableStatusArray[i].cbTableLock=pTableFrame->IsTableLocked()?TRUE:FALSE;
-			TableInfo.TableStatusArray[i].cbPlayStatus=pTableFrame->IsTableStarted()?TRUE:FALSE;
-		}
+		//CMD_GR_TableInfo TableInfo;
+		//TableInfo.wTableCount=(WORD)m_TableFrameArray.GetCount();
+		//ASSERT(TableInfo.wTableCount<CountArray(TableInfo.TableStatusArray));
+		//for (WORD i=0;i<TableInfo.wTableCount;i++)
+		//{
+		//	CTableFrame * pTableFrame=m_TableFrameArray[i];
+		//	TableInfo.TableStatusArray[i].cbTableLock=pTableFrame->IsTableLocked()?TRUE:FALSE;
+		//	TableInfo.TableStatusArray[i].cbPlayStatus=pTableFrame->IsTableStarted()?TRUE:FALSE;
+		//}
 
-		//×À×Ó×´Ì¬
-		WORD wHeadSize=sizeof(TableInfo)-sizeof(TableInfo.TableStatusArray);
-		WORD wSendSize=wHeadSize+TableInfo.wTableCount*sizeof(TableInfo.TableStatusArray[0]);
-		SendData(pBindParameter->dwSocketID,MDM_GR_STATUS,SUB_GR_TABLE_INFO,&TableInfo,wSendSize);
+		////×À×Ó×´Ì¬
+		//WORD wHeadSize=sizeof(TableInfo)-sizeof(TableInfo.TableStatusArray);
+		//WORD wSendSize=wHeadSize+TableInfo.wTableCount*sizeof(TableInfo.TableStatusArray[0]);
+		//SendData(pBindParameter->dwSocketID,MDM_GR_STATUS,SUB_GR_TABLE_INFO,&TableInfo,wSendSize);
 
 		//·¢ËÍÍ¨Öª
 		//if (bAlreadyOnLine==false)
