@@ -451,6 +451,7 @@ struct CMD_GF_Private_Room_Info
 	dword dwGameRuleIdex;//游戏规则
 	dword dwPlayCout;//游戏局数
 	dword dwRoomNum;
+	dword dwMasterUserID;
 	dword dwCreateUserID;
 	dword dwPlayTotal;	//总局数	
 	dword dwBaseScore;//底注
@@ -469,6 +470,7 @@ struct CMD_GF_Private_Room_Info
 		this->dwPlayCout = val.dwPlayCout;
 		this->dwRoomNum = val.dwRoomNum;
 		this->dwCreateUserID = val.dwCreateUserID;
+		this->dwMasterUserID = val.dwMasterUserID;
 		this->dwPlayTotal = val.dwPlayTotal;
 		this->dwBaseScore = val.dwBaseScore;
 		this->dwEnterMatchNum = val.dwEnterMatchNum;
@@ -492,6 +494,7 @@ struct CMD_GF_Private_Room_Info
 		Stream_VALUE(dwPlayCout);
 		Stream_VALUE(dwRoomNum);
 		Stream_VALUE(dwCreateUserID);
+		Stream_VALUE(dwMasterUserID);
 		Stream_VALUE(dwPlayTotal);
 		Stream_VALUE(dwBaseScore);
 		Stream_VALUE(dwEnterMatchNum);

@@ -86,7 +86,7 @@ void NNOperator::show(WORD status)
         std::string showText = utility::a_u8("等待房主确认开始游戏");
         showMessage(showText);
 
-        if(NNRoomInfo::Instance().isHostPlayer(*NNGameScene::Instance().getLocalPlayer())) {
+        if(NNRoomInfo::Instance().isHostPlayer(NNGameScene::Instance().getLocalPlayer())) {
             showStartGame();
         } else {
             hideStartGame();

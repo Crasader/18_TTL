@@ -68,7 +68,7 @@ void NNCalculate::update(CMD_GF_Private_End_Info* pInfo)
 			if (pInfo->lPlayerWinLose.size() > index) {
 				playerScore = pInfo->lPlayerWinLose.at(index);
 			} else {
-				playerScore = NNRoomInfo::Instance().getPlayerScore(*player);
+				playerScore = NNRoomInfo::Instance().getPlayerScore(player);
 			}
 
 			std::string score = utility::toString(playerScore > 0 ? "+" : "", playerScore);

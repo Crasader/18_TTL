@@ -26,8 +26,9 @@ public:
 	void setRoomInfo(CMD_GF_Private_Room_Info& roomInfo);
 	void updateRoomInfo();
 
-	bool isHostPlayer(NNPlayer& player);
-	int getPlayerScore(NNPlayer& player);
+	bool isCreaterPlayer(NNPlayer* player);
+	bool isHostPlayer(NNPlayer* player);
+	int getPlayerScore(NNPlayer* player);
 	std::string getRoomInfoView(bool forShare /*= false*/);
 	std::string getRoomInfoText(bool forShare = false);
 	CMD_GF_Private_Room_Info getRoomInfo();

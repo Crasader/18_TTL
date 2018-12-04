@@ -52,7 +52,7 @@ void NNPlayerPanel::showPlayer(NNPlayer& player)
         WidgetFun::setVisible(playerNode, "NNPlayer_Ready", player.GetUserStatus() == US_READY);
         WidgetFun::setVisible(playerNode, "NNPlaye_BetsNode", player.getPlayerBets() != 0);
         WidgetFun::setVisible(playerNode, "NNPlayer_Snatch", player.getSnatchBankerRatio() != (WORD)TTLNN::NNSnatchBanker_Invalid);
-        WidgetFun::setVisible(playerNode, "NNPlayer_Host", NNRoomInfo::Instance().isHostPlayer(player));
+        WidgetFun::setVisible(playerNode, "NNPlayer_Host", NNRoomInfo::Instance().isHostPlayer(&player));
 
         WidgetFun::setText(playerNode, "NNPlayer_Name", player.GetNickName());
 		

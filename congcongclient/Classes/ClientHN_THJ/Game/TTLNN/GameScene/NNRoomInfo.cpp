@@ -92,20 +92,19 @@ void NNRoomInfo::updateRoomInfo()
 	}
 }
 
-bool NNRoomInfo::isHostPlayer(NNPlayer& player)
+bool NNRoomInfo::isCreaterPlayer(NNPlayer* player)
 {
-	return player.GetUserID() == m_RoomInfo.dwCreateUserID;
+	return player && player->GetUserID() == m_RoomInfo.dwCreateUserID;
 }
 
-int NNRoomInfo::getPlayerScore(NNPlayer& player)
+bool NNRoomInfo::isHostPlayer(NNPlayer* player)
 {
-//     WORD chairID = player.GetChairID();
-// 
-//     if(m_RoomInfo.kWinLoseScore.size() > chairID) {
-//         return m_RoomInfo.kWinLoseScore.at(player.GetChairID());
-//     }
+	return player && (player->GetUserID() == m_RoomInfo.dwMasterUserID);
+}
 
-    return player.GetUserScore();
+int NNRoomInfo::getPlayerScore(NNPlayer* player)
+{
+    return player ? player->GetUserScore() : 0;
 }
 
 std::string NNRoomInfo::getRoomInfoView(bool forShare /*= false*/)

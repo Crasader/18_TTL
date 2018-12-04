@@ -422,29 +422,13 @@ void NNGameScene::Button_Help(cocos2d::Ref*, WidgetUserInfo*)
 void NNGameScene::Button_Exit(cocos2d::Ref*, WidgetUserInfo*)
 {
 #ifdef ENABLE_DISMISS_ROOM
-	//解散房间
-	//1.只有房主在房间不解散, 直接回到大厅
-	auto self_player = getLocalPlayer();
-	bool isHost = NNRoomInfo::Instance().isHostPlayer(*self_player);//房主
-	if (getGamePlayerCount() == 1 && isHost) {
-		Button_ExitGameBase(NULL, NULL);
+	//1.如果游戏已经开始 解散房间
+	if (NNRoomInfo::Instance().getRoomInfo().dwPlayCout > 0 ) {
+		NNDismissRoom::Instance().show(NN_DismissRoom_InGameSelf);
 		return;
 	}
 	//2.如果游戏还没有开始
-	if (NNRoomInfo::Instance().getRoomInfo().dwPlayCout == 0) {
-		if (isHost) {
-			NNDismissRoom::Instance().show();
-		} else {
-			Button_ExitGameBase(NULL, NULL);
-		}
-		return;
-	}
-	//3.如果游戏已经开始
-	NNDismissRoom::Instance().show(NN_DismissRoom_InGameSelf);
-	//if (NNRoomInfo::Instance().getRoomInfo().dwPlayCout != NNRoomInfo::Instance().getRoomInfo().dwPlayTotal) {
-	//} else {
-	//	Button_ExitGameBase(NULL, NULL);
-	//}
+	Button_ExitGameBase(NULL, NULL);
 #else
 	Button_ExitGameBase(NULL, NULL);
 #endif // ENABLE_DISMISS_ROOM
@@ -453,8 +437,8 @@ void NNGameScene::Button_Exit(cocos2d::Ref*, WidgetUserInfo*)
 void NNGameScene::Button_Dismiss(cocos2d::Ref* ref, WidgetUserInfo* pinfo)
 {
 	auto self_player = getLocalPlayer();
-	bool isHost = NNRoomInfo::Instance().isHostPlayer(*self_player);//房主
-	if (isHost) {
+	bool isCreater = (self_player ? NNRoomInfo::Instance().isCreaterPlayer(self_player) : false);//房主
+	if (isCreater) {
 		NNDismissRoom::Instance().show(NN_DismissRoom_InGameSelf);
 	} else {
 		Button_Exit(ref, pinfo);
@@ -710,11 +694,11 @@ void NNGameScene::OnSocketSubPrivateRoomInfo(CMD_GF_Private_Room_Info* pNetInfo)
 	updateUserInfo();
 	NNOperator::Instance().show(m_GameStatus);
 
-
 	auto self_player = getLocalPlayer();
-	bool isHost = NNRoomInfo::Instance().isHostPlayer(*self_player);//房主
-	//如果是房主
-	if (isHost) {
+	bool isCreater = (self_player ? NNRoomInfo::Instance().isCreaterPlayer(self_player) : false);
+
+	//如果是创建者
+	if (isCreater) {
 		WidgetFun::setVisible(this, "NNGameScene_ButtonDismiss", true);
 	} else {
 		WidgetFun::setVisible(this, "NNGameScene_ButtonDismiss", false);
