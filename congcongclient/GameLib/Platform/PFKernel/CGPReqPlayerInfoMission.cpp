@@ -4,7 +4,6 @@
 CGPReqPlayerInfoMission::CGPReqPlayerInfoMission(const char* url, int port)
 {
 	mIGPReqPlayerInfoSink = nullptr;
-
 	_CallMission = new CCallMission("CGPReqPlayerInfoMission", url, port);
 	
 	_CallMission->addNetCall(CC_CALLBACK_2(CGPReqPlayerInfoMission::ON_GP_USER_INDIVIDUAL,this), SUB_GP_USER_INDIVIDUAL);
@@ -49,6 +48,7 @@ void CGPReqPlayerInfoMission::ON_GP_USER_INDIVIDUAL(void* data, int dataSize)
 	if (mIGPReqPlayerInfoSink) {
 		mIGPReqPlayerInfoSink->on_GP_UserIndividual(data, dataSize);
 	}
+	_CallMission->stop();
 }
 void CGPReqPlayerInfoMission::requreUserInfoSingle(byte infoType)
 {
@@ -65,4 +65,5 @@ void CGPReqPlayerInfoMission::onUserInfoSingle(void* data, int size)
 {
 	if(mIGPReqPlayerInfoSink)
 		mIGPReqPlayerInfoSink->onUserInfoSingle(data, size);
+	_CallMission->stop();
 }

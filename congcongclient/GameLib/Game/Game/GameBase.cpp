@@ -60,7 +60,6 @@ void GameBase::exitRoom()
 	pSceneMan->GameBackScence();
 	UserInfo::Instance().reqAccountInfo();
 	pGameMan->setInCenter(true);
-	pGameMan->sendPrivateTableInfo(0);
 }
 
 void GameBase::exitGame()

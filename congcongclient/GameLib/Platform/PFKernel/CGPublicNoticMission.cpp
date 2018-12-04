@@ -39,7 +39,7 @@ void CGPublicNoticMission::Net_PublicNotice(void* data, int dataSize)
 		mIGPKefuMissionSink->onGPPublicNoticeResult(m_kKeyName,pNetInfo->lResultCode,pNetInfo->szDescribeString);
 	}
 	//DONE:收到了通知消息没有必要stop
-	//stop();
+	stop();
 }
 
 void CGPublicNoticMission::Net_OperateFailure(void* data, int dataSize)

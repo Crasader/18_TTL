@@ -311,7 +311,7 @@ bool CGPLoginMission::onSocketSubLogonFinish(void* data, int size)
 	pGlobalUserInfo->LoginSucess();
 
 	//DONE: 没有必要断开连接吧
-	//stop();
+	stop();
 
 	return true;
 }

@@ -16,6 +16,12 @@ GamePlayer::~GamePlayer()
 		m_kRequestMissionHead = nullptr;
 	}
 }
+
+void GamePlayer::clear()
+{
+	
+}
+
 void GamePlayer::setUserItem(IClientUserItem* pItem)
 {
 	m_pUserItem = pItem;

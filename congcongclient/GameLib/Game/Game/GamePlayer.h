@@ -8,6 +8,7 @@ class GamePlayer : public ICGPReqPlayerInfoSink
 public:
 	GamePlayer(IClientUserItem* pUserItem);
 	~GamePlayer();
+	void clear();
 public:
 	void setUserItem(IClientUserItem* pItem);
 	IClientUserItem* getUserItem(bool bAssert = true);

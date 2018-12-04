@@ -302,7 +302,7 @@ void CGPIndividualMission::onSubUserAccountInfo(void* data, int size)
 	}
 
 	//TODO:这个自动断开连接显得莫名其妙
-	//stop();
+	stop();
 }
 // 个人信息
 void CGPIndividualMission::onSubUserIndividual(void* data, int size)
@@ -384,7 +384,7 @@ void CGPIndividualMission::onSubUserIndividual(void* data, int size)
 	if (mIGPIndividualMissionSink)
 		mIGPIndividualMissionSink->onGPIndividualInfo(mMissionType);
 	//TODO:这个自动断开连接显得莫名其妙
-	//stop();
+	stop();
 }
 void CGPIndividualMission::onSubSpreaderResoult(void* data, int size)
 {
@@ -411,7 +411,7 @@ void CGPIndividualMission::onSubSpreaderResoult(void* data, int size)
 	if (mIGPIndividualMissionSink)
 		mIGPIndividualMissionSink->onGPIndividualSuccess(mMissionType, pOperateSuccess->szDescribeString);
 	//TODO:这个自动断开连接显得莫名其妙
-	//stop();
+	stop();
 }
 
 // 操作成功
@@ -503,7 +503,7 @@ void CGPIndividualMission::onSubOperateSuccess(void* data, int size)
 	if (mIGPIndividualMissionSink)
 		mIGPIndividualMissionSink->onGPIndividualSuccess(mMissionType, pOperateSuccess->szDescribeString);
 	//TODO:这个自动断开连接显得莫名其妙
-	//stop();
+	stop();
 }
 
 // 操作失败
@@ -519,5 +519,5 @@ void CGPIndividualMission::onSubOperateFailure(void* data, int size)
 	if (mIGPIndividualMissionSink)
 		mIGPIndividualMissionSink->onGPIndividualFailure(mMissionType, pOperateFailure->szDescribeString);
 	//TODO:这个自动断开连接显得莫名其妙
-	//stop();
+	stop();
 }

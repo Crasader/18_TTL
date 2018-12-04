@@ -29,6 +29,7 @@ void GameBase::DeletePlayer(GamePlayer* pPlayer)
 {
 	if (utility::haveInVector(m_kPoolPlayer,pPlayer))
 	{
+		pPlayer->clear();
 		return;
 	}
 	m_kPoolPlayer.push_back(pPlayer);

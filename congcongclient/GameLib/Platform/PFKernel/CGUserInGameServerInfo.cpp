@@ -40,4 +40,5 @@ void CGUserInGameServerInfo::Net_InGameServerID(void* data, int dataSize)
 	{
 		m_pInGameServerInfoSink->onUserInGameServerID(pNetInfo);
 	}
+	stop();
 }
