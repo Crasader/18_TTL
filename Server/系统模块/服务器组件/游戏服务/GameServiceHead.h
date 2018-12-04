@@ -1099,11 +1099,22 @@ public:
 	//设置私人场信息
 	virtual void SetPrivateInfo(BYTE bGameTypeIdex, DWORD bGameRuleIdex,VOID* pData)=NULL;
 
+	//房间索引////////////////////////////////////////////////////////////////////////
+	//设置创建者
 	virtual void SetCreateUserID(DWORD	dwUserID)=NULL;
-	
+	virtual void SetCreateUser(IServerUserItem* pIServerUserItem) = NULL;
+	//获取创建者
     virtual DWORD GetCreateUserID() = NULL;
-
-    virtual bool SwitchRoomCreater(IServerUserItem * pIServerUserItem) = NULL;
+	virtual IServerUserItem* GetCreateUser() = NULL;
+	//设置房主
+	virtual bool SetMasterUserID(DWORD	dwUserID) = NULL;
+	virtual bool SetMasterUser(IServerUserItem * pIServerUserItem) = NULL;
+	//获取房主
+	virtual DWORD GetMasterUserID() = NULL;
+	virtual IServerUserItem* GetMasterUser() = NULL;
+	//切换创建者
+    virtual bool SwitchMaster(IServerUserItem * pIServerUserItem) = NULL;
+	//////////////////////////////////////////////////////////////////////////
 
 	//比赛接口
 public:
@@ -1178,11 +1189,22 @@ public:
 	//设置私人场信息
 	virtual void SetPrivateInfo(BYTE bGameTypeIdex,DWORD bGameRuleIdex,VOID* pData)=NULL;
 
-	virtual void SetCreateUserID(DWORD	dwUserID)=NULL;
-
-    virtual DWORD GetCreateUserID() =NULL;
-
-    virtual bool SwitchRoomCreater(IServerUserItem * pIServerUserItem) = NULL;
+	//房间索引////////////////////////////////////////////////////////////////////////
+	//设置创建者
+	virtual void SetCreateUserID(DWORD	dwUserID) = NULL;
+	virtual void SetCreateUser(IServerUserItem* pIServerUserItem) = NULL;
+	//获取创建者
+	virtual DWORD GetCreateUserID() = NULL;
+	virtual IServerUserItem* GetCreateUser() = NULL;
+	//设置房主
+	virtual bool SetMasterUserID(DWORD	dwUserID) = NULL;
+	virtual bool SetMasterUser(IServerUserItem * pIServerUserItem) = NULL;
+	//获取房主
+	virtual DWORD GetMasterUserID() = NULL;
+	virtual IServerUserItem* GetMasterUser() = NULL;
+	//切换创建者
+	virtual bool SwitchMaster(IServerUserItem * pIServerUserItem) = NULL;
+	//////////////////////////////////////////////////////////////////////////
 };
 
 //////////////////////////////////////////////////////////////////////////////////

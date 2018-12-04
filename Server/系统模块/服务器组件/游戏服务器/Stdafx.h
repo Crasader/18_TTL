@@ -94,7 +94,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 //否允许创建空房间模式,   房主创建房间后可以离开
-//#define ALLOWED_CREATE_EMPTY_ROOM
+#define ALLOWED_CREATE_EMPTY_ROOM
 //是否可以游戏中离开，不发解散请求
 //#define ALLOWED_QUIT_ROOM_INGAME_WITHOUT_AGREE
 //是否踢出不准备的房主
@@ -104,7 +104,7 @@
 //使用抽水
 //#define ALLOWED_REBATE
 //聪聪平台的狗屎规则
-#define PLATFORM_CONGCONG
+//#define PLATFORM_CONGCONG
 //连接支付服务器开关
 //#define ALLOWED_CONECT_PAYMENT
 //房卡模式

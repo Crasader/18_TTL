@@ -17,10 +17,10 @@ class CTableFrame : public ITableFrame
 {
 	//游戏属性
 protected:
-	WORD							m_wTableID;							//桌子号码
-	WORD							m_wChairCount;						//椅子数目
-	BYTE							m_cbStartMode;						//开始模式
-	WORD							m_wUserCount;						//用户数目
+	WORD m_wTableID;//桌子号码
+	WORD m_wChairCount;//椅子数目
+	BYTE	m_cbStartMode;//开始模式
+	WORD m_wUserCount;//用户数目
 
 	//状态变量
 protected:
@@ -278,13 +278,23 @@ public:
 	virtual void AddPrivateAction(DWORD dwChairID,BYTE	bActionIdex);
 	//设置私人场信息
 	virtual void SetPrivateInfo(BYTE bGameTypeIdex, DWORD bGameRuleIdex, VOID* pData);
-    //设置房主
-	virtual void SetCreateUserID(DWORD dwUserID);
-
-    virtual DWORD GetCreateUserID() override;
-
-    virtual bool SwitchRoomCreater(IServerUserItem * pIServerUserItem) override;
-
+public:
+	//房间索引////////////////////////////////////////////////////////////////////////
+	//设置创建者
+	virtual void SetCreateUserID(DWORD	dwUserID) override;
+	virtual void SetCreateUser(IServerUserItem* pIServerUserItem) override;
+	//获取创建者
+	virtual DWORD GetCreateUserID() override;
+	virtual IServerUserItem* GetCreateUser() override;
+	//设置房主
+	virtual bool SetMasterUserID(DWORD	dwUserID) override;
+	virtual bool SetMasterUser(IServerUserItem * pIServerUserItem) override;
+	//获取房主
+	virtual DWORD GetMasterUserID() override;
+	virtual IServerUserItem* GetMasterUser() override;
+	//切换创建者
+	virtual bool SwitchMaster(IServerUserItem * pIServerUserItem) override;
+	//////////////////////////////////////////////////////////////////////////
 	//功能函数
 public:
 	//获取空位

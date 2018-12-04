@@ -47,30 +47,36 @@ CTableFrameSink::CTableFrameSink()
     m_BankerScore = 0;
     m_dwCellScore = 1;
     m_GameStatus = NNGameStatus_Free;
-    m_dwCreateUserID = 0;
 	_wCurTuiZhuRatio = 0;
     ZeroMemory(m_GameCards, MAX_CARD_COUNT);
 	ZeroMemory(m_PlayerSingleResultRecord, sizeof(m_PlayerSingleResultRecord));
 	ZeroMemory(_calculate_total, sizeof(_calculate_total));
 	_dwCurrentPlayRound = 0;
 
+	_pMasterUser = nullptr;
+	_MasterChairID = 0;
+	_MasterUserID = 0;
+	_pCreateUser = nullptr;
+    _dwCreateUserID = 0;
+
 	g_TuiZhuRatio[0] = TuiZhuBeiShu_0;
 	g_TuiZhuRatio[1] = TuiZhuBeiShu_1;
 	g_TuiZhuRatio[2] = TuiZhuBeiShu_2;
 	g_TuiZhuRatio[3] = TuiZhuBeiShu_3;
+
     //游戏变量
     RepositionSink();
 
     //wcb
-    if (false) {
-        AllocConsole();										//打开控制台窗口以显示调试信息
-        SetConsoleTitleA("Debug Win Output");					//设置标题
-        HANDLE hCon = GetStdHandle(STD_OUTPUT_HANDLE);		//获取控制台输出句柄
-        INT hCrt = _open_osfhandle((INT)hCon, _O_TEXT);		//转化为C文件描述符
-        FILE* hf = _fdopen(hCrt, "w");						//转化为C文件流
-        setvbuf(hf, NULL, _IONBF, 0);						//无缓冲
-        *stdout = *hf;										//重定向标准输出
-    }
+#if 0//_DEBUG
+    AllocConsole();										//打开控制台窗口以显示调试信息
+    SetConsoleTitleA("Debug Win Output");					//设置标题
+    HANDLE hCon = GetStdHandle(STD_OUTPUT_HANDLE);		//获取控制台输出句柄
+    INT hCrt = _open_osfhandle((INT)hCon, _O_TEXT);		//转化为C文件描述符
+    FILE* hf = _fdopen(hCrt, "w");						//转化为C文件流
+    setvbuf(hf, NULL, _IONBF, 0);						//无缓冲
+    *stdout = *hf;										//重定向标准输出
+#endif
 }
 
 //析构函数
@@ -472,7 +478,7 @@ void CTableFrameSink::startGame() {
             ZeroMemory(&bankerInfo, sizeof(bankerInfo));
 
             if (m_GameTypeIdex == NNGameType_HostBanker) {
-                m_BankerChairID = m_HostChairID;
+                m_BankerChairID = _MasterChairID;
             } else {
                 if (m_BankerChairID == INVALID_CHAIR) {
                     getBanker();
@@ -1175,7 +1181,7 @@ bool CTableFrameSink::OnTimerMessage(DWORD wTimerID, WPARAM wBindParam)
 bool CTableFrameSink::OnGameMessage(WORD wSubCmdID, VOID* pDataBuffer, WORD wDataSize, IServerUserItem* pIServerUserItem) {
     switch (wSubCmdID) {
         case SUB_C_HOST_ALLOW_START: {
-            if (pIServerUserItem->GetChairID() == m_HostChairID && m_GameStatus == NNGameStatus_Free) {
+            if (pIServerUserItem->GetChairID() == _MasterChairID && m_GameStatus == NNGameStatus_Free) {
                 m_GameStatus = NNGameStatus_HostConfirm;
                 m_pITableFrame->SendTableData(INVALID_CHAIR, SUB_S_HOST_CONFIRM_START);
 				//m_pITableFrame->SendLookonData(INVALID_CHAIR, SUB_S_HOST_CONFIRM_START);
@@ -1477,7 +1483,7 @@ bool CTableFrameSink::OnGameMessage(WORD wSubCmdID, VOID* pDataBuffer, WORD wDat
         break;
 
         case SUB_C_USER_DROP_BANKER: {
-            if (pIServerUserItem->GetChairID() != m_HostChairID) {
+            if (pIServerUserItem->GetChairID() != _MasterChairID) {
                 return false;
             }
 
@@ -1613,45 +1619,86 @@ void CTableFrameSink::SetPrivateInfo(BYTE bGameTypeIdex, DWORD bGameRuleIdex, VO
 	}
 }
 
-void CTableFrameSink::SetCreateUserID(DWORD dwUserID) {
-	m_HostUserID = dwUserID;
-
-    IServerUserItem* pUserItem = m_pITableFrame->SearchUserItem(dwUserID);
-    m_dwCreateUserID = dwUserID;
-    if (pUserItem) {
-        m_HostChairID = pUserItem->GetChairID();
-        //这里状态设置会引起更换房主游戏不能继续的问题，注释掉
-        //m_PlayerStatus[m_HostChairID] = NNPlayerStatus_Sitting;
-    }
-}
-
-DWORD CTableFrameSink::GetCreateUserID() {
-    return m_dwCreateUserID;
-}
-
-bool CTableFrameSink::SwitchRoomCreater(IServerUserItem* pIServerUserItem) {
-    ASSERT(pIServerUserItem);
-    if (!pIServerUserItem) return false;
-
-    //如果是房主, 则交换房主
-    if (m_dwCreateUserID == pIServerUserItem->GetUserID()) {
-        for (int idx = 0; idx < m_pITableFrame->GetChairCount(); idx++) {
-            IServerUserItem* pServerItemNext = m_pITableFrame->GetTableUserItem(idx);
-            if (pServerItemNext == nullptr) continue;
-            //如果有其他玩家, 并且不是房主, 则设置为房主
-            if (pServerItemNext->GetUserID() != 0 && pServerItemNext->GetUserID() != m_dwCreateUserID) {
-                SetCreateUserID(pServerItemNext->GetUserID());
-                m_pITableFrame->SendRoomMessage(pServerItemNext, TEXT("你已经成为房主。"), SMT_EJECT);
-                break;
-            }
-        }
-    } else {
-        return false;
-    }
-
-    return true;
-}
-
 bool CTableFrameSink::hasRule(BYTE rule) {
-    return FvMask::HasAny(m_GameRuleIdex, _MASK_(rule));
+	return FvMask::HasAny(m_GameRuleIdex, _MASK_(rule));
+}
+
+//////////////////////////////////////////////////////////////////////////
+
+void CTableFrameSink::SetCreateUserID(DWORD dwUserID) {
+    _dwCreateUserID = dwUserID;
+	_MasterUserID = dwUserID;
+}
+
+void CTableFrameSink::SetCreateUser(IServerUserItem * pIServerUserItem)
+{
+	_pCreateUser = pIServerUserItem;
+	if (_pCreateUser) {
+		_dwCreateUserID = _MasterUserID;
+		_MasterUserID = pIServerUserItem->GetUserID();
+		_MasterChairID = pIServerUserItem->GetChairID();
+	} else {
+		_dwCreateUserID = 0;
+	}
+}
+
+IServerUserItem* CTableFrameSink::GetCreateUser()
+{
+	return _pCreateUser;
+}
+
+DWORD CTableFrameSink::GetCreateUserID()
+{
+	return _dwCreateUserID;
+}
+
+bool CTableFrameSink::SetMasterUserID(DWORD dwUserID)
+{
+	_MasterUserID = dwUserID;
+	return true;
+}
+
+bool CTableFrameSink::SetMasterUser(IServerUserItem * pIServerUserItem)
+{
+	_pMasterUser = pIServerUserItem;
+	if (_pMasterUser) {
+		_MasterUserID = _pMasterUser->GetUserID();
+	} else {
+		_MasterUserID = 0;
+	}
+	return true;
+}
+
+DWORD CTableFrameSink::GetMasterUserID()
+{
+	return _MasterUserID;
+}
+
+IServerUserItem * CTableFrameSink::GetMasterUser()
+{
+	return _pMasterUser;
+}
+
+bool CTableFrameSink::SwitchMaster(IServerUserItem * pIServerUserItem)
+{
+	ASSERT(pIServerUserItem);
+	if (!pIServerUserItem) return false;
+
+	//如果不是房主
+	if (_MasterUserID != pIServerUserItem->GetUserID())
+		return false;
+	for (int idx = 0; idx < m_pITableFrame->GetChairCount(); idx++)
+	{
+		IServerUserItem* pServerItemNext = m_pITableFrame->GetTableUserItem(idx);
+		if (pServerItemNext == nullptr) continue;
+		//如果有其他玩家, 并且不是房主, 则设置为房主
+		if (pServerItemNext->GetUserID() != 0 && pServerItemNext->GetUserID() != _MasterUserID)
+		{
+			SetMasterUser(pServerItemNext);
+			m_pITableFrame->SendRoomMessage(pServerItemNext, TEXT("你已经成为房主。"), SMT_EJECT);
+			break;
+		}
+	}
+
+	return true;
 }

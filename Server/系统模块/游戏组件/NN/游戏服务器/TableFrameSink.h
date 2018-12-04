@@ -48,16 +48,16 @@ struct  NNGameRecordOperateResult {
 		ZeroMemory(playerScores, sizeof(playerScores));
     }
 
-    BYTE							actionType;
-    WORD							bankerChairID;						//庄家
-	BYTE							bankerRatio;							//抢庄倍率
-    WORD							operatorChairID;						//操作用户
-    BYTE							userBetsRatio;				//下注倍率
+    BYTE	 actionType;
+    WORD bankerChairID;						//庄家
+	BYTE	 bankerRatio;							//抢庄倍率
+    WORD operatorChairID;						//操作用户
+    BYTE	 userBetsRatio;				//下注倍率
 	NNCardType_Result	cardType;						//分牌结果
-	BYTE							cardCount;
-    BYTE							playerCards[NN_GAME_PLAYER][MAX_HAND_CARD];
-	BYTE							playerCardsAdd[NN_GAME_PLAYER];
-    int								playerScores[NN_GAME_PLAYER];
+	BYTE	 cardCount;
+    BYTE	 playerCards[NN_GAME_PLAYER][MAX_HAND_CARD];
+	BYTE	 playerCardsAdd[NN_GAME_PLAYER];
+    int playerScores[NN_GAME_PLAYER];
 
     void StreamValue(datastream& kData, bool bSend)
     {
@@ -99,23 +99,26 @@ struct  NNGameRecord {
 class CTableFrameSink : public ITableFrameSink, public ITableUserAction
 {
 public:
-    BYTE							m_GameTypeIdex;	//游戏类型
-    DWORD							m_GameRuleIdex;	//游戏规则
+    BYTE	 m_GameTypeIdex;	//游戏类型
+    DWORD m_GameRuleIdex;	//游戏规则
 	WORD _wCurTuiZhuRatio;//推注倍数
 
 protected:
-    NNGameRecord					m_GameRecord;
-    CGameLogic						m_GameLogic;							//游戏逻辑
-    ITableFrame						* m_pITableFrame;						//框架接口
-    const tagGameServiceOption		* m_pGameServiceOption;					//配置参数
+    NNGameRecord m_GameRecord;
+    CGameLogic m_GameLogic;							//游戏逻辑
+    ITableFrame* m_pITableFrame;						//框架接口
+    const tagGameServiceOption* m_pGameServiceOption;					//配置参数
 
 protected:
     NNGameStatus					m_GameStatus; // 游戏状态
     WORD							m_BankerChairID;
-    DWORD							m_dwCreateUserID;
+    DWORD							_dwCreateUserID;
 	WORD							m_LastBankerChairID;
-    WORD							m_HostChairID;
-	DWORD							m_HostUserID;
+    WORD _MasterChairID;//房主
+	DWORD _MasterUserID;//房主
+
+	IServerUserItem* _pMasterUser;
+	IServerUserItem* _pCreateUser;
 
     BYTE							m_MaxRatio;
     BYTE							m_BankerRatio;
@@ -257,17 +260,23 @@ public:
 
     virtual void SetPrivateInfo(BYTE bGameTypeIdex, DWORD bGameRuleIdex, VOID* pData) override;
 
-    virtual void SetCreateUserID(DWORD	dwUserID);
-
-    virtual DWORD GetCreateUserID() override;
-
-    // FullName:  CTableFrameSink::SwitchRoomCreater
-    // Access:    virtual public 
-    // Returns:   bool
-    // Parameter: IServerUserItem * pIServerUserItem 被交换的房主
-    //************************************
-    virtual bool SwitchRoomCreater(IServerUserItem * pIServerUserItem) override;
-
+public:
+	//////////////////////////////////////////////////////////////////////////
+	//设置创建者
+	virtual void SetCreateUserID(DWORD	dwUserID) override;
+	virtual void SetCreateUser(IServerUserItem* pIServerUserItem) override;
+	//获取创建者
+	virtual DWORD GetCreateUserID() override;
+	virtual IServerUserItem* GetCreateUser() override;
+	//设置房主
+	virtual bool SetMasterUserID(DWORD	dwUserID) override;
+	virtual bool SetMasterUser(IServerUserItem * pIServerUserItem) override;
+	//获取房主
+	virtual DWORD GetMasterUserID() override;
+	virtual IServerUserItem* GetMasterUser() override;
+	//切换创建者
+	virtual bool SwitchMaster(IServerUserItem * pIServerUserItem) override;
+	//////////////////////////////////////////////////////////////////////////
     //游戏事件
 protected:
     bool hasRule(BYTE rule);

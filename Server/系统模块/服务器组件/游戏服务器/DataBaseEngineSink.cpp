@@ -2229,13 +2229,14 @@ bool CDataBaseEngineSink::OnRequestCreatePrivate(DWORD dwContextID, VOID * pData
 		kCreatePrivate.cbRoomType = pPrivateInfo->cbRoomType;
         kCreatePrivate.wCharNum = pPrivateInfo->wCharNum;
 
-#if defined(PLATFORM_CONGCONG)
         kCreatePrivate.bAllowedStrangerJoin = pPrivateInfo->bAllowedStrangerJoin;	//是否允许陌生人加入
-        kCreatePrivate.bPassionationMode = pPrivateInfo->bPassionationMode;	//激情模式开关
-        kCreatePrivate.bBloodFightMode = pPrivateInfo->bBloodFightMode;	//血战到底开关
         kCreatePrivate.dwBaseScore = pPrivateInfo->dwBaseScore;                 //底注
         kCreatePrivate.dwEnterMatchNum = pPrivateInfo->dwEnterMatchNum;       //入场限制
         kCreatePrivate.dwOutMatchNum = pPrivateInfo->dwOutMatchNum;         //离场限制
+
+#if defined(PLATFORM_CONGCONG)
+        kCreatePrivate.bPassionationMode = pPrivateInfo->bPassionationMode;	//激情模式开关
+        kCreatePrivate.bBloodFightMode = pPrivateInfo->bBloodFightMode;	//血战到底开关
 #endif
 
 		//构造参数

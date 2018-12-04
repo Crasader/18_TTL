@@ -1104,6 +1104,8 @@ void CTableFrame::SetPrivateInfo(BYTE bGameTypeIdex,DWORD bGameRuleIdex, VOID* p
 	}
 }
 
+//////////////////////////////////////////////////////////////////////////
+
 void CTableFrame::SetCreateUserID(DWORD dwUserID)
 {
 	if (m_pITableFrameSink)
@@ -1112,20 +1114,64 @@ void CTableFrame::SetCreateUserID(DWORD dwUserID)
 	}
 }
 
+void CTableFrame::SetCreateUser(IServerUserItem * pIServerUserItem)
+{
+	if (m_pITableFrameSink)
+	{
+		m_pITableFrameSink->SetCreateUser(pIServerUserItem);
+	}
+}
+
 DWORD CTableFrame::GetCreateUserID()
 {
     if (m_pITableFrameSink)
         return m_pITableFrameSink->GetCreateUserID();
-    else
-        return 0;
+	return 0;
 }
 
-bool CTableFrame::SwitchRoomCreater(IServerUserItem * pIServerUserItem)
+IServerUserItem * CTableFrame::GetCreateUser()
+{
+	if (m_pITableFrameSink)
+		return m_pITableFrameSink->GetCreateUser();
+	return nullptr;
+}
+
+bool CTableFrame::SetMasterUserID(DWORD dwUserID)
+{
+	if (m_pITableFrameSink)
+		return m_pITableFrameSink->SetMasterUserID(dwUserID);
+	return nullptr;
+}
+
+bool CTableFrame::SetMasterUser(IServerUserItem * dwRoomMaster)
+{
+	if (m_pITableFrameSink)
+		return m_pITableFrameSink->SetMasterUser(dwRoomMaster);
+	return false;
+}
+
+DWORD CTableFrame::GetMasterUserID()
+{
+	if (m_pITableFrameSink)
+		return m_pITableFrameSink->GetMasterUserID();
+	return 0;
+}
+
+IServerUserItem* CTableFrame::GetMasterUser()
+{
+	if (m_pITableFrameSink)
+		return m_pITableFrameSink->GetMasterUser();
+	return false;
+}
+
+bool CTableFrame::SwitchMaster(IServerUserItem * pIServerUserItem)
 {
     if (m_pITableFrameSink)
-        return m_pITableFrameSink->SwitchRoomCreater(pIServerUserItem);
+        return m_pITableFrameSink->SwitchMaster(pIServerUserItem);
     return false;
 }
+
+//////////////////////////////////////////////////////////////////////////
 
 //断线事件
 bool CTableFrame::OnEventUserOffLine(IServerUserItem * pIServerUserItem)
@@ -1735,7 +1781,7 @@ WORD CTableFrame::GetSitUserCount()
 			wUserCount++;
 		}
 	}
-
+	m_wUserCount = wUserCount;
 	return wUserCount;
 }
 
@@ -2333,8 +2379,6 @@ bool CTableFrame::PerformSitDownAction(WORD wChairID, IServerUserItem * pIServer
 		pIServerUserItem->SetUserStatus(US_PLAYING,m_wTableID,wChairID);
 	}
 
-	m_wUserCount=GetSitUserCount();
-
 	//桌子信息
 	if (GetSitUserCount()==1)
 	{
@@ -2346,7 +2390,11 @@ bool CTableFrame::PerformSitDownAction(WORD wChairID, IServerUserItem * pIServer
 		lstrcpyn(m_szEnterPassword,pUserRule->szPassword,CountArray(m_szEnterPassword));
 
 		//发送状态
-		if (bTableLocked!=IsTableLocked()) SendTableStatus();
+		if (bTableLocked != IsTableLocked())
+		{
+			SendTableStatus();
+		}
+		m_pITableFrameSink->SetMasterUser(pIServerUserItem);
 	}
 
 	//事件通知

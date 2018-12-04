@@ -4,7 +4,7 @@
 //////////////////////////////////////////////////////////////////////////
 
 //聪聪平台的狗屎规则
-#define PLATFORM_CONGCONG
+//#define PLATFORM_CONGCONG
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -831,17 +831,15 @@ struct CMD_GR_Create_Private
     char                                                                     stHttpChannel[LEN_NICKNAME];			//http获取
 
 	bool                                                                    bAllowedStrangerJoin;	//是否允许陌生人加入
-#if defined(PLATFORM_CONGCONG)
-    bool                                                                    bPassionationMode;	//激情模式开关
-    bool                                                                    bBloodFightMode;	//血战到底开关
-#endif
-
     DWORD                                                              dwBaseScore;           //底注
     DWORD                                                              dwEnterMatchNum;       //入场限制
     DWORD                                                              dwOutMatchNum;         //离场限制
     WORD                                                                 wCharNum;
+#if defined(PLATFORM_CONGCONG)
+    bool                                                                    bPassionationMode;	//激情模式开关
+    bool                                                                    bBloodFightMode;	//血战到底开关
+#endif
 };
-
 
 //重新开始
 struct CMD_GR_Again_Private
@@ -874,11 +872,12 @@ struct CMD_GF_Private_Room_Info
 	DWORD dwGameRuleIdex;//游戏规则
 	DWORD dwPlayCout;//游戏局数
 	DWORD dwRoomNum;
-	DWORD dwCreateUserID;
-	DWORD dwPlayTotal;	//总局数	
+	DWORD dwMasterUserID;//房主
+	DWORD dwCreateUserID;//创建者
+	DWORD dwPlayTotal;//总局数	
 	DWORD dwBaseScore;//底注
 	DWORD dwEnterMatchNum;//入场限制
-	DWORD dwOutMatchNum; //离场限制
+	DWORD dwOutMatchNum;//离场限制
 	std::vector<int> kWinLoseScore;
 
 	void StreamValue(datastream& kData, bool bSend)
@@ -893,6 +892,7 @@ struct CMD_GF_Private_Room_Info
 		Stream_VALUE(dwPlayCout);
 		Stream_VALUE(dwRoomNum);
 		Stream_VALUE(dwCreateUserID);
+		Stream_VALUE(dwMasterUserID);
 		Stream_VALUE(dwPlayTotal);
 		Stream_VALUE(dwBaseScore);
 		Stream_VALUE(dwEnterMatchNum);

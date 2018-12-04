@@ -6,7 +6,7 @@ void CTableFrameSink::startGameRecord()
 	m_GameRecord = NNGameRecord();
 	m_GameRecord.gameRuleIndex = m_GameRuleIdex;
 	m_GameRecord.gameTypeIndex = m_GameTypeIdex;
-	m_GameRecord.hostUser = m_HostUserID;
+	m_GameRecord.hostUser = _MasterUserID;
 
 	for (WORD i = 0; i < NN_GAME_PLAYER; i++) {
 		IServerUserItem* pUserItem = m_pITableFrame->GetTableUserItem(i);

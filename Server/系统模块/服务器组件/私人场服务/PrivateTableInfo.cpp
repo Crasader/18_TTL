@@ -44,12 +44,15 @@ void PrivateTableInfo::restAgainValue(int nCharCount)
             nCharCount = pITableFrame->GetChairCount();
         }
 
-        pITableFrame->SetCreateUserID(0);
+		pITableFrame->SetMasterUser(nullptr);
+		pITableFrame->SetCreateUser(nullptr);
+
         kTotalRecord.kScore.resize(nCharCount);
 		kTotalRecord.kUserID.resize(pITableFrame->GetChairCount());
 		kTotalRecord.kNickName.resize(pITableFrame->GetChairCount());
 		kTotalRecord.dwKindID = pITableFrame->GetGameServiceAttrib()->wKindID;
 		kTotalRecord.dwVersion = pITableFrame->GetGameServiceAttrib()->dwClientVersion;
+
 		for (int i = 0; i< nCharCount; i++)
 		{
 			kTotalRecord.kScore[i] = 0;
@@ -77,15 +80,14 @@ void PrivateTableInfo::restValue(int ncharCout)
 	dwPlayCost = 0;
 	fAgainPastTime = 0.0f;
 	kHttpChannel = "";
+	bAllowedStrangerJoin = false;//是否允许陌生人加入
+	dwBaseScore = 0;//底注
+	dwEnterMatchNum = 0;//入场限制
+	dwOutMatchNum = 0;//离场限制
 
 #if defined(PLATFORM_CONGCONG)
-	bAllowedStrangerJoin = false;	//是否允许陌生人加入
 	bPassionationMode = false;	    //激情模式开关
 	bBloodFightMode = false;        	//血战到底开关
-
-	dwBaseScore = 0;                     //底注
-	dwEnterMatchNum = 0;           //入场限制
-	dwOutMatchNum = 0;             //离场限制
 #endif
 
 	restAgainValue(ncharCout);

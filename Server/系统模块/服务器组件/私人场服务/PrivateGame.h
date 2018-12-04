@@ -40,17 +40,17 @@ protected:
 
 	//内核接口
 protected:
-	PrivateTableInfo*					m_pTableInfo;				//
-	ITimerEngine *						m_pITimerEngine;				//时间引擎
-	IDBCorrespondManager *				m_pIDataBaseEngine;				//数据引擎	
-	ITCPNetworkEngineEvent *			m_pITCPNetworkEngineEvent;		//网络引擎
+	PrivateTableInfo* m_pTableInfo;				//
+	ITimerEngine* m_pITimerEngine;				//时间引擎
+	IDBCorrespondManager*	 m_pIDataBaseEngine;				//数据引擎	
+	ITCPNetworkEngineEvent* m_pITCPNetworkEngineEvent;		//网络引擎
 
 	//服务接口
 protected:
-	IMainServiceFrame *					m_pIGameServiceFrame;			//功能接口
-	IServerUserManager *				m_pIServerUserManager;			//用户管理
-	IAndroidUserManager	*				m_pAndroidUserManager;			//机器管理
-	IServerUserItemSink *				m_pIServerUserItemSink;			//用户回调
+	IMainServiceFrame*	 m_pIGameServiceFrame;			//功能接口
+	IServerUserManager* m_pIServerUserManager;			//用户管理
+	IAndroidUserManager* m_pAndroidUserManager;			//机器管理
+	IServerUserItemSink* m_pIServerUserItemSink;			//用户回调
 
 	//函数定义
 public:
