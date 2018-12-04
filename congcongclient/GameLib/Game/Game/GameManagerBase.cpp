@@ -183,8 +183,8 @@ void GameManagerBase::OnGameItemFinish()
 	if (IServerItem::get()) {
 		IServerItem::get()->SetServerPrivateSink(_iPrivateServerSink);
 	}
+	//TODO:目前没有必要发了
 	//setConectToDoStatus(CS_REQUEST_PRIVATE_INFO);
-	setConectToDoStatus(CS_REQUEST_PRIVATE_TABLE);
 }
 
 //完成通知
@@ -515,7 +515,6 @@ void GameManagerBase::upDataTime(float fTime)
 	{
 	case CS_REQUEST_PRIVATE_INFO:
 		{
-			//DONE: 这里没有必要再发送私人场请求了, 服务器在游戏登录时已经发送了
 			_waitingTime += fTime;
 			if (_waitingTime > flush_private_info_time / 1000.0f) {
 				if (IServerItem::get()) {

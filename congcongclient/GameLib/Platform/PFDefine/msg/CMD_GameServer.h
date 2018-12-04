@@ -411,20 +411,19 @@ enum RoomType
 //创建房间
 struct CMD_GR_Create_Private
 {	
-	byte							cbGameType;								//游戏类型
-	byte							bPlayCoutIdex;							//游戏局数
-	byte							bGameTypeIdex;							//游戏类型
-	dword						dwGameRuleIdex;							//游戏规则
-	char							stHttpChannel[LEN_NICKNAME];			//http获取
+	byte cbGameType;								//游戏类型
+	byte 	bPlayCoutIdex;							//游戏局数
+	byte bGameTypeIdex;							//游戏类型
+	dword dwGameRuleIdex;							//游戏规则
+	char stHttpChannel[LEN_NICKNAME];			//http获取
 
-
-    bool							bAllowedStrangerJoin;					//是否允许陌生人加入
-    bool							bPassionationMode;						//激情模式开关
-    bool							bBloodFightMode;						//血战到底开关
-    dword                           dwBaseScore;							//底注
-    dword                           dwEnterMatchNum;						//入场限制
-    dword                           dwOutMatchNum;							//离场限制
-	word                            wCharNum;
+    bool bAllowedStrangerJoin; //是否允许陌生人加入
+    dword dwBaseScore; //底注
+    dword dwEnterMatchNum;	//入场限制
+    dword dwOutMatchNum;//离场限制
+	word wCharNum;
+    //bool							bPassionationMode;						//激情模式开关
+    //bool							bBloodFightMode;						//血战到底开关
 };
 
 //创建房间

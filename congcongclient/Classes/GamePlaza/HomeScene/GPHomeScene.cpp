@@ -4,6 +4,7 @@
 #include "GameLib/Game/Game/UserInfo.h"
 #include "GamePlaza/GameManager/GPGameLink.h"
 #include "CommonHeader/LocalConstant.h"
+#include "ClientHN_THJ/Game/TTLNN/GameScene/NNGameScene.h"
 
 USING_NS_CC;
 using namespace experimental;
@@ -184,6 +185,8 @@ void GPHomeScene::onEnterScene()
 	//////////////////////////////////////////////////////////////////////////
 	hideAllPanels();
 	flushUserInfo();
+
+	GPGameLink::pInstance()->ConnectAndInqureTables(NNGameScene::KIND_ID);
 
 	SoundFun::Instance().playBackMusic("bgplay.mp3");
 }

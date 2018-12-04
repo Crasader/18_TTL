@@ -172,8 +172,20 @@ void GPGameLink::CreateRoom(word gameKindID, CMD_GR_Create_Private& pNetInfo)
 	}
 }
 
+//最简单粗暴的定时器
+dword time_begin = 0;
 void GPGameLink::ConnectAndInqureTables(word wKindID)
 {
+	if (time_begin == 0) {
+		time_begin = time(nullptr);
+	} else {
+		dword time_end = time(nullptr);
+		if (time_end - time_begin > 1) {
+			time_begin = time_end;
+		} else {
+			return;
+		}
+	}
 	auto ret = pGameMan->connectGameServerByKindID(wKindID, GAME_GENRE_EDUCATE);
 	if (ret == ServiceStatus_ServiceIng) {
 		m_gr_inqure_tables.bGetTableInfo = 1;

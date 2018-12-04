@@ -410,8 +410,8 @@ void GPHomeCreateRoomPanel_SRLF::Button_Confirm(cocos2d::Ref*, WidgetUserInfo*)
 	FvMask::Add(kSendNet.dwGameRuleIdex, m_GameRulePlayerNum );//人数	
 	FvMask::Add(kSendNet.dwGameRuleIdex, m_GameRuleFanMaxNum );//番数最大值
 	kSendNet.bAllowedStrangerJoin = FvMask::HasAny(m_GameRuleJoinMoShenRen,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_YXMSRJOIN));//是否允许陌生人加入
-	kSendNet.bPassionationMode = false;//激情模式开关
-	kSendNet.bBloodFightMode =FvMask::HasAny(m_GameRuleHuPaiWanFa,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_XZDD));//血战到底开关
+	//kSendNet.bPassionationMode = false;//激情模式开关
+	//kSendNet.bBloodFightMode =FvMask::HasAny(m_GameRuleHuPaiWanFa,_MASK_(GPHomeCreateRoomPanel_SRLF::GAME_RULE_XZDD));//血战到底开关
 	//char							stHttpChannel[LEN_NICKNAME];			//http获取
 	kSendNet.dwBaseScore = m_GameRuleDiZhuNum;  //底注
 	kSendNet.dwEnterMatchNum = m_GameRuleJinChangNum;  //入场限制
