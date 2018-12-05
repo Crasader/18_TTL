@@ -3430,21 +3430,21 @@ bool CDataBaseEngineSink::OnRequestGameRecordListEx(DWORD dwContextID, VOID * pD
 			int tempGameSign = -1;
 			tagGameRecordListItem item;
 
-			int itemCount = 0;
+			//int itemCount = 0;
 			while (m_TreasureDBModule->IsRecordsetEnd() == false)
 			{
 				DWORD drawID = m_TreasureDBAide.GetValue_DWORD(TEXT("DrawID"));
 				DWORD kindID = m_TreasureDBAide.GetValue_DWORD(TEXT("KindID"));
 				DWORD tableID = m_TreasureDBAide.GetValue_DWORD(TEXT("TableID"));
 				
-				TCHAR szNickName[LEN_NICKNAME];				//µÇÂ¼ÕÊºÅ
-				m_TreasureDBAide.GetValue_String(TEXT("NickName"), szNickName, CountArray(szNickName));
+				//TCHAR szNickName[LEN_NICKNAME];				//µÇÂ¼ÕÊºÅ
+				//m_TreasureDBAide.GetValue_String(TEXT("NickName"), szNickName, CountArray(szNickName));
 
 				if (drawID != tempGameSign) {
-					++itemCount;
-					if (itemCount > 20) {
-						break;
-					}
+					//++itemCount;
+					//if (itemCount > 20) {
+					//	break;
+					//}
 
 					tempGameSign = drawID;
 					item = tagGameRecordListItem();
@@ -3455,7 +3455,7 @@ bool CDataBaseEngineSink::OnRequestGameRecordListEx(DWORD dwContextID, VOID * pD
 				}
 
 				kGameRecordList.kList.at(kGameRecordList.kList.size() - 1).kUserID.push_back(m_TreasureDBAide.GetValue_DWORD(TEXT("UserID")));
-				kGameRecordList.kList.at(kGameRecordList.kList.size() - 1).kNickName.push_back(szNickName);
+				//kGameRecordList.kList.at(kGameRecordList.kList.size() - 1).kNickName.push_back(szNickName);
 				kGameRecordList.kList.at(kGameRecordList.kList.size() - 1).kScore.push_back(m_TreasureDBAide.GetValue_LONGLONG(TEXT("Score")));
 
 				m_TreasureDBModule->MoveToNext();

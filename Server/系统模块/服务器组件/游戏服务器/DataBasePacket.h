@@ -90,7 +90,7 @@
 #define DBO_GR_MATCH_EVENT_END 599									//比赛标识
 
 //系统事件
-#define DBO_GR_SYSTEM_MESSAGE_RESUL 600								//消息结果
+#define DBO_GR_SYSTEM_MESSAGE_RESULT 600								//消息结果
 #define DBO_GR_SENSITIVE_WORDS 601								//敏感词
 
 //私人场事件
@@ -203,7 +203,7 @@ struct DBR_GR_GameScoreRecord
 		wRecordCount = 0;
 	}
 	//桌子信息
-	WORD							wTableID;							//桌子号码
+	DWORD							wTableID;							//桌子号码
 	WORD							wUserCount;							//用户数目
 	WORD							wAndroidCount;						//机器数目
 

@@ -237,7 +237,7 @@ bool CTableFrame::ConcludeGame(BYTE cbGameStatus)
 			//ÉèÖÃ±äÁ¿
 			if (m_pGameServiceOption->wServerType == GAME_GENRE_EDUCATE) {
 				if (m_pITableInfoExtra != nullptr) {
-					GameScoreRecord.wTableID = static_cast<WORD>( (static_cast<PrivateTableInfo*>(m_pITableInfoExtra))->dwRoomNum );
+					GameScoreRecord.wTableID = static_cast<PrivateTableInfo*>(m_pITableInfoExtra)->dwRoomNum;
 				}
 			}
 
