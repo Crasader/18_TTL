@@ -99,46 +99,46 @@ struct  NNGameRecord {
 class CTableFrameSink : public ITableFrameSink, public ITableUserAction
 {
 public:
-    BYTE	 m_GameTypeIdex;	//游戏类型
-    DWORD m_GameRuleIdex;	//游戏规则
+    BYTE	 m_GameTypeIdex;//游戏类型
+    DWORD m_GameRuleIdex;//游戏规则
 	WORD _wCurTuiZhuRatio;//推注倍数
 
 protected:
     NNGameRecord m_GameRecord;
-    CGameLogic m_GameLogic;							//游戏逻辑
-    ITableFrame* m_pITableFrame;						//框架接口
-    const tagGameServiceOption* m_pGameServiceOption;					//配置参数
+    CGameLogic m_GameLogic;//游戏逻辑
+    ITableFrame* m_pITableFrame;//框架接口
+    const tagGameServiceOption* m_pGameServiceOption;//配置参数
 
 protected:
-    NNGameStatus					m_GameStatus; // 游戏状态
-    WORD							m_BankerChairID;
-    DWORD							_dwCreateUserID;
-	WORD							m_LastBankerChairID;
+    NNGameStatus m_GameStatus;// 游戏状态
+    WORD m_BankerChairID;
+    DWORD _dwCreateUserID;
+	WORD m_LastBankerChairID;
     WORD _MasterChairID;//房主
 	DWORD _MasterUserID;//房主
 
 	IServerUserItem* _pMasterUser;
 	IServerUserItem* _pCreateUser;
 
-    BYTE							m_MaxRatio;
-    BYTE							m_BankerRatio;
-    int								m_BankerScore;
-    int								m_PlayerBankerRatio[NN_GAME_PLAYER];
+    BYTE	 m_MaxRatio;
+    BYTE	 m_BankerRatio;
+    int m_BankerScore;
+    int m_PlayerBankerRatio[NN_GAME_PLAYER];
 
 	NNPlayerBet m_PlayerAllBets[NN_GAME_PLAYER][MAX_STAKE_COUNT];
 	NNPlayerBet m_PlayerBets[NN_GAME_PLAYER];
 
-    BYTE							m_GameCards[MAX_CARD_COUNT]; //扑克
-    BYTE							m_CardLeftCount; // 扑克剩余张数
-    NNPlayerStatus					m_PlayerStatus[NN_GAME_PLAYER]; //玩家状态
+    BYTE	 m_GameCards[MAX_CARD_COUNT];//扑克
+    BYTE	 m_CardLeftCount;//扑克剩余张数
+    NNPlayerStatus m_PlayerStatus[NN_GAME_PLAYER];//玩家状态
 
-	bool							m_UseCheatingCards;
-	BYTE							m_PlayerCardsCheating[NN_GAME_PLAYER][MAX_HAND_CARD]; //作弊手牌
-	BYTE							m_PlayerCards[NN_GAME_PLAYER][MAX_HAND_CARD]; //玩家手牌
-    BYTE							m_PlayerCardsAdd[NN_GAME_PLAYER]; //玩家补牌
-    std::string						m_PlayerCardsName[NN_GAME_PLAYER][MAX_HAND_CARD]; // 玩家手牌名称
-    NNCardType_Result				m_PlayerCardTypes[NN_GAME_PLAYER];
-    int								m_PlayerSingleResult[NN_GAME_PLAYER];
+	bool m_UseCheatingCards;
+	BYTE m_PlayerCardsCheating[NN_GAME_PLAYER][MAX_HAND_CARD];//作弊手牌
+	BYTE m_PlayerCards[NN_GAME_PLAYER][MAX_HAND_CARD];//玩家手牌
+    BYTE m_PlayerCardsAdd[NN_GAME_PLAYER];//玩家补牌
+    std::string	m_PlayerCardsName[NN_GAME_PLAYER][MAX_HAND_CARD];//玩家手牌名称
+    NNCardType_Result m_PlayerCardTypes[NN_GAME_PLAYER];
+    int m_PlayerSingleResult[NN_GAME_PLAYER];
 	NNPlayerCardResult m_PlayerSingleResultRecord[NN_GAME_PLAYER];//上一把玩家的牌记录
 	CMD_S_CalculateTotal _calculate_total[NN_GAME_PLAYER];//牌局统计
 
@@ -148,8 +148,8 @@ private:
 	DWORD _dwTotalPlayRound;//总的局数
 
 	DWORD m_dwCellScore;
-	DWORD m_dwGoOutScoce;						//滚蛋分数
-	DWORD m_dwEnterMatchNum;					//开搞分数
+	DWORD m_dwGoOutScoce;	//滚蛋分数
+	DWORD m_dwEnterMatchNum;//开搞分数
 
 public:
     //构造函数
@@ -203,6 +203,7 @@ public:
     //发送场景
     virtual bool OnEventSendGameScene(WORD wChiarID, IServerUserItem * pIServerUserItem, BYTE cbGameStatus, bool bSendSecret);
 
+	//////////////////////////////////////////////////////////////////////////
     //洗牌
     void Shuffle();
     //配牌
@@ -215,6 +216,8 @@ public:
     void getBanker();
     //抢庄时获取庄家
     void confirmSnatchBanker();
+	//检查能否推注
+	int checkTuiZhuScore(WORD wChairID);
     //获取下注范围
     void getBets();
     //结算
@@ -223,6 +226,7 @@ public:
 	void calculateTotal();
 	//
 	void callCheatingCards(WORD chairID, bool forWin = true);
+	//////////////////////////////////////////////////////////////////////////
     //事件接口
 public:
     //定时器事件

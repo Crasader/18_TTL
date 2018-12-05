@@ -355,6 +355,7 @@ void CTableFrameSink::rationCardForUser(WORD cardCount) {
                     ASSERT(sizeof(snatchBanker.cards[index]) == sizeof(m_PlayerCards[index]));
                     memcpy(snatchBanker.cards[index], m_PlayerCards[index], sizeof(m_PlayerCards[index]));
                 }
+				snatchBanker.bTuiZhu = checkTuiZhuScore(index);
                 m_pITableFrame->SendTableData(index, SUB_S_SNATCH_BANKER, &snatchBanker, sizeof(snatchBanker));
             }
             CMD_S_SnatchBanker snatchBanker;
@@ -625,6 +626,44 @@ void CTableFrameSink::confirmSnatchBanker() {
     addGameOperator(bankerInfo);
 }
 
+int CTableFrameSink::checkTuiZhuScore(WORD wChairID)
+{
+	if (wChairID > NN_GAME_PLAYER) {
+		return 0;
+	}
+	if (!hasRule(NNGameRule_TZ)) {
+		return 0;
+	}
+	if (m_PlayerSingleResultRecord[wChairID].wScore > 0 &&
+		!m_PlayerSingleResultRecord[wChairID].bTuiZhu &&
+		!m_PlayerSingleResultRecord[wChairID].bBanker) {
+		switch (m_PlayerSingleResultRecord[wChairID].wCardType) {
+		case 	NNCardType_None:
+		case NNCardType_N1:
+		case 	NNCardType_N2:
+		case 	NNCardType_N3:
+			return TuiZhuBeiShu_0 * m_dwCellScore;
+		case NNCardType_N4:
+		case 	NNCardType_N5:
+		case 	NNCardType_N6:
+			return TuiZhuBeiShu_1 * m_dwCellScore;
+		case NNCardType_N7:
+		case 	NNCardType_N8:
+		case 	NNCardType_N9:
+			return TuiZhuBeiShu_2 * m_dwCellScore;
+		case	NNCardType_NN:
+		case	NNCardType_SZN: //顺子牛
+		case	NNCardType_WHN://五花牛
+		case	NNCardType_THN: //同花牛
+		case	NNCardType_HLN: //葫芦牛
+		case	NNCardType_ZDN://炸弹牛
+		case	NNCardType_WXN: //五小牛
+			return TuiZhuBeiShu_3 * m_dwCellScore;
+		}
+	}
+	return 0;
+}
+
 void CTableFrameSink::getBets()
 {
 	ZeroMemory(m_PlayerAllBets, sizeof(m_PlayerAllBets));
@@ -633,44 +672,45 @@ void CTableFrameSink::getBets()
 			continue;
 		}
 
-		int nDiFenBeiShu = m_dwCellScore;
-		m_PlayerAllBets[index][0].wBet = nDiFenBeiShu;
+		m_PlayerAllBets[index][0].wBet = m_dwCellScore;
 		if (m_GameTypeIdex != NNGameType_AllCompare) {
-			m_PlayerAllBets[index][1].wBet = nDiFenBeiShu * 2;
-			//推注倍数判断
-			if (m_PlayerSingleResultRecord[index].wScore > 0 &&
-				!m_PlayerSingleResultRecord[index].bTuiZhu &&
-				!m_PlayerSingleResultRecord[index].bBanker) {
-				switch (m_PlayerSingleResultRecord[index].wCardType) {
-				case 	NNCardType_None:
-				case NNCardType_N1:
-				case 	NNCardType_N2:
-				case 	NNCardType_N3:
-					m_PlayerAllBets[index][2].wBet = TuiZhuBeiShu_0 * nDiFenBeiShu;
-					m_PlayerAllBets[index][2].wBetType = NNGBT_TuiZhu;
-					break;
-				case NNCardType_N4:
-				case 	NNCardType_N5:
-				case 	NNCardType_N6:
-					m_PlayerAllBets[index][2].wBet = TuiZhuBeiShu_1 * nDiFenBeiShu;
-					m_PlayerAllBets[index][2].wBetType = NNGBT_TuiZhu;
-					break;
-				case NNCardType_N7:
-				case 	NNCardType_N8:
-				case 	NNCardType_N9:
-					m_PlayerAllBets[index][2].wBet = TuiZhuBeiShu_2 * nDiFenBeiShu;
-					m_PlayerAllBets[index][2].wBetType = NNGBT_TuiZhu;
-					break;
-				case	NNCardType_NN:
-				case	NNCardType_SZN: //顺子牛
-				case	NNCardType_WHN://五花牛
-				case	NNCardType_THN: //同花牛
-				case	NNCardType_HLN: //葫芦牛
-				case	NNCardType_ZDN://炸弹牛
-				case	NNCardType_WXN: //五小牛
-					m_PlayerAllBets[index][2].wBet = TuiZhuBeiShu_3 * nDiFenBeiShu;
-					m_PlayerAllBets[index][2].wBetType = NNGBT_TuiZhu;
-					break;
+			m_PlayerAllBets[index][1].wBet = m_dwCellScore * 2;
+			if (hasRule(NNGameRule_TZ)) {
+				//推注倍数判断
+				if (m_PlayerSingleResultRecord[index].wScore > 0 &&
+					!m_PlayerSingleResultRecord[index].bTuiZhu &&
+					!m_PlayerSingleResultRecord[index].bBanker) {
+					switch (m_PlayerSingleResultRecord[index].wCardType) {
+					case 	NNCardType_None:
+					case NNCardType_N1:
+					case 	NNCardType_N2:
+					case 	NNCardType_N3:
+						m_PlayerAllBets[index][2].wBet = TuiZhuBeiShu_0 * m_dwCellScore;
+						m_PlayerAllBets[index][2].wBetType = NNGBT_TuiZhu;
+						break;
+					case NNCardType_N4:
+					case 	NNCardType_N5:
+					case 	NNCardType_N6:
+						m_PlayerAllBets[index][2].wBet = TuiZhuBeiShu_1 * m_dwCellScore;
+						m_PlayerAllBets[index][2].wBetType = NNGBT_TuiZhu;
+						break;
+					case NNCardType_N7:
+					case 	NNCardType_N8:
+					case 	NNCardType_N9:
+						m_PlayerAllBets[index][2].wBet = TuiZhuBeiShu_2 * m_dwCellScore;
+						m_PlayerAllBets[index][2].wBetType = NNGBT_TuiZhu;
+						break;
+					case	NNCardType_NN:
+					case	NNCardType_SZN://顺子牛
+					case	NNCardType_WHN://五花牛
+					case	NNCardType_THN://同花牛
+					case	NNCardType_HLN://葫芦牛
+					case	NNCardType_ZDN://炸弹牛
+					case	NNCardType_WXN: //五小牛
+						m_PlayerAllBets[index][2].wBet = TuiZhuBeiShu_3 * m_dwCellScore;
+						m_PlayerAllBets[index][2].wBetType = NNGBT_TuiZhu;
+						break;
+					}
 				}
 			}
 		}
