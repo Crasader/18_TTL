@@ -341,13 +341,24 @@ NNPlayer* NNGameScene::getLocalPlayer()
 {
     for(int index = 0; index < MAX_PLAYER; ++index) {
         NNPlayer* player = m_Players[index];
-
         if(player->GetUserID() == UserInfo::Instance().getUserID()) {
             return player;
         }
     }
 
-    return NULL;
+    return nullptr;
+}
+
+NNPlayer* NNGameScene::getMasterPlayer()
+{
+	for (int index = 0; index < MAX_PLAYER; ++index) {
+		NNPlayer* player = m_Players[index];
+		if (player->GetUserID() == m_RoomInfo.dwMasterUserID) {
+			return player;
+		}
+	}
+
+	return nullptr;
 }
 
 NNPlayer* NNGameScene::getPlayerByChairID(WORD chairID)

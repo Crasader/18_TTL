@@ -65,6 +65,7 @@ public:
 	void updateUserInfo();
 	int getGamePlayerCount();
 	NNPlayer* getLocalPlayer();
+	NNPlayer* getMasterPlayer();
 	NNPlayer* getPlayerByChairID(WORD chairID);
 	int getVisioChairID(NNPlayer& player);
 	bool isBankerUser(NNPlayer& player);

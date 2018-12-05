@@ -9,7 +9,7 @@
 	
 	<Widget Name="NNOperator_Message" SkinTempName="TxtEmpty">
 		<Property Key="FontName" Value="Font/TTLNN.TTF"/>
-		<Property Key="FontSize" Value="18"/>
+		<Property Key="FontSize" Value="24"/>
 		<Property Key="Pos" Value="640 270"/>
 		<Property Key="Color" Value="255 165 0"/>
 	</Widget>

@@ -82,108 +82,112 @@ void NNOperator::hide()
 void NNOperator::show(WORD status)
 {
     switch(status) {
-    case TTLNN::NNGameStatus_Free: {
-        std::string showText = utility::a_u8("等待房主确认开始游戏");
-        showMessage(showText);
-
-        if(NNRoomInfo::Instance().isHostPlayer(NNGameScene::Instance().getLocalPlayer())) {
-            showStartGame();
-        } else {
-            hideStartGame();
-        }
-    }
-    break;
-
-    case TTLNN::NNGameStatus_HostConfirm: {
-        std::string showText = utility::a_u8("等待所有玩家准备");
-        showMessage(showText);
-        hideStartGame();
-    }
-    break;
-
-    case TTLNN::NNGameStatus_SnatchBanker: {
-        if(NNGameScene::Instance().getLocalPlayer()->getPlayerStatus() != TTLNN::NNPlayerStatus_Playing) {
-			std::string showText = utility::a_u8("请等待本局游戏结束");
+		case TTLNN::NNGameStatus_Free: {
+			std::string strMasterName = "房主";
+			if (NNGameScene::Instance().getMasterPlayer()) {
+				strMasterName = NNGameScene::Instance().getMasterPlayer()->GetNickName();
+			}
+			std::string showText = utility::a_u8(utility::toString("等待", strMasterName, "确认开始游戏" ));
 			showMessage(showText);
-            break;
-        }
 
-        if(NNGameScene::Instance().getLocalPlayer()->getSnatchBankerRatio() != (WORD)TTLNN::NNSnatchBanker_Invalid) {
-            std::string showText = utility::a_u8("等待抢庄结果");
-            showMessage(showText);
-            hideSnatchButton();
-            showTimes(TIME_FOR_SNATCH_BANKER);
-        } else {
-            std::string showText = utility::a_u8("开始抢庄");
-            showMessage(showText);
-            showSnatchButton();
-            hideStartGame();
-            showTimes(TIME_FOR_SNATCH_BANKER);
-        }
-    }
-    break;
-
-    case TTLNN::NNGameStatus_Call: {
-        if(NNGameScene::Instance().getLocalPlayer()->getPlayerStatus() != TTLNN::NNPlayerStatus_Playing) {
-			std::string showText = utility::a_u8("请等待本局游戏结束");
-			showMessage(showText);
-            break;
-        }
-        if(NNGameScene::Instance().isBankerUser(*NNGameScene::Instance().getLocalPlayer())) {
-            std::string showText = utility::a_u8("等待其他玩家下注");
-            showMessage(showText);
-        } else {
-            if(NNGameScene::Instance().getLocalPlayer()->getPlayerBets() != 0) {
-                std::string showText = utility::a_u8("等待其他玩家下注");
-                showMessage(showText);
-                hideCallButtons();
-            } else {
-                std::string showText = utility::a_u8("请下注:");
-                showMessage(showText);
-                showCallButtons();
-            }
-        }
-    }
-    break;
-
-    case TTLNN::NNGameStatus_SplitCard: {
-		if( NULL != NNGameScene::Instance().getLocalPlayer() && NNGameScene::Instance().getLocalPlayer()->getPlayerStatus() != TTLNN::NNPlayerStatus_Playing) {
-			std::string showText = utility::a_u8("请等待本局游戏结束");
-			showMessage(showText);
-            break;
-        }
-
-        if(NNGameScene::Instance().isSplitCard()) {
-            std::string showText = utility::a_u8("请拆牌");
-            //showMessage(showText);
-			hideMessage();
-            showSplitButton();
-            updateSplitCalculate();
-        } else {
-            std::string showText = utility::a_u8("请等待其他玩家亮牌");
-            showMessage(showText);
-            hideSplitButton();
-            hideSplitCalculate();
-        }
-    }
-    break;
-
-    case TTLNN::NNGameStatus_Calculate: {
-        if(NNGameScene::Instance().getLocalPlayer()->getPlayerStatus() != TTLNN::NNPlayerStatus_Playing) {
-			std::string showText = utility::a_u8("请等待本局游戏结束");
-			showMessage(showText);
+			if(NNRoomInfo::Instance().isHostPlayer(NNGameScene::Instance().getLocalPlayer())) {
+				showStartGame();
+			} else {
+				hideStartGame();
+			}
 			break;
-        }
+		}
 
-        hideMessage();
-        hideTimes();
-        showCalculate();
-    }
-    break;
+		case TTLNN::NNGameStatus_HostConfirm: {
+			std::string showText = utility::a_u8("等待其他玩家准备");
+			showMessage(showText);
+			hideStartGame();
+			break;
+		}
 
-    default:
+		case TTLNN::NNGameStatus_SnatchBanker: {
+			if(NNGameScene::Instance().getLocalPlayer()->getPlayerStatus() != TTLNN::NNPlayerStatus_Playing) {
+				std::string showText = utility::a_u8("请等待本局游戏结束");
+				showMessage(showText);
+				break;
+			}
 
-        break;
+			if(NNGameScene::Instance().getLocalPlayer()->getSnatchBankerRatio() != (WORD)TTLNN::NNSnatchBanker_Invalid) {
+				std::string showText = utility::a_u8("等待抢庄结果");
+				showMessage(showText);
+				hideSnatchButton();
+				showTimes(TIME_FOR_SNATCH_BANKER);
+			} else {
+				std::string showText = utility::a_u8("开始抢庄");
+				showMessage(showText);
+				showSnatchButton();
+				hideStartGame();
+				showTimes(TIME_FOR_SNATCH_BANKER);
+			}
+			break;
+		}
+
+		case TTLNN::NNGameStatus_Call: {
+			if(NNGameScene::Instance().getLocalPlayer()->getPlayerStatus() != TTLNN::NNPlayerStatus_Playing) {
+				std::string showText = utility::a_u8("请等待本局游戏结束");
+				showMessage(showText);
+				break;
+			}
+			if(NNGameScene::Instance().isBankerUser(*NNGameScene::Instance().getLocalPlayer())) {
+				std::string showText = utility::a_u8("等待其他玩家下注");
+				showMessage(showText);
+			} else {
+				if(NNGameScene::Instance().getLocalPlayer()->getPlayerBets() != 0) {
+					std::string showText = utility::a_u8("等待其他玩家下注");
+					showMessage(showText);
+					hideCallButtons();
+				} else {
+					std::string showText = utility::a_u8("请下注:");
+					showMessage(showText);
+					showCallButtons();
+				}
+			}
+			break;
+		}
+
+		case TTLNN::NNGameStatus_SplitCard: {
+			if( NULL != NNGameScene::Instance().getLocalPlayer() && NNGameScene::Instance().getLocalPlayer()->getPlayerStatus() != TTLNN::NNPlayerStatus_Playing) {
+				std::string showText = utility::a_u8("请等待本局游戏结束");
+				showMessage(showText);
+				break;
+			}
+
+			if(NNGameScene::Instance().isSplitCard()) {
+				std::string showText = utility::a_u8("请拆牌");
+				//showMessage(showText);
+				hideMessage();
+				showSplitButton();
+				updateSplitCalculate();
+			} else {
+				std::string showText = utility::a_u8("请等待其他玩家亮牌");
+				showMessage(showText);
+				hideSplitButton();
+				hideSplitCalculate();
+			}
+			break;
+		}
+
+		case TTLNN::NNGameStatus_Calculate: {
+			if(NNGameScene::Instance().getLocalPlayer()->getPlayerStatus() != TTLNN::NNPlayerStatus_Playing) {
+				std::string showText = utility::a_u8("请等待本局游戏结束");
+				showMessage(showText);
+				break;
+			}
+
+			hideMessage();
+			hideTimes();
+			showCalculate();
+			break;
+		}
+
+		default:
+
+			break;
     }
 
     show();
