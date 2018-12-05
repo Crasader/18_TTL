@@ -3,7 +3,7 @@
 		<Property Key="Size" Value="708 175"/>
 		<Property Key="AnchorPos" Value="0 0"/>
 		<WidgetButton Name="Button_ShowTotal" NomalTexture="GamePlaza/HomeScene/RecordPanel/item.png" PressTexture="AutoPress">
-			<UserInfo Key="GameKINDID_21" Value="拼十"/>			
+			<UserInfo Key="GameKINDID_27" Value="拼十"/>			
 			<UserInfo Key="GameKINDID_302" Value="三人两房"/>			
 			<UserInfo Key="GameKINDID_317" Value="经典三张"/>
 			<UserInfo Key="GameKINDID_999" Value="三公"/>

@@ -13,7 +13,8 @@ void GPHomeScene::initButton()
 	WidgetManager::addButtonCB("Button_ADDGOLD", this, button_selector(GPHomeScene::Button_Mall));
 	WidgetManager::addButtonCB("Btn_Mall", this, button_selector(GPHomeScene::Button_Mall));
 	WidgetManager::addButtonCB("Button_Setting", this, button_selector(GPHomeScene::Button_Setting));
-	WidgetManager::addButtonCB("Btn_Rank", this, button_selector(GPHomeScene::Button_Rank));
+	//WidgetManager::addButtonCB("Btn_Rank", this, button_selector(GPHomeScene::Button_Rank));
+	//WidgetManager::addButtonCB("Button_Rank", this, button_selector(GPHomeScene::Button_Rank));
 	WidgetManager::addButtonCB("Button_Record", this, button_selector(GPHomeScene::Button_Record));
 	WidgetManager::addButtonCB("Btn_Invitation", this, button_selector(GPHomeScene::Button_Invitation));
 	WidgetManager::addButtonCB("Button_JoinGame", this, button_selector(GPHomeScene::Button_Join));

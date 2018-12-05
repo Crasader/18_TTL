@@ -46,31 +46,31 @@ void GPHomeRecordPanel::onGPBackGameRecordListEx(tagGameRecordListEx* pNetInfo)
 	pList->removeAllChildren();
 	for (int i = 0; i < (int)pNetInfo->kList.size(); i++) {
 		tagGameRecordListItem& kInfo = pNetInfo->kList.at(i);
-		if (kInfo.dwKindID!=21 && kInfo.dwKindID!=888  && kInfo.dwKindID!=999 && kInfo.dwKindID!=317 && kInfo.dwKindID!=302 && kInfo.dwKindID!=303)
-		{
-			continue;
-		}
+		//if (kInfo.dwKindID!=21 && kInfo.dwKindID!=888  && kInfo.dwKindID!=999 && kInfo.dwKindID!=317 && kInfo.dwKindID!=302 && kInfo.dwKindID!=303)
+		//{
+		//	continue;
+		//}
 		cocos2d::Node* pItemNode = WidgetManager::Instance().createWidget("GameReocrdListItem", pList);
 		pItemNode->setPositionX(100);
 		//WidgetFun::setButtonImagic(pItemNode, "Button_ShowTotal",WidgetFun::getWidgetUserInfo(WidgetFun::getChildWidgetByName(pItemNode, "Button_ShowTotal"),utility::toString("GameKINDID_",kInfo.dwKindID)),true);
-		WidgetFun::setText(pItemNode, "Txt_GameType",WidgetFun::getWidgetUserInfo(WidgetFun::getChildWidgetByName(pItemNode, "Button_ShowTotal"),utility::toString("GameKINDID_",kInfo.dwKindID)));
+		WidgetFun::setText(pItemNode, "Txt_GameType",ScriptData<std::string>("CCWeiXinShare_Server_Name").Value());
 		WidgetFun::setText(pItemNode, "ChallengeTime", timeToString(kInfo.kPlayTime));
 		WidgetFun::setText(pItemNode, "RoomNum", utility::toString(kInfo.iRoomNum));
-		if (kInfo.kNickName.size() != kInfo.kScore.size()) {
-			continue;
-		}
-		for (int m = 0; m < (int)kInfo.kNickName.size(); m++) {
-			if (m >= 6) {
-				continue;
-			}
-			WidgetFun::setText(pItemNode, utility::toString("PlayerScore", m),scoreToString(kInfo.kScore[m]));
-			WidgetFun::setText(pItemNode, utility::toString("PlayerTxt", m),utility::toString(utility::a_u8(kInfo.kNickName[m])));
-		}
+		WidgetFun::setText(pItemNode, utility::toString("PlayerScore", 0), scoreToString(kInfo.kScore[0]));
+		WidgetFun::setText(pItemNode, utility::toString("PlayerTxt", 0), utility::a_u8(UserInfo::Instance().getUserNicName()));
+		//if (kInfo.kNickName.size() != kInfo.kScore.size()) {
+		//	continue;
+		//}
+		//for (int m = 0; m < (int)kInfo.kNickName.size(); m++) {
+			//if (m >= 6) {
+			//	continue;
+			//}
+		//	WidgetFun::setText(pItemNode, utility::toString("PlayerScore", m),scoreToString(kInfo.kScore[m]));
+		//	WidgetFun::setText(pItemNode, utility::toString("PlayerTxt", m), UserInfo::Instance().getUserNicName()));
+		//}
 	}
 	pList->forceDoLayout();
-
 }
-
 
 void GPHomeRecordPanel::onGPBackGameRecordList(tagPrivateRandTotalRecordList* pNetInfo)
 {
