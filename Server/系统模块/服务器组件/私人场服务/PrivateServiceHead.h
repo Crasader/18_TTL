@@ -164,7 +164,7 @@ public:
 	//网络事件
 public:
 	//比赛事件
-	virtual bool OnEventSocketPrivate(WORD wSubCmdID, VOID * pData, WORD wDataSize, IServerUserItem * pIServerUserItem, DWORD dwSocketID)=NULL;	
+	virtual bool OnTCPPrivateGame(WORD wSubCmdID, VOID * pData, WORD wDataSize, IServerUserItem * pIServerUserItem, DWORD dwSocketID)=NULL;	
 
 	//信息接口
 public:

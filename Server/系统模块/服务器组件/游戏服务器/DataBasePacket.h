@@ -53,7 +53,7 @@
 #define DBR_GR_CREATE_PRIVAT_COST		802				//返还私人场
 //使用抽水
 #if defined(ALLOWED_REBATE)
-#define DBR_GR_PRIVAT_REBATE		            803				//开始游戏获取抽水
+#define DBR_GR_PRIVAT_REBATE			803				//开始游戏获取抽水
 #endif
 #define DBR_GR_PRIVAT_REFRESH_TABLES  804				//刷新桌子数据
 
@@ -82,23 +82,23 @@
 #define DBO_GR_GAME_FRAME_RESULT	402									//游戏结果
 
 //比赛事件
-#define DBO_GR_MATCH_EVENT_START	500									//比赛标识
-#define DBO_GR_MATCH_SIGNUP_RESULT	500									//报名结果
+#define DBO_GR_MATCH_EVENT_START 500									//比赛标识
+#define DBO_GR_MATCH_SIGNUP_RESULT 500									//报名结果
 #define DBO_GR_MATCH_UNSIGNUP_RESULT 501								//退赛结果
-#define DBO_GR_MATCH_RANK_LIST		502									//比赛排行
-#define DBO_GR_MATCH_REWARD_RESULT  503									//奖励结果
-#define DBO_GR_MATCH_EVENT_END		599									//比赛标识
+#define DBO_GR_MATCH_RANK_LIST 502									//比赛排行
+#define DBO_GR_MATCH_REWARD_RESULT 503									//奖励结果
+#define DBO_GR_MATCH_EVENT_END 599									//比赛标识
 
 //系统事件
-#define DBO_GR_SYSTEM_MESSAGE_RESULT	600								//消息结果
-#define DBO_GR_SENSITIVE_WORDS		    601								//敏感词
+#define DBO_GR_SYSTEM_MESSAGE_RESUL 600								//消息结果
+#define DBO_GR_SENSITIVE_WORDS 601								//敏感词
 
 //私人场事件
-#define DBO_GR_PRIVATE_EVENT_START	700									//私人场标识
-#define DBO_GR_PRIVATE_INFO			701									//私人场信息	
-#define DBO_GR_CREATE_PRIVATE			702									//私人场信息	
-#define DBR_GR_PRIVAT_REFRESH_TABLES_END  703				//刷新桌子数据结果
-#define DBO_GR_PRIVATE_EVENT_END	799									//私人场标识
+#define DBO_GR_PRIVATE_EVENT_START 700									//私人场标识
+#define DBO_GR_PRIVATE_INFO 701									//私人场信息	
+#define DBO_GR_CREATE_PRIVATE 702								//私人场信息	
+#define DBO_GR_PRIVAT_REFRESH_TABLES_END 703							//刷新桌子数据结果
+#define DBO_GR_PRIVATE_EVENT_END 799									//私人场标识
 
 //////////////////////////////////////////////////////////////////////////////////
 

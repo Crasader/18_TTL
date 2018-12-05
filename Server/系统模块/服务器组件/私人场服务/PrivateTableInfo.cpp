@@ -30,6 +30,7 @@ void PrivateTableInfo::restAgainValue(int nCharCount)
 	dwFinishPlayCout = 0;
 	dwStartPlayCout = 0;
 	fAgainPastTime = 0.0f;
+	fEmptyRoomLiveTime = 0.f;
 	ZeroMemory(lPlayerWinLose,sizeof(lPlayerWinLose));
 	ZeroMemory(lPlayerAction,sizeof(lPlayerAction));
 	//ZeroMemory(cbLastOfflineReadyState,sizeof(cbLastOfflineReadyState));

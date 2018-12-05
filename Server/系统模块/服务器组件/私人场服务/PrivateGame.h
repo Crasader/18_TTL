@@ -25,32 +25,32 @@ class PriaveteGame
 {
 	//比赛配置
 protected:
-	tagGameServiceOption *				m_pGameServiceOption;			//服务配置
-	tagGameServiceAttrib *				m_pGameServiceAttrib;			//服务属性
+	tagGameServiceOption *				m_pGameServiceOption;//服务配置
+	tagGameServiceAttrib *				m_pGameServiceAttrib;//服务属性
 
 	CMD_GR_Private_Info					m_kPrivateInfo;
 
 #if defined(ALLOWED_KICK_UNREADY_USER)
     //时间控制
 protected:
-    std::queue<DWORD>                  m_timerIDs;                              //定时器的ID, 用于检测用户是否准备
-    DWORD                                       m_checkReadyTime;                 //每个定时器的定时时间
-    DWORD                                       m_minTimeFrame;                    //每个定时器的最小时间间隔
+    std::queue<DWORD>                  m_timerIDs;//定时器的ID, 用于检测用户是否准备
+    DWORD                                       m_checkReadyTime;//每个定时器的定时时间
+    DWORD                                       m_minTimeFrame;//每个定时器的最小时间间隔
 #endif
 
 	//内核接口
 protected:
-	PrivateTableInfo* m_pTableInfo;				//
-	ITimerEngine* m_pITimerEngine;				//时间引擎
-	IDBCorrespondManager*	 m_pIDataBaseEngine;				//数据引擎	
-	ITCPNetworkEngineEvent* m_pITCPNetworkEngineEvent;		//网络引擎
+	PrivateTableInfo* m_pTableInfo;//
+	ITimerEngine* m_pITimerEngine;//时间引擎
+	IDBCorrespondManager*	 m_pIDataBaseEngine;//数据引擎	
+	ITCPNetworkEngineEvent* m_pITCPNetworkEngineEvent;	//网络引擎
 
 	//服务接口
 protected:
-	IMainServiceFrame*	 m_pIGameServiceFrame;			//功能接口
-	IServerUserManager* m_pIServerUserManager;			//用户管理
-	IAndroidUserManager* m_pAndroidUserManager;			//机器管理
-	IServerUserItemSink* m_pIServerUserItemSink;			//用户回调
+	IMainServiceFrame*	 m_pIGameServiceFrame;//功能接口
+	IServerUserManager* m_pIServerUserManager;//用户管理
+	IAndroidUserManager* m_pAndroidUserManager;//机器管理
+	IServerUserItemSink* m_pIServerUserItemSink;//用户回调
 
 	//函数定义
 public:
@@ -59,41 +59,27 @@ public:
 	//析构函数
 	virtual ~PriaveteGame(void);
 
+public:
 	bool SendData(IServerUserItem * pIServerUserItem, WORD wMainCmdID, WORD wSubCmdID, VOID * pData, WORD wDataSize);
-
 	bool SendTableData(ITableFrame*	pITableFrame, WORD wMainCmdID, WORD wSubCmdID, VOID * pData, WORD wDataSize);
 
+public:
 	void CreatePrivateCost(PrivateTableInfo* pTableInfo);
-
-	bool joinPrivateRoom(IServerUserItem * pIServerUserItem,ITableFrame * pICurrTableFrame, PrivateTableInfo* pTableInfo = NULL);
-
-	bool OnEventCreatePrivate(WORD wRequestID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize,std::string kChannel);
-
-	bool OnEventRefreshTable(WORD wRequestID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize,std::string kChannel);
-
-	void sendPrivateRoomInfo(IServerUserItem * pIServerUserItem,PrivateTableInfo* pTableInfo);
-
+	bool JoinPrivateRoom(IServerUserItem * pIServerUserItem,ITableFrame * pICurrTableFrame, PrivateTableInfo* pTableInfo = NULL);
+	void SendRoomInfo(IServerUserItem * pIServerUserItem,PrivateTableInfo* pTableInfo);
+	bool SendRoomList(IServerUserItem * pIServerUserItem, DWORD dwExcludeNumber = -1);
 #if defined(ROOM_ONLY_COST_GOLD)
-
     void checkUserScore(IServerUserItem * pIServerUserItem,PrivateTableInfo* pTableInfo);
-
 #endif
 
 	PrivateTableInfo* getTableInfoByRoomID(DWORD dwRoomID);
-
 	PrivateTableInfo* getTableInfoByCreaterID(DWORD dwUserID);
-
     PrivateTableInfo* getTableInfoByUserID(DWORD dwUserID);
-
 	PrivateTableInfo* getTableInfoByTableID(DWORD dwRoomID);
-
 	PrivateTableInfo* getTableInfoByTableFrame(ITableFrame* pTableFrame);
-
 	void DismissRoom(PrivateTableInfo* pTableInfo);
-
 	void ClearRoom(PrivateTableInfo* pTableInfo);
 
-	void DBR_CreatePrivate(DBR_GR_Create_Private* kInfo,DWORD dwSocketID,IServerUserItem* pIServerUserItem,std::string kHttpChannel);
 	//基础接口
 public:
  	//释放对象
@@ -112,18 +98,28 @@ public:
 	virtual bool BindTableFrame(ITableFrame * pTableFrame,WORD wTableID);
 	//初始化接口
 	virtual bool InitPrivateInterface(tagPrivateManagerParameter & MatchManagerParameter);	
-
 	//系统事件
 public:
 	//时间事件
 	virtual bool OnEventTimer(DWORD dwTimerID, WPARAM dwBindParameter);
 	//数据库事件
 	virtual bool OnEventDataBase(WORD wRequestID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize);
-
 	//网络事件
 public:
+	//
+	bool OnDBORefreshTable(WORD wRequestID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize, std::string kChannel);
+	bool OnDBOCreatePrivate(WORD wRequestID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize, std::string kChannel);
+	void SendDBOCreatePrivate(DBR_GR_Create_Private* kInfo, DWORD dwSocketID, IServerUserItem* pIServerUserItem, std::string kHttpChannel);
+
+public:
+	//支付服务更新玩家金币
+	bool OnPaymentSubRequestRefreshTable(VOID * pData, WORD wDataSize, IServerUserItem * pIServerUserItem, DWORD dwSocketID);
+	//支付服务更新玩家金币
+	bool OnPaymentSubRequestRequestWeiXinOrderRet(VOID * pData, WORD wDataSize, IServerUserItem * pIServerUserItem, DWORD dwSocketID);
+
+public:
 	//私人场消息
-	virtual bool OnEventSocketPrivate(WORD wSubCmdID, VOID * pData, WORD wDataSize, IServerUserItem * pIServerUserItem, DWORD dwSocketID);	
+	bool OnTCPPrivateGame(WORD wSubCmdID, VOID * pData, WORD wDataSize, IServerUserItem * pIServerUserItem, DWORD dwSocketID);	
 	//创建私人场
 	bool OnTCPNetworkSubCreatePrivate(VOID * pData, WORD wDataSize, IServerUserItem * pIServerUserItem, DWORD dwSocketID);
 	//重新加入私人场
@@ -134,10 +130,6 @@ public:
 	bool OnTCPNetworkSubDismissPrivate(VOID * pData, WORD wDataSize, IServerUserItem * pIServerUserItem, DWORD dwSocketID);
 	//查询房间列表信息
 	bool OnTCPNetworkSubInqureTables(VOID * pData, WORD wDataSize, IServerUserItem * pIServerUserItem, DWORD dwSocketID);
-    //支付服务更新玩家金币
-    bool OnPaymentSubRequestRefreshTable(VOID * pData, WORD wDataSize, IServerUserItem * pIServerUserItem, DWORD dwSocketID);
-    //支付服务更新玩家金币
-    bool OnPaymentSubRequestRequestWeiXinOrderRet(VOID * pData, WORD wDataSize, IServerUserItem * pIServerUserItem, DWORD dwSocketID);
 
 	//用户接口
 public:
@@ -147,7 +139,6 @@ public:
 	virtual bool OnEventUserItemStatus(IServerUserItem * pIServerUserItem, WORD wOldTableID=INVALID_TABLE, WORD wOldChairID=INVALID_CHAIR);
 	//用户权限
 	virtual bool OnEventUserItemRight(IServerUserItem *pIServerUserItem, DWORD dwAddRight, DWORD dwRemoveRight,bool bGameRight=true);	
-
 	//私人场用户事件
 	virtual bool AddPrivateAction(ITableFrame* pTbableFrame,DWORD dwChairID, BYTE	bActionIdex);
 
@@ -187,7 +178,7 @@ public:
 public:
 	 //用户起来
 	virtual bool OnEventReqStandUP(IServerUserItem * pIServerUserItem);
-
+	//写分
 	virtual bool WriteTableScore(ITableFrame* pITableFrame,tagScoreInfo ScoreInfoArray[], WORD wScoreCount,datastream& kData);	
 	//辅助函数
 protected:

@@ -934,7 +934,7 @@ bool CAttemperEngineSink::OnEventDataBase(WORD wRequestID, DWORD dwContextID, VO
 		tagBindParameter * pBindParameter=GetBindParameter(LOWORD(dwContextID));
 		IServerUserItem * pIServerUserItem= (pBindParameter != NULL ? pBindParameter->pIServerUserItem : NULL);
 
-		if (wRequestID == DBR_GR_PRIVAT_REFRESH_TABLES_END) 
+		if (wRequestID == DBO_GR_PRIVAT_REFRESH_TABLES_END) 
 		{
 			ASSERT(wDataSize == sizeof(DBR_GP_Private_Refresh_Table_Ret));
 			if (wDataSize != sizeof(DBR_GP_Private_Refresh_Table_Ret)) return false;

@@ -2347,7 +2347,7 @@ bool CDataBaseEngineSink::OnRequestRefreshTable(DWORD dwContextID, VOID * pData,
         dbr_table_ret.dwUserScore = static_cast<DWORD>(curSorce);
 		dbr_table_ret.dwInsureScore = static_cast<DWORD>(curInsureScorce);
 
-        m_pIDataBaseEngineEvent->OnEventDataBaseResult(DBR_GR_PRIVAT_REFRESH_TABLES_END, dwContextID, &dbr_table_ret, sizeof(dbr_table_ret));
+        m_pIDataBaseEngineEvent->OnEventDataBaseResult(DBO_GR_PRIVAT_REFRESH_TABLES_END, dwContextID, &dbr_table_ret, sizeof(dbr_table_ret));
 
         return true;
     }

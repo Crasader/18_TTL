@@ -139,7 +139,7 @@ bool CPrivateServiceManager::OnEventSocketPrivate(WORD wSubCmdID, VOID * pData, 
 	ASSERT(m_pIGamePrivatetem!=NULL);
 	if(m_pIGamePrivatetem!=NULL)
 	{
-		return m_pIGamePrivatetem->OnEventSocketPrivate(wSubCmdID,pData,wDataSize,pIServerUserItem,dwSocketID);	
+		return m_pIGamePrivatetem->OnTCPPrivateGame(wSubCmdID,pData,wDataSize,pIServerUserItem,dwSocketID);	
 	}
 
 	return true;

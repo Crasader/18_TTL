@@ -73,6 +73,9 @@ public:
     DWORD dwBaseScore; //底注
     DWORD dwEnterMatchNum; //入场限制
     DWORD dwOutMatchNum; //离场限制
+
+	//
+	float fEmptyRoomLiveTime;
 };
 
 #endif

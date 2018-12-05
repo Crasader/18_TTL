@@ -10,25 +10,30 @@
 static char THIS_FILE[] = __FILE__;
 #endif
 
-//时钟定义
+//时钟定义//////////////////////////////////////////////////////////////////////////
 #define IDI_PRIVATE_ROOM_TIMER_EVENT         (IDI_PRIVATE_MODULE_START+1)
-
 #if defined(ALLOWED_KICK_UNREADY_USER)
 //创建定时器的Timer ID
 #define IDI_CREATE_TIMER_THREAD_EVENT        (IDI_PRIVATE_MODULE_START+2)
-
-#define CHECK_READY_STATUS_TIME_FRAME     4 * 1000      //检查准备状态最小时间间隔
-
-#define CHECK_READY_TIME                                30 * 1000                            //检查准备状态时间间隔
+//检查准备状态最小时间间隔
+#define CHECK_READY_STATUS_TIME_FRAME  4 * 1000      
+//检查准备状态时间间隔
+#define CHECK_READY_TIME 30 * 1000                            
 #endif
-
-#define DISMISS_WAITE_TIME		                        60					//请求解散时间
-
-#define AGAIN_WAITE_TIME		                        30					//重新开始等待时间
-
-#define OFFLINE_WAITE_TIME		                        60*60*24			//全部掉线等待时间
+//////////////////////////////////////////////////////////////////////////
+//请求解散时间
+#define DISMISS_WAITE_TIME 60
+//重新开始等待时间
+#define AGAIN_WAITE_TIME 30
+//空桌子的生命 半小时
+#define EMPTY_TABLE_LIVE 30 * 60
+//全部掉线等待时间
+#define OFFLINE_WAITE_TIME 60 * 60 * 24			
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#define MAX_EMPTY_ROOM_NUMBER 20
+
 //构造函数
 PriaveteGame::PriaveteGame()
 #if defined(ALLOWED_KICK_UNREADY_USER)
@@ -112,7 +117,7 @@ bool PriaveteGame::InitPrivateInterface(tagPrivateManagerParameter & MatchManage
 	m_pIDataBaseEngine=MatchManagerParameter.pICorrespondManager;
 	m_pITCPNetworkEngineEvent=MatchManagerParameter.pTCPNetworkEngine;
 
-	//服务组件		
+	//服务组件
 	m_pIGameServiceFrame=MatchManagerParameter.pIMainServiceFrame;		
 	m_pIServerUserManager=MatchManagerParameter.pIServerUserManager;
 	m_pAndroidUserManager=MatchManagerParameter.pIAndroidUserManager;
@@ -154,11 +159,12 @@ bool PriaveteGame::OnEventTimer(DWORD dwTimerID, WPARAM dwBindParameter)
 {	
 	switch(dwTimerID)
 	{
-	case IDI_PRIVATE_ROOM_TIMER_EVENT:				//解散等待时间 10s
+		case IDI_PRIVATE_ROOM_TIMER_EVENT:				//解散等待时间 10s
 		{
 			for(int i = 0;i<m_pGameServiceOption->wTableCount;i++)
 			{
 				PrivateTableInfo* pTableInfo = &m_pTableInfo[i];
+				//已经结束
 				if (pTableInfo->bInEnd)
 				{
 					pTableInfo->fAgainPastTime += 5.0f;
@@ -167,7 +173,9 @@ bool PriaveteGame::OnEventTimer(DWORD dwTimerID, WPARAM dwBindParameter)
 						DismissRoom(pTableInfo);
 						ClearRoom(pTableInfo);
 					}
+					continue;
 				}
+				//有人请求解散
 				if (pTableInfo->kDismissChairID.size())
 				{
 					pTableInfo->fDismissPastTime += 5.0f;
@@ -177,9 +185,11 @@ bool PriaveteGame::OnEventTimer(DWORD dwTimerID, WPARAM dwBindParameter)
 						{
 							DismissRoom(pTableInfo);
 							ClearRoom(pTableInfo);
+							continue;
 						}
 					}
 				}
+				//全掉线
 				if (pTableInfo->IsAllOffline())
 				{
 					pTableInfo->fOfflinePastTime += 5.0f;
@@ -187,20 +197,42 @@ bool PriaveteGame::OnEventTimer(DWORD dwTimerID, WPARAM dwBindParameter)
 					{
 						DismissRoom(pTableInfo);
 						ClearRoom(pTableInfo);
+						continue;
+					}
+				}
+				//不是未分配的桌子
+				auto pTableFrame = pTableInfo->pITableFrame;
+				if (pTableFrame && pTableFrame->GetCreateUserID())
+				{
+					//没有开始
+					if (!pTableInfo->bStart && pTableFrame->GetSitUserCount() == 0)
+					{
+						pTableInfo->fEmptyRoomLiveTime += 5.f;
+						if (pTableInfo->fEmptyRoomLiveTime >= EMPTY_TABLE_LIVE)
+						{
+							if (pTableFrame->GetCreateUser())
+							{
+								//这里一个玩家创建了多个空房间可能要发很多次
+								//SendRoomList(pTableFrame->GetCreateUser(), pTableInfo->dwRoomNum);
+							}
+							DismissRoom(pTableInfo);
+							ClearRoom(pTableInfo);
+							continue;
+						}
 					}
 				}
 			}
 			return true;
 		}
 #if defined(ALLOWED_KICK_UNREADY_USER)
-    case IDI_CREATE_TIMER_THREAD_EVENT:
+		case IDI_CREATE_TIMER_THREAD_EVENT:
         {
             DWORD curID = m_timerIDs.front(); m_timerIDs.pop();
             m_pITimerEngine->SetTimer(curID,m_checkReadyTime, TIMES_INFINITY, 0);
             m_timerIDs.push(curID);
             break;
         }
-    default:
+		default:
         {
             if(m_timerIDs.front() == dwTimerID){
                 //遍历所有的桌子，看是否有桌子到了检查准备的时间
@@ -236,7 +268,7 @@ bool PriaveteGame::OnEventTimer(DWORD dwTimerID, WPARAM dwBindParameter)
                             for(int ci = 0; ci < pTable.getChairCout(); ci++){
                                 IServerUserItem* pSevItemInfo = pTableFrame->GetTableUserItem(ci);
                                 if(!pSevItemInfo)   continue;
-                                sendPrivateRoomInfo(pSevItemInfo, &pTable);
+                                SendRoomInfo(pSevItemInfo, &pTable);
                             }
                         }
                     }
@@ -406,19 +438,19 @@ bool PriaveteGame::OnEventDataBase(WORD wRequestID, IServerUserItem * pIServerUs
 		}
 	case DBO_GR_CREATE_PRIVATE:		//私人场信息
 		{
-			OnEventCreatePrivate(wRequestID,pIServerUserItem,pData,wDataSize,"");
+			OnDBOCreatePrivate(wRequestID,pIServerUserItem,pData,wDataSize,"");
 			break;
 		}
-    case DBR_GR_PRIVAT_REFRESH_TABLES_END:
+    case DBO_GR_PRIVAT_REFRESH_TABLES_END:
         {
-            OnEventRefreshTable(wRequestID,pIServerUserItem,pData,wDataSize,"");
+            OnDBORefreshTable(wRequestID,pIServerUserItem,pData,wDataSize,"");
             break;
         }
 	}
 	return true;
 }
 
-bool PriaveteGame::joinPrivateRoom(IServerUserItem * pIServerUserItem, ITableFrame * pICurrTableFrame, PrivateTableInfo* pTableInfo)
+bool PriaveteGame::JoinPrivateRoom(IServerUserItem * pIServerUserItem, ITableFrame * pICurrTableFrame, PrivateTableInfo* pTableInfo)
 {
 	ASSERT(pIServerUserItem); if (!pIServerUserItem) return false;
 
@@ -479,7 +511,7 @@ bool PriaveteGame::joinPrivateRoom(IServerUserItem * pIServerUserItem, ITableFra
 	return false;
 }
 
-bool PriaveteGame::OnEventRefreshTable(WORD wRequestID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize, std::string kChannel)
+bool PriaveteGame::OnDBORefreshTable(WORD wRequestID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize, std::string kChannel)
 {
 	ASSERT(wDataSize == sizeof(DBR_GP_Private_Refresh_Table_Ret));
 	if (wDataSize != sizeof(DBR_GP_Private_Refresh_Table_Ret)) return false;
@@ -567,7 +599,7 @@ STEP_FREASH_SCORE_BY_SOCKET_ID:
 }
 
 //创建房间
-bool PriaveteGame::OnEventCreatePrivate(WORD wRequestID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize,std::string kChannel)
+bool PriaveteGame::OnDBOCreatePrivate(WORD wRequestID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize,std::string kChannel)
 {
 	//参数效验
 	if(pIServerUserItem==NULL) return false;
@@ -612,13 +644,13 @@ bool PriaveteGame::OnEventCreatePrivate(WORD wRequestID, IServerUserItem * pISer
 		pICurrTableFrame = pCurrTableInfo->pITableFrame;
 		if (pCurrTableInfo->bInEnd == false)
 		{
-			joinPrivateRoom(pIServerUserItem,pICurrTableFrame,pCurrTableInfo);
+			JoinPrivateRoom(pIServerUserItem,pICurrTableFrame,pCurrTableInfo);
 			return true;
 		}
 		else
 		{
 			pCurrTableInfo->restAgainValue();
-			sendPrivateRoomInfo(NULL,pCurrTableInfo);
+			SendRoomInfo(NULL,pCurrTableInfo);
 		}
 	}
 	else
@@ -662,7 +694,7 @@ bool PriaveteGame::OnEventCreatePrivate(WORD wRequestID, IServerUserItem * pISer
 		return true;
 	}
 
-	if(!joinPrivateRoom(pIServerUserItem,pICurrTableFrame, pCurrTableInfo))
+	if(!JoinPrivateRoom(pIServerUserItem,pICurrTableFrame, pCurrTableInfo))
 	{
 		m_pIGameServiceFrame->SendRoomMessage(pIServerUserItem,TEXT("进入房间失败。"),SMT_EJECT);
 		return true;
@@ -757,12 +789,27 @@ bool PriaveteGame::OnTCPNetworkSubCreatePrivate(VOID * pData, WORD wDataSize, IS
 		{
 			return true;
 		}
-		joinPrivateRoom(pIServerUserItem,pTableInfo->pITableFrame,pTableInfo);
+		JoinPrivateRoom(pIServerUserItem,pTableInfo->pITableFrame,pTableInfo);
 		return true;
 	}
 
+
 	if(pCMDInfo->cbGameType == Type_Private)
 	{
+		//判断是否创建了最大的房间数量
+		int nRoomCount = 0;
+		for (WORD wTableID = 0; wTableID < m_pGameServiceOption->wTableCount; wTableID++)
+		{
+			if (m_pTableInfo[wTableID].pITableFrame && m_pTableInfo[wTableID].pITableFrame->GetCreateUserID() == pIServerUserItem->GetUserID())
+			{
+				if (++nRoomCount >= MAX_EMPTY_ROOM_NUMBER)
+				{
+					m_pIGameServiceFrame->SendRoomMessage(pIServerUserItem, TEXT("你创建的房间已经达到了最大数量"), SMT_EJECT);
+					return true;
+				}
+			}
+		}
+
 		DBR_GR_Create_Private kDBRInfo;
 		kDBRInfo.dwUserID = pIServerUserItem->GetUserID();
 		kDBRInfo.wKindID = m_pGameServiceAttrib->wKindID;
@@ -782,7 +829,7 @@ bool PriaveteGame::OnTCPNetworkSubCreatePrivate(VOID * pData, WORD wDataSize, IS
         kDBRInfo.dwBaseScore  = pCMDInfo->dwBaseScore;                 //底注
         kDBRInfo.dwEnterMatchNum  = pCMDInfo->dwEnterMatchNum;       //入场限制
         kDBRInfo.dwOutMatchNum  = pCMDInfo->dwOutMatchNum;         //离场限制
-		DBR_CreatePrivate(&kDBRInfo,dwSocketID,pIServerUserItem,pCMDInfo->stHttpChannel);
+		SendDBOCreatePrivate(&kDBRInfo,dwSocketID,pIServerUserItem,pCMDInfo->stHttpChannel);
 	}
 	else
 	{
@@ -838,11 +885,11 @@ bool PriaveteGame::OnTCPNetworkSubCreatePrivate(VOID * pData, WORD wDataSize, IS
             kDBRInfo.dwEnterMatchNum = pCMDInfo->dwEnterMatchNum;
             kDBRInfo.dwOutMatchNum = pCMDInfo->dwOutMatchNum;
 
-			DBR_CreatePrivate(&kDBRInfo,dwSocketID,pIServerUserItem,"");
+			SendDBOCreatePrivate(&kDBRInfo,dwSocketID,pIServerUserItem,"");
 		}
 		else
 		{
-			joinPrivateRoom(pIServerUserItem,pICurrTableFrame,pCurrTableInfo);
+			JoinPrivateRoom(pIServerUserItem,pICurrTableFrame,pCurrTableInfo);
 		}
 	}
 	return true;
@@ -866,12 +913,12 @@ bool PriaveteGame::OnTCPNetworkSubAgainEnter(VOID * pData, WORD wDataSize, IServ
 	ASSERT(pTableFrame); if (pTableFrame) return false;
 	if (pTableFrame->GetMasterUserID() != pIServerUserItem->GetUserID())
 	{
-		joinPrivateRoom(pIServerUserItem, pTableFrame, pTableInfo);
+		JoinPrivateRoom(pIServerUserItem, pTableFrame, pTableInfo);
 		return true;
 	}
 	if (!pTableInfo->bInEnd && pTableInfo->dwRoomNum != 0)
 	{
-		joinPrivateRoom(pIServerUserItem, pTableFrame, pTableInfo);
+		JoinPrivateRoom(pIServerUserItem, pTableFrame, pTableInfo);
 		return true;
 	}
 	DBR_GR_Create_Private kDBRInfo;
@@ -893,7 +940,7 @@ bool PriaveteGame::OnTCPNetworkSubAgainEnter(VOID * pData, WORD wDataSize, IServ
     kDBRInfo.dwEnterMatchNum  = pTableInfo->dwEnterMatchNum;       //入场限制
     kDBRInfo.dwOutMatchNum  = pTableInfo->dwOutMatchNum;         //离场限制
 
-	DBR_CreatePrivate(&kDBRInfo,dwSocketID,pIServerUserItem,pCMDInfo->stHttpChannel);
+	SendDBOCreatePrivate(&kDBRInfo,dwSocketID,pIServerUserItem,pCMDInfo->stHttpChannel);
 	return true;
 }
 //加入私人场
@@ -928,7 +975,7 @@ bool PriaveteGame::OnTCPNetworkSubJoinPrivate(VOID * pData, WORD wDataSize, ISer
         return true;
     }
 
-	if (!joinPrivateRoom(pIServerUserItem,pTableInfo->pITableFrame, pTableInfo))
+	if (!JoinPrivateRoom(pIServerUserItem,pTableInfo->pITableFrame, pTableInfo))
 	{
 		m_pIGameServiceFrame->SendRoomMessage(pIServerUserItem,TEXT("加入房间失败。"),SMT_EJECT);
 	}
@@ -1023,7 +1070,7 @@ bool PriaveteGame::OnTCPNetworkSubDismissPrivate(VOID * pData, WORD wDataSize, I
 	return true;
 }
 //比赛事件
-bool PriaveteGame::OnEventSocketPrivate(WORD wSubCmdID, VOID * pData, WORD wDataSize, IServerUserItem * pIServerUserItem, DWORD dwSocketID)
+bool PriaveteGame::OnTCPPrivateGame(WORD wSubCmdID, VOID * pData, WORD wDataSize, IServerUserItem * pIServerUserItem, DWORD dwSocketID)
 {
 	switch (wSubCmdID)
 	{
@@ -1113,7 +1160,7 @@ void PriaveteGame::DismissRoom(PrivateTableInfo* pTableInfo)
 		m_pIDataBaseEngine->PostDataBaseRequest(INVALID_DWORD,DBR_GR_PRIVATE_GAME_RECORD,0,&kDataStream[0],kDataStream.size());	
 
 		pTableInfo->bStart = false;
-		sendPrivateRoomInfo(NULL,pTableInfo);
+		SendRoomInfo(NULL,pTableInfo);
 	}
 	else
 	{
@@ -1151,7 +1198,7 @@ void PriaveteGame::ClearRoom(PrivateTableInfo* pTableInfo)
 	}
 	pTableInfo->restValue();
 }
-void PriaveteGame::DBR_CreatePrivate(DBR_GR_Create_Private* kInfo,DWORD dwSocketID,IServerUserItem* pIServerUserItem,std::string kHttpChannel)
+void PriaveteGame::SendDBOCreatePrivate(DBR_GR_Create_Private* kInfo,DWORD dwSocketID,IServerUserItem* pIServerUserItem,std::string kHttpChannel)
 {
 	if (kHttpChannel != "")
 	{
@@ -1178,7 +1225,7 @@ void PriaveteGame::DBR_CreatePrivate(DBR_GR_Create_Private* kInfo,DWORD dwSocket
 			 kNetInfo.bSucess = true;
 			 kNetInfo.lCurSocre = iCout;
 		 }
-		 OnEventCreatePrivate(DBO_GR_CREATE_PRIVATE,pIServerUserItem,&kNetInfo,sizeof(kNetInfo),kHttpChannel);
+		 OnDBOCreatePrivate(DBO_GR_CREATE_PRIVATE,pIServerUserItem,&kNetInfo,sizeof(kNetInfo),kHttpChannel);
 	}
 	else
 	{
@@ -1310,7 +1357,7 @@ bool PriaveteGame::OnEventUserJoinPrivate(IServerUserItem * pIServerUserItem, BY
 	PrivateTableInfo* pTableInfo = getTableInfoByTableID(pIServerUserItem->GetTableID());
 	//判断状态
 	if(pIServerUserItem->GetTableID()!=INVALID_TABLE) {
-		sendPrivateRoomInfo(pIServerUserItem,getTableInfoByTableID(pIServerUserItem->GetTableID()));
+		SendRoomInfo(pIServerUserItem,getTableInfoByTableID(pIServerUserItem->GetTableID()));
 	}
 	return true;
 }
@@ -1371,7 +1418,7 @@ bool PriaveteGame::OnEventGameStart(ITableFrame *pITableFrame, WORD wChairCount)
     }
 #endif
 
-	sendPrivateRoomInfo(NULL,pTableInfo);
+	SendRoomInfo(NULL,pTableInfo);
 	return true;
 }
 
@@ -1432,7 +1479,7 @@ bool PriaveteGame::OnEventGameEnd(ITableFrame *pITableFrame,WORD wChairID, IServ
         }
 #endif
 
-        sendPrivateRoomInfo(NULL, pTableInfo);
+        SendRoomInfo(NULL, pTableInfo);
 		if (pTableInfo->dwFinishPlayCout >= pTableInfo->dwPlayCout || cbReason == GER_MASTER_END)
 		{
 			//pITableFrame->SendGameMessage(TEXT("游戏已经结束!"), SMT_EJECT);
@@ -1469,7 +1516,7 @@ void PriaveteGame::checkUserScore(IServerUserItem * pIServerUserItem,PrivateTabl
 
 #endif
 
-void PriaveteGame::sendPrivateRoomInfo(IServerUserItem * pIServerUserItem, PrivateTableInfo* pTableInfo)
+void PriaveteGame::SendRoomInfo(IServerUserItem * pIServerUserItem, PrivateTableInfo* pTableInfo)
 {
 	ASSERT(pTableInfo); if (!pTableInfo) return;
 	auto pTableFrame = pTableInfo->pITableFrame;
@@ -1547,7 +1594,7 @@ bool PriaveteGame::OnActionUserOffLine(WORD wChairID, IServerUserItem * pIServer
         pTBFrame->SwitchRoomCreater(pIServerUserItem);
         return true;
     }
-    sendPrivateRoomInfo(NULL, pTableInfo);
+    SendRoomInfo(NULL, pTableInfo);
 #else
 	PrivateTableInfo* pTableInfo = getTableInfoByTableID(pIServerUserItem->GetTableID());
 	ASSERT(pIServerUserItem); if (!pTableInfo) return false;
@@ -1589,7 +1636,7 @@ bool PriaveteGame::OnActionUserSitDown(WORD wTableID, WORD wChairID, IServerUser
 { 
 	PrivateTableInfo* pTableInfo = getTableInfoByTableID(pIServerUserItem->GetTableID());
 	ASSERT(pTableInfo); if (pTableInfo) return false;
-	sendPrivateRoomInfo(NULL, pTableInfo); 
+	SendRoomInfo(NULL, pTableInfo); 
 	return true;
 }
 
@@ -1672,7 +1719,7 @@ bool PriaveteGame::OnEventReqStandUP(IServerUserItem * pIServerUserItem)
 
 	pTBFrame->PerformStandUpActionReally(pIServerUserItem, true);
 
-	sendPrivateRoomInfo(NULL, pTableInfo);
+	SendRoomInfo(NULL, pTableInfo);
 
 #elif defined(ALLOWED_QUIT_ROOM_INGAME_WITHOUT_AGREE)
 
@@ -1695,7 +1742,7 @@ bool PriaveteGame::OnEventReqStandUP(IServerUserItem * pIServerUserItem)
     }
 
     pTBFrame->PerformStandUpActionReally(pIServerUserItem);
-    sendPrivateRoomInfo(NULL, pTableInfo);
+    SendRoomInfo(NULL, pTableInfo);
 
     return true;
 
@@ -1735,7 +1782,7 @@ bool PriaveteGame::OnEventClientReady(WORD wChairID,IServerUserItem * pIServerUs
 	{
 		return true;
 	}
-	sendPrivateRoomInfo(pIServerUserItem,pTableInfo);
+	SendRoomInfo(pIServerUserItem,pTableInfo);
 
 	if (pTableInfo->pITableFrame->GetGameStatus() == GAME_STATUS_FREE)
 	{
@@ -1830,40 +1877,43 @@ InSquare://玩家在大厅
 	return true;
 }
 
-bool PriaveteGame::OnTCPNetworkSubInqureTables(VOID * pData, WORD wDataSize, IServerUserItem * pIServerUserItem, DWORD dwSocketID)
+bool PriaveteGame::SendRoomList(IServerUserItem * pIServerUserItem, DWORD dwExcludeNumber)
 {
-	ASSERT(wDataSize == sizeof(CMD_GR_INQURE_TABLES_INFO));
-	if(wDataSize!=sizeof(CMD_GR_INQURE_TABLES_INFO)) return false;
-
 	ASSERT(pIServerUserItem); if (!pIServerUserItem) return false;
 
 	CMD_GR_INQURE_TABLES_INFO_DATA_HEAD dt_head;
-
 	dt_head.dwTablesTotal = 0;
-    dt_head.dwGameKindID = m_pGameServiceAttrib->wKindID;
+	dt_head.dwGameKindID = m_pGameServiceAttrib->wKindID;
 
 	//压入头
 	datastream ds_tables;
 	ds_tables.push(dt_head);
 
 	CMD_GR_INQURE_TABLES_INFO_DATA_BODY dt_body;
-
-	for (WORD wTableID=0;wTableID<m_pGameServiceOption->wTableCount;wTableID++) {
+	for (WORD wTableID = 0; wTableID < m_pGameServiceOption->wTableCount; wTableID++)
+	{
 		PrivateTableInfo& pTableInfo = m_pTableInfo[wTableID];
-        //不是同一个游戏
-        if(pTableInfo.dwGameKindID != dt_head.dwGameKindID) {
-            continue;
-        }
+		//不是同一个游戏
+		if (pTableInfo.dwGameKindID != dt_head.dwGameKindID)
+		{
+			continue;
+		}
+		if (pTableInfo.dwRoomNum == dwExcludeNumber) {
+			continue;
+		}
 		//不是非私人场
-		if( pTableInfo.bRoomType != Type_Private) {
+		if (pTableInfo.bRoomType != Type_Private)
+		{
 			continue;
 		}
 		//如果不是自己创建的房间
 		auto pTableFrame = pTableInfo.pITableFrame;
-		if (!pTableFrame) {
+		if (!pTableFrame)
+		{
 			continue;
 		}
-		if (pTableFrame->GetCreateUserID() != pIServerUserItem->GetUserID()) {
+		if (pTableFrame->GetCreateUserID() != pIServerUserItem->GetUserID())
+		{
 			continue;
 		}
 		////不是不能加入的模式
@@ -1880,21 +1930,29 @@ bool PriaveteGame::OnTCPNetworkSubInqureTables(VOID * pData, WORD wDataSize, ISe
 		dt_body.dwTableNum = pTableInfo.dwRoomNum;//房号
 		dt_body.dwGameRuleIdex = pTableInfo.dwGameRuleIdex;//游戏规则
 #if defined(PLATFORM_CONGCONG)
-        dt_body.bBloodFightMode = pTableInfo.bBloodFightMode;
-        dt_body.bPassionationMode = pTableInfo.bPassionationMode;
+		dt_body.bBloodFightMode = pTableInfo.bBloodFightMode;
+		dt_body.bPassionationMode = pTableInfo.bPassionationMode;
 #endif
-        dt_body.bAllowedStrangerJoin = pTableInfo.bAllowedStrangerJoin;
+		dt_body.bAllowedStrangerJoin = pTableInfo.bAllowedStrangerJoin;
 		dt_body.dwBaseScore = pTableInfo.dwBaseScore;//底注
 		dt_body.dwEnterMatchNum = pTableInfo.dwEnterMatchNum;//入场限制
 		dt_body.dwOutMatchNum = pTableInfo.dwOutMatchNum;//离场限制
 
 		ds_tables.push(dt_body);
 
-		dt_head.dwTablesTotal ++;
+		dt_head.dwTablesTotal++;
 	}
 
 	//从新写入显示的桌子数量
 	memcpy(ds_tables.data(), &dt_head, sizeof(dt_head));
 
-    return SendData(pIServerUserItem, MDM_GR_PRIVATE, SUB_GR_INQUIRE_TABLES_RET, &ds_tables[0], ds_tables.size());;
+	return SendData(pIServerUserItem, MDM_GR_PRIVATE, SUB_GR_INQUIRE_TABLES_RET, &ds_tables[0], ds_tables.size());;
+}
+
+bool PriaveteGame::OnTCPNetworkSubInqureTables(VOID * pData, WORD wDataSize, IServerUserItem * pIServerUserItem, DWORD dwSocketID)
+{
+	ASSERT(wDataSize == sizeof(CMD_GR_INQURE_TABLES_INFO));
+	if(wDataSize!=sizeof(CMD_GR_INQURE_TABLES_INFO)) return false;
+
+	return SendRoomList(pIServerUserItem);
 }
