@@ -190,15 +190,15 @@ void CTableFrameSink::rationCardForUser(WORD cardCount) {
 #ifdef _DEBUG
 	//DONE: ÷≈∆≈‰≈∆
 	//0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, //∑ΩøÈ
-	m_GameCards[0] = 0x01;
-	m_GameCards[2] = 0x02;
+	m_GameCards[0] = 0x22;
+	m_GameCards[2] = 0x04;
 	m_GameCards[4] = 0x03;
-	m_GameCards[6] = 0x04;
+	m_GameCards[6] = 0x06;
 
-	m_GameCards[1] = 0x04;
+	m_GameCards[1] = 0x22;
 	m_GameCards[3] = 0x04;
-	m_GameCards[5] = 0x04;
-	m_GameCards[7] = 0x04;
+	m_GameCards[5] = 0x03;
+	m_GameCards[7] = 0x06;
 #endif
 
     for (int cardIndex = 0; cardIndex < m_CardLeftCount; ++cardIndex) {
@@ -386,11 +386,11 @@ void CTableFrameSink::rationCardForUser_Add() {
 
 #ifdef DEBUG
 	//DONE:º”≈∆≈‰≈∆
-	m_GameCards[0] = 0x15;
-	m_GameCards[1] = 0x04;
+	m_GameCards[0] = 0x16;
+	m_GameCards[1] = 0x17;
 
-	m_GameCards[2] = 0x03;
-	m_GameCards[3] = 0x04;
+	m_GameCards[2] = 0x15;
+	m_GameCards[3] = 0x27;
 #endif // DEBUG
 
     std::vector<BYTE> cardList;
@@ -710,6 +710,8 @@ void CTableFrameSink::calculate() {
 		for (size_t idx = 0; idx < NN_GAME_PLAYER; idx++) {
 			if (idx == m_BankerChairID) {
 				m_PlayerSingleResultRecord[idx].bBanker = true;
+			} else {
+				m_PlayerSingleResultRecord[idx].bBanker = false;
 			}
 			m_PlayerSingleResultRecord[idx].wScore = m_PlayerSingleResult[idx];
 			m_PlayerSingleResultRecord[idx].wCardType = m_PlayerCardTypes[idx].type;
@@ -1260,6 +1262,7 @@ bool CTableFrameSink::OnGameMessage(WORD wSubCmdID, VOID* pDataBuffer, WORD wDat
 
             m_PlayerBets[pIServerUserItem->GetChairID()] = pInfo->playerBets;
 
+			//ÕÊº“ «∑ÒÕ∆◊¢
 			if (pInfo->playerBets.wBetType == NNGBT_TuiZhu) {
 				m_PlayerSingleResultRecord[pIServerUserItem->GetChairID()].bTuiZhu = true;
 			} else {
