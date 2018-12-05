@@ -296,10 +296,11 @@ struct CMD_S_CalculateTotal {
 };
 
 struct CMD_S_SnatchBanker {
-    BYTE maxRatio; // 最大倍率
+    BYTE maxRatio;// 最大倍率
 	BYTE cardCount;
 	BYTE cards[NN_GAME_PLAYER][MAX_HAND_CARD];
 	NNPlayerStatus status[NN_GAME_PLAYER];
+	BYTE bTuiZhu;//能否推注
 };
 
 struct CMD_S_UserSnatchBanker {
