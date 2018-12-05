@@ -38,6 +38,10 @@ public:
 	void showWeiXin();
 	void hideWeiXin();
 
+	//ÍÆ×¢ÌáÊ¾
+	void showNoteTuiZhu(byte bTuiZHu);
+	void hideNoteTuiZhu();
+
 	void showSnatchButton();
 	void hideSnatchButton();
 

@@ -254,6 +254,20 @@ void NNOperator::hideWeiXin()
     //WidgetFun::setVisible(this, "NNOperator_ButtonWeiXin", false);
 }
 
+void NNOperator::showNoteTuiZhu(byte bTuiZHu)
+{
+	if (bTuiZHu > 0) {
+		auto pTuiZhuNode = WidgetFun::getChildWidget(this, "NNOperator_TuiZhuNode");
+		WidgetFun::setText(pTuiZhuNode, utility::a_u8(utility::toString("ÍÆ×¢:", (int)bTuiZHu, "·Ö")));
+		WidgetFun::setVisible(pTuiZhuNode, true);
+	}
+}
+
+void NNOperator::hideNoteTuiZhu()
+{
+	WidgetFun::setVisible(this, "NNOperator_TuiZhuNode", false);
+}
+
 void NNOperator::showSnatchButton()
 {
     auto pSnatchNode = WidgetFun::getChildWidget(this, "NNOperator_SnatchBankerNode");
@@ -471,6 +485,7 @@ void NNOperator::Button_SnatchBanker(cocos2d::Ref*, WidgetUserInfo* pInfo)
 		NNGameScene::Instance().sendSnatchBanker(snatchRatio);
 		m_byteSnatchRatio = snatchRatio;
 	}
+	hideNoteTuiZhu();
 }
 
 void NNOperator::Button_Call(cocos2d::Ref*, WidgetUserInfo* pInfo)

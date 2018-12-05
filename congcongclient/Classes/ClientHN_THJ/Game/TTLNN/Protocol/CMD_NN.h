@@ -330,6 +330,7 @@ struct CMD_S_SnatchBanker {
 	BYTE cardCount;
 	BYTE cards[NN_GAME_PLAYER][MAX_HAND_CARD];
 	NNPlayerStatus status[NN_GAME_PLAYER];
+	BYTE bTuiZhu;//ÄÜ·ñÍÆ×¢
 };
 
 struct CMD_S_UserSnatchBanker {

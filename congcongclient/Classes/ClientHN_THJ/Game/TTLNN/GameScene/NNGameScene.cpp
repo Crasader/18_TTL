@@ -906,7 +906,7 @@ void NNGameScene::onSnatchBanker(const void * pBuffer, word wDataSize)
 			m_Players[index]->setPlayerCards(pInfo->cards[index], pInfo->cardCount);
 		}
 	}
-
+	NNOperator::Instance().showNoteTuiZhu(pInfo->bTuiZhu);
 	m_MaxRatio = pInfo->maxRatio;
 	NNSound::playEffect(NNSound::GAME_START);
 	NNPlayerCard::Instance().sendPlayerCard();
@@ -922,6 +922,10 @@ void NNGameScene::onUserSnatchBanker(const void * pBuffer, word wDataSize)
 	TTLNN::CMD_S_UserSnatchBanker* pInfo = (TTLNN::CMD_S_UserSnatchBanker*) pBuffer;
 	m_Players[pInfo->userChairID]->setSnatchBankerRatio(pInfo->ratio);
 	m_Players[pInfo->userChairID]->upPlayerInfo();
+
+	if (pInfo->userChairID == getLocalPlayer()->GetChairID()) {
+		NNOperator::Instance().hideNoteTuiZhu();
+	}
 	NNOperator::Instance().show(m_GameStatus);
 	NNSound::playEffect(NNSound::BUTTON_EFFECT);
 }
