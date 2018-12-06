@@ -3,6 +3,7 @@
 #include "ClientHN_THJ/Game/TTLNN/GameScene/NNRoomInfo.h"
 #include "ClientHN_THJ/Game/TTLNN/Protocol/CMD_NN.h"
 #include "GamePlaza/GPSceneManager.h"
+#include "Game/Game/MissionWeiXin.h"
 
 FV_SINGLETON_STORAGE(NNCalculate);
 
@@ -92,6 +93,14 @@ void NNCalculate::Button_BackPlaza(cocos2d::Ref*, WidgetUserInfo*)
 
 void NNCalculate::Button_Share(cocos2d::Ref*, WidgetUserInfo*)
 {
-	NNGameScene::Instance().Button_Exit(NULL, NULL);
+	hide();
+	static auto pNode = this;
+	cocos2d::utils::captureScreen([](bool b, std::string name) {
+		if (b)
+		{
+			MissionWeiXin::Instance().shareScreenWeiXin(name);
+			pNode->hide();
+		}
+	}, "screenshot.png");
 }
 #pragma endregion °´Å¥ÊÂ¼ş

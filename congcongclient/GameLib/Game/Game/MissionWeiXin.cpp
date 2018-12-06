@@ -195,7 +195,7 @@ void MissionWeiXin::captureScreen(bool succeed, const std::string& outputFile,in
 {
 	if (succeed)
 	{
-		cocos2d::log("MissionWeiXin captureScreen:%s",outputFile.c_str());
+		CCLOG("MissionWeiXin captureScreen:%s",outputFile.c_str());
 		setWXActionState(WX_AS_Share);
 		JniFun::shareImageWX(outputFile.c_str(),nShareType);
 	}
