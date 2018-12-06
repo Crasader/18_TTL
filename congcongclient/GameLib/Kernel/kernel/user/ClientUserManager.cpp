@@ -239,10 +239,12 @@ bool CPlazaUserManager::DeleteAllUserItemButOne(IClientUserItem * pIClientUserIt
 	//查找用户
 
 	auto itUser = m_UserItemActive.begin();
-	while (itUser == m_UserItemActive.end() && m_UserItemActive.size() >1) {
+	while (itUser != m_UserItemActive.end() && m_UserItemActive.size() >1) {
 		if(*itUser != pIClientUserItem) {
 			DeleteUserItem(*itUser);
 			itUser = m_UserItemActive.begin();
+		} else {
+			itUser++;
 		}
 	}
 

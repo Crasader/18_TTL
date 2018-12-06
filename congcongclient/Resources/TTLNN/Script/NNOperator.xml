@@ -12,6 +12,7 @@
 		<Property Key="FontSize" Value="24"/>
 		<Property Key="Pos" Value="640 270"/>
 		<Property Key="Color" Value="255 165 0"/>
+		<Property Key="ShowTxt" Value="请准备"/>
 	</Widget>
 </Widget>
 

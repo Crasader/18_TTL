@@ -81,13 +81,14 @@ void NNOperator::hide()
 
 void NNOperator::show(WORD status)
 {
+	hideNoteTuiZhu();
     switch(status) {
 		case TTLNN::NNGameStatus_Free: {
 			std::string strMasterName = "房主";
 			if (NNGameScene::Instance().getMasterPlayer()) {
 				strMasterName = NNGameScene::Instance().getMasterPlayer()->GetNickName();
 			}
-			std::string showText = utility::a_u8(utility::toString("等待", strMasterName, "确认开始游戏" ));
+			std::string showText = utility::a_u8("等待 ") + strMasterName + utility::a_u8(" 确认开始游戏");
 			showMessage(showText);
 
 			if(NNRoomInfo::Instance().isHostPlayer(NNGameScene::Instance().getLocalPlayer())) {
