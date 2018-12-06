@@ -33,7 +33,7 @@ void NNPlayerPanel::initLayout()
 void NNPlayerPanel::showPlayer(NNPlayer& player)
 {
     int visioChairID = player.getVisioChairID();
-    if (player.isValid()) {
+    if (player.isValid() && visioChairID < NNRoomInfo::Instance().getRoomInfo().bMaxPeopleNum) {
         auto playerNode = WidgetFun::getChildWidget(this, utility::toString("NNPlayer_", visioChairID));
         playerNode->setVisible(true);
 
@@ -70,7 +70,7 @@ void NNPlayerPanel::showPlayer(NNPlayer& player)
 
 void NNPlayerPanel::hidePlayer(int playerVisioChairID)
 {
-    if (playerVisioChairID < NNGameScene::MAX_PLAYER) {
+    if (playerVisioChairID < NNRoomInfo::Instance().getRoomInfo().bMaxPeopleNum) {
         WidgetFun::setVisible(this, utility::toString("NNPlayer_", playerVisioChairID), false);
     }
 }

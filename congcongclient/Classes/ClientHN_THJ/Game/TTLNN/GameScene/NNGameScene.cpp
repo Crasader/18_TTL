@@ -377,7 +377,7 @@ int NNGameScene::getVisioChairID(NNPlayer& player)
 // 	}
 
     ASSERT(getLocalPlayer()->getUserItem(false) && player.getUserItem(false));
-    return (MAX_PLAYER * MAX_PLAYER - player.GetChairID() + getLocalPlayer()->GetChairID()) % MAX_PLAYER;
+    return (m_RoomInfo.bMaxPeopleNum * m_RoomInfo.bMaxPeopleNum - player.GetChairID() + getLocalPlayer()->GetChairID()) % m_RoomInfo.bMaxPeopleNum;
 }
 
 bool NNGameScene::isBankerUser(NNPlayer& player)

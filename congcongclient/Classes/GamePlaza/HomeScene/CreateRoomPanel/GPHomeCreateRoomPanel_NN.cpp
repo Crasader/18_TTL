@@ -350,7 +350,12 @@ void GPHomeCreateRoomPanel_NN::Button_Confirm(cocos2d::Ref*, WidgetUserInfo*)
 	createRoom.dwEnterMatchNum = _dwEnterMatchNum; // utility::parseInt(WidgetFun::getText(this, "NN_CreateRoom_EnterNum_Txt"));
 	createRoom.dwBaseScore = _dwBaseScore;//utility::parseInt(WidgetFun::getText(this,"NN_CreateRoom_GameScore_Txt"));
 	createRoom.dwOutMatchNum = _dwOutMatchNum;// utility::parseInt(WidgetFun::getText(this, "NN_CreateRoom_OutNum_Txt"));
-	createRoom.wCharNum =-1;
+
+	if (_bSixRound) {
+		createRoom.wCharNum = 6;
+	} else {
+		createRoom.wCharNum = 8;
+	}
 
 	GPGameLink::Instance().CreateRoom(NNGameScene::KIND_ID, createRoom);
 }

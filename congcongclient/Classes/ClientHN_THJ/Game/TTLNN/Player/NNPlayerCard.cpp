@@ -3,6 +3,7 @@
 #include "ClientHN_THJ/Game/TTLNN/GameLogic/NNGameLogic.h"
 #include "ClientHN_THJ/Game/TTLNN/GameScene/NNGameScene.h"
 #include "ClientHN_THJ/Game/TTLNN/Operator/NNOperator.h"
+#include "ClientHN_THJ/Game/TTLNN/GameScene/NNRoomInfo.h"
 
 FV_SINGLETON_STORAGE(NNPlayerCard);
 NNPlayerCard::NNPlayerCard()
@@ -49,7 +50,7 @@ void NNPlayerCard::showPlayer(NNPlayer& player)
 {
     WORD visioChairID = player.getVisioChairID();
 
-    if(visioChairID < NN_GAME_PLAYER) {
+    if(visioChairID < NNRoomInfo::Instance().getRoomInfo().bMaxPeopleNum) {
         NNPlayerCard_Entity playerCards = player.getPlayerCards();
 
         if(player.isValid() && playerCards.isValid) {
