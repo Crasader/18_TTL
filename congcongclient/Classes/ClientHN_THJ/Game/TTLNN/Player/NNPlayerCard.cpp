@@ -200,7 +200,7 @@ void NNPlayerCard::showPlayer(NNPlayer& player)
 void NNPlayerCard::calculatePlayer(NNPlayer& player)
 {
 	WORD visioChairID = player.getVisioChairID();
-	if(visioChairID < NN_GAME_PLAYER) {
+	if(visioChairID < NNRoomInfo::Instance().getRoomInfo().bMaxPeopleNum) {
 		NNPlayerCard_Entity playerCards = player.getPlayerCards();
 		if(player.isValid() && playerCards.isValid) {
 			TTLNN::NNCardType_Result result = player.getPlayerCardType();
@@ -258,7 +258,7 @@ void NNPlayerCard::calculatePlayer(NNPlayer& player)
 
 void NNPlayerCard::hidePlayer(WORD visioChairID)
 {
-    if(visioChairID < NN_GAME_PLAYER) {
+    if(visioChairID < NNRoomInfo::Instance().getRoomInfo().bMaxPeopleNum) {
         WidgetFun::setVisible(this, utility::toString("PlayerCard_", visioChairID), false);
         WidgetFun::setVisible(this, utility::toString("PlayerCardResultNone_", visioChairID), false);
         WidgetFun::setVisible(this, utility::toString("PlayerCardResultHasNiu_", visioChairID), false);
@@ -270,7 +270,7 @@ void NNPlayerCard::hidePlayer(WORD visioChairID)
 #pragma region ·¢ÅÆ¶¯×÷
 void NNPlayerCard::sendPlayerCard()
 {
-	for (int index = 0; index < NN_GAME_PLAYER; ++index) {
+	for (int index = 0; index < NNRoomInfo::Instance().getRoomInfo().bMaxPeopleNum; ++index) {
 		hidePlayer(index);
 	}
 
@@ -353,7 +353,7 @@ void NNPlayerCard::sendPlayerCardAdd()
 	std::vector<Sprite*> selfTempCard = std::vector<Sprite*>();
 	selfTempCard.clear();
 	int cardIndex = MAX_HAND_CARD - 1;
-	for (int index = 0; index < NN_GAME_PLAYER; ++index) {
+	for (int index = 0; index < NNRoomInfo::Instance().getRoomInfo().bMaxPeopleNum; ++index) {
 		NNPlayer* player = NNGameScene::Instance().getPlayerByChairID(index);
 		if (player->isValid() && player->getPlayerCards().isValid) {
 			if (player->getPlayerCards().cardCount == cardIndex) {

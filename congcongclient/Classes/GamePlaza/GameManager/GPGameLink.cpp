@@ -83,7 +83,7 @@ void GPGameLink::OnSocketSubPrivateRoomInfo(CMD_GF_Private_Room_Info* pNetInfo)
 
 void GPGameLink::OnSocketSubPrivateEnd(CMD_GF_Private_End_Info* pNetInfo)
 {
-	UserInfo::Instance().setPrivateInGameServerID(-1);
+	//UserInfo::Instance().setPrivateInGameServerID(-1);
 	//DONE:œ‘ æΩ·À„√Ê∞Â
 	GPHomeScene::Instance().showGameCalculate(pNetInfo);
 }

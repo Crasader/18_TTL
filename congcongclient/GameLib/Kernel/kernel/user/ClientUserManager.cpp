@@ -206,7 +206,7 @@ bool CPlazaUserManager::DeleteUserItem(IClientUserItem * pIClientUserItem)
 	CCLOG("CPlazaUserManager::DeleteUserItem\n");
 	//查找用户
 	CClientUserItem * pUserItemActive=0;
-	for (int i=0,l=(int)m_UserItemActive.size();i<l;i++)
+	for (int i=0,len=(int)m_UserItemActive.size();i<len;i++)
 	{
 		pUserItemActive=m_UserItemActive[i];
 		if (pIClientUserItem==pUserItemActive)
@@ -237,25 +237,13 @@ bool CPlazaUserManager::DeleteAllUserItemButOne(IClientUserItem * pIClientUserIt
 {
 	CCLOG("CPlazaUserManager::DeleteAllUserItemButSelf \n");
 	//查找用户
-	CClientUserItem * pUserItemActive = 0;
-	for (int i = 0, l = (int)m_UserItemActive.size(); i < l; i++)
-	{
-		pUserItemActive = m_UserItemActive[i];
-		if (pIClientUserItem == pUserItemActive)
-			continue;
-		//删除用户
-		m_UserItemActive.erase(m_UserItemActive.begin() + i);
-		addPool(pUserItemActive);
 
-		//删除通知
-		ASSERT(m_pIUserManagerSink != 0);
-		if (m_pIUserManagerSink)
-			m_pIUserManagerSink->OnUserItemDelete(pUserItemActive);
-
-		//设置数据
-		pUserItemActive->m_cbCompanion = CP_NORMAL;
-		zeromemory(&pUserItemActive->m_UserInfo, sizeof(tagUserInfo));
-		return true;
+	auto itUser = m_UserItemActive.begin();
+	while (itUser == m_UserItemActive.end() && m_UserItemActive.size() >1) {
+		if(*itUser != pIClientUserItem) {
+			DeleteUserItem(*itUser);
+			itUser = m_UserItemActive.begin();
+		}
 	}
 
 	return false;
