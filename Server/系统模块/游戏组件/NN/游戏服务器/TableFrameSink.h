@@ -123,7 +123,7 @@ protected:
     BYTE	 m_MaxRatio;
     BYTE	 m_BankerRatio;
     int m_BankerScore;
-    int m_PlayerBankerRatio[NN_GAME_PLAYER];
+    short m_PlayerBankerRatio[NN_GAME_PLAYER];
 
 	NNPlayerBet m_PlayerAllBets[NN_GAME_PLAYER][MAX_STAKE_COUNT];
 	NNPlayerBet m_PlayerBets[NN_GAME_PLAYER];
