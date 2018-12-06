@@ -93,13 +93,12 @@ void NNCalculate::Button_BackPlaza(cocos2d::Ref*, WidgetUserInfo*)
 
 void NNCalculate::Button_Share(cocos2d::Ref*, WidgetUserInfo*)
 {
-	hide();
-	static auto pNode = this;
+	//static auto pNode = this;
 	cocos2d::utils::captureScreen([](bool b, std::string name) {
 		if (b)
 		{
 			MissionWeiXin::Instance().shareScreenWeiXin(name);
-			pNode->hide();
+			//pNode->hide();
 		}
 	}, "screenshot.png");
 }
