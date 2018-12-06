@@ -867,7 +867,7 @@ bool CTableFrameSink::OnEventGameConclude(WORD wChairID, IServerUserItem* pIServ
 
 			datastream dataStream;
 			m_GameRecord.StreamValue(dataStream, true);
-			m_pITableFrame->WriteTableScore(ScoreInfoArray, NN_GAME_PLAYER, dataStream);
+			m_pITableFrame->WriteTableScore(ScoreInfoArray, m_pITableFrame->GetChairCount(), dataStream);
 			bool needDismissRoom = false;
 
 			if (m_GameTypeIdex == NNGameType_HostBanker) {

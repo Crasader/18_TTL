@@ -28,6 +28,7 @@ CTableFrame::CTableFrame()
 	m_wUserCount = 0;
 	m_wTableID=0;
 	m_wChairCount=0;
+	m_wMaxChairCount = 0;
 	m_cbStartMode=START_MODE_ALL_READY;
 
 	//标志变量
@@ -780,8 +781,8 @@ IServerUserItem * CTableFrame::SearchUserItem(DWORD dwUserID)
 IServerUserItem * CTableFrame::GetTableUserItem(WORD wChairID)
 {
 	//效验参数
-	ASSERT(wChairID<m_wChairCount);
-	if (wChairID>=m_wChairCount) return NULL;
+	ASSERT(wChairID<m_wMaxChairCount);
+	if (wChairID>= m_wMaxChairCount) return NULL;
 
 	//获取用户
 	return m_TableUserItemArray[wChairID];
@@ -1884,6 +1885,7 @@ bool CTableFrame::InitializationFrame(WORD wTableID, tagTableFrameParameter & Ta
 {
 	//设置变量
 	m_wTableID=wTableID;
+	m_wMaxChairCount=TableFrameParameter.pGameServiceAttrib->wChairCount;
 	m_wChairCount=TableFrameParameter.pGameServiceAttrib->wChairCount;
 
 	//配置参数

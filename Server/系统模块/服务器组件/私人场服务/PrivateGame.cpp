@@ -612,7 +612,7 @@ bool PriaveteGame::OnDBOCreatePrivate(WORD wRequestID, IServerUserItem * pIServe
 	//报名失败
 	if(pPrivate->bSucess==false)
 	{
-		m_pIGameServiceFrame->SendRoomMessage(pIServerUserItem,pPrivate->szDescribeString,SMT_EJECT);
+		m_pIGameServiceFrame->SendRoomMessage(pIServerUserItem, pPrivate->szDescribeString,SMT_EJECT);
 		return true;
 	}
 
@@ -649,8 +649,8 @@ bool PriaveteGame::OnDBOCreatePrivate(WORD wRequestID, IServerUserItem * pIServe
 		}
 		else
 		{
-			pCurrTableInfo->restAgainValue();
-			SendRoomInfo(NULL,pCurrTableInfo);
+			m_pIGameServiceFrame->SendRoomMessage(pIServerUserItem, TEXT("对不起，该房间已经结束！"), SMT_EJECT);
+			return true;
 		}
 	}
 	else
@@ -670,14 +670,7 @@ bool PriaveteGame::OnDBOCreatePrivate(WORD wRequestID, IServerUserItem * pIServe
 				pICurrTableFrame = pITableFrame;
 				pCurrTableInfo = &m_pTableInfo[wTableID];
                 short wCharNum = static_cast<short>(pPrivate->wCharNum);
-				if (wCharNum > 0)
-				{
-                    pCurrTableInfo->restValue(pPrivate->wCharNum);
-				}
-				else
-				{
-					pCurrTableInfo->restValue();
-				}
+                pCurrTableInfo->restValue(wCharNum);
 				break;
 			}
 		}

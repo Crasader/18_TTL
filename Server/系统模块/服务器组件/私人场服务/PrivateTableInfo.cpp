@@ -20,50 +20,8 @@ PrivateTableInfo::~PrivateTableInfo(void)
 {
 	//关闭定时器
 }
-void PrivateTableInfo::restAgainValue(int nCharCount)
-{
-	bStart = false;
-	bInEnd = false;
-	kDismissChairID.clear();
-	kNotAgreeChairID.clear();
-	fDismissPastTime = 0;
-	dwFinishPlayCout = 0;
-	dwStartPlayCout = 0;
-	fAgainPastTime = 0.0f;
-	fEmptyRoomLiveTime = 0.f;
-	ZeroMemory(lPlayerWinLose,sizeof(lPlayerWinLose));
-	ZeroMemory(lPlayerAction,sizeof(lPlayerAction));
-	//ZeroMemory(cbLastOfflineReadyState,sizeof(cbLastOfflineReadyState));
-#if defined(ALLOWED_KICK_UNREADY_USER)
-    ZeroMemory(m_TimerEventIDs,sizeof(m_TimerEventIDs));
-#endif
-	kTotalRecord = tagPrivateRandTotalRecord();
 
-	if (pITableFrame)
-	{
-        if (nCharCount == -1) {
-            nCharCount = pITableFrame->GetChairCount();
-        }
-
-		pITableFrame->SetMasterUser(nullptr);
-		pITableFrame->SetCreateUser(nullptr);
-
-        kTotalRecord.kScore.resize(nCharCount);
-		kTotalRecord.kUserID.resize(pITableFrame->GetChairCount());
-		kTotalRecord.kNickName.resize(pITableFrame->GetChairCount());
-		kTotalRecord.dwKindID = pITableFrame->GetGameServiceAttrib()->wKindID;
-		kTotalRecord.dwVersion = pITableFrame->GetGameServiceAttrib()->dwClientVersion;
-
-		for (int i = 0; i< nCharCount; i++)
-		{
-			kTotalRecord.kScore[i] = 0;
-#if defined(ALLOWED_KICK_UNREADY_USER)
-            m_TimerEventIDs[i]= 0;
-#endif
-		}
-	}
-}
-void PrivateTableInfo::restValue(int ncharCout)
+void PrivateTableInfo::restValue(int nCharCount)
 {
 	bStart = false;
 	bInEnd = false;
@@ -80,18 +38,50 @@ void PrivateTableInfo::restValue(int ncharCout)
 	dwStartPlayCout = 0;
 	dwPlayCost = 0;
 	fAgainPastTime = 0.0f;
+	fEmptyRoomLiveTime = 0.f;
 	kHttpChannel = "";
 	bAllowedStrangerJoin = false;//是否允许陌生人加入
 	dwBaseScore = 0;//底注
 	dwEnterMatchNum = 0;//入场限制
 	dwOutMatchNum = 0;//离场限制
-
 #if defined(PLATFORM_CONGCONG)
 	bPassionationMode = false;	    //激情模式开关
 	bBloodFightMode = false;        	//血战到底开关
 #endif
+	kDismissChairID.clear();
+	kNotAgreeChairID.clear();
+	ZeroMemory(lPlayerWinLose, sizeof(lPlayerWinLose));
+	ZeroMemory(lPlayerAction, sizeof(lPlayerAction));
+	//ZeroMemory(cbLastOfflineReadyState,sizeof(cbLastOfflineReadyState));
+#if defined(ALLOWED_KICK_UNREADY_USER)
+	ZeroMemory(m_TimerEventIDs, sizeof(m_TimerEventIDs));
+#endif
+	kTotalRecord = tagPrivateRandTotalRecord();
 
-	restAgainValue(ncharCout);
+	if (pITableFrame)
+	{
+		pITableFrame->SetMasterUser(nullptr);
+		pITableFrame->SetCreateUser(nullptr);
+
+		if (nCharCount < 0 || nCharCount > pITableFrame->GetMaxChairCount()) {
+			nCharCount = pITableFrame->GetMaxChairCount();
+		}
+		pITableFrame->SetChairCount(nCharCount);
+
+		kTotalRecord.kScore.resize(nCharCount);
+		kTotalRecord.kUserID.resize(nCharCount);
+		kTotalRecord.kNickName.resize(nCharCount);
+		kTotalRecord.dwKindID = pITableFrame->GetGameServiceAttrib()->wKindID;
+		kTotalRecord.dwVersion = pITableFrame->GetGameServiceAttrib()->dwClientVersion;
+
+		for (int i = 0; i < nCharCount; i++)
+		{
+			kTotalRecord.kScore[i] = 0;
+#if defined(ALLOWED_KICK_UNREADY_USER)
+			m_TimerEventIDs[i] = 0;
+#endif
+		}
+	}
 }
 void PrivateTableInfo::newRandChild()
 {

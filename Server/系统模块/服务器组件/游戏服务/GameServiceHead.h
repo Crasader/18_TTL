@@ -953,6 +953,8 @@ interface ITableFrame : public IUnknownEx
 public:
 	//桌子号码
 	virtual WORD GetTableID()=NULL;
+	//最大椅子数
+	virtual WORD GetMaxChairCount()=NULL;
 	//游戏人数
 	virtual WORD GetChairCount()=NULL;
 	//空位置数目

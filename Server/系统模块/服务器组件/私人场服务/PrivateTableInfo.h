@@ -14,14 +14,13 @@ enum RoomType
 };
 
 //¶¨Ê±Èü
-class PrivateTableInfo 
+struct PrivateTableInfo 
 {
 public:
     PrivateTableInfo();
     ~PrivateTableInfo();
 
     void restValue(int nCharCount = -1);
-    void restAgainValue(int nCharCount = -1);
     void newRandChild();
     WORD getChairCout();
     bool IsAllOffline();
@@ -30,7 +29,6 @@ public:
 
     ITableFrame* pITableFrame;
     DWORD dwGameKindID;
-    //DWORD dwCreaterUserID;
     DWORD dwRoomNum;
     DWORD dwPlayCout;
     DWORD dwPlayCost;

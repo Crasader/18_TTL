@@ -19,7 +19,8 @@ class CTableFrame : public ITableFrame
 protected:
 	WORD m_wTableID;//桌子号码
 	WORD m_wChairCount;//椅子数目
-	BYTE	m_cbStartMode;//开始模式
+	WORD m_wMaxChairCount;//最大椅子数量
+	BYTE m_cbStartMode;//开始模式
 	WORD m_wUserCount;//用户数目
 
 	//状态变量
@@ -116,7 +117,9 @@ public:
 public:
 	//桌子号码
 	virtual WORD GetTableID() { return m_wTableID; }
-	//游戏人数
+	//最大椅子数
+	virtual WORD GetMaxChairCount() { return m_wMaxChairCount; }
+	//椅子数
 	virtual WORD GetChairCount() { return m_wChairCount; }
 	//空位置数目
 	virtual WORD GetNullChairCount(){return m_wChairCount - m_wUserCount;}
