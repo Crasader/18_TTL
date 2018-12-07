@@ -46,24 +46,6 @@
     <Filter Include="Game\Widget">
       <UniqueIdentifier>{dfb9da27-4b58-430d-9489-079bc1a0c7fe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Kernel\Platform">
-      <UniqueIdentifier>{6ee38556-0ce3-43aa-bf89-2aa7a06deb1e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Kernel\Platform\PFDefine">
-      <UniqueIdentifier>{aa6fc214-74c6-4b1d-a04c-588f0d3686d0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Kernel\Platform\PFDefine\data">
-      <UniqueIdentifier>{8b5dd6e0-de82-45cd-8eab-cdb658cf79ad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Kernel\Platform\PFDefine\df">
-      <UniqueIdentifier>{1bf2cf9c-535f-4827-b4a6-fe651a75026b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Kernel\Platform\PFDefine\msg">
-      <UniqueIdentifier>{2b7f1925-cd61-4653-b75b-b483fe37f5a7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Kernel\Platform\PFKernel">
-      <UniqueIdentifier>{7df89e3e-2fec-48f4-a922-1ad381cccfe1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Game">
       <UniqueIdentifier>{2e27f6c5-b79f-47a2-8f2f-95bb5f8cc855}</UniqueIdentifier>
     </Filter>
@@ -84,6 +66,24 @@
     </Filter>
     <Filter Include="GameNet\dowload">
       <UniqueIdentifier>{9242de06-4502-434d-afc0-00383913bee1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{6ee38556-0ce3-43aa-bf89-2aa7a06deb1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\PFDefine">
+      <UniqueIdentifier>{aa6fc214-74c6-4b1d-a04c-588f0d3686d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\PFDefine\data">
+      <UniqueIdentifier>{8b5dd6e0-de82-45cd-8eab-cdb658cf79ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\PFDefine\df">
+      <UniqueIdentifier>{1bf2cf9c-535f-4827-b4a6-fe651a75026b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\PFDefine\msg">
+      <UniqueIdentifier>{2b7f1925-cd61-4653-b75b-b483fe37f5a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\PFKernel">
+      <UniqueIdentifier>{7df89e3e-2fec-48f4-a922-1ad381cccfe1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -622,76 +622,76 @@
       <Filter>Game\Sound\amr_nb</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGMatchMission.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPAddRankMission.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPBeginnerMission.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPExchangeMission.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPFaceMission.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPGameRecord.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPIndividualMission.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPInsureMission.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPKefuMission.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPLoginMission.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPLowProtectMission.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPMachineMission.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPMessageMission.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPPasswordMission.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPPersonalInfoMission.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPReqPlayerInfoMission.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPRouletteMission.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPShopInfoMission.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPSignInMission.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPTimeAwardMission.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPublicNoticMission.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPUnderWriteMission.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGUserInGameServerInfo.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\GPMission.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\GameNet\cocosHttp\HttpClientEx.h">
       <Filter>GameNet\cocosHttp</Filter>
@@ -862,55 +862,55 @@
       <Filter>Kernel\network</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFDefine\df\datastream.h">
-      <Filter>Kernel\Platform\PFDefine\df</Filter>
+      <Filter>Platform\PFDefine\df</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFDefine\df\Define.h">
-      <Filter>Kernel\Platform\PFDefine\df</Filter>
+      <Filter>Platform\PFDefine\df</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFDefine\df\DF.h">
-      <Filter>Kernel\Platform\PFDefine\df</Filter>
+      <Filter>Platform\PFDefine\df</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFDefine\df\GameLog.h">
-      <Filter>Kernel\Platform\PFDefine\df</Filter>
+      <Filter>Platform\PFDefine\df</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFDefine\df\Macro.h">
-      <Filter>Kernel\Platform\PFDefine\df</Filter>
+      <Filter>Platform\PFDefine\df</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFDefine\df\Module.h">
-      <Filter>Kernel\Platform\PFDefine\df</Filter>
+      <Filter>Platform\PFDefine\df</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFDefine\df\Packet.h">
-      <Filter>Kernel\Platform\PFDefine\df</Filter>
+      <Filter>Platform\PFDefine\df</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFDefine\df\PacketAide.h">
-      <Filter>Kernel\Platform\PFDefine\df</Filter>
+      <Filter>Platform\PFDefine\df</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFDefine\df\Platform.h">
-      <Filter>Kernel\Platform\PFDefine\df</Filter>
+      <Filter>Platform\PFDefine\df</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFDefine\df\Property.h">
-      <Filter>Kernel\Platform\PFDefine\df</Filter>
+      <Filter>Platform\PFDefine\df</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFDefine\df\RightDefine.h">
-      <Filter>Kernel\Platform\PFDefine\df</Filter>
+      <Filter>Platform\PFDefine\df</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFDefine\df\ServerRule.h">
-      <Filter>Kernel\Platform\PFDefine\df</Filter>
+      <Filter>Platform\PFDefine\df</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFDefine\df\Struct.h">
-      <Filter>Kernel\Platform\PFDefine\df</Filter>
+      <Filter>Platform\PFDefine\df</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFDefine\df\types.h">
-      <Filter>Kernel\Platform\PFDefine\df</Filter>
+      <Filter>Platform\PFDefine\df</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFDefine\msg\CMD_GameServer.h">
-      <Filter>Kernel\Platform\PFDefine\msg</Filter>
+      <Filter>Platform\PFDefine\msg</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFDefine\msg\CMD_LogonServer.h">
-      <Filter>Kernel\Platform\PFDefine\msg</Filter>
+      <Filter>Platform\PFDefine\msg</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFDefine\GlobalConfig.h">
-      <Filter>Kernel\Platform\PFDefine</Filter>
+      <Filter>Platform\PFDefine</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Kernel\socket\Socket.h">
       <Filter>Kernel\socket</Filter>
@@ -1030,19 +1030,19 @@
       <Filter>Game\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFDefine\data\GlobalUnits.h">
-      <Filter>Kernel\Platform\PFDefine\data</Filter>
+      <Filter>Platform\PFDefine\data</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFDefine\data\GlobalUserInfo.h">
-      <Filter>Kernel\Platform\PFDefine\data</Filter>
+      <Filter>Platform\PFDefine\data</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFDefine\data\OptionParameter.h">
-      <Filter>Kernel\Platform\PFDefine\data</Filter>
+      <Filter>Platform\PFDefine\data</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFDefine\data\ServerListData.h">
-      <Filter>Kernel\Platform\PFDefine\data</Filter>
+      <Filter>Platform\PFDefine\data</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPopularizeMission.h">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Game\Game\NoticeMsgBox.h">
       <Filter>Game\Game</Filter>
@@ -1543,73 +1543,73 @@
       <Filter>Game\Sound\amr_nb</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGMatchMission.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGPAddRankMission.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGPBeginnerMission.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGPExchangeMission.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGPFaceMission.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGPGameRecord.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGPIndividualMission.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGPInsureMission.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGPKefuMission.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGPLoginMission.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGPLowProtectMission.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGPMachineMission.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGPMessageMission.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGPPasswordMission.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGPPersonalInfoMission.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGPReqPlayerInfoMission.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGPRouletteMission.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGPShopInfoMission.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGPSignInMission.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGPTimeAwardMission.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGPublicNoticMission.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGPUnderWriteMission.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGUserInGameServerInfo.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\GameNet\cocosHttp\HttpClientEx.cpp">
       <Filter>GameNet\cocosHttp</Filter>
@@ -1762,7 +1762,7 @@
       <Filter>Kernel\network</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFDefine\df\DF.cpp">
-      <Filter>Kernel\Platform\PFDefine\df</Filter>
+      <Filter>Platform\PFDefine\df</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Kernel\socket\Socket.cpp">
       <Filter>Kernel\socket</Filter>
@@ -1858,19 +1858,19 @@
       <Filter>Game\Game</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFDefine\data\GlobalUnits.cpp">
-      <Filter>Kernel\Platform\PFDefine\data</Filter>
+      <Filter>Platform\PFDefine\data</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFDefine\data\GlobalUserInfo.cpp">
-      <Filter>Kernel\Platform\PFDefine\data</Filter>
+      <Filter>Platform\PFDefine\data</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFDefine\data\OptionParameter.cpp">
-      <Filter>Kernel\Platform\PFDefine\data</Filter>
+      <Filter>Platform\PFDefine\data</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFDefine\data\ServerListData.cpp">
-      <Filter>Kernel\Platform\PFDefine\data</Filter>
+      <Filter>Platform\PFDefine\data</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Platform\PFKernel\CGPopularizeMission.cpp">
-      <Filter>Kernel\Platform\PFKernel</Filter>
+      <Filter>Platform\PFKernel</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Game\Game\NoticeMsgBox.cpp">
       <Filter>Game\Game</Filter>

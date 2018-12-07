@@ -136,8 +136,8 @@ int GameManagerBase::connectGameServer(CGameServerItem* pGameServerItem)
 	if (pGameServerItem != nullptr &&
 		mGameServerItem != nullptr &&
 		mGameServerItem->m_GameServer.wServerID == pGameServerItem->m_GameServer.wServerID) {
-		CCLOG("GameManagerBase::connectGameServer already conected");
 		if (mCServerItem->IsService()) {
+			CCLOG("GameManagerBase::connectGameServer already conected");
 			return ServiceStatus_ServiceIng;
 		}
 	}
@@ -340,16 +340,12 @@ void GameManagerBase::OnGRConfigFinish()
 //用户进入
 void GameManagerBase::OnGRUserEnter(IClientUserItem* pIClientUserItem)
 {
-	CCLOG(("GameManager::OnGRUserEnter"));
-
-	char szDescribe[256] = { 0 };
-	sprintf(szDescribe, ("OnGRUserEnter:%s\n"), pIClientUserItem->GetNickName());
-	//CCLOG(szDescribe);
+	CCLOG("GameManager::OnGRUserEnter %s", pIClientUserItem->GetNickName());
 }
 //用户更新
 void GameManagerBase::OnGRUserUpdate(IClientUserItem* pIClientUserItem)
 {
-	CCLOG(("GameManager::OnGRUserUpdate"));
+	CCLOG("GameManager::OnGRUserUpdate");
 
 	if (pIClientUserItem == IServerItem::get()->GetMeUserItem())
 	{

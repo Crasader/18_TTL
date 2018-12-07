@@ -206,7 +206,7 @@ public:
 #endif
 public:
 	static void setJoinWithRoomNO(dword dwNnmber) {
-		CCLOG("setJoinWithRoomNO dwNnmber = %d", dwNnmber);
+		CCLOG("setJoinWithRoomNO dwNnmber = %d", static_cast<int>(dwNnmber));
 		_room_number = dwNnmber;
 	}
 	static dword getJoinWithRoomNO() {

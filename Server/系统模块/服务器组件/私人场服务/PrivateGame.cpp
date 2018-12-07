@@ -761,7 +761,7 @@ bool PriaveteGame::OnDBOCreatePrivate(WORD wRequestID, IServerUserItem * pIServe
 	SendData(pIServerUserItem,MDM_GR_PRIVATE,SUB_GR_CREATE_PRIVATE_SUCESS,&kSucessInfo,sizeof(kSucessInfo));
 
 	//TODO:没有必要了,OnEventClientReady已经发了
-	//sendPrivateRoomInfo(NULL,pCurrTableInfo);
+	//SendRoomInfo(pIServerUserItem, pCurrTableInfo);
 	return true;
 }
 

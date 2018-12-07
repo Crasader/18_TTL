@@ -215,6 +215,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Player\NNPlayer.h" />
     <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Player\NNPlayerCard.h" />
     <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Player\NNPlayerPanel.h" />
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\predefine.h" />
     <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Protocol\CMD_NN.h" />
     <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Setting\NNSetting.h" />
     <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\Sound\NNSound.h" />

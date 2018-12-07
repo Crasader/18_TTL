@@ -482,6 +482,9 @@
     <ClInclude Include="..\Classes\CommonHeader\LocalConstant.h">
       <Filter>CommonHeader</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\ClientHN_THJ\Game\TTLNN\predefine.h">
+      <Filter>Game\TTLNN</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\GamePlaza\Main\AppDelegate.cpp">

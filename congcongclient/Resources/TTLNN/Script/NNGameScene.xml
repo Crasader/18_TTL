@@ -7,7 +7,7 @@
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="Scale" Value="0.666"/>
 	</Widget>
-		
+
 	<Widget Name="NNGameScene_ButtonHelp" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonHelp.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
@@ -21,20 +21,20 @@
 <!-- 		<Property Key="Pos" Value="50 580"/>  -->
 		<Property Key="Pos" Value="1000 675"/>
 	</Widget>
-	
+
 	<Widget Name="NNGameScene_ChongZhi" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/MallPanel/Btn_ChongZhi.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Visible" Value="false"/>
 		<Property Key="Pos" Value="1101 675"/>
 	</Widget>
-	
+
 	<Widget Name="NNGameScene_ButtonMenu" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonMenu.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="1150 675"/>
 	</Widget>
-	
+
 	<Widget Name="NNGameScene_MenuNode" SkinTempName="Empty">
 		<Property Key="Visible" Value="false"/>
 		<Widget Name="" SkinTempName="ImagicEmpty">
@@ -59,29 +59,29 @@
 			<Property Key="Pos" Value="1162 640"/> 
 		</Widget>
 	</Widget>
-	
+
 	<Widget Name="NNGameScene_ButtonTalk" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonTalk.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="1130 140"/>
 	</Widget>
-	
+
 	<Widget Name="NNGameScene_ButtonMessage" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonMessage.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="1220 140"/>
 <!-- 		<Action Key="Show" Value="NNGameTalkPlane"/> -->
 	</Widget>
-	
+
 	<Widget Name="NNGameScene_ButtonDropBanker" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonDropBanker.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="950 112"/>
 	</Widget>
-	
+
 	<!-- 税收提示 -->
 	<Widget Name="GameTax" SkinTempName="NNGameTax">
 		<Property Key="Pos" Value="640 440"/>
 	</Widget>
-	
+
 </Widget>
