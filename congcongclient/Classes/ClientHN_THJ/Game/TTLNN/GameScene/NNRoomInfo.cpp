@@ -62,7 +62,7 @@ void NNRoomInfo::hide()
 #pragma region 数据接收与刷新显示
 void NNRoomInfo::setRoomInfo(CMD_GF_Private_Room_Info& roomInfo)
 {
-	printf("房间信息底注信息%u\n",roomInfo.dwBaseScore);
+	CCLOG("房间信息底注信息%ld\n",roomInfo.dwBaseScore);
 	m_RoomInfo = roomInfo;
 }
 
@@ -84,8 +84,9 @@ void NNRoomInfo::updateRoomInfo()
 
 	if (m_RoomInfo.bGameTypeIdex == TTLNN::NNGameType_HostBanker &&
 		m_RoomInfo.dwPlayCout > 3 &&
-		UserInfo::Instance().getUserID() == m_RoomInfo.dwCreateUserID &&
-		NNGameScene::Instance().getGameStatus() < TTLNN::NNGameStatus_Start) {
+		UserInfo::Instance().getUserID() == m_RoomInfo.dwMasterUserID &&
+		NNGameScene::Instance().getGameStatus() < TTLNN::NNGameStatus_Start)
+	{
 		NNGameScene::Instance().showDropBanker();
 	} else {
 		NNGameScene::Instance().hideDropBanker();
@@ -94,7 +95,7 @@ void NNRoomInfo::updateRoomInfo()
 
 bool NNRoomInfo::isCreaterPlayer(NNPlayer* player)
 {
-	return player && player->GetUserID() == m_RoomInfo.dwCreateUserID;
+	return player && player->GetUserID() == m_RoomInfo.dwMasterUserID;
 }
 
 bool NNRoomInfo::isHostPlayer(NNPlayer* player)
@@ -137,7 +138,7 @@ std::string NNRoomInfo::getRoomInfoView(bool forShare /*= false*/)
 		}
 	}
 	resultStr += utility::a_u8(" 局数:");
-	auto game_info = GPGameLink::Instance().getCurrentGameInfo();
+	auto game_info = GPGameLink::Instance().privateGameInfo();
 	resultStr += utility::a_u8(utility::toString(game_info.bPlayCout[m_RoomInfo.bPlayCoutIdex]));
 	return resultStr;
 }
@@ -217,7 +218,7 @@ std::string NNRoomInfo::getRoomInfoText(bool forShare /*= false*/)
 		}
 	}
 	text.append(split);
-	auto game_info = GPGameLink::Instance().getCurrentGameInfo();
+	auto game_info = GPGameLink::Instance().privateGameInfo();
 	text.append(utility::a_u8("局数:"));
 	text.append(utility::toString(m_RoomInfo.dwPlayCout));
 	text.append(utility::a_u8("/"));

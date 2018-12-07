@@ -1,6 +1,6 @@
 #include "GPHomeScene.h"
 #include "GamePlaza/GameManager/GPGameLink.h"
-#include "ClientHN_THJ/Game/TTLNN/GameScene/NNRoomInfo.h"
+#include "ClientHN_THJ/Game/TTLNN/GameScene/NNGameScene.h"
 #include "GameLib/Game/Game/MissionWeiXin.h"
 
 USING_NS_CC;
@@ -207,15 +207,10 @@ void GPHomeScene::openSubGame(int curPage)
 void GPHomeScene::Button_Invitation(cocos2d::Ref*, WidgetUserInfo* pUserInfo)
 {
 	int iRecordChildID = utility::parseInt(WidgetFun::getUserInfoValue(pUserInfo, "RoomID"));
-	//dword roomNO = NNRoomInfo::Instance().getRoomInfo().dwRoomNum;
-	std::string strUrl = utility::a_u8(utility::toString("http://114.115.164.158:8080/evokeapp.html?refresh=0&room_id=", iRecordChildID));
-	std::string strTitle = ScriptData<std::string>("CCWeiXinSharTitle").Value();
-	std::string stDes = utility::getScriptReplaceValue("CCWeiXinSharDes",
-		ScriptData<std::string>("CCWeiXinShare_Server_Name").Value(),
-		(int)iRecordChildID,
-		NNRoomInfo::Instance().getRoomInfoView(true));
+	auto pRoomInfo = NNGameScene::Instance().getShareInfo(static_cast<dword>(iRecordChildID));
 
-	MissionWeiXin::Instance().shareUrlWeiXin(strUrl, strTitle, stDes);
+	if(pRoomInfo)
+		MissionWeiXin::Instance().shareUrlWeiXin(pRoomInfo->strUrl, pRoomInfo->strTitle, pRoomInfo->strDes, MissionWeiXin::SHARE_SESSION);
 }
 
 void GPHomeScene::Button_Join(cocos2d::Ref*, WidgetUserInfo* pUserInfo)

@@ -36,7 +36,7 @@ public:
     int getCurrentRequestGameKindID(){ 
 		return m_currentGameKindID;
 	}
-	CMD_GR_Private_Info& getCurrentGameInfo() { 
+	CMD_GR_Private_Info& privateGameInfo() { 
 		return m_PrivateInfo;
 	}
 

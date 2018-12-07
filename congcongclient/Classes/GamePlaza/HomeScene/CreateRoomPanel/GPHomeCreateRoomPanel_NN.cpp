@@ -20,7 +20,7 @@ GPHomeCreateRoomPanel_NN::GPHomeCreateRoomPanel_NN()
 	, _nTuiZhuIndex(0)//闲家推注倍数序号
 	, _nGameType(TTLNN::NNGameType::NNGameType_SnatchBankerShowCard)
 	, _nRoundIndex(0)
-	, _bSixRound(true)//六人场或者八人场
+	, _cbRoundCount(6)//六人场或者八人场
 	, _nQiangZhuangBeiShu(1)
 	, _dwBaseScore(1)
 {
@@ -229,10 +229,22 @@ void GPHomeCreateRoomPanel_NN::show()
 		break;
 	}
 
+	if (_cbRoundCount == 6) {
+		WidgetFun::setVisible(this, "Btn_SixRound", false);
+		WidgetFun::setVisible(this, "Pic_SixRound", true);
+		WidgetFun::setVisible(this, "Btn_EightRound", true);
+		WidgetFun::setVisible(this, "Pic_EightRound", false);
+	} else if(_cbRoundCount == 8) {
+		WidgetFun::setVisible(this, "Btn_SixRound", true);
+		WidgetFun::setVisible(this, "Pic_SixRound", false);
+		WidgetFun::setVisible(this, "Btn_EightRound", false);
+		WidgetFun::setVisible(this, "Pic_EightRound", true);
+	}
+
 	_dwEnterMatchNum = 1;
 	_dwOutMatchNum = 1;
 
-	auto game_info = GPGameLink::Instance().getCurrentGameInfo();
+	auto game_info = GPGameLink::Instance().privateGameInfo();
 	std::string kStr;
 	if(game_info.bPlayCout[0] <= 0)
 		kStr = utility::toString(3, utility::a_u8("局"));
@@ -300,7 +312,7 @@ void GPHomeCreateRoomPanel_NN::Button_Confirm(cocos2d::Ref*, WidgetUserInfo*)
 			break;
 	}
 
-	if (_bSixRound)
+	if (_cbRoundCount == 6)
 		FvMask::Add(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SixRound));
 	if (_nRatioRuleIndex == 0)
 		FvMask::Add(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_Ratio_0));
@@ -351,11 +363,7 @@ void GPHomeCreateRoomPanel_NN::Button_Confirm(cocos2d::Ref*, WidgetUserInfo*)
 	createRoom.dwBaseScore = _dwBaseScore;//utility::parseInt(WidgetFun::getText(this,"NN_CreateRoom_GameScore_Txt"));
 	createRoom.dwOutMatchNum = _dwOutMatchNum;// utility::parseInt(WidgetFun::getText(this, "NN_CreateRoom_OutNum_Txt"));
 
-	if (_bSixRound) {
-		createRoom.wCharNum = 6;
-	} else {
-		createRoom.wCharNum = 8;
-	}
+	createRoom.wCharNum = _cbRoundCount;
 
 	GPGameLink::Instance().CreateRoom(NNGameScene::KIND_ID, createRoom);
 }
@@ -645,7 +653,7 @@ void GPHomeCreateRoomPanel_NN::Button_SixRound(cocos2d::Ref*, WidgetUserInfo*)
 	WidgetFun::setVisible(this, "Pic_SixRound", true);
 	WidgetFun::setVisible(this, "Btn_EightRound", true);
 	WidgetFun::setVisible(this, "Pic_EightRound", false);
-	_bSixRound = true;
+	_cbRoundCount = true;
 }
 
 void GPHomeCreateRoomPanel_NN::Button_EightRound(cocos2d::Ref*, WidgetUserInfo*)
@@ -654,7 +662,7 @@ void GPHomeCreateRoomPanel_NN::Button_EightRound(cocos2d::Ref*, WidgetUserInfo*)
 	WidgetFun::setVisible(this, "Pic_SixRound", false);
 	WidgetFun::setVisible(this, "Btn_EightRound", false);
 	WidgetFun::setVisible(this, "Pic_EightRound", true);
-	_bSixRound = false;
+	_cbRoundCount = false;
 }
 
 //////////////////////////////////////////////////////////////////////////

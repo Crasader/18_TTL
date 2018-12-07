@@ -382,5 +382,6 @@ struct CMD_C_UserCall {
 struct CMD_C_UserShowCard {
 	NNCardType_Result result;
 };
+
 }
 #pragma pack()

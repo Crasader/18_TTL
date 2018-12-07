@@ -44,7 +44,6 @@
 
 #include "GameLib/Platform/PFKernel/CGPopularizeMission.h"
 
-
 class GPHomeScene
 	: public cocos2d::Node
 	, public CGPopularizeSink 
@@ -82,7 +81,7 @@ public:
 	//打开子游戏面板
 	void openSubGame(int curPage);
 	//牛翻天新加的////////////////////////////////////////////////////////////////////////
-		//展示房间列表
+	//展示房间列表
 	void showGameRoomList(void* data, size_t dataSize);
 protected:
 	//初始化子游戏列表控件
@@ -139,8 +138,9 @@ protected:
 private:
 	cocos2d::Node* _img_head;
 	ssize_t m_selectedItemIndex;
-	//cocos2d::CCLabelTTF* m_pSpriteSpeaker;
 	CGPopularizeMission m_kPopularizeMission;
 
 	int _nCurrentGameKindID;
+
+	//std::map<dword, RoomShareInfo> _mpShareInfo;
 };

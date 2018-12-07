@@ -5,6 +5,13 @@
 #include "ClientHN_THJ/Game/TTLNN/GameScene/NNTurnCard.h"
 #include "ClientHN_THJ/Game/TTLNN/Protocol/CMD_NN.h"
 
+struct RoomShareInfo {
+	dword dwRoomNum;
+	std::string strTitle;
+	std::string strDes;
+	std::string strUrl;
+};
+
 class NNGameScene
 	: public GameBase
 	, public TimeNode
@@ -13,7 +20,7 @@ class NNGameScene
 public:
 	const static int KIND_ID = 27;
 	//DONE: 修改了人数
-	const static int MAX_PLAYER = 8;
+	const static int MAX_PLAYER = NN_GAME_PLAYER;
 
 	const static int VERSION_SERVER = PROCESS_VERSION(6, 0, 3);		//程序版本
 	const static int VERSION_CLIENT = PROCESS_VERSION(6, 0, 3);		//程序版本
@@ -102,6 +109,9 @@ public:
 #pragma endregion 按钮消息
 
 #pragma region 房间相关
+	RoomShareInfo* getShareInfo(dword dwRoomID);
+	void addRoomshareInfo(CMD_GF_Private_Room_Info* pRoomInfo);
+
 	void OnSocketSubPrivateRoomInfo(CMD_GF_Private_Room_Info* pNetInfo);
 	void OnSocketSubPrivateDismissInfo(CMD_GF_Private_Dismiss_Info* pNetInfo);
 	void OnSocketSubPrivateEnd(CMD_GF_Private_End_Info* pNetInfo);
@@ -111,7 +121,6 @@ public:
 public:
 	void initTouch();
 	bool ccTouchBegan(cocos2d::Vec2 kPos);
-
 	bool isSplitCard();
 	void setSelectCards(std::vector<int> selectCards);
 	std::vector<int> getSelectCards();
@@ -122,6 +131,7 @@ public:
 	void sendSnatchBanker(BYTE snatchRatio);
 	void sendBet(TTLNN::NNPlayerBet& bet);
 	void sendShowCard();
+
 	void onGameStart(const void * pBuffer, word wDataSize);
 	void onHostConfirmStart(const void * pBuffer, word wDataSize);
 	void onSnatchBanker(const void * pBuffer, word wDataSize);
@@ -140,7 +150,7 @@ public:
 
 public:
 
-	CMD_GF_Private_Room_Info	m_RoomInfo;							// 房间结算信息
+	CMD_GF_Private_Room_Info	m_RoomInfo;// 房间结算信息
 
 private:
 
@@ -155,4 +165,6 @@ private:
 	static dword _dwSpeak_time_begin;
 	static dword _dwSpeak_time_end;
 	static dword _dwSpeak_time_interval;
+
+	std::map<dword, RoomShareInfo> _mpShareInfo;
 };

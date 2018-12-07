@@ -93,7 +93,7 @@ private:
 
 	bool								_bCanTuiZhu;// 是否推注
 	dword							_nGameRuleIndex;//游戏规则
-	bool								_bSixRound;//六人场或者八人场
+	byte								_cbRoundCount;//六人场或者八人场
 	int								_nTuiZhuIndex;//闲家推注倍数序号
 	int								_nRatioRuleIndex;//牛牛的规则序号0为1,1为2
 	bool								_bShunZi;//顺子牛
