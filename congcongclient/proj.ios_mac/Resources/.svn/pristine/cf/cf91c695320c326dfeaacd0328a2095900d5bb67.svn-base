@@ -1,0 +1,19 @@
+<Widget Name="TLJSettingPanel" SkinTempName="Empty">
+	<Widget Name="" SkinTempName="BtnFullEmpty">
+	</Widget>
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="Game/TLJ/SettingPanel/Setting_Background.png"/>
+		<Property Key="Pos" Value="640 400"/>
+	</Widget>
+	
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="Game/TLJ/SettingPanel/Setting_Title.png"/>
+		<Property Key="Pos" Value="640 555"/>
+	</Widget>
+	
+	<Widget Name="Setting_ButtonClose" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="Game/TLJ/SettingPanel/Setting_ButtonClose.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="915 563"/>
+	</Widget>
+</Widget>

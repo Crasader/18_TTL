@@ -1,0 +1,125 @@
+<Widget Name="" SkinTempName="Empty">
+	<Widget Name="" SkinTempName="BtnFullEmpty"/>
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/EditNumPanel/TTLNN_EditScore_Bg.png"/>
+		<Property Key="Pos" Value="656 363"/>
+	</Widget>
+	<Widget Name="Button_Close" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EditNumPanel/Button_Close.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="921 530"/>
+	</Widget>
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/EditNumPanel/inputNumBox.png"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="Pos" Value="656 463"/>
+	</Widget>
+	<Widget Name="Home_RoomNum1" SkinTempName="TxtEmpty">
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="FontSize" Value="40"/>
+		<Property Key="FontName" Value="public/kaiti.ttf"/>
+		<Property Key="Pos" Value="457 463"/>
+	</Widget>
+	<Widget Name="Home_RoomNum2" SkinTempName="TxtEmpty">
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="FontSize" Value="40"/>
+		<Property Key="FontName" Value="public/kaiti.ttf"/>
+		<Property Key="Pos" Value="536 463"/>
+	</Widget>
+	<Widget Name="Home_RoomNum3" SkinTempName="TxtEmpty">
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="FontSize" Value="40"/>
+		<Property Key="FontName" Value="public/kaiti.ttf"/>
+		<Property Key="Pos" Value="615 463"/>
+	</Widget>
+	<Widget Name="Home_RoomNum4" SkinTempName="TxtEmpty">
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="FontSize" Value="40"/>
+		<Property Key="FontName" Value="public/kaiti.ttf"/>
+		<Property Key="Pos" Value="690 463"/>
+	</Widget>
+	<Widget Name="Home_RoomNum5" SkinTempName="TxtEmpty">
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="FontSize" Value="40"/>
+		<Property Key="FontName" Value="public/kaiti.ttf"/>
+		<Property Key="Pos" Value="763 463"/>
+	</Widget>
+	<Widget Name="Home_RoomNum6" SkinTempName="TxtEmpty">
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="FontSize" Value="40"/>
+		<Property Key="FontName" Value="public/kaiti.ttf"/>
+		<Property Key="Pos" Value="845 463"/>
+	</Widget>
+	
+	<Widget Name="Button_EditNumPanel_One" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EditNumPanel/Button_One.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="493 358"/>
+	</Widget>
+	
+	<Widget Name="Button_EditNumPanel_Two" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EditNumPanel/Button_Two.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="656 358"/>
+	</Widget>
+	
+	<Widget Name="Button_EditNumPanel_Three" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EditNumPanel/Button_Three.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="812 358"/>
+	</Widget>
+	
+	<Widget Name="Button_EditNumPanel_Four" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EditNumPanel/Button_Four.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="493 291"/>
+	</Widget>
+	
+	<Widget Name="Button_EditNumPanel_Five" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EditNumPanel/Button_Five.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="656 291"/>
+	</Widget>
+	
+	<Widget Name="Button_EditNumPanel_Six" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EditNumPanel/Button_Six.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="812 291"/>
+	</Widget>
+	
+	<Widget Name="Button_EditNumPanel_Seven" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EditNumPanel/Button_Seven.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="493 220"/>
+	</Widget>
+	
+	<Widget Name="Button_EditNumPanel_Eight" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EditNumPanel/Button_Eight.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="656 220"/>
+	</Widget>
+	
+	<Widget Name="Button_EditNumPanel_Nine" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EditNumPanel/Button_Nine.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="812 220"/>
+	</Widget>
+	
+	<Widget Name="Button_Confirm" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EditNumPanel/TTLNN_EditScore_Confirm_Btn.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="812 149"/>
+	</Widget>
+	
+	<Widget Name="Button_EditNumPanel_Zero" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EditNumPanel/Button_Zero.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="656 149"/>
+	</Widget>
+	
+	<Widget Name="Button_Delete" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EditNumPanel/TTLNN_EditScore_Delete_Btn.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="493 149"/>
+	</Widget>
+</Widget>

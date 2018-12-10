@@ -1,0 +1,14 @@
+<root>
+	<WidgetList Name="TLJHelpContentList">
+		<Property Key="Direction" Value="1"/>	
+		<Property Key="HideBack" Value="true"/>
+		<Property Key="Size" Value="991 472"/>
+		<WidgetNodeUI Name="MallContentSkin">
+			<Property Key="Size" Value="942 968"/>
+			<WidgetImagic Name="" TextureInfo="Game/TLJ/DetailInfo/mjhelpinfo.png">
+				<Property Key="AnchorPos" Value="0 0"/>
+				<Property Key="Pos" Value="0 0"/>
+			</WidgetImagic>
+		</WidgetNodeUI>
+	</WidgetList>
+</root>

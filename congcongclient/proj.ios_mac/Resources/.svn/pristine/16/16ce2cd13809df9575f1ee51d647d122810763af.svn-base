@@ -1,0 +1,60 @@
+ <root>
+	<LoadSkin Skin="Script/message_skin.xml"/>
+	<Widget Name="MessageNode" SkinTempName="Empty">
+		<Property Key="Visible" Value="false"/>
+		<Property Key="Pos" Value="640 360"/>
+		<Widget SkinTempName="BtnFullEmpty">
+			<Action Key="Hide" Value="MessageNode"/>
+		</Widget>
+		
+		<Widget Name="" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="HelpScence/xiaoxi.png"/>
+		</Widget>
+		
+		<Widget Name="" SkinTempName="ButtonEmpty">
+			<Property Key="NomalTexture" Value="HelpScence/close.png"/>
+			<Property Key="PressTexture" Value="AutoPress"/>
+			<Property Key="Pos" Value="430 273"/>
+			<Action Key="Hide" Value="MessageNode"/>
+		</Widget>
+		
+		<Widget Name="" SkinTempName="List">
+			<Property Key="Pos" Value="-430 -200"/>
+			<Property Key="Size" Value="860 350"/>
+			<Property Key="HideBack" Value=""/>
+			<Widget Name="" SkinTempName="UserMessageItem">
+			</Widget>
+		</Widget>
+	</Widget>
+	
+	
+	
+	<LoadSkin Skin="Script/message_skin.xml"/>
+	<Widget Name="JoinNode" SkinTempName="Empty">
+		<Property Key="Visible" Value="false"/>
+		<Property Key="Pos" Value="640 360"/>
+		<Widget SkinTempName="BtnFullEmpty">
+			<Action Key="Hide" Value="MessageNode"/>
+		</Widget>
+		
+		<Widget Name="" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="HelpScence/join.png"/>
+		</Widget>
+		
+		<Widget Name="" SkinTempName="ButtonEmpty">
+			<Property Key="NomalTexture" Value="HelpScence/close.png"/>
+			<Property Key="PressTexture" Value="AutoPress"/>
+			<Property Key="Pos" Value="435 280"/>
+			<Action Key="Hide" Value="JoinNode"/>
+		</Widget>
+		
+		<Widget Name="" SkinTempName="List">
+			<Property Key="Pos" Value="-430 -200"/>
+			<Property Key="Size" Value="860 350"/>
+			<Property Key="HideBack" Value=""/>
+			<Widget Name="" SkinTempName="UserJoinItem">
+			</Widget>
+		</Widget>
+	</Widget>
+	
+</root>

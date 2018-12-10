@@ -1,0 +1,28 @@
+<Widget Name="" SkinTempName="Empty">
+	<Widget Name="" SkinTempName="BtnFullEmpty"/>
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/MorePanel/More_Background.png"/>
+		<Property Key="Pos" Value="1200 575"/>
+		<Property Key="ScaleY" Value="0.80"/>
+	</Widget>
+	
+	<Widget Name="More_ButtonService" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/MorePanel/More_ButtonService.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="1200 620"/>
+	</Widget>
+	
+	<Widget Name="More_ButtonSetting" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/MorePanel/More_ButtonSetting.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Enabled" Value="false"/>
+		<Property Key="Pos" Value="1200 570"/>
+	</Widget>
+
+	<Widget Name="More_ButtonQuit" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/MorePanel/More_ButtonQuit.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Enabled" Value="false"/>
+		<Property Key="Pos" Value="1200 520"/>
+	</Widget>
+</Widget>

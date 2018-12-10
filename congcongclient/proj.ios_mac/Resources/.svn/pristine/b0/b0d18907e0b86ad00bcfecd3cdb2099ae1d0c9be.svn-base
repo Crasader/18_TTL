@@ -1,0 +1,86 @@
+﻿ <root>
+	<ScriptValueStr Key="NetError" Value="网络错误。"/>
+	<ScriptValueStr Key="YouKe" Value="游客"/>
+	<ScriptValueStr Key="HuRight0"  Value=" 碰碰胡"/>
+	<ScriptValueStr Key="HuRight1"  Value=" 将将胡"/>
+	<ScriptValueStr Key="HuRight2"  Value=" 清一色"/>
+	<ScriptValueStr Key="HuRight3"  Value=" 海底捞"/>
+	<ScriptValueStr Key="HuRight4"  Value=" 海底捞"/>
+	<ScriptValueStr Key="HuRight5"  Value=" 七小对"/>
+	<ScriptValueStr Key="HuRight6"  Value=" 豪华七小对"/>
+	<ScriptValueStr Key="HuRight7"  Value=" 杠上开花"/>
+	<ScriptValueStr Key="HuRight8"  Value=" 抢杠胡"/>
+	<ScriptValueStr Key="HuRight9"  Value=" 杠上跑"/>
+	<ScriptValueStr Key="HuRight10" Value=" 全求人"/>
+	<ScriptValueStr Key="HuRight11" Value=" 大四喜"/>
+	<ScriptValueStr Key="HuRight12" Value=" 板板胡"/>
+	<ScriptValueStr Key="HuRight13" Value=" 缺一色"/>
+	<ScriptValueStr Key="HuRight14" Value=" 六六顺"/>
+	
+	<ScriptValueStr Key="HuRight_Gen" Value="根"/>
+	<ScriptValueStr Key="HuRight_Fan" Value="番 "/>
+	
+	<ScriptValueStr Key="HuRight_ZiMo" Value="自摸 "/>
+	<ScriptValueStr Key="HuRight_PingHu" Value="平胡 "/>
+	
+	
+	<ScriptValueStr Key="HU_TYPE_ZIMO" Value="  自摸"/>
+	<ScriptValueStr Key="HU_TYPE_JIEPAO" Value="  接炮"/>
+	<ScriptValueStr Key="HU_TYPE_FANGPAO" Value="  放炮"/>
+	
+	<ScriptValueStr Key="ZHONG_NIAO" Value="  中鸟"/>
+	<ScriptValueStr Key="ZHONG_GE" Value="个"/>
+	
+	<ScriptValueStr Key="GFXY" Value="刮风下雨"/>
+	<ScriptValueStr Key="RoomFull" Value="抱歉，房间人数已满，请选择其他房间。"/>
+	
+	<ScriptValueStr Key="Match_Free1" Value="参加比赛将扣除#金币，是否报名？"/>
+	
+	<ScriptValueStr Key="PrivateTxt0" Value=""/>
+	<ScriptValueStr Key="PrivateTxt1" Value="房号:#，速度来啊！"/>
+	
+	<ScriptValueStr Key="Test" Value="深南向日葵"/>
+	
+	<ScriptValueStr Key="NetReconnectError" Value="网络异常，正在尝试重连。"/>
+	<ScriptValueStr Key="JoinRoomNumError" Value="没有找到该房间，可能房主已经退出。"/>
+	
+<!-- 	talk -->
+ 	<ScriptValueStr Key="GameTalkTxt0" Value="快点嘛，你搞科研索"/>
+	<ScriptValueStr Key="GameTalkTxt1" Value="你敢下我斗敢跟，虎怕虎嘛"/>
+	<ScriptValueStr Key="GameTalkTxt2" Value="耶，手气可以嘛，等哈切买彩票"/>
+	<ScriptValueStr Key="GameTalkTxt3" Value="哥老倌莫走，决战到天亮"/>
+	<ScriptValueStr Key="GameTalkTxt4" Value="你是在抓梦脚哦"/>
+	<ScriptValueStr Key="GameTalkTxt5" Value="三十年河东，三十年河西，这把轮到我了撒"/>
+	<ScriptValueStr Key="GameTalkTxt6" Value="啥子手气嘛，窑库儿都输脱咯"/>
+	<ScriptValueStr Key="GameTalkTxt7" Value="唐伯虎点秋香，搞得人家心慌慌"/>
+	<ScriptValueStr Key="GameTalkTxt8" Value="青山不改，绿水长流，兄台，改日再战"/>
+	<ScriptValueStr Key="GameTalkTxt9" Value="东风吹战鼓擂，乌龟怕铁锤"/>
+	
+ 	<ScriptValueStr Key="TLJGameTalkTxt0" Value="什么烂牌真是红颜多搏命"/>
+	<ScriptValueStr Key="TLJGameTalkTxt1" Value="你敢下我就敢跟"/>
+	<ScriptValueStr Key="TLJGameTalkTxt2" Value="做人别太要强胆子小就别跟了"/>
+	<ScriptValueStr Key="TLJGameTalkTxt3" Value="别想了果断点跟我全压了吧"/>
+	<ScriptValueStr Key="TLJGameTalkTxt4" Value="快点吧我等的花都谢了"/>
+	<ScriptValueStr Key="TLJGameTalkTxt5" Value="别赢了就向走 我们决战到天亮"/>
+	<ScriptValueStr Key="TLJGameTalkTxt6" Value="我要走了下次玩吧"/>
+	<ScriptValueStr Key="TLJGameTalkTxt7" Value="今天心情好赢的真不少"/>
+	<ScriptValueStr Key="TLJGameTalkTxt8" Value="今天运气真差我是认栽了"/>
+	<ScriptValueStr Key="TLJGameTalkTxt9" Value="太不公平了你的牌为什么总是那么好"/>
+
+	<ScriptValueStr Key="GPHomeSpeakerTxt" Value="聪聪棋牌，欢迎您的到来！"/>
+    	<ScriptValueStr Key="GameGold" Value="金币"/>
+        	<ScriptValueStr Key="GameAddGold" Value="用户充值金币"/>
+	<!--<ScriptValueStr Key="GameTalkTxt9" Value="怎么又断线了啊，网络怎么这么差啊"/>
+	
+	<ScriptValueStr Key="GameTalkTxt0" Value=""/>
+	<ScriptValueStr Key="GameTalkTxt1" Value="快点出牌啊"/>
+	<ScriptValueStr Key="GameTalkTxt2" Value="遇到叼神了"/>
+	<ScriptValueStr Key="GameTalkTxt3" Value="必须点个赞"/>
+	<ScriptValueStr Key="GameTalkTxt4" Value="打张牌来碰嘛"/>
+	<ScriptValueStr Key="GameTalkTxt5" Value="麻将有首歌，上碰下自摸"/>
+	<ScriptValueStr Key="GameTalkTxt6" Value="想哭都哭不出来"/>
+	<ScriptValueStr Key="GameTalkTxt7" Value="套路好深哦"/>
+	<ScriptValueStr Key="GameTalkTxt8" Value="这牌太漂亮了"/>
+	<ScriptValueStr Key="GameTalkTxt9" Value="我已经抑制不住我的洪荒之力了"/> -->
+ </root>
+ 

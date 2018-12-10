@@ -1,0 +1,18 @@
+﻿ <root>
+	<ScriptValueFloat Key="UseWidth" Value="1280"/>
+	<ScriptValueFloat Key="UseHeight" Value="720"/>
+	<!-- <ScriptValueStr Key="address" Value="39.108.94.75"/>  -->
+	<!-- <ScriptValueStr Key="address" Value="120.26.165.100"/> -->
+	<!-- <ScriptValueStr Key="address" Value="192.168.199.179"/>-->
+	<ScriptValueStr Key="address" Value="127.0.0.1"/>
+	<!--192.168.0.125"123.57.77.152""120.27.37.222""192.168.0.180"/> "115.28.51.173"  "115.28.51.173"-->
+	<ScriptValueInt Key="Port" Value="8300"/><!--"8300"-->
+	<ScriptValueStr Key="Host" Value=""/><!-- 123.57.77.152  115.28.201.146 Script/HNMJ/GameScence.xml-->
+	<ScriptValueStr Key="PCImei" Value="17"/>
+	
+	<ScriptValueStr Key="UITest" Value=""/>
+	<ScriptValueInt Key="UITestMaskAple" Value="150"/>
+	
+	<ScriptValueInt Key="GameType" Value="1"/>
+	
+ </root>

@@ -1,0 +1,25 @@
+ <root>
+	<WidgetNode Name="TLJ_RecordControllerSkin">
+		<Property Key="Size" Value="476 106"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<WidgetImagic Name="" TextureInfo="Game/TLJ/RecordController/RecordController_Background.png">
+			<Property Key="Pos" Value="235 53"/>
+		</WidgetImagic>
+		<WidgetButton Name="TLJ_RecordController_BackStep" NomalTexture="Game/TLJ/RecordController/Button_BackStep.png" PressTexture="AutoPress">
+			<Property Key="Pos" Value="60 53"/>
+		</WidgetButton>
+		<WidgetButton Name="TLJ_RecordController_Stop" NomalTexture="Game/TLJ/RecordController/Button_Stop.png" PressTexture="AutoPress">
+			<Property Key="Pos" Value="175 53"/>
+		</WidgetButton>
+		<WidgetButton Name="TLJ_RecordController_Play" NomalTexture="Game/TLJ/RecordController/Button_Play.png" PressTexture="AutoPress">
+			<Property Key="Pos" Value="175 53"/>
+			<Property Key="Visible" Value="false"/>
+		</WidgetButton>
+		<WidgetButton Name="TLJ_RecordController_AddStep" NomalTexture="Game/TLJ/RecordController/Button_AddStep.png" PressTexture="AutoPress">
+			<Property Key="Pos" Value="290 53"/>
+		</WidgetButton>	
+		<WidgetButton Name="TLJ_RecordController_Exit" NomalTexture="Game/TLJ/RecordController/Button_Exit.png" PressTexture="AutoPress">
+			<Property Key="Pos" Value="400 53"/>
+		</WidgetButton>			
+	</WidgetNode>
+ </root>

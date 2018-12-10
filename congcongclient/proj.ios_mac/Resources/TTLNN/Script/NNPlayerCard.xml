@@ -1,0 +1,106 @@
+<LoadSkin Skin="TTLNN/Script/NNPlayerCardSkin.xml"/>
+
+<Widget Name="PlayerCard_0" SkinTempName="PlayerCardNode_Self">
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="Pos" Value="640 80"/>
+</Widget>
+
+<Widget Name="PlayerCard_1" SkinTempName="PlayerCardNode_Other">
+	<Property Key="Scale" Value="0.5"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="Pos" Value="860 360"/>
+</Widget>
+
+<Widget Name="PlayerCard_2" SkinTempName="PlayerCardNode_Other">
+<Property Key="Scale" Value="0.5"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="Pos" Value="955 525"/>
+</Widget>
+
+<Widget Name="PlayerCard_3" SkinTempName="PlayerCardNode_Other">
+<Property Key="Scale" Value="0.5"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="Pos" Value="355 525"/>
+</Widget>
+
+<Widget Name="PlayerCard_4" SkinTempName="PlayerCardNode_Other">
+<Property Key="Scale" Value="0.5"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="Pos" Value="385 420"/>
+</Widget>
+
+<Widget Name="PlayerCard_5" SkinTempName="PlayerCardNode_Other">
+<Property Key="Scale" Value="0.5"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="Pos" Value="355 250"/>
+</Widget>
+
+<Widget Name="PlayerCardResultNone_0" SkinTempName="PlayerCardNode_Other">
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="Pos" Value="640 80"/>
+</Widget>
+
+<Widget Name="PlayerCardResultNone_1" SkinTempName="PlayerCardNode_Other">
+	<Property Key="Scale" Value="0.5"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="Pos" Value="860 360"/>
+</Widget>
+
+<Widget Name="PlayerCardResultNone_2" SkinTempName="PlayerCardNode_Other">
+<Property Key="Scale" Value="0.5"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="Pos" Value="955 525"/>
+</Widget>
+
+<Widget Name="PlayerCardResultNone_3" SkinTempName="PlayerCardNode_Other">
+<Property Key="Scale" Value="0.5"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="Pos" Value="355 525"/>
+</Widget>
+
+<Widget Name="PlayerCardResultNone_4" SkinTempName="PlayerCardNode_Other">
+<Property Key="Scale" Value="0.5"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="Pos" Value="385 420"/>
+</Widget>
+
+<Widget Name="PlayerCardResultNone_5" SkinTempName="PlayerCardNode_Other">
+<Property Key="Scale" Value="0.5"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="Pos" Value="355 250"/>
+</Widget>
+
+<Widget Name="PlayerCardResultHasNiu_0" SkinTempName="PlayerCardNode_SpiltResult">
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="Pos" Value="640 80"/>
+</Widget>
+
+<Widget Name="PlayerCardResultHasNiu_1" SkinTempName="PlayerCardNode_SpiltResult">
+	<Property Key="Scale" Value="0.5"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="Pos" Value="860 360"/>
+</Widget>
+
+<Widget Name="PlayerCardResultHasNiu_2" SkinTempName="PlayerCardNode_SpiltResult">
+<Property Key="Scale" Value="0.5"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="Pos" Value="955 525"/>
+</Widget>
+
+<Widget Name="PlayerCardResultHasNiu_3" SkinTempName="PlayerCardNode_SpiltResult">
+<Property Key="Scale" Value="0.5"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="Pos" Value="355 525"/>
+</Widget>
+
+<Widget Name="PlayerCardResultHasNiu_4" SkinTempName="PlayerCardNode_SpiltResult">
+<Property Key="Scale" Value="0.5"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="Pos" Value="385 420"/>
+</Widget>
+
+<Widget Name="PlayerCardResultHasNiu_5" SkinTempName="PlayerCardNode_SpiltResult">
+<Property Key="Scale" Value="0.5"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="Pos" Value="355 250"/>
+</Widget>

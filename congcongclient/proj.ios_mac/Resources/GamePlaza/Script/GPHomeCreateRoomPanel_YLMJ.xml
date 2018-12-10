@@ -1,0 +1,103 @@
+<Widget Name="" SkinTempName="Empty">
+	<LoadSkin Skin="GamePlaza/Script/GPHomeCreateRoomPanel_YLMJSkin.xml"/>
+	<Widget Name="" SkinTempName="BtnFullEmpty"/>
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/YLMJ/CreateRoom_Background.png"/>
+		<Property Key="Pos" Value="640 360"/>
+	</Widget>
+	
+	<!-- 低分 -->
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/YLMJ/CreateRoom_MinScore.png"/>
+		<Property Key="Pos" Value="665 535"/>
+	</Widget>
+	<Widget Name="CreateRoom_ButtonSub_Score" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/YLMJ/CreateRoom_ButtonSub.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="750 535"/>
+	</Widget>
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/YLMJ/CreateRoom_NumberBorder.png"/>
+		<Property Key="Pos" Value="850 535"/>
+	</Widget>
+	<Widget Name="CreateRoom_GameScore" SkinTempName="TxtEmpty">
+		<Property Key="Font" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="45"/>
+		<Property Key="ShowTxt" Value="5"/>
+		<Property Key="Pos" Value="850 535"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="Color" Value="139 69 19"/>
+	</Widget>
+	<Widget Name="CreateRoom_ButtonAdd_Score" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/YLMJ/CreateRoom_ButtonAdd.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="948 535"/>
+	</Widget>
+	
+	<!-- 局数 -->
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/YLMJ/CreateRoom_GameCount.png"/>
+		<Property Key="Pos" Value="665 480"/>
+	</Widget>
+	<Widget Name="CreateRoom_ButtonSub_Game" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/YLMJ/CreateRoom_ButtonSub.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="750 480"/>
+	</Widget>
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/YLMJ/CreateRoom_NumberBorder.png"/>
+		<Property Key="Pos" Value="850 480"/>
+	</Widget>
+	<Widget Name="CreateRoom_GameCount" SkinTempName="TxtEmpty">
+		<Property Key="Font" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="45"/>
+		<Property Key="ShowTxt" Value="4"/>
+		<Property Key="Pos" Value="850 480"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="Color" Value="139 69 19"/>
+	</Widget>
+	<Widget Name="CreateRoom_ButtonAdd_Game" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/YLMJ/CreateRoom_ButtonAdd.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="948 480"/>
+	</Widget>
+	
+	<!-- 模式 -->
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/YLMJ/CreateRoom_GameMode.png"/>
+		<Property Key="Pos" Value="690 395"/>
+	</Widget>
+	<Widget Name="CreateRoom_ModeResultNode" SkinTempName="CreateRoom_YLMJ_ModeResultSkin">
+		<Property Key="Pos" Value="840 395"/>
+	</Widget>
+	<Widget Name="CreateRoom_ModeSelectNode" SkinTempName="CreateRoom_YLMJ_ModeSelectSkin">
+		<Property Key="Pos" Value="840 380"/>
+		<Property Key="Visible" Value="false"/>
+	</Widget>
+	
+	<!-- 玩法 -->
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/YLMJ/CreateRoom_GameRule.png"/>
+		<Property Key="Pos" Value="690 312"/>
+	</Widget>
+	<Widget Name="CreateRoom_RuleResultNode" SkinTempName="CreateRoom_YLMJ_RuleResultSkin">
+		<Property Key="Pos" Value="840 312"/>
+	</Widget>
+	<Widget Name="CreateRoom_RuleSelectNode" SkinTempName="CreateRoom_YLMJ_RuleSelectSkin">
+		<Property Key="Pos" Value="840 280"/>
+		<Property Key="Visible" Value="false"/>
+	</Widget>
+	
+	
+	<Widget Name="CreateRoom_ButtonClose" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/YLMJ/CreateRoom_ButtonClose.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="1030 625"/>
+	</Widget>
+	
+	<Widget Name="CreateRoom_ButtonConfirm" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/YLMJ/CreateRoom_ButtonConfirm.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="840 205"/>
+	</Widget>
+</Widget>

@@ -1,0 +1,46 @@
+<root>
+	<WidgetList Name="HelpContentSkin">
+		<Property Key="Direction" Value="1"/>	
+		<Property Key="HideBack" Value=""/>
+	</WidgetList>
+	
+	<WidgetNodeUI Name="HelpContentSkin_0">
+		<Property Key="Size" Value="850 2267"/>
+		<Property Key="AnchorPos" Value="0 1"/>
+		<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/HelpPanel/Help_Content_0.png">
+			<Property Key="AnchorPos" Value="0 0"/>
+		</WidgetImagic>
+	</WidgetNodeUI>
+	
+	<WidgetNodeUI Name="HelpContentSkin_1">
+		<Property Key="Size" Value="850 2267"/>
+		<Property Key="AnchorPos" Value="0 1"/>
+		<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/HelpPanel/Help_Content_1.png">
+			<Property Key="AnchorPos" Value="0 0"/>
+		</WidgetImagic>
+	</WidgetNodeUI>
+	
+	<WidgetNodeUI Name="HelpContentSkin_2">
+		<Property Key="Size" Value="850 345"/>
+		<Property Key="AnchorPos" Value="0 1"/>
+		<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/HelpPanel/Help_Content_0.png">
+			<Property Key="AnchorPos" Value="0 0"/>
+		</WidgetImagic>
+	</WidgetNodeUI>
+	
+	<WidgetNodeUI Name="HelpContentSkin_3">
+		<Property Key="Size" Value="850 345"/>
+		<Property Key="AnchorPos" Value="0 1"/>
+		<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/HelpPanel/Help_Content_1.png">
+			<Property Key="AnchorPos" Value="0 0"/>
+		</WidgetImagic>
+	</WidgetNodeUI>
+	
+	<WidgetNodeUI Name="HelpContentSkin_4">
+		<Property Key="Size" Value="850 345"/>
+		<Property Key="AnchorPos" Value="0 1"/>
+		<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/HelpPanel/Help_Content_0.png">
+			<Property Key="AnchorPos" Value="0 0"/>
+		</WidgetImagic>
+	</WidgetNodeUI>
+</root>

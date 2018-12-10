@@ -1,0 +1,26 @@
+<root>
+<LoadSkin Skin="GameSRLF/xml/SRLFRoomDetailSkin.xml"/>
+<Widget Name="" SkinTempName="BtnFullEmpty"/>
+<Widget Name="" SkinTempName="ImagicEmpty">
+	<Property Key="ImagicTexture" Value="GameSRLF/DetailInfo/background.png"/>
+	<Property Key="Pos" Value="640 360"/>
+	<Proprety Key="AnchorPos" Value="0.5 0.5"/>
+</Widget>
+
+<Widget Name="" SkinTempName="ImagicEmpty">
+	<Property Key="ImagicTexture" Value="TTLNN/RoomDetail/listViewBg.png"/>
+	<Property Key="Pos" Value="640 360"/>
+	<Proprety Key="AnchorPos" Value="0.5 0.5"/>
+</Widget>
+
+<Widget Name="NNOperator_ButtonClose" SkinTempName="ButtonEmpty">
+	<Property Key="NomalTexture" Value="TTLNN/RoomDetail/btn_close.png"/>
+	<Property Key="PressTexture" Value="AutoPress"/>
+	<Property Key="Pos" Value="1156 621"/>
+</Widget>
+
+<Widget Name="NNOperateHelpListView" SkinTempName="SRLFHelpContentList">
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="Pos" Value="640 360"/>
+</Widget>
+</root>

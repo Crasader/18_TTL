@@ -1,0 +1,38 @@
+<Widget Name="" SkinTempName="Empty">
+	<Property Key="Size" Value="542 500"/>
+	<Property Key="Pos" Value="128 30"/>
+	<Property Key="AnchorPos" Value="0 0"/>
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/RankPanel/Rank_Background.png"/>
+		<Property Key="Pos" Value="271 250"/>
+	</Widget>
+	
+	<Widget Name="Rank_Button_0" SkinTempName="public_CheckBox">
+		<UserInfo Key="Index" Value="0"/>
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/RankPanel/Rank_ButtonTuHaoNormal.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/RankPanel/Rank_ButtonTuHaoChecked.png"/>
+		<Property Key="Checked" Value="true"/>
+		<Property Key="Pos" Value="128 460"/>
+	</Widget>
+	
+	<Widget Name="Rank_Button_1" SkinTempName="public_CheckBox">
+		<UserInfo Key="Index" Value="1"/>
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/RankPanel/Rank_ButtonRicherNormal.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/RankPanel/Rank_ButtonRicherChecked.png"/>
+		<Property Key="Checked" Value="true"/>
+		<Property Key="Pos" Value="271 460"/>
+	</Widget>
+	
+	<Widget Name="Rank_Button_2" SkinTempName="public_CheckBox">
+		<UserInfo Key="Index" Value="2"/>
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/RankPanel/Rank_ButtonMJGodNormal.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/RankPanel/Rank_ButtonMJGodChecked.png"/>
+		<Property Key="Pos" Value="414 460"/>
+	</Widget>
+
+	<Widget Name="Rank_Button_Close" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Button_GAHTER.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="500 460"/>
+	</Widget>
+</Widget>

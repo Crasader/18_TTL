@@ -1,0 +1,8 @@
+﻿ <root>
+	<WidgetNodeUI Name="HelpListItem">
+		<Property Key="Size" Value="1035 760"/>
+		<WidgetImagic Name="" TextureInfo="HelpScence/guize_ziti.png">
+			<Property Key="Pos" Value="510 385"/>
+		</WidgetImagic>
+	</WidgetNodeUI>
+ </root>

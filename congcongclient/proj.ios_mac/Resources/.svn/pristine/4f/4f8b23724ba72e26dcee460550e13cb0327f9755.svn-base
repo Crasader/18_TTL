@@ -1,0 +1,25 @@
+<root>
+	<LoadSkin Skin="GamePlaza/Script/GPHomeRaidersSkin.xml"/>
+	<Widget Name="" SkinTempName="Empty">
+		<Widget SkinTempName="BtnFullEmpty"/>
+		
+		<Widget Name="" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/RaidersPanel/background.png"/>
+			<Property Key="Pos" Value="667 375"/>
+		</Widget>
+		
+		<Widget Name="Button_Close" SkinTempName="ButtonEmpty">
+			<Property Key="NomalTexture" Value="GamePlaza/HomeScene/RaidersPanel/Button_Close.png"/>
+			<Property Key="PressTexture" Value="AutoPress"/>
+			<Property Key="Pos" Value="1100 650"/>
+		</Widget>
+		
+		<Widget Name="" SkinTempName="List">
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Pos" Value="667 340"/>
+			<Property Key="Size" Value="820 430"/>
+			<Property Key="HideBack" Value=""/>
+			<Widget SkinTempName="RaidersContent"/>
+		</Widget>
+	</Widget>
+</root>

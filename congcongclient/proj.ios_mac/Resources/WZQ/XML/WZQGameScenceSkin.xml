@@ -1,0 +1,206 @@
+﻿ <root>
+ 	<WidgetEdit Name="EditEmpty" BackTexture="WZQ/Shuru.png" Size="264 55" ShowTxt="设置学费">
+		<Property Key="FontSize" Value="32"/>
+	</WidgetEdit>
+
+	<WidgetNode Name="SRLF_PLAYER_HEAD" >
+		<EmptyAction Name="Start" SaveAction="true">
+			<MoveTo Time="1.0" Pos="Key:DestPos">
+			</MoveTo>
+			<ScaleTo Time="1.0" Scale="0.7">
+			</ScaleTo>
+		</EmptyAction>
+		<EmptyAction Name="End" SaveAction="true">
+			<SetPos Pos="Key:SrcPos">
+			</SetPos>
+			<SetScale Scale="1">
+			</SetScale>
+		</EmptyAction>
+		
+		<EmptyAction Name="StartNoTime" SaveAction="true">
+			<SetPos Pos="Key:DestPos">
+			</SetPos>
+			<SetScale Time="1.0" Scale="0.7">
+			</SetScale>
+		</EmptyAction>
+	
+		<WidgetImagic Name="HeadImagicEmpty" TextureInfo="GameSRLF/HeadImagic.png">
+			<Property Key="Pos" Value="-0.5 -2"/>
+			<Property Key="Visible" Value="false"/>
+		</WidgetImagic>
+		<WidgetImagic Name="HeadImagic" TextureInfo="Head/Head0.png">
+			<Property Key="Pos" Value="0 0"/>
+			<Property Key="Scale" Value="0.7"/>
+		</WidgetImagic>
+		
+		
+		<WidgetButton Name="ButtonPlayerHeadClick" NomalTexture="GameSRLF/txk.png" PressTexture="AutoPress">
+			<Property Key="Scale" Value="0.7"/>
+		</WidgetButton>
+		
+		<WidgetImagic Name="Zhuang" TextureInfo="GameSRLF/zhuang.png">
+			<Property Key="Pos" Value="35 35"/>
+			<Property Key="Visible" Value="false"/>
+		</WidgetImagic>
+		<WidgetImagic Name="Offline" TextureInfo="GameSRLF/off_line_sign.png">
+			<Property Key="Pos" Value="35 35"/>
+			<Property Key="Visible" Value="false"/>
+		</WidgetImagic>
+		<WidgetTxt Name="Name" ShowTxt="名字" FontName="" FontSize="30">
+			<Property Key="Pos" Value="0 -67"/>
+			<Property Key="Color" Value="220 220 250"/>
+		</WidgetTxt>
+		<WidgetImagic Name="GoldImagic" TextureInfo="GameSRLF/GoldBack.png">
+			<Property Key="Pos" Value="30 -70"/>
+			<Property Key="Pos" Value="0 -105"/>
+			<EmptyAction Name="Start" SaveAction="true">
+				<MoveTo Time="1.0" Pos="30 -70">
+				</MoveTo>
+			</EmptyAction>
+			<EmptyAction Name="End" SaveAction="true">
+				<SetPos Pos="0 -105">
+				</SetPos>
+			</EmptyAction>
+			<WidgetTxt Name="GoldTxt" ShowTxt="100" FontName="" FontSize="30">
+				<Property Key="Pos" Value="77 17"/>
+			</WidgetTxt>
+		</WidgetImagic>
+		
+		<WidgetImagic Name="TalkFile" TextureInfo="GameSRLF/Talk/play_shenying.png">
+			<Property Key="Pos" Value="0 70"/>
+			<Property Key="Visible" Value="false"/>
+			<EmptyAction Name="Start" SaveAction="true">
+				<Visible Visible="true"/>
+				<CallAction OtherNodeName="TalkPic1" OtherActionName="Start">
+					<CallAction OtherNodeName="TalkPic2" OtherActionName="Start">
+					</CallAction>
+				</CallAction>
+				<WaiteTime Time="3.0" >
+					<Visible Visible="false"/>
+				</WaiteTime>
+			</EmptyAction>
+			<WidgetImagic Name="TalkPic1" TextureInfo="GameSRLF/Talk/play_shengyin1.png">
+				<Property Key="Pos" Value="35 18"/>
+				<EmptyAction Name="Start" SaveAction="true">
+					<Visible Visible="true" Name="Start1">
+						<WaiteTime Time="0.6" >
+							<Visible Visible="false">
+								<WaiteTime Time="0.3" >
+									<CallAction SelfActionName="Start1">
+									</CallAction>
+								</WaiteTime>
+							</Visible>
+						</WaiteTime>
+					</Visible>
+					<WaiteTime Time="3" >
+						<StopAllAction >
+						</StopAllAction>
+					</WaiteTime>
+				</EmptyAction>
+			</WidgetImagic>
+			<WidgetImagic Name="TalkPic2" TextureInfo="GameSRLF/Talk/play_shengyin2.png">
+				<Property Key="Pos" Value="45 18"/>
+				<EmptyAction Name="Start" SaveAction="true">
+					<Visible Visible="false" Name="Start1" SaveAction="">
+						<WaiteTime Time="0.3" >
+							<Visible Visible="true">
+								<WaiteTime Time="0.3" >
+									<Visible Visible="false">
+										<WaiteTime Time="0.3" >
+										<CallAction SelfActionName="Start1">
+										</CallAction>
+										</WaiteTime>
+									</Visible>
+								</WaiteTime>
+							</Visible>
+						</WaiteTime>
+					</Visible>
+					<WaiteTime Time="3" >
+						<StopAllAction >
+						</StopAllAction>
+					</WaiteTime>
+				</EmptyAction>
+			</WidgetImagic>
+		</WidgetImagic>
+		
+		<WidgetNode Name="TalkTxtNode">
+			<Property Key="Visible" Value="false"/>
+			<Widget9Sprite Name="public_9sprite" BackTexture="GameSRLF/msg_bubble_btm.png" Size="300 60">	
+				<Property Key="InsetsRect" Value="35 46 5 5"/>
+			</Widget9Sprite>
+			<WidgetLayout Name="LayoutNode">
+				<Property Key="ClippingEnabled" Value="true"/>
+				<Property Key="Size" Value="280 50"/>
+				<Property Key="Pos" Value="0 10"/>
+				<Property Key="HideBack"/>
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
+				<WidgetNode Name="">
+					<Property Key="Pos" Value="5 20"/>
+					<WidgetTxt Name="TalkTxt" ShowTxt="1000" FontName="" FontSize="35">
+						<Property Key="ShowTxt" Value="TalkTxt"/>
+						<Property Key="AnchorPos" Value="0 0.5"/>
+						<Property Key="Color" Value="137 53 25"/>
+					</WidgetTxt>
+				</WidgetNode>
+			</WidgetLayout>
+		</WidgetNode>
+		
+		<WidgetNode Name="BiaoQingNode">
+			<Property Key="Visible" Value="false"/>
+			<WidgetImagic Name="BiaoQingPic" TextureInfo="GameSRLF/Talk/EE5.png">
+			</WidgetImagic>
+		</WidgetNode>
+		
+		<WidgetTxtAtlas Name="AddGoldTxtWin" Texture="GameSRLF/room66_n.png" ShowTxt="0" Width="63" Height="93" StartChar="43">
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Visible" Value="false"/>
+			<Visible Visible="true" Name="Start" SaveAction="true">
+				<WaiteTime Time="4" >
+					<Visible Visible="false">
+						<MoveBy Time="0.01" Pos="0 -60">
+						</MoveBy>
+					</Visible>
+				</WaiteTime>
+				<MoveBy Time="0.5" Pos="0 60">
+				</MoveBy>
+			</Visible>
+			
+		</WidgetTxtAtlas>
+		
+		<WidgetTxtAtlas Name="AddGoldTxtLose" Texture="GameSRLF/room66_s.png" ShowTxt="0" Width="63" Height="93" StartChar="43">
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Visible" Value="false"/>
+			<Visible Visible="true" Name="Start" SaveAction="true">
+				<WaiteTime Time="4" >
+					<Visible Visible="false">
+						<MoveBy Time="0.01" Pos="0 -60">
+						</MoveBy>
+					</Visible>
+				</WaiteTime>
+				<MoveBy Time="0.5" Pos="0 60">
+				</MoveBy>
+			</Visible>
+		</WidgetTxtAtlas>
+		
+		
+	</WidgetNode>
+
+
+	<WidgetNode Name="SRLFPlayerStatusNode">
+		<WidgetImagic Name="ReadyState" TextureInfo="GameSRLF/Status_Ready.png">
+			<UserInfo Key="Ready" Value="GameSRLF/Status_Ready.png"/>
+			<UserInfo Key="ZiMo" Value="GameSRLF/Status_ZiMo.png"/>
+			<UserInfo Key="Hu" Value="GameSRLF/Status_Hu.png"/>
+		</WidgetImagic>
+		<WidgetImagic Name="EffectImagic" TextureInfo="GameSRLF/Status_Ready.png">
+			<UserInfo Key="Hu" Value="GameSRLF/Effect_Hu.png"/>
+			<Property Key="Visible" Value="false"/>
+			<Visible Visible="true" Name="Start" SaveAction="true">
+				<WaiteTime Time="4" >
+					<Visible Visible="false">
+					</Visible>
+				</WaiteTime>
+			</Visible>
+		</WidgetImagic>
+	</WidgetNode>
+ </root>

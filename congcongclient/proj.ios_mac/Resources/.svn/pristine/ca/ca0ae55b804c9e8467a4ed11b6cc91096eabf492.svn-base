@@ -1,0 +1,395 @@
+<Widget Name="" SkinTempName="Empty">
+	<Widget Name="" SkinTempName="BtnFullEmpty"/>
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/Createfang.png"/>
+		<Property Key="Pos" Value="640 360"/>
+	</Widget>	
+	<!-- 低分 -->
+	<!-- <Widget Name="CreateRoom_ButtonSub_Score" SkinTempName="ButtonEmpty"> -->
+		<!-- <Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/CreateRoom_ButtonSub.png"/> -->
+		<!-- <Property Key="PressTexture" Value="AutoPress"/> -->
+		<!-- <Property Key="Pos" Value="430 475"/> -->
+	<!-- </Widget> -->
+	
+	<!-- <Widget Name="CreateRoom_GameScore" SkinTempName="TxtEmpty"> -->
+		<!-- <Property Key="Font" Value="public/text.ttf"/> -->
+		<!-- <Property Key="FontSize" Value="45"/> -->
+		<!-- <Property Key="ShowTxt" Value="5"/> -->
+		<!-- <Property Key="Pos" Value="530 477"/> -->
+		<!-- <Property Key="AnchorPos" Value="0.5 0.5"/> -->
+		<!-- <Property Key="Color" Value="255 255 255"/> -->
+	<!-- </Widget> -->
+	<!-- <Widget Name="CreateRoom_ButtonAdd_Score" SkinTempName="ButtonEmpty"> -->
+		<!-- <Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/CreateRoom_ButtonAdd.png"/> -->
+		<!-- <Property Key="PressTexture" Value="AutoPress"/> -->
+		<!-- <Property Key="Pos" Value="635 475"/> -->
+	<!-- </Widget> -->
+	
+	<!-- <!-- 局数 --> -->
+	<!-- <Widget Name="CreateRoom_ButtonSub_Game" SkinTempName="ButtonEmpty"> -->
+		<!-- <Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/CreateRoom_ButtonSub.png"/> -->
+		<!-- <Property Key="PressTexture" Value="AutoPress"/> -->
+		<!-- <Property Key="Pos" Value="430 410"/> -->
+	<!-- </Widget> -->
+
+	<!-- <Widget Name="CreateRoom_GameCount" SkinTempName="TxtEmpty"> -->
+		<!-- <Property Key="Font" Value="public/text.ttf"/> -->
+		<!-- <Property Key="FontSize" Value="45"/> -->
+		<!-- <Property Key="ShowTxt" Value="4"/> -->
+		<!-- <Property Key="Pos" Value="530 408"/> -->
+		<!-- <Property Key="AnchorPos" Value="0.5 0.5"/> -->
+		<!-- <Property Key="Color" Value="255 255 255"/> -->
+	<!-- </Widget> -->
+	<!-- <Widget Name="CreateRoom_ButtonAdd_Game" SkinTempName="ButtonEmpty"> -->
+		<!-- <Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/CreateRoom_ButtonAdd.png"/> -->
+		<!-- <Property Key="PressTexture" Value="AutoPress"/> -->
+		<!-- <Property Key="Pos" Value="635 410"/> -->
+	<!-- </Widget> -->
+	
+	<!-- <!-- 模式 --> -->
+	
+	
+	<!-- <!-- 玩法 --> -->
+
+	<Widget Name="CreateRoom_ButtonClose" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/Close.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="1084 600"/>
+	</Widget>
+	
+	<!-- <Widget Name="CreateRoom_XZDD" SkinTempName="ButtonEmpty"> -->
+		<!-- <Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/CreateRoom_XZDD.png"/> -->
+		<!-- <Property Key="PressTexture" Value="AutoPress"/> -->
+		<!-- <Property Key="Pos" Value="900 180"/> -->
+	<!-- </Widget> -->
+		
+		<!-- <Widget Name="" SkinTempName="ImagicEmpty"> -->
+			<!-- <Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/create_room_titlebg.png"/> -->
+			<!-- <Property Key="Pos" Value="640 670"/> -->
+		<!-- </Widget> -->
+		<!-- <Widget SkinTempName="TxtEmpty"> -->
+			<!-- <Property Key="FontSize" Value="50"/> -->
+			<!-- <Property Key="ShowTxt" Value="四川麻将"/> -->
+			<!-- <Property Key="Pos" Value="640 675"/> -->
+			<!-- <Property Key="Color" Value="250 250 0"/> -->
+			<!-- <Property Key="OutLine" Value="0 0 0 0"/> -->
+		<!-- </Widget> -->
+		
+		<Widget Name="Plane" SkinTempName="Empty">
+			<!-- <Widget Name="" SkinTempName="ImagicEmpty"> -->
+				<!-- <Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/select_round.png"/> -->
+				<!-- <Property Key="Pos" Value="310 460"/> -->
+			<!-- </Widget> -->
+			
+			<!-- <Widget Name="" SkinTempName="ImagicEmpty"> -->
+				<!-- <Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/select_play.png"/> -->
+				<!-- <Property Key="Pos" Value="310 310"/> -->
+			<!-- </Widget> -->
+			<!-- <Widget  SkinTempName="Empty"> -->
+			<Widget Name="" SkinTempName="TxtEmpty">
+				<Property Key="FontSize" Value="26"/>
+				<Property Key="ShowTxt" Value="模式:"/>
+				<Property Key="Pos" Value="415 516"/>
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
+				<Property Key="Color" Value="0 0 0"/>
+			</Widget>
+			<Widget Name="" SkinTempName="TxtEmpty">
+				<Property Key="FontSize" Value="26"/>
+				<Property Key="ShowTxt" Value="封顶:"/>
+				<Property Key="Pos" Value="415 223"/>
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
+				<Property Key="Color" Value="0 0 0"/>
+			</Widget>
+			
+			<!-- <Widget Name="" SkinTempName="Empty"> -->
+				<!-- <Property Key="Pos" Value="281 504"/> -->
+				<!-- <Widget Name="Button_GameRule0" SkinTempName="public_CheckBox"> -->
+					<!-- <Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/xuezhan2.png"/> -->
+					<!-- <Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/xuezhan1.png"/> -->
+					<!-- <UserInfo Key="Idex" Value="2"/> -->
+				<!-- </Widget> -->
+			<!-- </Widget> -->
+			<Widget Name="" SkinTempName="Empty">
+				<Property Key="Pos" Value="281 442"/>
+				<Widget Name="Button_GameRule1" SkinTempName="public_CheckBox">	
+					<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/xuezhan4.png"/>
+					<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/xuezhan3.png"/>
+					<UserInfo Key="Idex" Value="3"/>
+				</Widget>
+			</Widget>
+			
+			<!-- x详细规则 -->
+			<Widget Name="name1" SkinTempName="Empty">
+				<Property Key="Pos" Value="466 515"/>
+				<Widget Name="Button_PrivatePlayGZMX0" SkinTempName="public_CheckBox">
+					<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/nochange.png"/>
+					<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/change.png"/>
+					<UserInfo Key="Idex" Value="0"/>
+				</Widget>
+				<Widget SkinTempName="TxtEmpty">
+					<Property Key="FontSize" Value="26"/>
+					<Property Key="ShowTxt" Value="换三张"/>
+					<Property Key="Pos" Value="20 0"/>
+					<Property Key="AnchorPos" Value="0 0.5"/>
+					<Property Key="Color" Value="0 0 0"/>
+				</Widget>
+			</Widget>
+			
+			<Widget Name="name2" SkinTempName="Empty">
+				<Property Key="Pos" Value="675 515"/>
+				<Widget Name="Button_PrivatePlayGZMX1" SkinTempName="public_CheckBox">
+					<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/nochange.png"/>
+					<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/change.png"/>
+					<UserInfo Key="Idex" Value="1"/>
+				</Widget>
+				<Widget SkinTempName="TxtEmpty">
+					<Property Key="FontSize" Value="26"/>
+					<Property Key="ShowTxt" Value="呼叫转移"/>
+					<Property Key="Pos" Value="20 0"/>
+					<Property Key="AnchorPos" Value="0 0.5"/>
+					<Property Key="Color" Value="0 0 0"/>
+				</Widget>
+			</Widget>
+			
+			<Widget Name="name3" SkinTempName="Empty">
+				<Property Key="Pos" Value="466 465"/>
+				<Widget Name="Button_PrivatePlayGZMX2" SkinTempName="public_CheckBox">
+					<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/nochange.png"/>
+					<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/change.png"/>
+					<UserInfo Key="Idex" Value="2"/>
+				</Widget>
+				<Widget SkinTempName="TxtEmpty">
+					<Property Key="FontSize" Value="26"/>
+					<Property Key="ShowTxt" Value="自摸不加倍"/>
+					<Property Key="Pos" Value="20 0"/>
+					<Property Key="AnchorPos" Value="0 0.5"/>
+					<Property Key="Color" Value="0 0 0"/>
+				</Widget>
+			</Widget>
+			
+			<Widget Name="name4" SkinTempName="Empty">
+				<Property Key="Pos" Value="675 465"/>
+				<Widget Name="Button_PrivatePlayGZMX3" SkinTempName="public_CheckBox">
+					<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/nochange.png"/>
+					<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/change.png"/>
+					<UserInfo Key="Idex" Value="3"/>
+				</Widget>
+				<Widget SkinTempName="TxtEmpty">
+					<Property Key="FontSize" Value="26"/>
+					<Property Key="ShowTxt" Value="自摸加底"/>
+					<Property Key="Pos" Value="20 0"/>
+					<Property Key="AnchorPos" Value="0 0.5"/>
+					<Property Key="Color" Value="0 0 0"/>
+				</Widget>
+			</Widget>
+			
+			<Widget Name="name5" SkinTempName="Empty">
+				<Property Key="Pos" Value="880 465"/>
+				<Widget Name="Button_PrivatePlayGZMX4" SkinTempName="public_CheckBox">
+					<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/nochange.png"/>
+					<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/change.png"/>
+					<UserInfo Key="Idex" Value="4"/>
+				</Widget>
+				<Widget SkinTempName="TxtEmpty">
+					<Property Key="FontSize" Value="26"/>
+					<Property Key="ShowTxt" Value="自摸加倍"/>
+					<Property Key="Pos" Value="20 0"/>
+					<Property Key="AnchorPos" Value="0 0.5"/>
+					<Property Key="Color" Value="0 0 0"/>
+				</Widget>
+			</Widget>
+			
+			<Widget Name="name6" SkinTempName="Empty">
+				<Property Key="Pos" Value="466 415"/>
+				<Widget Name="Button_PrivatePlayGZMX5" SkinTempName="public_CheckBox">
+					<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/nochange.png"/>
+					<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/change.png"/>
+					<UserInfo Key="Idex" Value="5"/>
+				</Widget>
+				<Widget SkinTempName="TxtEmpty">
+					<Property Key="FontSize" Value="26"/>
+					<Property Key="ShowTxt" Value="点杠花当自摸"/>
+					<Property Key="Pos" Value="20 0"/>
+					<Property Key="AnchorPos" Value="0 0.5"/>
+					<Property Key="Color" Value="0 0 0"/>
+				</Widget>
+			</Widget>
+			
+			<Widget Name="name7" SkinTempName="Empty">
+				<Property Key="Pos" Value="675 415"/>
+				<Widget Name="Button_PrivatePlayGZMX6" SkinTempName="public_CheckBox">
+					<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/nochange.png"/>
+					<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/change.png"/>
+					<UserInfo Key="Idex" Value="6"/>
+				</Widget>
+				<Widget SkinTempName="TxtEmpty">
+					<Property Key="FontSize" Value="26"/>
+					<Property Key="ShowTxt" Value="点杠花当放炮"/>
+					<Property Key="Pos" Value="20 0"/>
+					<Property Key="AnchorPos" Value="0 0.5"/>
+					<Property Key="Color" Value="0 0 0"/>
+				</Widget>
+			</Widget>
+			
+			<Widget Name="name8" SkinTempName="Empty">
+				<Property Key="Pos" Value="466 345"/>
+				<Widget Name="Button_PrivatePlayGZMX7" SkinTempName="public_CheckBox">
+					<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/nochange.png"/>
+					<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/change.png"/>
+					<UserInfo Key="Idex" Value="7"/>
+				</Widget>
+				<Widget SkinTempName="TxtEmpty">
+					<Property Key="FontSize" Value="26"/>
+					<Property Key="ShowTxt" Value="将对*8"/>
+					<Property Key="Pos" Value="20 0"/>
+					<Property Key="AnchorPos" Value="0 0.5"/>
+					<Property Key="Color" Value="0 0 0"/>
+				</Widget>
+			</Widget>
+			
+			<Widget Name="name9" SkinTempName="Empty">
+				<Property Key="Pos" Value="675 345"/>
+				<Widget Name="Button_PrivatePlayGZMX8" SkinTempName="public_CheckBox">
+					<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/nochange.png"/>
+					<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/change.png"/>
+					<UserInfo Key="Idex" Value="8"/>
+				</Widget>
+				<Widget SkinTempName="TxtEmpty">
+					<Property Key="FontSize" Value="26"/>
+					<Property Key="ShowTxt" Value="门清*2"/>
+					<Property Key="Pos" Value="20 0"/>
+					<Property Key="AnchorPos" Value="0 0.5"/>
+					<Property Key="Color" Value="0 0 0"/>
+				</Widget>
+			</Widget>
+			
+			<Widget Name="name10" SkinTempName="Empty">
+				<Property Key="Pos" Value="880 345"/>
+				<Widget Name="Button_PrivatePlayGZMX9" SkinTempName="public_CheckBox">
+					<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/nochange.png"/>
+					<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/change.png"/>
+					<UserInfo Key="Idex" Value="9"/>
+				</Widget>
+				<Widget SkinTempName="TxtEmpty">
+					<Property Key="FontSize" Value="26"/>
+					<Property Key="ShowTxt" Value="天地胡*32"/>
+					<Property Key="Pos" Value="20 0"/>
+					<Property Key="AnchorPos" Value="0 0.5"/>
+					<Property Key="Color" Value="0 0 0"/>
+				</Widget>
+			</Widget>
+			<!-- <倍数设置> -->
+			<Widget Name="name10" SkinTempName="Empty">
+				<Property Key="Pos" Value="466 224"/>
+				<Widget Name="Button_PrivatePlayFanbei0" SkinTempName="public_CheckBox">
+					<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/nochange.png"/>
+					<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/change.png"/>
+					<UserInfo Key="Idex" Value="0"/>
+				</Widget>
+				<Widget SkinTempName="TxtEmpty">
+					<Property Key="FontSize" Value="26"/>
+					<Property Key="ShowTxt" Value="8倍"/>
+					<Property Key="Pos" Value="20 0"/>
+					<Property Key="AnchorPos" Value="0 0.5"/>
+					<Property Key="Color" Value="0 0 0"/>
+				</Widget>
+			</Widget>
+			<Widget Name="name10" SkinTempName="Empty">
+				<Property Key="Pos" Value="675 224"/>
+				<Widget Name="Button_PrivatePlayFanbei1" SkinTempName="public_CheckBox">
+					<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/nochange.png"/>
+					<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/change.png"/>
+					<UserInfo Key="Idex" Value="1"/>
+				</Widget>
+				<Widget SkinTempName="TxtEmpty">
+					<Property Key="FontSize" Value="26"/>
+					<Property Key="ShowTxt" Value="16倍"/>
+					<Property Key="Pos" Value="20 0"/>
+					<Property Key="AnchorPos" Value="0 0.5"/>
+					<Property Key="Color" Value="0 0 0"/>
+				</Widget>
+			</Widget>
+			<Widget Name="name10" SkinTempName="Empty">
+				<Property Key="Pos" Value="880 224"/>
+				<Widget Name="Button_PrivatePlayFanbei2" SkinTempName="public_CheckBox">
+					<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/nochange.png"/>
+					<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/change.png"/>
+					<UserInfo Key="Idex" Value="2"/>
+				</Widget>
+				<Widget SkinTempName="TxtEmpty">
+					<Property Key="FontSize" Value="26"/>
+					<Property Key="ShowTxt" Value="32倍"/>
+					<Property Key="Pos" Value="20 0"/>
+					<Property Key="AnchorPos" Value="0 0.5"/>
+					<Property Key="Color" Value="0 0 0"/>
+				</Widget>
+			</Widget>
+			
+			
+			<!-- <局数设置> -->
+			<Widget Name="" SkinTempName="Empty">
+				<Property Key="Pos" Value="466 153"/>
+				<Widget Name="Button_PrivatePlayCout0" SkinTempName="public_CheckBox">
+					<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/nochange.png"/>
+					<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/change.png"/>
+					<UserInfo Key="Idex" Value="0"/>
+				</Widget>
+				<Widget SkinTempName="TxtEmpty">
+					<Property Key="FontSize" Value="26"/>
+					<Property Key="ShowTxt" Value="局数:"/>
+					<Property Key="Pos" Value="-51 0"/>
+					<Property Key="AnchorPos" Value="0.5 0.5"/>
+					<Property Key="Color" Value="0 0 0"/>
+				</Widget>
+				<Widget SkinTempName="TxtEmpty">
+					<Property Key="FontSize" Value="26"/>
+					<Property Key="ShowTxt" Value="6局"/>
+					<Property Key="Pos" Value="20 0"/>
+					<Property Key="AnchorPos" Value="0 0.5"/>
+					<Property Key="Color" Value="0 0 0"/>
+				</Widget>
+				<Widget Name="" SkinTempName="ImagicEmpty">
+					<Property Key="ImagicTexture" Value="ScenceHome/fangka.png"/>
+					<Property Key="Pos" Value="100 0"/>
+				</Widget>
+				<Widget SkinTempName="TxtEmpty">
+					<Property Key="FontSize" Value="30"/>
+					<Property Key="ShowTxt" Value="x1"/>
+					<Property Key="AnchorPos" Value="0 0.5"/>
+					<Property Key="Pos" Value="140 0"/>
+					<Property Key="Color" Value="0 0 0"/>
+				</Widget>
+			</Widget>
+			<Widget Name="" SkinTempName="Empty">
+				<Property Key="Pos" Value="675 153"/>
+				<Widget Name="Button_PrivatePlayCout1" SkinTempName="public_CheckBox">
+					<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/nochange.png"/>
+					<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/change.png"/>
+					<UserInfo Key="Idex" Value="1"/>
+				</Widget>
+				<Widget SkinTempName="TxtEmpty">
+					<Property Key="FontSize" Value="26"/>
+					<Property Key="ShowTxt" Value="12局"/>
+					<Property Key="Pos" Value="20 0"/>
+					<Property Key="AnchorPos" Value="0 0.5"/>
+					<Property Key="Color" Value="0 0 0"/>
+				</Widget>
+				<Widget Name="" SkinTempName="ImagicEmpty">
+					<Property Key="ImagicTexture" Value="ScenceHome/fangka.png"/>
+					<Property Key="Pos" Value="120 0"/>
+				</Widget>
+				<Widget SkinTempName="TxtEmpty">
+					<Property Key="FontSize" Value="30"/>
+					<Property Key="ShowTxt" Value="x2"/>
+					<Property Key="Pos" Value="180 0"/>
+					<Property Key="Color" Value="0 0 0"/>
+				</Widget>
+			</Widget>		
+			
+			<Widget Name="Button_XZCreateRoom" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XZDD/cjfj.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="980 88"/>
+			</Widget>
+		</Widget>
+	</Widget>

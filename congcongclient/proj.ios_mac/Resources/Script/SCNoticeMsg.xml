@@ -1,0 +1,64 @@
+﻿<!--  <root>
+	<Widget Name="NoticeMsgBack" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="UI/prompt_msg_bk1.png"/>
+		<Property Key="Pos" Value="640 370"/>
+		<Property Key="Visible" Value="false"/>
+		<Widget Name="NoticeMsg1" SkinTempName="TxtEmpty">
+			<Property Key="ShowTxt" Value="圣诞快乐和反抗螺丝钉好烦"/>
+			<Property Key="Pos" Value="622 56"/>
+			<Property Key="FontSize" Value="36"/>
+			<Property Key="Color" Value="15 94 153"/>
+		</Widget>
+		<Widget Name="NoticeMsg2" SkinTempName="TxtEmpty">
+			<Property Key="ShowTxt" Value="圣诞快乐和反抗螺丝钉好烦"/>
+			<Property Key="Pos" Value="620 58"/>
+			<Property Key="FontSize" Value="36"/>
+		</Widget>
+	</Widget>
+	
+	<Widget SkinTempName="Empty">
+		<Property Key="Pos" Value="640 743"/>
+		<Widget Name="TopNoticeMsgBack" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="UI/TopBack.png"/>
+			<Property Key="Visible" Value="false"/>
+			<Widget Name="TopMsg" SkinTempName="TxtEmpty">
+				<Property Key="FontSize" Value="30"/>
+				<Property Key="Pos" Value="640 23"/>
+			</Widget>
+		</Widget>
+	</Widget>
+ </root>
+ -->
+ 
+ 
+ <root>
+ 
+	<!-- <WidgetNodeUI Name="NoticeMsgBack_Panel">
+		<Property Key="Size" Value="0 0"/>
+		<WidgetImagic Name="" TextureInfo="HelpScence/guize_ziti.png">
+			<Property Key="Pos" Value="328 -160"/>
+		</WidgetImagic>
+	</WidgetNodeUI> -->
+ 
+	<Widget Name="NoticeMsgBack" SkinTempName="ImagicEmpty">
+		<Property Key="Visible" Value="false"/>
+		<Property Key="Pos" Value="640 350"/>
+		<Widget  SkinTempName="BtnFullEmpty">
+		</Widget>
+		<Widget SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="HelpScence/message.png"/>
+			<Property Key="Pos" Value="17 17"/>
+		</Widget>
+		<!-- <Widget SkinTempName="List">
+			<Property Key="Size" Value="600 300"/>
+			<Property Key="Pos" Value="-220 -160"/>
+			<Property Key="HideBack" Value=""/>
+			<Widget Name="" SkinTempName="NoticeMsgBack_Panel">
+			</Widget>
+		</Widget> -->
+		<Widget  SkinTempName="Button_Close">
+			<Property Key="Pos" Value="439 281"/>
+			<Action Key="Hide" Value="NoticeMsgBack"/>
+		</Widget>
+	</Widget>
+ </root>

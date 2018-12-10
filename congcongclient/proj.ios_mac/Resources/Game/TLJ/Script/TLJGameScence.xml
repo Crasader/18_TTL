@@ -1,0 +1,162 @@
+ <root>
+	<LoadSkin Skin="Game/TLJ/Script/TLJGameSkin.xml"/>
+	<Widget Name="GameTLJPlane" SkinTempName="Empty">
+		<!-- 背景 -->
+		<Widget Name="Buttion_Background" SkinTempName="ButtonEmpty">
+			<Property Key="NomalTexture" Value="Game/TLJ/TLJGameScene/background.png"/>
+			<Property Key="PressTexture" Value="Game/TLJ/TLJGameScene/background.png"/>
+			<Property Key="Pos" Value="640 360"/>
+		</Widget>
+		
+		<!-- 房间信息 -->
+		<!-- <Widget Name="" SkinTempName="ImagicEmpty"> -->
+			<!-- <Property Key="ImagicTexture" Value="Game/TLJ/TLJGameScene/RoomInfo.png"/> -->
+			<!-- <Property Key="Pos" Value="92 688"/> -->
+		<!-- </Widget> -->
+		<Widget Name="RoomId" SkinTempName="TxtEmpty">
+			<Property Key="FontSize" Value="24"/>
+			<Property Key="ShowTxt" Value="123456"/>
+			<Property Key="Color" Value="254 254 255"/>
+			<Property Key="Pos" Value="20 701"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+		</Widget>
+		<Widget Name="Rule1" SkinTempName="TxtEmpty">
+			<Property Key="FontSize" Value="24"/>
+			<Property Key="ShowTxt" Value="普通模式"/>
+			<Property Key="Color" Value="254 254 255"/>
+			<Property Key="Pos" Value="20 671"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Visible" Value="false"/>
+		</Widget>
+		<Widget Name="Rule2" SkinTempName="TxtEmpty">
+			<Property Key="FontSize" Value="24"/>
+			<Property Key="ShowTxt" Value="激情模式"/>
+			<Property Key="Color" Value="254 254 255"/>
+			<Property Key="Pos" Value="20 671"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Visible" Value="false"/>
+		</Widget>
+		<Widget Name="Rule3" SkinTempName="TxtEmpty">
+			<Property Key="FontSize" Value="24"/>
+			<Property Key="ShowTxt" Value="必焖三圈"/>
+			<Property Key="Color" Value="254 254 255"/>
+			<Property Key="Pos" Value="20 641"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Visible" Value="false"/>
+		</Widget>
+		
+		<Widget Name="TLJGameScene_ButtonHelp" SkinTempName="ButtonEmpty">
+			<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonHelp.png"/>
+			<Property Key="PressTexture" Value="AutoPress"/>
+			<Property Key="Pos" Value="225 677"/> 
+		</Widget>	
+
+
+		<!-- 游戏信息 -->
+		<Widget Name="" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="Game/TLJ/TLJGameScene/Bg_TLJGameInfo.png"/>
+			<Property Key="Pos" Value="640 675"/>
+		</Widget>
+		<Widget Name="TotalScore" SkinTempName="TxtEmpty">
+			<Property Key="FontSize" Value="20"/>
+			<Property Key="ShowTxt" Value="总注数:199999"/>
+			<Property Key="Color" Value="254 254 255"/>
+			<Property Key="Pos" Value="528 690"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+		</Widget>
+		<Widget Name="CurrentTurn" SkinTempName="TxtEmpty">
+			<Property Key="FontSize" Value="20"/>
+			<Property Key="ShowTxt" Value="第18/20轮"/>
+			<Property Key="Color" Value="254 254 255"/>
+			<Property Key="Pos" Value="755 690"/>
+			<Property Key="AnchorPos" Value="1 0.5"/>
+		</Widget>
+		<Widget Name="BaseScore" SkinTempName="TxtEmpty">
+			<Property Key="FontSize" Value="20"/>
+			<Property Key="ShowTxt" Value="底注:2888"/>
+			<Property Key="Color" Value="254 254 255"/>
+			<Property Key="Pos" Value="528 656"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+		</Widget>
+		<Widget Name="MaxSingleScore" SkinTempName="TxtEmpty">
+			<Property Key="FontSize" Value="20"/>
+			<Property Key="ShowTxt" Value="封顶:48888"/>
+			<Property Key="Color" Value="254 254 255"/>
+			<Property Key="Pos" Value="755 656"/>
+			<Property Key="AnchorPos" Value="1 0.5"/>
+		</Widget>
+		<!-- 顶部按钮 -->
+
+		<Widget Name="Btton_TLJ_ChongZhi" SkinTempName="ButtonEmpty">
+			<Property Key="NomalTexture" Value="GamePlaza/HomeScene/MallPanel/Btn_ChongZhi.png"/>
+			<Property Key="PressTexture" Value="AutoPress"/>
+			<Property Key="Pos" Value="1120 675"/>
+		</Widget>
+
+		
+		<Widget Name="Button_TLJ_Menu" SkinTempName="ButtonEmpty">
+			<Property Key="NomalTexture" Value="Game/TLJ/TLJGameScene/TLJGameScene_ButtonMenu.png"/>
+			<Property Key="PressTexture" Value="AutoPress"/>
+			<Property Key="Pos" Value="1220 675"/>
+		</Widget>
+		<Widget Name="TLJGameScene_MenuNode" SkinTempName="Empty">
+			<Property Key="Visible" Value="false"/>
+			<!-- <Widget Name="" SkinTempName="ImagicEmpty"> -->
+				<!-- <Property Key="ImagicTexture" Value="Game/TLJ/TLJGameScene/TLJGameScene_MenuContentBG.png"/> -->
+				<!-- <Property Key="Pos" Value="1200 520"/> -->
+				<!-- <Property Key="Scale" Value="1.5"/> -->
+			<!-- </Widget> -->
+			<Widget Name="" SkinTempName="public_9sprite">
+				<Property Key="ImagicTexture" Value="Game/TLJ/TLJGameScene/TLJGameScene_MenuContentBG.png"/>
+			<Property Key="Pos" Value="1200 560"/>
+			<Property Key="Size" Value="150 150"/>
+			</Widget>
+			<Widget Name="Button_TLJ_Leave" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="Game/TLJ/TLJGameScene/TLJGameScene_ButtonLeave.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="1200 595"/> 
+				<Property Key="Scale" Value="1.5"/>
+			</Widget>
+			<Widget Name="Button_TLJ_Setting" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="Game/TLJ/TLJGameScene/TLJGameScene_ButtonSetting.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="1200 520"/>
+				<Property Key="Scale" Value="1.5"/>
+			</Widget>
+		</Widget>
+
+		<!-- 底部按钮 -->
+		<!-- <Widget Name="Button_TLJ_Back" SkinTempName="ButtonEmpty"> -->
+			<!-- <Property Key="NomalTexture" Value="Game/TLJ/TLJGameScene/Button_Back.png"/> -->
+			<!-- <Property Key="PressTexture" Value="AutoPress"/> -->
+			<!-- <Property Key="Pos" Value="1216 664"/> -->
+		<!-- </Widget> -->
+		<Widget Name="Button_TLJ_YuYin" SkinTempName="ButtonEmpty">
+			<Property Key="NomalTexture" Value="Game/TLJ/TLJGameScene/Button_YuYin.png"/>
+			<Property Key="PressTexture" Value="AutoPress"/>
+			<Property Key="Pos" Value="1200 80"/>
+		</Widget>
+		<Widget Name="Button_TLJ_Msg" SkinTempName="ButtonEmpty">
+			<Property Key="NomalTexture" Value="Game/TLJ/TLJGameScene/Button_Msg.png"/>
+			<Property Key="PressTexture" Value="AutoPress"/>
+			<Property Key="Pos" Value="1100 80"/>
+			<Action Key="Show" Value="TLJGameTalkPlane"/>
+		</Widget>
+
+		<Widget Name="Button_Ready" SkinTempName="ButtonEmpty">
+			<Property Key="NomalTexture" Value="Game/TLJ/TLJGameScene/Button_Ready.png"/>
+			<Property Key="PressTexture" Value="AutoPress"/>
+			<Property Key="Pos" Value="640 250"/>
+		</Widget>
+
+		<Widget Name="TalkImagic" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="GameSRLF/GamePrivate/play_huatong.png"/>
+			<Property Key="Pos" Value="640 360"/>
+			<Property Key="Visible" Value="false"/>
+		</Widget>
+	
+	</Widget>
+		<!-- 聊天界面 --> 
+		<!-- <ScenceXml File="Game/TLJ/xml/GameTalkScence.xml"> -->
+		<!-- </ScenceXml> -->
+ </root>

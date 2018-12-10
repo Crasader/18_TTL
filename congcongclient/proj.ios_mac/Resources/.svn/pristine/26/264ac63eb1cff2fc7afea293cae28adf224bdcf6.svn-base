@@ -1,0 +1,21 @@
+<Widget Name="TLJPlayerPanel_Mask" SkinTempName="BtnFullEmpty">
+	<Property Key="Visible" Value="false"/>
+</Widget>
+<Widget Name="TLJPlayerNode_0" SkinTempName="TLJPlayerPanel">
+	<Property Key="Pos" Value="172 120"/>
+</Widget>
+<!-- <Widget Name="TLJPlayerNode_1" SkinTempName="TLJPlayerPanel"> -->
+	<!-- <Property Key="Pos" Value="1080 180"/> -->
+<!-- </Widget> -->
+<Widget Name="TLJPlayerNode_4" SkinTempName="TLJPlayerPanel">
+	<Property Key="Pos" Value="1198 315"/>
+</Widget>
+<Widget Name="TLJPlayerNode_3" SkinTempName="TLJPlayerPanel">
+	<Property Key="Pos" Value="1080 550"/>
+</Widget>
+<Widget Name="TLJPlayerNode_2" SkinTempName="TLJPlayerPanel">
+	<Property Key="Pos" Value="172 550"/>
+</Widget>
+<Widget Name="TLJPlayerNode_1" SkinTempName="TLJPlayerPanel">
+	<Property Key="Pos" Value="86 315"/>
+</Widget>

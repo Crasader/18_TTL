@@ -1,0 +1,29 @@
+<Widget Name="HandCardNode_0" SkinTempName="Empty">
+	<UserInfo Key="StartPos" Value="605 96"/>
+	<UserInfo Key="AddPos" Value="35 0"/>
+</Widget>
+
+<!-- <Widget Name="HandCardNode_1" SkinTempName="Empty"> -->
+	<!-- <UserInfo Key="StartPos" Value="865 212"/> -->
+	<!-- <UserInfo Key="AddPos" Value="22 0"/> -->
+<!-- </Widget> -->
+
+<Widget Name="HandCardNode_4" SkinTempName="Empty">
+	<UserInfo Key="StartPos" Value="930 310"/>
+	<UserInfo Key="AddPos" Value="35 0"/>
+</Widget>
+
+<Widget Name="HandCardNode_3" SkinTempName="Empty">
+	<UserInfo Key="StartPos" Value="875 518"/>
+	<UserInfo Key="AddPos" Value="35 0"/>
+</Widget>
+
+<Widget Name="HandCardNode_2" SkinTempName="Empty">
+	<UserInfo Key="StartPos" Value="325 518"/>
+	<UserInfo Key="AddPos" Value="35 0"/>
+</Widget>
+
+<Widget Name="HandCardNode_1" SkinTempName="Empty">
+	<UserInfo Key="StartPos" Value="261 310"/>
+	<UserInfo Key="AddPos" Value="35 0"/>
+</Widget>

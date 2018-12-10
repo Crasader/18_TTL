@@ -1,0 +1,16 @@
+<root>
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="Game/TLJ/DismissRoom/Dismiss_Background.png"/>
+		<Property Key="Pos" Value="666.5 375"/>
+	</Widget>
+	<Widget Name="DismissRoom_ButtonClose" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="Game/TLJ/DismissRoom/Dismiss_ButtonClose.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="910 525"/>
+	</Widget>
+	<Widget Name="DismissRoom_ButtonConfirm" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="Game/TLJ/DismissRoom/Dismiss_Confirm.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="666.5 300"/>
+	</Widget>
+</root>

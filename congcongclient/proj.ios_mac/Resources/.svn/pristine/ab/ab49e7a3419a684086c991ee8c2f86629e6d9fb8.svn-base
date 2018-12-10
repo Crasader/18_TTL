@@ -1,0 +1,45 @@
+<LoadSkin Skin="GamePlaza/Script/GPHomeCreateRoomPanel_SRLFSkin.xml"/>
+<Widget Name="GPHomeCreateRoomRulePanel_SRLF" SkinTempName="Empty">
+	<Property Key="Pos" Value="640 360"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Widget Name="" SkinTempName="BtnFullEmpty"/>
+	<Widget Name="Bg" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/SRLF/background.png"/>
+		<Property Key="Pos" Value="1 7"/>
+	</Widget>
+	<!--关闭房间按钮-->
+	<Widget Name="Btn_Close" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/SRLF/btn_close.png"/> 
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="445 263"/>
+		<Action key ="Hide" Value="GPHomeCreateRoomRulePanel_SRLF"/>
+	</Widget>
+
+	<!--玩家按钮-->
+	<Widget Name="Btn_PlayerMode" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/SRLF/Btn_Player_1.png"/> 
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="-361 208"/>
+		<UserInfo Key="Index" Value="2"/>
+		<UserInfo Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/SRLF/Btn_Player_1.png"/>
+		<UserInfo Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/SRLF/Btn_Player_0.png"/>
+		<!--<Action Key="Show" Value="GamePlayerListView"/>-->
+		<!--<Action Key="Hide" Value="GameCardListView"/> -->
+	</Widget>
+
+	<!--创建房间按钮-->
+	<Widget Name="Btn_RuleCreateRoom" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/SRLF/btn_chaungjain.png"/> 
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="16 -207"/>
+	</Widget>
+	<!--玩家规则-->
+	<Widget Name="GamePlayerListView" SkinTempName="List">
+		<Property Key="Size" Value="700 403"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Pos" Value="-280.00 -164"/>
+		<Widget Name="PlayerItem" SkinTempName="GamePlayerRuleListItem">
+		</Widget>
+	</Widget>
+ 
+</Widget>

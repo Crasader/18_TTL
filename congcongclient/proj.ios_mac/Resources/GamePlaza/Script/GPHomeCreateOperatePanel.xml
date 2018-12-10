@@ -1,0 +1,25 @@
+<Widget Name="" SkinTempName="Empty">
+	<Widget Name="" SkinTempName="BtnFullEmpty"/>
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateOperatePanel/background.png"/>
+		<Property Key="Pos" Value="667 375"/>
+	</Widget>
+	
+	<Widget Name="Button_CreateRoom" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateOperatePanel/Button_CreateRoom.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="460 350"/>
+	</Widget>
+	
+	<Widget Name="Button_CreateMatch" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateOperatePanel/Button_CreateMatch.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="880 350"/>
+	</Widget>
+	
+	<Widget Name="Button_Close" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateOperatePanel/Button_Close.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="1110 510"/>
+	</Widget>
+</Widget>

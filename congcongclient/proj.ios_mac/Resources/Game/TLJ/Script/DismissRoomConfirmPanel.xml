@@ -1,0 +1,25 @@
+<root>
+	<LoadSkin Skin="Game/TLJ/Script/DismissRoomConfirmPanelSkin.xml"/>
+	<Widget Name="" SkinTempName="BtnFullEmpty"/>
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="Game/TLJ/DismissRoom/Dismiss_ConfirmBackground.png"/>
+		<Property Key="Pos" Value="666.5 375"/>
+	</Widget>
+	<Widget Name="" SkinTempName="DismissConfirmSkin">
+		<Property Key="AnchorPos" Value="0 1"/>
+		<Property Key="Pos" Value="425 435"/>
+		<Property Key="Scale" Value="0.75"/>
+	</Widget>
+	
+	<Widget Name="DismissRoomConfirm_ButtonConfirm" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="Game/TLJ/DismissRoom/Dismiss_ButtonAgree.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="790 255"/>
+	</Widget>
+	
+	<Widget Name="DismissRoomConfirm_ButtonRefuse" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="Game/TLJ/DismissRoom/Dismiss_ButtonRefuse.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="543 255"/>
+	</Widget>
+</root>

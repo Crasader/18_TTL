@@ -1,0 +1,147 @@
+﻿ <root>
+ 
+	<!-- <WidgetNodeUI Name="ZhanJiListItem">
+		<Property Key="Pos" Value="0 0"/>
+		<Property Key="Size" Value="0 0"/>
+		<WidgetImagic Name="" TextureInfo="ScenceGameRecord/zhanji_list.png">
+		</WidgetImagic>
+	</WidgetNodeUI> -->
+ 
+	<WidgetNodeUI Name="GameReocrdListItem">
+		<Property Key="Size" Value="350 120"/>
+		<Property Key="Pos" Value="0 0"/>
+		<WidgetButton Name="Button_ShowTotal" NomalTexture="ScenceGameRecord/TIAO.png" PressTexture="AutoPress">
+			<!-- <Property Key="Visible" Value="false"/> -->
+			<Property Key="Pos" Value="633 60"/>
+		</WidgetButton>
+		<WidgetTxt Name="RoomNumber" ShowTxt="号房间" FontName="" FontSize="26">
+			<Property Key="Pos" Value="420 100"/>
+			<Property Key="Color" Value="139 69 19"/>
+		</WidgetTxt>
+		<WidgetTxt Name="ChallengeTime" ShowTxt="对战时间" FontName="" FontSize="26">
+			<Property Key="Pos" Value="780 100"/>
+			<Property Key="Color" Value="255 255 255"/>
+		</WidgetTxt>
+		<WidgetTxt Name="WinImagic" ShowTxt="号房间" FontName="" FontSize="26">
+		    <Property Key="Visible" Value="false"/>
+			<Property Key="Pos" Value="420 100"/>
+			<Property Key="Color" Value="139 69 19"/>
+		</WidgetTxt>
+		<WidgetTxt Name="LoseImagic" ShowTxt="对战时间" FontName="" FontSize="26">
+			<Property Key="Pos" Value="780 460"/>
+			<Property Key="Color" Value="255 255 255"/>
+			<Property Key="Visible" Value="false"/>
+		</WidgetTxt>
+		<WidgetTxt Name="RoomNum" ShowTxt="1860174" FontName="" FontSize="26">
+			<Property Key="Pos" Value="330 100"/>
+			<Property Key="Color" Value="139 69 19"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerTxt0" ShowTxt="123212" FontName="" FontSize="26">
+			<Property Key="Pos" Value="285 60"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="139 69 19"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerTxt1" ShowTxt="123212" FontName="" FontSize="26">
+			<Property Key="Pos" Value="285 30"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="139 69 19"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerTxt2" ShowTxt="123212" FontName="" FontSize="26">
+			<Property Key="Pos" Value="725 60"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="139 69 19"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerTxt3" ShowTxt="123212" FontName="" FontSize="26">
+			<Property Key="Pos" Value="725 30"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="139 69 19"/>
+		</WidgetTxt>
+		
+		<WidgetTxt Name="PlayerID0" ShowTxt="123212" FontName="" FontSize="26">
+			<Property Key="Pos" Value="420 60"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="139 69 19"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerID1" ShowTxt="123212" FontName="" FontSize="26">
+			<Property Key="Pos" Value="420 30"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="139 69 19"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerID2" ShowTxt="123212" FontName="" FontSize="26">
+			<Property Key="Pos" Value="870 60"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="139 69 19"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerID3" ShowTxt="123212" FontName="" FontSize="26">
+			<Property Key="Pos" Value="870 30"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="139 69 19"/>
+		</WidgetTxt>
+		
+		<WidgetTxt Name="PlayerScore0" ShowTxt="123212" FontName="" FontSize="26">
+			<Property Key="Pos" Value="520 60"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="139 69 19"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerScore1" ShowTxt="123212" FontName="" FontSize="26">
+			<Property Key="Pos" Value="520 30"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="139 69 19"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerScore2" ShowTxt="123212" FontName="" FontSize="26">
+			<Property Key="Pos" Value="970 60"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="139 69 19"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerScore3" ShowTxt="123212" FontName="" FontSize="26">
+			<Property Key="Pos" Value="970 30"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="139 69 19"/>
+		</WidgetTxt>
+		
+		<WidgetTxt Name="PlayTime" ShowTxt="1988:10:10" FontName="" FontSize="22">
+			<Property Key="Pos" Value="940 94"/>
+			<Property Key="Color" Value="139 69 19"/>
+		</WidgetTxt>
+	</WidgetNodeUI>
+	
+	
+	<WidgetNodeUI Name="GameReocrdTotalItem">
+		<Property Key="Size" Value="350 110"/>
+		<Widget9Sprite Name="public_9sprite" BackTexture="public/9Scale1.png" Size="1130 130">	
+		    <Property Key="Scale" Value="0.9"/>
+			<Property Key="Pos" Value="590 60"/>
+		</Widget9Sprite>
+		<WidgetTxt Name="IdexTxt" ShowTxt="0" FontName="" FontSize="30">
+			<Property Key="Pos" Value="110 60"/>
+			<Property Key="Color" Value="51 23 16"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayTime" ShowTxt="2988:10:10" FontName="" FontSize="30">
+			<Property Key="Pos" Value="178 60"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="51 23 16"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerTxt0" ShowTxt="1" FontName="" FontSize="30">
+			<Property Key="Pos" Value="430 60"/>
+			<Property Key="Color" Value="51 23 16"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerTxt1" ShowTxt="1" FontName="" FontSize="30">
+			<Property Key="Pos" Value="590 60"/>
+			<Property Key="Color" Value="51 23 16"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerTxt2" ShowTxt="1" FontName="" FontSize="30">
+			<Property Key="Pos" Value="760 60"/>
+			<Property Key="Color" Value="51 23 16"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerTxt3" ShowTxt="1" FontName="" FontSize="30">
+			<Property Key="Pos" Value="910 60"/>
+			<Property Key="Color" Value="51 23 16"/>
+		</WidgetTxt>
+		<WidgetButton Name="Button_StartGameRecord" NomalTexture="public/Button_Public.png" PressTexture="AutoPress">
+			<Property Key="FontSize" Value="40"/>
+			<Property Key="Pos" Value="1020 55"/>
+			<Property Key="Scale" Value="0.5"/>
+		</WidgetButton>
+	
+	</WidgetNodeUI>
+ </root>

@@ -1,0 +1,60 @@
+﻿ <root>
+	<LoadSkin Skin="Game/TLJ/Script/TLJGameSkin.xml"/>
+	<Widget Name="" SkinTempName="Empty">
+		<Widget Name="" SkinTempName="BtnFullEmpty"/>
+		
+		<Widget Name="" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="Game/TLJ/CalculatePanel/Bg_CalculatePanel.png"/>
+			<Property Key="Pos" Value="640 360"/>
+		</Widget>
+			
+		<Widget Name="Btn_Close" SkinTempName="ButtonEmpty">
+			<Property Key="NomalTexture" Value="Game/TLJ/CalculatePanel/Btn_Close.png"/>
+			<Property Key="PressTexture" Value="AutoPress"/>
+			<Property Key="Pos" Value="901 640"/>
+		</Widget>
+		<Widget Name="Btn_Back" SkinTempName="ButtonEmpty">
+			<Property Key="NomalTexture" Value="Game/TLJ/CalculatePanel/Btn_Back.png"/>
+			<Property Key="PressTexture" Value="AutoPress"/>
+			<Property Key="Pos" Value="760 95"/>
+		</Widget>
+		<Widget Name="Btn_Share" SkinTempName="ButtonEmpty">
+			<Property Key="NomalTexture" Value="Game/TLJ/CalculatePanel/Btn_Share.png"/>
+			<Property Key="PressTexture" Value="AutoPress"/>
+			<Property Key="Pos" Value="520 95"/>
+		</Widget>
+		
+		<Widget Name="Winner" SkinTempName="Empty">
+			<Property Key="Pos" Value="640 528"/>	
+			<!-- 头像框 -->
+			<Widget Name="" SkinTempName="ImagicEmpty">
+				<Property Key="Scale" Value="1.33"/>
+				<Property Key="ImagicTexture" Value="Game/TLJ/CalculatePanel/Bg_CalculateHead.png"/>
+			</Widget>
+			<!-- 头像 -->
+			<Widget Name="TLJCalculateHead_Avatar" SkinTempName="Empty">
+				<Property Key="Scale" Value="1.33"/>
+			</Widget>
+			<!-- 名字 -->
+			<Widget Name="Name" SkinTempName="TxtEmpty">
+				<Property Key="FontSize" Value="30"/>
+				<Property Key="ShowTxt" Value="啊哈哈"/>
+				<Property Key="Pos" Value="0 45"/>
+			</Widget>
+		</Widget>
+		
+		<!--  -->
+		<Widget Name="CalculateItemList" SkinTempName="List">
+			<Property Key="Pos" Value="425 128"/>
+			<Property Key="Size" Value="445 285"/>
+			<Property Key="Direction" Value="1"/>
+			<Property Key="HideBack" Value=""/>
+			<Property Key="Bounce" Value="false"/>
+			
+			<UserInfo Key="AddPos" Value="0 -80"/>
+			
+			<Widget Name="ListContainer" SkinTempName="CalculateItemContainer">
+			</Widget>
+		</Widget>
+	</Widget>
+</root>

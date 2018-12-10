@@ -1,0 +1,273 @@
+﻿ <root>	
+	<!-- 玩家面板 -->
+	<WidgetNode Name="TLJPlayerPanel">
+		<WidgetImagic Name="" TextureInfo="Game/TLJ/TLJPlayer/Bg_PlayerPanel.png">
+		</WidgetImagic>
+		<!-- <WidgetButton Name="PlayerBtn" NomalTexture="Game/TLJ/TLJPlayer/Bg_PlayerPanel.png" PressTexture="Game/TLJ/TLJPlayer/Bg_PlayerPanel.png"> -->
+		<!-- </WidgetButton> -->
+		<!-- 玩家头像 -->
+		<WidgetNode Name="TLJPlayerHeader">
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Pos" Value="-0.5 -4.5"/>
+		</WidgetNode>
+		<!-- 准备标识 -->
+		<WidgetImagic Name="Ready" TextureInfo="Game/TLJ/TLJPlayer/Icon_Ready.png">
+			<UserInfo Key="LeftPos" Value="123 0"/>
+			<Property Key="Pos" Value="-123 0"/>
+			<Property Key="Visible" Value="false"/>
+		</WidgetImagic>
+		<!-- 庄家标识 -->
+		<WidgetImagic Name="PlayerBanker" TextureInfo="Game/TLJ/TLJPlayer/Icon_Banker.png">
+			<UserInfo Key="LeftPos" Value="-48 -66"/>
+			<Property Key="Pos" Value="48 -66"/>
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+		</WidgetImagic>
+		<!-- 看牌标识 -->
+		<!-- <WidgetImagic Name="PlayerYiKan" TextureInfo="Game/TLJ/TLJPlayer/Icon_Kan.png"> -->
+			<!-- <Property Key="Pos" Value="0 88"/> -->
+			<!-- <Property Key="AnchorPos" Value="0.5 0.5"/> -->
+			<!-- <Property Key="Visible" Value="false"/> -->
+		<!-- </WidgetImagic> -->
+		<!-- 弃牌标识 -->
+		<!-- <WidgetImagic Name="PlayerYiQi" TextureInfo="Game/TLJ/TLJPlayer/Icon_Qi.png"> -->
+			<!-- <Property Key="Pos" Value="0 88"/> -->
+			<!-- <Property Key="AnchorPos" Value="0.5 0.5"/> -->
+			<!-- <Property Key="Visible" Value="false"/> -->
+		<!-- </WidgetImagic> -->
+		<!-- 离线标识 -->
+		<WidgetImagic Name="PlayerOffline" TextureInfo="Game/TLJ/TLJPlayer/Icon_Offline.png">
+			<UserInfo Key="LeftPos" Value="-48 65"/>
+			<Property Key="Pos" Value="48 65"/>
+			<Property Key="Visible" Value="false"/>
+		</WidgetImagic>
+		
+		<!-- 状态标识 -->
+		<WidgetNode Name="CurrentState">
+			<UserInfo Key="Pos_0" Value="465 -14"/>
+			<UserInfo Key="Pos_1" Value="210 6"/>
+			<UserInfo Key="Pos_2" Value="200 -14"/>
+			<UserInfo Key="Pos_3" Value="-175 -14"/>
+			<UserInfo Key="Pos_4" Value="-230 6"/>
+			<Property Key="Visible" Value="false"/>
+			<WidgetImagic Name="" TextureInfo="Game/TLJ/TLJPlayer/Bg_TLJPlayerText.png">
+			</WidgetImagic>
+			<WidgetTxt Name="CurrentStateText" ShowTxt="啊哈哈" FontName="public/text.ttf" FontSize="22">
+			</WidgetTxt>		
+		</WidgetNode>
+		
+		<!-- 名字 -->
+		<WidgetTxt Name="NameText" ShowTxt="sss" FontName="public/text.ttf" FontSize="22">
+			<Property Key="Pos" Value="0 52"/>
+		</WidgetTxt>
+		<!-- 分数 -->
+		<WidgetTxt Name="ScoreText" ShowTxt="1222" FontName="public/text.ttf" FontSize="22">
+			<Property Key="Pos" Value="0 -55"/>
+		</WidgetTxt>
+		<!-- 无效状态 -->
+		<WidgetImagic Name="Mask" TextureInfo="Game/TLJ/TLJPlayer/hand_mask.png">
+			<Property Key="Visible" Value="false"/>
+		</WidgetImagic>
+		<!-- 当局投注数 -->
+		<WidgetNode Name="CurrentScoreNode">
+			<UserInfo Key="Pos_0" Value="465 76"/>
+			<UserInfo Key="Pos_1" Value="210 96"/>
+			<UserInfo Key="Pos_2" Value="200 76"/>
+			<UserInfo Key="Pos_3" Value="-175 76"/>
+			<UserInfo Key="Pos_4" Value="-230 96"/>
+			<!-- <Property Key="Visible" Value="false"/> -->
+			<WidgetImagic Name="CurrentScoreImg" TextureInfo="Game/TLJ/TLJPlayer/Bg_TLJPlayerText.png">
+			</WidgetImagic>
+			<WidgetTxt Name="CurrentScoreText" ShowTxt="1222" FontName="public/text.ttf" FontSize="22">
+			</WidgetTxt>		
+		</WidgetNode>
+		<!-- 计时器 -->
+		<WidgetNode Name="TLJPlayer_AlarmNode">
+			<Property Key="Pos" Value="-82 56"/>
+			<Property Key="Visible" Value="false"/>
+			<UserInfo Key="LeftPos" Value="82 56"/>
+			<UserInfo Key="Image" Value="Game/TLJ/Alarm/Timer_"/>
+			<WidgetImagic Name="" TextureInfo="Game/TLJ/Alarm/TLJPlayer_AlarmBG.png">
+			</WidgetImagic>
+			<WidgetImagic Name="TLJAlarm_Timer_0" TextureInfo="Game/TLJ/Alarm/Timer_0.png">
+				<Property Key="Pos" Value="-9 0"/>
+			</WidgetImagic>
+			<WidgetImagic Name="TLJAlarm_Timer_1" TextureInfo="Game/TLJ/Alarm/Timer_0.png">
+				<Property Key="Pos" Value="9 0"/>
+			</WidgetImagic>
+		</WidgetNode>
+		
+		<!-- 积分变动提示 -->
+		<WidgetTxt Name="AddGoldTxt" ShowTxt="1000" FontName="" FontSize="50">
+			<Property Key="Color" Value="250 252 0"/>
+			<Property Key="Visible" Value="false"/>
+			<Visible Visible="true" Name="Start" SaveAction="true">
+				<WaiteTime Time="1.35" >
+					<Visible Visible="false">
+					</Visible>
+				</WaiteTime>
+				<SetPos Pos="0 0">
+				</SetPos>
+				<MoveTo Time="0.35" Pos="0 80">
+				</MoveTo>
+			</Visible>
+		</WidgetTxt>
+		
+		
+		<WidgetImagic Name="TalkFile" TextureInfo="Game/TLJ/Talk/play_shenying.png">
+			<Property Key="Pos" Value="80 75"/>
+			<UserInfo Key="Pos_2" Value="-80 75"/>
+			<Property Key="Visible" Value="false"/>
+			<EmptyAction Name="Start" SaveAction="true">
+				<Visible Visible="true"/>
+				<CallAction OtherNodeName="TalkPic1" OtherActionName="Start">
+					<CallAction OtherNodeName="TalkPic2" OtherActionName="Start">
+					</CallAction>
+				</CallAction>
+				<WaiteTime Time="3.0" >
+					<Visible Visible="false"/>
+				</WaiteTime>
+			</EmptyAction>
+			<WidgetImagic Name="TalkPic1" TextureInfo="Game/TLJ/Talk/play_shengyin1.png">
+				<Property Key="Pos" Value="35 18"/>
+				<EmptyAction Name="Start" SaveAction="true">
+					<Visible Visible="true" Name="Start1">
+						<WaiteTime Time="0.6" >
+							<Visible Visible="false">
+								<WaiteTime Time="0.3" >
+									<CallAction SelfActionName="Start1">
+									</CallAction>
+								</WaiteTime>
+							</Visible>
+						</WaiteTime>
+					</Visible>
+					<WaiteTime Time="3" >
+						<StopAllAction >
+						</StopAllAction>
+					</WaiteTime>
+				</EmptyAction>
+			</WidgetImagic>
+			<WidgetImagic Name="TalkPic2" TextureInfo="Game/TLJ/Talk/play_shengyin2.png">
+				<Property Key="Pos" Value="45 18"/>
+				<EmptyAction Name="Start" SaveAction="true">
+					<Visible Visible="false" Name="Start1" SaveAction="">
+						<WaiteTime Time="0.3" >
+							<Visible Visible="true">
+								<WaiteTime Time="0.3" >
+									<Visible Visible="false">
+										<WaiteTime Time="0.3" >
+										<CallAction SelfActionName="Start1">
+										</CallAction>
+										</WaiteTime>
+									</Visible>
+								</WaiteTime>
+							</Visible>
+						</WaiteTime>
+					</Visible>
+					<WaiteTime Time="3" >
+						<StopAllAction >
+						</StopAllAction>
+					</WaiteTime>
+				</EmptyAction>
+			</WidgetImagic>
+		</WidgetImagic>
+		
+		<WidgetNode Name="TalkTxtNode">
+			<Property Key="Pos" Value="200 0"/>
+			<UserInfo Key="Pos_2" Value="-200 0"/>
+			<Property Key="Visible" Value="false"/>
+			<Widget9Sprite Name="public_9sprite" BackTexture="GameSRLF/msg_bubble_btm.png" Size="300 60">	
+				<Property Key="InsetsRect" Value="35 46 5 5"/>
+			</Widget9Sprite>
+			<WidgetLayout Name="LayoutNode">
+				<Property Key="ClippingEnabled" Value="true"/>
+				<Property Key="Size" Value="280 50"/>
+				<Property Key="Pos" Value="0 10"/>
+				<Property Key="HideBack"/>
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
+				<WidgetNode Name="">
+					<Property Key="Pos" Value="5 20"/>
+					<WidgetTxt Name="TalkTxt" ShowTxt="1000" FontName="" FontSize="35">
+						<Property Key="ShowTxt" Value="TalkTxt"/>
+						<Property Key="AnchorPos" Value="0 0.5"/>
+						<Property Key="Color" Value="137 53 25"/>
+					</WidgetTxt>
+				</WidgetNode>
+			</WidgetLayout>
+		</WidgetNode>
+		
+		<WidgetNode Name="BiaoQingNode">
+			<Property Key="Pos" Value="80 0"/>
+			<UserInfo Key="Pos_2" Value="-80 0"/>
+			<Property Key="Visible" Value="false"/>
+			<WidgetImagic Name="BiaoQingPic" TextureInfo="GameSRLF/Talk/EE5.png">
+			</WidgetImagic>
+		</WidgetNode>
+		<Widget9Sprite Name="TLJ_SelectFrame" BackTexture="Game/TLJ/TLJPlayer/TLJ_SelectFrame.png" Size="400 220">	
+			<Property Key="Visible" Value="false"/>
+			<UserInfo Key="Pos_0" Value="150 0"/>
+			<UserInfo Key="Pos_1" Value="140 0"/>
+			<UserInfo Key="Pos_2" Value="135 0"/>
+			<UserInfo Key="Pos_3" Value="-128 0"/>
+			<UserInfo Key="Pos_4" Value="-143 0"/>
+		</Widget9Sprite>
+	</WidgetNode>
+	
+	<!-- 手牌 -->
+	<WidgetImagic Name="TLJCard" TextureInfo="Game/TLJ/TLJCard/Card_Back.png">
+		<UserInfo Key="Imagic" Value="Game/TLJ/TLJCard/Card_"/>
+	</WidgetImagic>
+	
+	<!-- 筹码 -->
+	<WidgetNode Name = "TLJChip">
+		<UserInfo Key="Imagic" Value="Game/TLJ/TLJGameScene/Icon_Chip_"/>
+		<WidgetImagic Name="TLJChip_Img" TextureInfo="Game/TLJ/TLJGameScene/Icon_Chip_1_1.png">
+		</WidgetImagic>
+		<WidgetTxt Name="TLJChip_Txt" ShowTxt="100" FontName="public/text.ttf" FontSize="25">
+			<Property Key="Color" Value="0 0 0"/>
+		</WidgetTxt>
+	</WidgetNode>
+	
+	<!-- 结算容器 -->
+	<WidgetNodeUI Name="CalculateItemContainer">
+		<UserInfo Key="ItemSize" Value="335 55"/>
+		<Property Key="Pos" Value="0 0"/>
+	</WidgetNodeUI>
+	<!-- 结算子项 -->
+	<WidgetNode Name = "CalculateItem">
+		<!-- 背景 -->
+		<WidgetImagic Name = "" TextureInfo="Game/TLJ/CalculatePanel/Bg_CalculateItem.png">
+			<Property Key="Pos" Value="48 -35"/>	
+		</WidgetImagic>
+		<!-- 头像框 -->
+		<WidgetImagic Name = "" TextureInfo="Game/TLJ/CalculatePanel/Bg_CalculateHead.png">
+			<Property Key="Pos" Value="-139 -27"/>	
+		</WidgetImagic>
+		<!-- 头像 -->
+		<WidgetNode Name="TLJCalculateHead_Avatar">
+			<Property Key="Pos" Value="-139 -27"/>
+		</WidgetNode>
+		<!-- 名字 -->
+		<WidgetTxt Name="Name" ShowTxt="啊哈哈" FontName="public/text.ttf" FontSize="22">
+			<Property Key="Pos" Value="-162 -60"/>		
+			<Property Key="AnchorPos" Value="0 0.5"/>
+		</WidgetTxt>
+		<!-- 房间号 -->
+		<WidgetTxt Name="RoomId" ShowTxt="123456" FontName="public/text.ttf" FontSize="22">
+			<Property Key="Pos" Value="-50 -37"/>		
+		</WidgetTxt>
+		<!-- 时间 -->
+		<WidgetTxt Name="Time" ShowTxt="2107-7-24" FontName="public/text.ttf" FontSize="22">
+			<Property Key="Pos" Value="44 -37"/>		
+		</WidgetTxt>
+		<!-- 局数 -->
+		<WidgetTxt Name="PlayCount" ShowTxt="16" FontName="public/text.ttf" FontSize="22">
+			<Property Key="Pos" Value="130 -37"/>		
+		</WidgetTxt>
+		<!-- 总分 -->
+		<WidgetTxt Name="TotalScore" ShowTxt="23333" FontName="public/text.ttf" FontSize="22">
+			<Property Key="Pos" Value="222 -37"/>		
+		</WidgetTxt>
+		
+	</WidgetNode>
+	
+ </root>

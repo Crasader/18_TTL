@@ -1,0 +1,33 @@
+﻿<root>
+	<Widget SkinTempName="BtnFullEmpty"/>
+	
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="TTLNN/DismissRoom/NNDismissRoom_BG.png"/>
+		<Property Key="Pos" Value="640 360"/>
+		<Property Key="Scale" Value="1.5"/>
+	</Widget>
+	
+	<Widget Name="NNDismissRoom_ButtonClose" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="TTLNN/DismissRoom/NNDismissRoom_ButtonClose.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="1090 600"/>
+	</Widget>
+	
+	<Widget Name="NNDismissRoom_ButtonConfirm" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="TTLNN/DismissRoom/NNDismissRoom_ButtonConfirm.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="840 80"/>
+	</Widget>
+	
+	<Widget Name="NNDismissRoom_ButtonRefuse" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="TTLNN/DismissRoom/NNDismissRoom_ButtonRefuse.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="440 80"/>
+	</Widget>
+	
+	<Widget Name="NNDismissRoom_ContentNode" SkinTempName="Empty">
+		<UserInfo Key="StartPos" Value="255 255"/>
+		<UserInfo Key="AddPos" Value="265 0"/>
+		<UserInfo Key="AddLinePos" Value="0 -45"/>
+	</Widget>
+</root>

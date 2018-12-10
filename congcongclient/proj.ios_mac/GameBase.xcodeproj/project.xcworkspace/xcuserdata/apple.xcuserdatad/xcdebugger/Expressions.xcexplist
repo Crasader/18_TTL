@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "GPGameLink::OnSocketSubPrivateInqureTableRet(void*, unsigned long):GPGameLink.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "sizeof(unsigned long)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GPHomeRoomListPanel_NN::RefreshListView(void*, unsigned long):GPHomeRoomListPanel_NN.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "body-&gt;dwOutMatchNum">
+            </PersistentString>
+            <PersistentString
+               value = "(char*)(current_data+offset)">
+            </PersistentString>
+            <PersistentString
+               value = "(int)&apos;m&apos;">
+            </PersistentString>
+            <PersistentString
+               value = "(int)body-&gt;bChairSum">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "::-[AppController application:openURL:options:](UIApplication *, NSURL *, NSDictionary *):AppController.mm">
+         <PersistentStrings>
+            <PersistentString
+               value = "MissionWeiXin::Instance()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

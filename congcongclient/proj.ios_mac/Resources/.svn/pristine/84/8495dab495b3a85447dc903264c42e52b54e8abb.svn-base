@@ -1,0 +1,308 @@
+<root>
+	<WidgetNode Name="NNPlayer_LeftSkin">
+		<Property Key="Size" Value="300 150"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<WidgetImagic Name="" TextureInfo="TTLNN/Player/NNPlayer_BG.png">
+			<Property Key="Pos" Value="150 75"/>
+		</WidgetImagic>
+		
+		<WidgetImagic Name="NNPlayer_BankerBG" TextureInfo="TTLNN/Player/NNPlayer_BankerBG.png">
+			<Property Key="Pos" Value="150 80"/>
+		</WidgetImagic>
+		
+		<WidgetImagic Name="" TextureInfo="TTLNN/Player/NNPlayer_AvatarBG.png">
+			<Property Key="Pos" Value="85 80"/>
+		</WidgetImagic>
+		
+		<WidgetImagic Name="NNPlayer_Avatar" TextureInfo="TTLNN/Player/NNPlayer_Avatar.png">
+			<Property Key="Pos" Value="85 80"/>
+		</WidgetImagic>
+		
+		<WidgetImagic Name="NNPlayer_Host" TextureInfo="TTLNN/Player/NNPlayer_Host.png">
+			<Property Key="Pos" Value="85 125"/>
+		</WidgetImagic>
+		
+		<WidgetImagic Name="NNPlayer_Banker" TextureInfo="TTLNN/Player/NNPlayer_Banker.png">
+			<Property Key="Pos" Value="260 125"/>
+		</WidgetImagic>
+		
+		<WidgetTxt Name="NNPlayer_Name" FontName="Font/TTLNN.TTF" FontSize="20" ShowTxt="123456789">
+			<Property Key="Pos" Value="195 90"/>
+		</WidgetTxt>
+		
+		<WidgetTxt Name="NNPlayer_Score" FontName="Font/TTLNN.TTF" FontSize="20" ShowTxt="12345">
+			<Property Key="Pos" Value="205 52"/>
+		</WidgetTxt>
+		
+		<WidgetImagic Name="NNPlayer_Ready" TextureInfo="TTLNN/Player/NNPlayer_Ready.png">
+			<Property Key="Pos" Value="295 65"/>
+		</WidgetImagic>
+		
+		<WidgetImagic Name="NNPlayer_Snatch" TextureInfo="TTLNN/Player/NNPlayer_Snatch_0.png">
+			<UserInfo Key="Image" Value="TTLNN/Player/NNPlayer_Snatch_"/>
+			<Property Key="Pos" Value="315 115"/>
+		</WidgetImagic>
+		
+		<!-- <WidgetNode Name="NNPlaye_BetsNode">
+			<WidgetImagic Name="" TextureInfo="TTLNN/Player/NNPlayer_BetsBG.png">
+				<Property Key="Pos" Value="315 45"/>
+			</WidgetImagic>
+			
+			<WidgetTxt Name="NNPlayer_Bets" FontName="Font/TTLNN.TTF" FontSize="28" ShowTxt="8">
+				<Property Key="Pos" Value="323 45"/>
+				<Property Key="Color" Value="251 222 104"/>
+			</WidgetTxt>
+		</WidgetNode> -->
+		<WidgetNode Name="NNPlaye_BetsNode">
+			<WidgetImagic Name="" TextureInfo="TTLNN/Player/NNPlayer_BetsBG.png">
+				<Property Key="Pos" Value="195 140"/>
+			</WidgetImagic>
+			
+			<WidgetTxt Name="NNPlayer_Bets" FontName="Font/TTLNN.TTF" FontSize="28" ShowTxt="8">
+				<Property Key="Pos" Value="200 140"/>
+				<Property Key="Color" Value="251 222 104"/>
+			</WidgetTxt>
+		</WidgetNode>
+		
+		<WidgetImagic Name="NNPlayer_TalkAction" TextureInfo="TTLNN/Player/TalkLeft/1.png">
+			<Property Key="Pos" Value="315 115"/>
+			<Property Key="Visible" Value="false"/>
+			<EmptyAction Name="Start" SaveAction="true">
+				<Visible Visible="true"/>
+				<CallAction OtherNodeName="TalkPic1" OtherActionName="Start">
+					<CallAction OtherNodeName="TalkPic2" OtherActionName="Start">
+						<CallAction OtherNodeName="TalkPic3" OtherActionName="Start">
+						</CallAction>
+					</CallAction>
+				</CallAction>
+				<WaiteTime Time="3.6" >
+					<Visible Visible="false"/>
+				</WaiteTime>
+			</EmptyAction>
+			<WidgetImagic Name="TalkPic1" TextureInfo="TTLNN/Player/TalkLeft/2.png">
+				<Property Key="Pos" Value="12 15"/>
+				<EmptyAction Name="Start" SaveAction="true">
+					<Visible Visible="false" Name="Start1">
+						<WaiteTime Time="0.3" >
+							<Visible Visible="true">
+								<WaiteTime Time="1.2" >
+									<Visible Visible="false">
+										<WaiteTime Time="0.3">
+											<CallAction SelfActionName="Start1">
+											</CallAction>
+										</WaiteTime>
+									</Visible>
+								</WaiteTime>
+							</Visible>
+						</WaiteTime>
+					</Visible>
+					<WaiteTime Time="3.6" >
+						<StopAllAction >
+						</StopAllAction>
+					</WaiteTime>
+				</EmptyAction>
+			</WidgetImagic>
+			<WidgetImagic Name="TalkPic2" TextureInfo="TTLNN/Player/TalkLeft/3.png">
+				<Property Key="Pos" Value="12 15"/>
+				<EmptyAction Name="Start" SaveAction="true">
+					<Visible Visible="false" Name="Start1">
+						<WaiteTime Time="0.6" >
+							<Visible Visible="true">
+								<WaiteTime Time="0.6" >
+									<Visible Visible="false">
+										<WaiteTime Time="0.6">
+											<CallAction SelfActionName="Start1">
+											</CallAction>
+										</WaiteTime>
+									</Visible>
+								</WaiteTime>
+							</Visible>
+						</WaiteTime>
+					</Visible>
+					<WaiteTime Time="3.6" >
+						<StopAllAction >
+						</StopAllAction>
+					</WaiteTime>
+				</EmptyAction>
+			</WidgetImagic>
+			<WidgetImagic Name="TalkPic3" TextureInfo="TTLNN/Player/TalkLeft/4.png">
+				<Property Key="Pos" Value="12 15"/>
+				<EmptyAction Name="Start" SaveAction="true">
+					<Visible Visible="false" Name="Start1">
+						<WaiteTime Time="0.9" >
+							<Visible Visible="true">
+								<WaiteTime Time="0.3" >
+									<Visible Visible="false">
+										<WaiteTime Time="0.6">
+											<CallAction SelfActionName="Start1">
+											</CallAction>
+										</WaiteTime>
+									</Visible>
+								</WaiteTime>
+							</Visible>
+						</WaiteTime>
+					</Visible>
+					<WaiteTime Time="3.6" >
+						<StopAllAction >
+						</StopAllAction>
+					</WaiteTime>
+				</EmptyAction>
+			</WidgetImagic>
+		</WidgetImagic>
+	</WidgetNode>
+	
+	<WidgetNode Name="NNPlayer_RightSkin">
+		<Property Key="Size" Value="300 150"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<WidgetImagic Name="" TextureInfo="TTLNN/Player/NNPlayer_BG.png">
+			<Property Key="Pos" Value="150 75"/>
+		</WidgetImagic>
+		
+		<WidgetImagic Name="NNPlayer_BankerBG" TextureInfo="TTLNN/Player/NNPlayer_BankerBG.png">
+			<Property Key="Pos" Value="150 80"/>
+		</WidgetImagic>
+		
+		<WidgetImagic Name="" TextureInfo="TTLNN/Player/NNPlayer_AvatarBG.png">
+			<Property Key="Pos" Value="85 80"/>
+		</WidgetImagic>
+		
+		<WidgetImagic Name="NNPlayer_Avatar" TextureInfo="TTLNN/Player/NNPlayer_Avatar.png">
+			<Property Key="Pos" Value="85 80"/>
+		</WidgetImagic>
+		
+		<WidgetImagic Name="NNPlayer_Host" TextureInfo="TTLNN/Player/NNPlayer_Host.png">
+			<Property Key="Pos" Value="85 125"/>
+		</WidgetImagic>
+		
+		<WidgetImagic Name="NNPlayer_Banker" TextureInfo="TTLNN/Player/NNPlayer_Banker.png">
+			<Property Key="Pos" Value="260 125"/>
+		</WidgetImagic>
+		
+		<WidgetTxt Name="NNPlayer_Name" FontName="Font/TTLNN.TTF" FontSize="20" ShowTxt="123456789">
+			<Property Key="Pos" Value="195 90"/>
+		</WidgetTxt>
+		
+		<WidgetTxt Name="NNPlayer_Score" FontName="Font/TTLNN.TTF" FontSize="20" ShowTxt="1234">
+			<Property Key="Pos" Value="205 52"/>
+		</WidgetTxt>
+		
+		<WidgetImagic Name="NNPlayer_Ready" TextureInfo="TTLNN/Player/NNPlayer_Ready.png">
+			<Property Key="Pos" Value="5 65"/>
+		</WidgetImagic>
+		
+		<WidgetImagic Name="NNPlayer_Snatch" TextureInfo="TTLNN/Player/NNPlayer_Snatch_0.png">
+			<UserInfo Key="Image" Value="TTLNN/Player/NNPlayer_Snatch_"/>
+			<Property Key="Pos" Value="-15 115"/>
+		</WidgetImagic>
+		
+		<!--
+ 		<WidgetNode Name="NNPlaye_BetsNode">
+			<WidgetImagic Name="" TextureInfo="TTLNN/Player/NNPlayer_BetsBG.png">
+				<Property Key="Pos" Value="-15 45"/>
+			</WidgetImagic>
+			
+			<WidgetTxt Name="NNPlayer_Bets" FontName="Font/TTLNN.TTF" FontSize="28" ShowTxt="8">
+				<Property Key="Pos" Value="-7 45"/>
+				<Property Key="Color" Value="251 222 104"/>
+			</WidgetTxt>
+		</WidgetNode> 
+		-->
+
+		<WidgetNode Name="NNPlaye_BetsNode">
+			<WidgetImagic Name="" TextureInfo="TTLNN/Player/NNPlayer_BetsBG.png">
+				<Property Key="Pos" Value="195 140"/>
+			</WidgetImagic>
+			
+			<WidgetTxt Name="NNPlayer_Bets" FontName="Font/TTLNN.TTF" FontSize="28" ShowTxt="8">
+				<Property Key="Pos" Value="187 140"/>
+				<Property Key="Color" Value="251 222 104"/>
+			</WidgetTxt>
+		</WidgetNode>
+		
+		<WidgetImagic Name="NNPlayer_TalkAction" TextureInfo="TTLNN/Player/TalkLeft/1.png">
+			<Property Key="Pos" Value="-15 45"/>
+			<Property Key="Visible" Value="false"/>
+			<EmptyAction Name="Start" SaveAction="true">
+				<Visible Visible="true"/>
+				<CallAction OtherNodeName="TalkPic1" OtherActionName="Start">
+					<CallAction OtherNodeName="TalkPic2" OtherActionName="Start">
+						<CallAction OtherNodeName="TalkPic3" OtherActionName="Start">
+						</CallAction>
+					</CallAction>
+				</CallAction>
+				<WaiteTime Time="3.6" >
+					<Visible Visible="false"/>
+				</WaiteTime>
+			</EmptyAction>
+			<WidgetImagic Name="TalkPic1" TextureInfo="TTLNN/Player/TalkLeft/2.png">
+				<Property Key="Pos" Value="12 15"/>
+				<EmptyAction Name="Start" SaveAction="true">
+					<Visible Visible="false" Name="Start1">
+						<WaiteTime Time="0.3" >
+							<Visible Visible="true">
+								<WaiteTime Time="1.2" >
+									<Visible Visible="false">
+										<WaiteTime Time="0.3">
+											<CallAction SelfActionName="Start1">
+											</CallAction>
+										</WaiteTime>
+									</Visible>
+								</WaiteTime>
+							</Visible>
+						</WaiteTime>
+					</Visible>
+					<WaiteTime Time="3.6" >
+						<StopAllAction >
+						</StopAllAction>
+					</WaiteTime>
+				</EmptyAction>
+			</WidgetImagic>
+			<WidgetImagic Name="TalkPic2" TextureInfo="TTLNN/Player/TalkLeft/3.png">
+				<Property Key="Pos" Value="12 15"/>
+				<EmptyAction Name="Start" SaveAction="true">
+					<Visible Visible="false" Name="Start1">
+						<WaiteTime Time="0.6" >
+							<Visible Visible="true">
+								<WaiteTime Time="0.6" >
+									<Visible Visible="false">
+										<WaiteTime Time="0.6">
+											<CallAction SelfActionName="Start1">
+											</CallAction>
+										</WaiteTime>
+									</Visible>
+								</WaiteTime>
+							</Visible>
+						</WaiteTime>
+					</Visible>
+					<WaiteTime Time="3.6" >
+						<StopAllAction >
+						</StopAllAction>
+					</WaiteTime>
+				</EmptyAction>
+			</WidgetImagic>
+			<WidgetImagic Name="TalkPic3" TextureInfo="TTLNN/Player/TalkLeft/4.png">
+				<Property Key="Pos" Value="12 15"/>
+				<EmptyAction Name="Start" SaveAction="true">
+					<Visible Visible="false" Name="Start1">
+						<WaiteTime Time="0.9" >
+							<Visible Visible="true">
+								<WaiteTime Time="0.3" >
+									<Visible Visible="false">
+										<WaiteTime Time="0.6">
+											<CallAction SelfActionName="Start1">
+											</CallAction>
+										</WaiteTime>
+									</Visible>
+								</WaiteTime>
+							</Visible>
+						</WaiteTime>
+					</Visible>
+					<WaiteTime Time="3.6" >
+						<StopAllAction >
+						</StopAllAction>
+					</WaiteTime>
+				</EmptyAction>
+			</WidgetImagic>
+		</WidgetImagic>
+	</WidgetNode>
+</root>

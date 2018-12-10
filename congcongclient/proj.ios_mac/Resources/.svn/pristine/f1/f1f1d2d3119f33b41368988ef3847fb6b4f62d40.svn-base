@@ -1,0 +1,308 @@
+﻿ <root>
+	<LoadSkin Skin="Script/HNSetSkin.xml"/>
+	<Widget Name="SetPlane" SkinTempName="Empty">
+		<Property Key="Pos" Value="640 360"/>
+		<Widget  SkinTempName="BtnFullEmpty">
+		</Widget>
+		<!-- <Widget Name="" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="ScencePrivate/Back.png"/>
+		</Widget> -->
+		<Widget Name="" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="ScenceSet/set_Bg1.png"/>
+		</Widget>
+		<!-- <Widget  SkinTempName="public_9sprite">
+			<Property Key="ImagicTexture" Value="ScenceSet/set_xiaokuang.png"/>
+			<Property Key="Size" Value="701 339"/>
+			<Property Key="Pos" Value="0 -0"/>
+		</Widget> -->
+		<Widget  SkinTempName="Button_Close">
+			<Property Key="Pos" Value="437 280"/>
+			<Action Key="Hide" Value="SetPlane"/>
+		</Widget>
+		<Widget  SkinTempName="public_9sprite">
+			<Property Key="Visible" Value="false"/>
+			<Property Key="ImagicTexture" Value="ScenceSet/set_Bg3.png"/>
+			<Property Key="Size" Value="200 310"/>
+			<Property Key="Pos" Value="-235 -0"/>
+			<Widget Name="" SkinTempName="ImagicEmpty">
+				<Property Key="ImagicTexture" Value="ScenceSet/set_genghuan.png"/>
+				<Property Key="Pos" Value="100 270"/>
+				<Property Key="Scale" Value="0.8"/>
+			</Widget>
+			<!-- <Widget  Name="PlayerInfoPlane" SkinTempName="Empty"> -->
+				
+				<!-- <Widget Name="" SkinTempName="ImagicEmpty">
+					<Property Key="ImagicTexture" Value="ScenceSet/set_txkuang.png"/>
+					<Property Key="Pos" Value="100 170"/>
+				</Widget>
+				<Widget Name="HeadImagic" SkinTempName="ImagicEmpty">
+					<Property Key="ImagicTexture" Value="Head/Head0.png"/>
+					<Property Key="Pos" Value="100 170"/>
+					<Property Key="Scale" Value="0.9"/>
+				</Widget> -->
+				
+				<!-- <Widget Name="Button_HomeHead" SkinTempName="ImagicEmpty">
+					<Property Key="ImagicTexture" Value="ScenceSet/k.png"/>
+					<Property Key="Pos" Value="290 70"/>
+					<Property Key="Scale" Value="1"/>
+				</Widget>
+				<Widget Name="HeadImagic" SkinTempName="ImagicEmpty">
+					<Property Key="ImagicTexture" Value="ScenceSet/t.png"/>
+					<Property Key="Pos" Value="290 70"/>
+					<Property Key="Scale" Value="1"/>
+				</Widget> -->
+				
+			<!-- </Widget> -->
+			<Widget Name="Button_SetChangeAccount" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="ScenceSet/set_genghuan1.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="100 50"/>
+				<Property Key="Scale" Value="0.8"/>
+			</Widget>
+		</Widget>
+		<Widget Name="" SkinTempName="ImagicEmpty">
+			<!-- <Property Key="ImagicTexture" Value="ScenceSet/set_bj4.png"/>
+			<Property Key="Pos" Value="130 0"/> -->
+			<Widget Name="" SkinTempName="ImagicEmpty">
+				<Property Key="Visible" Value="false"/>
+				<Property Key="ImagicTexture" Value="ScenceSet/set_shengxiao.png"/>
+				<Property Key="Pos" Value="183 235"/>
+			</Widget>
+			<Widget Name="" SkinTempName="ImagicEmpty">
+				<Property Key="Visible" Value="false"/>
+				<Property Key="ImagicTexture" Value="ScenceSet/set_yinxiao.png"/>
+				<Property Key="Visible" Value="false"/>
+				<Property Key="Pos" Value="83 160"/>
+			</Widget>
+			<Widget Name="" SkinTempName="ImagicEmpty">
+				<Property Key="ImagicTexture" Value="ScenceSet/set_yinyue.png"/>
+				<Property Key="Visible" Value="false"/>
+				<Property Key="Pos" Value="83 70"/>
+			</Widget>
+			<Widget Name="Button_EffectGuan" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="ScenceSet/set_kai.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="-230 15"/>
+				<Property Key="Scale" Value="0.9"/>
+				<Action Key="Hide" Value="Button_EffectGuan"/>
+				<Action Key="Show" Value="Button_EffectKai"/>
+			</Widget>
+			<Widget Name="Button_EffectKai" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="ScenceSet/set_guan.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="-230 15"/>
+				<Property Key="Scale" Value="0.9"/>
+				<Property Key="Visible" Value="false"/>
+				<Action Key="Show" Value="Button_EffectGuan"/>
+				<Action Key="Hide" Value="Button_EffectKai"/>
+			</Widget>
+			<Widget Name="Button_SoundGuan" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="ScenceSet/set_kai.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="-230 115"/>
+				<Property Key="Scale" Value="0.9"/>
+				<Action Key="Hide" Value="Button_SoundGuan"/>
+				<Action Key="Show" Value="Button_SoundKai"/>
+			</Widget>
+			<Widget Name="Button_SoundKai" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="ScenceSet/set_guan.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="-230 115"/>
+				<Property Key="Scale" Value="0.9"/>
+				<Property Key="Visible" Value="false"/>
+				<Action Key="Show" Value="Button_SoundGuan"/>
+				<Action Key="Hide" Value="Button_SoundKai"/>
+			</Widget>
+			<Widget Name="Button_ZhenGuan" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="ScenceSet/set_kai.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="-230 -90"/>
+				<Property Key="Scale" Value="0.9"/>
+				<Action Key="Hide" Value="Button_ZhenGuan"/>
+				<Action Key="Show" Value="Button_ZhenKai"/>
+			</Widget>
+			<Widget Name="Button_ZhenKai" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="ScenceSet/set_guan.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="-230 -90"/>
+				<Property Key="Scale" Value="0.9"/>
+				<Property Key="Visible" Value="false"/>
+				<Action Key="Show" Value="Button_ZhenGuan"/>
+				<Action Key="Hide" Value="Button_ZhenKai"/>
+			</Widget>
+			<Widget Name="Button_LookGuan" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="ScenceSet/set_kai.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="80 120"/>
+				<Property Key="Scale" Value="0.9"/>
+				<Property Key="Visible" Value="false"/>
+				<Action Key="Hide" Value="Button_LookGuan"/>
+				<Action Key="Show" Value="Button_LookKai"/>
+			</Widget>
+			<Widget Name="Button_LookKai" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="ScenceSet/set_guan.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="80 120"/>
+				<Property Key="Scale" Value="0.9"/>
+				<Property Key="Visible" Value="false"/>
+				<Action Key="Show" Value="Button_LookGuan"/>
+				<Action Key="Hide" Value="Button_LookKai"/>
+			</Widget>
+			<Widget Name="Button_MemoryGuan" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="ScenceSet/set_kai.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="80 120"/>
+				<Property Key="Scale" Value="0.9"/>
+				<Action Key="Hide" Value="Button_MemoryGuan"/>
+				<Action Key="Show" Value="Button_MemoryKai"/>
+			</Widget>
+			<Widget Name="Button_MemoryKai" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="ScenceSet/set_guan.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="80 120"/>
+				<Property Key="Scale" Value="0.9"/>
+				<Property Key="Visible" Value="false"/>
+				<Action Key="Show" Value="Button_MemoryGuan"/>
+				<Action Key="Hide" Value="Button_MemoryKai"/>
+			</Widget>
+			<Widget Name="Button_GYKai" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="ScenceSet/set_guan.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="80 -10"/>
+				<Property Key="Scale" Value="0.9"/>
+				<!-- <Property Key="Visible" Value="false"/> -->
+				<Action Key="Show" Value="Button_GYGuan"/>
+				<Action Key="Hide" Value="Button_GYKai"/>
+				<Action Key="Show" Value="Button_PuKai"/>
+				<Action Key="Hide" Value="Button_PuGuan"/>
+			</Widget>
+			<Widget Name="Button_GYGuan" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="ScenceSet/set_kai.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="80 -10"/>
+				<Property Key="Scale" Value="0.9"/>
+				<Action Key="Show" Value="Button_GYKai"/>
+				<Action Key="Hide" Value="Button_GYGuan"/>
+				<Action Key="Show" Value="Button_PuGuan"/>
+				<Action Key="Hide" Value="Button_PuKai"/>
+			</Widget>
+			<Widget Name="Button_PuGuan" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="ScenceSet/set_kai.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="80 -90"/>
+				<Property Key="Scale" Value="0.9"/>
+				<Action Key="Show" Value="Button_PuKai"/>
+				<Action Key="Hide" Value="Button_PuGuan"/>
+				<Action Key="Show" Value="Button_GYGuan"/>
+				<Action Key="Hide" Value="Button_GYKai"/>
+			</Widget>
+			<Widget Name="Button_PuKai" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="ScenceSet/set_guan.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="80 -90"/>
+				<Property Key="Scale" Value="0.9"/>
+				<!-- <Property Key="Visible" Value="false"/> -->
+				<Action Key="Show" Value="Button_PuGuan"/>
+				<Action Key="Hide" Value="Button_PuKai"/>
+				<Action Key="Show" Value="Button_GYKai"/>
+				<Action Key="Hide" Value="Button_GYGuan"/>
+			</Widget>
+			<Widget  Name="PlayerInfoPlane" SkinTempName="Empty">
+				<Widget Name="Button_HomeHead" SkinTempName="ImagicEmpty">
+					<Property Key="ImagicTexture" Value="ScenceSet/k.png"/>
+					<Property Key="Pos" Value="290 70"/>
+					<Property Key="Scale" Value="1"/>
+				</Widget>
+				<Widget Name="HeadImagic" SkinTempName="ImagicEmpty">
+					<Property Key="ImagicTexture" Value="ScenceSet/t.png"/>
+					<Property Key="Pos" Value="290 70"/>
+					<Property Key="Scale" Value="1.1"/>
+				</Widget>
+			</Widget>
+			<Widget Name="Button_SetChangeAccount" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="ScenceSet/button_WeiXin.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="290 -85"/>
+			</Widget>
+			<Widget Name="Button_Help" SkinTempName="ButtonEmpty">
+				<!-- <Property Key="Visible" Value="false"/> -->
+				<Property Key="NomalTexture" Value="ScenceSet/button_Help.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="-280 -175"/>
+			</Widget>
+			<Widget Name="Button_EffectTalk" SkinTempName="ButtonEmpty">
+<!-- 				<Property Key="Visible" Value="false"/> -->
+				<Property Key="NomalTexture" Value="ScenceSet/button_Talk.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="-80 -175"/>
+			</Widget>
+			<Widget Name="Button_fankui" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="ScenceSet/button_Return.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="120 -175"/>
+			</Widget>
+			<Widget Name="Button_About" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="ScenceSet/button_About.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="320 -175"/>
+			</Widget>
+			<!-- <Widget Name="Button_EffectTalk" SkinTempName="ButtonEmpty">
+			<Property Key="Visible" Value="false"/>
+				<Property Key="NomalTexture" Value="ScenceSet/button_Talk.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="-90 -175"/>
+			</Widget> -->
+<!-- 			<Widget Name="Button_fankui" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="ScenceSet/button_Return.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="165 -175"/>
+				<Action Key="Show" Value="FanKuiPanel"/>
+				<Action Key="Hide" Value="SetPlane"/>
+			</Widget> -->
+<!-- 			<Widget Name="Button_About" SkinTempName="ButtonEmpty">
+			<Property Key="Visible" Value="false"/>
+				<Property Key="NomalTexture" Value="ScenceSet/button_About.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="290 -175"/>
+			</Widget> -->
+			
+		</Widget>
+	</Widget>
+	<Widget  Name="FanKuiPanel" SkinTempName="Empty">
+			<Widget  SkinTempName="BtnFullEmpty">
+			</Widget>
+			<Property Key="Visible" Value="false"/>
+			<Widget SkinTempName="ImagicEmpty">
+				<Property Key="ImagicTexture" Value="HelpScence/reutrn_board.png"/>
+				<Property Key="Pos" Value="640 360"/>
+			</Widget>
+			<!-- <Widget SkinTempName="ImagicEmpty">
+				<Property Key="ImagicTexture" Value="ScenceHome/panel_start.png"/>
+				<Property Key="Pos" Value="640 360"/>
+			</Widget> -->
+			<!-- <Widget SkinTempName="ImagicEmpty">
+				<Property Key="ImagicTexture" Value="FanKuiPanel/BG2.png"/>
+				<Property Key="Pos" Value="640 360"/>
+			</Widget> -->
+			
+			<Widget Name="Input_FaSong" SkinTempName="AcountEdit">
+				<Property Key="ShowTxt" Value="."/>
+				<Property Key="AnchorPos" Value="0 1"/>
+				<Property Key="Size" Value="640 320"/>
+				<Property Key="Pos" Value="320 524"/>
+				<Property Key="Color" Value="255 255 255"/>
+			</Widget>
+			<Widget Name="Button_FaSong" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="HelpScence/fasong.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="640 200"/>
+			</Widget>
+			<Widget Name="" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="HelpScence/close.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="1080 633"/>
+				<Action Key="Hide" Value="FanKuiPanel"/>
+			</Widget>
+		
+	</Widget>
+ </root>

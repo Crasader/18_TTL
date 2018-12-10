@@ -4,12 +4,11 @@
 *.sdf
 Python_http_server
 runtime
-发布组件
 运行
 ipch
 Debug
 Release
-客户端组件
+/Server/发布组件
 /Server/系统模块/游戏组件/NN_HN
 /Server/系统模块/游戏组件/NN_XY
 /Server/系统模块/游戏组件/SG
@@ -34,6 +33,7 @@ Release
 /Server/系统模块/游戏组件/NN/机器人服务/Release_Unicode
 /Server/系统模块/游戏组件/NN/机器人服务/Debug
 /Server/系统模块/游戏组件/NN/机器人服务/Release
+/Server/系统模块/链接库
 /congcongclient/cocos2d
 /congcongclient/proj.android/.settings
 /congcongclient/proj.android/.externalToolBuilders
@@ -48,5 +48,3 @@ Release
 /congcongclient/proj.win32/Debug.win32_tmp
 /congcongclient/proj.win32/res
 /congcongclient/proj.win32/packages
-/congcongclient/proj.ios_mac
-/Server/系统模块/链接库

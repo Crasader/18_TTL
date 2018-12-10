@@ -63,7 +63,7 @@ void PrivateTableInfo::restValue(int nCharCount)
 		pITableFrame->SetMasterUser(nullptr);
 		pITableFrame->SetCreateUser(nullptr);
 
-		if (nCharCount < 0 || nCharCount > pITableFrame->GetMaxChairCount()) {
+		if (nCharCount <= 0 || nCharCount > pITableFrame->GetMaxChairCount()) {
 			nCharCount = pITableFrame->GetMaxChairCount();
 		}
 		pITableFrame->SetChairCount(nCharCount);

@@ -1,0 +1,107 @@
+﻿ <root>
+	<WidgetNodeUI Name="GameReocrdListItem">
+		<Property Key="Size" Value="708 170"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<WidgetButton Name="Button_ShowTotal" NomalTexture="GamePlaza/HomeScene/RecordPanel/Item_hsz.png" PressTexture="AutoPress">
+			<!-- <Property Key="Visible" Value="false"/> -->
+			<Property Key="AnchorPos" Value="0 0"/>
+			<Property Key="Pos" Value="0 20"/>
+		</WidgetButton>
+		<WidgetTxt Name="ChallengeTime" ShowTxt="对战时间" FontName="" FontSize="26">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="89 56"/>
+			<Property Key="Color" Value="255 255 255"/>
+		</WidgetTxt>
+		<WidgetTxt Name="RoomNum" ShowTxt="1860174" FontName="" FontSize="26">
+			<Property Key="Pos" Value="89 107"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="255 255 255"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerTxt0" ShowTxt="123212" FontName="" FontSize="26">
+			<Property Key="Pos" Value="235 131"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="255 255 255"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerTxt1" ShowTxt="123212" FontName="" FontSize="26">
+			<Property Key="Pos" Value="432 131"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="255 255 255"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerTxt2" ShowTxt="123212" FontName="" FontSize="26">
+			<Property Key="Pos" Value="235 65"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="255 255 255"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerTxt3" ShowTxt="123212" FontName="" FontSize="26">
+			<Property Key="Pos" Value="432 65"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="255 255 255"/>
+		</WidgetTxt>
+		
+		<WidgetTxt Name="PlayerScore0" ShowTxt="123212" FontName="" FontSize="26">
+			<Property Key="Pos" Value="235 105"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="255 255 255"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerScore1" ShowTxt="123212" FontName="" FontSize="26">
+			<Property Key="Pos" Value="432 105"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="255 255 255"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerScore2" ShowTxt="123212" FontName="" FontSize="26">
+			<Property Key="Pos" Value="235 38"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="255 255 255"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerScore3" ShowTxt="123212" FontName="" FontSize="26">
+			<Property Key="Pos" Value="432 38"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="255 255 255"/>
+		</WidgetTxt>
+
+		 <WidgetImagic Name="line" TextureInfo="GamePlaza/HomeScene/RecordPanel/line.png">
+		    <Property Key="Pos" Value="30 0"/>
+		    <Property Key="AnchorPos" Value="0 0.5"/>
+		</WidgetImagic>	 
+
+	</WidgetNodeUI>
+	
+<WidgetNodeUI Name="GameReocrdTotalItem">
+		<Property Key="Size" Value="350 110"/>
+		<Widget9Sprite Name="public_9sprite" BackTexture="GamePlaza/HomeScene/RecordPanel/9Scale1.png" Size="1130 130">	
+		    <Property Key="Scale" Value="0.9"/>
+			<Property Key="Pos" Value="590 60"/>
+		</Widget9Sprite>
+		<WidgetTxt Name="IdexTxt" ShowTxt="0" FontName="" FontSize="30">
+			<Property Key="Pos" Value="110 60"/>
+			<Property Key="Color" Value="51 23 16"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayTime" ShowTxt="2988:10:10" FontName="" FontSize="30">
+			<Property Key="Pos" Value="178 60"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Color" Value="51 23 16"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerTxt0" ShowTxt="1" FontName="" FontSize="30">
+			<Property Key="Pos" Value="430 60"/>
+			<Property Key="Color" Value="51 23 16"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerTxt1" ShowTxt="1" FontName="" FontSize="30">
+			<Property Key="Pos" Value="590 60"/>
+			<Property Key="Color" Value="51 23 16"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerTxt2" ShowTxt="1" FontName="" FontSize="30">
+			<Property Key="Pos" Value="760 60"/>
+			<Property Key="Color" Value="51 23 16"/>
+		</WidgetTxt>
+		<WidgetTxt Name="PlayerTxt3" ShowTxt="1" FontName="" FontSize="30">
+			<Property Key="Pos" Value="910 60"/>
+			<Property Key="Color" Value="51 23 16"/>
+		</WidgetTxt>
+		<WidgetButton Name="Button_StartGameRecord" NomalTexture="GamePlaza/HomeScene/RecordPanel/start_record.png" PressTexture="AutoPress">
+			<Property Key="FontSize" Value="40"/>
+			<Property Key="Pos" Value="1020 55"/>
+			
+		</WidgetButton>
+	
+	</WidgetNodeUI>
+ </root>

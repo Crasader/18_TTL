@@ -1,0 +1,1038 @@
+﻿ <root>
+	<LoadSkin Skin="GameSRLF/xml/SRLFGameSkin.xml"/>
+	<Widget Name="GameSRLFPlane" SkinTempName="Empty">
+		<Widget SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="GameSRLF/back.png"/>
+			<Property Key="Scale" Value="1.0"/>
+			<Property Key="Pos" Value="640 360"/>
+		</Widget>
+		
+		<Widget Name="GameDiFen" SkinTempName="TxtEmpty">
+			<Property Key="FontSize" Value="26"/>
+			<Property Key="ShowTxt" Value="底分:100"/>
+			<UserInfo Key="Txt" Value="底分:#"/>
+			<Property Key="Pos" Value="640 460"/>
+			<Property Key="Visible" Value="true"/>
+			<Property Key="Color" Value="100 250 93"/>
+		</Widget>
+
+		<Widget Name="SRLFGameScene_ButtonChongZhi" SkinTempName="ButtonEmpty">
+			<Property Key="NomalTexture" Value="GamePlaza/HomeScene/MallPanel/Btn_ChongZhi.png"/>
+			<Property Key="PressTexture" Value="AutoPress"/>
+			<Property Key="Pos" Value="1100 675"/>
+		</Widget>
+
+		
+		<Widget Name="SRLFGameScene_ButtonMenu" SkinTempName="ButtonEmpty">
+			<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonMenu.png"/>
+			<Property Key="PressTexture" Value="AutoPress"/>
+			<Property Key="Pos" Value="1200 675"/>
+		</Widget>
+
+		<Widget Name="SRLFGameScene_MenuNode" SkinTempName="Empty">
+			<Property Key="Visible" Value="false"/>
+			<Widget Name="" SkinTempName="ImagicEmpty">
+				<Property Key="ImagicTexture" Value="TTLNN/GameScene/NNGameScene_MenuContentBG.png"/>
+				<Property Key="Pos" Value="1201 590"/>
+			</Widget>
+			<Widget Name="SRLFGameScene_ButtonLeave" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonLeave.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="1201 620"/> 
+			</Widget>
+			<Widget Name="SRLFGameScene_ButtonSetting" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonSetting.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="1201 564"/>
+			</Widget>
+		</Widget>
+
+		<!--
+		<Widget Name="Cardpaidui" SkinTempName="Empty">
+		    <Property Key="Visible" Value="true"/>
+			<Property Key="Pos" Value="160 160"/>
+		</Widget> 
+		-->
+		
+		<Widget Name="Player1" SkinTempName="Empty">
+			<Property Key="Pos" Value="1137 360"/>
+			
+			<Widget Name="CardNode1" SkinTempName="Empty">
+			</Widget>
+			<Widget Name="CardNode2" SkinTempName="Empty">
+			</Widget>
+			
+			<Widget Name="QueIcon_Img" SkinTempName="SRLFQueColorIcon">
+				<Property Key="Visible" Value="false"/>
+				<UserInfo Key="QueColorIconPos" Value="70 135"/>
+				<UserInfo Key="QueColorIconSrcPos" Value="-85 40"/>
+				<Property Key="Pos" Value="-85 40"/>
+			</Widget>
+			
+			<Widget Name="Head" SkinTempName="SRLF_PLAYER_HEAD">
+				<UserInfo Key="SrcPos" Value="0 0"/>
+				<UserInfo Key="DestPos" Value="80 80"/>
+				<Property Key="Pos" Value="0 0"/>
+				<UserInfo Key="PlayerIndex" Value="1"/>
+				<Property Key="ChildProperty" Value="TalkTxtNode:Pos:-170 70"/>
+				<Property Key="ChildProperty" Value="public_9sprite:FlipX:true"/>
+				<Property Key="ChildProperty" Value="BiaoQingNode:Pos:-100 0"/>
+				<Property Key="ChildProperty" Value="AddGoldTxtWin:Pos:-200 0"/>
+				<Property Key="ChildProperty" Value="AddGoldTxtLose:Pos:-200 0"/>
+			</Widget>
+			
+			<Widget Name="MJPoint" SkinTempName="GameMJPoint1">
+			</Widget>
+			
+			<Widget Name="CardNodeHu" SkinTempName="Empty">
+				<UserInfo Key="OutAddPos" Value="6 -23.33"/>
+				<UserInfo Key="AddOder" Value="-1"/>
+				<UserInfo Key="StartPos" Value="-160 280"/>
+				<UserInfo Key="CardColor" Value="120 255 120"/>
+				<Property Key="Scale" Value="0.82"/>
+			</Widget>
+			
+			<Widget Name="HandPosNode" SkinTempName="Empty">
+				<UserInfo Key="HandAddPos" Value="-6 23.33"/>
+				<UserInfo Key="NewInAddPos" Value="-12 46.66"/>
+				<UserInfo Key="AddOder" Value="-1"/>
+				<Property Key="Pos" Value="0 -130"/>
+			</Widget>
+			
+			<Widget Name="OutPosNode" SkinTempName="Empty">
+				<UserInfo Key="OutAddPos" Value="-1.5 21"/>
+				<UserInfo Key="NextAddPos" Value="-40 0"/>
+				<UserInfo Key="AddOder" Value="-1"/>
+			
+				<Property Key="Pos" Value="-310 -50"/>
+			</Widget>
+			<Widget Name="BigOutNode" SkinTempName="SRLF_BIG_OUT">
+				<Property Key="Pos" Value="-200 0"/>
+				<Property Key="Visible" Value="false"/>
+				<UserInfo Key="OutHandScale" Value="0.8"/>
+				<UserInfo Key="SelfPos" Value="-200 0"/>
+			</Widget>
+			<Widget Name="" SkinTempName="SRLFPlayerStatusNode">
+				<Property Key="Pos" Value="-270 0"/>
+			</Widget>
+			
+			<Widget Name="XuanQueNode" SkinTempName="ImagicEmpty">
+				<Property Key="Visible" Value="false"/>
+				<Property Key="ImagicTexture" Value="GameSRLF/xuanque2.png"/>
+				<Property Key="Pos" Value="-85 40"/>
+			</Widget>
+			
+			<Widget Name="AnimateNode" SkinTempName="Empty">
+				<Property Key="Pos" Value="-85 40"/>
+			</Widget>
+		</Widget>
+		<Widget Name="Player2" SkinTempName="Empty">
+			<Property Key="Pos" Value="640 640"/>
+			
+			<Widget Name="CardNode1" SkinTempName="Empty">
+			</Widget>
+			<Widget Name="CardNode2" SkinTempName="Empty">
+			</Widget>
+			
+			<Widget Name="MJPoint" SkinTempName="GameMJPoint2">
+			</Widget>
+			<Widget Name="CardNodeHu" SkinTempName="Empty">
+				<Property Key="Scale" Value="0.8"/>
+				<UserInfo Key="OutAddPos" Value="28 0"/>
+				<UserInfo Key="AddOder" Value="1"/>
+				
+				<UserInfo Key="StartPos" Value="-300 -20"/>
+				<UserInfo Key="CardColor" Value="120 255 120"/>
+			</Widget>
+			
+			<Widget Name="HandPosNode" SkinTempName="Empty">
+				<UserInfo Key="HandAddPos" Value="-26 0"/>
+				<UserInfo Key="NewInAddPos" Value="-40 0"/>
+				<UserInfo Key="AddOder" Value="1"/>
+				<Property Key="Pos" Value="200 40"/>
+				
+			</Widget>
+			
+			<Widget Name="OutPosNode" SkinTempName="Empty">
+				<UserInfo Key="OutAddPos" Value="-26 0"/>
+				<UserInfo Key="NextAddPos" Value="0 -25"/>
+				<UserInfo Key="AddOder" Value="-1"/>
+				<Property Key="Pos" Value="106 -125"/>
+			</Widget>
+			<Widget Name="BigOutNode" SkinTempName="SRLF_BIG_OUT">
+				<Property Key="Pos" Value="45 -100"/>
+				<Property Key="Visible" Value="false"/>
+				<UserInfo Key="OutHandScale" Value="0.5"/>
+				<UserInfo Key="SelfPos" Value="45 -100"/>
+			</Widget>
+			<Widget Name="" SkinTempName="SRLFPlayerStatusNode">
+				<Property Key="Pos" Value="0 -160"/>
+			</Widget>
+			
+			<Widget Name="QueIcon_Img" SkinTempName="SRLFQueColorIcon">
+				<Property Key="Visible" Value="false"/>
+				<UserInfo Key="QueColorIconPos" Value="-415 10"/>
+				<UserInfo Key="QueColorIconSrcPos" Value="0 -100"/>
+				<Property Key="Pos" Value="0 -100"/>
+			</Widget>
+			<Widget Name="Head" SkinTempName="SRLF_PLAYER_HEAD">
+				<UserInfo Key="SrcPos" Value="0 -20"/>
+				<UserInfo Key="DestPos" Value="-470 20"/>
+				<Property Key="Pos" Value="0 -20"/>
+				<UserInfo Key="PlayerIndex" Value="2"/>
+				<Property Key="ChildProperty" Value="TalkFile:Pos:70 0"/>
+				<Property Key="ChildProperty" Value="TalkTxtNode:Pos:170 -150"/>
+				<Property Key="ChildProperty" Value="BiaoQingNode:Pos:100 0"/>
+				<Property Key="ChildProperty" Value="public_9sprite:FlipY:true"/>
+				<Property Key="ChildProperty" Value="LayoutNode:Pos:0 -4"/>
+				<Property Key="ChildProperty" Value="AddGoldTxtWin:Pos:200 -150"/>
+				<Property Key="ChildProperty" Value="AddGoldTxtLose:Pos:200 -150"/>
+			</Widget>
+			
+			<Widget Name="XuanQueNode" SkinTempName="ImagicEmpty">
+				<Property Key="Visible" Value="false"/>
+				<Property Key="ImagicTexture" Value="GameSRLF/xuanque1.png"/>
+				<Property Key="Pos" Value="0 -100"/>
+			</Widget>
+			
+			<Widget Name="AnimateNode" SkinTempName="Empty">
+				<Property Key="Pos" Value="0 -100"/>
+			</Widget>
+		</Widget>
+		<Widget Name="Player3" SkinTempName="Empty">
+			<Property Key="Pos" Value="144 360"/>
+			
+			<Widget Name="CardNode2" SkinTempName="Empty">
+			</Widget>
+			
+			<Widget Name="CardNodeHu" SkinTempName="Empty">
+				<UserInfo Key="OutAddPos" Value="6 23.33"/>
+				<UserInfo Key="AddOder" Value="1"/>
+				<UserInfo Key="StartPos" Value="55 -145"/>
+				<UserInfo Key="CardColor" Value="120 255 120"/>
+			</Widget>
+			
+			<Widget Name="CardNode1" SkinTempName="Empty">
+			</Widget>
+			<Widget Name="MJPoint" SkinTempName="GameMJPoint3">
+			</Widget>
+			<Widget Name="HandPosNode" SkinTempName="Empty">
+				<UserInfo Key="HandAddPos" Value="-6 -23.33"/>
+				<UserInfo Key="NewInAddPos" Value="-12 -46.66"/>
+				<UserInfo Key="AddOder" Value="1"/>
+				<Property Key="Pos" Value="74 220"/>
+				
+			</Widget>
+			
+			<Widget Name="OutPosNode" SkinTempName="Empty">
+				<UserInfo Key="OutAddPos" Value="-1.5 -21"/>
+				<UserInfo Key="NextAddPos" Value="40 0"/>
+				<UserInfo Key="AddOder" Value="2"/>
+				<Property Key="Pos" Value="320 140"/>
+			</Widget>
+			<Widget Name="BigOutNode" SkinTempName="SRLF_BIG_OUT">
+				<Property Key="Pos" Value="200 100"/>
+				<Property Key="Visible" Value="false"/>
+				<UserInfo Key="OutHandScale" Value="0.8"/>
+				<UserInfo Key="SelfPos" Value="200 100"/>
+			</Widget>
+			<Widget Name="" SkinTempName="SRLFPlayerStatusNode">
+				<Property Key="Pos" Value="270 0"/>
+			</Widget>
+				
+			<Widget Name="XuanQueNode" SkinTempName="ImagicEmpty">
+				<Property Key="Visible" Value="false"/>
+				<Property Key="ImagicTexture" Value="GameSRLF/xuanque2.png"/>
+				<Property Key="Pos" Value="85 40"/>
+			</Widget>
+				<Widget Name="QueIcon_Img" SkinTempName="SRLFQueColorIcon">
+				<Property Key="Visible" Value="false"/>
+				<UserInfo Key="QueColorIconPos" Value="-90 135"/>
+				<UserInfo Key="QueColorIconSrcPos" Value="85 40"/>
+				<Property Key="Pos" Value="85 40"/>
+			</Widget>
+			<Widget Name="Head" SkinTempName="SRLF_PLAYER_HEAD">
+				<UserInfo Key="SrcPos" Value="0 0"/>
+				<UserInfo Key="DestPos" Value="-80 80"/>
+				<Property Key="Pos" Value="0 0"/>
+				<UserInfo Key="PlayerIndex" Value="3"/>
+				<Property Key="ChildProperty" Value="TalkTxtNode:Pos:170 80"/>
+				<Property Key="ChildProperty" Value="BiaoQingNode:Pos:100 0"/>
+				<Property Key="ChildProperty" Value="AddGoldTxtWin:Pos:200 0"/>
+				<Property Key="ChildProperty" Value="AddGoldTxtLose:Pos:200 0"/>
+			</Widget>
+
+			<Widget Name="AnimateNode" SkinTempName="Empty">
+				<Property Key="Pos" Value="85 40"/>
+			</Widget>
+		</Widget>
+	
+		
+		<Widget Name="TimeNode" SkinTempName="Empty">
+			<Property Key="Pos" Value="640 410"/>
+			<Widget SkinTempName="ImagicEmpty">
+				<Property Key="ImagicTexture" Value="GameSRLF/Pointer/rotatable.png"/>
+			</Widget>
+			<Widget Name="TimePoint0" SkinTempName="ImagicEmpty">
+				<Property Key="ImagicTexture" Value="GameSRLF/Pointer/CYS_Pointer_Down.png"/>
+				<Property Key="Pos" Value="0 -41"/>
+			</Widget>
+			<Widget Name="TimePoint1" SkinTempName="ImagicEmpty">
+				<Property Key="ImagicTexture" Value="GameSRLF/Pointer/CYS_Pointer_Right.png"/>
+				<Property Key="Pos" Value="69 3"/>
+			</Widget>
+			<Widget Name="TimePoint2" SkinTempName="ImagicEmpty">
+				<Property Key="ImagicTexture" Value="GameSRLF/Pointer/CYS_Pointer_Up.png"/>
+				<Property Key="Pos" Value="0 49"/>
+			</Widget>
+			<Widget Name="TimePoint3" SkinTempName="ImagicEmpty">
+				<Property Key="ImagicTexture" Value="GameSRLF/Pointer/CYS_Pointer_Left.png"/>
+				<Property Key="Pos" Value="-70 3"/>
+			</Widget>
+			<Widget Name="ActPlayerLastTime" SkinTempName="TxtEmpty">
+				<Property Key="FontSize" Value="45"/>
+				<Property Key="ShowTxt" Value="6"/>
+				<Property Key="Pos" Value="0 0"/>
+				<Property Key="Color" Value="255 255 0"/>
+			</Widget>
+		</Widget>
+		
+		
+		<Widget Name="LastCardNode" SkinTempName="Empty">
+			<Property Key="Pos" Value="640 330"/>
+			<Property Key="Visible" Value="false"/>
+			<Widget SkinTempName="TxtEmpty">
+				<Property Key="FontSize" Value="26"/>
+				<Property Key="ShowTxt" Value="剩余"/>
+				<Property Key="Pos" Value="-30 0"/>
+				<Property Key="Color" Value="210 240 0"/>
+			</Widget>
+			<Widget SkinTempName="TxtEmpty">
+				<Property Key="FontSize" Value="26"/>
+				<Property Key="ShowTxt" Value="张"/>
+				<Property Key="Pos" Value="40 0"/>
+				<Property Key="Color" Value="210 240 0"/>
+			</Widget>
+			<Widget Name="LastCardCout" SkinTempName="TxtEmpty">
+				<Property Key="FontSize" Value="26"/>
+				<Property Key="ShowTxt" Value="72"/>
+				<Property Key="Pos" Value="12 0"/>
+				<Property Key="Color" Value="255 255 0"/>
+			</Widget>
+		</Widget>
+		<Widget Name="Player0" SkinTempName="Empty">
+			<Property Key="Pos" Value="640 0"/>
+			
+			<Widget Name="QueIcon_Img" SkinTempName="SRLFQueColorIcon">
+				<Property Key="Visible" Value="false"/>
+				<UserInfo Key="QueColorIconPos" Value="-525 210"/>
+				<UserInfo Key="QueColorIconSrcPos" Value="0 210"/>
+				<Property Key="Pos" Value="0 210"/>
+			</Widget>
+			<Widget Name="Head" SkinTempName="SRLF_PLAYER_HEAD">
+				<UserInfo Key="SrcPos" Value="0 150"/>
+				<UserInfo Key="DestPos" Value="-580 220"/>
+				<Property Key="Pos" Value="0 150"/>
+				<UserInfo Key="PlayerIndex" Value="0"/>
+				<Property Key="ChildProperty" Value="TalkTxtNode:Pos:170 80"/>
+				<Property Key="ChildProperty" Value="BiaoQingNode:Pos:100 0"/>
+				<Property Key="ChildProperty" Value="AddGoldTxtWin:Pos:200 0"/>
+				<Property Key="ChildProperty" Value="AddGoldTxtLose:Pos:200 0"/>
+			</Widget>
+			<Widget Name="CardNode2" SkinTempName="Empty">
+			</Widget>
+			<Widget Name="CardNodeHu" SkinTempName="Empty">
+				<Property Key="Scale" Value="0.9"/>
+				<UserInfo Key="OutAddPos" Value="-42.5 0"/>
+				<UserInfo Key="AddOder" Value="1"/>
+				<UserInfo Key="StartPos" Value="412 155"/>
+				<UserInfo Key="CardColor" Value="120 255 120"/>
+			</Widget>
+			<Widget Name="CardNode1" SkinTempName="Empty">
+			</Widget>
+			<Widget Name="MJPoint" SkinTempName="GameMJPoint0">
+			</Widget>
+			<Widget Name="HandPosNode" SkinTempName="Empty">
+				<UserInfo Key="HandAddPos" Value="80 0"/>
+				<UserInfo Key="NewInAddPos" Value="105 0"/>
+			
+				<Property Key="Pos" Value="-550 70"/>
+				<Property Key="Oder" Value="1"/>
+			</Widget>
+			<Widget Name="OutPosNode" SkinTempName="Empty">
+				<UserInfo Key="OutAddPos" Value="42.5 0"/>
+				<UserInfo Key="NextAddPos" Value="0 40"/>
+				<UserInfo Key="AddOder" Value="1"/>
+			
+				<Property Key="Pos" Value="-174 275"/>
+			</Widget>
+			<Widget Name="BigOutNode" SkinTempName="SRLF_BIG_OUT">
+				<Property Key="Pos" Value="-45 210"/>
+				<Property Key="Visible" Value="false"/>
+				<UserInfo Key="OutHandScale" Value="0.5"/>
+				<UserInfo Key="SelfPos" Value="-45 210"/>
+			</Widget>
+			<Widget Name="" SkinTempName="SRLFPlayerStatusNode">
+				<Property Key="Pos" Value="0 250"/>
+			</Widget>
+			
+			
+			<Widget Name="XuanQueNode" SkinTempName="Empty">
+				<Property Key="Visible" Value="false"/>
+				<Widget Name="SRLFButton_QueWan" SkinTempName="ButtonEmpty">
+					<Property Key="NomalTexture" Value="GameSRLF/quewan1.png"/>
+					<Property Key="PressTexture" Value="AutoPress"/>
+					<Property Key="Pos" Value="-212 210"/>
+				</Widget>
+				<Widget Name="Img_QueColor2" SkinTempName="ImagicEmpty">
+					<Property Key="ImagicTexture" Value="GameSRLF/quewan2.png"/>
+					<Property Key="Pos" Value="-212 210"/>
+				</Widget>
+				
+				<Widget Name="SRLFButton_QueTong" SkinTempName="ButtonEmpty">
+					<Property Key="NomalTexture" Value="GameSRLF/quetong1.png"/>
+					<Property Key="PressTexture" Value="AutoPress"/>
+					<Property Key="Pos" Value="0 210"/>
+				</Widget>
+				<Widget Name="Img_QueColor1" SkinTempName="ImagicEmpty">
+					<Property Key="ImagicTexture" Value="GameSRLF/quetong2.png"/>
+					<Property Key="Pos" Value="0 210"/>
+				</Widget>
+				
+				<Widget Name="SRLFButton_QueTiao" SkinTempName="ButtonEmpty">
+					<Property Key="NomalTexture" Value="GameSRLF/quetiao1.png"/>
+					<Property Key="PressTexture" Value="AutoPress"/>
+					<Property Key="Pos" Value="212 210"/>
+				</Widget>
+				<Widget Name="Img_QueColor3" SkinTempName="ImagicEmpty">
+					<Property Key="ImagicTexture" Value="GameSRLF/quetiao2.png"/>
+					<Property Key="Pos" Value="212 210"/>
+				</Widget>
+			</Widget>
+			
+			<Widget Name="AnimateNode" SkinTempName="Empty">
+				<Property Key="Pos" Value="0 210"/>
+				<Widget Name="" SkinTempName="SRLFPengAni">
+				</Widget>
+			</Widget>
+		</Widget>
+		
+		
+		<Widget Name="PrivateInfo" SkinTempName="Empty">
+			<Widget Name="" SkinTempName="TxtEmpty">
+				<Property Key="FontSize" Value="26"/>
+				<Property Key="ShowTxt" Value="房间号:"/>
+				<Property Key="Pos" Value="10 695"/>
+				<Property Key="AnchorPos" Value="0 0.5"/>
+			</Widget>
+			<Widget Name="RoomID" SkinTempName="TxtEmpty">
+				<Property Key="FontSize" Value="26"/>
+				<Property Key="ShowTxt" Value="24561"/>
+				<Property Key="Pos" Value="105 695"/>
+				<Property Key="AnchorPos" Value="0 0.5"/>
+			</Widget>
+			<Widget Name="RoomNum" SkinTempName="TxtEmpty">
+				<Property Key="FontSize" Value="26"/>
+				<Property Key="ShowTxt" Value="2/5局"/>
+				<UserInfo Key="Txt" Value="#局"/>
+				<Property Key="Pos" Value="10 660"/>
+				<Property Key="AnchorPos" Value="0 0.5"/>
+			</Widget>
+			<Widget Name="RoomGameRule0" SkinTempName="TxtEmpty">
+				<Property Key="FontSize" Value="26"/>
+				<Property Key="ShowTxt" Value=""/>
+				<Property Key="Pos" Value="10 630"/>
+				<Property Key="AnchorPos" Value="0 0.5"/>
+			</Widget>
+			
+			<Widget Name="RoomGameRule1" SkinTempName="TxtEmpty">
+				<Property Key="FontSize" Value="26"/>
+				<Property Key="ShowTxt" Value=""/>
+				<Property Key="Pos" Value="10 600"/>
+				<Property Key="AnchorPos" Value="0 0.5"/>
+			</Widget>
+			<!--
+ 			<Widget Name="Button_PrivateWeiXinFriend" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="GameSRLF/GamePrivate/btn_weixin_invite.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="640 380"/>
+			</Widget> 
+			-->
+			<Widget Name="TalkImagic" SkinTempName="ImagicEmpty">
+				<Property Key="ImagicTexture" Value="GameSRLF/GamePrivate/play_huatong.png"/>
+				<Property Key="Pos" Value="640 360"/>
+				<Property Key="Visible" Value="false"/>
+			</Widget>
+			<Widget Name="SRLFButton_Talk" SkinTempName="ButtonTxtEmpty">
+				<Property Key="NomalTexture" Value="GameSRLF/GamePrivate/play_huatong1.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="1210 270"/>
+				<Property Key="Scale" Value="1.3"/>
+			</Widget>
+			<Widget Name="GameTypeScenceNode" SkinTempName="Empty">
+			</Widget>
+		</Widget>
+
+		<Widget Name="SRLFGameScene_ButtonHelp" SkinTempName="ButtonEmpty">
+			<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonHelp.png"/>
+			<Property Key="PressTexture" Value="AutoPress"/>
+			<!-- <Property Key="Pos" Value="120 630"/> -->
+			<Property Key="Pos" Value="100 540"/> 
+		</Widget>
+
+		
+		<Widget Name="SelfActionNode" SkinTempName="Empty">
+			<Property Key="Pos" Value="640 250"/>
+			<Property Key="Visible" Value="false"/>
+			<Widget  SkinTempName="BtnFullEmpty">
+				<Property Key="Aple" Value="0.1"/>
+			</Widget>
+			<Widget Name="SRLFButton_GuoAction" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="GameSRLF/Button_GuoAction.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="140 0"/>
+			</Widget>
+			<Widget Name="SRLFButton_GangAction" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="GameSRLF/Button_GangAction.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="-140 0"/>
+			</Widget>
+			<Widget Name="SRLFButton_PengAction" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="GameSRLF/Button_PengAction.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="-140 0"/>
+			</Widget>
+			<Widget Name="SRLFButton_HuAction" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="GameSRLF/Button_HuAction.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="-140 0"/>
+			</Widget>
+		</Widget>
+		
+		<Widget Name="FreeStateNode" SkinTempName="Empty">
+			<!-- <Property Key="Pos" Value="640 280"/> -->
+			<Property Key="Pos" Value="900 80"/>
+			<Property Key="Visible" Value="false"/>
+			<Widget Name="SRLFButton_Ready" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="GameSRLF/btn_ready.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+			</Widget>
+		</Widget>
+		
+		<!-- <塞子位置> -------------------------------------------------------------------->
+		<Widget Name="SaiZiNode" SkinTempName="SRLF_Animation">
+			<Property Key="Pos" Value="640 410"/>
+		</Widget>
+		
+		<Widget Name="MenuNode" SkinTempName="Empty">
+			<Property Key="Pos" Value="1180 660"/>
+			<Widget Name="SRLFButton_GameExit" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="GameSRLF/GamePrivate/btn_back_sala.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="5 5"/>
+			</Widget>
+		</Widget>	
+		
+		<Widget Name="Button_Master" SkinTempName="ButtonEmpty">
+			<Property Key="NomalTexture" Value="GameSRLF/GameMaster/Button_Master.png"/>
+			<Property Key="PressTexture" Value="AutoPress"/>
+			<Property Key="Pos" Value="1240 200"/>
+			<Property Key="Visible" Value="false"/>
+		</Widget>
+		
+		<Widget Name="ExchangeCardNode" SkinTempName="Empty">
+			<Property Key="Visible" Value="false"/>
+			<Widget Name="" SkinTempName="ImagicEmpty">
+				<Property Key="ImagicTexture" Value="GameSRLF/exchange_bg.png"/>
+				<Property Key="Pos" Value="640 260"/>
+			</Widget>
+			<Widget Name="" SkinTempName="ImagicEmpty">
+				<Property Key="ImagicTexture" Value="GameSRLF/exchange_mj.png"/>
+				<Property Key="Pos" Value="305 270"/>
+			</Widget>
+			<Widget SkinTempName="TxtEmpty">
+				<Property Key="FontSize" Value="34"/>
+				<Property Key="ShowTxt" Value="请选择要换的三张牌"/>
+				<Property Key="Pos" Value="536 268"/>
+				<Property Key="Color" Value="210 240 0"/>
+			</Widget>
+			
+			<Widget Name="SRLFButton_ReChoice" SkinTempName="ButtonTxtEmpty">
+				<Property Key="NomalTexture" Value="GameSRLF/btn_huang.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="ShowTxt" Value="重选"/>
+				<Property Key="Pos" Value="790 268"/>
+			</Widget>
+			<Widget Name="SRLFButton_OkChoice" SkinTempName="ButtonTxtEmpty">
+				<Property Key="ShowTxt" Value="确定"/>
+				<Property Key="NomalTexture" Value="GameSRLF/btn_lv.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="945 268"/>
+			</Widget>
+		</Widget>
+		
+		<!-- <Widget Name="GameResoult1" SkinTempName="Empty"> -->
+			<!-- <Property Key="Pos" Value="640 320"/> -->
+			<!-- <Property Key="Visible" Value="false"/> -->
+			<!-- <Widget SkinTempName="BtnFullEmpty"> -->
+			<!-- </Widget> -->
+			<!-- <Widget SkinTempName="public_9sprite"> -->
+				<!-- <Property Key="ImagicTexture" Value="GameSRLF/GameResoultBack.png"/> -->
+				<!-- <Property Key="Size" Value="600 300"/> -->
+			<!-- </Widget> -->
+			<!-- <Widget Name="WinTitle1" SkinTempName="ImagicEmpty"> -->
+				<!-- <Property Key="ImagicTexture" Value="GameSRLF/WinBack.png"/> -->
+				<!-- <Property Key="Pos" Value="0 150"/> -->
+			<!-- </Widget> -->
+			<!-- <Widget Name="LoseTitle1" SkinTempName="ImagicEmpty"> -->
+				<!-- <Property Key="ImagicTexture" Value="GameSRLF/LoseBack.png"/> -->
+				<!-- <Property Key="Pos" Value="0 150"/> -->
+			<!-- </Widget> -->
+			<!-- <Widget Name="WinGoldAtlas" SkinTempName="AtlasGoldTxtWin"> -->
+				<!-- <Property Key="ShowTxt" Value="+10000"/> -->
+				<!-- <Property Key="Pos" Value="0 0"/> -->
+			<!-- </Widget> -->
+			<!-- <Widget Name="LoseGoldAtlas" SkinTempName="AtlasGoldTxtLose"> -->
+				<!-- <Property Key="ShowTxt" Value="-10000"/> -->
+				<!-- <Property Key="Pos" Value="0 0"/> -->
+			<!-- </Widget> -->
+		<!-- <!-- 关闭按钮 --> -->
+			<!-- <Widget SkinTempName="Button_Close"> -->
+				<!-- <Property Key="Pos" Value="290 130"/> -->
+				<!-- <Action Key="Hide" Value="GameResoult1"/> -->
+			<!-- </Widget> -->
+			
+			<!-- <Widget Name="" SkinTempName="ButtonTxtEmpty"> -->
+				<!-- <Property Key="ShowTxt" Value="详  细"/> -->
+				<!-- <Property Key="Pos" Value="-150 -100"/> -->
+				<!-- <Action Key="Show" Value="GameResoult2"/> -->
+			<!-- </Widget> -->
+			<!-- <Widget Name="SRLFButton_OnceAgain" SkinTempName="ButtonTxtEmpty"> -->
+				<!-- <Property Key="ShowTxt" Value="再来一局"/> -->
+				<!-- <Property Key="Pos" Value="150 -100"/> -->
+			<!-- </Widget> -->
+		<!-- </Widget> -->
+		
+		
+		<Widget Name="GameResoult2" SkinTempName="Empty">
+			<Property Key="Pos" Value="640 360"/>
+			<Property Key="Visible" Value="false"/>
+			<Widget SkinTempName="BtnFullEmpty">
+			</Widget>
+			<Widget SkinTempName="public_9sprite">
+				<Property Key="ImagicTexture" Value="GameSRLF/jiesuan1/k.png"/>
+				<Property Key="Scale" Value="0.95"/>
+			</Widget>
+			
+			<Widget Name="Button_ResoultPlayer0" SkinTempName="ButtonTxtEmpty">
+			<Property Key="Visible" Value="false"/>
+				<Property Key="NomalTexture" Value="GameSRLF/Button_Resoult_Name0.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="DisableTexture" Value="GameSRLF/Button_Resoult_Name1.png"/>
+				<Property Key="ShowTxt" Value="天天"/>
+				<Property Key="Scale" Value="1.15"/>
+				<Property Key="Pos" Value="-365 205"/>
+				<Action Key="Show" Value="ResoultPlayer0"/>
+				<Action Key="Hide" Value="ResoultPlayer1"/>
+				<Action Key="Hide" Value="ResoultPlayer2"/>
+				<Action Key="Hide" Value="ResoultPlayer3"/>
+				
+				<Action Key="Disable" Value="Button_ResoultPlayer0"/>
+				<Action Key="Able" Value="Button_ResoultPlayer1"/>
+				<Action Key="Able" Value="Button_ResoultPlayer2"/>
+				<Action Key="Able" Value="Button_ResoultPlayer3"/>
+			</Widget>
+			<Widget Name="Button_ResoultPlayer1" SkinTempName="ButtonTxtEmpty">
+			<Property Key="Visible" Value="false"/>
+				<Property Key="NomalTexture" Value="GameSRLF/Button_Resoult_Name0.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="DisableTexture" Value="GameSRLF/Button_Resoult_Name1.png"/>
+				<Property Key="ShowTxt" Value="天天"/>
+				<Property Key="Scale" Value="1.15"/>
+				<Property Key="Pos" Value="-121 205"/>
+				<Action Key="Hide" Value="ResoultPlayer0"/>
+				<Action Key="Show" Value="ResoultPlayer1"/>
+				<Action Key="Hide" Value="ResoultPlayer2"/>
+				<Action Key="Hide" Value="ResoultPlayer3"/>
+				
+				<Action Key="Able" Value="Button_ResoultPlayer0"/>
+				<Action Key="Disable" Value="Button_ResoultPlayer1"/>
+				<Action Key="Able" Value="Button_ResoultPlayer2"/>
+				<Action Key="Able" Value="Button_ResoultPlayer3"/>
+			</Widget>
+			<Widget Name="Button_ResoultPlayer2" SkinTempName="ButtonTxtEmpty">
+			<Property Key="Visible" Value="false"/>
+				<Property Key="NomalTexture" Value="GameSRLF/Button_Resoult_Name0.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="DisableTexture" Value="GameSRLF/Button_Resoult_Name1.png"/>
+				<Property Key="ShowTxt" Value="天天"/>
+				<Property Key="Scale" Value="1.15"/>
+				<Property Key="Pos" Value="122 205"/>
+				<Action Key="Hide" Value="ResoultPlayer0"/>
+				<Action Key="Hide" Value="ResoultPlayer1"/>
+				<Action Key="Show" Value="ResoultPlayer2"/>
+				<Action Key="Hide" Value="ResoultPlayer3"/>
+				
+				<Action Key="Able" Value="Button_ResoultPlayer0"/>
+				<Action Key="Able" Value="Button_ResoultPlayer1"/>
+				<Action Key="Disable" Value="Button_ResoultPlayer2"/>
+				<Action Key="Able" Value="Button_ResoultPlayer3"/>
+			</Widget>
+			<Widget Name="Button_ResoultPlayer3" SkinTempName="ButtonTxtEmpty">
+				<Property Key="Visible" Value="false"/>
+				<Property Key="NomalTexture" Value="GameSRLF/Button_Resoult_Name0.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="DisableTexture" Value="GameSRLF/Button_Resoult_Name1.png"/>
+				<Property Key="ShowTxt" Value="天天"/>
+				<Property Key="Pos" Value="365 205"/>
+				<Property Key="Scale" Value="1.15"/>
+				<Action Key="Hide" Value="ResoultPlayer0"/>
+				<Action Key="Hide" Value="ResoultPlayer1"/>
+				<Action Key="Hide" Value="ResoultPlayer2"/>
+				<Action Key="Show" Value="ResoultPlayer3"/>
+				
+				<Action Key="Able" Value="Button_ResoultPlayer0"/>
+				<Action Key="Able" Value="Button_ResoultPlayer1"/>
+				<Action Key="Able" Value="Button_ResoultPlayer2"/>
+				<Action Key="Disable" Value="Button_ResoultPlayer3"/>
+			</Widget>
+			
+			<!-- <Widget SkinTempName="public_9sprite"> -->
+				<!-- <Property Key="ImagicTexture" Value="GameSRLF/GameResoultBack1.png"/> -->
+				<!-- <Property Key="Size" Value="1000 500"/> -->
+				<!-- <Property Key="Pos" Value="0 -50"/> -->
+			<!-- </Widget> -->
+			<!-- <Widget SkinTempName="public_9sprite"> -->
+				<!-- <Property Key="ImagicTexture" Value="GameSRLF/GameResoultScoreBack.png"/> -->
+				<!-- <Property Key="Size" Value="970 44"/> -->
+				<!-- <Property Key="Pos" Value="0 160"/> -->
+			<!-- </Widget> -->
+			<Widget Name="WinTitle" SkinTempName="ImagicEmpty">
+				<Property Key="Visible" Value="false"/>	
+				<Property Key="ImagicTexture" Value="GameSRLF/WinBack.png"/>
+				<Property Key="Pos" Value="0 290"/>
+			</Widget>
+			<Widget Name="LoseTitle" SkinTempName="ImagicEmpty">
+				<Property Key="Visible" Value="false"/>
+				<Property Key="ImagicTexture" Value="GameSRLF/LoseBack.png"/>
+				<Property Key="Pos" Value="0 290"/>
+			</Widget>
+			<!-- <!-- 划线 --> -->
+			<!-- <Widget Name="" SkinTempName="ImagicEmpty"> -->
+				<!-- <Property Key="ImagicTexture" Value="GameSRLF/Line.png"/> -->
+				<!-- <Property Key="Pos" Value="-242 160"/> -->
+				<!-- <Property Key="Scale" Value="1.5"/> -->
+			<!-- </Widget> -->
+			<!-- <Widget Name="" SkinTempName="ImagicEmpty"> -->
+				<!-- <Property Key="ImagicTexture" Value="GameSRLF/Line.png"/> -->
+				<!-- <Property Key="Pos" Value="1 160"/> -->
+				<!-- <Property Key="Scale" Value="1.5"/> -->
+			<!-- </Widget> -->
+			<!-- <Widget Name="" SkinTempName="ImagicEmpty"> -->
+				<!-- <Property Key="ImagicTexture" Value="GameSRLF/Line.png"/> -->
+				<!-- <Property Key="Pos" Value="244 160"/> -->
+				<!-- <Property Key="Scale" Value="1.5"/> -->
+			<!-- </Widget> -->
+			<!-- 得分 -->
+			<Widget Name="GoldTxt0" SkinTempName="TxtEmpty">
+				<Property Key="FontSize" Value="32"/>
+				<Property Key="ShowTxt" Value="10000"/>
+				<Property Key="Pos" Value="360 190"/>
+				<Property Key="Color" Value="255 20 20"/>
+			</Widget>
+			<Widget Name="GoldTxt1" SkinTempName="TxtEmpty">
+				<Property Key="FontSize" Value="32"/>
+				<Property Key="ShowTxt" Value="10000"/>
+				<Property Key="Pos" Value="360 72"/>
+				<Property Key="Color" Value="255 20 20"/>
+			</Widget>
+			<Widget Name="GoldTxt2" SkinTempName="TxtEmpty">
+				<Property Key="FontSize" Value="32"/>
+				<Property Key="ShowTxt" Value="10000"/>
+				<Property Key="Pos" Value="360 -44"/>
+				<Property Key="Color" Value="255 20 20"/>
+			</Widget>
+			<Widget Name="GoldTxt3" SkinTempName="TxtEmpty">
+				<Property Key="FontSize" Value="32"/>
+				<Property Key="Pos" Value="360 -160"/>
+				<Property Key="ShowTxt" Value="10000"/>
+				<Property Key="Color" Value="255 20 20"/>
+			</Widget>
+			
+			<Widget Name="ResoultPlayer0" SkinTempName="List">
+				<Property Key="Size" Value="950 150"/>
+				<Property Key="Pos" Value="-475 -210"/>
+				<Property Key="HideBack" Value=""/>
+			</Widget>
+			<Widget Name="ResoultPlayer1" SkinTempName="List">
+				<Property Key="Size" Value="950 150"/>
+				<Property Key="Pos" Value="-475 -80"/>
+				<Property Key="HideBack" Value=""/>
+			</Widget>
+			<Widget Name="ResoultPlayer2" SkinTempName="List">
+				<Property Key="Size" Value="950 150"/>
+				<Property Key="Pos" Value="-475 210"/>
+				<Property Key="HideBack" Value=""/>
+			</Widget>
+			<Widget Name="ResoultPlayer3" SkinTempName="List">
+				<Property Key="Size" Value="950 150"/>
+				<Property Key="Pos" Value="-475 -210"/>
+				<Property Key="HideBack" Value=""/>
+			</Widget>
+			
+			<Widget SkinTempName="Button_Close">
+				<Property Key="Pos" Value="500 280"/>
+				<Action Key="Hide" Value="GameResoult2"/>
+			</Widget>
+			
+			<Widget Name="JiesuanCard0" SkinTempName="Empty">
+			    <Property Key="Pos" Value="-200 115"/>
+				<Property Key="Scale" Value="0.8"/>
+				<UserInfo Key="JieSuanAddPos" Value="45 0"/>
+				<UserInfo Key="JieSuanChiHuPos" Value="60 0"/>
+				<UserInfo Key="JieSuanWeaveGap" Value="10 0"/>
+			
+				<UserInfo Key="MingImagic" Value="GameSRLF/Player_0/OutCard_"/>
+				<Property Key="Oder" Value="1"/> 
+				
+			</Widget>
+			<Widget Name="JiesuanCard1" SkinTempName="Empty">
+			    <Property Key="Pos" Value="-200 50"/>
+				<Property Key="Scale" Value="0.8"/>
+				<UserInfo Key="JieSuanAddPos" Value="45 0"/>
+				<UserInfo Key="JieSuanChiHuPos" Value="60 0"/>
+				<UserInfo Key="JieSuanWeaveGap" Value="10 0"/>
+			
+				<UserInfo Key="MingImagic" Value="GameSRLF/Player_0/OutCard_"/>
+				<Property Key="Oder" Value="1"/> 
+			</Widget>
+			<Widget Name="JiesuanCard2" SkinTempName="Empty">
+			    <Property Key="Pos" Value="-200 -15"/>
+				<Property Key="Scale" Value="0.8"/>
+				<UserInfo Key="JieSuanAddPos" Value="45 0"/>
+				<UserInfo Key="JieSuanChiHuPos" Value="60 0"/>
+				<UserInfo Key="JieSuanWeaveGap" Value="10 0"/>
+			
+				<UserInfo Key="MingImagic" Value="GameSRLF/Player_0/OutCard_"/>
+				<Property Key="Oder" Value="1"/> 
+			</Widget>
+			<Widget Name="JiesuanCard3" SkinTempName="Empty">
+			    <Property Key="Pos" Value="-200 -80"/>
+				<Property Key="Scale" Value="0.8"/>
+				<UserInfo Key="JieSuanAddPos" Value="45 0"/>
+				<UserInfo Key="JieSuanChiHuPos" Value="60 0"/>
+				<UserInfo Key="JieSuanWeaveGap" Value="10 0"/>
+			
+				<UserInfo Key="MingImagic" Value="GameSRLF/Player_0/OutCard_"/>
+				<Property Key="Oder" Value="1"/> 
+			</Widget>
+			
+			<Widget Name="head_0" SkinTempName="Empty">
+				<Widget Name="HeadImagic" SkinTempName="ImagicEmpty">
+					<Property Key="ImagicTexture" Value="GameSRLF/head_img_male.png"/>
+					<Property Key="Scale" Value="0.6"/>
+					<Property Key="Pos" Value="-425 190"/>
+						<!-- <Property Key="Scale" Value="0.9"/> -->
+				</Widget>
+				<Widget Name=" " SkinTempName="ImagicEmpty">
+					<Property Key="ImagicTexture" Value="GameSRLF/txk.png"/>
+					<Property Key="Scale" Value="0.6"/>
+						<!-- <Property Key="PressTexture" Value="AutoPress"/> -->
+					<Property Key="Pos" Value="-425 190"/>
+				</Widget>
+			</Widget>
+			<Widget Name="head_1" SkinTempName="Empty">
+				<Widget Name="HeadImagic" SkinTempName="ImagicEmpty">
+					<Property Key="ImagicTexture" Value="GameSRLF/head_img_male.png"/>
+					<Property Key="Scale" Value="0.6"/>
+					<Property Key="Pos" Value="-425 72"/>
+						<!-- <Property Key="Scale" Value="0.9"/> -->
+				</Widget>
+				<Widget Name=" " SkinTempName="ImagicEmpty">
+					<Property Key="ImagicTexture" Value="GameSRLF/txk.png"/>
+					<Property Key="Scale" Value="0.6"/>
+						<!-- <Property Key="PressTexture" Value="AutoPress"/> -->
+					<Property Key="Pos" Value="-425 72"/>
+				</Widget>
+			</Widget>
+			<Widget Name="head_2" SkinTempName="Empty">
+				<Widget Name="HeadImagic" SkinTempName="ImagicEmpty">
+					<Property Key="ImagicTexture" Value="GameSRLF/head_img_male.png"/>
+					<Property Key="Scale" Value="0.6"/>
+					<Property Key="Pos" Value="-425 -44"/>
+						<!-- <Property Key="Scale" Value="0.9"/> -->
+				</Widget>
+				<Widget Name=" " SkinTempName="ImagicEmpty">
+					<Property Key="ImagicTexture" Value="GameSRLF/txk.png"/>
+					<Property Key="Scale" Value="0.6"/>
+						<!-- <Property Key="PressTexture" Value="AutoPress"/> -->
+					<Property Key="Pos" Value="-425 -44"/>
+				</Widget>
+			</Widget>
+			<Widget Name="head_3" SkinTempName="Empty">
+				<Widget Name="HeadImagic" SkinTempName="ImagicEmpty">
+					<Property Key="ImagicTexture" Value="GameSRLF/head_img_male.png"/>
+					<Property Key="Scale" Value="0.6"/>
+					<Property Key="Pos" Value="-425 -160"/>
+						<!-- <Property Key="Scale" Value="0.9"/> -->
+				</Widget>
+				<Widget Name=" " SkinTempName="ImagicEmpty">
+					<Property Key="ImagicTexture" Value="GameSRLF/txk.png"/>
+					<Property Key="Scale" Value="0.6"/>
+						<!-- <Property Key="PressTexture" Value="AutoPress"/> -->
+					<Property Key="Pos" Value="-425 -160"/>
+				</Widget>
+			</Widget>
+			<!-- 名字 -->
+			<Widget Name="name0" SkinTempName="TxtEmpty">
+				<Property Key="FontSize" Value="22"/>
+				<Property Key="ShowTxt" Value="10000"/>
+				<Property Key="Pos" Value="-425 140"/>
+				<Property Key="Color" Value="255 142 5"/>
+			</Widget>
+			<Widget Name="name1" SkinTempName="TxtEmpty">
+				<Property Key="FontSize" Value="22"/>
+				<Property Key="ShowTxt" Value="10000"/>
+				<Property Key="Pos" Value="-425 22"/>
+					<Property Key="Color" Value="255 142 5"/>
+			</Widget>
+			<Widget Name="name2" SkinTempName="TxtEmpty">
+				<Property Key="FontSize" Value="22"/>
+				<Property Key="ShowTxt" Value="10000"/>
+				<Property Key="Pos" Value="-425 -95"/>
+					<Property Key="Color" Value="255 142 5"/>
+			</Widget>
+			<Widget Name="name3" SkinTempName="TxtEmpty">
+				<Property Key="FontSize" Value="22"/>
+				<Property Key="ShowTxt" Value="10000"/>
+				<Property Key="Pos" Value="-425 -210"/>
+					<Property Key="Color" Value="255 142 5"/>
+			</Widget>
+			<!-- 牌型 -->
+			<Widget Name="ResoultPlayer_0" SkinTempName="TxtEmpty">	
+				<Property Key="Pos" Value="-380 140"/>
+				<Property Key="FontSize" Value="32"/>
+				<Property Key="ShowTxt" Value="10000"/>
+					<Property Key="Color" Value="255 142 5"/>
+				<Property Key="AnchorPos" Value="0 0.5"/>
+			</Widget>
+			<Widget Name="ResoultPlayer_1" SkinTempName="TxtEmpty">
+				<Property Key="Pos" Value="-380 22"/>
+				<Property Key="FontSize" Value="32"/>
+				<Property Key="ShowTxt" Value="10000"/>
+					<Property Key="Color" Value="255 142 5"/>
+				<Property Key="AnchorPos" Value="0 0.5"/>
+			</Widget>
+			<Widget Name="ResoultPlayer_2" SkinTempName="TxtEmpty">	
+				<Property Key="Pos" Value="-380 -95"/>
+				<Property Key="FontSize" Value="32"/>
+				<Property Key="ShowTxt" Value="10000"/>
+					<Property Key="Color" Value="255 142 5"/>
+				<Property Key="AnchorPos" Value="0 0.5"/>
+			</Widget>
+			<Widget Name="ResoultPlayer_3" SkinTempName="TxtEmpty">
+				<Property Key="Pos" Value="-380 -210"/>
+				<Property Key="FontSize" Value="32"/>
+				<Property Key="ShowTxt" Value="10000"/>
+					<Property Key="Color" Value="255 142 5"/>
+				<Property Key="AnchorPos" Value="0 0.5"/>
+			</Widget>
+			
+		</Widget>
+		
+		<Widget Name="GameRoomUserInfo" SkinTempName="Empty">
+			<Property Key="Pos" Value="640 320"/>
+			<Property Key="Visible" Value="false"/>
+			<Widget Name="" SkinTempName="BtnFullEmpty">
+				<Action Key="Hide" Value="GameRoomUserInfo"/>
+			</Widget>
+			<Widget Name="" SkinTempName="ImagicEmpty">
+				<Property Key="ImagicTexture" Value="GameSRLF/img_popbg.png"/>
+				<Property Key="Pos" Value="0 0"/>
+				<Property Key="Scale" Value="0.6"/>
+			</Widget>
+			<Widget Name="" SkinTempName="ImagicEmpty">
+				<Property Key="ImagicTexture" Value="GameSRLF/img_popbg1.png"/>
+				<Property Key="Pos" Value="0 0"/>
+				<Property Key="ScaleX" Value="1.05"/>
+				<Property Key="ScaleY" Value="1.2"/>
+			</Widget>
+			<Widget Name="" SkinTempName="ImagicEmpty">
+				<Property Key="ImagicTexture" Value="GameSRLF/room_player_box.png"/>
+				<Property Key="Pos" Value="-180 0"/>
+			</Widget>
+			<Widget Name="RoomUser_head" SkinTempName="ImagicEmpty">
+				<Property Key="ImagicTexture" Value="Head/Head0.png"/>
+				<Property Key="Pos" Value="-180 0"/>
+				<Property Key="Scale" Value="0.82"/>
+			</Widget>
+			<Widget SkinTempName="TxtEmpty">
+				<Property Key="ShowTxt" Value="昵称:"/>
+				<Property Key="FontSize" Value="32"/>
+				<Property Key="Pos" Value="0 100"/>
+				<Property Key="AnchorPos" Value="0 0.5"/>
+				<Property Key="Color" Value="103 69 52"/>
+			</Widget>
+			<Widget Name="RoomUser_name" SkinTempName="TxtEmpty">
+				<Property Key="ShowTxt" Value="i125365"/>
+				<Property Key="FontSize" Value="32"/>
+				<Property Key="Pos" Value="85 100"/>
+				<Property Key="AnchorPos" Value="0 0.5"/>
+				<Property Key="Color" Value="103 69 52"/>
+			</Widget>
+			<Widget SkinTempName="TxtEmpty">
+				<Property Key="ShowTxt" Value="ID  :"/>
+				<Property Key="FontSize" Value="32"/>
+				<Property Key="Pos" Value="0 40"/>
+				<Property Key="AnchorPos" Value="0 0.5"/>
+				<Property Key="Color" Value="103 69 52"/>
+			</Widget>
+			<Widget Name="RoomUser_ID" SkinTempName="TxtEmpty">
+				<Property Key="ShowTxt" Value="100000"/>
+				<Property Key="FontSize" Value="32"/>
+				<Property Key="Pos" Value="85 40"/>
+				<Property Key="AnchorPos" Value="0 0.5"/>
+				<Property Key="Color" Value="103 69 52"/>
+			</Widget>
+			<Widget SkinTempName="TxtEmpty">
+				<Property Key="ShowTxt" Value="性别:"/>
+				<Property Key="FontSize" Value="32"/>
+				<Property Key="Pos" Value="0 -20"/>
+				<Property Key="AnchorPos" Value="0 0.5"/>
+				<Property Key="Color" Value="103 69 52"/>
+			</Widget>
+			
+			<Widget Name="RoomUser_gender0" SkinTempName="ImagicEmpty">
+				<Property Key="ImagicTexture" Value="GameSRLF/useInfo_sex_0.png"/>
+				<Property Key="Pos" Value="105 -20"/>
+			</Widget>
+			<Widget Name="RoomUser_gender1" SkinTempName="ImagicEmpty">
+				<Property Key="ImagicTexture" Value="GameSRLF/useInfo_sex_1.png"/>
+				<Property Key="Pos" Value="105 -20"/>
+			</Widget>
+			
+			<Widget SkinTempName="TxtEmpty">
+				<Property Key="ShowTxt" Value="金币:"/>
+				<Property Key="FontSize" Value="32"/>
+				<Property Key="Pos" Value="0 -80"/>
+				<Property Key="AnchorPos" Value="0 0.5"/>
+				<Property Key="Color" Value="103 69 52"/>
+			</Widget>
+			<Widget Name="RoomUser_Gold" SkinTempName="TxtEmpty">
+				<Property Key="ShowTxt" Value="10000"/>
+				<Property Key="FontSize" Value="32"/>
+				<Property Key="Pos" Value="85 -80"/>
+				<Property Key="Color" Value="250 250 0"/>
+				<Property Key="AnchorPos" Value="0 0.5"/>
+			</Widget>
+			
+		</Widget>
+	</Widget>
+	
+	
+	<!--Widget SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GameSRLF/test2.png"/>
+		<Property Key="Pos" Value="640 360"/>
+		<Property Key="Aple" Value="0.6"/>
+	</Widget-->
+ </root>

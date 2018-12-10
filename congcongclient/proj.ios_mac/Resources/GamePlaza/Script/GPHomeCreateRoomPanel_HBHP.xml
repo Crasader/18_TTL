@@ -1,0 +1,65 @@
+<Widget Name="" SkinTempName="Empty">
+	<Widget Name="" SkinTempName="BtnFullEmpty"/>
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/HBHP/CreateRoom_Background.png"/>
+		<Property Key="Pos" Value="640 360"/>
+	</Widget>	
+	<!-- 低分 -->
+	<Widget Name="CreateRoom_ButtonSub_Score" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/HBHP/CreateRoom_ButtonSub.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="430 475"/>
+	</Widget>
+	
+	<Widget Name="CreateRoom_GameScore" SkinTempName="TxtEmpty">
+		<Property Key="Font" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="45"/>
+		<Property Key="ShowTxt" Value="5"/>
+		<Property Key="Pos" Value="530 477"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="Color" Value="255 255 255"/>
+	</Widget>
+	<Widget Name="CreateRoom_ButtonAdd_Score" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/HBHP/CreateRoom_ButtonAdd.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="635 475"/>
+	</Widget>
+	
+	<!-- 局数 -->
+	<Widget Name="CreateRoom_ButtonSub_Game" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/HBHP/CreateRoom_ButtonSub.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="430 410"/>
+	</Widget>
+
+	<Widget Name="CreateRoom_GameCount" SkinTempName="TxtEmpty">
+		<Property Key="Font" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="45"/>
+		<Property Key="ShowTxt" Value="4"/>
+		<Property Key="Pos" Value="530 408"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="Color" Value="255 255 255"/>
+	</Widget>
+	<Widget Name="CreateRoom_ButtonAdd_Game" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/HBHP/CreateRoom_ButtonAdd.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="635 410"/>
+	</Widget>
+	
+	<!-- 模式 -->
+	
+	
+	<!-- 玩法 -->
+
+	<Widget Name="CreateRoom_ButtonClose" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/HBHP/CreateRoom_ButtonClose.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="1110 568"/>
+	</Widget>
+	
+	<Widget Name="CreateRoom_HBHP" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/HBHP/CreateRoom_HBHP.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="900 180"/>
+	</Widget>
+</Widget>
