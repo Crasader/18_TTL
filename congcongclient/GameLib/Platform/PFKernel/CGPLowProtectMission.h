@@ -1,9 +1,8 @@
 #pragma once
-#include "cocos2d.h"
-#include "Platform/PlatformHeader.h"
+#include <cocos2d.h>
+
 #include "Kernel/network/CCallMission.h"
-
-
+#include "Platform/PFDefine/df/types.h"
 ///< 回调
 class IGPLowProtectMissionLink
 {

@@ -2,8 +2,8 @@
 #pragma once
 
 #include "Game/Game/GamePlayer.h"
-#include "GameLib/Game/GameLib.h"
-#include "cocos2d.h"
+#include "GAME.h"
+#include <cocos2d.h>
 #include "CMD_SRLF.h"
 
 struct OutCardInfo
@@ -52,7 +52,7 @@ public:
 	virtual void upPlayerState();
 	virtual void showTalkState(CMD_GR_C_TableTalk* pNetInfo);
 public:
-	void setHandCard(BYTE* pCardData,int iCout);
+	void setHandCard(byte* pCardData,int iCout);
 	void setWeaveItem(SRLF::CMD_WeaveItem* pWeave,int iCout);
 	void setOperateResoult(SRLF::CMD_S_OperateResult* pNetInfo);
 	void addNewInCard(int iCard);
@@ -61,18 +61,18 @@ public:
 	void setActOutCard(int iCard);
 	cocos2d::Node* addHandOutCard(int iCard);
 	void showHandCard();
-	void showHandCard(SRLF::CMD_WeaveItem* pWeave,int iWeaveCout,BYTE* pHandCard,int iHandCout);
+	void showHandCard(SRLF::CMD_WeaveItem* pWeave,int iWeaveCout,byte* pHandCard,int iHandCout);
 	void setCardImagic(cocos2d::Node* pNode,int kValue,std::string kImagicFront);
 	bool isTouchCardNode(cocos2d::Node* pNode);
 	cocos2d::Node* getTouchCardNode(cocos2d::Vec2 kTouchPos);
-	BYTE getTouchCardVlaue(cocos2d::Node* pNode);
+	byte getTouchCardVlaue(cocos2d::Node* pNode);
 	void showHuPai(bool bGaizhu);
-	void showJieSuanCard(cocos2d::Node* pCardNode,SRLF::CMD_WeaveItem* pWeave,int iWeaveCout,BYTE* pHandCard,int iHandCout);
-	void setChiHuCard(BYTE cbCard);
+	void showJieSuanCard(cocos2d::Node* pCardNode,SRLF::CMD_WeaveItem* pWeave,int iWeaveCout,byte* pHandCard,int iHandCout);
+	void setChiHuCard(byte cbCard);
 	void clearChiHuCard();
-	BYTE getChiHuCard();
+	byte getChiHuCard();
 	void showChiHuCard();
-	void removeHandCard(BYTE cbCard);
+	void removeHandCard(byte cbCard);
 	bool isTingCard();
 	bool isTingCard2();
 	void setTing(bool isTing);
@@ -80,25 +80,25 @@ public:
 	void setFirstCardSended(bool bFirstSended);
 	bool isFirstCardSended();
 public:
-	void removeHandOutCard( BYTE cbCardData );
+	void removeHandOutCard( byte cbCardData );
 	void sortHandCard();
 	void showHuanPai(int nGameType = GAME_TYPE_CHENGDU);
-	void standUpCard(BYTE cbCard,bool nOnly = true);
+	void standUpCard(byte cbCard,bool nOnly = true);
 	void seatDownCard();
-	cocos2d::Node* getCardNodeByCard(BYTE cbCard);
-	void getCardNodeByCard(std::vector<BYTE> CardDataList,std::vector<cocos2d::Node*>& kCardList);
-	bool getHuanCards(BYTE nHuanCard[HUAN_CARD_NUM]);
+	cocos2d::Node* getCardNodeByCard(byte cbCard);
+	void getCardNodeByCard(std::vector<byte> CardDataList,std::vector<cocos2d::Node*>& kCardList);
+	bool getHuanCards(byte nHuanCard[HUAN_CARD_NUM]);
 	int getDefuaultHuanValue(int nIndex);//获取第几个默认换牌的值
 	int getMastKindColor(); //最多张牌花色
 	void showCard();
-	void showCard(BYTE* cbCardData,BYTE cbCardCount);
-	void setHuanPai(BYTE* nHuan);
-	void saveRemoveHuanPai(BYTE* nHuan);
-	void saveHuanPai(BYTE* nHuan);
+	void showCard(byte* cbCardData,byte cbCardCount);
+	void setHuanPai(byte* nHuan);
+	void saveRemoveHuanPai(byte* nHuan);
+	void saveHuanPai(byte* nHuan);
 	void setHuanPai_ChengDu();
 
 	void setQueColor(int nColor);
-	BYTE getQueColor();
+	byte getQueColor();
 	void showXuanQue(bool bShow);
 	void showQueIcon_NoAni();
 	void showQueIconAni();
@@ -117,28 +117,28 @@ public:
 	void showjiesuanCard(cocos2d::Node* pCardNode);//结算手牌显示
 
 	SRLF::CMD_WeaveItem* getWeaveItemArray();
-	BYTE getWeaveCount();
+	byte getWeaveCount();
 
-	std::vector<BYTE>  setHuanPaiSiChuan(std::vector<SRLF::Card_Info> kCardInfoList);//四川麻将换牌表
-	std::vector<BYTE>  setHuanPaiChengDu(std::vector<SRLF::Card_Info> kCardInfoList);//成都麻将换牌表
+	std::vector<byte>  setHuanPaiSiChuan(std::vector<SRLF::Card_Info> kCardInfoList);//四川麻将换牌表
+	std::vector<byte>  setHuanPaiChengDu(std::vector<SRLF::Card_Info> kCardInfoList);//成都麻将换牌表
 
 public:
-	BYTE getGangCard(BYTE currentCard);
-	void getGangCardInfo(BYTE* gangCards,BYTE& count,BYTE currentCard);
-	BYTE isChiGangCard( BYTE currentCard);
-	void showGangCards(BYTE* gangCards,BYTE gangCount);
+	byte getGangCard(byte currentCard);
+	void getGangCardInfo(byte* gangCards,byte& count,byte currentCard);
+	byte isChiGangCard( byte currentCard);
+	void showGangCards(byte* gangCards,byte gangCount);
 public:
 	void ClickCard(cocos2d::Node* pCard);
-	int getUpCardList(std::vector<BYTE>& kCardDataList);
+	int getUpCardList(std::vector<byte>& kCardDataList);
 
 public:
-	void setHandCard_EX(std::vector<BYTE> kCardList);
+	void setHandCard_EX(std::vector<byte> kCardList);
 	void setMaskHandCard(std::vector<SRLF::MasterHandCardInfo> kMasterHandCardInfo);
 	void setMingPai(bool bValue);
 
 	//游戏局数
-	void setPlayCount(WORD wCount);
-	WORD getPlayCount();
+	void setPlayCount(word wCount);
+	word getPlayCount();
 public:
 	template<typename T>
 	bool isHave(std::vector<T*> kCardList,T* pItem)
@@ -155,8 +155,8 @@ public:
 	void setBaoTing(bool isBaoTing);
 	bool isBaoTing();
 	void upBaoTing();
-	void setNewCard(BYTE iCard){ m_kNewHandCard =iCard;};
-	BYTE getNewCard(){return m_kNewHandCard;};
+	void setNewCard(byte iCard){ m_kNewHandCard =iCard;};
+	byte getNewCard(){return m_kNewHandCard;};
 	void show(){ if(m_pSeatNode)m_pSeatNode->setVisible(true);};
 	void hide(){ if(m_pSeatNode)m_pSeatNode->setVisible(false);};
 	void setValid(bool valid){ m_bValid = valid; };
@@ -166,26 +166,26 @@ private:
 	int								m_iIdex;
 	cocos2d::Node*					m_pSeatNode;
 	cocos2d::Node*					m_pTingNode;
-	BYTE							m_kHandCardData[MAX_COUNT];//手牌数据
-	BYTE							m_kHandCardCout;
+	byte							m_kHandCardData[MAX_COUNT];//手牌数据
+	byte							m_kHandCardCout;
 	SRLF::CMD_WeaveItem				m_kWeaveItemArray[MAX_WEAVE];		//组合扑克
-	BYTE							m_kWeaveCount;					//组合数目
-	BYTE							m_nQueColor;
-	BYTE							m_pHuanCards[3];
+	byte							m_kWeaveCount;					//组合数目
+	byte							m_nQueColor;
+	byte							m_pHuanCards[3];
 	std::vector<cocos2d::Node*>		m_pHuanCardNodeList;
-	BYTE							m_nMastKindColor;
-	BYTE							m_pSaveHuanPai[3];
+	byte							m_nMastKindColor;
+	byte							m_pSaveHuanPai[3];
 	std::vector<OutCardInfo>		m_kOutCardList;
 	bool							m_bGameRecord;		
-	BYTE							m_cbChiHuCard;//所胡的牌
+	byte							m_cbChiHuCard;//所胡的牌
 	cocos2d::Node*					m_pHandOutCard;
-	std::vector<BYTE>				m_kHuCardList;
+	std::vector<byte>				m_kHuCardList;
 	bool							m_bMingPai;//明牌
-	WORD							m_wPlayCount;		//游戏局数
+	word							m_wPlayCount;		//游戏局数
 	bool							m_bPiao;
 	bool							m_bBaoTing;
 	bool							m_isTing;
-	BYTE							m_kNewHandCard;
+	byte							m_kNewHandCard;
 	bool							m_bFirstSended;
 	cocos2d::Node*					m_pCurTouchSprite;//当前触碰牌Node
 	bool							m_bValid;

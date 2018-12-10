@@ -1,7 +1,7 @@
 #include "SRLFPlayer.h"
 #include "SRLFSoundFun.h"
 #include "SRLFGameScence.h"
-
+#include IMAGE_DOWN
 
 SRLFPlayer::SRLFPlayer(int iIdex,cocos2d::Node* pSeatNode )
 	:GamePlayer(NULL)
@@ -242,7 +242,7 @@ void SRLFPlayer::setQueColor( int nColor )//设置缺的颜色
 	assert( nColor<= CARD_COLOR_TIAO);
 	m_nQueColor = nColor;	
 }
-BYTE SRLFPlayer::getQueColor()//获得缺牌
+byte SRLFPlayer::getQueColor()//获得缺牌
 {
 	return m_nQueColor;
 }
@@ -310,12 +310,12 @@ void SRLFPlayer::showTalkState(CMD_GR_C_TableTalk* pNetInfo)//显示对话
 		{
 			return;
 		}
-		utility::runPaoMaDeng(m_pSeatNode,"TalkTxt","LayoutNode",
+		WidgetFun::runPaoMaDeng(m_pSeatNode,"TalkTxt","LayoutNode",
 			kStrNet,NULL);
 		cocos2d::Node* pTalkNode = WidgetFun::getChildWidget(m_pSeatNode,"TalkTxtNode");
 		pTalkNode->setVisible(true);
 		pTalkNode->stopAllActions();
-		pTalkNode->runAction(cocos2d::CCVisibleAction::create(6.0f,false));
+		pTalkNode->runAction(script::CCVisibleAction::create(6.0f,false));
 	}
 	if (pNetInfo->cbType == CMD_GR_C_TableTalk::TYPE_BIAOQING)
 	{
@@ -327,7 +327,7 @@ void SRLFPlayer::showTalkState(CMD_GR_C_TableTalk* pNetInfo)//显示对话
 		cocos2d::Node* pTalkNode = WidgetFun::getChildWidget(m_pSeatNode,"BiaoQingNode");
 		pTalkNode->setVisible(true);
 		pTalkNode->stopAllActions();
-		pTalkNode->runAction(cocos2d::CCVisibleAction::create(4.0f,false));
+		pTalkNode->runAction(script::CCVisibleAction::create(4.0f,false));
 	}
 	if (pNetInfo->cbType == CMD_GR_C_TableTalk::TYPE_DEFINE)
 	{
@@ -336,11 +336,11 @@ void SRLFPlayer::showTalkState(CMD_GR_C_TableTalk* pNetInfo)//显示对话
 		ASSERT(kStr.size()==2);
 	    WidgetFun::runWidgetAction(m_pSeatNode,"TalkFile","Start");
 		SoundFun::Instance().playEffect(kStr[0]);
-		utility::runPaoMaDeng(m_pSeatNode,"TalkTxt","LayoutNode",kStr[1],NULL);
+		WidgetFun::runPaoMaDeng(m_pSeatNode,"TalkTxt","LayoutNode",kStr[1],NULL);
 		cocos2d::Node* pTalkNode = WidgetFun::getChildWidget(m_pSeatNode,"TalkTxtNode");
 		pTalkNode->setVisible(true);
 		pTalkNode->stopAllActions();
-		pTalkNode->runAction(cocos2d::CCVisibleAction::create(6.0f,false));
+		pTalkNode->runAction(script::CCVisibleAction::create(6.0f,false));
 	}
 }
 
@@ -403,7 +403,7 @@ SRLF::CMD_WeaveItem* SRLFPlayer::getWeaveItemArray()//排列牌
 {
 	return m_kWeaveItemArray;
 }
-BYTE SRLFPlayer::getWeaveCount()//获得拍的总数
+byte SRLFPlayer::getWeaveCount()//获得拍的总数
 {
 	return m_kWeaveCount;
 }

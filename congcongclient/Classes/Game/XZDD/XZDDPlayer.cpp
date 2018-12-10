@@ -1,7 +1,7 @@
 #include "XZDDPlayer.h"
 #include "XZDDSoundFun.h"
 #include "XZDDGameScence.h"
-
+#include IMAGE_DOWN
 
 XZDDPlayer::XZDDPlayer(int iIdex,cocos2d::Node* pSeatNode )
 	:GamePlayer(NULL)
@@ -222,7 +222,7 @@ void XZDDPlayer::setQueColor( int nColor )//设置缺的颜色
 	m_nQueColor = nColor;	
 }
 
-BYTE XZDDPlayer::getQueColor()//获得缺牌
+byte XZDDPlayer::getQueColor()//获得缺牌
 {
 	return m_nQueColor;
 }
@@ -288,12 +288,12 @@ void XZDDPlayer::showTalkState(CMD_GR_C_TableTalk* pNetInfo)//显示对话
 		{
 			return;
 		}
-		utility::runPaoMaDeng(m_pSeatNode,"TalkTxt","LayoutNode",
+		WidgetFun::runPaoMaDeng(m_pSeatNode,"TalkTxt","LayoutNode",
 			kStrNet,NULL);
 		cocos2d::Node* pTalkNode = WidgetFun::getChildWidget(m_pSeatNode,"TalkTxtNode");
 		pTalkNode->setVisible(true);
 		pTalkNode->stopAllActions();
-		pTalkNode->runAction(cocos2d::CCVisibleAction::create(6.0f,false));
+		pTalkNode->runAction(script::CCVisibleAction::create(6.0f,false));
 	}
 	if (pNetInfo->cbType == CMD_GR_C_TableTalk::TYPE_BIAOQING)
 	{
@@ -305,7 +305,7 @@ void XZDDPlayer::showTalkState(CMD_GR_C_TableTalk* pNetInfo)//显示对话
 		cocos2d::Node* pTalkNode = WidgetFun::getChildWidget(m_pSeatNode,"BiaoQingNode");
 		pTalkNode->setVisible(true);
 		pTalkNode->stopAllActions();
-		pTalkNode->runAction(cocos2d::CCVisibleAction::create(4.0f,false));
+		pTalkNode->runAction(script::CCVisibleAction::create(4.0f,false));
 	}
 	if (pNetInfo->cbType == CMD_GR_C_TableTalk::TYPE_DEFINE)
 	{
@@ -320,12 +320,12 @@ void XZDDPlayer::showTalkState(CMD_GR_C_TableTalk* pNetInfo)//显示对话
 		WidgetFun::runWidgetAction(m_pSeatNode,"TalkFile","Start");
 		SoundFun::Instance().playEffect(kStr[0]);
 
-		utility::runPaoMaDeng(m_pSeatNode,"TalkTxt","LayoutNode",
+		WidgetFun::runPaoMaDeng(m_pSeatNode,"TalkTxt","LayoutNode",
 			kStr[1],NULL);
 		cocos2d::Node* pTalkNode = WidgetFun::getChildWidget(m_pSeatNode,"TalkTxtNode");
 		pTalkNode->setVisible(true);
 		pTalkNode->stopAllActions();
-		pTalkNode->runAction(cocos2d::CCVisibleAction::create(6.0f,false));
+		pTalkNode->runAction(script::CCVisibleAction::create(6.0f,false));
 
 	}
 }
@@ -390,7 +390,7 @@ XZDD::CMD_WeaveItem* XZDDPlayer::getWeaveItemArray()//排列牌
 	return m_kWeaveItemArray;
 }
 
-BYTE XZDDPlayer::getWeaveCount()//获得拍的总数
+byte XZDDPlayer::getWeaveCount()//获得拍的总数
 {
 	return m_kWeaveCount;
 }

@@ -1,9 +1,11 @@
 #include "SRLFGameScence.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 
 #include "CMD_SRLF.h"
 #include "SRLFPlayer.h"
 #include "SRLFGameLogic.h"
+#include USERINFO
+#include UTILITY_WIDGET
 
 bool SRLFGameScence::OnEventSceneMessage(byte cbGameStatus, bool bLookonUser, void* data, int dataSize)
 {
@@ -81,7 +83,7 @@ void SRLFGameScence::OnPlayScence(void* data, int wDataSize)
 				pPlayer->setHandCard(pNetInfo->cbCardData,max_count - pNetInfo->cbWeaveCount[index]*3-1);
 			pPlayer->setQueColor(pNetInfo->nQueColor[index]);
 			pPlayer->showQueIcon_NoAni();
-			for (BYTE m = 0;m<pNetInfo->cbDiscardCount[index];m++)
+			for (byte m = 0;m<pNetInfo->cbDiscardCount[index];m++)
 			{
 				pPlayer->addHandOutCard(pNetInfo->cbDiscardCard[index][m]);
 			}
@@ -90,7 +92,7 @@ void SRLFGameScence::OnPlayScence(void* data, int wDataSize)
 			pPlayer->setHandCard(pNetInfo->cbCardData,pNetInfo->cbCardCount);
 			pPlayer->setQueColor(pNetInfo->nQueColor[index]);
 			pPlayer->showQueIcon_NoAni();
-			for (BYTE m = 0;m<pNetInfo->cbDiscardCount[index];m++)
+			for (byte m = 0;m<pNetInfo->cbDiscardCount[index];m++)
 			{
 				pPlayer->addHandOutCard(pNetInfo->cbDiscardCard[index][m]);
 			}

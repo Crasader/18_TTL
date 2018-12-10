@@ -1,11 +1,11 @@
 #include "XZDDGameScence.h"
 #include "XZDDPlayer.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 #include "CMD_XZDD.h"
 #include "XZDDGameLogic.h"
 #include "XZDDSoundFun.h"
 #include "Game/Script/ScriptXMLparse.h"
-#include "GamePlaza/HomeScene/SettingPanel/GPHomeSettingPanel.h"
+#include "Plaza/HomeScene/GPHomeSettingPanel.h"
 
 FV_SINGLETON_STORAGE(XZDDGameScence);
 
@@ -143,12 +143,12 @@ bool XZDDGameScence::init()//数据准备
 
 	if (WidgetFun::getChildWidget(this,"GameTalkList"))
 	{
-		cocos2d::ListViewEx* pTalkList = WidgetFun::getListViewWidget(this,"GameTalkList");
+		widget::ListViewEx* pTalkList = WidgetFun::getListViewWidget(this,"GameTalkList");
 		pTalkList->removeAllChildren();
 		for (int i=0;i<10;i++)
 		{
 			cocos2d::Node* pItem = WidgetManager::Instance().createWidget("HNMJGameTalkListItem",pTalkList);
-			std::string kTxt = utility::getScriptString(utility::toString("GameTalkTxt",i));
+			std::string kTxt = script::getStr(utility::toString("GameTalkTxt",i));
 			WidgetFun::setText(pItem,"TalkListItemTxt",kTxt);
 			WidgetFun::setWidgetUserInfo(pItem,"Button_TalkDefine","Idex",utility::toString(i));
 			WidgetFun::setWidgetUserInfo(pItem,"Button_TalkDefine","Txt",utility::toString(kTxt));
@@ -329,7 +329,7 @@ std::string XZDDGameScence::getStringHuRight(dword kValue,int nGenCount)//获得胡
 	std::string kTxt;
 	XZDD::CChiHuRight	kChiHuRight;
 	kChiHuRight.SetRightData(&kValue,MAX_RIGHT_COUNT );
-	for( BYTE j = 0; j < CountArray(pszRight); j++ )
+	for( byte j = 0; j < CountArray(pszRight); j++ )
 	{
 		if( !(kChiHuRight&dwRight[j]).IsEmpty() && dwRight[j]!=CHR_PIN_HU && dwRight[j]!=CHR_FANG_PAO )
 		{
@@ -375,8 +375,8 @@ void XZDDGameScence::showSaiZi(unsigned int iValue)//塞子动画----------------
 	word wSice2 = word(iValue);
 	//if (wSice1 > 0)
 	//{
-	//	BYTE SiceFirst = (wSice1 >> 8);
-	//	BYTE SiceSecond = (wSice1);
+	//	byte SiceFirst = (wSice1 >> 8);
+	//	byte SiceSecond = (wSice1);
 	//	std::string kImagic = WidgetFun::getWidgetUserInfo(this,"SaiZiNode","Imagic");
 	//	WidgetFun::setImagic(this,"SaiZi0",utility::toString(kImagic,(int)SiceFirst,".png"));
 	//	WidgetFun::setImagic(this,"SaiZi1",utility::toString(kImagic,(int)SiceSecond,".png"));
@@ -385,8 +385,8 @@ void XZDDGameScence::showSaiZi(unsigned int iValue)//塞子动画----------------
 	//}
 	//else if (wSice2 > 0)
 	{
-		BYTE SiceFirst = (wSice2 >> 8);
-		BYTE SiceSecond = (wSice2);
+		byte SiceFirst = (wSice2 >> 8);
+		byte SiceSecond = (wSice2);
 		std::string kImagic = WidgetFun::getWidgetUserInfo(this,"SaiZiNode","Imagic");
 		WidgetFun::setImagic(this,"SaiZi0",utility::toString(kImagic,(int)SiceFirst,".png"));
 		WidgetFun::setImagic(this,"SaiZi1",utility::toString(kImagic,(int)SiceSecond,".png"));
@@ -396,8 +396,8 @@ void XZDDGameScence::showSaiZi(unsigned int iValue)//塞子动画----------------
 
 void XZDDGameScence::showSaiZi_HuanPai(word wValue)
 {
-	/*BYTE SiceFirst = (wValue >> 8);
-	BYTE SiceSecond = (wValue);
+	/*byte SiceFirst = (wValue >> 8);
+	byte SiceSecond = (wValue);
 	std::string kImagic = WidgetFun::getWidgetUserInfo(this,"SaiZiNode","Imagic");
 	WidgetFun::setImagic(this,"SaiZi0",utility::toString(kImagic,(int)SiceFirst,".png"));
 	WidgetFun::setImagic(this,"SaiZi1",utility::toString(kImagic,(int)SiceSecond,".png"));*/
@@ -415,7 +415,7 @@ void XZDDGameScence::setCurrentPlayer(int iCurrentPlayer,int iUserAction,int icb
 	XZDDPlayer* pPlyer = getPlayerByChairID(m_iCurrentUser);
 	////倒计时15秒
 	//WidgetFun::getChildWidget(pRootNode,"ActPlayerLastTime")->runAction(
-	//	cocos2d::MoveExTxtTime::create(TIME_OPERATE_CARD));
+	//	script::MoveExTxtTime::create(TIME_OPERATE_CARD));
 	for (int i = 0;i<MAX_PLAYER;i++)
 	{
 		WidgetFun::setVisible(pRootNode,utility::toString("TimePoint",i),false);
@@ -431,15 +431,15 @@ void XZDDGameScence::setCurrentPlayer(int iCurrentPlayer,int iUserAction,int icb
 		int iCout = 0;
 		int iStartPos = 0;
 		int iNextPos = 0;
-		if (BYTE(iUserAction)&WIK_GANG)
+		if (byte(iUserAction)&WIK_GANG)
 		{
 			iCout++;
 		}
-		if (BYTE(iUserAction)&WIK_PENG)
+		if (byte(iUserAction)&WIK_PENG)
 		{
 			iCout++;
 		}
-		if (BYTE(iUserAction)&BYTE(iUserAction)&WIK_CHI_HU || BYTE(iUserAction)&WIK_ZI_MO)
+		if (byte(iUserAction)&byte(iUserAction)&WIK_CHI_HU || byte(iUserAction)&WIK_ZI_MO)
 		{
 			iCout++;
 		}
@@ -458,25 +458,25 @@ void XZDDGameScence::setCurrentPlayer(int iCurrentPlayer,int iUserAction,int icb
 			iStartPos = -300;
 			iNextPos = 280;
 		}
-		if (BYTE(iUserAction)&WIK_CHI_HU || BYTE(iUserAction)&WIK_ZI_MO)
+		if (byte(iUserAction)&WIK_CHI_HU || byte(iUserAction)&WIK_ZI_MO)
 		{
 			WidgetFun::setPos(this,"XZDDButton_HuAction",cocos2d::Vec2(iStartPos,0));
 			iStartPos+=iNextPos;
 		}
-		if (BYTE(iUserAction)&WIK_GANG)
+		if (byte(iUserAction)&WIK_GANG)
 		{
 			WidgetFun::setPos(this,"XZDDButton_HuAction",cocos2d::Vec2(iStartPos,0));
 			iStartPos+=iNextPos;
 		}
-		if (BYTE(iUserAction)&WIK_PENG)
+		if (byte(iUserAction)&WIK_PENG)
 		{
 			WidgetFun::setPos(this,"XZDDButton_PengAction",cocos2d::Vec2(iStartPos,0));
 			iStartPos+=iNextPos;
 		}
 		WidgetFun::setPos(this,"XZDDButton_GuoAction",cocos2d::Vec2(iStartPos,0));
-		WidgetFun::setVisible(this,"XZDDButton_GangAction",BYTE(iUserAction)&WIK_GANG);
-		WidgetFun::setVisible(this,"XZDDButton_PengAction",BYTE(iUserAction)&WIK_PENG);
-		WidgetFun::setVisible(this,"XZDDButton_HuAction",BYTE(iUserAction)&WIK_CHI_HU || BYTE(iUserAction)&WIK_ZI_MO);
+		WidgetFun::setVisible(this,"XZDDButton_GangAction",byte(iUserAction)&WIK_GANG);
+		WidgetFun::setVisible(this,"XZDDButton_PengAction",byte(iUserAction)&WIK_PENG);
+		WidgetFun::setVisible(this,"XZDDButton_HuAction",byte(iUserAction)&WIK_CHI_HU || byte(iUserAction)&WIK_ZI_MO);
 		//WidgetFun::setWidgetUserInfo(this,"NotifyCard",utility::toString(icbCardData));
 	}
 }
@@ -507,14 +507,14 @@ void XZDDGameScence::showClock(int iTime,bool bShow /*= true*/)
 	}
 	pNode->setVisible(true);
 	pNode->stopAllActions();
-	pNode->runAction(cocos2d::MoveExTxtTime::create(iTime,iTime,0));
+	pNode->runAction(script::MoveExTxtTime::create(iTime,iTime,0));
 }
 
 void XZDDGameScence::showClockTimeCallBack( const std::string& kName,int nSecond,const std::function<void()>& pCallBack,float fCheakTime )
 {
 	Node* pNode = WidgetFun::getChildWidget(this,kName);
 	pNode->stopAllActions();
-	pNode->runAction(cocos2d::MoveExTxtTimeCallBack::create(nSecond,nSecond,0,pCallBack,fCheakTime));
+	pNode->runAction(script::MoveExTxtTimeCallBack::create(nSecond,nSecond,0,pCallBack,fCheakTime));
 }
 
 void XZDDGameScence::killClock( const std::string& kName )
@@ -542,7 +542,7 @@ void XZDDGameScence::setGameResoultPlayerInfo_shuju(const XZDD::AllEndInfo& pGam
 		}
 	}
 	if(mk > 0)
-		pai_sJ = pai_sJ + utility::getScriptString("GFXY")+ utility::toString("x",mk);
+		pai_sJ = pai_sJ + script::getStr("GFXY")+ utility::toString("x",mk);
 
 	for (int i = 0; i < (int)pGameEnd.kChiHuInfoList.size(); i++)
 	{
@@ -585,7 +585,7 @@ void XZDDGameScence::setGameResoultPlayerInfo_shuju(const XZDD::AllEndInfo& pGam
 
 void XZDDGameScence::setGameResoultPlayerInfo(const XZDD::AllEndInfo& pGameEnd, XZDDPlayer* pPlayer, cocos2d::Node* pNode)//设置玩家信息数据
 {
-	cocos2d::ListViewEx* pList = (cocos2d::ListViewEx*)pNode;//自动排版
+	widget::ListViewEx* pList = (widget::ListViewEx*)pNode;//自动排版
 	pList->removeAllChildren();
 
 	int iChirID = pPlayer->GetChairID();
@@ -600,7 +600,7 @@ void XZDDGameScence::setGameResoultPlayerInfo(const XZDD::AllEndInfo& pGameEnd, 
 		{
 			XZDDPlayer* pPlayerWin = getPlayerByChairID(kGangInfo.wChairId);
 			cocos2d::Node* pNode = WidgetManager::Instance().createWidget("XZDDGameResoultState",pList);
-			setGameResoultStateInfo(pNode,pPlayerWin->GetNickName(),utility::getScriptString("GFXY"),nScore);
+			setGameResoultStateInfo(pNode,pPlayerWin->GetNickName(),script::getStr("GFXY"),nScore);
 		}
 	}
 
@@ -705,7 +705,7 @@ void XZDDGameScence::defaultPlayerActionState()
 
 void XZDDGameScence::updataPlayerZhuangState()
 {
-	for (WORD wChairID =0;wChairID<MAX_PLAYER;wChairID++)
+	for (word wChairID =0;wChairID<MAX_PLAYER;wChairID++)
 	{
 		auto pPlayer = getPlayerByChairID(wChairID);
 		if(pPlayer)

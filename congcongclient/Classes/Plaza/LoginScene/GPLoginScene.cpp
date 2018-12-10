@@ -1,13 +1,12 @@
 #include "GPLoginScene.h"
-#include "CommonHeader/LocalConstant.h"
 
-USING_NS_CC;
-using namespace experimental;
+#include "common.h"
+#include "constant.h"
 
-#include <stdlib.h>
-#include <stdio.h>
-
+#include USERINFO
+ 
 FV_SINGLETON_STORAGE(GPLoginScene);
+
 GPLoginScene::GPLoginScene()
     : m_kLoginMission(ScriptData<std::string>("address").Value().c_str(), ScriptData<int>("Port").Value())
     , m_kPopularizeMission(ScriptData<std::string>("address").Value().c_str(), ScriptData<int>("Port").Value())
@@ -52,10 +51,10 @@ void GPLoginScene::EnterScene()
 	{
 		//WidgetFun::runWidgetAction(this, "GameNameTitleAniNode", "LoginActionStart");
 	}
-	float sound_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("sound_volume", LocalContant::DEFAULT_SOUND);
+	float sound_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("sound_volume", Constant::DEFAULT_SOUND);
 	CocosDenshion::SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(sound_volume);
 	SoundFun::Instance().SetSoundBackground(sound_volume);
-	float effect_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("effect_volume", LocalContant::DEFAULT_EFFECT);
+	float effect_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("effect_volume", Constant::DEFAULT_EFFECT);
 	CocosDenshion::SimpleAudioEngine::getInstance()->setEffectsVolume(effect_volume);
 	SoundFun::Instance().SetSoundEffect(effect_volume);
 	SoundFun::Instance().playBackMusic("bgplay.mp3");

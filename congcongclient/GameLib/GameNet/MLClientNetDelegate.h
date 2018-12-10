@@ -26,13 +26,13 @@ THE SOFTWARE.
 ****************************************************************************/
 #pragma once
 
-
-#include "cocos2d.h"
+#include <cocos2d.h>
 #include "MLNetDefine.h"
 #include "MLClientScoket.h"
-//#include "SocketTimer.h"
 
-NS_CC_BEGIN
+USING_NS_CC;
+
+namespace gamelib{
 
 /**
  * class  : CCNetDelegate
@@ -116,4 +116,4 @@ protected:
 	CCSocketStatus         m_eStatus;
 };
 
-NS_CC_END
+}

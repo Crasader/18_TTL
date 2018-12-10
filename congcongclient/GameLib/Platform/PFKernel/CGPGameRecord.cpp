@@ -1,5 +1,6 @@
 #include "CGPGameRecord.h"
 
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
 
 CGPGameRecordMission::CGPGameRecordMission(const char* url, int port)
 : CCallMission("CGPGameRecordMission",url, port)

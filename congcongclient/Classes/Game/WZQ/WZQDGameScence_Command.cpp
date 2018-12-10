@@ -1,5 +1,5 @@
 #include "WZQDGameScence.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 
 #include "CMD_WZQ.h"
 

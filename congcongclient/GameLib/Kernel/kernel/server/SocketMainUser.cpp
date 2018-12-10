@@ -1,4 +1,8 @@
 #include "Kernel/kernel/server/CServerItem.h"
+#include "Platform/PFDefine/data/ServerListData.h"
+#include "Platform/PFDefine/df/Macro.h"
+
+#include "Platform/PFDefine/msg/CMD_GameServer.h"
 #include "Game/Game/UserInfo.h"
 
 //用户处理

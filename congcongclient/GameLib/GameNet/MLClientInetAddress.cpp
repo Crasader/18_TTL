@@ -30,7 +30,7 @@ THE SOFTWARE.
 	#pragma comment(lib, "Ws2_32.lib")
 #endif
 
-NS_CC_BEGIN
+namespace gamelib{
 
 MLClientInetAddress::MLClientInetAddress()
 {
@@ -161,4 +161,4 @@ int MLClientInetAddress::getLength()
 	return sizeof(sockaddr_in); 
 }
 
-NS_CC_END
+}

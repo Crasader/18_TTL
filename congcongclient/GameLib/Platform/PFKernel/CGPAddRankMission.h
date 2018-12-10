@@ -1,11 +1,13 @@
 #pragma once
-#include "cocos2d.h"
-#include "Platform/PlatformHeader.h"
+#include <cocos2d.h>
 #include "Kernel/network/CCallMission.h"
 
 //////////////////////////////////////////////////////////////////////////
 // 机器绑定修改提示
 //////////////////////////////////////////////////////////////////////////
+struct CMD_GP_BackAddBankAwardInfo;
+struct CMD_GP_BackAddBank;
+
 class CGAddRankMissionSink
 {
 public:

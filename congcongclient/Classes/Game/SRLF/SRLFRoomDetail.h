@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Game/GameLib.h"
+#include "GAME.h"
 #include "Game/Script/ScriptXMLparse.h"
 #include "Game/FV/FvMask.h"
 

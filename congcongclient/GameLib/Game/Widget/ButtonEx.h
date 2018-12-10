@@ -1,11 +1,11 @@
-
 #pragma once
 
-#include "cocos2d.h"
+#include <cocos2d.h>
 #include "ui/UIButton.h"
 
+USING_NS_CC;
 
-NS_CC_BEGIN;
+namespace widget {
 
 class ButtonEx
 	:public ui::Button
@@ -23,5 +23,5 @@ public:
 	ui::Scale9Sprite* getButtonClickedRenderer();
 	ui::Scale9Sprite* getButtonDisableRenderer();
 };
-NS_CC_END;
+}
 

@@ -1,11 +1,13 @@
 #pragma once
-#include "cocos2d.h"
-#include "Platform/PlatformHeader.h"
+#include <cocos2d.h>
 #include "Game/FV/FvSingleton.h"
 #include "Game/Script/TimeNode.h"
+
+#include "Platform/PFDefine/data/GlobalUserInfo.h"
 #include "Platform/PFKernel/CGPIndividualMission.h"
 #include "Platform/PFKernel/CGUserInGameServerInfo.h"
 
+//using namespace script;
 
 typedef void (cocos2d::Ref::*QYSEL_CallFunc)();
 #define QY_CALLFUNC_SELECTOR(_SELECTOR) static_cast<QYSEL_CallFunc>(&_SELECTOR)

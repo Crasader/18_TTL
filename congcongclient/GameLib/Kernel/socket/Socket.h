@@ -16,7 +16,7 @@ struct ISocketSink
 };
 
 class CSocket
-	:public cocos2d::MLClientNetDelegate
+	:public gamelib::MLClientNetDelegate
 {
 public:
 	CSocket();

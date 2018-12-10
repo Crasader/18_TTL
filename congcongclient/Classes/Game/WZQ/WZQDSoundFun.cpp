@@ -1,10 +1,10 @@
 #include "WZQDSoundFun.h"
 #include "SimpleAudioEngine.h"
-#include "Game/Script/utility.h"
-#include "GameLib/Tools/tools/Convert.h"
 #include "Game/Script/SoundFun.h"
 #include "WZQDGameLogic.h"
-#include "GameLib/Platform/PFDefine/df/types.h"
+#include "DEFINE.h"
+#include "UTILITY.h"
+
 namespace WZQSoundFun
 {
 	static const std::string LG_PATH_SC = "GameWZQ/sound/";

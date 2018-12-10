@@ -1,7 +1,9 @@
 #pragma once
-#include "cocos2d.h"
-#include "Platform/PlatformHeader.h"
+#include <cocos2d.h>
+
 #include "Kernel/network/CSocketMission.h"
+#include "Platform/PFDefine/df/types.h"
+#include "Platform/PFDefine/df/struct.h"
 
 class IGPMessageMissionSink
 {

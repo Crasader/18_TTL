@@ -1,9 +1,8 @@
-﻿
-#include "QYCardTurn.h"
+﻿#include "QYCardTurn.h"
 #include "QYPageTurn3D.h"
-#include "Game/Script/utility.h"
+#include "Tools/utilityMath.h"
 
-USING_NS_CC;
+using namespace widget;
 
 QYCardTurn::QYCardTurn(float fWidth,float fHeight)
 	:m_pGridNodeTarget(NULL)

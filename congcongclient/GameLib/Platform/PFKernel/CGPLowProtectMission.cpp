@@ -1,5 +1,9 @@
 #include "CGPLowProtectMission.h"
 
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
+#include "Platform/PFDefine/data/GlobalUserInfo.h"
+#include "Platform/PFDefine/df/DF.h"
+
 CGPLowProtectMission::CGPLowProtectMission(const char * url, int port)
 : CCallMission("CGPLowProtectMission",url, port)
 {

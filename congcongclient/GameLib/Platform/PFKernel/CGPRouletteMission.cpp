@@ -1,5 +1,6 @@
 #include "CGPRouletteMission.h"
 
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
 
 CGPRouletteMission::CGPRouletteMission(const char* url, int port)
 : CCallMission("CGUserInGameServerInfo",url, port)

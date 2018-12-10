@@ -27,12 +27,12 @@ THE SOFTWARE.
 #ifndef __CCNET_SOCKET_H__
 #define __CCNET_SOCKET_H__
 
-#include "cocos2d.h"
+#include <cocos2d.h>
 #include "MLNetDefine.h"
 #include "MLClientInetAddress.h"
 #include <string>
 
-NS_CC_BEGIN
+namespace gamelib{
 
 /**
  * calss  : CCSocket
@@ -61,6 +61,6 @@ protected:
 };
 
 
-NS_CC_END
+}
 
 #endif //__CCNET_SOCKET_H__

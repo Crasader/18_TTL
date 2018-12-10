@@ -1,5 +1,8 @@
 #include "CGPTimeAwardMission.h"
 
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
+#include "Platform/PFDefine/data/GlobalUserInfo.h"
+
 #define MISSION_TIME_AWARD_NULL		0
 #define MISSION_TIME_AWARD_CHECK	1
 #define MISSION_TIME_AWARD_GET		2

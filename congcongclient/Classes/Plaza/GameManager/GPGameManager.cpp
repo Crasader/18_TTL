@@ -1,13 +1,15 @@
 #include "GPGameManager.h"
 
-#include "GamePlaza/GameManager/GPGameLink.h"
-#include "ClientHN_THJ/Game/TTLNN/GameScene/NNGameScene.h"
-#include "ClientHN_THJ/Game/MENJI/TLJGameScence.h"
-#include "ClientHN_THJ/Game/SRLF/SRLFGameScence.h"
-#include "ClientHN_THJ/Game/WZQ/WZQDGameScence.h"
-#include "ClientHN_THJ/Game/SG/GameScene/SGGameScence.h"
-#include "ClientHN_THJ/Game/XZDD/XZDDGameScence.h"
-#include "GameLib/Game/FV/FvSingleton.h"
+#include "Plaza/GameManager/GPGameLink.h"
+
+#include "Game/NN/NNGameScene.h"
+#include "Game/ZJH/TLJGameScence.h"
+#include "Game/SRLF/SRLFGameScence.h"
+#include "Game/WZQ/WZQDGameScence.h"
+#include "Game/SG/SGGameScence.h"
+#include "Game/XZDD/XZDDGameScence.h"
+
+#include USERINFO
 
 FV_SINGLETON_STORAGE(GPGameManager)
 
@@ -30,11 +32,11 @@ void GPGameManager::init()
 	//DONE:后面的都不用初始化了,省资源
 	//////////////////////////////////////////////////////////////////////////
 
-	GPSceneManager::Instance().addGameNode(SRLFGameScence::pInstance());
-	GPSceneManager::Instance().addGameNode(TLJGameScence::pInstance());
-	GPSceneManager::Instance().addGameNode(WZQDGameScence::pInstance());
-	GPSceneManager::Instance().addGameNode(SGGameScence::pInstance());
-	GPSceneManager::Instance().addGameNode(XZDDGameScence::pInstance());
+	//GPSceneManager::Instance().addGameNode(SRLFGameScence::pInstance());
+	//GPSceneManager::Instance().addGameNode(TLJGameScence::pInstance());
+	//GPSceneManager::Instance().addGameNode(WZQDGameScence::pInstance());
+	//GPSceneManager::Instance().addGameNode(SGGameScence::pInstance());
+	//GPSceneManager::Instance().addGameNode(XZDDGameScence::pInstance());
 }
 
 void GPGameManager::hideAll()
@@ -48,66 +50,67 @@ void GPGameManager::hideAll()
 	//DONE:后面的都不用初始化了,省资源
 	//////////////////////////////////////////////////////////////////////////
 
-	SRLFGameScence::Instance().setVisible(false);
-    SRLFGameScence::Instance().stopAllActions();
+	//SRLFGameScence::Instance().setVisible(false);
+ //   SRLFGameScence::Instance().stopAllActions();
 
-	TLJGameScence::Instance().setVisible(false);
-    TLJGameScence::Instance().stopAllActions();
+	//TLJGameScence::Instance().setVisible(false);
+ //   TLJGameScence::Instance().stopAllActions();
 
-	WZQDGameScence::Instance().setVisible(false);
-    WZQDGameScence::Instance().stopAllActions();
+	//WZQDGameScence::Instance().setVisible(false);
+ //   WZQDGameScence::Instance().stopAllActions();
 
-	SGGameScence::Instance().hide();
-    SGGameScence::Instance().stopAllActions();
+	//SGGameScence::Instance().hide();
+ //   SGGameScence::Instance().stopAllActions();
 
-	XZDDGameScence::Instance().setVisible(false);
-	XZDDGameScence::Instance().stopAllActions();
+	//XZDDGameScence::Instance().setVisible(false);
+	//XZDDGameScence::Instance().stopAllActions();
 }
 
 IClientKernelSink* GPGameManager::CreateGame()
 {
     GPSceneManager::Instance().HideAll();
 	GameManagerBase::setJoinWithRoomNO(0);
-	switch(_wCurGameID)
+	switch (_wCurGameID)
 	{
-	case NNGameScene::KIND_ID:
+		case NNGameScene::KIND_ID:
 		{
 			NNGameScene::Instance().enterScene();
 			setInCenter(false);
 			return NNGameScene::pInstance();
 		}
-	case SRLFGameScence::KIND_ID:
-		{
-			SRLFGameScence::Instance().EnterScence();
-			setInCenter(false);
-			return SRLFGameScence::pInstance();
-		}
-	case TLJGameScence::KIND_ID:
-		{
-			TLJGameScence::Instance().EnterScence();
-			setInCenter(false);
-			return TLJGameScence::pInstance();
-		}
-	case WZQDGameScence::KIND_ID:
-		{
-			WZQDGameScence::Instance().EnterScence();
-			setInCenter(false);
-			return WZQDGameScence::pInstance();
-		}
-	case SGGameScence::KIND_ID:
-		{
-			SGGameScence::Instance().enterScene();
-			setInCenter(false);
-			return SGGameScence::pInstance();
-		}
-
-	case XZDDGameScence::KIND_ID:
-		{
-			XZDDGameScence::Instance().EnterScence();
-			setInCenter(false);
-			return XZDDGameScence::pInstance();
-		}
 	}
+	//case SRLFGameScence::KIND_ID:
+	//	{
+	//		SRLFGameScence::Instance().EnterScence();
+	//		setInCenter(false);
+	//		return SRLFGameScence::pInstance();
+	//	}
+	//case TLJGameScence::KIND_ID:
+	//	{
+	//		TLJGameScence::Instance().EnterScence();
+	//		setInCenter(false);
+	//		return TLJGameScence::pInstance();
+	//	}
+	//case WZQDGameScence::KIND_ID:
+	//	{
+	//		WZQDGameScence::Instance().EnterScence();
+	//		setInCenter(false);
+	//		return WZQDGameScence::pInstance();
+	//	}
+	//case SGGameScence::KIND_ID:
+	//	{
+	//		SGGameScence::Instance().enterScene();
+	//		setInCenter(false);
+	//		return SGGameScence::pInstance();
+	//	}
+
+	//case XZDDGameScence::KIND_ID:
+	//	{
+	//		XZDDGameScence::Instance().EnterScence();
+	//		setInCenter(false);
+	//		return XZDDGameScence::pInstance();
+	//	}
+	//}
     return NULL;
 }
 

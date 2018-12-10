@@ -1,7 +1,10 @@
 #include "SRLFGameScence.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 #include "SRLFPlayer.h"
 #include "Game/Game/MissionWeiXin.h"
+#include USERINFO
+#include IMAGE_DOWN
+#include "UTILITY.h"
 
 void SRLFGameScence::initRecord()
 {
@@ -104,7 +107,7 @@ bool SRLFGameScence::StartRecord(datastream kDataStream)
 		pPlayer->setGameRecord(true);
 		pPlayer->PlayerEnter();
 		pPlayer->startGameNoTime();
-		BYTE cbCardData[MAX_COUNT];
+		byte cbCardData[MAX_COUNT];
 		for (int i = 0;i<MAX_COUNT;i++)
 		{
 			cbCardData[i] = kRecordPlayer.cbCardData[i];

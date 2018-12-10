@@ -1,8 +1,9 @@
 #include "SRLFGameScence.h"
 #include "SRLFPlayer.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 #include "CMD_SRLF.h"
 #include "SRLFPlayer.h"
+#include "UTILITY.h"
 
 class SRLFTouchScence
 	:public cocos2d::CCLayer
@@ -169,7 +170,7 @@ void SRLFGameScence::SendOutCard(cocos2d::Node* pCard)
 
 void SRLFGameScence::onHuanPaiTouchEvent(cocos2d::Vec2 kPos)
 {
-	std::vector<BYTE> kCardDataList;
+	std::vector<byte> kCardDataList;
 	int nColor = m_pLocal->getUpCardList(kCardDataList);
 	int nUpCardNum = kCardDataList.size();
 

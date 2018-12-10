@@ -1,5 +1,4 @@
 #include "SelectBox.h"
-USING_NS_CC;
 
 using namespace ui;
 

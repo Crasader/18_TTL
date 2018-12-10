@@ -1,15 +1,13 @@
 #ifndef __GPLOGIN_SCENE_H_
 #define __GPLOGIN_SCENE_H_
-#include "cocos2d.h"
-#include "Game/FV/FvSingleton.h"
-#include "Game/Widget/WidgetDefine.h"
-#include "Game/Game/MissionWeiXin.h"
-#include "Platform/PFKernel/CGPLoginMission.h"
-#include "ui/UIButton.h"
-#include "Game/GameLib.h"
-#include "SimpleAudioEngine.h"
-#include "../GPSceneManager.h"
-#include "GameLib/Platform/PFKernel/CGPopularizeMission.h"
+
+#include <Platform/PFKernel/CGPopularizeMission.h>
+#include <Platform/PFKernel/CGPLoginMission.h>
+#include <Game/Game/MissionWeiXin.h>
+
+#include "common.h"
+
+#include "../GameManager/GPSceneManager.h"
 
 class GPLoginScene
 	: public cocos2d::Node

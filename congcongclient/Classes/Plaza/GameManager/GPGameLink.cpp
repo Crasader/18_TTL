@@ -1,23 +1,27 @@
 #include "GPGameLink.h"
-#include "Game/GameLib.h"
+
 #include "kernel/kernel/server/CServerItem.h"
+
 #include "../HomeScene/GPHomeScene.h"
-#include "../HomeScene/CreateRoomPanel/GPHomeRoomListPanel_SRLF.h"
-#include "../HomeScene/CreateRoomPanel/GPHomeRoomListPanel_NN.h"
-#include "../HomeScene/CreateRoomPanel/GPHomeRoomListPanel_TLJ.h"
-#include "../HomeScene/CreateRoomPanel/GPHomeRoomListPanel_WZQ.h"
-#include "../HomeScene/CreateRoomPanel/GPHomeRoomListPanel_SG.h"
-#include "../HomeScene/CreateRoomPanel/GPHomeRoomListPanel_XZDD.h"
-#include "ClientHN_THJ/Game/TTLNN/GameScene/NNGameScene.h"
-#include "ClientHN_THJ/Game/MENJI/TLJGameScence.h"
-#include "ClientHN_THJ/Game/SRLF/SRLFGameScence.h"
-#include "ClientHN_THJ/Game/WZQ/WZQDGameScence.h"
-#include "ClientHN_THJ/Game/SG/GameScene/SGGameScence.h"
-#include "ClientHN_THJ/Game/XZDD/XZDDGameScence.h"
+#include "../HomeScene/CreateRoom/GPHomeRoomListPanel_SRLF.h"
+#include "../HomeScene/CreateRoom/GPHomeRoomListPanel_NN.h"
+#include "../HomeScene/CreateRoom/GPHomeRoomListPanel_TLJ.h"
+#include "../HomeScene/CreateRoom/GPHomeRoomListPanel_WZQ.h"
+#include "../HomeScene/CreateRoom/GPHomeRoomListPanel_SG.h"
+#include "../HomeScene/CreateRoom/GPHomeRoomListPanel_XZDD.h"
+
+#include "Game/NN/NNGameScene.h"
+#include "Game/ZJH/TLJGameScence.h"
+#include "Game/SRLF/SRLFGameScence.h"
+#include "Game/WZQ/WZQDGameScence.h"
+#include "Game/SG/SGGameScence.h"
+#include "Game/XZDD/XZDDGameScence.h"
+ 
 
 //#define QUIT_ROOM_WITHOUT_AGREE
 
 FV_SINGLETON_STORAGE(GPGameLink);
+
 GPGameLink::GPGameLink()
 	: m_kLoginMission(ScriptData<std::string>("address").Value().c_str(), ScriptData<int>("Port").Value())
 	, m_currentGameKindID(ScriptData<int>("GameKind").Value())
@@ -99,26 +103,26 @@ void GPGameLink::OnSocketSubPrivateInqureTableRet(void* data, size_t dataSize)
 
 	switch (m_currentGameKindID)
 	{
-	case SRLFGameScence::KIND_ID:// 302:
-		GPHomeRoomListPanel_SRLF::Instance().RefreshListView(data, dataSize);
-		break;
 	case NNGameScene::KIND_ID: //21:
 		GPHomeScene::Instance().showGameRoomList(data, dataSize);
 		//DONE:直接在大厅刷新桌子
 		//GPHomeRoomListPanel_NN::Instance().RefreshListView(data, dataSize);
 		break;
-	case TLJGameScence::KIND_ID://317:
-		GPHomeRoomListPanel_TLJ::Instance().RefreshListView(data, dataSize);
-		break;
-	case WZQDGameScence::KIND_ID://888:
-		GPHomeRoomListPanel_WZQ::Instance().RefreshListView(data, dataSize);
-		break;
-	case SGGameScence::KIND_ID://999:
-		GPHomeRoomListPanel_SG::Instance().RefreshListView(data, dataSize);
-		break;
-	case XZDDGameScence::KIND_ID:
-		GPHomeRoomListPanel_XZDD::Instance().RefreshListView(data, dataSize);
-		break;
+	//case SRLFGameScence::KIND_ID:// 302:
+	//	GPHomeRoomListPanel_SRLF::Instance().RefreshListView(data, dataSize);
+	//	break;
+	//case TLJGameScence::KIND_ID://317:
+	//	GPHomeRoomListPanel_TLJ::Instance().RefreshListView(data, dataSize);
+	//	break;
+	//case WZQDGameScence::KIND_ID://888:
+	//	GPHomeRoomListPanel_WZQ::Instance().RefreshListView(data, dataSize);
+	//	break;
+	//case SGGameScence::KIND_ID://999:
+	//	GPHomeRoomListPanel_SG::Instance().RefreshListView(data, dataSize);
+	//	break;
+	//case XZDDGameScence::KIND_ID:
+	//	GPHomeRoomListPanel_XZDD::Instance().RefreshListView(data, dataSize);
+	//	break;
 	}
 }
 

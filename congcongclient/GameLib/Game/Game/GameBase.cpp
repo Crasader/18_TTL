@@ -1,10 +1,20 @@
 #include "GameBase.h"
-
-#include "Game/GameLib.h"
-#include "Game/Sound/ArmFun.h"
-
 #include "ScenceManagerBase.h"
 #include "GameManagerBase.h"
+
+#include "Platform/PFDefine/msg/CMD_GameServer.h"
+
+#include "Game/FV/FvMask.h"
+#include "Game/Game/NoticeMsg.h"
+#include "Game/Game/PopScence.h"
+#include "Game/Game/UserInfo.h"
+#include "Game/Sound/ArmFun.h"
+#include "Game/Script/SoundFun.h"
+#include "Game/Script/ScriptData.h"
+
+#include "Tools/utilityString.h"
+
+using namespace script;
 
 GameBase::GameBase(unsigned int iType,unsigned int iOption)
 	:m_pSelfPlayer(NULL)
@@ -89,7 +99,7 @@ bool GameBase::BackKey()
 	{
 		return false;
 	}
-	PopScence::Instance().showAccessPlane(utility::getScriptString("GameExitKeyBack"),this, button_selector(GameBase::Button_CB_OnExit),NULL);
+	PopScence::Instance().showAccessPlane(script::getStr("GameExitKeyBack"),this, button_selector(GameBase::Button_CB_OnExit),NULL);
 	return true;
 }
 void GameBase::Button_CB_OnExit(cocos2d::Ref*,WidgetUserInfo*)

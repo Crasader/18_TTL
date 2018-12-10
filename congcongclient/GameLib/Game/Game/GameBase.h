@@ -1,5 +1,7 @@
 #pragma once
-#include "cocos2d.h"
+
+#include <cocos2d.h>
+
 #include "GamePlayer.h"
 #include "Platform/PFKernel/CGPReqPlayerInfoMission.h"
 #include "Kernel/kernel/game/IClientKernelSink.h"
@@ -21,7 +23,11 @@ struct NET_CBInfo
 	std::string kCallFunName;
 	std::function<void(void*, int)> pCallBack;
 };
+
 typedef std::vector<NET_CBInfo> NET_CBInfoList;
+struct tagMatchInfo;
+struct tagMatchWaitTip;
+struct tagMatchResult;
 
 class GameBase
 	:public cocos2d::Node

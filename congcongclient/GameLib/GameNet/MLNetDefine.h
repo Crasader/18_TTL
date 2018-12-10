@@ -27,7 +27,7 @@ THE SOFTWARE.
 #ifndef __CCNET_MACROS_H__
 #define __CCNET_MACROS_H__
 
-#include "cocos2d.h"
+#include <cocos2d.h>
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 typedef unsigned int          SOCKET;

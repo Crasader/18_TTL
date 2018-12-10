@@ -1,12 +1,18 @@
-#include "GPHomeScene.h"
-#include "cocos2d/cocos/editor-support/cocostudio/ActionTimeline/CSLoader.h"
-#include "GameLib/Game/Game/NoticeMsg.h"
-#include "GameLib/Game/Game/UserInfo.h"
-#include "GamePlaza/GameManager/GPGameLink.h"
-#include "CommonHeader/LocalConstant.h"
-#include "ClientHN_THJ/Game/TTLNN/GameScene/NNGameScene.h"
+#include <cocos2d/cocos/editor-support/cocostudio/ActionTimeline/CSLoader.h>
+#include <Game/Game/NoticeMsg.h>
+#include <Game/Game/UserInfo.h>
 
-USING_NS_CC;
+#include "GPHomeScene.h"
+#include "common.h"
+#include "../GameManager/GPGameLink.h"
+#include "CreateRoom/GPHomeCreateRoom.h"
+#include "BtnTurnLayer.h"
+
+#include "Game/NN/NNGameScene.h"
+#include "Game/NN/NNCalculate.h"
+#include "constant.h"
+#include "UTILITY.h"
+
 using namespace experimental;
 
 FV_SINGLETON_STORAGE(GPHomeScene);
@@ -53,8 +59,8 @@ bool GPHomeScene::init()
 
 		WidgetFun::setImagic(pHeadBG,"GamePlaza/HomeScene/avatar_male.png",true);
 	}
-	float sound_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("sound_volume", LocalContant::DEFAULT_SOUND);
-	float effect_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("effect_volume", LocalContant::DEFAULT_EFFECT);
+	float sound_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("sound_volume", Constant::DEFAULT_SOUND);
+	float effect_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("effect_volume", Constant::DEFAULT_EFFECT);
 	CocosDenshion::SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(sound_volume);
 	CocosDenshion::SimpleAudioEngine::getInstance()->setEffectsVolume(effect_volume);
 
@@ -65,7 +71,7 @@ void GPHomeScene::showGameRoomList(void* data, size_t dataSize)
 {
 	cocos2d::log("GPHomeRoomListPanel_NN::RefreshListView");
 
-	cocos2d::ListViewEx* pList = WidgetFun::getListViewWidget(this, "View_RoomList");
+	widget::ListViewEx* pList = WidgetFun::getListViewWidget(this, "View_RoomList");
 	pList->removeAllChildren();
 
 	cocos2d::Node* pItemNode = nullptr;

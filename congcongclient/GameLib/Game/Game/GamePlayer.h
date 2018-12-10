@@ -1,7 +1,9 @@
 #pragma once
-#include "cocos2d.h"
+#include <cocos2d.h>
 #include "Kernel/kernel/user/IClientUserItem.h"
 #include "Platform/PFKernel/CGPReqPlayerInfoMission.h"
+
+struct CMD_GR_C_TableTalk;
 
 class GamePlayer : public ICGPReqPlayerInfoSink
 {

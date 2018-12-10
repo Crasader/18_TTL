@@ -1,17 +1,22 @@
-#include "cocos2d.h"
+#include <cocos2d.h>
 #include "GameManagerBase.h"
 
 #include "NoticeMsg.h"
 #include "NoticeMsgBox.h"
 #include "UserInfo.h"
-#include "Game/Script/utility.h"
+#include "Tools/utilityConvert.h"
 #include "JniCross/JniFun.h"
 #include "GameScriptNet.h"
 #include "Game/Game/MissionWeiXin.h"
+#include "Game/Script/ScriptData.h"
+#include "Game/Script/TimeManager.h"
 
-USING_NS_CC;
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
+#include "Platform/PFDefine/msg/CMD_GameServer.h"
+
+using namespace script;
 using namespace experimental;
-
+ 
 GameManagerBase* GameManagerBase::g_GameMan = nullptr;
 
 #define MaxReconnectTime  120.0f
@@ -253,7 +258,7 @@ void GameManagerBase::OnGRLogonFinish()
 	CCLOG(("GameManager::OnGRLogonFinish"));
 
 	m_eInReconnect = ReconnectStatus_NULL;
-	TimeManager::Instance().removeByFun(TIME_CALLBACK(GameManagerBase::closeClinet,this));
+	TimeManager::Instance().removeByFun(TIME_CALLBACK(GameManagerBase::closeClinet, this));
 
 	//重入判断
 	if (mCServerItem && (mCServerItem->GetMeUserItem()!=NULL)&&(mCServerItem->GetMeUserItem()->GetUserStatus() >= US_SIT))
@@ -284,7 +289,7 @@ void GameManagerBase::CB_GameLogonFinsh()
 			NoticeMsg::Instance().ShowTopMsgByScript("RoomFull");
 		}
 #else
-		//DONE:这里请求私人场数据吧
+		//DONE:实际上在连接游戏服务器成功之后申请的
 		//sendSubGRProvateInfo();
 #endif
 	}
@@ -494,7 +499,7 @@ void GameManagerBase::StartGameReconnect()
 void GameManagerBase::onEventTCPSocketError(int errorCode)
 {
 	//UserInfo::Instance().checkInGameServer();
-	TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(GameManagerBase::closeClinet,this), 3.0f);
+	TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(GameManagerBase::closeClinet, this), 3.0f);
 }
 void GameManagerBase::closeClinet()
 {
@@ -662,7 +667,7 @@ SCORE GameManagerBase::getGameDiFen()
 
 //////////////////////////////////////////////////////////////////////////
 
-WORD GameManagerBase::getGameChairNum()
+word GameManagerBase::getGameChairNum()
 {
 	if (!CServerItem::get()) {
 		return 0;

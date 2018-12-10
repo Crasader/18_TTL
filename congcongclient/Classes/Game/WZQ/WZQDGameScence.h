@@ -1,13 +1,11 @@
 #pragma once
-#include "cocos2d.h"
-#include "Game/FV/FvSingleton.h"
-#include "Game/Widget/WidgetDefine.h"
-#include "Game/Game/GameBase.h"
-#include "Game/Game/GameDefine.h"
-#include "Game/Script/TimeNode.h"
-#include "CMD_WZQ.h"
-#include "GamePlaza/HomeScene/EditNumPanel/GPHomeEditNumPanel.h"
 
+#include "common.h"
+#include "DEFINE.h"
+#include CMD_GAME
+
+#include "CMD_WZQ.h"
+#include "Plaza/HomeScene/GPHomeEditNumPanel.h"
 
 class WZQDPlayer;
 struct CMD_S_GameEnd;
@@ -74,7 +72,7 @@ public:
 
 	void setPlayCount(int nCount);
 	int getPlayCount();
-	void updateScore(BYTE cbIndex,dword wScore);
+	void updateScore(byte cbIndex,dword wScore);
 public:
 	void initButton();
 	void WZQButton_Ready(cocos2d::Ref*,WidgetUserInfo*);
@@ -127,34 +125,34 @@ public:
 
 	void OnSubGameStart(const void * pBuffer, word wDataSize);
 	//用户出牌
-	void OnSubOutCard(const void * pBuffer, WORD wDataSize);
+	void OnSubOutCard(const void * pBuffer, word wDataSize);
 	//发牌消息
-	void OnSubSendCard(const void * pBuffer, WORD wDataSize);
+	void OnSubSendCard(const void * pBuffer, word wDataSize);
 	//操作提示
-	void OnSubOperateNotify(const void * pBuffer, WORD wDataSize);
+	void OnSubOperateNotify(const void * pBuffer, word wDataSize);
 	//操作结果
-	void OnSubOperateResult(const void * pBuffer, WORD wDataSize);
+	void OnSubOperateResult(const void * pBuffer, word wDataSize);
 	//游戏结束
-	void OnSubGameEnd(const void * pBuffer, WORD wDataSize);
+	void OnSubGameEnd(const void * pBuffer, word wDataSize);
 	//用户托管
-	void OnSubTrustee(const void * pBuffer,WORD wDataSize);
+	void OnSubTrustee(const void * pBuffer,word wDataSize);
 	//設置學分成功
-	void OnSubSetXueFei(const void * pBuffer, WORD wDataSize);
+	void OnSubSetXueFei(const void * pBuffer, word wDataSize);
 
 	//吃胡消息
-	void OnSubUserChiHu( const void *pBuffer,WORD wDataSize );
+	void OnSubUserChiHu( const void *pBuffer,word wDataSize );
 	//杠得分
-	void OnSubGangScore( const void *pBuffer, WORD wDataSize );
+	void OnSubGangScore( const void *pBuffer, word wDataSize );
 
 	//换牌
-	void OnSubHuanPai(const void *pBuffer, WORD wDataSize );
-	void OnSubHuanPaiChengDu(const void *pBuffer, WORD wDataSize );
+	void OnSubHuanPai(const void *pBuffer, word wDataSize );
+	void OnSubHuanPaiChengDu(const void *pBuffer, word wDataSize );
 	//选缺通知
-	void OnSubXuanQueNotice(const void *pBuffer, WORD wDataSize );
+	void OnSubXuanQueNotice(const void *pBuffer, word wDataSize );
 	//选缺
-	void OnSubXuanQue(const void *pBuffer, WORD wDataSize );
+	void OnSubXuanQue(const void *pBuffer, word wDataSize );
 	//换牌通知
-	void OnSubHuanPaiNotice(const void *pBuffer, WORD wDataSize );
+	void OnSubHuanPaiNotice(const void *pBuffer, word wDataSize );
 //public:
 //	void Command_PlaceBet(int iArea,int iBetScore);
 //	void SendOutCard(cocos2d::Node* pCard);

@@ -1,9 +1,11 @@
 #include "WZQDGameScence.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 
 #include "CMD_WZQ.h"
 #include "WZQDPlayer.h"
 #include "WZQDGameLogic.h"
+#include UTILITY_CONVERT
+
 using namespace WZQ;
 void WZQDGameScence::initNet()
 {
@@ -47,7 +49,7 @@ void WZQDGameScence::OnSubGameStart(const void * pBuffer, word wDataSize)
 	m_nGameState = WZQ_STATE_PLAYING;
 }
 //用户出牌
-void WZQDGameScence::OnSubOutCard(const void * pBuffer, WORD wDataSize)
+void WZQDGameScence::OnSubOutCard(const void * pBuffer, word wDataSize)
 {
 	//效验消息
 	ASSERT(wDataSize == sizeof(CMD_S_OutCard));
@@ -74,7 +76,7 @@ void WZQDGameScence::OnSubOutCard(const void * pBuffer, WORD wDataSize)
 	WidgetFun::setText(pRootNode, "ActPlayerLastTime", "0");
 }
 //发牌消息
-void WZQDGameScence::OnSubSendCard(const void * pBuffer, WORD wDataSize)
+void WZQDGameScence::OnSubSendCard(const void * pBuffer, word wDataSize)
 {
 	
 	//效验数据
@@ -117,7 +119,7 @@ void WZQDGameScence::OnSubSendCard(const void * pBuffer, WORD wDataSize)
 	//m_nGameState = XZDD_STATE_PLAYING;
 }
 //操作提示
-void WZQDGameScence::OnSubOperateNotify(const void * pBuffer, WORD wDataSize)
+void WZQDGameScence::OnSubOperateNotify(const void * pBuffer, word wDataSize)
 {
 	//效验数据
 	ASSERT(wDataSize == sizeof(CMD_S_OperateNotify));
@@ -136,7 +138,7 @@ void WZQDGameScence::OnSubOperateNotify(const void * pBuffer, WORD wDataSize)
 	}*/
 }
 //操作结果
-void WZQDGameScence::OnSubOperateResult(const void * pBuffer, WORD wDataSize)
+void WZQDGameScence::OnSubOperateResult(const void * pBuffer, word wDataSize)
 {
 	//效验消息
 	ASSERT(wDataSize == sizeof(CMD_S_OperateResult));
@@ -163,7 +165,7 @@ void WZQDGameScence::OnSubOperateResult(const void * pBuffer, WORD wDataSize)
 	WidgetFun::setVisible(this, "SelfActionNode", false);
 }
 //游戏结束
-void WZQDGameScence::OnSubGameEnd(const void * pBuffer, WORD wDataSize)
+void WZQDGameScence::OnSubGameEnd(const void * pBuffer, word wDataSize)
 {
 	m_nGameState = WZQ_STATE_NULL;
 	ASSERT(wDataSize == sizeof(WZQ::CMD_S_GameEnd));
@@ -187,7 +189,7 @@ void WZQDGameScence::OnSubGameEnd(const void * pBuffer, WORD wDataSize)
 }
 
 //用户托管
-void WZQDGameScence::OnSubTrustee(const void * pBuffer, WORD wDataSize)
+void WZQDGameScence::OnSubTrustee(const void * pBuffer, word wDataSize)
 {
 	//效验数据
 	ASSERT(wDataSize == sizeof(CMD_S_Trustee));
@@ -199,7 +201,7 @@ void WZQDGameScence::OnSubTrustee(const void * pBuffer, WORD wDataSize)
 }
 
 //用户托管
-void WZQDGameScence::OnSubSetXueFei(const void * pBuffer, WORD wDataSize)
+void WZQDGameScence::OnSubSetXueFei(const void * pBuffer, word wDataSize)
 {
 	ASSERT(wDataSize == sizeof(CMD_S_Set_Success));
 	if (wDataSize != sizeof(CMD_S_Set_Success))	return;	//消息处理
@@ -209,7 +211,7 @@ void WZQDGameScence::OnSubSetXueFei(const void * pBuffer, WORD wDataSize)
 }
 
 //
-void WZQDGameScence::OnSubUserChiHu(const void *pBuffer, WORD wDataSize)//持牌胡牌逻辑
+void WZQDGameScence::OnSubUserChiHu(const void *pBuffer, word wDataSize)//持牌胡牌逻辑
 {
 	datastream kStream(const_cast<void *>(pBuffer), wDataSize);
 	CMD_S_ChiHu kChiHu;
@@ -238,7 +240,7 @@ void WZQDGameScence::OnSubUserChiHu(const void *pBuffer, WORD wDataSize)//持牌胡
 	}
 }
 //
-void WZQDGameScence::OnSubGangScore(const void *pBuffer, WORD wDataSize)
+void WZQDGameScence::OnSubGangScore(const void *pBuffer, word wDataSize)
 {
 	datastream kStream(const_cast<void *>(pBuffer), wDataSize);
 	CMD_S_GangScore kGangScore;
@@ -256,7 +258,7 @@ void WZQDGameScence::OnSubGangScore(const void *pBuffer, WORD wDataSize)
 	}
 }
 
-void WZQDGameScence::OnSubHuanPai(const void *pBuffer, WORD wDataSize)
+void WZQDGameScence::OnSubHuanPai(const void *pBuffer, word wDataSize)
 {
 	//效验消息
 	ASSERT(wDataSize == sizeof(CMD_S_HuanPai));
@@ -269,7 +271,7 @@ void WZQDGameScence::OnSubHuanPai(const void *pBuffer, WORD wDataSize)
 	}
 	WidgetFun::setVisible(this, "ExchangeCardNode", false);
 }
-void WZQDGameScence::OnSubHuanPaiChengDu(const void *pBuffer, WORD wDataSize)
+void WZQDGameScence::OnSubHuanPaiChengDu(const void *pBuffer, word wDataSize)
 {
 	//效验消息
 	ASSERT(wDataSize == sizeof(CMD_S_HuanPaiChengDu));
@@ -291,7 +293,7 @@ void WZQDGameScence::OnSubHuanPaiChengDu(const void *pBuffer, WORD wDataSize)
 	WidgetFun::setVisible(this, "ExchangeCardNode", false);
 }
 
-//void WZQDGameScence::OnSubXuanQueNotice(const void *pBuffer, WORD wDataSize)
+//void WZQDGameScence::OnSubXuanQueNotice(const void *pBuffer, word wDataSize)
 //{
 //	//效验消息
 //	ASSERT(wDataSize == sizeof(CMD_S_XuanQueNotice));
@@ -307,7 +309,7 @@ void WZQDGameScence::OnSubHuanPaiChengDu(const void *pBuffer, WORD wDataSize)
 //	TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(WZQDGameScence::DoXuanQueNotice, this), 2.f);
 //}
 
-void WZQDGameScence::OnSubXuanQue(const void *pBuffer, WORD wDataSize)//缺牌消息
+void WZQDGameScence::OnSubXuanQue(const void *pBuffer, word wDataSize)//缺牌消息
 {
 	//效验消息
 	ASSERT(wDataSize == sizeof(CMD_S_XuanQue));
@@ -325,7 +327,7 @@ void WZQDGameScence::OnSubXuanQue(const void *pBuffer, WORD wDataSize)//缺牌消息
 
 }
 
-//void WZQDGameScence::OnSubHuanPaiNotice(const void *pBuffer, WORD wDataSize)
+//void WZQDGameScence::OnSubHuanPaiNotice(const void *pBuffer, word wDataSize)
 //{
 //	showHuanPai();
 //	//	TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(WZQDGameScence::showHuanPai,this),4.2f);

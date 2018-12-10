@@ -10,11 +10,11 @@
 
 //接口版本
 #define INTERFACE_VERSION(cbMainVer,cbSubVer)							\
-	(DWORD)(														\
-	(((BYTE)(PRODUCT_VER))<<24)+									\
-	(((BYTE)(cbMainVer))<<16)+										\
-	((BYTE)(cbSubVer)<<8))+											\
-	((BYTE)(BULID_VER))
+	(dword)(														\
+	(((byte)(PRODUCT_VER))<<24)+									\
+	(((byte)(cbMainVer))<<16)+										\
+	((byte)(cbSubVer)<<8))+											\
+	((byte)(BULID_VER))
 
 //模块版本
 #define PROCESS_VERSION(cbMainVer,cbSubVer,cbBuildVer)					\

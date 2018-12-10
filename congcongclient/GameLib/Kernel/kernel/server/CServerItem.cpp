@@ -1,7 +1,16 @@
 #include "Kernel/kernel/server/CServerItem.h"
 #include "GameLib/Game/Game/NoticeMsg.h"
+
+#include "Platform/PFDefine/df/DF.h"
+#include "Platform/PFDefine/df/Macro.h"
+#include "Platform/PFDefine/df/RightDefine.h"
+#include "Platform/PFDefine/data/ServerListData.h"
+#include "Platform/PFDefine/data/GlobalUserInfo.h"
+#include "Platform/PFDefine/msg/CMD_GameServer.h"
+
 //////////////////////////////////////////////////////////////////////////
 //
+
 int __gServerItemRefCount = 0;
 IServerItem* __gServerItem = 0;
 

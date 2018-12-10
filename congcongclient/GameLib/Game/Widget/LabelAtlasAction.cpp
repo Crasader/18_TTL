@@ -1,8 +1,8 @@
 ﻿#include "LabelAtlasAction.h"
 #include "Game/Script/ActionEx.h"
-#include "Game/Script/utility.h"
+#include "Tools/utilityString.h"
 
-USING_NS_CC;
+ using namespace script;
 
 LabelAtlasAction::LabelAtlasAction()
 	:m_iActNum(0)
@@ -102,7 +102,7 @@ void LabelAtlasAction::setStringAction(int iValue)
 		stopAllActions();
 		memset(m_fVaildTime,0,sizeof(float)*20);
 		FiniteTimeAction*  action1 = cocos2d::CCSequence::create(
-			cocos2d::MoveExTxtTime::create(2.0f,m_iActNum,iValue),
+			MoveExTxtTime::create(2.0f,m_iActNum,iValue),
 			cocos2d::CallFunc::create(this,callfunc_selector(LabelAtlasAction::EndAction)),
 			cocos2d::DelayTime::create(1.0f),
 			cocos2d::CallFunc::create(this,callfunc_selector(LabelAtlasAction::InShortTxt)),

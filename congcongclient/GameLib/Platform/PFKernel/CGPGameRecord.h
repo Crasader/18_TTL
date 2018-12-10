@@ -1,11 +1,15 @@
 #pragma once
-#include "cocos2d.h"
-#include "Platform/PlatformHeader.h"
+#include <cocos2d.h>
 #include "Kernel/network/CCallMission.h"
 
 //////////////////////////////////////////////////////////////////////////
 // 
 //////////////////////////////////////////////////////////////////////////
+struct tagPrivateRandTotalRecordList;
+struct tagGameRecordListEx;
+struct tagPrivateRandTotalRecord;
+struct tagPrivateRandRecordChild;
+
 class CGGameRecordSink
 {
 public:

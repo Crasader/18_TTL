@@ -1,7 +1,11 @@
 #ifndef _IClientUserItem_H_
 #define _IClientUserItem_H_
 
-#include "Platform/PlatformHeader.h"
+#include "Platform/PFDefine/df/types.h"
+
+struct tagUserInfo;
+struct tagCustomFaceInfo;
+struct tagPropertyPackage;
 
 //用户接口
 class IClientUserItem

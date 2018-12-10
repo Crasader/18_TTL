@@ -1,10 +1,16 @@
 #pragma once
 
-#include "cocos2d.h"
+#include <cocos2d.h>
+#include <cocos2d/cocos/editor-support/cocostudio/ActionTimeline/CSLoader.h>
+
 #include "WidgetDefine.h"
 #include "ListViewEx.h"
-#include "Game/Script/utility.h"
-#include "cocos2d/cocos/editor-support/cocostudio/ActionTimeline/CSLoader.h"
+#include "Game/Script/StructType.h"
+#include "Tools/utilityString.h"
+
+using namespace script;
+using namespace cocos2d;
+
 
 namespace WidgetFun
 {
@@ -124,7 +130,7 @@ namespace WidgetFun
 	void AnimStart(cocos2d::Node* pNode,std::string kName);
 	void AnimStop(cocos2d::Node* pNode,std::string kName);
 
-	cocos2d::ListViewEx* getListViewWidget(cocos2d::Node* pNode,std::string kName);
+	widget::ListViewEx* getListViewWidget(cocos2d::Node* pNode,std::string kName);
 
 	float getWidgetScale(cocos2d::Node* pNode,std::string kName);
 	void setWidgetScale(cocos2d::Node* pNode,std::string kName,float fScale);
@@ -197,4 +203,17 @@ namespace WidgetFun
 
 	void setPlaceImagicKey(cocos2d::Node* pNode,std::string kKey);
 	void setPlaceImagicKey(cocos2d::Node* pNode,std::string kName,std::string kKey);
+
+	float getRandFloat(const RandFloat& kRand, cocos2d::Node* pNode);
+	cocos2d::Vec2 parsePoint(std::string kValue);
+	cocos2d::Vec2 getRandPos(const RandPos& kRand, cocos2d::Node* pNode);
+
+	std::string getUserString(const UserString& kUserString, cocos2d::Node* pNode);
+
+	void runPaoMaDeng(cocos2d::Node* pRootNode,
+		std::string kTxtNode,
+		std::string kLayoutNode,
+		std::string kTxt,
+		cocos2d::FiniteTimeAction* pNetAction);
+
 };

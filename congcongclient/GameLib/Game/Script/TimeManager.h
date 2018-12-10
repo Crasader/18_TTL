@@ -1,15 +1,18 @@
 #pragma once
-#include "cocos2d.h"
+
+#include <cocos2d.h>
 #include "Game/FV/FvSingleton.h"
+
+//这里用了名称控件会出问题
+//namespace script {
 
 class TimeNode;
 
 typedef void (TimeNode::*Time_Schedule)();
 typedef void (TimeNode::*Time_ScheduleInt)(int);
 
-#define TIME_CALLBACK(pFun,pPoint) Time_Schedule(&pFun),pPoint
-#define TIME_CALLBACK_Int(pFun,pPoint) Time_ScheduleInt(&pFun),pPoint
-
+#define TIME_CALLBACK(pFun,pPoint) Time_Schedule(&pFun), pPoint
+#define TIME_CALLBACK_Int(pFun,pPoint) Time_ScheduleInt(&pFun), pPoint
 
 struct Time_CBInfoBase
 {
@@ -256,3 +259,4 @@ private:
 	Time_CBInfoList m_kActCallList;
 };
 
+//};

@@ -1,6 +1,5 @@
 #include "SRLFSetting.h"
-
-#include "CommonHeader/LocalConstant.h"
+#include "constant.h"
 
 USING_NS_CC_EXT;
 
@@ -27,11 +26,11 @@ bool SRLFSetting::init()
 	//WidgetManager::addButtonCB("Button_ChangeAccount", this, button_selector(SRLFSetting::Button_ChangeAccount));
 	WidgetManager::addButtonCB("Button_Close", this, button_selector(SRLFSetting::Button_Close));
 	WidgetFun::setVisible(this,"Button_ChangeAccount",false);
-	float sound_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("sound_volume", LocalContant::DEFAULT_SOUND);
-	float effect_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("effect_volume", LocalContant::DEFAULT_EFFECT);
-	m_SoundSlider = ControlSlider::create("GamePlaza/HomeScene/SettingPanel/progress_bg.png"
-		, "GamePlaza/HomeScene/SettingPanel/progress.png"
-		, "GamePlaza/HomeScene/SettingPanel/Button_Slider.png");
+	float sound_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("sound_volume", Constant::DEFAULT_SOUND);
+	float effect_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("effect_volume", Constant::DEFAULT_EFFECT);
+	m_SoundSlider = ControlSlider::create("GamePlaza/HomeScene/progress_bg.png"
+		, "GamePlaza/HomeScene/progress.png"
+		, "GamePlaza/HomeScene/Button_Slider.png");
 	m_SoundSlider->addTargetWithActionForControlEvents(this, cccontrol_selector(SRLFSetting::Slider_Sound), Control::EventType::VALUE_CHANGED);
 	m_SoundSlider->setMinimumValue(0);
 	m_SoundSlider->setMaximumValue(100.0f);
@@ -40,9 +39,9 @@ bool SRLFSetting::init()
 	auto music_node = WidgetFun::getChildWidgetByName(this,"music_silder_Node");
 	m_SoundSlider->setPosition(music_node->getPosition());
 
-	m_EffectSlider = ControlSlider::create("GamePlaza/HomeScene/SettingPanel/progress_bg.png"
-		, "GamePlaza/HomeScene/SettingPanel/progress.png"
-		, "GamePlaza/HomeScene/SettingPanel/Button_Slider.png");
+	m_EffectSlider = ControlSlider::create("GamePlaza/HomeScene/progress_bg.png"
+		, "GamePlaza/HomeScene/progress.png"
+		, "GamePlaza/HomeScene/Button_Slider.png");
 	m_EffectSlider->addTargetWithActionForControlEvents(this, cccontrol_selector(SRLFSetting::Slider_Effect), Control::EventType::VALUE_CHANGED);
 	m_EffectSlider->setMinimumValue(0);
 	m_EffectSlider->setMaximumValue(100.0f);
@@ -60,8 +59,8 @@ void SRLFSetting::initButton()
 
 void SRLFSetting::show()
 {
-	float sound_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("sound_volume", LocalContant::DEFAULT_SOUND);
-	float effect_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("effect_volume", LocalContant::DEFAULT_EFFECT);
+	float sound_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("sound_volume", Constant::DEFAULT_SOUND);
+	float effect_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("effect_volume", Constant::DEFAULT_EFFECT);
 	m_SoundSlider->setValue(sound_volume * 100);
 	m_EffectSlider->setValue(effect_volume * 100);
 	setVisible(true);

@@ -1,69 +1,37 @@
 #ifndef _types_H_
 #define _types_H_
 
+#include "STD.h"
+
 //////////////////////////////////////////////////////////////
-#include <assert.h>
-#include <stdio.h>
-#include <string>
-#include <set>
-#include <map>
-#include <vector>
-#include <iostream>
-#include <fstream>
-#include <cmath>
-#include <algorithm>
-#include <deque>
-#include <iomanip>
-#include <list>
-#include <sstream>
-
-#include <stdlib.h>
-
-//#include <basetyps.h>
-#include <assert.h>
-//#include <tchar.h>
-
-#ifndef ASSERT
-#define ASSERT(f) assert(f)
-#endif
-
-///////////////////////////////////////////////////////////////////////////////////////
 
 typedef signed char int8;
 typedef signed short	 int16;
 typedef signed int int32;
 typedef long long int64;
-
 typedef unsigned char uint8;
 typedef unsigned short uint16;
 typedef unsigned int	 uint32;
 typedef unsigned long long uint64;
-
 typedef unsigned char byte;
 typedef unsigned int	 uint;
 typedef unsigned short word;
 typedef unsigned long dword;
 typedef long long longlong;
+typedef wchar_t wchar;
+typedef long long SCORE;
 
-#define SCORE longlong							
 #define TRUE 1
 #define FALSE 0
-
-typedef wchar_t				wchar;
-
-enum UserSex
-{
-    US_Femal = 0,
-    US_Male  = 1,
-	US_UnKnow= 2,
-};
+#define MAX_PATH 260
+#define DELAYTIME 1
 
 #ifdef  _UNICODE
 typedef std::wstring	tstring;
-typedef wchar			tchar;
+typedef wchar tchar;
 #else
-typedef std::string		tstring;
-typedef char			tchar;
+typedef std::string	 tstring;
+typedef char tchar;
 #endif
 
 #ifdef _WIN32
@@ -72,64 +40,10 @@ typedef char			tchar;
 #define LLSTRING "%lld"
 #endif
 
+#define countarray(ary)		(sizeof(ary)/sizeof(ary[0]))
+#define zeromemory(x, size)	memset(x, 0, size)
+
 //////////////////////////////////////////////////////////////////////////
-// 功能函数
-inline const char* toString(int value)
-{
-	static std::string str;
-	str.resize(128, '\0');
-	sprintf(&str[0], "%d", value);
-	return str.c_str();
-}
-
-inline const char* toString(int64 value)
-{
-	static std::string str;
-	str.resize(128, '\0');
-	sprintf(&str[0], LLSTRING, value);
-	return str.c_str();
-}
-
-template<typename T>
-inline T tmin(const T& a, const T& b)
-{
-	return a < b ? a : b;
-}
-
-template<typename T>
-inline T tmax(const T& a, const T& b)
-{
-	return a < b ? b : a;
-}
-
-template<class T>
-inline bool removeVectorByValue(std::vector<T>& a, const T& b)
-{
-	typename std::vector<T>::iterator itor = a.begin();
-	for (;itor != a.end();itor++)
-	{
-		if((*itor) == b)
-		{
-			a.erase(itor);
-			return true;
-		}
-	}
-	return false;
-}
-
-template<class T>
-inline bool haveInVectorByValue(std::vector<T>& a, const T& b)
-{
-	typename std::vector<T>::iterator itor = a.begin();
-	for (;itor != a.end();itor++)
-	{
-		if((*itor) == b)
-		{
-			return true;
-		}
-	}
-	return false;
-}
 
 
 // inline const std::wstring& toStringW(int value)
@@ -178,8 +92,6 @@ inline bool haveInVectorByValue(std::vector<T>& a, const T& b)
 
 //////////////////////////////////////////////////////////////////////////
 // 宏定义
-#define countarray(ary)		(sizeof(ary)/sizeof(ary[0]))
-#define zeromemory(x, size)	memset(x, 0, size)
 
 // #ifdef  _UNICODE
 // #define t2s(text)		w2s(text)

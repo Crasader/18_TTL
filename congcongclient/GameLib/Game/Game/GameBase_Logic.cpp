@@ -1,6 +1,8 @@
 #include "GameBase.h"
-#include "Game/GameLib.h"
+
+#include "Platform/PFDefine/msg/CMD_GameServer.h"
 #include "Kernel/kernel/server/IServerItem.h"
+#include "Tools/utilityLog.h"
 
 //旁观消息
 bool GameBase::OnEventLookonMode(void* data, int dataSize)
@@ -38,14 +40,14 @@ bool GameBase::OnEventGameMessage(int sub, void* data, int dataSize)
 	while (itCBInfo != m_kCBInfoList.end()) {
 		if (itCBInfo->iIdex == sub) {
 			//kCallFun.push_back(&(*itCBInfo));
-			utility::log(itCBInfo->kCallFunName.c_str());
+			utility::filelog(itCBInfo->kCallFunName.c_str());
 			itCBInfo->pCallBack(data, dataSize);
 		}
 		itCBInfo++;
 	}
 	//std::vector<NET_CBInfo*>::iterator itCBInfoToCall = kCallFun.begin();
 	//while (itCBInfoToCall != kCallFun.end()) {
-	//	utility::log((*itCBInfoToCall)->kCallFunName.c_str());
+	//	utility::filelog((*itCBInfoToCall)->kCallFunName.c_str());
 	//	((*itCBInfoToCall)->pCallBack)(data, dataSize);
 	//	itCBInfoToCall++;
 	//}
@@ -59,7 +61,7 @@ void GameBase::sendReady()
 //发送函数
 bool GameBase::SendSocketData( word wSubCmdID)
 {
-	utility::log("GameBase::SendSocketData %d", (int)wSubCmdID);
+	utility::filelog("GameBase::SendSocketData %d", (int)wSubCmdID);
 	return IServerItem::get()->SendSocketData(MDM_GF_GAME,wSubCmdID);
 }
 //发送函数

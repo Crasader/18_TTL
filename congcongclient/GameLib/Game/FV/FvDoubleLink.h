@@ -2,7 +2,8 @@
 #pragma once
 
 #include "FvKernel.h"
-#include "FvDebug.h"
+#include "STD.h"
+
 //+------------------------------------------------------------------------------------------------------------
 
 template <class TNode>
@@ -83,14 +84,14 @@ public:
 	Iterator GetHead()const{return RootNode().m_Next;}
 	static Iterator Next(Iterator& iter)
 	{
-		FV_ASSERT(iter && iter->m_Next);
+		ASSERT(iter && iter->m_Next);
 		return iter = iter->m_Next;
 	}
 
 	Iterator GetTail()const{return RootNode().m_Pre;}
 	static Iterator Pre(Iterator& iter)
 	{
-		FV_ASSERT(iter && iter->m_Pre);
+		ASSERT(iter && iter->m_Pre);
 		return iter = iter->m_Pre;
 	}
 

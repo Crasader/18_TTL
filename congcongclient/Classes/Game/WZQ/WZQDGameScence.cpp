@@ -1,10 +1,12 @@
 #include "WZQDGameScence.h"
 #include "WZQDPlayer.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 #include "CMD_WZQ.h"
 #include "WZQDGameLogic.h"
 #include "WZQDSoundFun.h"
 #include "Game/Script/ScriptXMLparse.h"
+
+#include "UTILITY.h"
 using namespace WZQ;
 FV_SINGLETON_STORAGE(WZQDGameScence);
 
@@ -60,12 +62,12 @@ bool WZQDGameScence::init()//数据准备
 	
 	if (WidgetFun::getChildWidget(this,"GameTalkList"))
 	{
-		cocos2d::ListViewEx* pTalkList = WidgetFun::getListViewWidget(this,"GameTalkList");
+		widget::ListViewEx* pTalkList = WidgetFun::getListViewWidget(this,"GameTalkList");
 		pTalkList->removeAllChildren();
 		for (int i=0;i<10;i++)
 		{
 			cocos2d::Node* pItem = WidgetManager::Instance().createWidget("HNMJGameTalkListItem",pTalkList);
-			std::string kTxt = utility::getScriptString(utility::toString("GameTalkTxt",i));
+			std::string kTxt = script::getStr(utility::toString("GameTalkTxt",i));
 			WidgetFun::setText(pItem,"TalkListItemTxt",kTxt);
 			WidgetFun::setWidgetUserInfo(pItem,"Button_TalkDefine","Idex",utility::toString(i));
 			WidgetFun::setWidgetUserInfo(pItem,"Button_TalkDefine","Txt",utility::toString(kTxt));
@@ -179,7 +181,7 @@ void WZQDGameScence::setCurrentPlayer(int iCurrentPlayer,int iUserAction,int icb
 
 	GamePlayer* pPlyer = getPlayerByChairID(m_iCurrentUser);
 	WidgetFun::getChildWidget(pRootNode,"ActPlayerLastTime")->runAction(
-		cocos2d::MoveExTxtTime::create(TIME_OPERATE_CARD));
+		script::MoveExTxtTime::create(TIME_OPERATE_CARD));
 	for (int i = 0;i<MAX_PLAYER;i++)
 	{
 		WidgetFun::setVisible(pRootNode,utility::toString("TimePoint",i),false);
@@ -218,14 +220,14 @@ void WZQDGameScence::showClock(int iTime,bool bShow /*= true*/)
 	}
 	pNode->setVisible(true);
 	pNode->stopAllActions();
-	pNode->runAction(cocos2d::MoveExTxtTime::create(iTime,iTime,0));
+	pNode->runAction(script::MoveExTxtTime::create(iTime,iTime,0));
 }
 
 void WZQDGameScence::showClockTimeCallBack( const std::string& kName,int nSecond,const std::function<void()>& pCallBack,float fCheakTime )
 {
 	Node* pNode = WidgetFun::getChildWidget(this,kName);
 	pNode->stopAllActions();
-	pNode->runAction(cocos2d::MoveExTxtTimeCallBack::create(nSecond,nSecond,0,pCallBack,fCheakTime));
+	pNode->runAction(script::MoveExTxtTimeCallBack::create(nSecond,nSecond,0,pCallBack,fCheakTime));
 }
 
 void WZQDGameScence::killClock( const std::string& kName )
@@ -250,8 +252,8 @@ void WZQDGameScence::killClock( const std::string& kName )
 //		int nScore = kGangInfo.lGangScore[iChirID];
 //		if (nScore > 0)
 //		{
-//			//setGameResoultStateInfo(pNode, pPlayerWin->GetNickName(), utility::getScriptString("GFXY"), nScore);
-//			pai_sJ = pai_sJ + " " + utility::getScriptString("GFXY");
+//			//setGameResoultStateInfo(pNode, pPlayerWin->GetNickName(), script::getStr("GFXY"), nScore);
+//			pai_sJ = pai_sJ + " " + script::getStr("GFXY");
 //		}
 //	}
 //	for (int i = 0; i < (int)pGameEnd.kChiHuInfoList.size(); i++)
@@ -288,7 +290,7 @@ void WZQDGameScence::killClock( const std::string& kName )
 
 //void WZQDGameScence::setGameResoultPlayerInfo(const AllEndInfo& pGameEnd,XZDDPlayer* pPlayer,cocos2d::Node* pNode)//设置玩家信息数据
 //{
-//	cocos2d::ListViewEx* pList = (cocos2d::ListViewEx*)pNode;//自动排版
+//	widget::ListViewEx* pList = (widget::ListViewEx*)pNode;//自动排版
 //	pList->removeAllChildren();
 //
 //	int iChirID = pPlayer->GetChairID();
@@ -303,7 +305,7 @@ void WZQDGameScence::killClock( const std::string& kName )
 //		{
 //			XZDDPlayer* pPlayerWin = getPlayerByChairID(kGangInfo.wChairId);
 //			cocos2d::Node* pNode = WidgetManager::Instance().createWidget("XZDDGameResoultState",pList);
-//			setGameResoultStateInfo(pNode,pPlayerWin->GetNickName(),utility::getScriptString("GFXY"),nScore);
+//			setGameResoultStateInfo(pNode,pPlayerWin->GetNickName(),script::getStr("GFXY"),nScore);
 //		}
 //	}
 //

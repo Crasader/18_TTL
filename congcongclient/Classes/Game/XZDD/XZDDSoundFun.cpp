@@ -1,9 +1,12 @@
 #include "XZDDSoundFun.h"
 #include "SimpleAudioEngine.h"
-#include "Game/Script/utility.h"
 #include "Game/Script/SoundFun.h"
 #include "XZDDGameLogic.h"
-#include "GameLib/Platform/PFDefine/df/types.h"
+#include "Platform/PFDefine/df/types.h"
+#include "common.h"
+#include UTILITY_STRING
+#include UTILITY_CONVERT
+
 namespace XZDDSoundFun
 {
 	static const std::string LG_PATH_SC = "GameSRLF/sound/";//血战换三张和三人两房共享一个语音资源

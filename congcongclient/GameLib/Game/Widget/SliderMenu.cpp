@@ -1,8 +1,7 @@
 #include "SliderMenu.h"
-#include "Game/Script/utility.h"
+#include "Tools/utilityMath.h"
 
-USING_NS_CC;
-
+ using namespace widget;
 
 SliderMenu::SliderMenu()
 	:m_fMaxPosY(1)
@@ -135,7 +134,7 @@ void SliderMenu::setMaxPosY(float fValue)
 	m_fMaxPosX = fValue;
 }
 
-void cocos2d::SliderMenu::SetButtonPosX( float fPosX )
+void SliderMenu::SetButtonPosX( float fPosX )
 {
 	fPosX = utility::fMin(fPosX,m_fMaxPosX);
 	fPosX = utility::fMax(fPosX,0);
@@ -144,7 +143,7 @@ void cocos2d::SliderMenu::SetButtonPosX( float fPosX )
 	m_fActValue = fPosX/m_fMaxPosX*m_fMaxValue;
 }
 
-void cocos2d::SliderMenu::setMoveByX( bool bMoveByX )
+void SliderMenu::setMoveByX( bool bMoveByX )
 {
 	m_bIsMoveByX = bMoveByX;
 }

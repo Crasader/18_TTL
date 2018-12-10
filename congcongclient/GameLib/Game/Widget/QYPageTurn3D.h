@@ -1,12 +1,14 @@
 #pragma once
 
+#include <cocos2d.h>
 #include "2d/CCActionGrid3D.h"
 
+USING_NS_CC;
+namespace cocos2d { class Grid3D; }
 
-NS_CC_BEGIN
-
-class Grid3D;
-
+namespace widget
+{
+	 
 class QYPageTurn3D
 	:public Ref
 {
@@ -74,5 +76,4 @@ private:
 	std::function<void(cocos2d::Vec2,float,bool)> m_pCallPos;
 };
 
-
-NS_CC_END
+}

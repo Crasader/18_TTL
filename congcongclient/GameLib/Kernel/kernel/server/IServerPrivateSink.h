@@ -2,6 +2,11 @@
 
 #include "Kernel/kernel/user/IClientUserItem.h"
 
+struct CMD_GR_Private_Info;
+struct CMD_GR_Create_Private_Sucess;
+struct CMD_GF_Private_Room_Info;
+struct CMD_GF_Private_End_Info;
+struct CMD_GF_Private_Dismiss_Info;
 
 class IServerPrivateSink
 {

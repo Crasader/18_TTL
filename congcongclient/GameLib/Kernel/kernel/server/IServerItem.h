@@ -22,6 +22,8 @@ struct tagFindTable
 	word								wResultChairID;						//结果椅子
 };
 
+struct tagUserAttribute;
+struct tagServerAttribute;
 class CGameServerItem;
 
 //房间

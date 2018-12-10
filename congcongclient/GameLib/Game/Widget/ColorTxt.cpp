@@ -1,8 +1,7 @@
-﻿
-#include "ColorTxt.h"
-#include "Game/Script/utility.h"
+﻿#include "ColorTxt.h"
+#include "Tools/utilityWidget.h"
 
-NS_CC_BEGIN;
+using namespace widget;
 
 static unsigned char utf8_look_for_table[] = 
 {
@@ -305,4 +304,3 @@ void ColorTxt::setMaxLineLength(unsigned int uLen)
 	CCAssert(uLen == 0 || uLen >= 2, "len should bigger than 2");
 	m_uMaxLineLength = uLen;
 }
-NS_CC_END;

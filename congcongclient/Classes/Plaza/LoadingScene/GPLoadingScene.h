@@ -1,7 +1,7 @@
 #ifndef __GPLOADING_SCENE_H__
 #define __GPLOADING_SCENE_H__
 
-#include "cocos2d.h"
+#include <COCOS.h>
 
 class GPLoadingScene : public cocos2d::CCLayer
 {

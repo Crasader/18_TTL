@@ -8,7 +8,7 @@
 //{
 //	bool cbPublicCard = false;
 //	word wOperateUser=pNetInfo->wOperateUser;
-//	BYTE cbOperateCard=pNetInfo->cbOperateCard;
+//	byte cbOperateCard=pNetInfo->cbOperateCard;
 //
 //	if (pNetInfo->cbOperateCode == WIK_PENG)
 //	{
@@ -17,11 +17,11 @@
 //	if ((pNetInfo->cbOperateCode&WIK_GANG)!=0)
 //	{
 //		//组合扑克
-//		BYTE cbWeaveIndex=0xFF;
-//		for (BYTE i=0;i<m_kWeaveCount;i++)
+//		byte cbWeaveIndex=0xFF;
+//		for (byte i=0;i<m_kWeaveCount;i++)
 //		{
-//			BYTE cbWeaveKind=m_kWeaveItemArray[i].cbWeaveKind;
-//			BYTE cbCenterCard=m_kWeaveItemArray[i].cbCenterCard;
+//			byte cbWeaveKind=m_kWeaveItemArray[i].cbWeaveKind;
+//			byte cbCenterCard=m_kWeaveItemArray[i].cbCenterCard;
 //			if ((cbCenterCard==pNetInfo->cbOperateCard)&&(cbWeaveKind==WIK_PENG))
 //			{
 //				cbWeaveIndex=i;
@@ -66,7 +66,7 @@
 ////	else if (pNetInfo->cbOperateCode!=WIK_NULL)
 ////	{
 ////		//设置组合
-////		BYTE cbWeaveIndex=m_kWeaveCount++;
+////		byte cbWeaveIndex=m_kWeaveCount++;
 ////		m_kWeaveItemArray[cbWeaveIndex].cbPublicCard=true;
 ////		m_kWeaveItemArray[cbWeaveIndex].cbCenterCard=cbOperateCard;
 ////		m_kWeaveItemArray[cbWeaveIndex].cbWeaveKind=pNetInfo->cbOperateCode;
@@ -76,7 +76,7 @@
 ////		//删除扑克
 //////		if (m_iIdex == 0 || m_bGameRecord || m_bMingPai)
 ////		{
-////			BYTE cbWeaveCard[4]={cbOperateCard,cbOperateCard,cbOperateCard,cbOperateCard};
+////			byte cbWeaveCard[4]={cbOperateCard,cbOperateCard,cbOperateCard,cbOperateCard};
 ////			XZDD::CGameLogic::Instance().RemoveValueCard(m_kHandCardData,m_kHandCardCout,cbWeaveCard,2);
 //////			m_kHandCardCout -= 2;
 ////		}
@@ -197,7 +197,7 @@
 //{
 //	showHandCard(m_kWeaveItemArray,m_kWeaveCount,m_kHandCardData,m_kHandCardCout);
 //}
-//void WZQDPlayer::showHandCard(CMD_WeaveItem* pWeave,int iWeaveCout,BYTE* pHandCard,int iHandCout)//显示手牌
+//void WZQDPlayer::showHandCard(CMD_WeaveItem* pWeave,int iWeaveCout,byte* pHandCard,int iHandCout)//显示手牌
 //{
 //
 //	bool bHaveNewIn = (iWeaveCout*3+iHandCout) == MAX_COUNT;
@@ -267,7 +267,7 @@
 //	}
 //	for (int i = 0;i<iHandCout;i++)
 //	{
-//		BYTE* pTemp = pHandCard+i;
+//		byte* pTemp = pHandCard+i;
 //		cocos2d::Node* pNode = WidgetManager::Instance().createWidget(kHandSkin,pCardNode);
 //		pNode->setTag(1);
 //		pNode->setLocalZOrder(iOder);
@@ -301,8 +301,8 @@
 //{
 //	if (kValue > 0)
 //	{
-//		BYTE cbValue=((BYTE)kValue&MASK_VALUE);
-//		BYTE cbColor=(((BYTE)kValue&MASK_COLOR)>>4)+1;
+//		byte cbValue=((byte)kValue&MASK_VALUE);
+//		byte cbColor=(((byte)kValue&MASK_COLOR)>>4)+1;
 //		WidgetFun::setImagic(pNode,utility::toString(kImagicFront,(int)cbColor,(int)cbValue,".png"),false);
 //	}
 //	else
@@ -328,7 +328,7 @@
 //	return NULL;
 //}
 //
-//BYTE WZQDPlayer::getTouchCardVlaue(cocos2d::Node* pNode)//获得点中的牌面
+//byte WZQDPlayer::getTouchCardVlaue(cocos2d::Node* pNode)//获得点中的牌面
 //{
 //	int iIdex = 0;
 //	cocos2d::Node* pRootNode = WidgetFun::getChildWidget(m_pSeatNode,"CardNode1");
@@ -384,7 +384,7 @@
 //	std::vector<Card_Info> kCardInfoList;
 //	XZDD::CGameLogic::Instance().GetCardInfoList(m_kHandCardData,MAX_COUNT-1,kCardInfoList);
 //
-//	std::vector<BYTE> kCardDataList;
+//	std::vector<byte> kCardDataList;
 //	if (nGameType == GAME_TYPE_SICHUAN)
 //	{
 //		kCardDataList = setHuanPaiSiChuan(kCardInfoList);
@@ -407,9 +407,9 @@
 //	}
 //}
 //
-//std::vector<BYTE> WZQDPlayer::setHuanPaiSiChuan(std::vector<Card_Info> kCardInfoList)//设置换牌川麻将
+//std::vector<byte> WZQDPlayer::setHuanPaiSiChuan(std::vector<Card_Info> kCardInfoList)//设置换牌川麻将
 //{
-//	std::vector<BYTE> kCardDataList;
+//	std::vector<byte> kCardDataList;
 //
 //	ASSERT(kCardInfoList.size() == CARD_COLOR_TIAO);  //花色数判断
 //	if (kCardInfoList.size() != CARD_COLOR_TIAO)return kCardDataList;
@@ -448,9 +448,9 @@
 //
 //	return kCardDataList;
 //}
-//std::vector<BYTE> WZQDPlayer::setHuanPaiChengDu(std::vector<Card_Info> kCardInfoList)//设置换牌成都
+//std::vector<byte> WZQDPlayer::setHuanPaiChengDu(std::vector<Card_Info> kCardInfoList)//设置换牌成都
 //{
-//	std::vector<BYTE> kCardDataList;
+//	std::vector<byte> kCardDataList;
 //
 //	ASSERT(kCardInfoList.size() == CARD_COLOR_TIAO);  //花色数判断
 //	if (kCardInfoList.size() != CARD_COLOR_TIAO)return kCardDataList;
@@ -492,7 +492,7 @@
 //	return kCardDataList;
 //}
 //
-//void WZQDPlayer::standUpCard(BYTE cbCard,bool nOnly /*= true*/)//立着的牌
+//void WZQDPlayer::standUpCard(byte cbCard,bool nOnly /*= true*/)//立着的牌
 //{
 //	cocos2d::Node* pCard = getCardNodeByCard(cbCard);
 //	pCard->setPositionY(CARD_UP_POSY);
@@ -511,7 +511,7 @@
 //	}
 //}
 //
-//cocos2d::Node* WZQDPlayer::getCardNodeByCard(BYTE cbCard)
+//cocos2d::Node* WZQDPlayer::getCardNodeByCard(byte cbCard)
 //{
 //	int iIdex = 0;
 //	cocos2d::Node* pRootNode = WidgetFun::getChildWidget(m_pSeatNode,"CardNode1");
@@ -532,7 +532,7 @@
 //	return NULL;
 //}
 //
-//void WZQDPlayer::getCardNodeByCard(std::vector<BYTE> CardDataList,std::vector<cocos2d::Node*>& kCardList)//获得换牌数据
+//void WZQDPlayer::getCardNodeByCard(std::vector<byte> CardDataList,std::vector<cocos2d::Node*>& kCardList)//获得换牌数据
 //{
 //	int nSize = CardDataList.size();
 //
@@ -558,15 +558,15 @@
 //	}
 //}
 //
-//void WZQDPlayer::setHuanPai(BYTE* nHuan)//设置换牌
+//void WZQDPlayer::setHuanPai(byte* nHuan)//设置换牌
 //{
-//	utility::log(utility::toString("WZQDPlayer::setHuanPai",(int)nHuan[0]," ",(int)nHuan[1]," ",(int)nHuan[2]).c_str());
+//	utility::filelog(utility::toString("WZQDPlayer::setHuanPai",(int)nHuan[0]," ",(int)nHuan[1]," ",(int)nHuan[2]).c_str());
 //	XZDD::CGameLogic::Instance().RemoveValueCard(m_kHandCardData,MAX_COUNT-1,m_pHuanCards,HUAN_CARD_NUM);
 //	XZDD::CGameLogic::Instance().ReplaceCardData(m_kHandCardData,MAX_COUNT-1,nHuan,HUAN_CARD_NUM);
 //	sortHandCard(); //重新设置牌
 //	showHandCard();
 //
-//	std::vector<BYTE> kCardDataList;
+//	std::vector<byte> kCardDataList;
 //	kCardDataList.push_back(nHuan[0]);
 //	kCardDataList.push_back(nHuan[1]);
 //	kCardDataList.push_back(nHuan[2]);
@@ -584,10 +584,10 @@
 // 	}
 //}
 //
-//void WZQDPlayer::saveRemoveHuanPai(BYTE* nHuan)//保存和删除换牌数据
+//void WZQDPlayer::saveRemoveHuanPai(byte* nHuan)//保存和删除换牌数据
 //{
 //	memcpy(m_pHuanCards,nHuan,sizeof(m_pHuanCards));
-//	std::vector<BYTE> kCardDataList;
+//	std::vector<byte> kCardDataList;
 //	for (int i = 0;i<HUAN_CARD_NUM;i++)
 //	{
 //		kCardDataList.push_back(nHuan[i]);
@@ -602,7 +602,7 @@
 //		pNode->setPositionY(CARD_UP_POSY);
 //	}
 //}
-//void WZQDPlayer::saveHuanPai(BYTE* nHuan)//保存换牌
+//void WZQDPlayer::saveHuanPai(byte* nHuan)//保存换牌
 //{
 //	memcpy(m_pSaveHuanPai,nHuan,sizeof(m_pSaveHuanPai));
 //}
@@ -646,7 +646,7 @@
 //		{
 //			continue;
 //		}
-//		BYTE nColor = XZDD::CGameLogic::Instance().GetCardColor(m_kHandCardData[iIdex]);
+//		byte nColor = XZDD::CGameLogic::Instance().GetCardColor(m_kHandCardData[iIdex]);
 //
 //		if (nColor == m_nQueColor)
 //		{
@@ -676,7 +676,7 @@
 //		{
 //			continue;
 //		}
-//		BYTE nColor = XZDD::CGameLogic::Instance().GetCardColor(m_kHandCardData[iIdex]);
+//		byte nColor = XZDD::CGameLogic::Instance().GetCardColor(m_kHandCardData[iIdex]);
 //
 //		if (nColor == nColorWhite)
 //		{
@@ -705,7 +705,7 @@
 //	}
 //}
 //
-//int WZQDPlayer::getUpCardList(std::vector<BYTE>& kCardDataList)
+//int WZQDPlayer::getUpCardList(std::vector<byte>& kCardDataList)
 //{
 //	if (m_iIdex != 0)return 0;
 //
@@ -739,9 +739,9 @@
 //
 //
 //
-//bool WZQDPlayer::getHuanCards(BYTE nHuanCard[HUAN_CARD_NUM])
+//bool WZQDPlayer::getHuanCards(byte nHuanCard[HUAN_CARD_NUM])
 //{
-//	std::vector<BYTE> kCardDataList;
+//	std::vector<byte> kCardDataList;
 //	getUpCardList(kCardDataList);
 //
 //	if (kCardDataList.size() != 3)
@@ -777,9 +777,9 @@
 //{
 //	showCard(m_kHandCardData,m_kHandCardCout);
 //}
-//void WZQDPlayer::showCard(BYTE* cbCardData,BYTE cbCardCount)
+//void WZQDPlayer::showCard(byte* cbCardData,byte cbCardCount)
 //{
-//	BYTE cbIdex = 0;
+//	byte cbIdex = 0;
 //	cocos2d::Node* pRootNode = WidgetFun::getChildWidget(m_pSeatNode,"CardNode1");
 //	for (int i = 0;i<pRootNode->getChildrenCount();i++)
 //	{
@@ -804,11 +804,11 @@
 //	blackAllHandCard(false);
 //}
 //
-//BYTE WZQDPlayer::getGangCard( BYTE currentCard )
+//byte WZQDPlayer::getGangCard( byte currentCard )
 //{
 //	ASSERT(m_iIdex == 0);
 //
-//	BYTE cardIndex[MAX_INDEX]={0};
+//	byte cardIndex[MAX_INDEX]={0};
 //	XZDD::CGameLogic::Instance().SwitchToCardIndex(m_kHandCardData,m_kHandCardCout,cardIndex);
 //	bool bValue = XZDD::CGameLogic::Instance().EstimateGangCard(cardIndex,currentCard);
 //	if (bValue)
@@ -826,7 +826,7 @@
 //	return 0;
 //}
 //
-//void WZQDPlayer::removeHandOutCard( BYTE cbCardData )
+//void WZQDPlayer::removeHandOutCard( byte cbCardData )
 //{
 //	int nSize = m_kOutCardList.size();
 //	if (nSize <=0 )
@@ -847,7 +847,7 @@
 //	showJieSuanCard(pCardNode,m_kWeaveItemArray, m_kWeaveCount, m_kHandCardData, m_kHandCardCout);
 //}
 //
-//void WZQDPlayer::showJieSuanCard(cocos2d::Node* pCardNode,CMD_WeaveItem* pWeave,int iWeaveCout,BYTE* pHandCard,int iHandCout)//结算.......................
+//void WZQDPlayer::showJieSuanCard(cocos2d::Node* pCardNode,CMD_WeaveItem* pWeave,int iWeaveCout,byte* pHandCard,int iHandCout)//结算.......................
 //{
 //	ASSERT(pCardNode);
 //	pCardNode->removeAllChildren();
@@ -895,13 +895,13 @@
 //		iOder+=iAddOder;
 //	}
 //
-//	BYTE cbChiHuCard = 0;
+//	byte cbChiHuCard = 0;
 //
 //	kStartPos += cocos2d::Vec2(0, 14);
 //
 //	for (int i = 0;i<iHandCout;i++)
 //	{
-//		BYTE* pTemp = pHandCard+i;
+//		byte* pTemp = pHandCard+i;
 //		int iCardValue = *pTemp;
 //		//if (iCardValue == getChiHuCard())
 //		//{
@@ -943,7 +943,7 @@
 //		setCardImagic(pNode, m_kHuCardList[i], kImagic);
 //	} 
 //}
-//void WZQDPlayer::setChiHuCard(BYTE cbCard)//设置吃胡
+//void WZQDPlayer::setChiHuCard(byte cbCard)//设置吃胡
 //{
 //	m_cbChiHuCard = cbCard;
 //	if (cbCard>0)
@@ -959,7 +959,7 @@
 //	pChiHuNode->removeAllChildren();
 //	m_kHuCardList.clear();
 //}
-//BYTE WZQDPlayer::getChiHuCard()//获得吃胡
+//byte WZQDPlayer::getChiHuCard()//获得吃胡
 //{
 //	return m_cbChiHuCard;
 //}
@@ -991,7 +991,7 @@
 //	}
 //}
 //
-//void WZQDPlayer::removeHandCard(BYTE cbCard)
+//void WZQDPlayer::removeHandCard(byte cbCard)
 //{
 //	if (m_iIdex == 0)
 //	{

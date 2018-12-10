@@ -1,6 +1,8 @@
 #include "SoundFun.h"
 #include "SimpleAudioEngine.h"
-#include "Game/Script/utility.h"
+#include "TimeManager.h"
+
+//using namespace script;
 
 FV_SINGLETON_STORAGE(SoundFun);
 

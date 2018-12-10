@@ -1,5 +1,7 @@
 #include "CGPopularizeMission.h"
 
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
+
 CGPopularizeMission::CGPopularizeMission(const char* url, int port)
 	:CCallMission("CGPopularizeMission", url, port)
 {
@@ -14,14 +16,14 @@ void CGPopularizeMission::setMissionSink(CGPopularizeSink* sink)
 	m_Sink = sink;
 }
 
-void CGPopularizeMission::GetPopularizeList(BYTE bPopularizeType, DWORD gameKindID)
+void CGPopularizeMission::GetPopularizeList(byte bPopularizeType, dword gameKindID)
 {
 	CCLOG("CGPopularizeMission::GetPopularizeList\n");
 	addLinkCallFun(CC_CALLBACK_0(CGPopularizeMission::CB_GetPopularizeList, this, bPopularizeType, gameKindID));
 	start();
 }
 
-void CGPopularizeMission::CB_GetPopularizeList(BYTE bPopularizeType, DWORD gameKindID)
+void CGPopularizeMission::CB_GetPopularizeList(byte bPopularizeType, dword gameKindID)
 {
 	CCLOG("CGPopularizeMission::CB_GetPopularizeList\n");
 	CMD_GP_PopularizeList kNetInfo;

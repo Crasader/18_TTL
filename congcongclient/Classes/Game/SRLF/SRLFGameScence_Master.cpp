@@ -1,14 +1,16 @@
 #include "SRLFGameScence.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 #include "SRLFPlayer.h"
 #include "SRLFGameLogic.h"
+#include "UTILITY.h"
+#include USERINFO
 
 void SRLFGameScence::updateUserRight()
 {
 	// ¿ØÖÆ°´Å¥ 536870912
 	if (!WidgetFun::getChildWidget(this,"Button_Master"))
 	{
-		utility::log("SRLFGameScence::updateUserRight()");
+		utility::filelog("SRLFGameScence::updateUserRight()");
 		return;
 	}
 	if( CUserRight::IsGameCheatUser(UserInfo::Instance().getUserRight()))
@@ -43,14 +45,14 @@ void SRLFGameScence::initMaster()
 			startPos.y += kAddPosY.y;
 			startPos.x = 0;
 		}
-		BYTE iCard = SRLFLOGIC::CGameLogic::Instance().SwitchToCardData(i);
+		byte iCard = SRLFLOGIC::CGameLogic::Instance().SwitchToCardData(i);
 		cocos2d::Node* pNode = WidgetManager::Instance().createWidget("NHMJ_MASTER_LEFTCARD",pCardNode);
 
 		float fHuScale = utility::parseFloat(WidgetFun::getWidgetUserInfo(pNode,"HuScale"));
 		pNode->setScale(fHuScale);
 
-		BYTE cbValue=((BYTE)iCard&MASK_VALUE);
-		BYTE cbColor=(((BYTE)iCard&MASK_COLOR)>>4)+1;
+		byte cbValue=((byte)iCard&MASK_VALUE);
+		byte cbColor=(((byte)iCard&MASK_COLOR)>>4)+1;
 		WidgetFun::setButtonImagic(pNode,utility::toString(kImagic,(int)cbColor,(int)cbValue,".png"),true);
 		WidgetFun::setWidgetUserInfo(pNode,"MasterCardData",utility::toString((int)iCard));
 		WidgetFun::setWidgetUserInfo(pNode,"MasterCardindex",utility::toString((int)i));
@@ -113,7 +115,7 @@ void SRLFGameScence::Button_MasterClose(cocos2d::Ref*,WidgetUserInfo*)
 	}
 }
 
-void SRLFGameScence::OnMasterHandCard( const void *pBuffer, WORD wDataSize )
+void SRLFGameScence::OnMasterHandCard( const void *pBuffer, word wDataSize )
 {
 	if (!IsInGame())
 	{
@@ -135,7 +137,7 @@ void SRLFGameScence::OnMasterHandCard( const void *pBuffer, WORD wDataSize )
 	}
 }
 
-void SRLFGameScence::OnMasterLeftCard( const void *pBuffer, WORD wDataSize )
+void SRLFGameScence::OnMasterLeftCard( const void *pBuffer, word wDataSize )
 {
 	if (!IsInGame())
 	{
@@ -169,7 +171,7 @@ void SRLFGameScence::NHMJ_MASTER_LEFTCARD(cocos2d::Ref*,WidgetUserInfo* pUseInfo
 	{
 		return;
 	}
-	BYTE iCard = utility::parseInt(WidgetFun::getUserInfoValue(pUseInfo,"MasterCardData"));
+	byte iCard = utility::parseInt(WidgetFun::getUserInfoValue(pUseInfo,"MasterCardData"));
 	setMasterCheakCard(iCard);
 
 	SRLF::MaterCheckCard kMaterCheckCard;
@@ -179,8 +181,8 @@ void SRLFGameScence::NHMJ_MASTER_LEFTCARD(cocos2d::Ref*,WidgetUserInfo* pUseInfo
 }
 void SRLFGameScence::MasterZhaNiao(cocos2d::Ref*,WidgetUserInfo* pUserInfo)
 {
-	BYTE iNiaoCout = utility::parseInt(WidgetFun::getUserInfoValue(pUserInfo,"NiaoCout"));
-	BYTE iLastCout = INVALID_BYTE;
+	byte iNiaoCout = utility::parseInt(WidgetFun::getUserInfoValue(pUserInfo,"NiaoCout"));
+	byte iLastCout = -1;
 	for (int i = 1;i<7;i++)
 	{
 		if (WidgetFun::isChecked(this,utility::toString("MasterZhaNiao",i)))
@@ -188,9 +190,9 @@ void SRLFGameScence::MasterZhaNiao(cocos2d::Ref*,WidgetUserInfo* pUserInfo)
 			iLastCout = i;
 		}
 	}
-	if (iLastCout == INVALID_BYTE)
+	if (iLastCout == -1)
 	{
-		iNiaoCout = INVALID_BYTE;
+		iNiaoCout = -1;
 	}
 	for (int i = 1;i<7;i++)
 	{
@@ -202,7 +204,7 @@ void SRLFGameScence::MasterZhaNiao(cocos2d::Ref*,WidgetUserInfo* pUserInfo)
 	SendSocketData(SUB_C_MASTER_ZHANIAO,&kMaterNiaoCout,sizeof(kMaterNiaoCout));
 }
 
-void SRLFGameScence::setMasterCheakCard(BYTE cbCard)
+void SRLFGameScence::setMasterCheakCard(byte cbCard)
 {
 	cocos2d::Node* pCardNode = WidgetFun::getChildWidget(this,"MasterCheakCard");
 	if (cbCard<0)

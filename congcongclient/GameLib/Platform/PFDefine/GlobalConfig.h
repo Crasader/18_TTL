@@ -1,9 +1,9 @@
 #ifndef GLOBALCONFIG_H_
 #define GLOBALCONFIG_H_
 
-#include "cocos2d.h"
+#include <cocos2d.h>
 
-USING_NS_CC;
+ 
 ///< 全局配置..
 class GlobalConfig
 {

@@ -2,7 +2,7 @@
 #include "SRLFGameLogic.h"
 #include "SRLFSoundFun.h"
 
-void SRLFPlayer::setHandCard_EX(std::vector<BYTE> kCardList)
+void SRLFPlayer::setHandCard_EX(std::vector<byte> kCardList)
 {
 	int nCardCount = kCardList.size();
 	ASSERT(nCardCount <= MAX_COUNT);
@@ -27,11 +27,11 @@ void SRLFPlayer::setMingPai(bool bValue)
 	m_bMingPai = bValue;
 }
 //ÓÎÏ·¾ÖÊý
-void SRLFPlayer::setPlayCount(WORD wCount)
+void SRLFPlayer::setPlayCount(word wCount)
 {
 	m_wPlayCount = wCount;
 }
-WORD SRLFPlayer::getPlayCount()
+word SRLFPlayer::getPlayCount()
 {
 	return m_wPlayCount;
 }

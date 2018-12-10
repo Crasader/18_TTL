@@ -1,5 +1,5 @@
 //#include "WZQDGameScence.h"
-//#include "Game/GameLib.h"
+//#include "GAME.h"
 //#include "WZQDPlayer.h"
 //#include "WZQDSoundFun.h"
 //#include "Game/Widget/SliderMenu.h"
@@ -48,13 +48,13 @@
 //}
 //void XZDDGameScence::SetBarSider1(cocos2d::Ref* pNode,WidgetUserInfo*)
 //{
-//	cocos2d::SliderMenu* pSlider = WidgetFun::castNode<cocos2d::SliderMenu>((Node*)pNode);
+//	widget::SliderMenu* pSlider = WidgetFun::castNode<widget::SliderMenu>((Node*)pNode);
 //	SoundFun::Instance().SetSoundEffect(pSlider->getValue()/pSlider->getMaxValue());
 //	cocos2d::UserDefault::getInstance()->setFloatForKey("SetBar1",pSlider->getValue()/100.0f);
 //}
 //void XZDDGameScence::SetBarSider2(cocos2d::Ref* pNode,WidgetUserInfo* pUserInfo)
 //{
-//	cocos2d::SliderMenu* pSlider = WidgetFun::castNode<cocos2d::SliderMenu>((Node*)pNode);
+//	widget::SliderMenu* pSlider = WidgetFun::castNode<widget::SliderMenu>((Node*)pNode);
 //	SoundFun::Instance().SetSoundBackground(pSlider->getValue()/pSlider->getMaxValue());
 //	cocos2d::UserDefault::getInstance()->setFloatForKey("SetBar2",pSlider->getValue()/100.0f);
 //}
@@ -65,11 +65,11 @@
 //
 //	cocos2d::Node* pRootNode = WidgetManager::Instance().getBaseNode((cocos2d::Node*)pNode);
 //	{
-//		cocos2d::SliderMenu* pSlider = WidgetFun::castNode<cocos2d::SliderMenu>(WidgetFun::getChildWidget(pRootNode,"SetBarSider1"));
+//		widget::SliderMenu* pSlider = WidgetFun::castNode<widget::SliderMenu>(WidgetFun::getChildWidget(pRootNode,"SetBarSider1"));
 //		cocos2d::UserDefault::getInstance()->setFloatForKey("SetBar1",pSlider->getValue()/100.0f);
 //	}
 //	{
-//		cocos2d::SliderMenu* pSlider = WidgetFun::castNode<cocos2d::SliderMenu>(WidgetFun::getChildWidget(pRootNode,"SetBarSider2"));
+//		widget::SliderMenu* pSlider = WidgetFun::castNode<widget::SliderMenu>(WidgetFun::getChildWidget(pRootNode,"SetBarSider2"));
 //		cocos2d::UserDefault::getInstance()->setFloatForKey("SetBar2",pSlider->getValue()/100.0f);
 //	}
 //}
@@ -83,7 +83,7 @@
 //		float fTime =cocos2d::UserDefault::getInstance()->getFloatForKey("SetBar1",0.7f);
 //		fTime =fTime*100;
 //
-//		cocos2d::SliderMenu* pSlider = WidgetFun::castNode<cocos2d::SliderMenu>(WidgetFun::getChildWidget(pRootNode,"SetBarSider1"));
+//		widget::SliderMenu* pSlider = WidgetFun::castNode<widget::SliderMenu>(WidgetFun::getChildWidget(pRootNode,"SetBarSider1"));
 //		pSlider->setActValue(fTime);
 //		WidgetFun::setProgress(pRootNode,"SetBar1",fTime,100);
 //		SoundFun::Instance().SetSoundEffect(fTime/pSlider->getMaxValue());
@@ -92,7 +92,7 @@
 //	{
 //		float fTime =cocos2d::UserDefault::getInstance()->getFloatForKey("SetBar2",0.7f);
 //		fTime =fTime*100;
-//		cocos2d::SliderMenu* pSlider = WidgetFun::castNode<cocos2d::SliderMenu>(WidgetFun::getChildWidget(pRootNode,"SetBarSider2"));
+//		widget::SliderMenu* pSlider = WidgetFun::castNode<widget::SliderMenu>(WidgetFun::getChildWidget(pRootNode,"SetBarSider2"));
 //		pSlider->setActValue(fTime);
 //		WidgetFun::setProgress(pRootNode,"SetBar2",fTime,100);
 //		SoundFun::Instance().SetSoundBackground(fTime/pSlider->getMaxValue());

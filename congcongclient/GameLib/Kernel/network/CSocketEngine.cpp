@@ -1,10 +1,11 @@
 #include <sstream>
 #include <platform/CCCommon.h>
 
+#include "Platform/PFDefine/df/Packet.h"
+
 #include "QPCipher.h"
 #include "CSocketEngine.h"
-#include "Platform/PlatformHeader.h"
-#include "Game/Script/utility.h"
+#include "Tools/utilityLog.h"
 
 using namespace std;
 //////////////////////////////////////////////////////////////////////////
@@ -106,7 +107,7 @@ bool CSocketEngine::send(int main, int sub, void* data, int dataSize)
 		return false;
 	//构造数据
 	if (main != MDM_KN_COMMAND && sub != SUB_KN_DETECT_SOCKET) {
-		utility::log("CSocketEngine::send main=%d, sub=%d, size=%d", main, sub, dataSize);
+		utility::filelog("CSocketEngine::send main=%d, sub=%d, size=%d", main, sub, dataSize);
 	}
 	unsigned char cbDataBuffer[SOCKET_TCP_BUFFER];
 	TCP_Head * pHead = (TCP_Head *)cbDataBuffer;
@@ -177,7 +178,7 @@ void CSocketEngine::onSocketData(void* data, int dataSize)
 	}
 	if (nRecvSize + dataSize >= SIZE_TCP_BUFFER)
 	{
-		utility::log("CSocketEngine::onSocketData nRecvSize + dataSize >= SIZE_TCP_BUFFER size=%d", dataSize);
+		utility::filelog("CSocketEngine::onSocketData nRecvSize + dataSize >= SIZE_TCP_BUFFER size=%d", dataSize);
 		disconnect();
 		return;
 	}
@@ -269,7 +270,7 @@ void CSocketEngine::onSocketData(void* data, int dataSize)
 			}
 			continue;
 		} else {
-			utility::log("CSocketEngine::onSocketData main=%d sub = %d", pCommand->Command.wMainCmdID, pCommand->Command.wSubCmdID);
+			utility::filelog("CSocketEngine::onSocketData main=%d sub = %d", pCommand->Command.wMainCmdID, pCommand->Command.wSubCmdID);
 		}
 		if (mISocketEngineSink != 0) {
 			bool bHandle = mISocketEngineSink->onEventTCPSocketRead(pCommand->Command.wMainCmdID,
@@ -278,7 +279,7 @@ void CSocketEngine::onSocketData(void* data, int dataSize)
 				pCommand->wDataSize);
 
 			if (!bHandle) {
-				utility::log("CSocketEngine::onSocketData handle failed!! main=%d sub = %d", pCommand->Command.wMainCmdID, pCommand->Command.wSubCmdID, pCommand->wDataSize);
+				utility::filelog("CSocketEngine::onSocketData handle failed!! main=%d sub = %d", pCommand->Command.wMainCmdID, pCommand->Command.wSubCmdID, pCommand->wDataSize);
 				disconnect();
 				break;
 			}

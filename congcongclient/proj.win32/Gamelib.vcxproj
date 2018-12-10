@@ -79,7 +79,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>OldStyle</DebugInformationFormat>
-      <DisableSpecificWarnings>4996;4819;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4996;4819;4251;4006%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -167,7 +167,6 @@
     <ClInclude Include="..\GameLib\GameNet\MLClientNetDelegate.h" />
     <ClInclude Include="..\GameLib\GameNet\MLClientScoket.h" />
     <ClInclude Include="..\GameLib\GameNet\MLNetDefine.h" />
-    <ClInclude Include="..\GameLib\Game\FV\FvDebug.h" />
     <ClInclude Include="..\GameLib\Game\FV\FvDoubleLink.h" />
     <ClInclude Include="..\GameLib\Game\FV\FvKernel.h" />
     <ClInclude Include="..\GameLib\Game\FV\FvMask.h" />
@@ -175,11 +174,8 @@
     <ClInclude Include="..\GameLib\Game\FV\FvReferencePtr.h" />
     <ClInclude Include="..\GameLib\Game\FV\FvSingleton.h" />
     <ClInclude Include="..\GameLib\Game\FV\FvSmartPointer.h" />
-    <ClInclude Include="..\GameLib\Game\FV\NetLog.h" />
-    <ClInclude Include="..\GameLib\Game\GameLib.h" />
     <ClInclude Include="..\GameLib\Game\Game\EffectScence.h" />
     <ClInclude Include="..\GameLib\Game\Game\GameBase.h" />
-    <ClInclude Include="..\GameLib\Game\Game\GameDefine.h" />
     <ClInclude Include="..\GameLib\Game\Game\GameManagerBase.h" />
     <ClInclude Include="..\GameLib\Game\Game\GamePlayer.h" />
     <ClInclude Include="..\GameLib\Game\Game\GameScriptNet.h" />
@@ -199,8 +195,6 @@
     <ClInclude Include="..\GameLib\Game\Script\StructType.h" />
     <ClInclude Include="..\GameLib\Game\Script\TimeManager.h" />
     <ClInclude Include="..\GameLib\Game\Script\TimeNode.h" />
-    <ClInclude Include="..\GameLib\Game\Script\utility.h" />
-    <ClInclude Include="..\GameLib\Game\Script\UtilityBase.h" />
     <ClInclude Include="..\GameLib\Game\Script\WindowInfo.h" />
     <ClInclude Include="..\GameLib\Game\Sound\amr_nb\abs_s.h" />
     <ClInclude Include="..\GameLib\Game\Sound\amr_nb\add.h" />
@@ -474,12 +468,14 @@
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGPUnderWriteMission.h" />
     <ClInclude Include="..\GameLib\Platform\PFKernel\CGUserInGameServerInfo.h" />
     <ClInclude Include="..\GameLib\Platform\PFKernel\GPMission.h" />
-    <ClInclude Include="..\GameLib\Platform\PlatformHeader.h" />
+    <ClInclude Include="..\GameLib\STD.h" />
     <ClInclude Include="..\GameLib\Tools\core\CCUserDefault.h" />
     <ClInclude Include="..\GameLib\Tools\core\Encrypt.h" />
     <ClInclude Include="..\GameLib\Tools\core\MD5.h" />
-    <ClInclude Include="..\GameLib\Tools\ToolsHeader.h" />
-    <ClInclude Include="..\GameLib\Tools\tools\Convert.h" />
+    <ClInclude Include="..\GameLib\Tools\utilityLog.h" />
+    <ClInclude Include="..\GameLib\Tools\utilityMath.h" />
+    <ClInclude Include="..\GameLib\Tools\utilityString.h" />
+    <ClInclude Include="..\GameLib\Tools\utilityWidget.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\GameLib\GameNet\cocosHttp\HttpClientEx.cpp" />
@@ -490,7 +486,6 @@
     <ClCompile Include="..\GameLib\GameNet\MLClientNetDelegate.cpp" />
     <ClCompile Include="..\GameLib\GameNet\MLClientScoket.cpp" />
     <ClCompile Include="..\GameLib\Game\FV\FvReferencePtr.cpp" />
-    <ClCompile Include="..\GameLib\Game\FV\NetLog.cpp" />
     <ClCompile Include="..\GameLib\Game\Game\EffectScence.cpp" />
     <ClCompile Include="..\GameLib\Game\Game\GameBase.cpp" />
     <ClCompile Include="..\GameLib\Game\Game\GameBase_Logic.cpp" />
@@ -515,7 +510,6 @@
     <ClCompile Include="..\GameLib\Game\Script\SoundFun.cpp" />
     <ClCompile Include="..\GameLib\Game\Script\TimeManager.cpp" />
     <ClCompile Include="..\GameLib\Game\Script\TimeNode.cpp" />
-    <ClCompile Include="..\GameLib\Game\Script\utility.cpp" />
     <ClCompile Include="..\GameLib\Game\Script\WindowInfo.cpp" />
     <ClCompile Include="..\GameLib\Game\Sound\amr_nb\add.cpp" />
     <ClCompile Include="..\GameLib\Game\Sound\amr_nb\agc.cpp" />
@@ -757,11 +751,11 @@
     <ClCompile Include="..\GameLib\Tools\core\CCUserDefault.cpp" />
     <ClCompile Include="..\GameLib\Tools\core\Encrypt.cpp" />
     <ClCompile Include="..\GameLib\Tools\core\MD5.cpp" />
-    <ClCompile Include="..\GameLib\Tools\tools\Convert.cpp" />
+    <ClCompile Include="..\GameLib\Tools\utility.cpp" />
+    <ClCompile Include="..\GameLib\Tools\utilityConvert.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\GameLib\Game\FV\FvDoubleLink.inl" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

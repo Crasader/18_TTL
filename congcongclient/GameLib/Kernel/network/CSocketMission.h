@@ -1,5 +1,6 @@
 #ifndef _CSocketMission_H_
 #define _CSocketMission_H_
+
 #include "Kernel/network/ISocketEngine.h"
 
 class CSocketMission

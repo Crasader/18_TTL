@@ -1,13 +1,18 @@
 #pragma once
-#include "cocos2d.h"
-#include "Game/FV/FvSingleton.h"
 
+#include <cocos2d.h>
+#include "Game/FV/FvSingleton.h"
+ 
+namespace script
+{
+	
 class WindowInfo
 	:public FvSingleton<WindowInfo> 
 {
 	FRIEND_SINGLETON(WindowInfo)
 public:
 	void init();
+
 public:
 	float getChangeWidthScale();
 	float getChangeHeightScale();
@@ -25,10 +30,11 @@ public:
 	cocos2d::Vec2 getCenter();
 	void setShowSize(cocos2d::Size kSize);
 	cocos2d::Size getShowSize();
-private:
 
+private:
 	cocos2d::Size m_kUseSize;
 	cocos2d::Size m_kShowSize;
 	cocos2d::Size m_kWinSize; 
 };
 
+}

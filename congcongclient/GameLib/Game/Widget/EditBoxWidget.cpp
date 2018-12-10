@@ -1,11 +1,9 @@
 #include "EditBoxWidget.h"
 #include "WidgetFun.h"
-#include "Game/Script/utility.h"
 #include "Game/Script/WindowInfo.h"
 #include "ui/UIEditBox/UIEditBoxImpl.h"
 
-
-NS_CC_BEGIN;
+using namespace widget;
 
 EditBoxWidget::EditBoxWidget()
 {
@@ -61,4 +59,3 @@ void EditBoxWidget::editBoxReturn(EditBox* editBox)
 		(m_pReturnSelector)();
 	}
 }
-NS_CC_END

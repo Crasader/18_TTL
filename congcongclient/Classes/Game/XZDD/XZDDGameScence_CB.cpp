@@ -1,5 +1,5 @@
 #include "XZDDGameScence.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 
 #include "CMD_XZDD.h"
 #include "XZDDPlayer.h"
@@ -95,8 +95,8 @@ void XZDDGameScence::OnPlayScence(void* data, int wDataSize)//重新加入游戏场景消
 	m_iUserAction = pNetInfo->cbActionMask;
 	//重新确定排堆位置
 	word wSice2 = word(pNetInfo->m_lSiceCount);
-	BYTE SiceFirst = (wSice2 >> 8);
-	BYTE SiceSecond = (wSice2);
+	byte SiceFirst = (wSice2 >> 8);
+	byte SiceSecond = (wSice2);
 
 	int m  = 0;
 
@@ -131,7 +131,7 @@ void XZDDGameScence::OnPlayScence(void* data, int wDataSize)//重新加入游戏场景消
 			pPlayer->setHandCard(pNetInfo->cbCardData,pNetInfo->cbCardOther[i]);
 		pPlayer->setQueColor(pNetInfo->nQueColor[i]);
 		pPlayer->showQueIcon_NoAni();
-		for (BYTE m = 0;m<pNetInfo->cbDiscardCount[i];m++)
+		for (byte m = 0;m<pNetInfo->cbDiscardCount[i];m++)
 		{
 			pPlayer->addHandOutCard(pNetInfo->cbDiscardCard[i][m]);
 		}

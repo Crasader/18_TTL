@@ -1,6 +1,8 @@
 #pragma once
-#include "cocos2d.h"
+#include <cocos2d.h>
 #include "Game/Script/StructType.h"
+
+using namespace script;
 
 struct QYActionInfo
 {

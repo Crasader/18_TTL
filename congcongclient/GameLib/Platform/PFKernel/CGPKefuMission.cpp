@@ -1,4 +1,5 @@
 #include "CGPKefuMission.h"
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
 
 CGPKefuMission::CGPKefuMission(const char* url, int port)
 : CSocketMission(url, port)

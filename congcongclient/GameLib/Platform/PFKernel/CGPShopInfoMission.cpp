@@ -1,15 +1,26 @@
 #include "CGPShopInfoMission.h"
 #include "Game/Game/NoticeMsg.h"
 #include "Game/Game/UserInfo.h"
+#include "Tools/utilityConvert.h"
+
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
 
 CGPShopInfoMission::CGPShopInfoMission(const char* url, int port)
 : CCallMission("CGPShopInfoMission",url, port)
 {
 	mIGPShopInfoMissionSink = 0;
-
+	m_kShopUpOder = new CMD_GP_UpShopOder();
 	addNetCall(CC_CALLBACK_2(CGPShopInfoMission::Net_ShopInfoList,this),SUB_GP_SHOPINFO_BACK);
 	addNetCall(CC_CALLBACK_2(CGPShopInfoMission::Net_OperateSucess,this),SUB_GP_OPERATE_SUCCESS);
 	addNetCall(CC_CALLBACK_2(CGPShopInfoMission::Net_OperateFailure,this),SUB_GP_OPERATE_FAILURE);
+}
+
+CGPShopInfoMission::~CGPShopInfoMission()
+{
+	if (m_kShopUpOder) {
+		delete m_kShopUpOder;
+		m_kShopUpOder = nullptr;
+	}
 }
 
 // 设置回调接口
@@ -47,10 +58,10 @@ void CGPShopInfoMission::Net_ShopInfoList( void* data, int dataSize )
 		mIGPShopInfoMissionSink->onGPShopInfoListResult(&kNetInfo);
 	}
 }
-
-void CGPShopInfoMission::UpShopOder(CMD_GP_UpShopOder kOder)
+void CGPShopInfoMission::UpShopOder(CMD_GP_UpShopOder* kOder)
 {
-	m_kShopUpOder = kOder;
+	if(m_kShopUpOder)
+		*m_kShopUpOder = *kOder;
 
 	addLinkCallFun(CC_CALLBACK_0(CGPShopInfoMission::CB_UpShopOder,this));
 	start();
@@ -58,7 +69,7 @@ void CGPShopInfoMission::UpShopOder(CMD_GP_UpShopOder kOder)
 void CGPShopInfoMission::CB_UpShopOder()
 {
 	datastream kData;
-	m_kShopUpOder.StreamValue(kData,true);
+	m_kShopUpOder->StreamValue(kData,true);
 	send(MDM_GP_USER_SERVICE, SUB_GP_SHOPINFO_BUYODER,&kData[0],kData.size());
 }
 void CGPShopInfoMission::Net_OperateSucess(void* data, int dataSize)

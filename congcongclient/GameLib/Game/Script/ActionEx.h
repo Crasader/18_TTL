@@ -1,8 +1,11 @@
 #pragma once
 
-#include "cocos2d.h"
+#include <cocos2d.h>
 
-NS_CC_BEGIN
+USING_NS_CC;
+
+namespace script
+{
 
 class MoveExTxtTime : public ActionInterval
 {
@@ -179,4 +182,5 @@ protected:
 	float m_fGravity;
 	float m_fMoveSpd;
 };
-NS_CC_END
+
+}

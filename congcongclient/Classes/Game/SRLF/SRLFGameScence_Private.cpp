@@ -1,7 +1,9 @@
 #include "SRLFGameScence.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 #include "SRLFPlayer.h"
 #include "Game/Game/MissionWeiXin.h"
+#include "UTILITY.h"
+#include IMAGE_DOWN
 
 void SRLFGameScence::pushGameRule(std::vector<std::string>&kRuleList, dword dwGameRule,int nRuleTag,bool bShow)
 {
@@ -173,7 +175,7 @@ void SRLFGameScence::OnSocketSubPrivateEnd(CMD_GF_Private_End_Info* pNetInfo)
 	else
 	{
 		int iTime = utility::parseInt(WidgetFun::getWidgetUserInfo(pJieSuanNode,"Time"))+3;
-		WidgetFun::getChildWidget(pRootNode,"PrivateEndPlane")->runAction(cocos2d::CCVisibleAction::create(iTime,true));
+		WidgetFun::getChildWidget(pRootNode,"PrivateEndPlane")->runAction(script::CCVisibleAction::create(iTime,true));
 	}
 
 	if(HaveOptionRule(GAME_OPTION_RULE_PRIVATAEND_RETURN_HOME))
@@ -190,7 +192,7 @@ void SRLFGameScence::OnSocketSubPrivateDismissInfo(CMD_GF_Private_Dismiss_Info* 
 	pNode->setVisible(true);
 	if (pNetInfo->dwDissUserCout == 0)
 	{
-		pNode->runAction(cocos2d::CCVisibleAction::create(1.0f,false));
+		pNode->runAction(script::CCVisibleAction::create(1.0f,false));
 		return;
 	}
 	int kChairID[4] = {1,1,1,1};
@@ -268,8 +270,8 @@ void SRLFGameScence::SRLFButton_WeiXinFriend(cocos2d::Ref*,WidgetUserInfo*)//ÒªÇ
 	}
 	//kHNWeiXinSharDes = utility::getScriptReplaceValue("SCWeiXinSharDes",
 	//	(int)m_kPrivateRoomInfo.dwRoomNum,(int)m_kPrivateRoomInfo.dwPlayTotal,kGameTypeStr);
-	//MissionWeiXin::Instance().shareUrlWeiXin(utility::getScriptString("WeiXinSharUrl"),
-	//	utility::getScriptString("SCWeiXinSharTitle"),
+	//MissionWeiXin::Instance().shareUrlWeiXin(script::getStr("WeiXinSharUrl"),
+	//	script::getStr("SCWeiXinSharTitle"),
 	//	kHNWeiXinSharDes,
 	//	MissionWeiXin::SHARE_SESSION);
 }

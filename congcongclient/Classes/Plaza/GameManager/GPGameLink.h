@@ -1,7 +1,10 @@
 #pragma once
-#include "CommonHeader/CommonHeader.h"
+
+#include "common.h"
 #include "Kernel/kernel/server/IServerPrivateSink.h"
-#include "GameLib/Platform/PFKernel/CGPLoginMission.h"
+#include "Platform/PFKernel/CGPLoginMission.h"
+
+#include CMD_GAME
 
 class GPGameLink
 	: public IServerPrivateSink

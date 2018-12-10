@@ -1,11 +1,12 @@
 #pragma once
-#include "cocos2d.h"
-#include "Platform/PlatformHeader.h"
+
+#include <cocos2d.h>
+
 #include "Kernel/network/CSocketMission.h"
 #include "Kernel/network/CCallMission.h"
 
 //////////////////////////////////////////////////////////////////////////
-
+struct CMD_GP_InGameSeverID;
 class ICGUserInGameServerInfoSink
 {
 public:

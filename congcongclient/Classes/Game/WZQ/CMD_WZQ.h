@@ -1,7 +1,7 @@
 #ifndef CMD_SPARROW_HEAD_FILE
 #define CMD_SPARROW_HEAD_FILE
 
-#include "Game/Game/GameDefine.h"
+ 
 
 #pragma pack(1)
 
@@ -51,10 +51,10 @@ namespace WZQ
 //组合子项
 struct CMD_WeaveItem
 {
-	BYTE							cbWeaveKind;						//组合类型
-	BYTE							cbCenterCard;						//中心扑克
-	BYTE							cbPublicCard;						//公开标志
-	WORD							wProvideUser;						//供应用户
+	byte							cbWeaveKind;						//组合类型
+	byte							cbCenterCard;						//中心扑克
+	byte							cbPublicCard;						//公开标志
+	word							wProvideUser;						//供应用户
 };
 
 ////////////////////////////////////////////////////////////////////////
@@ -85,7 +85,7 @@ struct CMD_WeaveItem
 
 #define ZI_PAI_COUNT	7												//堆立全牌
 
-#define MASK_CHI_HU_RIGHT			0x0fffffff							//最大权位DWORD个数			
+#define MASK_CHI_HU_RIGHT			0x0fffffff							//最大权位dword个数			
 
 //常量定义
 #define MAX_WEAVE					4									//最大组合
@@ -96,25 +96,25 @@ struct CMD_WeaveItem
 //杠牌得分
 struct tagGangScore
 {
-	BYTE		cbGangCount;							//杠个数
-	LONGLONG	lScore[MAX_WEAVE][GAME_PLAYER];			//每个杠得分
-	BYTE     cbGangCount_Single;
+	byte		cbGangCount;							//杠个数
+	longlong	lScore[MAX_WEAVE][GAME_PLAYER];			//每个杠得分
+	byte     cbGangCount_Single;
 };
 
 //游戏状态
 struct CMD_S_StatusFree
 {
-	LONGLONG						lCellScore;							//基础金币
-	WORD							wBankerUser;						//庄家用户
+	longlong						lCellScore;							//基础金币
+	word							wBankerUser;						//庄家用户
 };
 
 //游戏状态
 struct CMD_S_StatusPlay
 {
 	//加注信息
-	LONGLONG							lScorePay;									//学费		
+	longlong							lScorePay;									//学费		
 	//状态信息
-	WORD								wBankerUser;								//庄家用户		
+	word								wBankerUser;								//庄家用户		
 };
 
 //游戏开始
@@ -122,44 +122,44 @@ struct CMD_S_StatusPlay
 struct CMD_S_GameStart
 {
 	//用户信息
-	WORD								wBankerUser;						//庄家用户
-	WORD				 				wCurrentUser;						//当前玩家
+	word								wBankerUser;						//庄家用户
+	word				 				wCurrentUser;						//当前玩家
 };
 
 struct CMD_S_StateHuanPai
 {
-	WORD							wBankerUser;								//庄家用户
-	BYTE							cbCardData[MAX_COUNT];						//扑克列表
-	BYTE							cbLeftCardCount;							//
-	BYTE							nLeftTime;									//换牌倒计时
+	word							wBankerUser;								//庄家用户
+	byte							cbCardData[MAX_COUNT];						//扑克列表
+	byte							cbLeftCardCount;							//
+	byte							nLeftTime;									//换牌倒计时
 	bool                            bHuan;									    //是否已经换了
 };
 
 struct CMD_S_StateXuanQue
 {
-	WORD							wBankerUser;								//庄家用户
-	BYTE							cbCardData[MAX_COUNT];						//扑克列表
-	BYTE							cbLeftCardCount;							//
-	BYTE							nLeftTime;									//XuanQue倒计时
-	BYTE                            nQueColor;									
+	word							wBankerUser;								//庄家用户
+	byte							cbCardData[MAX_COUNT];						//扑克列表
+	byte							cbLeftCardCount;							//
+	byte							nLeftTime;									//XuanQue倒计时
+	byte                            nQueColor;									
 };
 
 //落子命令
 struct CMD_S_OutCard
 {
-	WORD							wOutCardUser;						//出牌用户
-	BYTE							cbOutCardData;						//落子位子
+	word							wOutCardUser;						//出牌用户
+	byte							cbOutCardData;						//落子位子
 };
 
 //发送扑克
 struct CMD_S_SendCard
 {
-	BYTE							cbCardData;							//扑克数据
-	BYTE							cbActionMask;						//动作掩码
-	WORD							wCurrentUser;						//当前用户
+	byte							cbCardData;							//扑克数据
+	byte							cbActionMask;						//动作掩码
+	word							wCurrentUser;						//当前用户
 	bool							bTail;								//末尾发牌
 
-	BYTE                           nLeftTime;
+	byte                           nLeftTime;
 
 	bool                        bHasHuPai;					//是否已经胡
 };
@@ -168,43 +168,43 @@ struct CMD_S_SendCard
 //操作提示
 struct CMD_S_OperateNotify
 {
-	WORD							wResumeUser;						//还原用户
-	BYTE							cbActionMask;						//动作掩码
-	BYTE							cbActionCard;						//动作扑克
+	word							wResumeUser;						//还原用户
+	byte							cbActionMask;						//动作掩码
+	byte							cbActionCard;						//动作扑克
 	bool                            bHasHuPai;
 };
 
 //操作命令
 struct CMD_S_OperateResult
 {
-	WORD							wOperateUser;						//操作用户
-	WORD							wProvideUser;						//供应用户
-	BYTE							cbOperateCode;						//操作代码
-	BYTE							cbOperateCard;						//操作扑克
+	word							wOperateUser;						//操作用户
+	word							wProvideUser;						//供应用户
+	byte							cbOperateCode;						//操作代码
+	byte							cbOperateCard;						//操作扑克
 };
 
 //游戏结束
 struct CMD_S_GameEnd
 {
-	LONGLONG							lGameScore[GAME_PLAYER];			//游戏得分
-	WORD								dwChairId;							//认输椅子
+	longlong							lGameScore[GAME_PLAYER];			//游戏得分
+	word								dwChairId;							//认输椅子
 };
 
 //用户托管
 struct CMD_S_Trustee
 {
 	bool							bTrustee;							//是否托管
-	WORD							wChairID;							//托管用户
+	word							wChairID;							//托管用户
 };
 
 struct CMD_S_ChiHu
 {
-	WORD							wChiHuUser;							//
-	WORD							wProviderUser;						//
-	BYTE							cbChiHuCard;						//
+	word							wChiHuUser;							//
+	word							wProviderUser;						//
+	byte							cbChiHuCard;						//
 	std::vector<SCORE>            lGameScore;
-	DWORD						dwChiHuRight;			//胡牌类型
-	BYTE							cbGenCount;							//
+	dword						dwChiHuRight;			//胡牌类型
+	byte							cbGenCount;							//
 
 	void StreamValue(datastream& kData,bool bSend)
 	{
@@ -224,8 +224,8 @@ struct CMD_S_ChiHu
 
 struct CMD_S_GangScore
 {
-	WORD							wChairId;							//
-	WORD							wPravadeId;							//
+	word							wChairId;							//
+	word							wPravadeId;							//
 	bool                         cbXiaYu;
 	std::vector<SCORE>            lGangScore;
 
@@ -245,7 +245,7 @@ struct CMD_S_GangScore
 //设置学费成功
 struct CMD_S_Set_Success
 {
-	LONGLONG							lXueFeiScore;						//设置学费
+	longlong							lXueFeiScore;						//设置学费
 };
 
 struct AllEndInfo
@@ -253,8 +253,8 @@ struct AllEndInfo
 	std::vector<SCORE>            lGameScoreTotal;
 	std::vector<SCORE>            lHuaZhuScore;
 	std::vector<SCORE>            lChaJiaoScore;
-	std::vector<BYTE>				cbGenCount;
-	std::vector<BYTE>				cbFanShu;
+	std::vector<byte>				cbGenCount;
+	std::vector<byte>				cbFanShu;
 	std::vector<CMD_S_ChiHu>		kChiHuInfoList;
 	std::vector<CMD_S_GangScore>   kGangInfoList;
 
@@ -283,27 +283,27 @@ struct AllEndInfo
 //2016.5.20
 struct CMD_S_HuanPai
 {
-	WORD   wChairId;
-	BYTE   cbHuanCard[3];
+	word   wChairId;
+	byte   cbHuanCard[3];
 };
 struct CMD_S_HuanPaiChengDu
 {
-	WORD   wChairId;
-	BYTE   cbRemoveHuanCard[3];
-	BYTE   cbHuanCard[3];
-	WORD   wSice;
+	word   wChairId;
+	byte   cbRemoveHuanCard[3];
+	byte   cbHuanCard[3];
+	word   wSice;
 };
 struct CMD_S_XuanQue
 {
-	BYTE nQueColor[4];
-	BYTE nLeftTime;
+	byte nQueColor[4];
+	byte nLeftTime;
 };
 
 struct CMD_S_XuanQueNotice
 {
-	WORD   wChairId;
-	BYTE nLeftTime;
-	BYTE nQueColor;
+	word   wChairId;
+	byte nLeftTime;
+	byte nQueColor;
 };
 ////////////////////////////////////////////////////////////////////////
 //客户端命令结构
@@ -331,19 +331,19 @@ struct CMD_S_XuanQueNotice
 //设置学费
 struct CMD_C_SetStudyPay
 {
-	LONGLONG							lStudyPay;					//求高手指导金
+	longlong							lStudyPay;					//求高手指导金
 };
 
 struct CMD_C_OutCard
 {
-	BYTE							cbCardData;							//扑克数据
+	byte							cbCardData;							//扑克数据
 };
 
 //操作命令
 struct CMD_C_OperateCard
 {
-	BYTE							cbOperateCode;						//操作代码
-	BYTE							cbOperateCard;						//操作扑克
+	byte							cbOperateCode;						//操作代码
+	byte							cbOperateCard;						//操作扑克
 };
 
 //用户托管
@@ -354,12 +354,12 @@ struct CMD_C_Trustee
 //2016.5.20
 struct CMD_C_HuanPai
 {
-	BYTE    cbHuanCard[3];
-	BYTE		nMasttKindColor;
+	byte    cbHuanCard[3];
+	byte		nMasttKindColor;
 };
 struct CMD_C_XuanQue
 {
-	BYTE nQueChoice;
+	byte nQueChoice;
 };
 ////////////////////////////////////////////////////////////////////////
 
@@ -368,7 +368,7 @@ struct  Card_Info
 {
 	int		nLen;
 	int		nColor;
-	std::vector<BYTE> kCardList;
+	std::vector<byte> kCardList;
 
 	bool   operator <  (const   Card_Info&   rhs   )  const   //升序排序时必须写的函数
 	{  
@@ -380,10 +380,10 @@ struct  Card_Info
 
 struct  XZDDGameRecordPlayer
 {
-	DWORD dwUserID;
+	dword dwUserID;
 	std::string kHead;
 	std::string kNickName;
-	std::vector<BYTE> cbCardData;
+	std::vector<byte> cbCardData;
 	void StreamValue(datastream& kData,bool bSend)
 	{
 		Stream_VALUE(dwUserID);
@@ -411,11 +411,11 @@ struct  XZDDGameRecordOperateResult
 		cbOperateCode = 0;
 		cbOperateCard = 0;
 	}
-	BYTE							cbActionType;
-	WORD							wOperateUser;						//操作用户
-	WORD							wProvideUser;						//供应用户
-	BYTE							cbOperateCode;						//操作代码
-	BYTE							cbOperateCard;						//操作扑克
+	byte							cbActionType;
+	word							wOperateUser;						//操作用户
+	word							wProvideUser;						//供应用户
+	byte							cbOperateCode;						//操作代码
+	byte							cbOperateCard;						//操作扑克
 	void StreamValue(datastream& kData,bool bSend)
 	{
 		Stream_VALUE(cbActionType);
@@ -441,7 +441,7 @@ struct  GameRecord
 struct MasterHandCardInfo
 {
 	int nChairId;
-	std::vector<BYTE>    kMasterHandCard;
+	std::vector<byte>    kMasterHandCard;
 
 	void StreamValue(datastream& kData,bool bSend)
 	{
@@ -460,18 +460,18 @@ struct MasterHandCard
 };
 struct MaterCheckCard
 {
-	BYTE							cbCheakCard;						//操作代码
+	byte							cbCheakCard;						//操作代码
 };
 
 struct MaterNiaoCout
 {
-	BYTE							cbNiaoCout;							//操作代码
+	byte							cbNiaoCout;							//操作代码
 };
 
 struct MasterLeftCard
 {
-	BYTE      kMasterLeftIndex[MAX_INDEX];
-	BYTE      kMasterCheakCard;
+	byte      kMasterLeftIndex[MAX_INDEX];
+	byte      kMasterCheakCard;
 };
 };
 #pragma pack()

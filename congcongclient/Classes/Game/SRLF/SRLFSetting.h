@@ -1,9 +1,9 @@
 #pragma once
-#include "cocos2d.h"
+#include <cocos2d.h>
 #include "Game/FV/FvSingleton.h"
 #include "Game/Widget/WidgetManager.h"
-#include "GamePlaza/HomeScene/ExitPanel/GPHomeExitPanel.h"
-#include "GamePlaza/GPSceneManager.h"
+#include "Plaza/HomeScene/GPHomeExitPanel.h"
+#include "Plaza/GameManager/GPSceneManager.h"
 #include "cocos-ext.h"
 #include "GUI/CCControlExtension/CCControl.h"
 #include "SimpleAudioEngine.h"

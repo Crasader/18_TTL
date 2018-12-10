@@ -1,6 +1,14 @@
 #ifndef _IGameFrameSink_H_
 #define _IGameFrameSink_H_
 
+struct tagUserAttribute;
+struct tagGameAttribute;
+struct tagServerAttribute;
+struct tagUserScore;
+struct tagUserStatus;
+struct tagUserAttrib;
+struct tagCustomFaceInfo;
+
 class IGameFrameSink
 {
 public:

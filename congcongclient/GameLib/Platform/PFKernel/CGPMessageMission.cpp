@@ -1,5 +1,8 @@
 #include "CGPMessageMission.h"
 
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
+#include "Platform/PFDefine/data/GlobalUserInfo.h"
+
 #define MISSION_MESSAGE_NULL		0
 #define MISSION_MESSAGE_LIST		1
 #define MISSION_MESSAGE_AWARD		2

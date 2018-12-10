@@ -1,6 +1,9 @@
 #include "WidgetManager.h"
 #include "Game/Script/ScriptData.h"
-#include "Game/Script/utility.h"
+#include "Game/Script/SoundFun.h"
+#include "Game/Script/WindowInfo.h"
+
+#include "Tools/utilityWidget.h"
 #include "WidgetFun.h"
 #include "WidgetSkinXMLparse.h"
 #include "EditBoxWidget.h"
@@ -10,8 +13,6 @@
 #include "AnimationWidget.h"
 #include "ColorTxt.h"
 #include "2d/CCProgressTimer.h"
-#include "Game/Script/SoundFun.h"
-#include "Game/Script/WindowInfo.h"
 #include "SelectBox.h"
 #include "ColorTxt.h"
 #include "ButtonEx.h"
@@ -24,8 +25,7 @@ FV_SINGLETON_STORAGE(WidgetManager);
 ButtonCallBackList WidgetManager::s_kCBInfoListRelease;
 ButtonCallBackList WidgetManager::s_kCBInfoListBegin;
 
-USING_NS_CC;
-
+using namespace widget;
 using namespace cocos2d::ui;
 
 WidgetManager::WidgetManager()
@@ -652,13 +652,13 @@ void WidgetManager::changeTxtProperty(cocos2d::Node* pNode,std::string kKey,std:
 
 cocos2d::Node* WidgetManager::createWidgetColorTxt(WidgetColorTxt* pInfo)
 {
-	cocos2d::ColorTxt*  pColorTxt = cocos2d::ColorTxt::create();
+	widget::ColorTxt*  pColorTxt = widget::ColorTxt::create();
 	return pColorTxt;
 }
 
 void WidgetManager::changeColorTxtProperty(cocos2d::Node* pNode,std::string kKey,std::string kValue)
 {
-	cocos2d::ColorTxt* pColorTxt = WidgetFun::castNode<cocos2d::ColorTxt>(pNode);
+	widget::ColorTxt* pColorTxt = WidgetFun::castNode<widget::ColorTxt>(pNode);
 	if (kKey =="MaxLineLength")
 	{
 		pColorTxt->setMaxLineLength(utility::parseInt(kValue));
@@ -802,7 +802,7 @@ cocos2d::Node* WidgetManager::createWidgetButton(WidgetButton* pInfo)
 	{
 		kPressTxture = pInfo->kNomalTexture;
 	}
-	cocos2d::ButtonEx* pButton = cocos2d::ButtonEx::create(pInfo->kNomalTexture,kPressTxture,pInfo->kDisableTexture);
+	widget::ButtonEx* pButton = widget::ButtonEx::create(pInfo->kNomalTexture,kPressTxture,pInfo->kDisableTexture);
 	if (pInfo->kPressTexture == "AutoPress")
 	{
 		pButton->setPressColor(ccc3(150,150,150));
@@ -817,7 +817,7 @@ cocos2d::Node* WidgetManager::createWidgetButton(WidgetButton* pInfo)
 
 void WidgetManager::changeButtonProperty(cocos2d::Node* pNode,std::string kKey,std::string kValue)
 {
-	cocos2d::ButtonEx* pButton = dynamic_cast<cocos2d::ButtonEx*>(pNode);
+	widget::ButtonEx* pButton = dynamic_cast<widget::ButtonEx*>(pNode);
 	if (kKey=="NomalTexture")
 	{
 		pButton->loadTextureNormal((kValue.c_str()));

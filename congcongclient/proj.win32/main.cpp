@@ -1,5 +1,5 @@
 #include "main.h"
-#include "GamePlaza/Main/AppDelegate.h"
+#include "Main/AppDelegate.h"
 #include "cocos2d.h"
 
 //////////////////////////////////////////////////////////////////////////

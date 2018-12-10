@@ -1,9 +1,12 @@
 #include "WidgetManager.h"
-#include "Game/Script/utility.h"
+#include "Tools/utilityMath.h"
+#include "Tools/utilityWidget.h"
 #include "WidgetFun.h"
 #include "QYActionDefine.h"
 #include "Game/Script/ActionEx.h"
 #include "Game/Script/SoundFun.h"
+
+using namespace widget;
 
 void WidgetManager::CreateAction(cocos2d::Node* pNode)
 {
@@ -128,12 +131,12 @@ cocos2d::Node* WidgetManager::getNodeByTag(cocos2d::Node* pNode,int iTag)
 void WidgetManager::CB_QYActionSetPos(cocos2d::Node* pNode,void* data)
 {
 	QYActionSetPos* pTempAction = (QYActionSetPos*)data;
-	pNode->setPosition(utility::getRandPos(pTempAction->kDestPos,pNode));
+	pNode->setPosition(WidgetFun::getRandPos(pTempAction->kDestPos,pNode));
 }
 void WidgetManager::CB_QYActionSetSize(cocos2d::Node* pNode,void* data)
 {
 	QYActionSetSize* pTempAction = (QYActionSetSize*)data;
-	cocos2d::Vec2 kSize = utility::getRandPos(pTempAction->kDestSize,pNode);
+	cocos2d::Vec2 kSize = WidgetFun::getRandPos(pTempAction->kDestSize,pNode);
 	cocos2d::Size kTempSize = cocos2d::Size(kSize.x,kSize.y);
 	pNode->setContentSize(kTempSize);
 }
@@ -160,12 +163,12 @@ void WidgetManager::CB_QYActionRemoveSelf(cocos2d::Node* pNode,void* data)
 void WidgetManager::CB_QYActionSetScale(cocos2d::Node* pNode,void* data)
 {
 	QYActionSetScale* pTempAction = (QYActionSetScale*)data;
-	pNode->setScale(utility::getRandFloat(pTempAction->fDestScale,pNode));
+	pNode->setScale(WidgetFun::getRandFloat(pTempAction->fDestScale, pNode));
 }
 void WidgetManager::CB_QYActionSetAple(cocos2d::Node* pNode,void* data)
 {
 	QYActionSetAple* pTempAction = (QYActionSetAple*)data;
-	pNode->setOpacity(utility::getRandFloat(pTempAction->fDestAple,pNode)*255);
+	pNode->setOpacity(WidgetFun::getRandFloat(pTempAction->fDestAple,pNode)*255);
 }
 void WidgetManager::CB_QYActionSetVisible(cocos2d::Node* pNode,void* data)
 {
@@ -185,12 +188,12 @@ void WidgetManager::CB_QYActionSetProgress(cocos2d::Node* pNode,void* data)
 		CCASSERT(false,"");
 		return;
 	}
-	pProgress->setPercentage(utility::getRandFloat(pTempAction->fPercent,pNode));
+	pProgress->setPercentage(WidgetFun::getRandFloat(pTempAction->fPercent,pNode));
 }
 void WidgetManager::CB_QYActionSetRota(cocos2d::Node* pNode,void* data)
 {
 	QYActionSetRota* pTempAction = (QYActionSetRota*)data;
-	pNode->setRotation(utility::getRandFloat(pTempAction->fDestRota,pNode));
+	pNode->setRotation(WidgetFun::getRandFloat(pTempAction->fDestRota,pNode));
 }
 void WidgetManager::CB_QYActionCallAction(cocos2d::Node* pNode,void* data)
 {
@@ -279,7 +282,7 @@ void WidgetManager::CB_QYActionSetTxt(cocos2d::Node* pNode,void* data)
 void WidgetManager::CB_QYActionSetImge( cocos2d::Node* pNode,void* data )
 {
 	QYActionSetImage* pTempAction = (QYActionSetImage*)data;
-	WidgetFun::setImagic(pNode,utility::getUserString(pTempAction->kImageFile,pNode),true);
+	WidgetFun::setImagic(pNode,WidgetFun::getUserString(pTempAction->kImageFile,pNode),true);
 }
 cocos2d::FiniteTimeAction* WidgetManager::OnCreateAction(cocos2d::Node* pNode,QYActionInfo* pAction)
 {
@@ -287,14 +290,14 @@ cocos2d::FiniteTimeAction* WidgetManager::OnCreateAction(cocos2d::Node* pNode,QY
 	if (pAction->kType == QYActionWaiteTime::getType())
 	{
 		QYActionWaiteTime* pTempAction = (QYActionWaiteTime*)pAction;
-		pActionInterval = cocos2d::CCDelayTime::create(utility::getRandFloat(pTempAction->fWaiteTime,pNode));
+		pActionInterval = cocos2d::CCDelayTime::create(WidgetFun::getRandFloat(pTempAction->fWaiteTime,pNode));
 	}
 	if (pAction->kType == QYActionSizeTo::getType())
 	{
 		QYActionSizeTo* pTempAction = (QYActionSizeTo*)pAction;
-		cocos2d::Vec2 kSize = utility::getRandPos(pTempAction->kDestSize,pNode);
+		cocos2d::Vec2 kSize = WidgetFun::getRandPos(pTempAction->kDestSize,pNode);
 		cocos2d::Size kTempSize = cocos2d::Size(kSize.x,kSize.y);
-		pActionInterval = cocos2d::SizeTo::create(utility::getRandFloat(pTempAction->fTime,pNode),kTempSize);
+		pActionInterval = SizeTo::create(WidgetFun::getRandFloat(pTempAction->fTime,pNode),kTempSize);
 	}
 	if (pAction->kType == QYActionSetSize::getType())
 	{
@@ -329,8 +332,8 @@ cocos2d::FiniteTimeAction* WidgetManager::OnCreateAction(cocos2d::Node* pNode,QY
 	if (pAction->kType == QYActionProgressTo::getType())
 	{
 		QYActionProgressTo* pTempAction = (QYActionProgressTo*)pAction;
-		float fTime = utility::getRandFloat(pTempAction->fTime,pNode);
-		float fPercent = utility::getRandFloat(pTempAction->fPercent,pNode);
+		float fTime = WidgetFun::getRandFloat(pTempAction->fTime,pNode);
+		float fPercent = WidgetFun::getRandFloat(pTempAction->fPercent,pNode);
 		pActionInterval = cocos2d::ProgressTo::create(fTime,fPercent);
 	}
 	if (pAction->kType == QYActionSplineTo::getType())
@@ -341,11 +344,11 @@ cocos2d::FiniteTimeAction* WidgetManager::OnCreateAction(cocos2d::Node* pNode,QY
 		auto array = cocos2d::PointArray::create(iSize);
 		for (int i = 0;i<iSize;i++)
 		{
-			cocos2d::Vec2 kPos = utility::getRandPos(pTempAction->kPosition[i],pNode);
+			cocos2d::Vec2 kPos = WidgetFun::getRandPos(pTempAction->kPosition[i],pNode);
 			array->addControlPoint(kPos);
 		}
-		float fTension = utility::getRandFloat(pTempAction->fTension,pNode);
-		float fTime = utility::getRandFloat(pTempAction->fTime,pNode);
+		float fTension = WidgetFun::getRandFloat(pTempAction->fTension,pNode);
+		float fTime = WidgetFun::getRandFloat(pTempAction->fTime,pNode);
 		pActionInterval = cocos2d::CardinalSplineTo::create(fTime, array, fTension);
 	}
 	if (pAction->kType == QYActionBizerTo::getType())
@@ -353,30 +356,30 @@ cocos2d::FiniteTimeAction* WidgetManager::OnCreateAction(cocos2d::Node* pNode,QY
 		QYActionBizerTo* pTempAction = (QYActionBizerTo*)pAction;
 		cocos2d::ccBezierConfig bezier;
 		bezier.controlPoint_1 = pNode->getPosition();
-		bezier.controlPoint_2 = utility::getRandPos(pTempAction->kPos1,pNode);
-		bezier.endPosition = utility::getRandPos(pTempAction->kDestPos,pNode);
+		bezier.controlPoint_2 = WidgetFun::getRandPos(pTempAction->kPos1,pNode);
+		bezier.endPosition = WidgetFun::getRandPos(pTempAction->kDestPos,pNode);
 		
-		pActionInterval = cocos2d::BezierTo::create(utility::getRandFloat(pTempAction->fTime,pNode), bezier);
+		pActionInterval = cocos2d::BezierTo::create(WidgetFun::getRandFloat(pTempAction->fTime,pNode), bezier);
 	}
 	if (pAction->kType == QYActionBizerBy::getType())
 	{
 		QYActionBizerBy* pTempAction = (QYActionBizerBy*)pAction;
 		cocos2d::ccBezierConfig bezier;
 		bezier.controlPoint_1 = cocos2d::Vec2(0,0);
-		bezier.controlPoint_2 = utility::getRandPos(pTempAction->kPos1,pNode);
-		bezier.endPosition = utility::getRandPos(pTempAction->kDestPos,pNode);
+		bezier.controlPoint_2 = WidgetFun::getRandPos(pTempAction->kPos1,pNode);
+		bezier.endPosition = WidgetFun::getRandPos(pTempAction->kDestPos,pNode);
 		if (bezier.controlPoint_2.x == 0)
 		{
 			bezier.controlPoint_2.x = bezier.endPosition.x/2;
 		}
-		pActionInterval = cocos2d::BezierBy::create(utility::getRandFloat(pTempAction->fTime,pNode), bezier);
+		pActionInterval = cocos2d::BezierBy::create(WidgetFun::getRandFloat(pTempAction->fTime,pNode), bezier);
 	}
 	
 	if (pAction->kType == QYActionMoveTo::getType())
 	{
 		QYActionMoveTo* pTempAction = (QYActionMoveTo*)pAction;
-		float fTime = utility::getRandFloat(pTempAction->fTime,pNode);
-		cocos2d::Vec2 kDestPos = utility::getRandPos(pTempAction->kDestPos,pNode);
+		float fTime = WidgetFun::getRandFloat(pTempAction->fTime,pNode);
+		cocos2d::Vec2 kDestPos = WidgetFun::getRandPos(pTempAction->kDestPos,pNode);
 		if (pTempAction->bDestX)
 		{
 			kDestPos.x += pNode->getPositionX();
@@ -390,15 +393,15 @@ cocos2d::FiniteTimeAction* WidgetManager::OnCreateAction(cocos2d::Node* pNode,QY
 	if (pAction->kType == QYActionMoveBy::getType())
 	{
 		QYActionMoveBy* pTempAction = (QYActionMoveBy*)pAction;
-		float fTime = utility::getRandFloat(pTempAction->fTime,pNode);
-		cocos2d::Vec2 kDestPos = utility::getRandPos(pTempAction->kDestPos,pNode);
+		float fTime = WidgetFun::getRandFloat(pTempAction->fTime,pNode);
+		cocos2d::Vec2 kDestPos = WidgetFun::getRandPos(pTempAction->kDestPos,pNode);
 		pActionInterval = cocos2d::CCMoveBy::create(fTime,kDestPos);
 	}
 	if (pAction->kType == QYActionMoveToBySpd::getType())
 	{
 		QYActionMoveToBySpd* pTempAction = (QYActionMoveToBySpd*)pAction;
-		float fMoveSpd = utility::getRandFloat(pTempAction->fMoveSpd,pNode);
-		cocos2d::Vec2 kDestPos = utility::getRandPos(pTempAction->kDestPos,pNode);
+		float fMoveSpd = WidgetFun::getRandFloat(pTempAction->fMoveSpd,pNode);
+		cocos2d::Vec2 kDestPos = WidgetFun::getRandPos(pTempAction->kDestPos,pNode);
 		if (pTempAction->bDestX)
 		{
 			kDestPos.x += pNode->getPositionX();
@@ -413,9 +416,9 @@ cocos2d::FiniteTimeAction* WidgetManager::OnCreateAction(cocos2d::Node* pNode,QY
 	if (pAction->kType == QYActionGravity::getType())
 	{
 		QYActionGravity* pTempAction = (QYActionGravity*)pAction;
-		float fTime = utility::getRandFloat(pTempAction->fTime,pNode);
-		float fGravity = utility::getRandFloat(pTempAction->fGravity,pNode);
-		pActionInterval = cocos2d::GravityAction::create(fTime,fGravity);
+		float fTime = WidgetFun::getRandFloat(pTempAction->fTime,pNode);
+		float fGravity = WidgetFun::getRandFloat(pTempAction->fGravity,pNode);
+		pActionInterval = GravityAction::create(fTime,fGravity);
 	}
 	
 	if (pAction->kType == QYActionSetScale::getType())
@@ -427,22 +430,22 @@ cocos2d::FiniteTimeAction* WidgetManager::OnCreateAction(cocos2d::Node* pNode,QY
 	if (pAction->kType == QYActionScaleTo::getType())
 	{
 		QYActionScaleTo* pTempAction = (QYActionScaleTo*)pAction;
-		float fTime = utility::getRandFloat(pTempAction->fTime,pNode);
-		float fDestScale = utility::getRandFloat(pTempAction->fDestScale,pNode);
+		float fTime = WidgetFun::getRandFloat(pTempAction->fTime,pNode);
+		float fDestScale = WidgetFun::getRandFloat(pTempAction->fDestScale,pNode);
 		pActionInterval = cocos2d::ScaleTo::create(fTime,fDestScale);
 	}
 	if (pAction->kType == QYActionScaleXTo::getType())
 	{
 		QYActionScaleXTo* pTempAction = (QYActionScaleXTo*)pAction;
-		float fTime = utility::getRandFloat(pTempAction->fTime,pNode);
-		float fDestScale = utility::getRandFloat(pTempAction->fDestScaleX,pNode);
+		float fTime = WidgetFun::getRandFloat(pTempAction->fTime,pNode);
+		float fDestScale = WidgetFun::getRandFloat(pTempAction->fDestScaleX,pNode);
 		pActionInterval = cocos2d::ScaleTo::create(fTime,fDestScale,pNode->getScaleY());
 	}
 	if (pAction->kType == QYActionScaleYTo::getType())
 	{
 		QYActionScaleYTo* pTempAction = (QYActionScaleYTo*)pAction;
-		float fTime = utility::getRandFloat(pTempAction->fTime,pNode);
-		float fDestScale = utility::getRandFloat(pTempAction->fDestScaleY,pNode);
+		float fTime = WidgetFun::getRandFloat(pTempAction->fTime,pNode);
+		float fDestScale = WidgetFun::getRandFloat(pTempAction->fDestScaleY,pNode);
 		pActionInterval = cocos2d::ScaleTo::create(fTime,pNode->getScaleX(),fDestScale);
 	}
 	if (pAction->kType == QYActionSetAple::getType())
@@ -453,8 +456,8 @@ cocos2d::FiniteTimeAction* WidgetManager::OnCreateAction(cocos2d::Node* pNode,QY
 	if (pAction->kType == QYActionApleTo::getType())
 	{
 		QYActionApleTo* pTempAction = (QYActionApleTo*)pAction;
-		float fTime = utility::getRandFloat(pTempAction->fTime,pNode);
-		float fDestAple = utility::getRandFloat(pTempAction->fDestAple,pNode);
+		float fTime = WidgetFun::getRandFloat(pTempAction->fTime,pNode);
+		float fDestAple = WidgetFun::getRandFloat(pTempAction->fDestAple,pNode);
 		pActionInterval = cocos2d::FadeTo::create(fTime,fDestAple*255);
 	}
 
@@ -466,15 +469,15 @@ cocos2d::FiniteTimeAction* WidgetManager::OnCreateAction(cocos2d::Node* pNode,QY
 	if (pAction->kType == QYActionRotaTo::getType())
 	{
 		QYActionRotaTo* pTempAction = (QYActionRotaTo*)pAction;
-		float fTime = utility::getRandFloat(pTempAction->fTime,pNode);
-		float fDestRota = utility::getRandFloat(pTempAction->fDestRota,pNode);
+		float fTime = WidgetFun::getRandFloat(pTempAction->fTime,pNode);
+		float fDestRota = WidgetFun::getRandFloat(pTempAction->fDestRota,pNode);
 		pActionInterval = cocos2d::RotateTo::create(fTime,fDestRota);
 	}
 	if (pAction->kType == QYActionRotaBy::getType())
 	{
 		QYActionRotaBy* pTempAction = (QYActionRotaBy*)pAction;
-		float fTime = utility::getRandFloat(pTempAction->fTime,pNode);
-		float fDestRota = utility::getRandFloat(pTempAction->fDestRota,pNode);
+		float fTime = WidgetFun::getRandFloat(pTempAction->fTime,pNode);
+		float fDestRota = WidgetFun::getRandFloat(pTempAction->fDestRota,pNode);
 		pActionInterval = cocos2d::RotateBy::create(fTime,fDestRota);
 	}
 	if (pAction->kType == QYActionCallAction::getType())

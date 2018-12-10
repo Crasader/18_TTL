@@ -1,5 +1,5 @@
 #include "CGUserInGameServerInfo.h"
-
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
 
 CGUserInGameServerInfo::CGUserInGameServerInfo(const char* url, int port)
 : CCallMission("CGUserInGameServerInfo",url, port)

@@ -1,6 +1,6 @@
 #include "SRLFGameScence.h"
 #include "SRLFPlayer.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 #include "CMD_SRLF.h"
 #include "SRLFGameLogic.h"
 #include "SRLFSoundFun.h"
@@ -8,7 +8,9 @@
 #include "Game/FV/FvMask.h"
 #include "SRLFRoomDetail.h"
 //#include "SRLFSetting.h"
-#include "GamePlaza/HomeScene/SettingPanel/GPHomeSettingPanel.h"
+#include "Plaza/HomeScene/GPHomeSettingPanel.h"
+
+#include "UTILITY.h"
 
 FV_SINGLETON_STORAGE(SRLFGameScence);
 
@@ -74,12 +76,12 @@ bool SRLFGameScence::init()//数据准备
 	WidgetScenceXMLparse kSRLFScence2("GameSRLF/xml/GameScence_THJ.xml",pNode);
 	if (WidgetFun::getChildWidget(this,"GameTalkList"))
 	{
-		cocos2d::ListViewEx* pTalkList = WidgetFun::getListViewWidget(this,"GameTalkList");
+		widget::ListViewEx* pTalkList = WidgetFun::getListViewWidget(this,"GameTalkList");
 		pTalkList->removeAllChildren();
 		for (int i=0;i<10;i++)
 		{
 			cocos2d::Node* pItem = WidgetManager::Instance().createWidget("SRLFHNMJGameTalkListItem",pTalkList);
-			std::string kTxt = utility::getScriptString(utility::toString("GameTalkTxt",i));
+			std::string kTxt = script::getStr(utility::toString("GameTalkTxt",i));
 			WidgetFun::setText(pItem,"TalkListItemTxt",kTxt);
 			WidgetFun::setWidgetUserInfo(pItem,"SRLFButton_TalkDefine","Idex",utility::toString(i));
 			WidgetFun::setWidgetUserInfo(pItem,"SRLFButton_TalkDefine","Txt",utility::toString(kTxt));
@@ -262,7 +264,7 @@ std::string SRLFGameScence::getStringHuRight(dword kValue,int nGenCount)//获得胡
 	std::string kTxt;
 	SRLFLOGIC::CChiHuRight	kChiHuRight;	
 	kChiHuRight.SetRightData(&kValue,MAX_RIGHT_COUNT );
-	for( BYTE j = 0; j < CountArray(pszRight); j++ )
+	for( byte j = 0; j < CountArray(pszRight); j++ )
 	{
 		if( !(kChiHuRight&dwRight[j]).IsEmpty() )
 		{
@@ -310,8 +312,8 @@ void SRLFGameScence::showSaiZi(unsigned int iValue)//塞子动画----------------
 	word wSice2 = word(iValue);
 	//if (wSice1 > 0)
 	//{
-	//	BYTE SiceFirst = (wSice1 >> 8);
-	//	BYTE SiceSecond = (wSice1);
+	//	byte SiceFirst = (wSice1 >> 8);
+	//	byte SiceSecond = (wSice1);
 	//	std::string kImagic = WidgetFun::getWidgetUserInfo(this,"SaiZiNode","Imagic");
 	//	WidgetFun::setImagic(this,"SaiZi0",utility::toString(kImagic,(int)SiceFirst,".png"));
 	//	WidgetFun::setImagic(this,"SaiZi1",utility::toString(kImagic,(int)SiceSecond,".png"));
@@ -320,8 +322,8 @@ void SRLFGameScence::showSaiZi(unsigned int iValue)//塞子动画----------------
 	//}
 	//else if (wSice2 > 0)
 	{
-		BYTE SiceFirst = (wSice2 >> 8);
-		BYTE SiceSecond = (wSice2);
+		byte SiceFirst = (wSice2 >> 8);
+		byte SiceSecond = (wSice2);
 		std::string kImagic = WidgetFun::getWidgetUserInfo(this,"SaiZiNode","Imagic");
 		WidgetFun::setImagic(this,"SaiZi0",utility::toString(kImagic,(int)SiceFirst,".png"));
 		WidgetFun::setImagic(this,"SaiZi1",utility::toString(kImagic,(int)SiceSecond,".png"));
@@ -332,8 +334,8 @@ void SRLFGameScence::showSaiZi(unsigned int iValue)//塞子动画----------------
 
 void SRLFGameScence::showSaiZi_HuanPai(word wValue)
 {
-	BYTE SiceFirst = (wValue >> 8);
-	BYTE SiceSecond = (wValue);
+	byte SiceFirst = (wValue >> 8);
+	byte SiceSecond = (wValue);
 	std::string kImagic = WidgetFun::getWidgetUserInfo(this,"SaiZiNode","Imagic");
 	WidgetFun::setImagic(this,"SaiZi0",utility::toString(kImagic,(int)SiceFirst,".png"));
 	WidgetFun::setImagic(this,"SaiZi1",utility::toString(kImagic,(int)SiceSecond,".png"));
@@ -371,11 +373,11 @@ void SRLFGameScence::setCurrentPlayer(int iCurrentPlayer,int iUserAction,int icb
 	{
 		std::vector<cocos2d::Node*> vActionBtns;
 		vActionBtns.clear();
-		if (BYTE(iUserAction)&WIK_CHI_HU || BYTE(iUserAction)&WIK_ZI_MO)
+		if (byte(iUserAction)&WIK_CHI_HU || byte(iUserAction)&WIK_ZI_MO)
 			vActionBtns.push_back(WidgetFun::getChildWidgetByName(this,"SRLFButton_HuAction"));
-		if (BYTE(iUserAction)&WIK_GANG)
+		if (byte(iUserAction)&WIK_GANG)
 			vActionBtns.push_back(WidgetFun::getChildWidgetByName(this,"SRLFButton_GangAction"));
-		if (BYTE(iUserAction)&WIK_PENG)
+		if (byte(iUserAction)&WIK_PENG)
 			vActionBtns.push_back(WidgetFun::getChildWidgetByName(this,"SRLFButton_PengAction"));
 		vActionBtns.push_back(WidgetFun::getChildWidgetByName(this,"SRLFButton_GuoAction"));
 		Vec2 startPos = utility::parsePoint(WidgetFun::getWidgetUserInfo(WidgetFun::getChildWidgetByName(this,"SelfActionNode"),"StartPos"));
@@ -417,14 +419,14 @@ void SRLFGameScence::showClock(int iTime,bool bShow /*= true*/)
 	}
 	pNode->setVisible(true);
 	pNode->stopAllActions();
-	pNode->runAction(cocos2d::MoveExTxtTime::create(iTime,iTime,0));
+	pNode->runAction(script::MoveExTxtTime::create(iTime,iTime,0));
 }
 
 void SRLFGameScence::showClockTimeCallBack( const std::string& kName,int nSecond,const std::function<void()>& pCallBack,float fCheakTime )
 {
 	Node* pNode = WidgetFun::getChildWidget(this,kName);
 	pNode->stopAllActions();
-	pNode->runAction(cocos2d::MoveExTxtTimeCallBack::create(nSecond,nSecond,0,pCallBack,fCheakTime));
+	pNode->runAction(script::MoveExTxtTimeCallBack::create(nSecond,nSecond,0,pCallBack,fCheakTime));
 }
 
 void SRLFGameScence::killClock( const std::string& kName )
@@ -449,8 +451,8 @@ void SRLFGameScence::setGameResoultPlayerInfo_shuju(const SRLF::AllEndInfo& pGam
 		int nScore = kGangInfo.lGangScore[iChirID];
 		if (nScore > 0)
 		{
-			//setGameResoultStateInfo(pNode, pPlayerWin->GetNickName(), utility::getScriptString("GFXY"), nScore);
-			pai_sJ = pai_sJ + " " + utility::getScriptString("GFXY");
+			//setGameResoultStateInfo(pNode, pPlayerWin->GetNickName(), script::getStr("GFXY"), nScore);
+			pai_sJ = pai_sJ + " " + script::getStr("GFXY");
 		}
 	}
 	for (int i = 0; i < (int)pGameEnd.kChiHuInfoList.size(); i++)
@@ -498,7 +500,7 @@ void SRLFGameScence::setGameResoultPlayerInfo_shuju(const SRLF::AllEndInfo& pGam
 
 void SRLFGameScence::setGameResoultPlayerInfo(const SRLF::AllEndInfo& pGameEnd,SRLFPlayer* pPlayer,cocos2d::Node* pNode)//设置玩家信息数据
 {
-	cocos2d::ListViewEx* pList = (cocos2d::ListViewEx*)pNode;//自动排版
+	widget::ListViewEx* pList = (widget::ListViewEx*)pNode;//自动排版
 	pList->removeAllChildren();
 
 	int iChirID = pPlayer->GetChairID();
@@ -513,7 +515,7 @@ void SRLFGameScence::setGameResoultPlayerInfo(const SRLF::AllEndInfo& pGameEnd,S
 		{
 			SRLFPlayer* pPlayerWin = getPlayerByChairID(kGangInfo.wChairId);
 			cocos2d::Node* pNode = WidgetManager::Instance().createWidget("SRLFGameResoultState",pList);
-			setGameResoultStateInfo(pNode,pPlayerWin->GetNickName(),utility::getScriptString("GFXY"),nScore);
+			setGameResoultStateInfo(pNode,pPlayerWin->GetNickName(),script::getStr("GFXY"),nScore);
 
 		}
 	}

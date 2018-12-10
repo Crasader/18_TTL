@@ -1,13 +1,18 @@
 #pragma once
 
-#include "cocos2d.h"
-#include "../GameLib.h"
+#include <cocos2d.h>
 
 #include "Kernel/kernel/server/IServerItemSink.h"
-#include "Platform/PFDefine/data/ServerListData.h"
 #include "kernel/kernel/server/CServerItem.h"
 #include "Kernel/kernel/game/IClientKernelSink.h"
+
 #include "Platform/PFKernel/CGPLoginMission.h"
+#include "Platform/PFDefine/data/ServerListData.h"
+#include "Platform/PFDefine/df/Macro.h"
+
+#include "Game/Script/TimeNode.h"
+
+//using namespace script;
 
 enum ConectState
 {
@@ -220,7 +225,7 @@ public:
 	}
 public:
 	SCORE getGameDiFen();
-	WORD  getGameChairNum();
+	word  getGameChairNum();
 	//请求更新桌子数据
 	bool BackKey();
 	//请求刷新桌子

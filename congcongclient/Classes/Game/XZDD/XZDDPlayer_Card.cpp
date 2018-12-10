@@ -2,17 +2,19 @@
 #include "XZDDGameLogic.h"
 #include "XZDDSoundFun.h"
 #include <map>
-#include "ClientHN_THJ/Game/XZDD/XZDDGameScence.h"
+#include "Game/XZDD/XZDDGameScence.h"
+#include USERINFO
+#include UTILITY_WIDGET
+#include UTILITY_LOG
 
-
-void XZDDPlayer::setHandCard(BYTE* pCardData,int iCout)
+void XZDDPlayer::setHandCard(byte* pCardData,int iCout)
 {
 	m_kHandCardCout = 0;
 	if (iCout <= 0 || iCout > MAX_COUNT)
 	{
 		return;
 	}
-	memcpy(m_kHandCardData,pCardData,sizeof(BYTE)*iCout);
+	memcpy(m_kHandCardData,pCardData,sizeof(byte)*iCout);
 	m_kHandCardCout = iCout;
 }
 
@@ -31,7 +33,7 @@ void XZDDPlayer::setOperateResoult(XZDD::CMD_S_OperateResult* pNetInfo)
 {
 	bool cbPublicCard = false;
 	word wOperateUser=pNetInfo->wOperateUser;
-	BYTE cbOperateCard=pNetInfo->cbOperateCard;
+	byte cbOperateCard=pNetInfo->cbOperateCard;
 
 	if (pNetInfo->cbOperateCode == WIK_PENG)
 	{
@@ -40,11 +42,11 @@ void XZDDPlayer::setOperateResoult(XZDD::CMD_S_OperateResult* pNetInfo)
 	if ((pNetInfo->cbOperateCode&WIK_GANG)!=0)
 	{
 		//组合扑克
-		BYTE cbWeaveIndex=0xFF;
-		for (BYTE i=0;i<m_kWeaveCount;i++)
+		byte cbWeaveIndex=0xFF;
+		for (byte i=0;i<m_kWeaveCount;i++)
 		{
-			BYTE cbWeaveKind=m_kWeaveItemArray[i].cbWeaveKind;
-			BYTE cbCenterCard=m_kWeaveItemArray[i].cbCenterCard;
+			byte cbWeaveKind=m_kWeaveItemArray[i].cbWeaveKind;
+			byte cbCenterCard=m_kWeaveItemArray[i].cbCenterCard;
 			if ((cbCenterCard==pNetInfo->cbOperateCard)&&(cbWeaveKind==WIK_PENG))
 			{
 				cbWeaveIndex=i;
@@ -89,7 +91,7 @@ void XZDDPlayer::setOperateResoult(XZDD::CMD_S_OperateResult* pNetInfo)
 	else if (pNetInfo->cbOperateCode!=WIK_NULL)
 	{
 		//设置组合
-		BYTE cbWeaveIndex=m_kWeaveCount++;
+		byte cbWeaveIndex=m_kWeaveCount++;
 		m_kWeaveItemArray[cbWeaveIndex].cbPublicCard=true;
 		m_kWeaveItemArray[cbWeaveIndex].cbCenterCard=cbOperateCard;
 		m_kWeaveItemArray[cbWeaveIndex].cbWeaveKind=pNetInfo->cbOperateCode;
@@ -99,7 +101,7 @@ void XZDDPlayer::setOperateResoult(XZDD::CMD_S_OperateResult* pNetInfo)
 		//删除扑克
 //		if (m_iIdex == 0 || m_bGameRecord || m_bMingPai)
 		//{
-			BYTE cbWeaveCard[4]={cbOperateCard,cbOperateCard,cbOperateCard,cbOperateCard};
+			byte cbWeaveCard[4]={cbOperateCard,cbOperateCard,cbOperateCard,cbOperateCard};
 			XZDD::CGameLogic::Instance().RemoveValueCard(m_kHandCardData,m_kHandCardCout,cbWeaveCard,2);
 //			m_kHandCardCout -= 2;
 		//}
@@ -231,11 +233,11 @@ void XZDDPlayer::showHandCard()//
 	showHandCard(m_kWeaveItemArray,m_kWeaveCount,m_kHandCardData,m_kHandCardCout);
 }
 
-void XZDDPlayer::showHandCard(XZDD::CMD_WeaveItem* pWeave, int iWeaveCout, BYTE* pHandCard, int iHandCout)//显示手牌
+void XZDDPlayer::showHandCard(XZDD::CMD_WeaveItem* pWeave, int iWeaveCout, byte* pHandCard, int iHandCout)//显示手牌
 {
 	if(m_iIdex == 0)
 	{
-		BYTE cardIndex[MAX_INDEX]={0};
+		byte cardIndex[MAX_INDEX]={0};
 		shuzu.clear();
 		XZDD::CGameLogic::Instance().SwitchToCardIndex(pHandCard,m_kHandCardCout,cardIndex);
 		XZDD::tagWeaveItem m_pWeave[MAX_WEAVE];// = (XZDD::tagWeaveItem*)pWeave;
@@ -318,8 +320,8 @@ void XZDDPlayer::showHandCard(XZDD::CMD_WeaveItem* pWeave, int iWeaveCout, BYTE*
 	
 	for (int i = 0;i<iHandCout;i++)
 	{
-		BYTE* pTemp = pHandCard+i;
-		BYTE* m_pTemp = pHandCard+i ;
+		byte* pTemp = pHandCard+i;
+		byte* m_pTemp = pHandCard+i ;
 		/*提示箭头
 		if(iIdex == 0)
 		{
@@ -372,8 +374,8 @@ void XZDDPlayer::setCardImagic(cocos2d::Node* pNode,int kValue,std::string kImag
 {
 	if (kValue > 0)
 	{
-		BYTE cbValue=((BYTE)kValue&MASK_VALUE);
-		BYTE cbColor=(((BYTE)kValue&MASK_COLOR)>>4)+1;
+		byte cbValue=((byte)kValue&MASK_VALUE);
+		byte cbColor=(((byte)kValue&MASK_COLOR)>>4)+1;
 		WidgetFun::setImagic(pNode,utility::toString(kImagicFront,(int)cbColor,(int)cbValue,".png"),false);
 	}
 	else
@@ -400,7 +402,7 @@ cocos2d::Node* XZDDPlayer::getTouchCardNode(cocos2d::Vec2 kTouchPos)//获得选中的
 	return NULL;
 }
 
-BYTE XZDDPlayer::getTouchCardVlaue(cocos2d::Node* pNode)//获得点中的牌面
+byte XZDDPlayer::getTouchCardVlaue(cocos2d::Node* pNode)//获得点中的牌面
 {
 	int iIdex = 0;
 	cocos2d::Node* pRootNode = WidgetFun::getChildWidget(m_pSeatNode,"CardNode1");
@@ -446,13 +448,13 @@ void XZDDPlayer::sortHandCard()//手牌排序
 	if (m_iIdex != 0 )return;
 	XZDD::CGameLogic::Instance().SortCardList(m_kHandCardData,m_kHandCardCout);
 }
-BYTE XZDDPlayer::getCanGangCard()//手牌排序
+byte XZDDPlayer::getCanGangCard()//手牌排序
 {
 	if (m_iIdex != 0 )return 0;
-	BYTE cardIndex[34];
+	byte cardIndex[34];
 	memset(cardIndex,0,sizeof(cardIndex));
 	XZDD::CGameLogic::Instance().SwitchToCardIndex(m_kHandCardData,m_kHandCardCout,cardIndex);
-	for(BYTE i=0;i<34;i++)
+	for(byte i=0;i<34;i++)
 		if(cardIndex[i]==4) return i;
 	return 0;
 }
@@ -473,7 +475,7 @@ void XZDDPlayer::showHuanPaiInit(int nGameType)
 	std::vector<XZDD::Card_Info> kCardInfoList;
 	XZDD::CGameLogic::Instance().GetCardInfoList(m_kHandCardData,MAX_COUNT-1,kCardInfoList);
 
-	std::vector<BYTE> kCardDataList;
+	std::vector<byte> kCardDataList;
 	//if (nGameType == GAME_TYPE_SICHUAN)
 	//{
 	//	kCardDataList = setHuanPaiSiChuan(kCardInfoList);
@@ -494,9 +496,9 @@ void XZDDPlayer::showHuanPaiInit(int nGameType)
 	}
 }
 
-std::vector<BYTE> XZDDPlayer::setHuanPaiSiChuan(std::vector<XZDD::Card_Info> kCardInfoList)//设置换牌川麻将
+std::vector<byte> XZDDPlayer::setHuanPaiSiChuan(std::vector<XZDD::Card_Info> kCardInfoList)//设置换牌川麻将
 {
-	std::vector<BYTE> kCardDataList;
+	std::vector<byte> kCardDataList;
 
 	ASSERT(kCardInfoList.size() == CARD_COLOR_TIAO);  //花色数判断
 	if (kCardInfoList.size() != CARD_COLOR_TIAO)return kCardDataList;
@@ -538,9 +540,9 @@ std::vector<BYTE> XZDDPlayer::setHuanPaiSiChuan(std::vector<XZDD::Card_Info> kCa
 	return kCardDataList;
 }
 
-std::vector<BYTE> XZDDPlayer::setHuanPaiChengDu(std::vector<XZDD::Card_Info> kCardInfoList)//设置换牌成都
+std::vector<byte> XZDDPlayer::setHuanPaiChengDu(std::vector<XZDD::Card_Info> kCardInfoList)//设置换牌成都
 {
-	std::vector<BYTE> kCardDataList;
+	std::vector<byte> kCardDataList;
 
 	ASSERT(kCardInfoList.size() == CARD_COLOR_TIAO);  //花色数判断
 	if (kCardInfoList.size() != CARD_COLOR_TIAO)return kCardDataList;
@@ -584,7 +586,7 @@ std::vector<BYTE> XZDDPlayer::setHuanPaiChengDu(std::vector<XZDD::Card_Info> kCa
 	return kCardDataList;
 }
 
-void XZDDPlayer::standUpCard(BYTE cbCard,bool nOnly /*= true*/)//立着的牌
+void XZDDPlayer::standUpCard(byte cbCard,bool nOnly /*= true*/)//立着的牌
 {
 	cocos2d::Node* pCard = getCardNodeByCard(cbCard);
 	pCard->setPositionY(CARD_UP_POSY);
@@ -605,7 +607,7 @@ void XZDDPlayer::seatDownCard()//倒下的牌
 	}
 }
 
-cocos2d::Node* XZDDPlayer::getCardNodeByCard(BYTE cbCard)
+cocos2d::Node* XZDDPlayer::getCardNodeByCard(byte cbCard)
 {
 	int iIdex = 0;
 	cocos2d::Node* pRootNode = WidgetFun::getChildWidget(m_pSeatNode,"CardNode1");
@@ -626,7 +628,7 @@ cocos2d::Node* XZDDPlayer::getCardNodeByCard(BYTE cbCard)
 	return NULL;
 }
 
-void XZDDPlayer::getCardNodeByCard(std::vector<BYTE> CardDataList,std::vector<cocos2d::Node*>& kCardList)//获得换牌数据
+void XZDDPlayer::getCardNodeByCard(std::vector<byte> CardDataList,std::vector<cocos2d::Node*>& kCardList)//获得换牌数据
 {
 	int nSize = CardDataList.size();
 
@@ -652,17 +654,17 @@ void XZDDPlayer::getCardNodeByCard(std::vector<BYTE> CardDataList,std::vector<co
 	}
 }
 
-void XZDDPlayer::setHuanPai(BYTE* nHuan)//设置换牌
+void XZDDPlayer::setHuanPai(byte* nHuan)//设置换牌
 {
 	if(m_bPlayHSAni) return;
 	m_bPlayHSAni = true;
-	utility::log(utility::toString("XZDDPlayer::setHuanPai",(int)nHuan[0]," ",(int)nHuan[1]," ",(int)nHuan[2]).c_str());
+	utility::filelog(utility::toString("XZDDPlayer::setHuanPai",(int)nHuan[0]," ",(int)nHuan[1]," ",(int)nHuan[2]).c_str());
 	XZDD::CGameLogic::Instance().RemoveValueCard(m_kHandCardData,MAX_COUNT-1,m_pHuanCards,HUAN_CARD_NUM);
 	XZDD::CGameLogic::Instance().ReplaceCardData(m_kHandCardData,MAX_COUNT-1,nHuan,HUAN_CARD_NUM);
 	sortHandCard(); //重新设置牌
 	showHandCard();
 	//seatDownCard();
-	std::vector<BYTE> kCardDataList;
+	std::vector<byte> kCardDataList;
 	kCardDataList.push_back(nHuan[0]);
 	kCardDataList.push_back(nHuan[1]);
 	kCardDataList.push_back(nHuan[2]);
@@ -681,12 +683,12 @@ void XZDDPlayer::setHuanPai(BYTE* nHuan)//设置换牌
  	}
 }
 
-void XZDDPlayer::saveRemoveHuanPai(BYTE* nHuan)//保存和删除换牌数据
+void XZDDPlayer::saveRemoveHuanPai(byte* nHuan)//保存和删除换牌数据
 {
 	memcpy(m_pHuanCards,nHuan,sizeof(m_pHuanCards));
 }
 
-void XZDDPlayer::saveHuanPai(BYTE* nHuan)//保存换牌
+void XZDDPlayer::saveHuanPai(byte* nHuan)//保存换牌
 {
 	memcpy(m_pSaveHuanPai,nHuan,sizeof(m_pSaveHuanPai));
 }
@@ -731,7 +733,7 @@ void XZDDPlayer::blackHandCardByQueColor()//缺牌颜色设置成黑色
 		{
 			continue;
 		}
-		BYTE nColor = XZDD::CGameLogic::Instance().GetCardColor(m_kHandCardData[iIdex]);
+		byte nColor = XZDD::CGameLogic::Instance().GetCardColor(m_kHandCardData[iIdex]);
 
 		if (nColor == m_nQueColor)
 		{
@@ -762,7 +764,7 @@ void XZDDPlayer::blackHandCardByColor(int nColorWhite)
 		{
 			continue;
 		}
-		BYTE nColor = XZDD::CGameLogic::Instance().GetCardColor(m_kHandCardData[iIdex]);
+		byte nColor = XZDD::CGameLogic::Instance().GetCardColor(m_kHandCardData[iIdex]);
 
 		if (nColor == nColorWhite)
 		{
@@ -791,7 +793,7 @@ void XZDDPlayer::ClickCard(cocos2d::Node* pCard)
 	}
 }
 
-int XZDDPlayer::getUpCardList(std::vector<BYTE>& kCardDataList)
+int XZDDPlayer::getUpCardList(std::vector<byte>& kCardDataList)
 {
 	if (m_iIdex != 0)return 0;
 
@@ -823,9 +825,9 @@ int XZDDPlayer::getUpCardList(std::vector<BYTE>& kCardDataList)
 	}
 }
 
-bool XZDDPlayer::getHuanCards(BYTE nHuanCard[HUAN_CARD_NUM])
+bool XZDDPlayer::getHuanCards(byte nHuanCard[HUAN_CARD_NUM])
 {
-	std::vector<BYTE> kCardDataList;
+	std::vector<byte> kCardDataList;
 	getUpCardList(kCardDataList);
 
 	if (kCardDataList.size() != 3)
@@ -862,9 +864,9 @@ void XZDDPlayer::showCard()
 	showCard(m_kHandCardData,m_kHandCardCout);
 }
 
-void XZDDPlayer::showCard(BYTE* cbCardData,BYTE cbCardCount)
+void XZDDPlayer::showCard(byte* cbCardData,byte cbCardCount)
 {
-	BYTE cbIdex = 0;
+	byte cbIdex = 0;
 	cocos2d::Node* pRootNode = WidgetFun::getChildWidget(m_pSeatNode,"CardNode1");
 	for (int i = 0;i<pRootNode->getChildrenCount();i++)
 	{
@@ -891,15 +893,15 @@ void XZDDPlayer::showCard(BYTE* cbCardData,BYTE cbCardCount)
 	blackAllHandCard(false);
 }
 
-BYTE XZDDPlayer::getGangCard( BYTE currentCard)
+byte XZDDPlayer::getGangCard( byte currentCard)
 {
 	ASSERT(m_iIdex == 0);
 
-	BYTE cardIndex[MAX_INDEX]={0};
+	byte cardIndex[MAX_INDEX]={0};
 	XZDD::CGameLogic::Instance().SwitchToCardIndex(m_kHandCardData,m_kHandCardCout,cardIndex);
 	if(m_nQueColor !=XZDD::CGameLogic::Instance().GetCardColor(currentCard))
 	{
-		BYTE bValue = XZDD::CGameLogic::Instance().EstimateGangCard(cardIndex,currentCard);
+		byte bValue = XZDD::CGameLogic::Instance().EstimateGangCard(cardIndex,currentCard);
 		if (bValue & WIK_GANG)
 		{
 			return currentCard;
@@ -917,33 +919,33 @@ BYTE XZDDPlayer::getGangCard( BYTE currentCard)
 }
 
 
-void XZDDPlayer::getGangCardInfo(BYTE* gangCards,BYTE& count,BYTE currentCard)
+void XZDDPlayer::getGangCardInfo(byte* gangCards,byte& count,byte currentCard)
 {
 	ASSERT(m_iIdex == 0);
-	BYTE cardIndex[MAX_INDEX]={0};
+	byte cardIndex[MAX_INDEX]={0};
 	XZDD::CGameLogic::Instance().SwitchToCardIndex(m_kHandCardData,m_kHandCardCout,cardIndex);
-	BYTE bValue = XZDD::CGameLogic::Instance().EstimateGangCard(cardIndex,currentCard);
+	byte bValue = XZDD::CGameLogic::Instance().EstimateGangCard(cardIndex,currentCard);
 	if (bValue & WIK_GANG)//表示吃杠
 	{
 		return;
 	}
-	for (BYTE i=0;i<MAX_INDEX;i++)
+	for (byte i=0;i<MAX_INDEX;i++)
 	{
 		if (cardIndex[i]== 4 )
 		{
-			BYTE cardData = XZDD::CGameLogic::Instance().SwitchToCardData(i);
-			BYTE colorCard = XZDD::CGameLogic::Instance().GetCardColor(cardData);
+			byte cardData = XZDD::CGameLogic::Instance().SwitchToCardData(i);
+			byte colorCard = XZDD::CGameLogic::Instance().GetCardColor(cardData);
 			if(m_nQueColor != colorCard)
 				gangCards[count++]=cardData;
 		}
 	}
-	for (BYTE i=0;i<MAX_WEAVE;i++)
+	for (byte i=0;i<MAX_WEAVE;i++)
 	{
 		if (m_kWeaveItemArray[i].cbWeaveKind == WIK_PENG)
 		{
 			if(cardIndex[XZDD::CGameLogic::Instance().SwitchToCardIndex(m_kWeaveItemArray[i].cbCenterCard)]==1)
 			{	
-				BYTE colorCard = XZDD::CGameLogic::Instance().GetCardColor(m_kWeaveItemArray[i].cbCenterCard);
+				byte colorCard = XZDD::CGameLogic::Instance().GetCardColor(m_kWeaveItemArray[i].cbCenterCard);
 				if(m_nQueColor != colorCard)
 					gangCards[count++]=m_kWeaveItemArray[i].cbCenterCard;
 			}
@@ -951,7 +953,7 @@ void XZDDPlayer::getGangCardInfo(BYTE* gangCards,BYTE& count,BYTE currentCard)
 	}
 }
 
-void XZDDPlayer::showGangCards(BYTE* gangCards,BYTE gangCount)
+void XZDDPlayer::showGangCards(byte* gangCards,byte gangCount)
 {
 	if ( NULL == m_pSeatNode) return;
 	int iIdex = 0;
@@ -984,16 +986,16 @@ void XZDDPlayer::showGangCards(BYTE* gangCards,BYTE gangCount)
 	}
 }
 
-BYTE XZDDPlayer::isChiGangCard( BYTE currentCard)
+byte XZDDPlayer::isChiGangCard( byte currentCard)
 {
 	ASSERT(m_iIdex == 0);
-	BYTE cardIndex[MAX_INDEX]={0};
+	byte cardIndex[MAX_INDEX]={0};
 	XZDD::CGameLogic::Instance().SwitchToCardIndex(m_kHandCardData,m_kHandCardCout,cardIndex);
-	BYTE bValue = XZDD::CGameLogic::Instance().EstimateGangCard(cardIndex,currentCard);
+	byte bValue = XZDD::CGameLogic::Instance().EstimateGangCard(cardIndex,currentCard);
 	return bValue&WIK_GANG;
 }
 
-void XZDDPlayer::removeHandOutCard( BYTE cbCardData )
+void XZDDPlayer::removeHandOutCard( byte cbCardData )
 {
 	int nSize = m_kOutCardList.size();
 	if (nSize <=0 )
@@ -1015,7 +1017,7 @@ void XZDDPlayer::showjiesuanCard(cocos2d::Node* pCardNode)//
 	showJieSuanCard(pCardNode,m_kWeaveItemArray, m_kWeaveCount, m_kHandCardData, m_kHandCardCout);
 }
 
-void XZDDPlayer::showJieSuanCard(cocos2d::Node* pCardNode, XZDD::CMD_WeaveItem* pWeave, int iWeaveCout, BYTE* pHandCard, int iHandCout)//结算.......................
+void XZDDPlayer::showJieSuanCard(cocos2d::Node* pCardNode, XZDD::CMD_WeaveItem* pWeave, int iWeaveCout, byte* pHandCard, int iHandCout)//结算.......................
 {
 	ASSERT(pCardNode);
 	pCardNode->removeAllChildren();
@@ -1074,13 +1076,13 @@ void XZDDPlayer::showJieSuanCard(cocos2d::Node* pCardNode, XZDD::CMD_WeaveItem* 
 		iOder+=iAddOder;
 	}
 
-	BYTE cbChiHuCard = 0;
+	byte cbChiHuCard = 0;
 
 	kStartPos += cocos2d::Vec2(0, 14);
 
 	for (int i = 0;i<iHandCout;i++)
 	{
-		BYTE* pTemp = pHandCard+i;
+		byte* pTemp = pHandCard+i;
 		int iCardValue = *pTemp;
 		//if (iCardValue == getChiHuCard())
 		//{
@@ -1123,7 +1125,7 @@ void XZDDPlayer::showJieSuanCard(cocos2d::Node* pCardNode, XZDD::CMD_WeaveItem* 
 	} 
 }
 
-void XZDDPlayer::setChiHuCard(BYTE cbCard)//设置吃胡
+void XZDDPlayer::setChiHuCard(byte cbCard)//设置吃胡
 {
 	m_cbChiHuCard = cbCard;
 	if (cbCard>0)
@@ -1140,7 +1142,7 @@ void XZDDPlayer::clearChiHuCard()//清除吃胡
 	m_kHuCardList.clear();
 }
 
-BYTE XZDDPlayer::getChiHuCard()//获得吃胡
+byte XZDDPlayer::getChiHuCard()//获得吃胡
 {
 	return m_cbChiHuCard;
 }
@@ -1172,7 +1174,7 @@ void XZDDPlayer::showChiHuCard()
 	}
 }
 
-void XZDDPlayer::removeHandCard(BYTE cbCard)
+void XZDDPlayer::removeHandCard(byte cbCard)
 {
 	if (m_iIdex == 0)
 	{
@@ -1193,7 +1195,7 @@ void XZDDPlayer::SetTingPaidepai()//yi影藏胡牌提示
 	WidgetFun::setVisible(pCardNode,false);
 }
 
-void XZDDPlayer::SetKeYiHuPai(std::vector<BYTE>  hupaiX_S)//设置显示胡牌提示
+void XZDDPlayer::SetKeYiHuPai(std::vector<byte>  hupaiX_S)//设置显示胡牌提示
 {
 	cocos2d::Node* pCardNode = WidgetFun::getChildWidget(m_pSeatNode,"HUPAICord");
 	pCardNode->removeAllChildren();
@@ -1205,7 +1207,7 @@ void XZDDPlayer::SetKeYiHuPai(std::vector<BYTE>  hupaiX_S)//设置显示胡牌提示
 	
 	for (int i = 0;i<hupaiX_S.size();i++)
 	{
-		BYTE* pTemp = &hupaiX_S[i];
+		byte* pTemp = &hupaiX_S[i];
 
 		std::string kHandSkin = utility::toString("XZDD_HAND_",0);
 		cocos2d::Node* pNode = WidgetManager::Instance().createWidget(kHandSkin,pCardNode);
@@ -1232,10 +1234,10 @@ void XZDDPlayer::SetKeYiHuPai(std::vector<BYTE>  hupaiX_S)//设置显示胡牌提示
 	}
 }
 
-void XZDDPlayer::SET_paiSHUjU(std::vector<BYTE>& shuju,BYTE data)
+void XZDDPlayer::SET_paiSHUjU(std::vector<byte>& shuju,byte data)
 {
 	
-	BYTE cardIndex[MAX_INDEX]={0};
+	byte cardIndex[MAX_INDEX]={0};
 	XZDD::CGameLogic::Instance().SwitchToCardIndex(m_kHandCardData,m_kHandCardCout,cardIndex);
 	XZDD::tagWeaveItem m_pWeave[MAX_WEAVE];// = (XZDD::tagWeaveItem*)pWeave;
 	for(int i = 0 ; i < MAX_WEAVE; ++i )

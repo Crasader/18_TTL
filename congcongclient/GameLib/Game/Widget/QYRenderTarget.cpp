@@ -1,6 +1,6 @@
 #include "QYRenderTarget.h"
 
-USING_NS_CC;
+using namespace widget;
 
 QYRenderTarget * QYRenderTarget::create(int w, int h)
 {

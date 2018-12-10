@@ -1,7 +1,11 @@
 #pragma once
 
-#include "cocos2d.h"
-NS_CC_BEGIN;
+#include <cocos2d.h>
+
+USING_NS_CC;
+
+namespace widget
+{
 
 class QYRenderTarget : public cocos2d::RenderTexture
 {
@@ -13,4 +17,4 @@ public:
 	virtual void draw(Renderer *renderer, const Mat4 &transform, uint32_t flags) override;
 };
 
-NS_CC_END
+}

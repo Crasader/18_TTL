@@ -47,7 +47,7 @@
 
 #include "platform/CCFileUtils.h"
 
-NS_CC_BEGIN
+namespace gamelib{
 
 namespace network {
     
@@ -638,6 +638,6 @@ namespace network {
     
 }
 
-NS_CC_END
+}
 
 

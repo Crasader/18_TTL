@@ -1,7 +1,7 @@
 #pragma once
 
 #include "CMD_SRLF.h"
-#include "Game/Game/GameDefine.h"
+ 
 #include "Game/FV/FvSingleton.h"
 
 //////////////////////////////////////////////////////////////////////////
@@ -78,36 +78,36 @@ namespace SRLFLOGIC
 	//类型子项
 	struct tagKindItem
 	{
-		BYTE							cbWeaveKind;						//组合类型
-		BYTE							cbCenterCard;						//中心扑克
-		BYTE							cbCardIndex[3];						//扑克索引
-		BYTE							cbValidIndex[3];					//实际扑克索引
+		byte							cbWeaveKind;						//组合类型
+		byte							cbCenterCard;						//中心扑克
+		byte							cbCardIndex[3];						//扑克索引
+		byte							cbValidIndex[3];					//实际扑克索引
 	};
 
 	//组合子项
 	struct tagWeaveItem
 	{
-		BYTE							cbWeaveKind;						//组合类型
-		BYTE							cbCenterCard;						//中心扑克
-		BYTE							cbPublicCard;						//公开标志
-		WORD							wProvideUser;						//供应用户
+		byte							cbWeaveKind;						//组合类型
+		byte							cbCenterCard;						//中心扑克
+		byte							cbPublicCard;						//公开标志
+		word							wProvideUser;						//供应用户
 	};
 
 	//杠牌结果
 	struct tagGangCardResult
 	{
-		BYTE							cbCardCount;						//扑克数目
-		BYTE							cbCardData[4];						//扑克数据
+		byte							cbCardCount;						//扑克数目
+		byte							cbCardData[4];						//扑克数据
 	};
 
 	//分析子项
 	struct tagAnalyseItem
 	{
-		BYTE							cbCardEye;							//牌眼扑克
+		byte							cbCardEye;							//牌眼扑克
 		bool                            bMagicEye;                          //牌眼是否是王霸
-		BYTE							cbWeaveKind[4];						//组合类型
-		BYTE							cbCenterCard[4];					//中心扑克
-		BYTE                            cbCardData[4][4];                   //实际扑克
+		byte							cbWeaveKind[4];						//组合类型
+		byte							cbCenterCard[4];					//中心扑克
+		byte                            cbCardData[4][4];                   //实际扑克
 	};
 
 	//////////////////////////////////////////////////////////////////////////
@@ -163,10 +163,10 @@ namespace SRLFLOGIC
 		void SetEmpty();
 
 		//获取权位数值
-		BYTE GetRightData( dword dwRight[], BYTE cbMaxCount );
+		byte GetRightData( dword dwRight[], byte cbMaxCount );
 
 		//设置权位数值
-		bool SetRightData( const dword dwRight[], BYTE cbRightCount );
+		bool SetRightData( const dword dwRight[], byte cbRightCount );
 
 	private:
 		//检查权位是否正确
@@ -181,8 +181,8 @@ namespace SRLFLOGIC
 	{
 		//变量定义
 	protected:
-		static const BYTE				m_cbCardDataArray[MAX_REPERTORY_SRLF];	//扑克数据
-		BYTE							m_cbMagicIndex;						//钻牌索引
+		static const byte				m_cbCardDataArray[MAX_REPERTORY_SRLF];	//扑克数据
+		byte							m_cbMagicIndex;						//钻牌索引
 
 		//函数定义
 	public:
@@ -194,114 +194,114 @@ namespace SRLFLOGIC
 		//控制函数
 	public:
 		//混乱扑克
-		void RandCardData(BYTE cbCardData[], BYTE cbMaxCount);
+		void RandCardData(byte cbCardData[], byte cbMaxCount);
 		//删除扑克
-		bool RemoveCard(BYTE cbCardIndex[MAX_INDEX], BYTE cbRemoveCard);
+		bool RemoveCard(byte cbCardIndex[MAX_INDEX], byte cbRemoveCard);
 		//删除扑克
-		bool RemoveCard(BYTE cbCardIndex[MAX_INDEX], const BYTE cbRemoveCard[], BYTE cbRemoveCount);
+		bool RemoveCard(byte cbCardIndex[MAX_INDEX], const byte cbRemoveCard[], byte cbRemoveCount);
 		//删除扑克
-		bool RemoveValueCard(BYTE cbCardData[], BYTE cbCardCount, const BYTE cbRemoveCard[], BYTE cbRemoveCount);
+		bool RemoveValueCard(byte cbCardData[], byte cbCardCount, const byte cbRemoveCard[], byte cbRemoveCount);
 		//删除扑克
-		BYTE RemoveValueCardAll(BYTE cbCardData[], BYTE cbCardCount,BYTE cbRemoveCard);
+		byte RemoveValueCardAll(byte cbCardData[], byte cbCardCount,byte cbRemoveCard);
 		//删除扑克
-		bool RemoveValueCardOne(BYTE cbCardData[], BYTE cbCardCount,BYTE cbRemoveCard);
+		bool RemoveValueCardOne(byte cbCardData[], byte cbCardCount,byte cbRemoveCard);
 		//设置钻牌
-		void SetMagicIndex( BYTE cbMagicIndex ) { m_cbMagicIndex = cbMagicIndex; }
+		void SetMagicIndex( byte cbMagicIndex ) { m_cbMagicIndex = cbMagicIndex; }
 		//钻牌
-		bool IsMagicCard( BYTE cbCardData );
+		bool IsMagicCard( byte cbCardData );
 
 		//添加牌
-		bool AddCard(BYTE cbCardIndex[MAX_INDEX], const BYTE cbAddCard[], BYTE cbAddCount);
+		bool AddCard(byte cbCardIndex[MAX_INDEX], const byte cbAddCard[], byte cbAddCount);
 
 		// 替换最后cbAddCount 个数据  配合函数：RemoveValueCard 使用
-		bool ReplaceCardData(BYTE cbCardData[], BYTE cbCardCount, const BYTE cbAddCardData[], BYTE cbAddCount);
+		bool ReplaceCardData(byte cbCardData[], byte cbCardCount, const byte cbAddCardData[], byte cbAddCount);
 
 		//辅助函数
 	public:
 		//有效判断
-		bool IsValidCard(BYTE cbCardData);
+		bool IsValidCard(byte cbCardData);
 		//扑克数目
-		BYTE GetCardCount(const BYTE cbCardIndex[MAX_INDEX]);
+		byte GetCardCount(const byte cbCardIndex[MAX_INDEX]);
 		//组合扑克
-		BYTE GetWeaveCard(BYTE cbWeaveKind, BYTE cbCenterCard, BYTE cbCardBuffer[4]);
+		byte GetWeaveCard(byte cbWeaveKind, byte cbCenterCard, byte cbCardBuffer[4]);
 
 		//等级函数
 	public:
 		//动作等级
-		BYTE GetUserActionRank(BYTE cbUserAction);
+		byte GetUserActionRank(byte cbUserAction);
 		//胡牌等级
-		WORD GetChiHuActionRank(const CChiHuRight & ChiHuRight);
+		word GetChiHuActionRank(const CChiHuRight & ChiHuRight);
 
 		//动作判断
 	public:
 		//吃牌判断
-		BYTE EstimateEatCard(const BYTE cbCardIndex[MAX_INDEX], BYTE cbCurrentCard);
+		byte EstimateEatCard(const byte cbCardIndex[MAX_INDEX], byte cbCurrentCard);
 		//碰牌判断
-		BYTE EstimatePengCard(const BYTE cbCardIndex[MAX_INDEX], BYTE cbCurrentCard);
+		byte EstimatePengCard(const byte cbCardIndex[MAX_INDEX], byte cbCurrentCard);
 		//杠牌判断
-		BYTE EstimateGangCard(const BYTE cbCardIndex[MAX_INDEX], BYTE cbCurrentCard);
+		byte EstimateGangCard(const byte cbCardIndex[MAX_INDEX], byte cbCurrentCard);
 
 		//动作判断
 	public:
 		//杠牌分析
-		BYTE AnalyseGangCard(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, tagGangCardResult & GangCardResult);
+		byte AnalyseGangCard(const byte cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], byte cbWeaveCount, tagGangCardResult & GangCardResult);
 		//吃胡分析
-		BYTE AnalyseChiHuCard(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE cbCurrentCard, CChiHuRight &ChiHuRight);
+		byte AnalyseChiHuCard(const byte cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], byte cbWeaveCount, byte cbCurrentCard, CChiHuRight &ChiHuRight);
 		//听牌分析
-		BYTE AnalyseTingCard( const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount );
+		byte AnalyseTingCard( const byte cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], byte cbWeaveCount );
 		//是否听牌
-		bool IsTingCard( const BYTE cbCardIndex[MAX_INDEX]);
+		bool IsTingCard( const byte cbCardIndex[MAX_INDEX]);
 		//是否花猪
-		bool IsHuaZhu( const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount );
+		bool IsHuaZhu( const byte cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], byte cbWeaveCount );
 		//胡牌提示
-		bool AnalyseCard(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount);
+		bool AnalyseCard(const byte cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], byte cbWeaveCount);
 		
-		bool CheckHu(const BYTE cbCardIndexTemp[MAX_INDEX]);
-		BYTE getAnyCardsCount( BYTE cbCardIndex[MAX_INDEX]);
-		void removeAnyCard( BYTE cbCardIndex[MAX_INDEX],BYTE cbCardData,BYTE cardCount);
-		bool isHaveAnyCard( BYTE cbCardIndex[MAX_INDEX],BYTE cbCardData,BYTE cardCount );
-		bool isHaveAnyCards( BYTE cbCardIndex[MAX_INDEX]);
-		bool Check3nWang(BYTE cbCardIndex[MAX_INDEX]);
-		bool Check3nTiao(BYTE cbCardIndex[MAX_INDEX]);
-		bool Check3nTong(BYTE cbCardIndex[MAX_INDEX]);
-		bool IsQiDui(const BYTE cbCardIndex[MAX_INDEX]);
+		bool CheckHu(const byte cbCardIndexTemp[MAX_INDEX]);
+		byte getAnyCardsCount( byte cbCardIndex[MAX_INDEX]);
+		void removeAnyCard( byte cbCardIndex[MAX_INDEX],byte cbCardData,byte cardCount);
+		bool isHaveAnyCard( byte cbCardIndex[MAX_INDEX],byte cbCardData,byte cardCount );
+		bool isHaveAnyCards( byte cbCardIndex[MAX_INDEX]);
+		bool Check3nWang(byte cbCardIndex[MAX_INDEX]);
+		bool Check3nTiao(byte cbCardIndex[MAX_INDEX]);
+		bool Check3nTong(byte cbCardIndex[MAX_INDEX]);
+		bool IsQiDui(const byte cbCardIndex[MAX_INDEX]);
 		//杠牌分析
-		BYTE AnalyseGangCard(const BYTE cbCardIndex[MAX_INDEX], const SRLF::CMD_WeaveItem WeaveItem[], BYTE cbWeaveCount, tagGangCardResult & GangCardResult);
+		byte AnalyseGangCard(const byte cbCardIndex[MAX_INDEX], const SRLF::CMD_WeaveItem WeaveItem[], byte cbWeaveCount, tagGangCardResult & GangCardResult);
 		//转换函数
 	public:
 		//扑克转换
-		BYTE SwitchToCardData(BYTE cbCardIndex);
+		byte SwitchToCardData(byte cbCardIndex);
 		//扑克转换
-		BYTE SwitchToCardIndex(BYTE cbCardData);
+		byte SwitchToCardIndex(byte cbCardData);
 		//扑克转换
-		BYTE SwitchToCardData(const BYTE cbCardIndex[MAX_INDEX], BYTE cbCardData[MAX_COUNT]);
+		byte SwitchToCardData(const byte cbCardIndex[MAX_INDEX], byte cbCardData[MAX_COUNT]);
 		//扑克转换
-		BYTE SwitchToCardIndex(const BYTE cbCardData[], BYTE cbCardCount, BYTE cbCardIndex[MAX_INDEX]);
+		byte SwitchToCardIndex(const byte cbCardData[], byte cbCardCount, byte cbCardIndex[MAX_INDEX]);
 
 
 		//排序,根据牌值排序
-		bool SortCardList( BYTE cbCardData[MAX_COUNT], BYTE cbCardCount );
+		bool SortCardList( byte cbCardData[MAX_COUNT], byte cbCardCount );
 
 		//分别获取颜色牌组
-		void GetCardWithColor(BYTE cbCardData[MAX_COUNT],BYTE cbCardCount,std::vector<BYTE>& CardList1,std::vector<BYTE>& CardList2,std::vector<BYTE>& CardList3);
+		void GetCardWithColor(byte cbCardData[MAX_COUNT],byte cbCardCount,std::vector<byte>& CardList1,std::vector<byte>& CardList2,std::vector<byte>& CardList3);
 		//胡法分析
 	protected:
 		//大对子
 		bool IsPengPeng( const tagAnalyseItem *pAnalyseItem );
 		//清一色牌
-		bool IsQingYiSe(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], const BYTE cbItemCount,const BYTE cbCurrentCard);
+		bool IsQingYiSe(const byte cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], const byte cbItemCount,const byte cbCurrentCard);
 		//七小对牌
-		bool IsQiXiaoDui(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[],const  BYTE cbWeaveCount,const BYTE cbCurrentCard);
+		bool IsQiXiaoDui(const byte cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[],const  byte cbWeaveCount,const byte cbCurrentCard);
 		//带幺
 		bool IsDaiYao( const tagAnalyseItem *pAnalyseItem );
 		//将对
 		bool IsJiangDui( const tagAnalyseItem *pAnalyseItem );
 
 	public:
-		BYTE GetCardColor(BYTE cbCardDat);
-		BYTE GetCardValue(BYTE cbCardDat);
+		byte GetCardColor(byte cbCardDat);
+		byte GetCardValue(byte cbCardDat);
 
-		void GetCardInfoList(BYTE* pHandCardData, int nHandCardCount,std::vector<Card_Info>& kCardInfoList);
+		void GetCardInfoList(byte* pHandCardData, int nHandCardCount,std::vector<Card_Info>& kCardInfoList);
 	};
 }
 

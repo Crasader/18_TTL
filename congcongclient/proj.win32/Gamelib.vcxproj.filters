@@ -16,9 +16,6 @@
     <Filter Include="Tools\core">
       <UniqueIdentifier>{d8d545d0-2f34-4a57-b09b-c4a7fa1f1d6d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Tools\tools">
-      <UniqueIdentifier>{2219e3c1-123c-4226-af90-0a3e10589544}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Kernel\kernel">
       <UniqueIdentifier>{3fb2531c-b835-4928-a0c9-95c76cf25ffe}</UniqueIdentifier>
     </Filter>
@@ -717,9 +714,6 @@
     <ClInclude Include="..\GameLib\GameNet\MLNetDefine.h">
       <Filter>GameNet</Filter>
     </ClInclude>
-    <ClInclude Include="..\GameLib\Game\GameLib.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="..\GameLib\Game\Widget\ActionTagDefine.h">
       <Filter>Game\Widget</Filter>
     </ClInclude>
@@ -924,12 +918,6 @@
     <ClInclude Include="..\GameLib\Tools\core\MD5.h">
       <Filter>Tools\core</Filter>
     </ClInclude>
-    <ClInclude Include="..\GameLib\Tools\tools\Convert.h">
-      <Filter>Tools\tools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\GameLib\Tools\ToolsHeader.h">
-      <Filter>Tools</Filter>
-    </ClInclude>
     <ClInclude Include="..\GameLib\Game\Script\ActionEx.h">
       <Filter>Game\Script</Filter>
     </ClInclude>
@@ -951,17 +939,8 @@
     <ClInclude Include="..\GameLib\Game\Script\TimeNode.h">
       <Filter>Game\Script</Filter>
     </ClInclude>
-    <ClInclude Include="..\GameLib\Game\Script\utility.h">
-      <Filter>Game\Script</Filter>
-    </ClInclude>
-    <ClInclude Include="..\GameLib\Game\Script\UtilityBase.h">
-      <Filter>Game\Script</Filter>
-    </ClInclude>
     <ClInclude Include="..\GameLib\Game\Script\WindowInfo.h">
       <Filter>Game\Script</Filter>
-    </ClInclude>
-    <ClInclude Include="..\GameLib\Game\FV\FvDebug.h">
-      <Filter>Game\FV</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Game\FV\FvDoubleLink.h">
       <Filter>Game\FV</Filter>
@@ -984,16 +963,10 @@
     <ClInclude Include="..\GameLib\Game\FV\FvSmartPointer.h">
       <Filter>Game\FV</Filter>
     </ClInclude>
-    <ClInclude Include="..\GameLib\Game\FV\NetLog.h">
-      <Filter>Game\FV</Filter>
-    </ClInclude>
     <ClInclude Include="..\GameLib\Game\Game\EffectScence.h">
       <Filter>Game\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Game\Game\GameBase.h">
-      <Filter>Game\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="..\GameLib\Game\Game\GameDefine.h">
       <Filter>Game\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\Game\Game\GameManagerBase.h">
@@ -1047,13 +1020,25 @@
     <ClInclude Include="..\GameLib\Game\Game\NoticeMsgBox.h">
       <Filter>Game\Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\GameLib\Platform\PlatformHeader.h" />
     <ClInclude Include="..\GameLib\GameNet\ImagicDownManager.h">
       <Filter>GameNet\dowload</Filter>
     </ClInclude>
     <ClInclude Include="..\GameLib\GameNet\ImagicViewDownManager.h">
       <Filter>GameNet\dowload</Filter>
     </ClInclude>
+    <ClInclude Include="..\GameLib\Tools\utilityString.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GameLib\Tools\utilityWidget.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GameLib\Tools\utilityMath.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GameLib\Tools\utilityLog.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GameLib\STD.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\GameLib\Game\Sound\ArmFun.cpp">
@@ -1776,9 +1761,6 @@
     <ClCompile Include="..\GameLib\Tools\core\MD5.cpp">
       <Filter>Tools\core</Filter>
     </ClCompile>
-    <ClCompile Include="..\GameLib\Tools\tools\Convert.cpp">
-      <Filter>Tools\tools</Filter>
-    </ClCompile>
     <ClCompile Include="..\GameLib\Game\Script\ActionEx.cpp">
       <Filter>Game\Script</Filter>
     </ClCompile>
@@ -1797,16 +1779,10 @@
     <ClCompile Include="..\GameLib\Game\Script\TimeNode.cpp">
       <Filter>Game\Script</Filter>
     </ClCompile>
-    <ClCompile Include="..\GameLib\Game\Script\utility.cpp">
-      <Filter>Game\Script</Filter>
-    </ClCompile>
     <ClCompile Include="..\GameLib\Game\Script\WindowInfo.cpp">
       <Filter>Game\Script</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Game\FV\FvReferencePtr.cpp">
-      <Filter>Game\FV</Filter>
-    </ClCompile>
-    <ClCompile Include="..\GameLib\Game\FV\NetLog.cpp">
       <Filter>Game\FV</Filter>
     </ClCompile>
     <ClCompile Include="..\GameLib\Game\Game\EffectScence.cpp">
@@ -1884,9 +1860,14 @@
     <ClCompile Include="..\GameLib\GameNet\ImagicViewDownManager.cpp">
       <Filter>GameNet\dowload</Filter>
     </ClCompile>
+    <ClCompile Include="..\GameLib\Tools\utility.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GameLib\Tools\utilityConvert.h">
+      <Filter>Tools</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="..\GameLib\Game\FV\FvDoubleLink.inl">
       <Filter>Game\FV</Filter>
     </None>

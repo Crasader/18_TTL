@@ -1,9 +1,10 @@
 #include "SRLFGameScence.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 
 #include "CMD_SRLF.h"
 #include "SRLFPlayer.h"
 #include "SRLFGameLogic.h"
+#include IMAGE_DOWN
 
 void SRLFGameScence::initNet()
 {
@@ -87,7 +88,7 @@ void SRLFGameScence::OnSubGameStart(const void * pBuffer, word wDataSize)
 	updataPlayerSeat();
 }
 //用户出牌
-void SRLFGameScence::OnSubOutCard(const void * pBuffer, WORD wDataSize)
+void SRLFGameScence::OnSubOutCard(const void * pBuffer, word wDataSize)
 {
 	//效验消息
 	ASSERT(wDataSize == sizeof(SRLF::CMD_S_OutCard));
@@ -116,7 +117,7 @@ void SRLFGameScence::OnSubOutCard(const void * pBuffer, WORD wDataSize)
 	WidgetFun::setVisible(this,"SelfActionNode",false);
 }
 //发牌消息
-void SRLFGameScence::OnSubSendCard(const void * pBuffer, WORD wDataSize)
+void SRLFGameScence::OnSubSendCard(const void * pBuffer, word wDataSize)
 {
 	//效验数据
 	ASSERT(wDataSize == sizeof(SRLF::CMD_S_SendCard));
@@ -157,7 +158,7 @@ void SRLFGameScence::OnSubSendCard(const void * pBuffer, WORD wDataSize)
 	m_nGameState = SRLF_STATE_PLAYING;
 }
 //操作提示
-void SRLFGameScence::OnSubOperateNotify(const void * pBuffer, WORD wDataSize)
+void SRLFGameScence::OnSubOperateNotify(const void * pBuffer, word wDataSize)
 {
 	//效验数据
 	ASSERT(wDataSize == sizeof(SRLF::CMD_S_OperateNotify));
@@ -185,7 +186,7 @@ void SRLFGameScence::OnSubOperateNotify(const void * pBuffer, WORD wDataSize)
 	}
 }
 //操作结果
-void SRLFGameScence::OnSubOperateResult(const void * pBuffer, WORD wDataSize)
+void SRLFGameScence::OnSubOperateResult(const void * pBuffer, word wDataSize)
 {
 	//效验消息
 	ASSERT(wDataSize == sizeof(SRLF::CMD_S_OperateResult));
@@ -212,7 +213,7 @@ void SRLFGameScence::OnSubOperateResult(const void * pBuffer, WORD wDataSize)
 	WidgetFun::setVisible(this, "SelfActionNode", false);
 }
 //游戏结束
-void SRLFGameScence::OnSubGameEnd(const void * pBuffer, WORD wDataSize)
+void SRLFGameScence::OnSubGameEnd(const void * pBuffer, word wDataSize)
 {
 	m_nGameState = SRLF_STATE_NULL;
 	datastream kStream(const_cast<void *>(pBuffer), wDataSize);
@@ -248,9 +249,9 @@ void SRLFGameScence::OnSubGameEnd(const void * pBuffer, WORD wDataSize)
 	 		SRLFPlayer* pPlayer = getPlayerByChairID(i);
 			if(pPlayer->getValid() == false)continue;
 			auto vCardsList = kEndInfo.kGameEndCardsList[i].cbCardsList;
-			BYTE cbCardData[MAX_COUNT];
+			byte cbCardData[MAX_COUNT];
 			memset(cbCardData,0,sizeof(cbCardData));
-			BYTE index=0;
+			byte index=0;
 			for (auto itor =vCardsList.begin();itor!=vCardsList.end();itor++ )
 			{
 				cbCardData[index++] = *itor;
@@ -303,9 +304,9 @@ void SRLFGameScence::showJieSuanInfo(const SRLF::AllEndInfo& kEndInfo)
 			ImagicDownManager::Instance().addDown(pNode,pPlayer->GetHeadHttp(),pPlayer->GetUserID());
 		}
 		pPlayer->setMingPai(true);
-		BYTE tempIndex[MAX_INDEX];
+		byte tempIndex[MAX_INDEX];
 		memset(tempIndex,0,sizeof(tempIndex));
-		BYTE tempCard[MAX_COUNT];
+		byte tempCard[MAX_COUNT];
 		memset(tempCard,0,sizeof(tempCard));
 		for(int j=0;j<MAX_COUNT;j++){
 			tempCard[j] = kEndInfo.cbCard[i*MAX_COUNT+j];
@@ -329,7 +330,7 @@ void SRLFGameScence::showJieSuanInfo(const SRLF::AllEndInfo& kEndInfo)
 		utility::toString("Button_ResoultPlayer", m_pLocal->GetChairID())));*/
 }
 //用户托管
-void SRLFGameScence::OnSubTrustee(const void * pBuffer, WORD wDataSize)
+void SRLFGameScence::OnSubTrustee(const void * pBuffer, word wDataSize)
 {
 	//效验数据
 	ASSERT(wDataSize == sizeof(SRLF::CMD_S_Trustee));
@@ -339,7 +340,7 @@ void SRLFGameScence::OnSubTrustee(const void * pBuffer, WORD wDataSize)
 	SRLF::CMD_S_Trustee * pTrustee = (SRLF::CMD_S_Trustee *)pBuffer;
 }
 //
-void SRLFGameScence::OnSubUserChiHu(const void *pBuffer, WORD wDataSize)//持牌胡牌逻辑
+void SRLFGameScence::OnSubUserChiHu(const void *pBuffer, word wDataSize)//持牌胡牌逻辑
 {
 	datastream kStream(const_cast<void *>(pBuffer), wDataSize);
 	SRLF::CMD_S_ChiHu kChiHu;
@@ -385,7 +386,7 @@ void SRLFGameScence::OnSubUserChiHu(const void *pBuffer, WORD wDataSize)//持牌胡
 
 }
 //
-void SRLFGameScence::OnSubGangScore(const void *pBuffer, WORD wDataSize)
+void SRLFGameScence::OnSubGangScore(const void *pBuffer, word wDataSize)
 {
 	datastream kStream(const_cast<void *>(pBuffer), wDataSize);
 	SRLF::CMD_S_GangScore kGangScore;
@@ -414,7 +415,7 @@ void SRLFGameScence::OnSubGangScore(const void *pBuffer, WORD wDataSize)
 	}
 }
 
-void SRLFGameScence::OnSubHuanPai(const void *pBuffer, WORD wDataSize)
+void SRLFGameScence::OnSubHuanPai(const void *pBuffer, word wDataSize)
 {
 	//效验消息
 	ASSERT(wDataSize == sizeof(SRLF::CMD_S_HuanPai));
@@ -427,7 +428,7 @@ void SRLFGameScence::OnSubHuanPai(const void *pBuffer, WORD wDataSize)
 	}
 	WidgetFun::setVisible(this, "ExchangeCardNode", false);
 }
-void SRLFGameScence::OnSubHuanPaiChengDu(const void *pBuffer, WORD wDataSize)
+void SRLFGameScence::OnSubHuanPaiChengDu(const void *pBuffer, word wDataSize)
 {
 	//效验消息
 	ASSERT(wDataSize == sizeof(SRLF::CMD_S_HuanPaiChengDu));
@@ -444,7 +445,7 @@ void SRLFGameScence::OnSubHuanPaiChengDu(const void *pBuffer, WORD wDataSize)
 	WidgetFun::setVisible(this, "ExchangeCardNode", false);
 }
 
-void SRLFGameScence::OnSubXuanQueNotice(const void *pBuffer, WORD wDataSize)
+void SRLFGameScence::OnSubXuanQueNotice(const void *pBuffer, word wDataSize)
 {
 	//效验消息
 	ASSERT(wDataSize == sizeof(SRLF::CMD_S_XuanQueNotice));
@@ -460,7 +461,7 @@ void SRLFGameScence::OnSubXuanQueNotice(const void *pBuffer, WORD wDataSize)
 	//TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(SRLFGameScence::DoXuanQueNotice, this), 2.f);
 }
 
-void SRLFGameScence::OnSubXuanQue(const void *pBuffer, WORD wDataSize)
+void SRLFGameScence::OnSubXuanQue(const void *pBuffer, word wDataSize)
 {
 	//效验消息
 	ASSERT(wDataSize == sizeof(SRLF::CMD_S_XuanQue));
@@ -481,13 +482,13 @@ void SRLFGameScence::OnSubXuanQue(const void *pBuffer, WORD wDataSize)
 
 }
 
-void SRLFGameScence::OnSubHuanPaiNotice(const void *pBuffer, WORD wDataSize)
+void SRLFGameScence::OnSubHuanPaiNotice(const void *pBuffer, word wDataSize)
 {
 	showHuanPai();
 	//	TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(SRLFGameScence::showHuanPai,this),4.2f);
 }
 
-void SRLFGameScence::OnSubPiaoState(const void *pBuffer, WORD wDataSize)
+void SRLFGameScence::OnSubPiaoState(const void *pBuffer, word wDataSize)
 {
 	//效验消息
 	ASSERT(wDataSize == sizeof(SRLF::CMD_S_PiaoState));
@@ -497,7 +498,7 @@ void SRLFGameScence::OnSubPiaoState(const void *pBuffer, WORD wDataSize)
 	getPlayerByChairID(pInfo->wPiaoUser)->updataPiao();
 }
 
-void SRLFGameScence::OnSubTingFirst(const void *pBuffer, WORD wDataSize)
+void SRLFGameScence::OnSubTingFirst(const void *pBuffer, word wDataSize)
 {
 	//效验消息
 	ASSERT(wDataSize == sizeof(SRLF::CMD_S_TING_FIRST));
@@ -510,7 +511,7 @@ void SRLFGameScence::OnSubTingFirst(const void *pBuffer, WORD wDataSize)
 	//TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(SRLFGameScence::showHuanPai,this),4.2f);
 }
 
-void SRLFGameScence::OnSubPiaoNotice(const void *pBuffer, WORD wDataSize)
+void SRLFGameScence::OnSubPiaoNotice(const void *pBuffer, word wDataSize)
 {
 	//效验消息
 	ASSERT(wDataSize == sizeof(SRLF::CMD_S_PiaoNotice));
@@ -538,7 +539,7 @@ void SRLFGameScence::OnSubPiaoNotice(const void *pBuffer, WORD wDataSize)
 	}*/
 }
 
-void SRLFGameScence::OnSubBaoTingNotice(const void *pBuffer, WORD wDataSize)
+void SRLFGameScence::OnSubBaoTingNotice(const void *pBuffer, word wDataSize)
 {
 	//效验消息
 	ASSERT(wDataSize == sizeof(SRLF::CMD_S_BaoTingNotice));
@@ -557,7 +558,7 @@ void SRLFGameScence::OnSubBaoTingNotice(const void *pBuffer, WORD wDataSize)
 	updataPlayerSeat();
 }
 
-void SRLFGameScence::OnLeftTimer(const void *pBuffer, WORD wDataSize)
+void SRLFGameScence::OnLeftTimer(const void *pBuffer, word wDataSize)
 {
 	//效验消息
 	ASSERT(wDataSize == sizeof(SRLF::CMD_S_LeftTimer));

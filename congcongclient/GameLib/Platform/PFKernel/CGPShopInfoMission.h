@@ -1,11 +1,12 @@
 #pragma once
-#include "cocos2d.h"
-#include "Platform/PlatformHeader.h"
+
+#include <cocos2d.h>
 #include "Kernel/network/CCallMission.h"
 
 //////////////////////////////////////////////////////////////////////////
 // 机器绑定修改提示
 //////////////////////////////////////////////////////////////////////////
+struct CMD_GP_BackShopInfo;
 class CGShopInfoMissionSink
 {
 public:
@@ -13,6 +14,7 @@ public:
 	virtual void onGPShopInfoListResult(CMD_GP_BackShopInfo* pNetInfo){}
 };
 
+struct CMD_GP_UpShopOder;
 //////////////////////////////////////////////////////////////////////////
 // 兑换道具
 //////////////////////////////////////////////////////////////////////////
@@ -21,6 +23,8 @@ class CGPShopInfoMission
 {
 public:
 	CGPShopInfoMission(const char* url, int port);
+	~CGPShopInfoMission();
+public:
 	// 设置回调接口
 	void setMissionSink(CGShopInfoMissionSink* pIGPKefuMissionSink);
 
@@ -28,12 +32,12 @@ public:
 	void CB_GetShopInfoList();
 	void Net_ShopInfoList(void* data, int dataSize);
 
-	void UpShopOder(CMD_GP_UpShopOder kOder);
+	void UpShopOder(CMD_GP_UpShopOder* kOder);
 	void CB_UpShopOder();
 	void Net_OperateSucess(void* data, int dataSize);
 	void Net_OperateFailure(void* data, int dataSize);
 private:
 	// 回调
-	CMD_GP_UpShopOder		m_kShopUpOder;
+	CMD_GP_UpShopOder	* m_kShopUpOder;
 	CGShopInfoMissionSink* mIGPShopInfoMissionSink;
 }; 

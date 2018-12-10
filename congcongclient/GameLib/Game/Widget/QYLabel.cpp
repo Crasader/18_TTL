@@ -1,9 +1,8 @@
 #include "QYLabel.h"
-#include "Game/Script/utility.h"
 #include "WidgetFun.h"
 #include "Game/Script/ActionEx.h"
 
-USING_NS_CC;
+using namespace widget;
 
 QYLabel::QYLabel()
 		:m_pUp(NULL)

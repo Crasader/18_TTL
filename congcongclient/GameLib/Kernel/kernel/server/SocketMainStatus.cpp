@@ -1,4 +1,6 @@
 #include "Kernel/kernel/server/CServerItem.h"
+#include "Platform/PFDefine/msg/CMD_GameServer.h"
+
 //状态信息
 bool CServerItem::OnSocketMainStatus(int sub, void* data, int dataSize)
 {

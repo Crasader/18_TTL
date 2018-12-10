@@ -1,5 +1,5 @@
 #pragma once
-#include "cocos2d.h"
+#include <cocos2d.h>
 
 class ProgressBarWidget:public cocos2d::Node
 {

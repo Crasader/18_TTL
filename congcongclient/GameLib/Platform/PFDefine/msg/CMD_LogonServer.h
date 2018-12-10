@@ -2,6 +2,7 @@
 #define CMD_LONGON_HEAD_FILE
 
 #include "../df/datastream.h"
+#include "Platform/PFDefine/df/Struct.h"
 
 //////////////////////////////////////////////////////////////////////////
 #pragma pack(1)

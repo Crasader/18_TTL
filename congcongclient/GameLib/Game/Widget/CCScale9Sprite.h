@@ -1,10 +1,12 @@
 #pragma once
 
-#include "cocos2d.h"
+#include <cocos2d.h>
 #include "ui/UIScale9Sprite.h"
 
+USING_NS_CC;
 
-NS_CC_BEGIN;
+namespace widget
+{
 
 class Scale9SpriteEx
 	:public ui::Scale9Sprite
@@ -13,5 +15,6 @@ public:
     static Scale9SpriteEx* create(const std::string& file);
 
 };
-NS_CC_END;
+
+}
 

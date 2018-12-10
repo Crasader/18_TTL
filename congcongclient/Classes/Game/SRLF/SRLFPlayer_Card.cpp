@@ -2,9 +2,9 @@
 #include "SRLFGameLogic.h"
 #include "SRLFSoundFun.h"
 #include "SRLFGameScence.h"
+#include "UTILITY.h"
 
-
-void SRLFPlayer::setHandCard(BYTE* pCardData,int iCout)
+void SRLFPlayer::setHandCard(byte* pCardData,int iCout)
 {
 	m_kHandCardCout = iCout;
 	//if (iCout <= 0 || iCout > MAX_COUNT)
@@ -13,7 +13,7 @@ void SRLFPlayer::setHandCard(BYTE* pCardData,int iCout)
 	{
 		return;
 	}
-	memcpy(m_kHandCardData,pCardData,sizeof(BYTE)*iCout);
+	memcpy(m_kHandCardData,pCardData,sizeof(byte)*iCout);
 	m_kHandCardCout = iCout;
 }
 void SRLFPlayer::setWeaveItem(SRLF::CMD_WeaveItem* pWeave,int iCout)
@@ -35,7 +35,7 @@ void SRLFPlayer::setOperateResoult(SRLF::CMD_S_OperateResult* pNetInfo)
 {
 	bool cbPublicCard = false;
 	word wOperateUser=pNetInfo->wOperateUser;
-	BYTE cbOperateCard=pNetInfo->cbOperateCard;
+	byte cbOperateCard=pNetInfo->cbOperateCard;
 
 	if (pNetInfo->cbOperateCode == WIK_PENG)
 	{
@@ -44,11 +44,11 @@ void SRLFPlayer::setOperateResoult(SRLF::CMD_S_OperateResult* pNetInfo)
 	if ((pNetInfo->cbOperateCode&WIK_GANG)!=0)
 	{
 		//组合扑克
-		BYTE cbWeaveIndex=0xFF;
-		for (BYTE i=0;i<m_kWeaveCount;i++)
+		byte cbWeaveIndex=0xFF;
+		for (byte i=0;i<m_kWeaveCount;i++)
 		{
-			BYTE cbWeaveKind=m_kWeaveItemArray[i].cbWeaveKind;
-			BYTE cbCenterCard=m_kWeaveItemArray[i].cbCenterCard;
+			byte cbWeaveKind=m_kWeaveItemArray[i].cbWeaveKind;
+			byte cbCenterCard=m_kWeaveItemArray[i].cbCenterCard;
 			if ((cbCenterCard==pNetInfo->cbOperateCard)&&(cbWeaveKind==WIK_PENG))
 			{
 				cbWeaveIndex=i;
@@ -98,7 +98,7 @@ void SRLFPlayer::setOperateResoult(SRLF::CMD_S_OperateResult* pNetInfo)
 	else if (pNetInfo->cbOperateCode!=WIK_NULL)
 	{
 		//设置组合
-		BYTE cbWeaveIndex=m_kWeaveCount++;
+		byte cbWeaveIndex=m_kWeaveCount++;
 		m_kWeaveItemArray[cbWeaveIndex].cbPublicCard=true;
 		m_kWeaveItemArray[cbWeaveIndex].cbCenterCard=cbOperateCard;
 		m_kWeaveItemArray[cbWeaveIndex].cbWeaveKind=pNetInfo->cbOperateCode;
@@ -108,7 +108,7 @@ void SRLFPlayer::setOperateResoult(SRLF::CMD_S_OperateResult* pNetInfo)
 		//删除扑克
 		if (m_iIdex == 0 || m_bGameRecord || m_bMingPai)
 		{
-			BYTE cbWeaveCard[4]={cbOperateCard,cbOperateCard,cbOperateCard,cbOperateCard};
+			byte cbWeaveCard[4]={cbOperateCard,cbOperateCard,cbOperateCard,cbOperateCard};
 			SRLFLOGIC::CGameLogic::Instance().RemoveValueCard(m_kHandCardData,m_kHandCardCout,cbWeaveCard,2);
 			m_kHandCardCout -= 2;
 		}
@@ -220,7 +220,7 @@ void SRLFPlayer::showHandCard()//
 {
 	showHandCard(m_kWeaveItemArray,m_kWeaveCount,m_kHandCardData,m_kHandCardCout);
 }
-void SRLFPlayer::showHandCard(SRLF::CMD_WeaveItem* pWeave,int iWeaveCout,BYTE* pHandCard,int iHandCout)//显示手牌
+void SRLFPlayer::showHandCard(SRLF::CMD_WeaveItem* pWeave,int iWeaveCout,byte* pHandCard,int iHandCout)//显示手牌
 {
 	if( NULL == m_pSeatNode) return;
 	int max_count = SRLFGameScence::Instance().GetHandCardsMaxCount();
@@ -296,7 +296,7 @@ void SRLFPlayer::showHandCard(SRLF::CMD_WeaveItem* pWeave,int iWeaveCout,BYTE* p
 	}
 	for (int i = 0;i<iHandCout;i++)
 	{
-		BYTE* pTemp = pHandCard+i;
+		byte* pTemp = pHandCard+i;
 		cocos2d::Node* pNode = WidgetManager::Instance().createWidget(kHandSkin,pCardNode);
 		pNode->setTag(1);
 		pNode->setLocalZOrder(iOder);
@@ -330,8 +330,8 @@ void SRLFPlayer::setCardImagic(cocos2d::Node* pNode,int kValue,std::string kImag
 {
 	if (kValue > 0)
 	{
-		BYTE cbValue=((BYTE)kValue&MASK_VALUE);
-		BYTE cbColor=(((BYTE)kValue&MASK_COLOR)>>4)+1;
+		byte cbValue=((byte)kValue&MASK_VALUE);
+		byte cbColor=(((byte)kValue&MASK_COLOR)>>4)+1;
 		WidgetFun::setImagic(pNode,utility::toString(kImagicFront,(int)cbColor,(int)cbValue,".png"),false);
 	}
 	else
@@ -365,7 +365,7 @@ cocos2d::Node* SRLFPlayer::getTouchCardNode(cocos2d::Vec2 kTouchPos)//获得选中的
 	return NULL;
 }
 
-BYTE SRLFPlayer::getTouchCardVlaue(cocos2d::Node* pNode)//获得点中的牌面
+byte SRLFPlayer::getTouchCardVlaue(cocos2d::Node* pNode)//获得点中的牌面
 {
 	if (m_pCurTouchSprite != pNode)
 	{
@@ -429,7 +429,7 @@ void SRLFPlayer::showHuanPai(int nGameType /*= GAME_TYPE_CHENGDU*/)//显示换牌
 	int max_count = SRLFGameScence::Instance().GetHandCardsMaxCount();
 	SRLFLOGIC::CGameLogic::Instance().GetCardInfoList(m_kHandCardData,max_count-1,kCardInfoList);
 
-	std::vector<BYTE> kCardDataList;
+	std::vector<byte> kCardDataList;
 	if (nGameType == GAME_TYPE_SICHUAN)
 	{
 		kCardDataList = setHuanPaiSiChuan(kCardInfoList);
@@ -452,9 +452,9 @@ void SRLFPlayer::showHuanPai(int nGameType /*= GAME_TYPE_CHENGDU*/)//显示换牌
 	}
 }
 
-std::vector<BYTE> SRLFPlayer::setHuanPaiSiChuan(std::vector<SRLF::Card_Info> kCardInfoList)//设置换牌川麻将
+std::vector<byte> SRLFPlayer::setHuanPaiSiChuan(std::vector<SRLF::Card_Info> kCardInfoList)//设置换牌川麻将
 {
-	std::vector<BYTE> kCardDataList;
+	std::vector<byte> kCardDataList;
 
 	ASSERT(kCardInfoList.size() == CARD_COLOR_TIAO);  //花色数判断
 	if (kCardInfoList.size() != CARD_COLOR_TIAO)return kCardDataList;
@@ -496,9 +496,9 @@ std::vector<BYTE> SRLFPlayer::setHuanPaiSiChuan(std::vector<SRLF::Card_Info> kCa
 
 	return kCardDataList;
 }
-std::vector<BYTE> SRLFPlayer::setHuanPaiChengDu(std::vector<SRLF::Card_Info> kCardInfoList)//设置换牌成都
+std::vector<byte> SRLFPlayer::setHuanPaiChengDu(std::vector<SRLF::Card_Info> kCardInfoList)//设置换牌成都
 {
-	std::vector<BYTE> kCardDataList;
+	std::vector<byte> kCardDataList;
 
 	ASSERT(kCardInfoList.size() == CARD_COLOR_TIAO);  //花色数判断
 	if (kCardInfoList.size() != CARD_COLOR_TIAO)return kCardDataList;
@@ -545,7 +545,7 @@ std::vector<BYTE> SRLFPlayer::setHuanPaiChengDu(std::vector<SRLF::Card_Info> kCa
 	return kCardDataList;
 }
 
-void SRLFPlayer::standUpCard(BYTE cbCard,bool nOnly /*= true*/)//立着的牌
+void SRLFPlayer::standUpCard(byte cbCard,bool nOnly /*= true*/)//立着的牌
 {
 	cocos2d::Node* pCard = getCardNodeByCard(cbCard);
 	pCard->setPositionY(CARD_UP_POSY);
@@ -564,7 +564,7 @@ void SRLFPlayer::seatDownCard()//倒下的牌
 	}
 }
 
-cocos2d::Node* SRLFPlayer::getCardNodeByCard(BYTE cbCard)
+cocos2d::Node* SRLFPlayer::getCardNodeByCard(byte cbCard)
 {
 	int iIdex = 0;
 	cocos2d::Node* pRootNode = WidgetFun::getChildWidget(m_pSeatNode,"CardNode1");
@@ -585,7 +585,7 @@ cocos2d::Node* SRLFPlayer::getCardNodeByCard(BYTE cbCard)
 	return NULL;
 }
 
-void SRLFPlayer::getCardNodeByCard(std::vector<BYTE> CardDataList,std::vector<cocos2d::Node*>& kCardList)//获得换牌数据
+void SRLFPlayer::getCardNodeByCard(std::vector<byte> CardDataList,std::vector<cocos2d::Node*>& kCardList)//获得换牌数据
 {
 	int nSize = CardDataList.size();
 
@@ -611,9 +611,9 @@ void SRLFPlayer::getCardNodeByCard(std::vector<BYTE> CardDataList,std::vector<co
 	}
 }
 
-void SRLFPlayer::setHuanPai(BYTE* nHuan)//设置换牌
+void SRLFPlayer::setHuanPai(byte* nHuan)//设置换牌
 {
-	utility::log(utility::toString("SRLFPlayer::setHuanPai",(int)nHuan[0]," ",(int)nHuan[1]," ",(int)nHuan[2]).c_str());
+	utility::filelog(utility::toString("SRLFPlayer::setHuanPai",(int)nHuan[0]," ",(int)nHuan[1]," ",(int)nHuan[2]).c_str());
 
 	//SRLFLOGIC::CGameLogic::Instance().RemoveValueCard(m_kHandCardData,MAX_COUNT-1,m_pHuanCards,HUAN_CARD_NUM);
 	//SRLFLOGIC::CGameLogic::Instance().ReplaceCardData(m_kHandCardData,MAX_COUNT-1,nHuan,HUAN_CARD_NUM);
@@ -624,7 +624,7 @@ void SRLFPlayer::setHuanPai(BYTE* nHuan)//设置换牌
 	sortHandCard(); //重新设置牌
 	showHandCard();
 
-	std::vector<BYTE> kCardDataList;
+	std::vector<byte> kCardDataList;
 	kCardDataList.push_back(nHuan[0]);
 	kCardDataList.push_back(nHuan[1]);
 	kCardDataList.push_back(nHuan[2]);
@@ -642,10 +642,10 @@ void SRLFPlayer::setHuanPai(BYTE* nHuan)//设置换牌
  	}
 }
 
-void SRLFPlayer::saveRemoveHuanPai(BYTE* nHuan)//保存和删除换牌数据
+void SRLFPlayer::saveRemoveHuanPai(byte* nHuan)//保存和删除换牌数据
 {
 	memcpy(m_pHuanCards,nHuan,sizeof(m_pHuanCards));
-	//std::vector<BYTE> kCardDataList;
+	//std::vector<byte> kCardDataList;
 	//for (int i = 0;i<HUAN_CARD_NUM;i++)
 	//{
 	//	kCardDataList.push_back(nHuan[i]);
@@ -660,7 +660,7 @@ void SRLFPlayer::saveRemoveHuanPai(BYTE* nHuan)//保存和删除换牌数据
 	//	pNode->setPositionY(CARD_UP_POSY);
 	//}
 }
-void SRLFPlayer::saveHuanPai(BYTE* nHuan)//保存换牌
+void SRLFPlayer::saveHuanPai(byte* nHuan)//保存换牌
 {
 	memcpy(m_pSaveHuanPai,nHuan,sizeof(m_pSaveHuanPai));
 }
@@ -707,7 +707,7 @@ void SRLFPlayer::blackHandCardByQueColor()//缺牌颜色设置成黑色
 			continue;
 		}
 		//SRLFLOGIC::CGameLogic::Instance().SortCardList(m_kHandCardData,MAX_COUNT);
-		BYTE nColor = SRLFLOGIC::CGameLogic::Instance().GetCardColor(m_kHandCardData[iIdex]);
+		byte nColor = SRLFLOGIC::CGameLogic::Instance().GetCardColor(m_kHandCardData[iIdex]);
 
 		if (nColor == m_nQueColor)
 		{
@@ -738,7 +738,7 @@ void SRLFPlayer::blackHandCardByColor(int nColorWhite)
 		{
 			continue;
 		}
-		BYTE nColor = SRLFLOGIC::CGameLogic::Instance().GetCardColor(m_kHandCardData[iIdex]);
+		byte nColor = SRLFLOGIC::CGameLogic::Instance().GetCardColor(m_kHandCardData[iIdex]);
 
 		if (nColor == nColorWhite)
 		{
@@ -767,7 +767,7 @@ void SRLFPlayer::ClickCard(cocos2d::Node* pCard)
 	}
 }
 
-int SRLFPlayer::getUpCardList(std::vector<BYTE>& kCardDataList)
+int SRLFPlayer::getUpCardList(std::vector<byte>& kCardDataList)
 {
 	if ( NULL == m_pSeatNode) return 0;
 	if (m_iIdex != 0)return 0;
@@ -802,9 +802,9 @@ int SRLFPlayer::getUpCardList(std::vector<BYTE>& kCardDataList)
 
 
 
-bool SRLFPlayer::getHuanCards(BYTE nHuanCard[HUAN_CARD_NUM])
+bool SRLFPlayer::getHuanCards(byte nHuanCard[HUAN_CARD_NUM])
 {
-	std::vector<BYTE> kCardDataList;
+	std::vector<byte> kCardDataList;
 	getUpCardList(kCardDataList);
 
 	if (kCardDataList.size() != 3)
@@ -840,10 +840,10 @@ void SRLFPlayer::showCard()
 {
 	showCard(m_kHandCardData,m_kHandCardCout);
 }
-void SRLFPlayer::showCard(BYTE* cbCardData,BYTE cbCardCount)
+void SRLFPlayer::showCard(byte* cbCardData,byte cbCardCount)
 {
 	if ( NULL == m_pSeatNode) return;
-	BYTE cbIdex = 0;
+	byte cbIdex = 0;
 	cocos2d::Node* pRootNode = WidgetFun::getChildWidget(m_pSeatNode,"CardNode1");
 	for (int i = 0;i<pRootNode->getChildrenCount();i++)
 	{
@@ -868,12 +868,12 @@ void SRLFPlayer::showCard(BYTE* cbCardData,BYTE cbCardCount)
 	blackAllHandCard(false);
 }
 
-BYTE SRLFPlayer::getGangCard( BYTE currentCard)
+byte SRLFPlayer::getGangCard( byte currentCard)
 {
 	ASSERT(m_iIdex == 0);
-	BYTE cardIndex[MAX_INDEX]={0};
+	byte cardIndex[MAX_INDEX]={0};
 	SRLFLOGIC::CGameLogic::Instance().SwitchToCardIndex(m_kHandCardData,m_kHandCardCout,cardIndex);
-	BYTE bValue = SRLFLOGIC::CGameLogic::Instance().EstimateGangCard(cardIndex,currentCard);
+	byte bValue = SRLFLOGIC::CGameLogic::Instance().EstimateGangCard(cardIndex,currentCard);
 	if (bValue & WIK_GANG)//表示吃杠
 	{
 		return currentCard;
@@ -888,24 +888,24 @@ BYTE SRLFPlayer::getGangCard( BYTE currentCard)
 	return 0;
 }
 
-void SRLFPlayer::getGangCardInfo(BYTE* gangCards,BYTE& count,BYTE currentCard)
+void SRLFPlayer::getGangCardInfo(byte* gangCards,byte& count,byte currentCard)
 {
 	ASSERT(m_iIdex == 0);
-	BYTE cardIndex[MAX_INDEX]={0};
+	byte cardIndex[MAX_INDEX]={0};
 	SRLFLOGIC::CGameLogic::Instance().SwitchToCardIndex(m_kHandCardData,m_kHandCardCout,cardIndex);
-	BYTE bValue = SRLFLOGIC::CGameLogic::Instance().EstimateGangCard(cardIndex,currentCard);
+	byte bValue = SRLFLOGIC::CGameLogic::Instance().EstimateGangCard(cardIndex,currentCard);
 	if (bValue & WIK_GANG)//表示吃杠
 	{
 		return;
 	}
-	for (BYTE i=0;i<MAX_INDEX;i++)
+	for (byte i=0;i<MAX_INDEX;i++)
 	{
 		if (cardIndex[i]==4)
 		{
 			gangCards[count++]=SRLFLOGIC::CGameLogic::Instance().SwitchToCardData(i);
 		}
 	}
-	for (BYTE i=0;i<MAX_WEAVE;i++)
+	for (byte i=0;i<MAX_WEAVE;i++)
 	{
 		if (m_kWeaveItemArray[i].cbWeaveKind == WIK_PENG)
 		{
@@ -915,7 +915,7 @@ void SRLFPlayer::getGangCardInfo(BYTE* gangCards,BYTE& count,BYTE currentCard)
 	}
 }
 
-void SRLFPlayer::showGangCards(BYTE* gangCards,BYTE gangCount)
+void SRLFPlayer::showGangCards(byte* gangCards,byte gangCount)
 {
 	if ( NULL == m_pSeatNode) return;
 	int iIdex = 0;
@@ -948,16 +948,16 @@ void SRLFPlayer::showGangCards(BYTE* gangCards,BYTE gangCount)
 	}
 }
 
-BYTE SRLFPlayer::isChiGangCard( BYTE currentCard)
+byte SRLFPlayer::isChiGangCard( byte currentCard)
 {
 	ASSERT(m_iIdex == 0);
-	BYTE cardIndex[MAX_INDEX]={0};
+	byte cardIndex[MAX_INDEX]={0};
 	SRLFLOGIC::CGameLogic::Instance().SwitchToCardIndex(m_kHandCardData,m_kHandCardCout,cardIndex);
-	BYTE bValue = SRLFLOGIC::CGameLogic::Instance().EstimateGangCard(cardIndex,currentCard);
+	byte bValue = SRLFLOGIC::CGameLogic::Instance().EstimateGangCard(cardIndex,currentCard);
 	return bValue&WIK_GANG;
 }
 
-void SRLFPlayer::removeHandOutCard( BYTE cbCardData )
+void SRLFPlayer::removeHandOutCard( byte cbCardData )
 {
 	int nSize = m_kOutCardList.size();
 	if (nSize <=0 )
@@ -978,7 +978,7 @@ void SRLFPlayer::showjiesuanCard(cocos2d::Node* pCardNode)//
 	showJieSuanCard(pCardNode,m_kWeaveItemArray, m_kWeaveCount, m_kHandCardData, m_kHandCardCout);
 }
 
-void SRLFPlayer::showJieSuanCard(cocos2d::Node* pCardNode,SRLF::CMD_WeaveItem* pWeave,int iWeaveCout,BYTE* pHandCard,int iHandCout)//结算
+void SRLFPlayer::showJieSuanCard(cocos2d::Node* pCardNode,SRLF::CMD_WeaveItem* pWeave,int iWeaveCout,byte* pHandCard,int iHandCout)//结算
 {
 	ASSERT(pCardNode);
 	pCardNode->removeAllChildren();
@@ -1028,7 +1028,7 @@ void SRLFPlayer::showJieSuanCard(cocos2d::Node* pCardNode,SRLF::CMD_WeaveItem* p
 	if (SRLFGameScence::Instance().GetHandCardsMaxCount() == (iHandCout+ iWeaveCout*3))
 	{
 		isNewCard = true;
-		BYTE tempIndex[MAX_INDEX];
+		byte tempIndex[MAX_INDEX];
 		memset(tempIndex,0,sizeof(tempIndex));
 		SRLFLOGIC::CGameLogic::Instance().SwitchToCardIndex(pHandCard,iHandCout,tempIndex);
 		memset(pHandCard,0,sizeof(pHandCard));
@@ -1038,7 +1038,7 @@ void SRLFPlayer::showJieSuanCard(cocos2d::Node* pCardNode,SRLF::CMD_WeaveItem* p
 	kStartPos += cocos2d::Vec2(0, 14);
 	for (int i = 0;i<iHandCout;i++)
 	{
-		BYTE* pTemp = pHandCard+i;
+		byte* pTemp = pHandCard+i;
 		int iCardValue = *pTemp;
 		cocos2d::Node* pNode = WidgetManager::Instance().createWidget(kHandSkin,pCardNode);
 		pNode->setTag(1);
@@ -1057,7 +1057,7 @@ void SRLFPlayer::showJieSuanCard(cocos2d::Node* pCardNode,SRLF::CMD_WeaveItem* p
 	//胡牌的牌
 	if (isNewCard)
 	{
-		BYTE cbChiHuCard = getChiHuCard();
+		byte cbChiHuCard = getChiHuCard();
 		if (cbChiHuCard != 0)
 		{
 			cocos2d::Vec2 kChiHuPos = utility::parsePoint(WidgetFun::getWidgetUserInfo(pCardNode,"JieSuanChiHuPos"));
@@ -1069,7 +1069,7 @@ void SRLFPlayer::showJieSuanCard(cocos2d::Node* pCardNode,SRLF::CMD_WeaveItem* p
 		}
 	}
 }
-void SRLFPlayer::setChiHuCard(BYTE cbCard)//设置吃胡
+void SRLFPlayer::setChiHuCard(byte cbCard)//设置吃胡
 {
 	m_cbChiHuCard = cbCard;
 	if (cbCard>0)
@@ -1086,7 +1086,7 @@ void SRLFPlayer::clearChiHuCard()//清除吃胡
 	pChiHuNode->removeAllChildren();
 	m_kHuCardList.clear();
 }
-BYTE SRLFPlayer::getChiHuCard()//获得吃胡
+byte SRLFPlayer::getChiHuCard()//获得吃胡
 {
 	return m_cbChiHuCard;
 }
@@ -1119,7 +1119,7 @@ void SRLFPlayer::showChiHuCard()
 	}
 }
 
-void SRLFPlayer::removeHandCard(BYTE cbCard)
+void SRLFPlayer::removeHandCard(byte cbCard)
 {
 	if (m_iIdex == 0)
 	{
@@ -1147,16 +1147,16 @@ bool SRLFPlayer::getTing()
 bool SRLFPlayer::isTingCard2()
 {
 	if(isFirstCardSended())return false;
-	LONGLONG LLOutCard[MAX_INDEX];
+	longlong LLOutCard[MAX_INDEX];
 	memset(LLOutCard,0,sizeof(LLOutCard));
-	BYTE cbCardIndex[MAX_INDEX];
+	byte cbCardIndex[MAX_INDEX];
 	memset(cbCardIndex,0,sizeof(cbCardIndex));
 	SRLFLOGIC::CGameLogic::Instance().SwitchToCardIndex(m_kHandCardData,m_kHandCardCout,cbCardIndex);
 	int maxNum = (int)SRLFLOGIC::CGameLogic::Instance().getAnyCardsCount(cbCardIndex);
 	//打手上的牌，非当前摸牌
-	for (BYTE i=0;i<MAX_INDEX;i++)
+	for (byte i=0;i<MAX_INDEX;i++)
 	{
-		BYTE tempCbCardIndex[MAX_INDEX];
+		byte tempCbCardIndex[MAX_INDEX];
 		memset(tempCbCardIndex,0,sizeof(tempCbCardIndex));
 		memcpy(tempCbCardIndex,cbCardIndex,sizeof(cbCardIndex[0])*MAX_INDEX);
 		int maxNum = (int)SRLFLOGIC::CGameLogic::Instance().getAnyCardsCount(tempCbCardIndex);
@@ -1165,21 +1165,21 @@ bool SRLFPlayer::isTingCard2()
 			if (tempCbCardIndex[i]>0 )
 			{
 				tempCbCardIndex[i]--;
-				for (BYTE j=0;j<MAX_INDEX;j++)
+				for (byte j=0;j<MAX_INDEX;j++)
 				{
-					BYTE temp2CbCardIndex[MAX_INDEX];
+					byte temp2CbCardIndex[MAX_INDEX];
 					memset(temp2CbCardIndex,0,sizeof(temp2CbCardIndex));
 					memcpy(temp2CbCardIndex,tempCbCardIndex,sizeof(tempCbCardIndex[0])*MAX_INDEX);
 					int maxNum = (int)SRLFLOGIC::CGameLogic::Instance().getAnyCardsCount(temp2CbCardIndex);
 					if (maxNum%3!=2)
 						temp2CbCardIndex[j]++;
-					DWORD  dwChiHuKind = WIK_NULL;
+					dword  dwChiHuKind = WIK_NULL;
 					maxNum = (int)SRLFLOGIC::CGameLogic::Instance().getAnyCardsCount(temp2CbCardIndex);
 					if (maxNum%3 == 2)
 					{
 						bool isHu =SRLFLOGIC::CGameLogic::Instance().IsTingCard(temp2CbCardIndex);
 						if(isHu)
-							LLOutCard[i]|=(LONGLONG(1)<<j);
+							LLOutCard[i]|=(longlong(1)<<j);
 						else
 							LLOutCard[i]&=(~(0x1<<j));
 					}
@@ -1200,24 +1200,24 @@ bool SRLFPlayer::isTingCard2()
 bool SRLFPlayer::isTingCard()
 {
 	if(isFirstCardSended()) return false;
-	LONGLONG LLOutCard[MAX_INDEX];
+	longlong LLOutCard[MAX_INDEX];
 	memset(LLOutCard,0,sizeof(LLOutCard));
-	BYTE cbCardIndex[MAX_INDEX];
+	byte cbCardIndex[MAX_INDEX];
 	memset(cbCardIndex,0,sizeof(cbCardIndex));
 	SRLFLOGIC::CGameLogic::Instance().SwitchToCardIndex(m_kHandCardData,m_kHandCardCout,cbCardIndex);
 	int maxNum = (int)SRLFLOGIC::CGameLogic::Instance().getAnyCardsCount(cbCardIndex);
 	//打手上的牌，非当前摸牌
 	if (maxNum%3 !=2)
 	{
-		for (BYTE j=0;j<MAX_INDEX-7;j++)
+		for (byte j=0;j<MAX_INDEX-7;j++)
 		{
-			BYTE temp2CbCardIndex[MAX_INDEX];
+			byte temp2CbCardIndex[MAX_INDEX];
 			memset(temp2CbCardIndex,0,sizeof(temp2CbCardIndex));
 			memcpy(temp2CbCardIndex,cbCardIndex,sizeof(cbCardIndex[0])*MAX_INDEX);
 			int maxNum = (int)SRLFLOGIC::CGameLogic::Instance().getAnyCardsCount(temp2CbCardIndex);
 			if (maxNum%3!=2)
 				temp2CbCardIndex[j]++;
-			DWORD  dwChiHuKind = WIK_NULL;
+			dword  dwChiHuKind = WIK_NULL;
 			maxNum = (int)SRLFLOGIC::CGameLogic::Instance().getAnyCardsCount(temp2CbCardIndex);
 			bool isHu = SRLFLOGIC::CGameLogic::Instance().IsTingCard(temp2CbCardIndex);
 			if(isHu) 

@@ -1,5 +1,9 @@
 #include "CGPBeginnerMission.h"
 
+#include "Platform/PFDefine/df/DF.h"
+#include "Platform/PFDefine/data/GlobalUserInfo.h"
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
+
 #define BEGINNER_MISSION_NULL		0
 #define BEGINNER_MISSION_QUERY		1
 #define BEGINNER_MISSION_DONE		2

@@ -1,5 +1,6 @@
 #include "Kernel/kernel/server/CServerItem.h"
-#include "Tools/tools/Convert.h"
+#include "Platform/PFDefine/df/RightDefine.h"
+#include "Tools/utilityConvert.h"
 
 //查找桌子
 bool CServerItem::FindGameTable(tagFindTable & FindInfo)

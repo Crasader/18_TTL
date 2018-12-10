@@ -27,11 +27,11 @@ THE SOFTWARE.
 #ifndef __CCNET_INETADDRESS_H__
 #define __CCNET_INETADDRESS_H__
 
-#include "cocos2d.h"
+#include <cocos2d.h>
 #include "MLNetDefine.h"
 #include <string>
 
-NS_CC_BEGIN
+namespace gamelib{
 
 
 /**
@@ -63,7 +63,7 @@ public:
 	int getLength();
 };
 
-NS_CC_END
+}
 
 
 #endif //__CCNET_INETADDRESS_H__

@@ -1,4 +1,9 @@
+#include <cocos2d.h>
+
 #include "Kernel/kernel/server/CServerItem.h"
+#include "Platform/PFDefine/msg/CMD_GameServer.h"
+#include "Platform/PFDefine/data/GlobalUserInfo.h"
+
 //比赛消息
 bool CServerItem::OnSocketMainMatch(int sub, void* data, int dataSize)
 {
@@ -20,19 +25,23 @@ bool CServerItem::OnSocketMainMatch(int sub, void* data, int dataSize)
 
 void CServerItem::sendMacthFree()
 {
+	CMD_GR_Match_Fee m_kMacthCost;
+	zeromemory(&m_kMacthCost, sizeof(m_kMacthCost));
 	SendSocketData(MDM_GR_MATCH,SUB_GR_MATCH_FEE,&m_kMacthCost.lMatchFee,sizeof(m_kMacthCost.lMatchFee));
 }
+
 void CServerItem::sendExitMacth()
 {
 	SendSocketData(MDM_GR_MATCH,SUB_GR_LEAVE_MATCH);
 }
+
 //比赛费用
 bool CServerItem::OnSocketSubMatchFee(void* data, int dataSize)
 {
 	CCLOG("CServerItem::OnSocketSubMatchFee\n");
 
 	CMD_GR_Match_Fee *pNetInfo = (CMD_GR_Match_Fee*)data;
-
+	CMD_GR_Match_Fee m_kMacthCost;
 	m_kMacthCost = *pNetInfo;
 
 	if(pNetInfo->lMatchFee>0)
@@ -177,7 +186,7 @@ bool CServerItem::OnSocketSubMatchJoinResoult(void* data, int dataSize)
 	if (mIServerMatchSink)
 	{
 		//TODO:这里可能有问题
-		mIServerMatchSink->OnSocketSubMatchJoinResolt((bool)pNetInfo->wSucess);
+		mIServerMatchSink->OnSocketSubMatchJoinResolt(static_cast<bool>(pNetInfo->wSucess));
 	}
 	return true;
 }

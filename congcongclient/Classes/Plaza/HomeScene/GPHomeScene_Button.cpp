@@ -1,9 +1,15 @@
 #include "GPHomeScene.h"
-#include "GamePlaza/GameManager/GPGameLink.h"
-#include "ClientHN_THJ/Game/TTLNN/GameScene/NNGameScene.h"
-#include "GameLib/Game/Game/MissionWeiXin.h"
+#include "Plaza/GameManager/GPGameLink.h"
+#include "Game/NN/NNGameScene.h"
+#include "Game/Game/MissionWeiXin.h"
+#include "CreateRoom/GPHomeCreateRoomPanel_NN.h"
+#include "CreateRoom/GPHomeRoomListPanel_NN.h"
+#include "CreateRoom/GPHomeRoomListPanel_SRLF.h"
+#include "CreateRoom/GPHomeRoomListPanel_SG.h"
+#include "CreateRoom/GPHomeRoomListPanel_TLJ.h"
+#include "CreateRoom/GPHomeRoomListPanel_XZDD.h"
+#include "CreateRoom/GPHomeRoomListPanel_WZQ.h"
 
-USING_NS_CC;
 using namespace experimental;
 
 void GPHomeScene::initButton()
@@ -73,14 +79,14 @@ void GPHomeScene::pageViewEvent(Ref* pSender, cocos2d::ui::PageViewEventType typ
 //DONE:需要删除掉下列房间列表
 void GPHomeScene::initGamePanelList()
 {
-	cocos2d::ListViewEx* pListView = WidgetFun::getListViewWidget(this, "GameListView");
+	widget::ListViewEx* pListView = WidgetFun::getListViewWidget(this, "GameListView");
 	WidgetFun::setVisible(this, "GameListView", true);
 	pListView->setEnabled(true);
 	pListView->setDirection(cocos2d::ui::ScrollView::Direction::HORIZONTAL);
 	pListView->setBackGroundColorType(cocos2d::ui::Layout::BackGroundColorType::NONE);
 	pListView->setGravity(cocos2d::ui::ListView::Gravity::TOP);
 	pListView->setItemsMargin(10.0f);
-	pListView->addEventListener((cocos2d::ListViewEx::ccListViewCallback)CC_CALLBACK_2(GPHomeScene::onSelectedItemEvent, this));
+	pListView->addEventListener((widget::ListViewEx::ccListViewCallback)CC_CALLBACK_2(GPHomeScene::onSelectedItemEvent, this));
 }
 
 //UIListView适配函数

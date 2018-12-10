@@ -1,7 +1,8 @@
 #pragma once
-#include "cocos2d.h"
+#include <cocos2d.h>
 #include "Game/FV/FvSingleton.h"
-#include "Game/GameLib.h"
+
+struct WidgetUserInfo;
 
 class NoticeMsgBox
 	:public FvSingleton<NoticeMsgBox> 

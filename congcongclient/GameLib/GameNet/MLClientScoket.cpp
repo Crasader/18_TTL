@@ -25,9 +25,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 #include "MLClientScoket.h"
-#include "Game/FV/NetLog.h"
+#include "Tools/utilityLog.h"
 
-NS_CC_BEGIN
+namespace gamelib{
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 static bool bStartup = false;
@@ -53,7 +53,7 @@ MLClientScoket::~MLClientScoket()
 
 bool MLClientScoket::ccInit()
 {
-	NetLog::Log("MLClientScoket::ccInit");
+	utility::filelog("MLClientScoket::ccInit");
 	if( m_uSocket != INVALID_SOCKET )
 	{
 		ccClose();
@@ -115,7 +115,7 @@ void MLClientScoket::ccClose()
 
 bool MLClientScoket::ccConnect()
 {
-	NetLog::Log("MLClientScoket::ccConnect");
+	utility::filelog("MLClientScoket::ccConnect");
 #if 1 // runtime error on ios
 	CCAssert(strlen(m_oInetAddress.getIp()) && m_oInetAddress.getPort() != 0, "_connect");
 #endif
@@ -162,7 +162,7 @@ bool MLClientScoket::ccConnect()
 
 void MLClientScoket::ccDisconnect()
 {
-	NetLog::Log("MLClientScoket::ccDisconnect");
+	utility::filelog("MLClientScoket::ccDisconnect");
 	if( m_uSocket != INVALID_SOCKET )
 	{
 #if 0
@@ -253,4 +253,4 @@ int MLClientScoket::ccIsConnected()
 	return eSocketConnecting;
 }
 
-NS_CC_END
+}

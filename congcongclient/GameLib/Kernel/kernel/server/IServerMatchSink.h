@@ -2,6 +2,12 @@
 
 #include "Kernel/kernel/user/IClientUserItem.h"
 
+struct CMD_GR_Match_Fee;
+struct CMD_GR_Match_Num;
+struct CMD_GR_Match_Info;
+struct CMD_GR_Match_Wait_Tip;
+struct CMD_GR_MatchResult;
+struct CMD_GR_MatchGoldUpdate;
 
 class IServerMatchSink
 {

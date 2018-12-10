@@ -15,6 +15,10 @@
 
 #include "Kernel/kernel/server/TableViewFrame.h"
 #include "Kernel/kernel/game/IClientKernelSink.h"
+
+#include "Platform/PFDefine/df/DF.h"
+#include "Platform/PFDefine/data/OptionParameter.h"
+
 class CTableViewFrame;
 class CUserManager;
 
@@ -357,7 +361,7 @@ private:
 	bool	mIsGameReady;						//游戏是否准备好
 	bool	mIsQuickSitDown;						//是否快速加入操作
 
-	CMD_GR_Match_Fee	m_kMacthCost;
+	//CMD_GR_Match_Fee	m_kMacthCost;
 	//用户
 	IClientUserItem*	m_pMeUserItem;
 	CPlazaUserManager*	mUserManager;

@@ -3,8 +3,10 @@
 
 #include <vector>
 #include "Kernel/kernel/user/IClientUserItem.h"
-#include "Platform/PlatformHeader.h"
 #include "Kernel/kernel/server/ITableViewFrame.h"
+
+#include "Platform/PFDefine/df/struct.h"
+
 //////////////////////////////////////////////////////////////////////////////////
 //桌子视图
 class CTableView : public ITableView

@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "cocos2d.h"
+#include <cocos2d.h>
 #include "Game/FV/FvReferencePtr.h"
 
 class NodeEx

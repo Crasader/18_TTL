@@ -1,8 +1,10 @@
-#include "cocos2d.h"
+#include <cocos2d.h>
 #include "CGPLoginMission.h"
-#include "Tools/tools/Convert.h"
+#include "Tools/utilityConvert.h"
 #include "JniCross/JniFun.h"
 #include "GameLib/Game/Game/NoticeMsgBox.h"
+#include "Platform/PFDefine/data/GlobalUserInfo.h"
+#include "Platform/PFDefine/data/ServerListData.h"
 
 #define MISSION_LOGIN_ACCOUNT	1
 #define MISSION_LOGIN_GAMEID	2
@@ -10,7 +12,6 @@
 #define MISSION_UPDATE_INFO		4
 #define MISSION_SERVER_INFO		5
 #define MISSION_LOGIN_VISITOR	6	
-
 
 CGPLoginMission::CGPLoginMission(const char* url, int port)
 	: CSocketMission(url, port)

@@ -1,4 +1,7 @@
+#include <cocos2d.h>
 #include "Kernel/kernel/server/CServerItem.h"
+#include "Platform/PFDefine/msg/CMD_GameServer.h"
+
 //配置信息
 bool CServerItem::OnSocketMainConfig(int sub, void* data, int dataSize)
 {

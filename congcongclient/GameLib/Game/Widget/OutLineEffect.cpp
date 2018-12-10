@@ -1,10 +1,8 @@
 #include "OutLineEffect.h"
-#include "Game/Script/ScriptData.h"
 
 USING_NS_CC;
 
 OutLineEffect*	MaskSprite::s_pProgramState = NULL;
-
 
 bool OutLineEffect::initGLProgramState(const std::string &fragmentFilename)
 {

@@ -1,7 +1,11 @@
 #pragma once
-#include "cocos2d.h"
-#include "Platform/PlatformHeader.h"
+#include <cocos2d.h>
+
+#include "Platform/PFDefine/df/types.h"
 #include "Kernel/network/CSocketMission.h"
+
+struct CMD_GP_BeginnerInfo;
+struct CMD_GP_BeginnerResult;
 
 class IGPBeginnerMissionSink
 {

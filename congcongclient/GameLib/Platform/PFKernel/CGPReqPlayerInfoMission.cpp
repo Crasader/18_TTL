@@ -1,5 +1,7 @@
 #include "CGPReqPlayerInfoMission.h"
-#include "Game/Script/utility.h"
+#include "Tools/utilityLog.h"
+#include "Tools/utilityString.h"
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
 
 CGPReqPlayerInfoMission::CGPReqPlayerInfoMission(const char* url, int port)
 {
@@ -25,7 +27,7 @@ void CGPReqPlayerInfoMission::setMissionSink(ICGPReqPlayerInfoSink* pReqPlayerIn
 }
 void CGPReqPlayerInfoMission::QUERY_GP_USER_INDIVIDUAL(int iAccountID)
 {
-	utility::log(utility::toString("CGPReqPlayerInfoMission::query, id=", iAccountID).c_str());
+	utility::filelog(utility::toString("CGPReqPlayerInfoMission::query, id=", iAccountID).c_str());
 	if (_CallMission) {
 		_CallMission->addLinkCallFun(CC_CALLBACK_0(CGPReqPlayerInfoMission::CB_GP_USER_INDIVIDUAL, this, iAccountID));
 		_CallMission->start();

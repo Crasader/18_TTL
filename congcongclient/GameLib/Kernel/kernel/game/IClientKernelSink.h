@@ -3,6 +3,15 @@
 
 #include "Kernel/kernel/user/IClientUserItem.h"
 
+struct CMD_GF_Private_Room_Info;
+struct CMD_GF_Private_End_Info;
+struct CMD_GF_Private_Dismiss_Info;
+struct tagMatchWaitTip;
+struct tagMatchInfo;
+struct tagMatchResult;
+class CGameServerItem;
+
+
 class IClientKernelSink
 {
 public:

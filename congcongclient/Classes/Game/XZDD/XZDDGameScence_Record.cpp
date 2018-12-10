@@ -1,7 +1,10 @@
 #include "XZDDGameScence.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 #include "XZDDPlayer.h"
 #include "Game/Game/MissionWeiXin.h"
+#include USERINFO
+#include IMAGE_DOWN
+#include UTILITY_CONVERT
 
 void XZDDGameScence::initRecord()
 {
@@ -104,7 +107,7 @@ bool XZDDGameScence::StartRecord(datastream kDataStream)
 		pPlayer->setGameRecord(true);
 		pPlayer->PlayerEnter();
 		pPlayer->startGameNoTime();
-		BYTE cbCardData[MAX_COUNT];
+		byte cbCardData[MAX_COUNT];
 		for (int i = 0;i<MAX_COUNT;i++)
 		{
 			cbCardData[i] = kRecordPlayer.cbCardData[i];

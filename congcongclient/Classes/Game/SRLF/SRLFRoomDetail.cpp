@@ -1,4 +1,7 @@
+#include "common.h"
+
 #include "SRLFRoomDetail.h"
+#include "SCRIPT.h"
 
 FV_SINGLETON_STORAGE(SRLFRoomDetail);
 SRLFRoomDetail::SRLFRoomDetail()

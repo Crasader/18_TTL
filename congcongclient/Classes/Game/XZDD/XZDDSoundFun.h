@@ -1,8 +1,7 @@
-
 #ifndef __XZDDSoundFun_FUN_H__
 #define __XZDDSoundFun_FUN_H__
 
-#include "cocos2d.h"
+#include <cocos2d.h>
 
 namespace XZDDSoundFun
 {

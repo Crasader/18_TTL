@@ -1,6 +1,7 @@
 #include "WZQDGameScence.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 #include "WZQDPlayer.h"
+#include USERINFO
 
 WZQDPlayer* WZQDGameScence::getPlayerByChairID(int iChairID)
 {

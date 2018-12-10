@@ -1,11 +1,9 @@
 #include "EffectScence.h"
 
-#include "Game/GameLib.h"
-
-USING_NS_CC;
+#include "Game/Widget/WidgetManager.h"
+#include "Game/Widget/WidgetScenceXmlParse.h"
 
 FV_SINGLETON_STORAGE(EffectScence);
-
 
 EffectScence::EffectScence()
 {

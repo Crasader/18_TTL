@@ -4,13 +4,6 @@
 
 #include <assert.h>
 
-#define FRIEND_SINGLETON(className)	\
-public:														\
-	friend class FvSingleton<className>;	\
-	~className();										\
-protected:													\
-	className();											\
-
 template <class T>
 class FvSingleton
 {
@@ -25,9 +18,12 @@ protected:
 public:
 	~FvSingleton()
 	{
-		ms_pkInstance = 0;
+		if (ms_pkInstance)
+			delete ms_pkInstance;
+		ms_pkInstance = nullptr;
 	}
 
+public:
 	static T &Instance()
 	{
 		if (ms_pkInstance == nullptr)
@@ -47,8 +43,19 @@ public:
 	}
 };
 
-#define FV_SINGLETON_STORAGE( TYPE )						\
-template <>													\
-TYPE * FvSingleton< TYPE >::ms_pkInstance = 0;			\
+//////////////////////////////////////////////////////////////////////////
+#define FRIEND_SINGLETON(className)	\
+public:														\
+	friend class FvSingleton<className>;	\
+	~className();										\
+protected:													\
+	className();											\
+private:														\
+
+//////////////////////////////////////////////////////////////////////////
+
+#define FV_SINGLETON_STORAGE(TYPE)				\
+template <>															\
+TYPE * FvSingleton<TYPE>::ms_pkInstance = 0;	\
 
 #endif // __FvSingleton_H__

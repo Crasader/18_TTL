@@ -1,9 +1,10 @@
 #pragma once
-#include "cocos2d.h"
+#include <cocos2d.h>
+#include <ui/UIWidget.h>
+#include <ui/UICheckBox.h>
+
 #include "Game/Fv/FvSingleton.h"
 #include "WidgetDefine.h"
-#include "ui/UIWidget.h"
-#include "ui/UICheckBox.h"
 
 class WidgetManager
 	:public FvSingleton<WidgetManager>

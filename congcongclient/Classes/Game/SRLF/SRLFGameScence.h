@@ -1,13 +1,12 @@
 #pragma once
-#include "cocos2d.h"
-#include "Game/FV/FvSingleton.h"
-#include "Game/Widget/WidgetDefine.h"
-#include "Game/Game/GameBase.h"
-#include "Game/Game/GameDefine.h"
-#include "Game/Script/TimeNode.h"
+#include <Game/Script/TimeNode.h>
+
+#include "common.h"
 #include "CMD_SRLF.h"
-#include "GamePlaza/HomeScene/CreateRoomPanel/GPHomeCreateRoomPanel_SRLF.h"
-#include "GamePlaza/HomeScene/MallPanel/GPHomeMallPanel.h"
+#include CMD_GAME
+
+#include "Plaza/HomeScene/CreateRoom/GPHomeCreateRoomPanel_SRLF.h"
+#include "Plaza/HomeScene/GPHomeMallPanel.h"
 
 class SRLFPlayer;
 struct CMD_S_GameEnd;
@@ -152,36 +151,36 @@ public:
 
 	void OnSubGameStart(const void * pBuffer, word wDataSize);
 	//用户出牌
-	void OnSubOutCard(const void * pBuffer, WORD wDataSize);
+	void OnSubOutCard(const void * pBuffer, word wDataSize);
 	//发牌消息
-	void OnSubSendCard(const void * pBuffer, WORD wDataSize);
+	void OnSubSendCard(const void * pBuffer, word wDataSize);
 	//操作提示
-	void OnSubOperateNotify(const void * pBuffer, WORD wDataSize);
+	void OnSubOperateNotify(const void * pBuffer, word wDataSize);
 	//操作结果
-	void OnSubOperateResult(const void * pBuffer, WORD wDataSize);
+	void OnSubOperateResult(const void * pBuffer, word wDataSize);
 	//游戏结束
-	void OnSubGameEnd(const void * pBuffer, WORD wDataSize);
+	void OnSubGameEnd(const void * pBuffer, word wDataSize);
 	//用户托管
-	void OnSubTrustee(const void * pBuffer,WORD wDataSize);
+	void OnSubTrustee(const void * pBuffer,word wDataSize);
 	//吃胡消息
-	void OnSubUserChiHu( const void *pBuffer,WORD wDataSize );
+	void OnSubUserChiHu( const void *pBuffer,word wDataSize );
 	//杠得分
-	void OnSubGangScore( const void *pBuffer, WORD wDataSize );
+	void OnSubGangScore( const void *pBuffer, word wDataSize );
 
 	//换牌
-	void OnSubHuanPai(const void *pBuffer, WORD wDataSize );
-	void OnSubHuanPaiChengDu(const void *pBuffer, WORD wDataSize );
+	void OnSubHuanPai(const void *pBuffer, word wDataSize );
+	void OnSubHuanPaiChengDu(const void *pBuffer, word wDataSize );
 	//选缺通知
-	void OnSubXuanQueNotice(const void *pBuffer, WORD wDataSize );
+	void OnSubXuanQueNotice(const void *pBuffer, word wDataSize );
 	//选缺
-	void OnSubXuanQue(const void *pBuffer, WORD wDataSize );
+	void OnSubXuanQue(const void *pBuffer, word wDataSize );
 	//换牌通知
-	void OnSubHuanPaiNotice(const void *pBuffer, WORD wDataSize );
-	void OnSubPiaoState(const void *pBuffer, WORD wDataSize);
-	void OnSubTingFirst(const void *pBuffer, WORD wDataSize);
-	void OnSubPiaoNotice(const void *pBuffer, WORD wDataSize);
-	void OnSubBaoTingNotice(const void *pBuffer, WORD wDataSize);
-	void OnLeftTimer(const void *pBuffer, WORD wDataSize);
+	void OnSubHuanPaiNotice(const void *pBuffer, word wDataSize );
+	void OnSubPiaoState(const void *pBuffer, word wDataSize);
+	void OnSubTingFirst(const void *pBuffer, word wDataSize);
+	void OnSubPiaoNotice(const void *pBuffer, word wDataSize);
+	void OnSubBaoTingNotice(const void *pBuffer, word wDataSize);
+	void OnLeftTimer(const void *pBuffer, word wDataSize);
 public:
 	void Command_PlaceBet(int iArea,int iBetScore);
 	void SendOutCard(cocos2d::Node* pCard);
@@ -240,13 +239,13 @@ public:
 	void showReadyTimes(int times);
 	void hideReadyTimes();
 public:
-	void OnMasterHandCard( const void *pBuffer, WORD wDataSize );
-	void OnMasterLeftCard( const void *pBuffer, WORD wDataSize );
+	void OnMasterHandCard( const void *pBuffer, word wDataSize );
+	void OnMasterLeftCard( const void *pBuffer, word wDataSize );
 	void updateUserRight();
 	void showMater();
 	void initMaster();
 	void defaultMaster(bool bRestZhaNiao = false);
-	void setMasterCheakCard(BYTE cbCard);
+	void setMasterCheakCard(byte cbCard);
 	void HNMJButton_Master(cocos2d::Ref*,WidgetUserInfo*);
 	void Button_MasterClose(cocos2d::Ref*,WidgetUserInfo*);
 	void NHMJ_MASTER_LEFTCARD(cocos2d::Ref*,WidgetUserInfo*);
@@ -292,6 +291,6 @@ protected:
 	int                         m_nPlayCount;
 	dword						m_dwGameRuleIdex;
 	bool						m_bselectGangState;
-	BYTE                        m_nGangCards[MAX_WEAVE];
-	BYTE                        m_nGangCardsCount;
+	byte                        m_nGangCards[MAX_WEAVE];
+	byte                        m_nGangCardsCount;
 };

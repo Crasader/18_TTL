@@ -1,6 +1,10 @@
 #pragma once
-#include "cocos2d.h"
-#include "Platform/PlatformHeader.h"
+
+#include <cocos2d.h>
+
+#include "Platform//PFDefine/df/types.h"
+#include "Platform//PFDefine/df/Define.h"
+
 #include "Kernel/network/CCallMission.h"
 
 //////////////////////////////////////////////////////////////////////////
@@ -42,6 +46,8 @@ struct tagModifyIndividual
 //////////////////////////////////////////////////////////////////////////
 // 用户资料修改提示
 //////////////////////////////////////////////////////////////////////////
+
+struct CMD_GP_UserAccountInfo;
 struct IGPIndividualMissionSink
 {
 	virtual void onGPIndividualInfo(int type){}

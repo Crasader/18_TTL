@@ -1,9 +1,11 @@
-#include "cocos2d.h"
+#include <cocos2d.h>
 #include "CCUserDefault.h"
 
-USING_NS_CC;
-using namespace std;
+ using namespace std;
+ using namespace cocos2d;
+
 //////////////////////////////////////////////////////////////////////////
+
 MyUserDefault::MyUserDefault()
 {
 }
@@ -63,7 +65,7 @@ double MyUserDefault::getDoubleForKey(const char* section, const char* pKey, dou
 	sprintf(buf, "%f", defaultValue);
 
 	std::string szValue = CCUserDefault::sharedUserDefault()->getStringForKey(key.c_str(), buf);
-	float fValue = defaultValue;
+	float fValue = static_cast<float>(defaultValue);
 	sscanf(szValue.c_str(), "%f", &fValue);
 	return (double)fValue;
 }

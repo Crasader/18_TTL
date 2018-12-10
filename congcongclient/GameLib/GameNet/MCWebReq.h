@@ -1,9 +1,10 @@
 #pragma once
 
+#include <cocos2d.h>
+#include <external/json/document.h>
+
+#include "Tools/utilityString.h"
 #include "cocosHttp/HttpClientEx.h"
-#include "cocos2d.h"
-#include "Game/Script/utility.h"
-#include "external/json/document.h"
 
 typedef std::map<std::string,std::string> XQ5WebReqInfo;
 
@@ -15,7 +16,7 @@ struct SendStructInfo
 		m_fStrResCallBack = nullptr;
 		m_fJsonResCallBack = nullptr;
 	}
-	cocos2d::network::HttpRequestEx* pRequest;
+	gamelib::network::HttpRequestEx* pRequest;
 	std::function<void(std::string)> m_fStrResCallBack;
 	std::function<void(rapidjson::Document*)> m_fJsonResCallBack;
 	std::string kImagicUrlName;
@@ -51,16 +52,16 @@ public: //request
 	std::string getPostData(std::map<std::string,std::string>& dataMap);
 	std::string joinMapToData(std::map<std::string, std::string> &paramenters);
 
-	std::string parseResData(cocos2d::network::HttpResponseEx *response);
-	void sendFile(std::string kUrl, std::string &fileName,const cocos2d::network::ccHttpRequestCallback &callback);
+	std::string parseResData(gamelib::network::HttpResponseEx *response);
+	void sendFile(std::string kUrl, std::string &fileName,const gamelib::network::ccHttpRequestCallback &callback);
 	void sendFileURLHeadImgaic(std::string kUrl, std::string &fileName,
 		std::function<void(rapidjson::Document*)> _callBack);
-	cocos2d::network::HttpRequestEx* getFile(std::string kUrl,const cocos2d::network::ccHttpRequestCallback &callback);
-	cocos2d::network::HttpRequestEx* getFileEx(std::string kUrl,const cocos2d::network::ccHttpRequestCallback &callback);
+	gamelib::network::HttpRequestEx* getFile(std::string kUrl,const gamelib::network::ccHttpRequestCallback &callback);
+	gamelib::network::HttpRequestEx* getFileEx(std::string kUrl,const gamelib::network::ccHttpRequestCallback &callback);
 protected://resqunse
-	void resCallBack(cocos2d::network::HttpClientEx* client,cocos2d::network::HttpResponseEx* response);
+	void resCallBack(gamelib::network::HttpClientEx* client,gamelib::network::HttpResponseEx* response);
 
-	bool parseResByJson(cocos2d::network::HttpResponseEx *response,rapidjson::Document &doc);
+	bool parseResByJson(gamelib::network::HttpResponseEx *response,rapidjson::Document &doc);
 	bool parseDataByJson(const std::string& data, rapidjson::Document &doc);
 public:
 	template<typename T>
@@ -96,10 +97,9 @@ public:
 		}
 		return 0;
 	}
-	
 
     void init();
-protected:
+
 private:
 	MCWebReq();
 	std::string m_kWebIP;

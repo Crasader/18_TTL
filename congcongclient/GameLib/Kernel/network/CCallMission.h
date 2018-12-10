@@ -4,7 +4,6 @@
 
 #include "CSocketMission.h"
 
-
 struct NetCall
 {
 	int iSub;

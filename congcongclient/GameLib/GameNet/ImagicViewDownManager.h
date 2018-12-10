@@ -1,6 +1,6 @@
 #pragma once
 #include "Game/FV/FvSingleton.h"
-#include "cocos2d.h"
+#include <cocos2d.h>
 #include "MCWebReq.h"
 #include "cocos2d/cocos/ui/UIImageView.h"
 
@@ -14,7 +14,7 @@ struct ImagicViewDownInfo
 		bSameSize = false;
 	}
 	cocos2d::ui::ImageView* pSprite;
-	cocos2d::network::HttpRequestEx* pRequest;
+	gamelib::network::HttpRequestEx* pRequest;
 	std::string kUrl;
 	std::string kImagicName;
 	float fActTime;
@@ -32,7 +32,7 @@ public:
 	~ImagicViewDownManager();
 public:
 	void OnImagic();
-	void GetImagic(cocos2d::network::HttpClientEx *sender, cocos2d::network::HttpResponseEx *response);
+	void GetImagic(gamelib::network::HttpClientEx *sender, gamelib::network::HttpResponseEx *response);
 	void addDown(cocos2d::ui::ImageView* pSprite,std::string kUrl,int iUserID,bool bSameSize = true);
 protected:
 	cocos2d::Texture2D* getDownTexture(std::string kFile);
@@ -41,6 +41,6 @@ protected:
 public:
 	int m_iIdexCout;
 	ImagicViewDownInfoList m_pDownList;
-	std::vector<cocos2d::network::HttpResponseEx*> m_pGetList;
+	std::vector<gamelib::network::HttpResponseEx*> m_pGetList;
 };
 

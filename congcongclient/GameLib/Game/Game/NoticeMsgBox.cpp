@@ -1,12 +1,13 @@
 #include "NoticeMsgBox.h"
-#include "Game/GameLib.h"
+
+#include "Game/Widget/WidgetFun.h"
+#include "Game/Widget/WidgetManager.h"
+#include "Game/Widget/WidgetSkinXMLparse.h"
+#include "Game/Widget/WidgetScenceXMLparse.h"
 #include "JniCross/JniFun.h"
 
-USING_NS_CC;
-
-FV_SINGLETON_STORAGE(NoticeMsgBox);
-
-
+ FV_SINGLETON_STORAGE(NoticeMsgBox);
+ 
 NoticeMsgBox::NoticeMsgBox()
 	:m_szDownHttp("www.baidu.com")
 {

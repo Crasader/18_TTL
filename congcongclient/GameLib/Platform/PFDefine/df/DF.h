@@ -1,11 +1,11 @@
 #ifndef _df_H_
 #define _df_H_
-#include "types.h"
-#include "PacketAide.h"
-#include "Platform.h"
 
-#include "Platform/PFDefine/msg/CMD_GameServer.h"
-#include "Platform/PFDefine/msg/CMD_LogonServer.h"
+#include "types.h"
+#include "Define.h"
+#include "PacketAide.h"
+
+#define LEN_KIND						32									//类型长度
 
 #define COL_N2G(col) (((col & 0xFF) << 16) | (col >> 8))
 #define COL_G2N(col) ((col << 8) | (col >> 16))

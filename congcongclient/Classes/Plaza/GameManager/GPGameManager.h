@@ -1,9 +1,7 @@
 #pragma once
-#include "CommonHeader/CommonHeader.h"
+#include "common.h"
 #include "Game/Game/GameManagerBase.h"
-#include "../GPSceneManager.h"
-//#include "ClientHN_THJ/Game/HNMJ/HNMJGameScence.h"
-#include "ClientHN_THJ/Game/SRLF/SRLFGameScence.h"
+#include "GPSceneManager.h"
 
 class GPGameManager
 	: public GameManagerBase

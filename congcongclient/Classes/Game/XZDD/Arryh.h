@@ -144,7 +144,7 @@ CWHArray<TYPE,ARG_TYPE>::~CWHArray()
 	if (m_pData!=NULL)
 	{
 		for (INT_PTR i=0;i<m_nElementCount;i++)	(m_pData+i)->~TYPE();
-		delete [] (BYTE *)m_pData;
+		delete [] (byte *)m_pData;
 		m_pData=NULL;
 	}
 
@@ -396,10 +396,10 @@ VOID CWHArray<TYPE,ARG_TYPE>::FreeMemory()
 		TYPE * pNewData=NULL;
 		if (m_nElementCount!=0)
 		{
-			pNewData=(TYPE *) new BYTE[m_nElementCount*sizeof(TYPE)];
+			pNewData=(TYPE *) new byte[m_nElementCount*sizeof(TYPE)];
 			memcpy(pNewData,m_pData,m_nElementCount*sizeof(TYPE));
 		}
-		delete [] (BYTE *)m_pData;
+		delete [] (byte *)m_pData;
 		m_pData=pNewData;
 		m_nMaxCount=m_nElementCount;
 	}
@@ -426,10 +426,10 @@ VOID CWHArray<TYPE,ARG_TYPE>::AllocMemory(INT_PTR nNewCount)
 		nNewCount+=nGrowCount;
 
 		//申请内存
-		TYPE * pNewData=(TYPE *) new BYTE[nNewCount*sizeof(TYPE)];
+		TYPE * pNewData=(TYPE *) new byte[nNewCount*sizeof(TYPE)];
 		memcpy(pNewData,m_pData,m_nElementCount*sizeof(TYPE));
 		memset(pNewData+m_nElementCount,0,(nNewCount-m_nElementCount)*sizeof(TYPE));
-		delete [] (BYTE *)m_pData;
+		delete [] (byte *)m_pData;
 
 		//设置变量
 		m_pData=pNewData;

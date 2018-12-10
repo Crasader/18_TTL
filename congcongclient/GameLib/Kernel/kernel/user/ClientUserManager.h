@@ -5,7 +5,8 @@
 
 #include "Kernel/kernel/user/IUserManagerSink.h"
 #include "Kernel/kernel/user/IClientUserItem.h"
-#include "Platform/PlatformHeader.h"
+#include "Platform/PFDefine/df/struct.h"
+
 //////////////////////////////////////////////////////////////////////////////////
 
 //用户信息

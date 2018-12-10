@@ -1,7 +1,7 @@
 #include "BtnTurnLayer.h"
 #include "Game/FV/FvSingleton.h"
-#include "GamePlaza/HomeScene/GPHomeScene.h"
-USING_NS_CC;
+#include "Plaza/HomeScene/GPHomeScene.h"
+ 
 using namespace experimental;
 
 const float RUNTIME = 0.3f; //动画运行时间  

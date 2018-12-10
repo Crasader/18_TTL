@@ -1,5 +1,7 @@
+#include <cocos2d.h>
 #include "Kernel/kernel/server/CServerItem.h"
-//
+#include "Platform/PFDefine/msg/CMD_GameServer.h"
+
 bool CServerItem::OnSocketMainPrivate(int sub, void* data, int dataSize)
 {
 	switch (sub)

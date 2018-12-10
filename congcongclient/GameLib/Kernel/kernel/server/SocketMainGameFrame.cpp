@@ -1,6 +1,9 @@
+#include <cocos2d.h>
+
 #include "Kernel/kernel/server/CServerItem.h"
 //游戏消息
-
+#include "Platform/PFDefine/df/Packet.h"
+#include "Platform/PFDefine/msg/CMD_GameServer.h"
 
 bool CServerItem::OnSocketSubUserTalk(void* data, int dataSize)
 {

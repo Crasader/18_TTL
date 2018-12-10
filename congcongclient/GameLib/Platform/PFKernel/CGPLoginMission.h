@@ -1,6 +1,6 @@
 #pragma once
-#include "cocos2d.h"
-#include "Platform/PlatformHeader.h"
+#include <cocos2d.h>
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
 #include "Kernel/network/CSocketMission.h"
 
 #ifndef LOGIN_MISSION_SINK

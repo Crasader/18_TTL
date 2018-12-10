@@ -5,9 +5,10 @@
 
 #include <vector>
 #include <map>
+
+#include "Game/FV/FvSingleton.h"
 #include "Platform/PFDefine/df/Struct.h"
 #include "Platform/PFDefine/df/types.h"
-#include "Game/FV/FvSingleton.h"
 
 //////////////////////////////////////////////////////////////////////////////////
 //枚举定义

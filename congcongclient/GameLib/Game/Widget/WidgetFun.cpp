@@ -1,6 +1,5 @@
 #include "WidgetFun.h"
-#include "Game/Script/utility.h"
-#include "Game/Script/ActionEx.h"
+
 #include "WidgetManager.h"
 #include "EditBoxWidget.h"
 #include "ProgressBarWidget.h"
@@ -13,7 +12,11 @@
 #include "ActionTagDefine.h"
 #include "LabelAtlasAction.h"
 
-USING_NS_CC;
+#include "Game/Script/ActionEx.h"
+#include "Tools/utilityString.h"
+#include "Tools/utilityWidget.h"
+
+using namespace widget;
 
 namespace WidgetFun
 {
@@ -474,7 +477,7 @@ namespace WidgetFun
 	void setEnable(cocos2d::Node* pNode,bool bEnable)
 	{
 		CCAssert(pNode,"");
-		cocos2d::ButtonEx* pButton = castNode<cocos2d::ButtonEx>(pNode);
+		widget::ButtonEx* pButton = castNode<widget::ButtonEx>(pNode);
 		pButton->setBright(bEnable);
 		pButton->setEnabled(bEnable);
 		pButton->setTouchEnabled(bEnable);
@@ -526,7 +529,6 @@ namespace WidgetFun
 		pNodeRight->setPosition(ccp(pos1.x+sz1.width,pos1.y));
 	}
 
-
 	void setSelectBoxTag( cocos2d::Node* pNode,std::string kName,int nTag )
 	{
 		CCAssert(pNode,"");
@@ -534,7 +536,6 @@ namespace WidgetFun
 		CCAssert(pSelectBox," not find btn");
 		pSelectBox->setTag(nTag);
 	}
-
 
 	void setProgress( cocos2d::Node* pNode,std::string kName,float fCurrent,float fMax)
 	{
@@ -557,11 +558,10 @@ namespace WidgetFun
 		CCAssert(pAnim,"pAnim error");
 	}
 
-
-	cocos2d::ListViewEx* getListViewWidget( cocos2d::Node* pNode,std::string kName )
+	widget::ListViewEx* getListViewWidget( cocos2d::Node* pNode,std::string kName )
 	{
 		CCAssert(pNode,"");
-		cocos2d::ListViewEx* pListView = castNode<cocos2d::ListViewEx>(getChildWidget(pNode,kName));
+		widget::ListViewEx* pListView = castNode<widget::ListViewEx>(getChildWidget(pNode,kName));
 		CCAssert(pListView,"pListView error");
 		return pListView;
 	}
@@ -735,7 +735,7 @@ namespace WidgetFun
 	}
 	void setVisibleByTime(cocos2d::Node* pNode,float fTime,bool bVisible)
 	{
-		cocos2d::CCVisibleAction* pAction = cocos2d::CCVisibleAction::create(fTime,bVisible);
+		CCVisibleAction* pAction = CCVisibleAction::create(fTime,bVisible);
 		pAction->setTag(ActionTag::VisibleAction);
 		pNode->stopActionByTag(ActionTag::VisibleAction);
 		pNode->runAction(pAction);
@@ -860,5 +860,87 @@ namespace WidgetFun
 	void setPlaceImagicKey(cocos2d::Node* pNode,std::string kName,std::string kKey)
 	{
 		setPlaceImagicKey(WidgetFun::getChildWidget(pNode,kName),kKey);
+	}
+
+	float getRandFloat(const RandFloat& kRand, cocos2d::Node* pNode)
+	{
+		if (kRand.kUserKey != "")
+		{
+			return utility::parseFloat(WidgetFun::getWidgetUserInfo(pNode, kRand.kUserKey));
+		}
+		else
+		{
+			return utility::getRandFloat(kRand);
+		}
+	}
+
+	cocos2d::Vec2 parsePoint(std::string kValue)
+	{
+		cocos2d::Vec2 kPoint;
+		std::vector<std::string> kStr = utility::split(kValue, " ");
+		if (kStr.size() == 2)
+		{
+			kPoint.x = utility::parseFloat(kStr[0]);
+			kPoint.y = utility::parseFloat(kStr[1]);
+		}
+		return kPoint;
+	}
+
+	cocos2d::Vec2 getRandPos(const RandPos& kRand, cocos2d::Node* pNode)
+	{
+		if (kRand.kUserKey != "")
+		{
+			return utility::parsePoint(WidgetFun::getWidgetUserInfo(pNode, kRand.kUserKey));
+		}
+		float fValueX = getRandFloat(kRand.kRandX, pNode);
+		float fValueY = getRandFloat(kRand.kRandY, pNode);
+		return cocos2d::Vec2(fValueX, fValueY);
+	}
+
+	std::string getUserString(const UserString& kUserString, cocos2d::Node* pNode)
+	{
+		if (kUserString.kUserKey != "")
+		{
+			return WidgetFun::getWidgetUserInfo(pNode, kUserString.kUserKey);
+		}
+		return kUserString.kUserValue;
+	}
+
+	void runPaoMaDeng(cocos2d::Node* pRootNode, std::string kTxtNode, std::string kLayoutNode, std::string kTxt, cocos2d::FiniteTimeAction* pNetAction)
+	{
+		cocos2d::Node* pTxt = WidgetFun::getChildWidget(pRootNode, kTxtNode);
+		cocos2d::Node* pLayoutNode = WidgetFun::getChildWidget(pRootNode, kLayoutNode);
+		WidgetFun::setText(pTxt, kTxt);
+		float fMaxHeight = pLayoutNode->getContentSize().height;
+		float fMaxWidth = pLayoutNode->getContentSize().width;
+		float fTxtWidth = pTxt->getContentSize().width;
+		pTxt->setPosition(0, -fMaxHeight);
+		pTxt->stopAllActions();
+		pTxt->setVisible(true);
+		if (fMaxWidth > fTxtWidth)
+		{
+			cocos2d::CCAction * seq1 = cocos2d::CCSequence::create(
+				cocos2d::MoveTo::create(0.5f, cocos2d::Point(0, 0)),
+				cocos2d::CCDelayTime::create(6.0f),
+				cocos2d::MoveTo::create(0.5f, cocos2d::Point(0, fMaxHeight)),
+				CCVisibleAction::create(0.2f, false),
+				pNetAction,
+				NULL);
+			pTxt->runAction(seq1);
+		}
+		else
+		{
+			float fPosX = fMaxWidth - fTxtWidth - 10;
+			cocos2d::CCAction * seq1 = cocos2d::CCSequence::create(
+				cocos2d::MoveTo::create(0.5f, cocos2d::Point(0, 0)),
+				cocos2d::CCDelayTime::create(3.0f),
+				cocos2d::MoveTo::create(2.0f, cocos2d::Point(fPosX, 0)),
+				cocos2d::CCDelayTime::create(3.0f),
+				cocos2d::MoveTo::create(0.5f, cocos2d::Point(fPosX, fMaxHeight)),
+				CCVisibleAction::create(0.2f, false),
+				pNetAction,
+				NULL);
+			pTxt->runAction(seq1);
+		}
 	}
 }

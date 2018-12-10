@@ -1,9 +1,10 @@
 #include "SRLFSoundFun.h"
 #include "SimpleAudioEngine.h"
-#include "Game/Script/utility.h"
 #include "Game/Script/SoundFun.h"
 #include "SRLFGameLogic.h"
-#include "GameLib/Platform/PFDefine/df/types.h"
+#include "Platform/PFDefine/df/types.h"
+#include "UTILITY.h"
+
 namespace SRLFSoundFun
 {
 	static const std::string LG_PATH_SC = "GameSRLF/sound/";

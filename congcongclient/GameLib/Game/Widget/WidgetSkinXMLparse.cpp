@@ -1,18 +1,16 @@
 #include "WidgetSkinXMLparse.h"
-#include "Game/Script/utility.h"
-#include "Game/Script/ScriptData.h"
-#include "Game/Script/utility.h"
+#include "Tools/utilityWidget.h"
 #include "WidgetManager.h"
 #include "WidgetFun.h"
+#include "Game/Script/ScriptData.h"
 
-USING_NS_CC;
-
+ 
 WidgetSkinXMLparse::WidgetSkinXMLparse(  std::string xmlFileName)
 	:m_pActionInfos(NULL)
 {
 	SAXParser parser;
 	parser.setDelegator(this);
-	std::string kFullPath = utility::FullPath(xmlFileName);
+	std::string kFullPath = FullPath(xmlFileName);
 	parser.parse(kFullPath.c_str());
 }
 void WidgetSkinXMLparse::parseAction(std::string& elementName,std::map<std::string, std::string>& attributeDict)

@@ -1,5 +1,9 @@
 #include "UserScript.h"
-#include "Game/GameLib.h"
+#include "Game/Script/ScriptData.h"
+#include "Tools/utilityString.h"
+#include "Tools/utilityLog.h"
+
+using namespace script;
 
 FV_SINGLETON_STORAGE(UserScript);
 
@@ -20,7 +24,7 @@ void UserScript::onGPPublicNoticeResult(std::string kKey,int iError,const char* 
 {
 	if (iError)
 	{
-		utility::log(utility::toString("UserScript::onGPPublicNoticeResult:",kKey).c_str());
+		utility::filelog(utility::toString("UserScript::onGPPublicNoticeResult:",kKey).c_str());
 	}
 	else
 	{

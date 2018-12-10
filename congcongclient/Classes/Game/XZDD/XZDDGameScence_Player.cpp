@@ -1,6 +1,7 @@
 #include "XZDDGameScence.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 #include "XZDDPlayer.h"
+#include USERINFO
 
 XZDDPlayer* XZDDGameScence::getPlayerByChairID(int iChairID)
 {

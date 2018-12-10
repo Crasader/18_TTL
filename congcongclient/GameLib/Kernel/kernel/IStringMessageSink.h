@@ -1,7 +1,7 @@
 #ifndef _IStringMessageSink_H_
 #define _IStringMessageSink_H_
 
-#include "Platform/PlatformHeader.h"
+#include "Platform/PFDefine/df/types.h"
 
 //信息接口
 class IStringMessageSink

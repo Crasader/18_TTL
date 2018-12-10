@@ -1,10 +1,12 @@
 #pragma once
 #ifndef __BTN_TURN_H__
 #define __BTN_TURN_H__
-#include "cocos2d.h"
-#include "GameLib/Platform/PFDefine/data/ServerListData.h"
-#include "GameLib/Game/FV/FvSingleton.h"
-USING_NS_CC;
+
+#include "common.h"
+
+#include "Platform/PFDefine/data/ServerListData.h"
+#include "Game/FV/FvSingleton.h"
+ 
 enum BtnPos  
 {  
     Pos_Bottom = 1,  

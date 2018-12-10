@@ -1,13 +1,11 @@
 #include "WidgetScenceXmlParse.h"
-#include "Game/Script/utility.h"
-#include "Game/Script/ScriptData.h"
-#include "Game/Script/utility.h"
+
+#include "WidgetFun.h"
 #include "WidgetManager.h"
 #include "WidgetSkinXMLparse.h"
 #include "Game/Script/SoundFun.h"
-#include "WidgetFun.h"
+#include "Tools/utilityString.h"
 
-USING_NS_CC;
 
 WidgetScenceXMLparse::WidgetScenceXMLparse(  std::string xmlFileName,cocos2d::Node* pNode)
 {
@@ -20,7 +18,7 @@ WidgetScenceXMLparse::WidgetScenceXMLparse(  std::string xmlFileName,cocos2d::No
  
 	SAXParser parser;
 	parser.setDelegator(this);
-	std::string kFullPath = utility::FullPath(xmlFileName);
+	std::string kFullPath = cocos2d::FileUtils::getInstance()->fullPathForFilename(xmlFileName);
 	parser.parse(kFullPath.c_str());
 }
 

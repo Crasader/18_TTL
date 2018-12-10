@@ -1,10 +1,20 @@
+#include <external/tinyxml2/tinyxml2.h>
+
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
+
 #include "PayMananger.h"
-#include "Game/GameLib.h"
+#include "JniCross/JniFun.h"
+
 #include "Game/Widget/SliderMenu.h"
-#include "external/tinyxml2/tinyxml2.h"
-#include "GameLib/GameNet/MCWebReq.h"
+#include "Game/Script/ScriptData.h"
+#include "Game/Game/NoticeMsg.h"
+#include "Game/Game/UserInfo.h"
+#include "GameNet/MCWebReq.h"
+
 #include "Tools/core/MD5.h"
-#include "GameLib/JniCross/JniFun.h"
+#include "Tools/utilityString.h"
+
+using namespace script;
 
 FV_SINGLETON_STORAGE(PayMananger);
 
@@ -259,7 +269,7 @@ void PayMananger::jni_WeiXinResoult(std::string kErrorCode)
 		kUpShoperID.mch_id = m_kWeiXinPayInfo.mch_id;
 		kUpShoperID.prepay_id = m_kWeiXinPrepay_id;
 		kUpShoperID.total_fee = utility::parseInt(m_kWeiXinPayInfo.total_fee);
-		m_kShopInfoMission.UpShopOder(kUpShoperID);
+		m_kShopInfoMission.UpShopOder(&kUpShoperID);
 	}
 	clearItem();
 }

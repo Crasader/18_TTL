@@ -1,6 +1,10 @@
 #include "CGPIndividualMission.h"
+
 #include "Kernel/kernel/server/IServerItem.h"
-#include "Game/Game//UserInfo.h"
+#include "Game/Game/UserInfo.h"
+#include "Tools/utilityConvert.h"
+#include "Platform/PFDefine/df/PacketAide.h"
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -402,7 +406,6 @@ void CGPIndividualMission::onSubSpreaderResoult(void* data, int size)
 	if (pOperateSuccess->lResultCode == 0)
 	{
 		pGlobalUserData->dwSpreaderID = pOperateSuccess->lScore;
-
 		pGlobalUserInfo->upPlayerInfo();
 	}
 	//关闭连接

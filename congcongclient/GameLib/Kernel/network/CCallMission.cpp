@@ -1,5 +1,8 @@
+#include <cocos2d.h>
+
 #include "CCallMission.h"
-#include "Game/Script/utility.h"
+#include "Tools/utilityLog.h"
+#include "Tools/utilityString.h"
 
 CCallMission::CCallMission(std::string kName,const char* url, int port)
 	:CSocketMission(url,port)
@@ -64,7 +67,7 @@ void CCallMission::onEventTCPSocketShut()
 }
 void CCallMission::onEventTCPSocketError(int errorCode)
 {
-	utility::log(utility::toString(m_kClassName,":onEventTCPSocketShut errorCode=", errorCode).c_str());
+	utility::filelog(utility::toString(m_kClassName,":onEventTCPSocketShut errorCode=", errorCode).c_str());
 
 	if (m_kLinkCallFun.size())
 	{
@@ -73,7 +76,7 @@ void CCallMission::onEventTCPSocketError(int errorCode)
 }
 bool CCallMission::onEventTCPSocketRead(int main, int sub, void* data, int dataSize)
 {
-	utility::log(utility::toString(m_kClassName,":onEventTCPSocketRead main =", main, ", sub=", sub).c_str());
+	utility::filelog(utility::toString(m_kClassName,":onEventTCPSocketRead main =", main, ", sub=", sub).c_str());
 
 	for (int i = 0;i<(int)m_kNetCallFun.size();i++)
 	{

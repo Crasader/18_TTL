@@ -1,8 +1,9 @@
 #include "WZQDGameScence.h"
 #include "WZQDPlayer.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 #include "CMD_WZQ.h"
 #include "WZQDPlayer.h"
+#include UTILITY_WIDGET
 
 class WZQTouchScence
 	:public cocos2d::CCLayer
@@ -146,7 +147,7 @@ void WZQDGameScence::ccTouchEnded(cocos2d::Vec2 kPos)
 //
 //void XZDDGameScence::onHuanPaiTouchEvent(cocos2d::Vec2 kPos)//ªª≈∆√¸¡Ó
 //{
-//	std::vector<BYTE> kCardDataList;
+//	std::vector<byte> kCardDataList;
 //	int nColor = m_pLocal->getUpCardList(kCardDataList);
 //	int nUpCardNum = kCardDataList.size();
 //

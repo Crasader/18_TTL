@@ -1,5 +1,5 @@
 #include "CGPublicNoticMission.h"
-#include "Game/Script/ScriptData.h"
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
 
 CGPublicNoticMission::CGPublicNoticMission(const char* url, int port)
 : CCallMission("CGPublicNoticMission",url, port)

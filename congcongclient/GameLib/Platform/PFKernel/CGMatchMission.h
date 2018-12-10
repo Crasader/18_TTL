@@ -1,10 +1,15 @@
 #pragma once
-#include "cocos2d.h"
-#include "Platform/PlatformHeader.h"
+#include <cocos2d.h>
+
 #include "Kernel/network/CSocketMission.h"
 #include "Kernel/network/CCallMission.h"
 
 //////////////////////////////////////////////////////////////////////////
+
+#include "Platform/PFDefine/df/struct.h"
+
+struct tagGameMatch;
+struct CMD_GR_MatchAwardList;
 
 class ICGMatchMissionSink
 {

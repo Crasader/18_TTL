@@ -1,10 +1,14 @@
 #include "XZDDGameScence.h"
-#include "Game/GameLib.h"
-#include "GameLib/Game/FV/FvMask.h"
+#include "GAME.h"
+#include "Game/FV/FvMask.h"
 
 #include "CMD_XZDD.h"
 #include "XZDDPlayer.h"
 #include "XZDDGameLogic.h"
+#include USERINFO
+#include UTILITY_LOG
+#include UTILITY_STRING
+#include UTILITY_CONVERT
 
 void XZDDGameScence::initNet()
 {
@@ -50,8 +54,8 @@ void XZDDGameScence::OnSubGameStart(const void * pBuffer, word wDataSize)
 	m_nLeftTime = pGameStart->nLeftTime;
 
 	word wSice2 = word(pGameStart->lSiceCount);
-	BYTE SiceFirst = (wSice2 >> 8);
-	BYTE SiceSecond = (wSice2);
+	byte SiceFirst = (wSice2 >> 8);
+	byte SiceSecond = (wSice2);
 
 	int m  = 0;
 
@@ -90,7 +94,7 @@ void XZDDGameScence::OnSubGameStart(const void * pBuffer, word wDataSize)
 	updataPlayerZhuangState();
 }
 //用户出牌
-void XZDDGameScence::OnSubOutCard(const void * pBuffer, WORD wDataSize)
+void XZDDGameScence::OnSubOutCard(const void * pBuffer, word wDataSize)
 {
 	//效验消息
 	ASSERT(wDataSize == sizeof(XZDD::CMD_S_OutCard));
@@ -126,7 +130,7 @@ void XZDDGameScence::OnSubOutCard(const void * pBuffer, WORD wDataSize)
 	WidgetFun::setVisible(this,"SelfActionNode",false);
 }
 //发牌消息
-void XZDDGameScence::OnSubSendCard(const void * pBuffer, WORD wDataSize)
+void XZDDGameScence::OnSubSendCard(const void * pBuffer, word wDataSize)
 {
 	Node* p_node = pnode->getChildByTag(paitag);
 	if(NULL == p_node) return;
@@ -177,7 +181,7 @@ void XZDDGameScence::OnSubSendCard(const void * pBuffer, WORD wDataSize)
 	//showClock(pSendCard->nLeftTime);
 }
 //操作提示
-void XZDDGameScence::OnSubOperateNotify(const void * pBuffer, WORD wDataSize)
+void XZDDGameScence::OnSubOperateNotify(const void * pBuffer, word wDataSize)
 {
 	//效验数据
 	ASSERT(wDataSize == sizeof(XZDD::CMD_S_OperateNotify));
@@ -208,7 +212,7 @@ void XZDDGameScence::OnSubOperateNotify(const void * pBuffer, WORD wDataSize)
 	//showClock(12);
 }
 //操作结果
-void XZDDGameScence::OnSubOperateResult(const void * pBuffer, WORD wDataSize)
+void XZDDGameScence::OnSubOperateResult(const void * pBuffer, word wDataSize)
 {
 	//效验消息
 	ASSERT(wDataSize == sizeof(XZDD::CMD_S_OperateResult));
@@ -235,7 +239,7 @@ void XZDDGameScence::OnSubOperateResult(const void * pBuffer, WORD wDataSize)
 	WidgetFun::setVisible(this, "SelfActionNode", false);
 }
 //游戏结束
-void XZDDGameScence::OnSubGameEnd(const void * pBuffer, WORD wDataSize)
+void XZDDGameScence::OnSubGameEnd(const void * pBuffer, word wDataSize)
 {
 	m_nGameState = XZDD_STATE_NULL;
 
@@ -290,9 +294,9 @@ void XZDDGameScence::OnSubGameEnd(const void * pBuffer, WORD wDataSize)
 			XZDDPlayer* pPlayer = getPlayerByChairID(i);
 			if(pPlayer == NULL)continue;
 			auto vCardsList = kEndInfo.kGameEndCardsList[i].cbCardsList;
-			BYTE cbCardData[MAX_COUNT];
+			byte cbCardData[MAX_COUNT];
 			memset(cbCardData,0,sizeof(cbCardData));
-			BYTE index=0;
+			byte index=0;
 			for (auto itor =vCardsList.begin();itor!=vCardsList.end();itor++ )
 			{
 				cbCardData[index++] = *itor;
@@ -335,7 +339,7 @@ void XZDDGameScence::showJieSuanInfo(const XZDD::AllEndInfo& kEndInfo)
 	
 }
 //用户托管
-void XZDDGameScence::OnSubTrustee(const void * pBuffer, WORD wDataSize)
+void XZDDGameScence::OnSubTrustee(const void * pBuffer, word wDataSize)
 {
 	//效验数据
 	ASSERT(wDataSize == sizeof(XZDD::CMD_S_Trustee));
@@ -346,7 +350,7 @@ void XZDDGameScence::OnSubTrustee(const void * pBuffer, WORD wDataSize)
 	XZDD::CMD_S_Trustee * pTrustee = (XZDD::CMD_S_Trustee *)pBuffer;
 }
 //
-void XZDDGameScence::OnSubUserChiHu(const void *pBuffer, WORD wDataSize)//持牌胡牌逻辑
+void XZDDGameScence::OnSubUserChiHu(const void *pBuffer, word wDataSize)//持牌胡牌逻辑
 {
 	datastream kStream(const_cast<void *>(pBuffer), wDataSize);
 	XZDD::CMD_S_ChiHu kChiHu;
@@ -378,7 +382,7 @@ void XZDDGameScence::OnSubUserChiHu(const void *pBuffer, WORD wDataSize)//持牌胡
 	}
 }
 //
-void XZDDGameScence::OnSubGangScore(const void *pBuffer, WORD wDataSize)
+void XZDDGameScence::OnSubGangScore(const void *pBuffer, word wDataSize)
 {
 	datastream kStream(const_cast<void *>(pBuffer), wDataSize);
 	XZDD::CMD_S_GangScore kGangScore;
@@ -396,7 +400,7 @@ void XZDDGameScence::OnSubGangScore(const void *pBuffer, WORD wDataSize)
 	}
 }
 
-void XZDDGameScence::OnSubHuanPai(const void *pBuffer, WORD wDataSize)
+void XZDDGameScence::OnSubHuanPai(const void *pBuffer, word wDataSize)
 {
 	return;
 	//效验消息
@@ -410,7 +414,7 @@ void XZDDGameScence::OnSubHuanPai(const void *pBuffer, WORD wDataSize)
 	}
 	WidgetFun::setVisible(this, "ExchangeCardNode", false);
 }
-void XZDDGameScence::OnSubHuanPaiChengDu(const void *pBuffer, WORD wDataSize)
+void XZDDGameScence::OnSubHuanPaiChengDu(const void *pBuffer, word wDataSize)
 {
 	//效验消息
 	ASSERT(wDataSize == sizeof(XZDD::CMD_S_HuanPaiChengDu));
@@ -419,8 +423,8 @@ void XZDDGameScence::OnSubHuanPaiChengDu(const void *pBuffer, WORD wDataSize)
 	XZDD::CMD_S_HuanPaiChengDu* pHuanPai = (XZDD::CMD_S_HuanPaiChengDu*)pBuffer;
 
 	showSaiZi_HuanPai(pHuanPai->wSice);
-	BYTE SiceFirst = (pHuanPai->wSice >> 8);
-	BYTE SiceSecond = (pHuanPai->wSice);
+	byte SiceFirst = (pHuanPai->wSice >> 8);
+	byte SiceSecond = (pHuanPai->wSice);
 	int nModel = (SiceFirst + SiceSecond)%GAME_PLAYER;
 	if (nModel == 0)
 	{
@@ -443,7 +447,7 @@ void XZDDGameScence::OnSubHuanPaiChengDu(const void *pBuffer, WORD wDataSize)
 	WidgetFun::setVisible(this, "ExchangeCardNode", false);
 }
 
-void XZDDGameScence::OnSubXuanQueNotice(const void *pBuffer, WORD wDataSize)
+void XZDDGameScence::OnSubXuanQueNotice(const void *pBuffer, word wDataSize)
 {
 	//效验消息
 	ASSERT(wDataSize == sizeof(XZDD::CMD_S_XuanQueNotice));
@@ -459,7 +463,7 @@ void XZDDGameScence::OnSubXuanQueNotice(const void *pBuffer, WORD wDataSize)
 	//TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(XZDDGameScence::DoXuanQueNotice, this), 12.f);
 }
 
-void XZDDGameScence::OnSubXuanQue(const void *pBuffer, WORD wDataSize)//缺牌消息
+void XZDDGameScence::OnSubXuanQue(const void *pBuffer, word wDataSize)//缺牌消息
 {
 	//效验消息
 	ASSERT(wDataSize == sizeof(XZDD::CMD_S_XuanQue));
@@ -480,14 +484,14 @@ void XZDDGameScence::OnSubXuanQue(const void *pBuffer, WORD wDataSize)//缺牌消息
 
 }
 
-void XZDDGameScence::OnSubHuanPaiNotice(const void *pBuffer, WORD wDataSize)
+void XZDDGameScence::OnSubHuanPaiNotice(const void *pBuffer, word wDataSize)
 {
 	WidgetFun::setVisible(this, "ExchangeCardNode", true);
 	m_nGameState = XZDD_STATE_HUANPAI;
 	showHuanPai();
 }
 
-void XZDDGameScence::OnSubTimerNotice(const void *pBuffer, WORD wDataSize)
+void XZDDGameScence::OnSubTimerNotice(const void *pBuffer, word wDataSize)
 {
 	//效验消息
 	ASSERT(wDataSize == sizeof(XZDD::CMD_S_LeftTimer));

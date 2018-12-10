@@ -1,8 +1,9 @@
 #include <iostream>   
 #include <map>
-#include "cocos2d.h"
+#include <cocos2d.h>
 #include "Socket.h"
-#include "Platform/PlatformHeader.h"
+
+using namespace gamelib;
 
 CSocket::CSocket()
 	: mSocketSink(0)
@@ -20,7 +21,7 @@ void CSocket::setSocketSink(ISocketSink* pISocketSink)
 
 bool CSocket::isAlive()
 {
-	return cocos2d::MLClientNetDelegate::isConnected();
+	return gamelib::MLClientNetDelegate::isConnected();
 }
 
 int CSocket::send(const char* data, int size)
@@ -28,7 +29,7 @@ int CSocket::send(const char* data, int size)
 	if (!isAlive())
 		return -1;
 
-	cocos2d::MLClientNetDelegate::send(data,size);
+	gamelib::MLClientNetDelegate::send(data,size);
 	return 1;
 }
 
@@ -38,7 +39,7 @@ int CSocket::connect(const char* url, int port)
 	m_oInetAddress.setIp(url);
 	m_oInetAddress.setPort(port);
 
-	cocos2d::MLClientNetDelegate::connect();
+	gamelib::MLClientNetDelegate::connect();
 	return 0;
 }
 
@@ -46,7 +47,7 @@ void CSocket::disconnect()
 {
 	if (!isAlive())
 		return;
-	cocos2d::MLClientNetDelegate::disconnect();
+	gamelib::MLClientNetDelegate::disconnect();
 }
 
 //////////////////////////////////////////////////////////////////////////

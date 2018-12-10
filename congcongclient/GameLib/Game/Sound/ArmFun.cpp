@@ -16,7 +16,7 @@
 * and limitations under the License.
 * -------------------------------------------------------------------
 */
-#include "cocos2d.h"
+#include <cocos2d.h>
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>

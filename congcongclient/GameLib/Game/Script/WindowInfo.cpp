@@ -1,12 +1,15 @@
 #include "WindowInfo.h"
 #include "Game/Script/ScriptData.h"
 
+using namespace script;
+ 
 FV_SINGLETON_STORAGE(WindowInfo);
 
 WindowInfo::WindowInfo()
 {
 	init();
 }
+
 WindowInfo::~WindowInfo(void)
 {
 }

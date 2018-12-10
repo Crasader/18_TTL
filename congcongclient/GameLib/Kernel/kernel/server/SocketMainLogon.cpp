@@ -1,4 +1,7 @@
+#include <cocos2d.h>
 #include "Kernel/kernel/server/CServerItem.h"
+#include "Platform/PFDefine/msg/CMD_GameServer.h"
+
 //登录消息
 bool CServerItem::OnSocketMainLogon(int sub, void* data, int dataSize)
 {

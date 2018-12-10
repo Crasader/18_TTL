@@ -1,13 +1,15 @@
 #include "XZDDGameScence.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 #include "JniCross/JniFun.h"
 
 #include "CMD_XZDD.h"
 #include "XZDDPlayer.h"
 #include "XZDDGameLogic.h"
 #include "XZDDSoundFun.h"
-#include "GamePlaza/HomeScene/MallPanel/GPHomeMallPanel.h"				//新加
-#include "GamePlaza/HomeScene/SettingPanel/GPHomeSettingPanel.h"		//新加
+#include "Plaza/HomeScene/GPHomeMallPanel.h"				//新加
+#include "Plaza/HomeScene/GPHomeSettingPanel.h"		//新加
+
+#include UTILITY_LOG
 
 void XZDDGameScence::initButton()
 {
@@ -190,7 +192,7 @@ void XZDDGameScence::XZDDButton_OkChoice(cocos2d::Ref*,WidgetUserInfo*)
 		return;
 	}
 
-	utility::log(utility::toString("XZDDGameScence::XZDDButton_OkChoice",
+	utility::filelog(utility::toString("XZDDGameScence::XZDDButton_OkChoice",
 		(int)kInfo.cbHuanCard[0],
 		" ",(int)kInfo.cbHuanCard[1]," "
 		,(int)kInfo.cbHuanCard[2]).c_str());

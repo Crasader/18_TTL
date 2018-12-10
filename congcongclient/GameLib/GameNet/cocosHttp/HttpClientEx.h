@@ -30,7 +30,7 @@
 #include "HttpRequestEx.h"
 #include "HttpResponseEx.h"
 
-NS_CC_BEGIN
+namespace gamelib{
 
 namespace network {
     
@@ -121,6 +121,6 @@ namespace network {
     
 }
 
-NS_CC_END
+}
 
 #endif //__CCHTTPREQUEST_H__

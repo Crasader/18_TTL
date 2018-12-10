@@ -1,9 +1,10 @@
 #include "GameBase.h"
+
 #include "GamePlayer.h"
-
-#include "Game/GameLib.h"
-
+#include "Tools/utilityMath.h"
 #include "Kernel/kernel/server/IServerItem.h"
+#include "Platform/PFDefine/df/Define.h"
+#include "Platform/PFDefine/df/DF.h"
 
 GamePlayer* GameBase::getPoolPlayer(IClientUserItem * pIClientUserItem)
 {
@@ -86,7 +87,7 @@ GamePlayer* GameBase::getPlayerByUserID( dword wUserID )
 void GameBase::addGamePlayerToList(GamePlayer* pPlayer)
 {
 	CCAssert(pPlayer->getUserItem(),"");
-	if (!haveInVectorByValue(m_kPlayers,pPlayer))
+	if (!utility::haveInVectorByValue(m_kPlayers,pPlayer))
 	{
 		m_kPlayers.push_back(pPlayer);
 	}
@@ -103,7 +104,7 @@ void GameBase::removeGamePlayerToList(GamePlayer* pPlayer)
 	{
 		m_pSelfPlayer = NULL;
 	}
-	removeVectorByValue(m_kPlayers,pPlayer);
+	utility::removeVectorByValue(m_kPlayers,pPlayer);
 	pPlayer->PlayerLeave();
 	pPlayer->setUserItem(NULL);
 }

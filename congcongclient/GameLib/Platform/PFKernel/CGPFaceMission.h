@@ -1,7 +1,8 @@
 #pragma once
-#include "cocos2d.h"
-#include "Platform/PlatformHeader.h"
+#include <cocos2d.h>
 #include "Kernel/network/CSocketMission.h"
+#include "Platform/PFDefine/df/Define.h"
+#include "Platform/PFDefine/df/types.h"
 
 #define MISSION_FACE_NULL			0
 #define MISSION_FACE_SYSTEM			1

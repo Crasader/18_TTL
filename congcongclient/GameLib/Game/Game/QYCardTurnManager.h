@@ -1,11 +1,12 @@
 #pragma once
 
-#include "cocos2d.h"
+#include <cocos2d.h>
+
 #include "Game/FV/FvSingleton.h"
-#include "GameLib/Game/GameLib.h"
 #include "Game/Widget/QYPageTurn3D.h"
 
 class QYCardTurn;
+struct WidgetUserInfo;
 
 class QYCardTurnManager
 	:public cocos2d::Layer

@@ -1,7 +1,6 @@
 #ifndef _ITableViewFrame_H_
 #define _ITableViewFrame_H_
 
-#include "Platform/PlatformHeader.h"
 #include "Kernel/kernel/user/IClientUserItem.h"
 
 class ITableViewFrame;

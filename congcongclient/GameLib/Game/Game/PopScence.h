@@ -1,7 +1,8 @@
 #pragma once
-#include "cocos2d.h"
+#include <cocos2d.h>
 
-#include "Game/GameLib.h"
+#include "Game/FV/FvSingleton.h"
+#include "Game/Widget/WidgetDefine.h"
 
 class PopScence
 	:public cocos2d::Node

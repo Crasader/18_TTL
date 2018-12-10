@@ -27,7 +27,7 @@ THE SOFTWARE.
 #include "MLClientNetDelegate.h"
 #include "Game/Game/GameManagerBase.h"
 
-NS_CC_BEGIN
+namespace gamelib{
 
 MLClientNetDelegate::MLClientNetDelegate()
 : m_fSoTimeout(SOCKET_SOTIMEOUT)
@@ -232,4 +232,4 @@ bool MLClientNetDelegate::runWrite()
 	return false;
 }
 
-NS_CC_END
+}

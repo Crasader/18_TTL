@@ -1,7 +1,12 @@
 #pragma once
-#include "cocos2d.h"
-#include "Platform/PlatformHeader.h"
+#include <cocos2d.h>
+
 #include "Kernel/network/CCallMission.h"
+#include "Platform/PFDefine/df/types.h"
+
+struct CMD_GP_PopularizeListRes;
+struct CMD_GP_PopularizeBindRes;
+struct CMD_GP_PopularizeHttpRes;
 
 class CGPopularizeSink
 {
@@ -22,8 +27,8 @@ public:
 	void setMissionSink(CGPopularizeSink* sink);
 
 public:
-	void GetPopularizeList(BYTE bPopularizeType, DWORD gameKindID);
-	void CB_GetPopularizeList(BYTE bPopularizeType, DWORD gameKindID);
+	void GetPopularizeList(byte bPopularizeType, dword gameKindID);
+	void CB_GetPopularizeList(byte bPopularizeType, dword gameKindID);
 	void Net_GetPopularizeList(void* data, int dataSize);
 
 	void PopularizeBind(std::string popularizeCode);

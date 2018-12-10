@@ -1,8 +1,7 @@
 #include "AnimationWidget.h"
-#include "Game/Script/utility.h"
+#include "Tools/utilityString.h"
 #include "WidgetFun.h"
-USING_NS_CC;
-
+ 
 AnimationWidget::AnimationWidget()
 	:m_fFrameTime(1/60.f)
 	,m_bIsLoop(true)

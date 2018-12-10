@@ -1,6 +1,7 @@
 #include "SRLFGameScence.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 #include "SRLFPlayer.h"
+#include USERINFO
 
 SRLFPlayer* SRLFGameScence::getPlayerByChairID(int iChairID)
 {

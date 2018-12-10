@@ -1,4 +1,10 @@
+#include <cocos2d.h>
+
 #include "Kernel/kernel/server/CServerItem.h"
+#include "Platform/PFDefine/data/GlobalUserInfo.h"
+#include "Platform/PFDefine/data/GlobalUnits.h"
+#include "Platform/PFDefine/msg/CMD_GameServer.h"
+
 IRoomFrameSink* IRoomFrameSink::getInterface()
 {
 	return (IRoomFrameSink*)IServerItem::get();

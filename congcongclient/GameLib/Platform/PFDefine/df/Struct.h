@@ -3,10 +3,17 @@
 
 #include "Platform/PFDefine/df/types.h"
 #include "Platform/PFDefine/df/Define.h"
+
 //////////////////////////////////////////////////////////////////////////////////
 //游戏列表
 #pragma pack(1)
 
+enum UserSex
+{
+	US_Femal = 0,
+	US_Male = 1,
+	US_UnKnow = 2,
+};
 
 struct systemtime {
 	word wYear;
@@ -89,7 +96,7 @@ struct tagGameServer
 	word							wNodeID;							//节点索引
 	word							wSortID;							//排序索引
 	word							wServerID;							//房间索引
-	//WORD                            wServerKind;                        //房间类型
+	//word                            wServerKind;                        //房间类型
 	word							wServerType;						//房间类型
 	word							wServerPort;						//房间端口
 	SCORE							lCellScore;							//单元积分

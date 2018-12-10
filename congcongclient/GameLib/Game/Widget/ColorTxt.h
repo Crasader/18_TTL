@@ -1,9 +1,12 @@
 ﻿#pragma once
 
-#include "cocos2d.h"
+#include <cocos2d.h>
 #include <vector>
 
-NS_CC_BEGIN;
+USING_NS_CC;
+
+namespace widget
+{
 
 class ColorTxt
 	: public Node
@@ -51,4 +54,4 @@ protected:
 	std::vector<std::vector<Node*>> m_pRichTextAtlas;
 };
 
-NS_CC_END;
+}

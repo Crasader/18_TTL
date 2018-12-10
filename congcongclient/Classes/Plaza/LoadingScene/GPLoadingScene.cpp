@@ -1,12 +1,9 @@
 #include "GPLoadingScene.h"
-#include "Game/Script/ScriptData.h"
-#include "Game/Script/WindowInfo.h"
-#include "Game/Script/ScriptXMLparse.h"
-#include "Game/Widget/WidgetSkinXMLparse.h"
-#include "../GPSceneManager.h"
 
-USING_NS_CC;
-using namespace experimental;
+#include "../Gamemanager/GPSceneManager.h"
+
+ 
+ 
 
 CCScene* GPLoadingScene::scene()
 {
@@ -46,8 +43,8 @@ bool GPLoadingScene::init_2()
     }
 
 	WidgetSkinXMLparse kSkinXml1("Script/HNWidgetSkin.xml");
-	cocos2d::ScriptXMLparse kScriptXml1("Script/HNScriptValue.xml");
-	cocos2d::ScriptXMLparse kScriptXml2("Script/HNScriptValueStr.xml");
+	script::ScriptXMLparse kScriptXml1("Script/HNScriptValue.xml");
+	script::ScriptXMLparse kScriptXml2("Script/HNScriptValueStr.xml");
 	//cocos2d::ScriptXMLparse kScriptXml3("Script/HNScriptValueSame.xml");
 
     this->scheduleUpdate();
@@ -55,7 +52,7 @@ bool GPLoadingScene::init_2()
     this->setTouchMode(Touch::DispatchMode::ALL_AT_ONCE);
 
 	GPSceneManager::Instance().setParent(this);
-	WindowInfo::Instance().changWinSize(GPSceneManager::Instance().getRootNode());
+	script::WindowInfo::Instance().changWinSize(GPSceneManager::Instance().getRootNode());
 
 	GPSceneManager::pInstance()->init();
 

@@ -1,5 +1,8 @@
 #include "CGPFaceMission.h"
 
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
+#include "Platform/PFDefine/data/GlobalUserInfo.h"
+
 CGPFaceMission::CGPFaceMission(const char* url, int port)
 : CSocketMission(url, port)
 {
@@ -131,6 +134,7 @@ bool CGPFaceMission::onSubUserFaceInfo(void* data, int size)
 	CGlobalUserInfo * pGlobalUserInfo=CGlobalUserInfo::GetInstance();
 	tagGlobalUserData * pGlobalUserData=pGlobalUserInfo->GetGlobalUserData();
 	
+	stop();
 
 	return true;
 

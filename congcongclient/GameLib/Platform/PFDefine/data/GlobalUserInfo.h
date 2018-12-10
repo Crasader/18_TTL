@@ -6,7 +6,6 @@
 #include "Platform/PFDefine/df/Define.h"
 #include "Platform/PFDefine/df/types.h"
 #include "Platform/PFDefine/df/Struct.h"
-#include "Platform/PFDefine/msg/CMD_LogonServer.h"
 
 //////////////////////////////////////////////////////////////////////////////////
 //结构定义

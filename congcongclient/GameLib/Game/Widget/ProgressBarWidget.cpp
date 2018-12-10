@@ -1,9 +1,8 @@
 #include "ProgressBarWidget.h"
-#include "Game/Script/UtilityBase.h"
+#include "Tools/utilityString.h"
 #include "Game/Widget/WidgetFun.h"
-USING_NS_CC;
 
-ProgressBarWidget::ProgressBarWidget(std::string kBackImg,std::string kBarImg)
+ ProgressBarWidget::ProgressBarWidget(std::string kBackImg,std::string kBarImg)
 	:m_pBgImage(WidgetFun::createSprite(kBackImg.c_str()))
 	,m_pBarImage(WidgetFun::createSprite(kBarImg.c_str()))
 	,m_pText(NULL)

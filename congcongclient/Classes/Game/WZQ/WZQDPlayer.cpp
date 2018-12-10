@@ -1,7 +1,7 @@
 #include "WZQDPlayer.h"
 #include "WZQDSoundFun.h"
 #include "WZQDGameScence.h"
-
+#include IMAGE_DOWN
 
 WZQDPlayer::WZQDPlayer(int iIdex,cocos2d::Node* pSeatNode )
 	:GamePlayer(NULL)
@@ -162,12 +162,12 @@ void WZQDPlayer::showTalkState(CMD_GR_C_TableTalk* pNetInfo)//显示对话
 		{
 			return;
 		}
-		utility::runPaoMaDeng(m_pSeatNode,"TalkTxt","LayoutNode",
+		WidgetFun::runPaoMaDeng(m_pSeatNode,"TalkTxt","LayoutNode",
 			kStrNet,NULL);
 		cocos2d::Node* pTalkNode = WidgetFun::getChildWidget(m_pSeatNode,"TalkTxtNode");
 		pTalkNode->setVisible(true);
 		pTalkNode->stopAllActions();
-		pTalkNode->runAction(cocos2d::CCVisibleAction::create(6.0f,false));
+		pTalkNode->runAction(script::CCVisibleAction::create(6.0f,false));
 	}
 	if (pNetInfo->cbType == CMD_GR_C_TableTalk::TYPE_BIAOQING)
 	{
@@ -179,7 +179,7 @@ void WZQDPlayer::showTalkState(CMD_GR_C_TableTalk* pNetInfo)//显示对话
 		cocos2d::Node* pTalkNode = WidgetFun::getChildWidget(m_pSeatNode,"BiaoQingNode");
 		pTalkNode->setVisible(true);
 		pTalkNode->stopAllActions();
-		pTalkNode->runAction(cocos2d::CCVisibleAction::create(4.0f,false));
+		pTalkNode->runAction(script::CCVisibleAction::create(4.0f,false));
 	}
 	if (pNetInfo->cbType == CMD_GR_C_TableTalk::TYPE_DEFINE)
 	{
@@ -194,12 +194,12 @@ void WZQDPlayer::showTalkState(CMD_GR_C_TableTalk* pNetInfo)//显示对话
 		WidgetFun::runWidgetAction(m_pSeatNode,"TalkFile","Start");
 		SoundFun::Instance().playEffect(kStr[0]);
 
-		utility::runPaoMaDeng(m_pSeatNode,"TalkTxt","LayoutNode",
+		WidgetFun::runPaoMaDeng(m_pSeatNode,"TalkTxt","LayoutNode",
 			kStr[1],NULL);
 		cocos2d::Node* pTalkNode = WidgetFun::getChildWidget(m_pSeatNode,"TalkTxtNode");
 		pTalkNode->setVisible(true);
 		pTalkNode->stopAllActions();
-		pTalkNode->runAction(cocos2d::CCVisibleAction::create(6.0f,false));
+		pTalkNode->runAction(script::CCVisibleAction::create(6.0f,false));
 
 	}
 }

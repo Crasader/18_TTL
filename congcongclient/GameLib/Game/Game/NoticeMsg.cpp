@@ -1,10 +1,15 @@
 #include "NoticeMsg.h"
-#include "Game/GameLib.h"
 
-USING_NS_CC;
+#include "Game/Widget/WidgetScenceXMLparse.h"
+#include "Game/Widget/WidgetSkinXMLparse.h"
+#include "Game/Widget/WidgetFun.h"
+#include "Game/Script/ActionEx.h"
+#include "Game/Script/ScriptData.h"
+
+using namespace widget;
+using namespace script;
 
 FV_SINGLETON_STORAGE(NoticeMsg);
-
 
 NoticeMsg::NoticeMsg()
 	:m_SystemMsg("")
@@ -25,7 +30,7 @@ bool NoticeMsg::init()
 	return true;
 }
 
-
+//////////////////////////////////////////////////////////////////////////
 
 void NoticeMsg::ShowNoticeMsg(std::string kText )
 {
@@ -52,7 +57,7 @@ void NoticeMsg::ShowNoticeAction(cocos2d::Node* pNode)
 		action1, 
 		DelayTime::create(3.0f), 
 		action2,
-		cocos2d::CCVisibleAction::create(0,false),
+		CCVisibleAction::create(0,false),
 		NULL);
 	pNode->stopAllActions();
 	pNode->runAction( seq1 );
@@ -70,7 +75,7 @@ void NoticeMsg::ShowTopMsg(std::string kText)
 		action1, 
 		DelayTime::create(3.0f), 
 		action2,
-		cocos2d::CCVisibleAction::create(0,false),
+		CCVisibleAction::create(0,false),
 		NULL);
 	pNode->stopAllActions();
 	pNode->runAction( seq1 );
@@ -96,7 +101,7 @@ void NoticeMsg::showWait(float fShowTime)
 	cocos2d::Node* pNode = WidgetFun::getChildWidget(this,"WaitePlane");
 	pNode->setVisible(true);
 	pNode->stopAllActions();
-	pNode->runAction(cocos2d::CCVisibleAction::create(fShowTime,false));
+	pNode->runAction(CCVisibleAction::create(fShowTime,false));
 }
 
 void NoticeMsg::setSystemMessage(char* sysMsg)

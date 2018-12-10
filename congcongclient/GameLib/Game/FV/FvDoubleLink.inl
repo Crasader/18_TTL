@@ -119,7 +119,7 @@ void FvDoubleLink<T, TNode>::_PushAfter(Node& qPreNode, Node& qNewNode)
 	qPreNode.m_Next = &qNewNode;
 	qNewNode.m_Next = pNext;
 	qNewNode.m_Pre = &qPreNode;
-	FV_ASSERT(pNext);
+	ASSERT(pNext);
 	pNext->m_Pre = &qNewNode;
 }
 template <class T, template<class> class TNode>
@@ -129,7 +129,7 @@ void FvDoubleLink<T, TNode>::_PushBefore(Node& qNextNode, Node& qNewNode)
 	qNextNode.m_Pre = &qNewNode;
 	qNewNode.m_Pre = pPre;
 	qNewNode.m_Next = &qNextNode;
-	FV_ASSERT(pPre);
+	ASSERT(pPre);
 	pPre->m_Next = &qNewNode;
 }
 template <class T, template<class> class TNode>
@@ -247,7 +247,7 @@ void FvDoubleLinkNode3<T>::_PushAfter(FvDoubleLinkNode3& qPreNode, FvDoubleLinkN
 	qPreNode.m_Next = &qNewNode;
 	qNewNode.m_Next = pNext;
 	qNewNode.m_Pre = &qPreNode;
-	FV_ASSERT(pNext);
+	ASSERT(pNext);
 	pNext->m_Pre = &qNewNode;
 }
 template <class T>
@@ -257,7 +257,7 @@ void FvDoubleLinkNode3<T>::_PushBefore(FvDoubleLinkNode3& qNextNode, FvDoubleLin
 	qNextNode.m_Pre = &qNewNode;
 	qNewNode.m_Pre = pPre;
 	qNewNode.m_Next = &qNextNode;
-	FV_ASSERT(pPre);
+	ASSERT(pPre);
 	pPre->m_Next = &qNewNode;
 }
 //+--------------------------------------------------------------------------------------------------------------------------------------------

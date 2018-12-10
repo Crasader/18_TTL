@@ -1,5 +1,8 @@
 #include "CGPPasswordMission.h"
 
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
+#include "Platform/PFDefine/data/GlobalUserInfo.h"
+
 CGPPasswordMission::CGPPasswordMission(const char* url, int port)
 : CSocketMission(url, port)
 {

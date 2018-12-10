@@ -1,9 +1,13 @@
 ﻿#include "QYCardTurnManager.h"
-#include "Game/GameLib.h"
+
+#include "Game/Widget/WidgetFun.h"
+#include "Game/Widget/WidgetManager.h"
+#include "Game/Widget/WidgetScenceXMLparse.h"
 #include "Game/Script/WindowInfo.h"
 #include "Game/Widget/QYCardTurn.h"
+#include "Tools/utilityConvert.h"
 
-USING_NS_CC;
+using namespace widget;
 
 FV_SINGLETON_STORAGE(QYCardTurnManager);
 

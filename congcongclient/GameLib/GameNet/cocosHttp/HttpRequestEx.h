@@ -33,7 +33,9 @@
 #include "base/CCData.h"
 #include "deprecated/CCDictionary.h"
 
-NS_CC_BEGIN
+USING_NS_CC;
+
+namespace gamelib{
 
 namespace network {
     
@@ -42,7 +44,7 @@ namespace network {
     
     typedef std::function<void(HttpClientEx* client, HttpResponseEx* response)> ccHttpRequestCallback;
     typedef void (cocos2d::Ref::*SEL_HttpResponse)(HttpClientEx* client, HttpResponseEx* response);
-#define httpresponse_selector(_SELECTOR) (cocos2d::network::SEL_HttpResponse)(&_SELECTOR)
+#define httpresponse_selector(_SELECTOR) (gamelib::network::SEL_HttpResponse)(&_SELECTOR)
     
     /**
      @brief defines the object which users must packed for HttpClient::send(HttpRequest*) method.
@@ -276,6 +278,6 @@ namespace network {
     
 }
 
-NS_CC_END
+}
 
 #endif //__HTTP_REQUEST_H__

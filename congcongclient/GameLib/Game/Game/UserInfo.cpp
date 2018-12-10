@@ -1,6 +1,10 @@
 #include "UserInfo.h"
+
 #include "Game/Script/ScriptData.h"
-#include "GameManagerBase.h"
+#include "Game/Script/TimeManager.h"
+#include "Tools/utilityLog.h"
+
+using namespace script;
 
 FV_SINGLETON_STORAGE(UserInfo);
 
@@ -18,7 +22,7 @@ void UserInfo::reqAccountInfo(float fWaiteTime)
 {
 	if (fWaiteTime > 0.01f)
 	{
-		TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(UserInfo::on_reqAccountInfo,this),fWaiteTime); 
+		TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(UserInfo::on_reqAccountInfo, this),fWaiteTime);
 	}
 	else
 	{
@@ -89,7 +93,7 @@ int count = 0;
 void UserInfo::reqIndividual()
 {
 	if (count < 3) {
-		utility::log("UserInfo::reqIndividual() count = %d", count);
+		utility::filelog("UserInfo::reqIndividual() count = %d", count);
 		m_kIndividualMissionHead.QUERY_GP_USER_INDIVIDUAL(getUserID());
 		count++;
 	}

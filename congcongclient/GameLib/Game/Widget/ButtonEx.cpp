@@ -1,8 +1,7 @@
-
 #include "ButtonEx.h"
 #include "ui/UIScale9Sprite.h"
 
-NS_CC_BEGIN;
+using namespace widget;
 
 ButtonEx* ButtonEx::create(const std::string& normalImage,
 						const std::string& selectedImage,
@@ -42,5 +41,3 @@ void ButtonEx::setActionPress( bool bValue )
 	loadTexturePressed(_normalFileName);
 	setPressedActionEnabled(bValue);
 }
-
-NS_CC_END;

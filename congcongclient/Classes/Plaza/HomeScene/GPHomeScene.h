@@ -1,5 +1,5 @@
 #pragma once
-#include "cocos2d.h"
+#include <cocos2d.h>
 #include "Game/FV/FvSingleton.h"
 #include "Game/Widget/WidgetScenceXmlParse.h"
 #include "Game/Widget/WidgetManager.h"
@@ -7,42 +7,22 @@
 #include "Game/Game/NoticeMsg.h"
 #include "SimpleAudioEngine.h"
 #include "Platform/PFKernel/CGPLoginMission.h"
-#include "GameLib/GameNet/ImagicDownManager.h"
-#include "Game/Game/UserInfo.h"
-#include "SettingPanel/GPHomeSettingPanel.h"
-#include "SharePanel/GPHomeSharePanel.h"
-#include "UserInfoPanel/GPHomeUserInfoPanel.h"
-//#include "RaidersPanel/GPHomeRaidersPanel.h"
-#include "EnterRoomPanel/GPHomeEnterRoomPanel.h"
-#include "EditNumPanel/GPHomeEditNumPanel.h"
-#include "Promotion/GPHomePromotionPanel.h"
-#include "MorePanel/GPHomeMorePanel.h"
-#include "ServicePanel/GPHomeServicePanel.h"
-#include "MallPanel/GPHomeMallPanel.h"
-#include "RecordPanel/GPHomeRecordPanel.h"
-#include "RankPanel/GPHomeRankPanel.h"
+#include <GameNet/ImagicDownManager.h>
+#include <Game/Game/UserInfo.h>
+#include <Platform/PFKernel/CGPopularizeMission.h>
 
-#include "GamePlaza/HomeScene/CreateRoomPanel/GPHomeRoomListPanel_SRLF.h"
-#include"GamePlaza/HomeScene/CreateRoomPanel/GPHomeCreateRoomPanel_SRLF.h"
 
-#include "GamePlaza/HomeScene/CreateRoomPanel/GPHomeCreateRoomPanel_TLJ.h"
-#include "GamePlaza/HomeScene/CreateRoomPanel/GPHomeRoomListPanel_TLJ.h"
-
-#include "GamePlaza/HomeScene/CreateRoomPanel/GPHomeCreateRoomPanel_NN.h"
-#include "GamePlaza/HomeScene/CreateRoomPanel/GPHomeRoomListPanel_NN.h"
-#include "ClientHN_THJ/Game/TTLNN/Calculate/NNCalculate.h"
-
-#include "GamePlaza/HomeScene/CreateRoomPanel/GPHomeRoomListPanel_SG.h"
-#include "GamePlaza/HomeScene/CreateRoomPanel/GPHomeCreateRoomPanel_SG.h"
-
-#include "GamePlaza/HomeScene/CreateRoomPanel/GPHomeRoomListPanel_WZQ.h"
-
-#include "GamePlaza/HomeScene/BtnTurnLayer.h"
-
-#include "GamePlaza/HomeScene/CreateRoomPanel/GPHomeRoomListPanel_XZDD.h"
-#include "GamePlaza/HomeScene/CreateRoomPanel/GPHomeCreateRoomPanel_XZDD.h"
-
-#include "GameLib/Platform/PFKernel/CGPopularizeMission.h"
+#include "GPHomeSettingPanel.h"
+#include "GPHomeSharePanel.h"
+#include "GPHomeUserInfoPanel.h"
+#include "GPHomeEnterRoomPanel.h"
+#include "GPHomeEditNumPanel.h"
+#include "GPHomePromotionPanel.h"
+#include "GPHomeMorePanel.h"
+#include "GPHomeServicePanel.h"
+#include "GPHomeMallPanel.h"
+#include "GPHomeRecordPanel.h"
+#include "GPHomeRankPanel.h"
 
 class GPHomeScene
 	: public cocos2d::Node

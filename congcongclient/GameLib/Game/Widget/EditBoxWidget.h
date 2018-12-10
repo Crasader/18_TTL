@@ -1,11 +1,13 @@
 #pragma once
-#include "cocos2d.h"
-#include "WidgetDefine.h"
+#include <cocos2d.h>
 
+#include "WidgetDefine.h"
 #include "ui/UIEditBox/UIEditBox.h"
 
+using namespace cocos2d;
 
-NS_CC_BEGIN;
+namespace widget
+{
 
 class EditBoxWidget
 	:public ui::EditBox
@@ -28,4 +30,4 @@ private:
 	std::function<void()> m_pReturnSelector;
 };
 
-NS_CC_END
+}

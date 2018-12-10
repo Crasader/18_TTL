@@ -1,9 +1,10 @@
 #include "ActionEx.h"
-#include "Game/Script/utility.h"
+#include "Tools/utilityString.h"
+#include "Tools/utilityMath.h"
 #include "Game/Widget/WidgetFun.h"
 #include "Game/Widget/SpriteBlur.h"
 
-NS_CC_BEGIN
+using namespace widget;
 
 MoveExTxtTime* MoveExTxtTime::create(float fDurTime)
 {
@@ -101,7 +102,7 @@ MoveExTxtTimeCallBack* MoveExTxtTimeCallBack::create( float fDurTime,float fromT
 
 void MoveExTxtTimeCallBack::setCallBack( const std::function<void()>& pCallBack,float fCheakTime /*= 0*/ )
 {
-	m_fDeta = 0.01;
+	m_fDeta = 0.01f;
 	m_pCallBack = pCallBack;
 	m_fCheckTime = fCheakTime;
 }
@@ -297,7 +298,7 @@ void CCTire::update(float t)
 		}
 		pSprite->setPosition(m_pSrcNode->getPosition());
 		pSprite->runAction(cocos2d::ScaleTo::create(0.2f,0.1f));
-		pSprite->runAction(cocos2d::CCRemoveAction::create(0.2f));
+		pSprite->runAction(CCRemoveAction::create(0.2f));
 		
 	}
 }
@@ -344,8 +345,6 @@ void CCAutoRotation::update(float t)
 	_target->setRotation(fRotation);
 	m_kLastPos = kNodePos;
 }
-
-
 
 BlurTo* BlurTo::create(float duration,float fBlur)
 {
@@ -433,5 +432,3 @@ void GravityAction::update(float time)
 	fPosY-=m_fMoveSpd*m_fMoveSpd*dt;
 	_target->setPositionY(fPosY);
 }
-
-NS_CC_END

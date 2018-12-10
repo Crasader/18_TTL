@@ -1,18 +1,18 @@
 
 #pragma once
 
-#include "cocos2d.h"
+#include <cocos2d.h>
 #include "ui/CocosGUI.h"
 
-
-NS_CC_BEGIN;
+namespace widget
+{
 
 class ListViewEx
-	:public ui::ListView
+	:public cocos2d::ui::ListView
 {
 public:
 	static ListViewEx* create();
 
 };
-NS_CC_END;
+}
 

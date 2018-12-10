@@ -1,8 +1,11 @@
 #include "GPLoginScene.h"
 
+#include USERINFO
+#include UTILITY_LOG
+
 void GPLoginScene::onGPLoginSuccess()
 {
-	utility::log("GPLogonScence::onGPLoginSuccess");
+	utility::filelog("GPLogonScence::onGPLoginSuccess");
 	CGlobalUserInfo * pGlobalUserInfo = CGlobalUserInfo::GetInstance();
 	tagGlobalUserData * pGlobalUserData = pGlobalUserInfo->GetGlobalUserData();
 	cocos2d::UserDefault::getInstance()->setStringForKey("Accounts", pGlobalUserData->szAccounts);
@@ -30,7 +33,7 @@ void GPLoginScene::onGPLoginFailure(unsigned int iErrorCode, const char* szDescr
 
 void GPLoginScene::onGPError(int err)
 {
-	NoticeMsg::Instance().ShowTopMsg(utility::getScriptString("NetError"));
+	NoticeMsg::Instance().ShowTopMsg(script::getStr("NetError"));
 }
 
 void GPLoginScene::onGPPopularizeHttpRes(const CMD_GP_PopularizeHttpRes& pNetInfo)

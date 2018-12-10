@@ -1,7 +1,9 @@
 #pragma once
-#include "cocos2d.h"
-#include "Platform/PlatformHeader.h"
+#include <cocos2d.h>
+
 #include "Kernel/network/CSocketMission.h"
+#include "Platform/PFDefine/df/Define.h"
+#include "Platform/PFDefine/df/types.h"
 
 #define INSURE_MISSION_SAVE		1
 #define INSURE_MISSION_TAKE		2

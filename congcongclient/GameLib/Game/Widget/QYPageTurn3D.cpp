@@ -1,10 +1,9 @@
-﻿
-#include "QYPageTurn3D.h"
+﻿#include "QYPageTurn3D.h"
 #include "2d/CCGrid.h"
 #include "2d/CCNodeGrid.h"
-#include "GameLib/Game/Script/utility.h"
+#include "Tools/utilityMath.h"
 
-NS_CC_BEGIN
+using namespace widget;
 
 QYPageTurn3D::QYPageTurn3D()
 	:m_pNodeGrid(NULL)
@@ -263,7 +262,7 @@ void QYPageTurn3D::setAngle(float fAngle,bool bDirect)
 	}
 }
 
-float cocos2d::QYPageTurn3D::getAngle()
+float QYPageTurn3D::getAngle()
 {
 	float fTmepPai = 3.14159f;
 	float fAngle = m_fDestAngle/fTmepPai*180.f;
@@ -656,4 +655,3 @@ void QYPageTurn3D::updata(float fTime)
 	}
 }
 
-NS_CC_END

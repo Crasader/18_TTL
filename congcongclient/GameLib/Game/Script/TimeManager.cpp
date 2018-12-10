@@ -1,6 +1,9 @@
 #include "TimeManager.h"
-#include "Game/FV/NetLog.h"
+#include "Tools/utilityLog.h"
+#include "Tools/utilityString.h"
 #include "TimeNode.h"
+
+//using namespace script;
 
 FV_SINGLETON_STORAGE(TimeManager);
 
@@ -38,7 +41,7 @@ bool TimeManager::isUseRef(TimeNode* pNode)
 }
 void TimeManager::deleteCBInfo(Time_CBInfoBase* pCB)
 {
-	NetLog::Log(utility::toString("del Time CB ",pCB->iIdex));
+	utility::filelog(utility::toString("del Time CB ", pCB->iIdex).c_str());
 	Time_CBInfoList::iterator itor = m_kActCallList.begin();
 	while (itor != m_kActCallList.end())
 	{

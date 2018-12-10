@@ -1,7 +1,6 @@
 #include "ImagicViewDownManager.h"
-#include "Game/Script/ScriptData.h"
 #include "Game/Widget/WidgetFun.h"
-#include "Game/Script/utility.h"
+#include "Tools/utilityString.h"
 
 FV_SINGLETON_STORAGE(ImagicViewDownManager);
 
@@ -30,7 +29,7 @@ std::string DownImageViewGetFileName(std::string kName)
 	size_t iEnd = kName.size();
 	return kName.substr(iStart,iEnd-iStart);
 }
-void ImagicViewDownManager::GetImagic(cocos2d::network::HttpClientEx *sender, cocos2d::network::HttpResponseEx *response)
+void ImagicViewDownManager::GetImagic(gamelib::network::HttpClientEx *sender, gamelib::network::HttpResponseEx *response)
 {
 	response->retain();
 	m_pGetList.push_back(response);
@@ -41,7 +40,7 @@ void ImagicViewDownManager::OnImagic()
 	{
 		return;
 	}
-	cocos2d::network::HttpResponseEx *response = m_pGetList[0];
+	gamelib::network::HttpResponseEx *response = m_pGetList[0];
 	//m_pGetList.erase(m_pGetList.begin());
 	std::string kUrl = response->getHttpRequest()->getUrl();
 	std::string kImagicName = cocos2d::FileUtils::getInstance()->getWritablePath()+"test.png";
@@ -190,7 +189,7 @@ void ImagicViewDownManager::addDown(cocos2d::ui::ImageView* pSprite,std::string 
 	}
 	if (!bHaveGet)
 	{
-		cocos2d::network::HttpRequestEx* pRequest = MCWebReq::instance().getFileEx(kUrl,
+		gamelib::network::HttpRequestEx* pRequest = MCWebReq::instance().getFileEx(kUrl,
 			 CC_CALLBACK_2(ImagicViewDownManager::GetImagic, this));
 		kInfo.pRequest = pRequest;
 	}

@@ -1,8 +1,10 @@
 #include "WZQDGameScence.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 #include "CMD_WZQ.h"
 #include "WZQDPlayer.h"
 #include "WZQDGameLogic.h"
+#include UTILITY_CONVERT
+
 using namespace WZQ;
 bool WZQDGameScence::OnEventSceneMessage(byte cbGameStatus, bool bLookonUser, void* data, int dataSize)
 {

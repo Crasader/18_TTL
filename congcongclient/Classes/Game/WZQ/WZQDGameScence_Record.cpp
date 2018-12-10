@@ -1,5 +1,5 @@
 #include "WZQDGameScence.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 #include "WZQDPlayer.h"
 #include "Game/Game/MissionWeiXin.h"
 
@@ -103,7 +103,7 @@
 //		pPlayer->setGameRecord(true);
 //		pPlayer->PlayerEnter();
 //		pPlayer->startGameNoTime();
-//		BYTE cbCardData[MAX_COUNT];
+//		byte cbCardData[MAX_COUNT];
 //		for (int i = 0;i<MAX_COUNT;i++)
 //		{
 //			cbCardData[i] = kRecordPlayer.cbCardData[i];

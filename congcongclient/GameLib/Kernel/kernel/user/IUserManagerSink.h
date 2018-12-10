@@ -2,6 +2,11 @@
 #define _IUserManagerSink_H_
 
 #include "Kernel/kernel/user/IClientUserItem.h"
+
+struct tagUserScore;
+struct tagUserStatus;
+struct tagUserAttrib;
+
 class IUserManagerSink
 {
 public:

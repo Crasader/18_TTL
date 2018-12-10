@@ -1,7 +1,9 @@
 #include "SRLFGameLogic.h"
 
 //////////////////////////////////////////////////////////////////////////
+
 FV_SINGLETON_STORAGE(SRLFLOGIC::CGameLogic);
+
 namespace SRLFLOGIC
 {
 	//静态变量
@@ -16,7 +18,7 @@ namespace SRLFLOGIC
 		if( !m_bInit )
 		{
 			m_bInit = true;
-			for( BYTE i = 0; i < CountArray(m_dwRightMask); i++ )
+			for( byte i = 0; i < CountArray(m_dwRightMask); i++ )
 			{
 				if( 0 == i )
 					m_dwRightMask[i] = 0;
@@ -40,7 +42,7 @@ namespace SRLFLOGIC
 			dwOtherRight = MASK_CHI_HU_RIGHT;
 		}
 
-		for( BYTE i = 0; i < CountArray(m_dwRightMask); i++ )
+		for( byte i = 0; i < CountArray(m_dwRightMask); i++ )
 		{
 			if( (dwRight&m_dwRightMask[i]) || (i==0&&dwRight<0x10000000) )
 				m_dwRight[i] = dwRight&MASK_CHI_HU_RIGHT;
@@ -67,7 +69,7 @@ namespace SRLFLOGIC
 			bNavigate = true;
 		}
 
-		for( BYTE i = 0; i < CountArray(m_dwRightMask); i++ )
+		for( byte i = 0; i < CountArray(m_dwRightMask); i++ )
 		{
 			if( (dwRight&m_dwRightMask[i]) || (i==0&&dwRight<0x10000000) )
 			{
@@ -86,7 +88,7 @@ namespace SRLFLOGIC
 		//验证权位
 		if( !IsValidRight( dwRight ) ) return *this;
 
-		for( BYTE i = 0; i < CountArray(m_dwRightMask); i++ )
+		for( byte i = 0; i < CountArray(m_dwRightMask); i++ )
 		{
 			if( (dwRight&m_dwRightMask[i]) || (i==0&&dwRight<0x10000000) )
 				m_dwRight[i] |= (dwRight&MASK_CHI_HU_RIGHT);
@@ -126,7 +128,7 @@ namespace SRLFLOGIC
 	//是否权位为空
 	bool CChiHuRight::IsEmpty()
 	{
-		for( BYTE i = 0; i < CountArray(m_dwRight); i++ )
+		for( byte i = 0; i < CountArray(m_dwRight); i++ )
 			if( m_dwRight[i] ) return false;
 		return true;
 	}
@@ -139,7 +141,7 @@ namespace SRLFLOGIC
 	}
 
 	//获取权位数值
-	BYTE CChiHuRight::GetRightData( dword dwRight[], BYTE cbMaxCount )
+	byte CChiHuRight::GetRightData( dword dwRight[], byte cbMaxCount )
 	{
 		ASSERT( cbMaxCount >= CountArray(m_dwRight) );
 		if( cbMaxCount < CountArray(m_dwRight) ) return 0;
@@ -149,7 +151,7 @@ namespace SRLFLOGIC
 	}
 
 	//设置权位数值
-	bool CChiHuRight::SetRightData( const dword dwRight[], BYTE cbRightCount )
+	bool CChiHuRight::SetRightData( const dword dwRight[], byte cbRightCount )
 	{
 		ASSERT( cbRightCount <= CountArray(m_dwRight) );
 		if( cbRightCount > CountArray(m_dwRight) ) return false;
@@ -164,7 +166,7 @@ namespace SRLFLOGIC
 	bool CChiHuRight::IsValidRight( dword dwRight )
 	{
 		dword dwRightHead = dwRight & 0xF0000000;
-		for( BYTE i = 0; i < CountArray(m_dwRightMask); i++ )
+		for( byte i = 0; i < CountArray(m_dwRightMask); i++ )
 			if( m_dwRightMask[i] == dwRightHead ) return true;
 		return false;
 	}
@@ -177,7 +179,7 @@ namespace SRLFLOGIC
 	//静态变量
 
 	//扑克数据
-	const BYTE CGameLogic::m_cbCardDataArray[MAX_REPERTORY_SRLF]=
+	const byte CGameLogic::m_cbCardDataArray[MAX_REPERTORY_SRLF]=
 	{
 		0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,						//万子
 		0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,						//万子
@@ -207,14 +209,14 @@ namespace SRLFLOGIC
 	}
 
 	//混乱扑克
-	void CGameLogic::RandCardData(BYTE cbCardData[], BYTE cbMaxCount)
+	void CGameLogic::RandCardData(byte cbCardData[], byte cbMaxCount)
 	{
 		//混乱准备
-		BYTE cbCardDataTemp[CountArray(m_cbCardDataArray)];
+		byte cbCardDataTemp[CountArray(m_cbCardDataArray)];
 		memcpy(cbCardDataTemp,m_cbCardDataArray,sizeof(m_cbCardDataArray));
 
 		//混乱扑克
-		BYTE cbRandCount=0,cbPosition=0;
+		byte cbRandCount=0,cbPosition=0;
 		do
 		{
 			cbPosition=rand()%(cbMaxCount-cbRandCount);
@@ -226,14 +228,14 @@ namespace SRLFLOGIC
 	}
 
 	//删除扑克
-	bool CGameLogic::RemoveCard(BYTE cbCardIndex[MAX_INDEX], BYTE cbRemoveCard)
+	bool CGameLogic::RemoveCard(byte cbCardIndex[MAX_INDEX], byte cbRemoveCard)
 	{
 		//效验扑克
 		ASSERT(IsValidCard(cbRemoveCard));
 		ASSERT(cbCardIndex[SwitchToCardIndex(cbRemoveCard)]>0);
 
 		//删除扑克
-		BYTE cbRemoveIndex=SwitchToCardIndex(cbRemoveCard);
+		byte cbRemoveIndex=SwitchToCardIndex(cbRemoveCard);
 		if (cbCardIndex[cbRemoveIndex]>0)
 		{
 			cbCardIndex[cbRemoveIndex]--;
@@ -247,24 +249,24 @@ namespace SRLFLOGIC
 	}
 
 	//删除扑克
-	bool CGameLogic::RemoveCard(BYTE cbCardIndex[MAX_INDEX], const BYTE cbRemoveCard[], BYTE cbRemoveCount)
+	bool CGameLogic::RemoveCard(byte cbCardIndex[MAX_INDEX], const byte cbRemoveCard[], byte cbRemoveCount)
 	{
 		//删除扑克
-		for (BYTE i=0;i<cbRemoveCount;i++)
+		for (byte i=0;i<cbRemoveCount;i++)
 		{
 			//效验扑克
 			ASSERT(IsValidCard(cbRemoveCard[i]));
 			ASSERT(cbCardIndex[SwitchToCardIndex(cbRemoveCard[i])]>0);
 
 			//删除扑克
-			BYTE cbRemoveIndex=SwitchToCardIndex(cbRemoveCard[i]);
+			byte cbRemoveIndex=SwitchToCardIndex(cbRemoveCard[i]);
 			if (cbCardIndex[cbRemoveIndex]==0)
 			{
 				//错误断言
 				ASSERT(FALSE);
 
 				//还原删除
-				for (BYTE j=0;j<i;j++) 
+				for (byte j=0;j<i;j++) 
 				{
 					ASSERT(IsValidCard(cbRemoveCard[j]));
 					cbCardIndex[SwitchToCardIndex(cbRemoveCard[j])]++;
@@ -282,12 +284,12 @@ namespace SRLFLOGIC
 		return true;
 	}
 
-	BYTE CGameLogic::RemoveValueCardAll(BYTE cbCardData[], BYTE cbCardCount,BYTE cbRemoveCard)
+	byte CGameLogic::RemoveValueCardAll(byte cbCardData[], byte cbCardCount,byte cbRemoveCard)
 	{
-		BYTE cbCardIndex[MAX_INDEX];			//手中扑克
+		byte cbCardIndex[MAX_INDEX];			//手中扑克
 		SwitchToCardIndex(cbCardData,cbCardCount,cbCardIndex);
-		BYTE cbRemoveCardArray[MAX_INDEX];
-		BYTE cbRemoveCout = cbCardIndex[SwitchToCardIndex(cbRemoveCard)];
+		byte cbRemoveCardArray[MAX_INDEX];
+		byte cbRemoveCout = cbCardIndex[SwitchToCardIndex(cbRemoveCard)];
 		for (int i = 0;i<cbRemoveCout;i++)
 		{
 			cbRemoveCardArray[i] = cbRemoveCard;
@@ -295,29 +297,29 @@ namespace SRLFLOGIC
 		RemoveValueCard(cbCardData,cbCardCount,cbRemoveCardArray,cbRemoveCout);
 		return cbCardCount - cbRemoveCout;
 	}
-	bool CGameLogic::RemoveValueCardOne(BYTE cbCardData[], BYTE cbCardCount,BYTE cbRemoveCard)
+	bool CGameLogic::RemoveValueCardOne(byte cbCardData[], byte cbCardCount,byte cbRemoveCard)
 	{
-		BYTE cbRemoveCardArray[MAX_INDEX];
+		byte cbRemoveCardArray[MAX_INDEX];
 		cbRemoveCardArray[0] = cbRemoveCard;
 		return RemoveValueCard(cbCardData,cbCardCount,cbRemoveCardArray,1);
 	}
 	//删除扑克
-	bool CGameLogic::RemoveValueCard(BYTE cbCardData[], BYTE cbCardCount, const BYTE cbRemoveCard[], BYTE cbRemoveCount)
+	bool CGameLogic::RemoveValueCard(byte cbCardData[], byte cbCardCount, const byte cbRemoveCard[], byte cbRemoveCount)
 	{
 		//检验数据
 		ASSERT(cbCardCount<=14);
 		ASSERT(cbRemoveCount<=cbCardCount);
 
 		//定义变量
-		BYTE cbDeleteCount=0,cbTempCardData[14];
+		byte cbDeleteCount=0,cbTempCardData[14];
 		if (cbCardCount>CountArray(cbTempCardData))
 			return false;
 		memcpy(cbTempCardData,cbCardData,cbCardCount*sizeof(cbCardData[0]));
 
 		//置零扑克
-		for (BYTE i=0;i<cbRemoveCount;i++)
+		for (byte i=0;i<cbRemoveCount;i++)
 		{
-			for (BYTE j=0;j<cbCardCount;j++)
+			for (byte j=0;j<cbCardCount;j++)
 			{
 				if (cbRemoveCard[i]==cbTempCardData[j])
 				{
@@ -336,8 +338,8 @@ namespace SRLFLOGIC
 		}
 
 		//清理扑克
-		BYTE cbCardPos=0;
-		for (BYTE i=0;i<cbCardCount;i++)
+		byte cbCardPos=0;
+		for (byte i=0;i<cbCardCount;i++)
 		{
 			if (cbTempCardData[i]!=0) 
 				cbCardData[cbCardPos++]=cbTempCardData[i];
@@ -346,18 +348,18 @@ namespace SRLFLOGIC
 		return true;
 	}
 
-	bool CGameLogic::AddCard(BYTE cbCardIndex[MAX_INDEX], const BYTE cbAddCard[], BYTE cbAddCount)
+	bool CGameLogic::AddCard(byte cbCardIndex[MAX_INDEX], const byte cbAddCard[], byte cbAddCount)
 	{
 
 		//添加扑克
-		for (BYTE i=0;i<cbAddCount;i++)
+		for (byte i=0;i<cbAddCount;i++)
 		{
 			//效验扑克
 			ASSERT(IsValidCard(cbAddCard[i]));
 			ASSERT(cbCardIndex[SwitchToCardIndex(cbAddCard[i])]<4);
 
 			//删除扑克
-			BYTE cbAddIndex=SwitchToCardIndex(cbAddCard[i]);
+			byte cbAddIndex=SwitchToCardIndex(cbAddCard[i]);
 			if (cbCardIndex[cbAddIndex]<4)
 			{
 				//删除扑克
@@ -368,7 +370,7 @@ namespace SRLFLOGIC
 				//错误断言
 				ASSERT(FALSE);
 				//还原添加
-				for (BYTE j=0;j<i;j++) 
+				for (byte j=0;j<i;j++) 
 				{
 					ASSERT(IsValidCard(cbAddCard[j]));
 					cbCardIndex[SwitchToCardIndex(cbAddCard[j])]--;
@@ -379,10 +381,10 @@ namespace SRLFLOGIC
 		return true;
 	}
 
-	bool CGameLogic::ReplaceCardData(BYTE cbCardData[], BYTE cbCardCount, const BYTE cbAddCardData[], BYTE cbAddCount)
+	bool CGameLogic::ReplaceCardData(byte cbCardData[], byte cbCardCount, const byte cbAddCardData[], byte cbAddCount)
 	{
-		BYTE cbCardPos=cbCardCount-cbAddCount;
-		for (BYTE i=0;i<cbAddCount;i++)
+		byte cbCardPos=cbCardCount-cbAddCount;
+		for (byte i=0;i<cbAddCount;i++)
 		{
 			cbCardData[cbCardPos]=cbAddCardData[i];
 			cbCardPos++;
@@ -391,26 +393,26 @@ namespace SRLFLOGIC
 	}
 
 	//有效判断
-	bool CGameLogic::IsValidCard(BYTE cbCardData)
+	bool CGameLogic::IsValidCard(byte cbCardData)
 	{
-		BYTE cbValue=(cbCardData&MASK_VALUE);
-		BYTE cbColor=(cbCardData&MASK_COLOR)>>4;
+		byte cbValue=(cbCardData&MASK_VALUE);
+		byte cbColor=(cbCardData&MASK_COLOR)>>4;
 		return (((cbValue>=1)&&(cbValue<=9)&&(cbColor<=2))||((cbValue>=1)&&(cbValue<=7)&&(cbColor==3)));
 	}
 
 	//扑克数目
-	BYTE CGameLogic::GetCardCount(const BYTE cbCardIndex[MAX_INDEX])
+	byte CGameLogic::GetCardCount(const byte cbCardIndex[MAX_INDEX])
 	{
 		//数目统计
-		BYTE cbCardCount=0;
-		for (BYTE i=0;i<MAX_INDEX;i++) 
+		byte cbCardCount=0;
+		for (byte i=0;i<MAX_INDEX;i++) 
 			cbCardCount+=cbCardIndex[i];
 
 		return cbCardCount;
 	}
 
 	//获取组合
-	BYTE CGameLogic::GetWeaveCard(BYTE cbWeaveKind, BYTE cbCenterCard, BYTE cbCardBuffer[4])
+	byte CGameLogic::GetWeaveCard(byte cbWeaveKind, byte cbCenterCard, byte cbCardBuffer[4])
 	{
 		//组合扑克
 		switch (cbWeaveKind)
@@ -471,7 +473,7 @@ namespace SRLFLOGIC
 	}
 
 	//动作等级
-	BYTE CGameLogic::GetUserActionRank(BYTE cbUserAction)
+	byte CGameLogic::GetUserActionRank(byte cbUserAction)
 	{
 		//胡牌等级
 		if (cbUserAction&WIK_CHI_HU) { return 4; }
@@ -489,14 +491,14 @@ namespace SRLFLOGIC
 	}
 
 	//胡牌等级
-	WORD CGameLogic::GetChiHuActionRank(const CChiHuRight & ChiHuRight)
+	word CGameLogic::GetChiHuActionRank(const CChiHuRight & ChiHuRight)
 	{
-		WORD wFanShu = 0;
+		word wFanShu = 0;
 		return wFanShu;
 	}
 
 	//吃牌判断
-	BYTE CGameLogic::EstimateEatCard(const BYTE cbCardIndex[MAX_INDEX], BYTE cbCurrentCard)
+	byte CGameLogic::EstimateEatCard(const byte cbCardIndex[MAX_INDEX], byte cbCurrentCard)
 	{
 		//参数效验
 		ASSERT(IsValidCard(cbCurrentCard));
@@ -506,15 +508,15 @@ namespace SRLFLOGIC
 			return WIK_NULL;
 
 		//变量定义
-		BYTE cbExcursion[3]={0,1,2};
-		BYTE cbItemKind[3]={WIK_LEFT,WIK_CENTER,WIK_RIGHT};
+		byte cbExcursion[3]={0,1,2};
+		byte cbItemKind[3]={WIK_LEFT,WIK_CENTER,WIK_RIGHT};
 
 		//吃牌判断
-		BYTE cbEatKind=0,cbFirstIndex=0;
-		BYTE cbCurrentIndex=SwitchToCardIndex(cbCurrentCard);
-		for (BYTE i=0;i<CountArray(cbItemKind);i++)
+		byte cbEatKind=0,cbFirstIndex=0;
+		byte cbCurrentIndex=SwitchToCardIndex(cbCurrentCard);
+		for (byte i=0;i<CountArray(cbItemKind);i++)
 		{
-			BYTE cbValueIndex=cbCurrentIndex%9;
+			byte cbValueIndex=cbCurrentIndex%9;
 			if ((cbValueIndex>=cbExcursion[i])&&((cbValueIndex-cbExcursion[i])<=6))
 			{
 				//吃牌判断
@@ -540,7 +542,7 @@ namespace SRLFLOGIC
 	}
 
 	//碰牌判断
-	BYTE CGameLogic::EstimatePengCard(const BYTE cbCardIndex[MAX_INDEX], BYTE cbCurrentCard)
+	byte CGameLogic::EstimatePengCard(const byte cbCardIndex[MAX_INDEX], byte cbCurrentCard)
 	{
 		//参数效验
 		ASSERT(IsValidCard(cbCurrentCard));
@@ -554,7 +556,7 @@ namespace SRLFLOGIC
 	}
 
 	//杠牌判断
-	BYTE CGameLogic::EstimateGangCard(const BYTE cbCardIndex[MAX_INDEX], BYTE cbCurrentCard)
+	byte CGameLogic::EstimateGangCard(const byte cbCardIndex[MAX_INDEX], byte cbCurrentCard)
 	{
 		//参数效验
 		ASSERT(IsValidCard(cbCurrentCard));
@@ -568,14 +570,14 @@ namespace SRLFLOGIC
 	}
 
 	//杠牌分析
-	BYTE CGameLogic::AnalyseGangCard(const  BYTE cbCardIndex[MAX_INDEX], const CMD_WeaveItem WeaveItem[], BYTE cbWeaveCount, tagGangCardResult & GangCardResult )
+	byte CGameLogic::AnalyseGangCard(const  byte cbCardIndex[MAX_INDEX], const CMD_WeaveItem WeaveItem[], byte cbWeaveCount, tagGangCardResult & GangCardResult )
 	{
 		//设置变量
-		BYTE cbActionMask=WIK_NULL;
+		byte cbActionMask=WIK_NULL;
 		zeromemory(&GangCardResult,sizeof(GangCardResult));
 
 		//手上杠牌
-		for (BYTE i=0;i<MAX_INDEX;i++)
+		for (byte i=0;i<MAX_INDEX;i++)
 		{
 			if( i == m_cbMagicIndex ) continue;
 			if (cbCardIndex[i]==4)
@@ -590,7 +592,7 @@ namespace SRLFLOGIC
 		}
 
 		//组合杠牌
-		for (BYTE i=0;i<MAX_WEAVE;i++)
+		for (byte i=0;i<MAX_WEAVE;i++)
 		{
 			if (WeaveItem[i].cbWeaveKind==WIK_PENG)
 			{
@@ -607,36 +609,36 @@ namespace SRLFLOGIC
 
 
 	//扑克转换
-	BYTE CGameLogic::SwitchToCardData(BYTE cbCardIndex)//数值转换
+	byte CGameLogic::SwitchToCardData(byte cbCardIndex)//数值转换
 	{
 		ASSERT(cbCardIndex<34);
 		return ((cbCardIndex/9)<<4)|(cbCardIndex%9+1);
 	}
 
 	//扑克转换
-	BYTE CGameLogic::SwitchToCardIndex(BYTE cbCardData) //排序牌
+	byte CGameLogic::SwitchToCardIndex(byte cbCardData) //排序牌
 	{
 		ASSERT(IsValidCard(cbCardData));
 		return ((cbCardData&MASK_COLOR)>>4)*9+(cbCardData&MASK_VALUE)-1;
 	}
 
 	//扑克转换
-	BYTE CGameLogic::SwitchToCardData(const BYTE cbCardIndex[MAX_INDEX], BYTE cbCardData[MAX_COUNT])
+	byte CGameLogic::SwitchToCardData(const byte cbCardIndex[MAX_INDEX], byte cbCardData[MAX_COUNT])
 	{
 		//转换扑克
-		BYTE cbPosition=0;
+		byte cbPosition=0;
 		//钻牌
 		if( m_cbMagicIndex != MAX_INDEX )
 		{
-			for( BYTE i = 0; i < cbCardIndex[m_cbMagicIndex]; i++ )
+			for( byte i = 0; i < cbCardIndex[m_cbMagicIndex]; i++ )
 				cbCardData[cbPosition++] = SwitchToCardData(m_cbMagicIndex);
 		}
-		for (BYTE i=0;i<MAX_INDEX;i++)
+		for (byte i=0;i<MAX_INDEX;i++)
 		{
 			if( i == m_cbMagicIndex ) continue;
 			if (cbCardIndex[i]!=0)
 			{
-				for (BYTE j=0;j<cbCardIndex[i];j++)
+				for (byte j=0;j<cbCardIndex[i];j++)
 				{
 					ASSERT(cbPosition<MAX_COUNT);
 					cbCardData[cbPosition++]=SwitchToCardData(i);
@@ -648,13 +650,13 @@ namespace SRLFLOGIC
 	}
 
 	//扑克转换
-	BYTE CGameLogic::SwitchToCardIndex(const BYTE cbCardData[], BYTE cbCardCount, BYTE cbCardIndex[MAX_INDEX])
+	byte CGameLogic::SwitchToCardIndex(const byte cbCardData[], byte cbCardCount, byte cbCardIndex[MAX_INDEX])
 	{
 		//设置变量
-		zeromemory(cbCardIndex,sizeof(BYTE)*MAX_INDEX);
+		zeromemory(cbCardIndex,sizeof(byte)*MAX_INDEX);
 
 		//转换扑克
-		for (BYTE i=0;i<cbCardCount;i++)
+		for (byte i=0;i<cbCardCount;i++)
 		{
 			//ASSERT(IsValidCard(cbCardData[i]));
 			if(IsValidCard(cbCardData[i]))
@@ -665,7 +667,7 @@ namespace SRLFLOGIC
 	}
 
 	//钻牌
-	bool CGameLogic::IsMagicCard( BYTE cbCardData )
+	bool CGameLogic::IsMagicCard( byte cbCardData )
 	{
 		if( m_cbMagicIndex != MAX_INDEX )
 			return SwitchToCardIndex(cbCardData) == m_cbMagicIndex;
@@ -673,18 +675,18 @@ namespace SRLFLOGIC
 	}
 
 	//排序,根据牌值排序
-	bool CGameLogic::SortCardList( BYTE cbCardData[MAX_COUNT], BYTE cbCardCount )
+	bool CGameLogic::SortCardList( byte cbCardData[MAX_COUNT], byte cbCardCount )
 	{
 		//数目过虑
 		if (cbCardCount==0||cbCardCount>MAX_COUNT) return false;
 
 		//排序操作
 		bool bSorted=true;
-		BYTE cbSwitchData=0,cbLast=cbCardCount-1;
+		byte cbSwitchData=0,cbLast=cbCardCount-1;
 		do
 		{
 			bSorted=true;
-			for (BYTE i=0;i<cbLast;i++)
+			for (byte i=0;i<cbLast;i++)
 			{
 				if (cbCardData[i]>cbCardData[i+1])
 				{
@@ -703,13 +705,13 @@ namespace SRLFLOGIC
 		return true;
 	}
 
-	void CGameLogic::GetCardWithColor(BYTE cbCardData[MAX_COUNT],BYTE cbCardCount,std::vector<BYTE>& CardList1,std::vector<BYTE>& CardList2,std::vector<BYTE>& CardList3)
+	void CGameLogic::GetCardWithColor(byte cbCardData[MAX_COUNT],byte cbCardCount,std::vector<byte>& CardList1,std::vector<byte>& CardList2,std::vector<byte>& CardList3)
 	{
 		//数目过虑
 		if (cbCardCount==0||cbCardCount>MAX_COUNT) return;
 		for(int i=0;i<cbCardCount;i++)
 		{
-			BYTE cbColor=(((BYTE)cbCardData[i]&MASK_COLOR)>>4)+1;
+			byte cbColor=(((byte)cbCardData[i]&MASK_COLOR)>>4)+1;
 			if (cbColor== 1 )
 			{
 				CardList1.push_back(cbCardData[i]);
@@ -732,7 +734,7 @@ namespace SRLFLOGIC
 	//大对子
 	bool CGameLogic::IsPengPeng( const tagAnalyseItem *pAnalyseItem )
 	{
-		for( BYTE i = 0; i < CountArray(pAnalyseItem->cbWeaveKind); i++ )
+		for( byte i = 0; i < CountArray(pAnalyseItem->cbWeaveKind); i++ )
 		{
 			if( pAnalyseItem->cbWeaveKind[i]&(WIK_LEFT|WIK_CENTER|WIK_RIGHT) )
 				return false;
@@ -741,12 +743,12 @@ namespace SRLFLOGIC
 	}
 
 	//清一色牌
-	bool CGameLogic::IsQingYiSe(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], const BYTE cbItemCount,const BYTE cbCurrentCard)
+	bool CGameLogic::IsQingYiSe(const byte cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], const byte cbItemCount,const byte cbCurrentCard)
 	{
 		//胡牌判断
-		BYTE cbCardColor=0xFF;
+		byte cbCardColor=0xFF;
 
-		for (BYTE i=0;i<MAX_INDEX;i++)
+		for (byte i=0;i<MAX_INDEX;i++)
 		{
 			if(i==m_cbMagicIndex) continue;
 			if (cbCardIndex[i]!=0)
@@ -775,9 +777,9 @@ namespace SRLFLOGIC
 		if((cbCurrentCard&MASK_COLOR)!=cbCardColor && !IsMagicCard(cbCurrentCard) ) return false;
 
 		//组合判断
-		for (BYTE i=0;i<cbItemCount;i++)
+		for (byte i=0;i<cbItemCount;i++)
 		{
-			BYTE cbCenterCard=WeaveItem[i].cbCenterCard;
+			byte cbCenterCard=WeaveItem[i].cbCenterCard;
 			if ((cbCenterCard&MASK_COLOR)!=cbCardColor)	return false;
 		}
 
@@ -785,26 +787,26 @@ namespace SRLFLOGIC
 	}
 
 	//七小对牌
-	bool CGameLogic::IsQiXiaoDui(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], const BYTE cbWeaveCount,const BYTE cbCurrentCard)
+	bool CGameLogic::IsQiXiaoDui(const byte cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], const byte cbWeaveCount,const byte cbCurrentCard)
 	{
 		//组合判断
 		if (cbWeaveCount!=0) return false;
 
 		//单牌数目
-		BYTE cbReplaceCount = 0;
+		byte cbReplaceCount = 0;
 
 		//临时数据
-		BYTE cbCardIndexTemp[MAX_INDEX];
+		byte cbCardIndexTemp[MAX_INDEX];
 		memcpy(cbCardIndexTemp,cbCardIndex,sizeof(cbCardIndexTemp));
 
 		//插入数据
-		BYTE cbCurrentIndex = SwitchToCardIndex(cbCurrentCard);
+		byte cbCurrentIndex = SwitchToCardIndex(cbCurrentCard);
 		cbCardIndexTemp[cbCurrentIndex]++;
 
 		//计算单牌
-		for (BYTE i=0;i<MAX_INDEX;i++)
+		for (byte i=0;i<MAX_INDEX;i++)
 		{
-			BYTE cbCardCount=cbCardIndexTemp[i];
+			byte cbCardCount=cbCardIndexTemp[i];
 
 			//王牌过滤
 			if( i == m_cbMagicIndex ) continue;
@@ -826,14 +828,14 @@ namespace SRLFLOGIC
 	bool CGameLogic::IsDaiYao( const tagAnalyseItem *pAnalyseItem )
 	{
 		//检查牌眼
-		BYTE cbCardValue = pAnalyseItem->cbCardEye&MASK_VALUE;
+		byte cbCardValue = pAnalyseItem->cbCardEye&MASK_VALUE;
 		if( cbCardValue != 1 && cbCardValue != 9 ) return false;
 
-		for( BYTE i = 0; i < CountArray(pAnalyseItem->cbWeaveKind); i++ )
+		for( byte i = 0; i < CountArray(pAnalyseItem->cbWeaveKind); i++ )
 		{
 			if( pAnalyseItem->cbWeaveKind[i]&(WIK_LEFT|WIK_CENTER|WIK_RIGHT) )
 			{
-				BYTE j = 0;
+				byte j = 0;
 				for(; j < 3; j++ )
 				{
 					cbCardValue = pAnalyseItem->cbCardData[i][j]&MASK_VALUE;
@@ -857,14 +859,14 @@ namespace SRLFLOGIC
 		if( !IsPengPeng(pAnalyseItem) ) return false;
 
 		//检查牌眼
-		BYTE cbCardValue = pAnalyseItem->cbCardEye&MASK_VALUE;
+		byte cbCardValue = pAnalyseItem->cbCardEye&MASK_VALUE;
 		if( cbCardValue != 2 && cbCardValue != 5 && cbCardValue != 8 ) return false;
 
-		for( BYTE i = 0; i < CountArray(pAnalyseItem->cbWeaveKind); i++ )
+		for( byte i = 0; i < CountArray(pAnalyseItem->cbWeaveKind); i++ )
 		{
 			if( pAnalyseItem->cbWeaveKind[i]&(WIK_LEFT|WIK_CENTER|WIK_RIGHT) )
 			{
-				BYTE j = 0;
+				byte j = 0;
 				for(; j < 3; j++ )
 				{
 					cbCardValue = pAnalyseItem->cbCardData[i][j]&MASK_VALUE;
@@ -882,43 +884,43 @@ namespace SRLFLOGIC
 	}
 
 	//是否花猪
-	bool CGameLogic::IsHuaZhu( const BYTE cbCardIndex[], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount )
+	bool CGameLogic::IsHuaZhu( const byte cbCardIndex[], const tagWeaveItem WeaveItem[], byte cbWeaveCount )
 	{
-		BYTE cbColor[3] = { 0,0,0 };
-		for( BYTE i = 0; i < MAX_INDEX; i++ )
+		byte cbColor[3] = { 0,0,0 };
+		for( byte i = 0; i < MAX_INDEX; i++ )
 		{
 			if( cbCardIndex[i] > 0 )
 			{
-				BYTE cbCardColor = SwitchToCardData(i)&MASK_COLOR;
+				byte cbCardColor = SwitchToCardData(i)&MASK_COLOR;
 				cbColor[cbCardColor>>4]++;
 
 				i = (i/9+1)*9-1;
 			}
 		}
-		for( BYTE i = 0; i < cbWeaveCount; i++ )
+		for( byte i = 0; i < cbWeaveCount; i++ )
 		{
-			BYTE cbCardColor = WeaveItem[i].cbCenterCard&MASK_COLOR;
+			byte cbCardColor = WeaveItem[i].cbCenterCard&MASK_COLOR;
 			cbColor[cbCardColor>>4]++;
 		}
 		//缺一门就不是花猪
-		for( BYTE i = 0; i < CountArray(cbColor); i++ )
+		for( byte i = 0; i < CountArray(cbColor); i++ )
 			if( cbColor[i] == 0 ) return false;
 
 		return true;
 	}
 
-	BYTE CGameLogic::GetCardColor(BYTE cbCardDat)
+	byte CGameLogic::GetCardColor(byte cbCardDat)
 	{
 		ASSERT(IsValidCard(cbCardDat));
 		return ((cbCardDat&MASK_COLOR)>>4)+1;
 	}
 
-	BYTE CGameLogic::GetCardValue(BYTE cbCardDat)
+	byte CGameLogic::GetCardValue(byte cbCardDat)
 	{
 		ASSERT(IsValidCard(cbCardDat));
 		return (cbCardDat&MASK_VALUE);
 	}
-	void CGameLogic::GetCardInfoList(BYTE* pHandCardData, int nHandCardCount,std::vector<Card_Info>& kCardInfoList )
+	void CGameLogic::GetCardInfoList(byte* pHandCardData, int nHandCardCount,std::vector<Card_Info>& kCardInfoList )
 	{
 		for (int m=1;m<=CARD_COLOR_TIAO;m++)
 		{	
@@ -927,7 +929,7 @@ namespace SRLFLOGIC
 			kInfo.nLen = 0;
 			for(int i=0;i<nHandCardCount;i++)
 			{
-				BYTE cbColor= GetCardColor(pHandCardData[i]);
+				byte cbColor= GetCardColor(pHandCardData[i]);
 				if (cbColor== kInfo.nColor )
 				{
 					kInfo.kCardList.push_back(pHandCardData[i]);
@@ -940,7 +942,7 @@ namespace SRLFLOGIC
 	}
 
 	//是否听牌
-	bool CGameLogic::IsTingCard( const BYTE cbCardIndex[MAX_INDEX])
+	bool CGameLogic::IsTingCard( const byte cbCardIndex[MAX_INDEX])
 	{
 		bool  isCanFu = IsQiDui(cbCardIndex);
 		if(isCanFu == true)
@@ -951,11 +953,11 @@ namespace SRLFLOGIC
 		return false;
 	}
 
-	bool CGameLogic::CheckHu(const BYTE cbCardIndexTemp[MAX_INDEX])
+	bool CGameLogic::CheckHu(const byte cbCardIndexTemp[MAX_INDEX])
 	{
-		BYTE cbCardIndexWangemp[MAX_INDEX];// 万 
-		BYTE cbCardIndexTiaoemp[MAX_INDEX];//  条
-		BYTE cbCardIndexTongemp[MAX_INDEX];//  同 
+		byte cbCardIndexWangemp[MAX_INDEX];// 万 
+		byte cbCardIndexTiaoemp[MAX_INDEX];//  条
+		byte cbCardIndexTongemp[MAX_INDEX];//  同 
 		memset(cbCardIndexWangemp,0,sizeof(cbCardIndexWangemp));
 		memset(cbCardIndexTiaoemp,0,sizeof(cbCardIndexTiaoemp));
 		memset(cbCardIndexTongemp,0,sizeof(cbCardIndexTongemp));
@@ -965,9 +967,9 @@ namespace SRLFLOGIC
 		//将牌在 万
 		if (getAnyCardsCount(cbCardIndexWangemp) % 3 == 2){
 			for (int i = 0; i < 9; i++){
-				BYTE tempCardIndexWangemp[MAX_INDEX];
-				BYTE tempCardIndexTiaoemp[MAX_INDEX];//  条
-				BYTE tempCardIndexTongemp[MAX_INDEX];//  同 
+				byte tempCardIndexWangemp[MAX_INDEX];
+				byte tempCardIndexTiaoemp[MAX_INDEX];//  条
+				byte tempCardIndexTongemp[MAX_INDEX];//  同 
 				memset(tempCardIndexWangemp,0,sizeof(tempCardIndexWangemp));
 				memset(tempCardIndexTiaoemp,0,sizeof(tempCardIndexTiaoemp));
 				memset(tempCardIndexTongemp,0,sizeof(tempCardIndexTongemp));
@@ -988,9 +990,9 @@ namespace SRLFLOGIC
 		//将牌在 条
 		if (getAnyCardsCount(cbCardIndexTiaoemp) % 3 == 2){
 			for (int i = 9; i < 18; i++){
-				BYTE tempCardIndexWangemp[MAX_INDEX];
-				BYTE tempCardIndexTiaoemp[MAX_INDEX];//  条
-				BYTE tempCardIndexTongemp[MAX_INDEX];//  同 
+				byte tempCardIndexWangemp[MAX_INDEX];
+				byte tempCardIndexTiaoemp[MAX_INDEX];//  条
+				byte tempCardIndexTongemp[MAX_INDEX];//  同 
 				memset(tempCardIndexWangemp,0,sizeof(tempCardIndexWangemp));
 				memset(tempCardIndexTiaoemp,0,sizeof(tempCardIndexTiaoemp));
 				memset(tempCardIndexTongemp,0,sizeof(tempCardIndexTongemp));
@@ -1010,9 +1012,9 @@ namespace SRLFLOGIC
 		//将牌在 筒
 		if (getAnyCardsCount(cbCardIndexTongemp) % 3 == 2){
 			for (int i = 18; i < 27; i++){
-				BYTE tempCardIndexWangemp[MAX_INDEX];
-				BYTE tempCardIndexTiaoemp[MAX_INDEX];//  条
-				BYTE tempCardIndexTongemp[MAX_INDEX];//  同 
+				byte tempCardIndexWangemp[MAX_INDEX];
+				byte tempCardIndexTiaoemp[MAX_INDEX];//  条
+				byte tempCardIndexTongemp[MAX_INDEX];//  同 
 				memset(tempCardIndexWangemp,0,sizeof(tempCardIndexWangemp));
 				memset(tempCardIndexTiaoemp,0,sizeof(tempCardIndexTiaoemp));
 				memset(tempCardIndexTongemp,0,sizeof(tempCardIndexTongemp));
@@ -1032,60 +1034,60 @@ namespace SRLFLOGIC
 
 	}
 
-	BYTE CGameLogic::getAnyCardsCount( BYTE cbCardIndex[MAX_INDEX])
+	byte CGameLogic::getAnyCardsCount( byte cbCardIndex[MAX_INDEX])
 	{
-		BYTE count =0;
-		for(BYTE i =0;i<MAX_INDEX;i++)
+		byte count =0;
+		for(byte i =0;i<MAX_INDEX;i++)
 			count+= cbCardIndex[i];
 		return count;
 	}
 
 	//去掉乱三风
-	void CGameLogic::removeAnyCard( BYTE cbCardIndex[MAX_INDEX],BYTE cbCardData,BYTE cardCount)
+	void CGameLogic::removeAnyCard( byte cbCardIndex[MAX_INDEX],byte cbCardData,byte cardCount)
 	{
 		if (cbCardIndex[SwitchToCardIndex(cbCardData)]>=cardCount)
 			cbCardIndex[SwitchToCardIndex(cbCardData)]-= cardCount;
 	}
 	
-	bool CGameLogic::isHaveAnyCard( BYTE cbCardIndex[MAX_INDEX],BYTE cbCardData,BYTE cardCount )
+	bool CGameLogic::isHaveAnyCard( byte cbCardIndex[MAX_INDEX],byte cbCardData,byte cardCount )
 	{
-		BYTE cardIndex = SwitchToCardIndex(cbCardData);
+		byte cardIndex = SwitchToCardIndex(cbCardData);
 		return cbCardIndex[cardIndex]>= cardCount;
 	}
 
 	//去掉乱三风
-	bool CGameLogic::isHaveAnyCards( BYTE cbCardIndex[MAX_INDEX])
+	bool CGameLogic::isHaveAnyCards( byte cbCardIndex[MAX_INDEX])
 	{
-		BYTE count =0;
-		for(BYTE i =0;i<MAX_INDEX;i++)
+		byte count =0;
+		for(byte i =0;i<MAX_INDEX;i++)
 			count+= cbCardIndex[i];
 		return count >0;
 	}
 
 	//去掉万桶条胡牌
-	bool CGameLogic::Check3nWang(BYTE cbCardIndex[MAX_INDEX])
+	bool CGameLogic::Check3nWang(byte cbCardIndex[MAX_INDEX])
 	{
 		if (getAnyCardsCount(cbCardIndex) == 0)
 			return true;
-		BYTE indexCard = 0;
-		for (BYTE i = 0; i < 9; i++)
+		byte indexCard = 0;
+		for (byte i = 0; i < 9; i++)
 		{
-			BYTE cardData = SwitchToCardData(i);
+			byte cardData = SwitchToCardData(i);
 			if (isHaveAnyCard(cbCardIndex, cardData, 1)){
 				indexCard = i;
 				break;
 			}
 		}
-		BYTE cardData = SwitchToCardData(indexCard);
+		byte cardData = SwitchToCardData(indexCard);
 		if (isHaveAnyCard(cbCardIndex, cardData, 3)){
 			removeAnyCard(cbCardIndex, cardData, 3);
 		}
 		else{
 			if ((indexCard + 2) < MAX_INDEX)
 			{
-				BYTE cardData1 = SwitchToCardData(indexCard);
-				BYTE cardData2 = SwitchToCardData(indexCard + 1);
-				BYTE cardData3 = SwitchToCardData(indexCard + 2);
+				byte cardData1 = SwitchToCardData(indexCard);
+				byte cardData2 = SwitchToCardData(indexCard + 1);
+				byte cardData3 = SwitchToCardData(indexCard + 2);
 				if (isHaveAnyCard(cbCardIndex, cardData1, 1)
 					&& isHaveAnyCard(cbCardIndex, cardData2, 1)
 					&& isHaveAnyCard(cbCardIndex, cardData3, 1))
@@ -1110,29 +1112,29 @@ namespace SRLFLOGIC
 	}
 
 	//去掉条
-	bool CGameLogic::Check3nTiao(BYTE cbCardIndex[MAX_INDEX])
+	bool CGameLogic::Check3nTiao(byte cbCardIndex[MAX_INDEX])
 	{
 		if (getAnyCardsCount(cbCardIndex) == 0)
 			return true;
-		BYTE indexCard = 0;
-		for (BYTE i = 9; i < 18; i++)
+		byte indexCard = 0;
+		for (byte i = 9; i < 18; i++)
 		{
-			BYTE cardData = SwitchToCardData(i);
+			byte cardData = SwitchToCardData(i);
 			if (isHaveAnyCard(cbCardIndex, cardData, 1)){
 				indexCard = i;
 				break;
 			}
 		}
-		BYTE cardData = SwitchToCardData(indexCard);
+		byte cardData = SwitchToCardData(indexCard);
 		if (isHaveAnyCard(cbCardIndex, cardData, 3)){
 			removeAnyCard(cbCardIndex, cardData, 3);
 		}
 		else{
 			if ((indexCard + 2) < MAX_INDEX)
 			{
-				BYTE cardData1 = SwitchToCardData(indexCard);
-				BYTE cardData2 = SwitchToCardData(indexCard + 1);
-				BYTE cardData3 = SwitchToCardData(indexCard + 2);
+				byte cardData1 = SwitchToCardData(indexCard);
+				byte cardData2 = SwitchToCardData(indexCard + 1);
+				byte cardData3 = SwitchToCardData(indexCard + 2);
 				if (isHaveAnyCard(cbCardIndex, cardData1, 1)
 					&& isHaveAnyCard(cbCardIndex, cardData2, 1)
 					&& isHaveAnyCard(cbCardIndex, cardData3, 1))
@@ -1156,29 +1158,29 @@ namespace SRLFLOGIC
 		return false;
 	}
 	//去掉桶
-	bool CGameLogic::Check3nTong(BYTE cbCardIndex[MAX_INDEX])
+	bool CGameLogic::Check3nTong(byte cbCardIndex[MAX_INDEX])
 	{
 		if (getAnyCardsCount(cbCardIndex) == 0)
 			return true;
-		BYTE indexCard = 0;
-		for (BYTE i = 18; i < 27; i++)
+		byte indexCard = 0;
+		for (byte i = 18; i < 27; i++)
 		{
-			BYTE cardData = SwitchToCardData(i);
+			byte cardData = SwitchToCardData(i);
 			if (isHaveAnyCard(cbCardIndex, cardData, 1)){
 				indexCard = i;
 				break;
 			}
 		}
-		BYTE cardData = SwitchToCardData(indexCard);
+		byte cardData = SwitchToCardData(indexCard);
 		if (isHaveAnyCard(cbCardIndex, cardData, 3)){
 			removeAnyCard(cbCardIndex, cardData, 3);
 		}
 		else{
 			if ((indexCard + 2) < MAX_INDEX)
 			{
-				BYTE cardData1 = SwitchToCardData(indexCard);
-				BYTE cardData2 = SwitchToCardData(indexCard + 1);
-				BYTE cardData3 = SwitchToCardData(indexCard + 2);
+				byte cardData1 = SwitchToCardData(indexCard);
+				byte cardData2 = SwitchToCardData(indexCard + 1);
+				byte cardData3 = SwitchToCardData(indexCard + 2);
 				if (isHaveAnyCard(cbCardIndex, cardData1, 1)
 					&& isHaveAnyCard(cbCardIndex, cardData2, 1)
 					&& isHaveAnyCard(cbCardIndex, cardData3, 1))
@@ -1203,10 +1205,10 @@ namespace SRLFLOGIC
 	}
 
 	//七对：胡牌时，手中的牌面为7个对子。
-	bool CGameLogic::IsQiDui(const BYTE cbCardIndex[MAX_INDEX]){
-		BYTE cbCardIndexTemp[MAX_INDEX];
+	bool CGameLogic::IsQiDui(const byte cbCardIndex[MAX_INDEX]){
+		byte cbCardIndexTemp[MAX_INDEX];
 		memcpy(cbCardIndexTemp,cbCardIndex,sizeof(cbCardIndexTemp));
-		BYTE duiCount = 0;
+		byte duiCount = 0;
 		for (int i=0;i<MAX_INDEX;i++){
 			duiCount += (cbCardIndexTemp[i] == 2 )? 1:0;
 			duiCount += (cbCardIndexTemp[i] == 4 )? 2:0;

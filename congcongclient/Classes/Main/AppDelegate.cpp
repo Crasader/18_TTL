@@ -1,15 +1,13 @@
 #include "AppDelegate.h"
-#include "AudioEngine.h"
-#include "SimpleAudioEngine.h"
 
-#include "CommonHeader/LocalConstant.h"
-#include "GamePlaza/LoadingScene/GPLoadingScene.h"
-#include "GamePlaza/GameManager/GPGameLink.h"
+#include "common.h"
+#include "constant.h"
+#include "Tools/utilityString.h"
 #include "Game/Game/GameManagerBase.h"
+#include "Game/Script/SoundFun.h"
 
-USING_NS_CC;
-using namespace experimental;
-using namespace CocosDenshion;
+#include "Plaza/LoadingScene/GPLoadingScene.h"
+#include "Plaza/GameManager/GPGameLink.h"
 
 AppDelegate::AppDelegate()
 {
@@ -71,10 +69,10 @@ void AppDelegate::applicationDidEnterBackground()
 
     SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
     AudioEngine::pauseAll();
-	CocosDenshion::SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0);
+	SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0);
 	SoundFun::Instance().SetSoundBackground(0);
 
-	CocosDenshion::SimpleAudioEngine::getInstance()->setEffectsVolume(0);
+	SimpleAudioEngine::getInstance()->setEffectsVolume(0);
 	SoundFun::Instance().SetSoundEffect(0);
 	
 }
@@ -85,11 +83,11 @@ void AppDelegate::applicationWillEnterForeground()
 
     SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
     AudioEngine::resumeAll();
-	float effect_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("effect_volume", LocalContant::DEFAULT_EFFECT);
+	float effect_volume = UserDefault::getInstance()->getFloatForKey("effect_volume", Constant::DEFAULT_SOUND);
 	CocosDenshion::SimpleAudioEngine::getInstance()->setEffectsVolume(effect_volume);
 	SoundFun::Instance().SetSoundEffect(effect_volume);
 
-	float sound_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("sound_volume", LocalContant::DEFAULT_SOUND);
+	float sound_volume = UserDefault::getInstance()->getFloatForKey("sound_volume", Constant::DEFAULT_SOUND);
 	CocosDenshion::SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(sound_volume);
 	SoundFun::Instance().SetSoundBackground(sound_volume);
 

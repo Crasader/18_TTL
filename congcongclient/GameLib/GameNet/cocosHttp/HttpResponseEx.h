@@ -28,7 +28,7 @@
 
 #include "HttpRequestEx.h"
 
-NS_CC_BEGIN
+namespace gamelib{
 
 namespace network {
 
@@ -181,6 +181,6 @@ protected:
 
 }
 
-NS_CC_END
+}
 
 #endif //__HTTP_RESPONSE_H__

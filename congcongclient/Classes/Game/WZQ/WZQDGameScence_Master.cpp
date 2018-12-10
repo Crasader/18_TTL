@@ -1,5 +1,5 @@
 //#include "WZQDGameScence.h"
-//#include "Game/GameLib.h"
+//#include "GAME.h"
 //#include "WZQDPlayer.h"
 //#include "WZQDGameLogic.h"
 //
@@ -8,7 +8,7 @@
 //	// ¿ØÖÆ°´Å¥ 536870912
 //	if (!WidgetFun::getChildWidget(this,"Button_Master"))
 //	{
-//		utility::log("WZQDGameScence::updateUserRight()");
+//		utility::filelog("WZQDGameScence::updateUserRight()");
 //		return;
 //	}
 //	if( CUserRight::IsGameCheatUser(UserInfo::Instance().getUserRight()))
@@ -43,14 +43,14 @@
 //			startPos.y += kAddPosY.y;
 //			startPos.x = 0;
 //		}
-//		BYTE iCard = XZDD::CGameLogic::Instance().SwitchToCardData(i);
+//		byte iCard = XZDD::CGameLogic::Instance().SwitchToCardData(i);
 //		cocos2d::Node* pNode = WidgetManager::Instance().createWidget("NHMJ_MASTER_LEFTCARD",pCardNode);
 //
 //		float fHuScale = utility::parseFloat(WidgetFun::getWidgetUserInfo(pNode,"HuScale"));
 //		pNode->setScale(fHuScale);
 //
-//		BYTE cbValue=((BYTE)iCard&MASK_VALUE);
-//		BYTE cbColor=(((BYTE)iCard&MASK_COLOR)>>4)+1;
+//		byte cbValue=((byte)iCard&MASK_VALUE);
+//		byte cbColor=(((byte)iCard&MASK_COLOR)>>4)+1;
 //		WidgetFun::setButtonImagic(pNode,utility::toString(kImagic,(int)cbColor,(int)cbValue,".png"),true);
 //		WidgetFun::setWidgetUserInfo(pNode,"MasterCardData",utility::toString((int)iCard));
 //		WidgetFun::setWidgetUserInfo(pNode,"MasterCardindex",utility::toString((int)i));
@@ -113,7 +113,7 @@
 //	}
 //}
 //
-//void WZQDGameScence::OnMasterHandCard( const void *pBuffer, WORD wDataSize )
+//void WZQDGameScence::OnMasterHandCard( const void *pBuffer, word wDataSize )
 //{
 //	if (!IsInGame())
 //	{
@@ -135,7 +135,7 @@
 //	}
 //}
 //
-//void WZQDGameScence::OnMasterLeftCard( const void *pBuffer, WORD wDataSize )
+//void WZQDGameScence::OnMasterLeftCard( const void *pBuffer, word wDataSize )
 //{
 //	if (!IsInGame())
 //	{
@@ -169,7 +169,7 @@
 //	{
 //		return;
 //	}
-//	BYTE iCard = utility::parseInt(WidgetFun::getUserInfoValue(pUseInfo,"MasterCardData"));
+//	byte iCard = utility::parseInt(WidgetFun::getUserInfoValue(pUseInfo,"MasterCardData"));
 //	setMasterCheakCard(iCard);
 //
 //	MaterCheckCard kMaterCheckCard;
@@ -179,8 +179,8 @@
 //}
 //void WZQDGameScence::MasterZhaNiao(cocos2d::Ref*,WidgetUserInfo* pUserInfo)
 //{
-//	BYTE iNiaoCout = utility::parseInt(WidgetFun::getUserInfoValue(pUserInfo,"NiaoCout"));
-//	BYTE iLastCout = INVALID_BYTE;
+//	byte iNiaoCout = utility::parseInt(WidgetFun::getUserInfoValue(pUserInfo,"NiaoCout"));
+//	byte iLastCout = INVALID_byte;
 //	for (int i = 1;i<7;i++)
 //	{
 //		if (WidgetFun::isChecked(this,utility::toString("MasterZhaNiao",i)))
@@ -188,9 +188,9 @@
 //			iLastCout = i;
 //		}
 //	}
-//	if (iLastCout == INVALID_BYTE)
+//	if (iLastCout == INVALID_byte)
 //	{
-//		iNiaoCout = INVALID_BYTE;
+//		iNiaoCout = INVALID_byte;
 //	}
 //	for (int i = 1;i<7;i++)
 //	{
@@ -202,7 +202,7 @@
 //	SendSocketData(SUB_C_MASTER_ZHANIAO,&kMaterNiaoCout,sizeof(kMaterNiaoCout));
 //}
 //
-//void WZQDGameScence::setMasterCheakCard(BYTE cbCard)
+//void WZQDGameScence::setMasterCheakCard(byte cbCard)
 //{
 //	cocos2d::Node* pCardNode = WidgetFun::getChildWidget(this,"MasterCheakCard");
 //	if (cbCard<0)

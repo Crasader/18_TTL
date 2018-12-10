@@ -1,5 +1,13 @@
 #include "PopScence.h"
 
+#include "Game/Widget/WidgetFun.h"
+#include "Game/Widget/WidgetManager.h"
+#include "Game/Widget/WidgetSkinXMLparse.h"
+#include "Game/Widget/WidgetScenceXMLparse.h"
+#include "GameNet/ImagicDownManager.h"
+
+using namespace gamelib;
+
 FV_SINGLETON_STORAGE(PopScence);
 
 PopScence::PopScence()

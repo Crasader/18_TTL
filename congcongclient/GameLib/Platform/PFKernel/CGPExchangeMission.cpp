@@ -1,5 +1,7 @@
 #include "CGPExchangeMission.h"
 
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
+#include "Platform/PFDefine/data/GlobalUserInfo.h"
 
 CGPExchangeMission::CGPExchangeMission(const char* url, int port)
 : CCallMission("CGPExchangeHuaFeiMission",url, port)
@@ -54,7 +56,6 @@ void CGPExchangeMission::ExchangeItem(int iExchangeID)
 }
 void CGPExchangeMission::CB_ExchangeItem(int iExchangeID)
 {
-
 	CMD_GP_ExchangeDone kNetInfo;
 	kNetInfo.dwUserID = CGlobalUserInfo::getUserID();
 	kNetInfo.dwExchangeID = iExchangeID;
@@ -65,19 +66,19 @@ void CGPExchangeMission::Net_ExchangeItemSucess(void* data, int dataSize)
 {
 	//变量定义
 	CMD_GP_OperateSuccess * pNetInfo=(CMD_GP_OperateSuccess *)data;
-
 	if (mIGPExchangeHuaFeiMissionSink)
 	{
 		mIGPExchangeHuaFeiMissionSink->onGPExchangeDoneResult(true,pNetInfo->szDescribeString);
 	}
+	stop();
 }
 void CGPExchangeMission::Net_ExchangeItemFail(void* data, int dataSize)
 {
 	//变量定义
 	CMD_GP_OperateFailure * pNetInfo=(CMD_GP_OperateFailure *)data;
-
 	if (mIGPExchangeHuaFeiMissionSink)
 	{
 		mIGPExchangeHuaFeiMissionSink->onGPExchangeDoneResult(false,pNetInfo->szDescribeString);
 	}
+	stop();
 }

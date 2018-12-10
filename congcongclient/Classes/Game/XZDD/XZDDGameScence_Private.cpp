@@ -1,8 +1,10 @@
 #include "XZDDGameScence.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 #include "XZDDPlayer.h"
 #include "Game/Game/MissionWeiXin.h"
-#include "GamePlaza/HomeScene/CreateRoomPanel/GPHomeCreateRoomPanel_XZDD.h"
+#include "Plaza/HomeScene/CreateRoom/GPHomeCreateRoomPanel_XZDD.h"
+#include UTILITY_CONVERT
+#include IMAGE_DOWN
 
 void XZDDGameScence::pushGameRule(std::vector<std::string>&kRuleList, dword dwGameRule,int nRuleTag,bool bShow)
 {
@@ -147,8 +149,8 @@ void XZDDGameScence::friendPrivateInfo()//ÉèÖÃ·¿¼äË½ÓÐÐÅÏ¢
 	std::string kCCWeiXinSharDes = utility::getScriptReplaceValue("CCWeiXinSharDes",
 	utility::a_u8(resultTitle),(int)m_kPrivateRoomInfo.dwRoomNum,utility::a_u8(resultRule));
 	MissionWeiXin::Instance().shareTextWeiXin(kCCWeiXinSharDes,MissionWeiXin::SHARE_SESSION);
-	//MissionWeiXin::Instance().shareUrlWeiXin(utility::getScriptString("CCWeiXinSharUrl"),
-	//utility::getScriptString("CCWeiXinSharTitle"),
+	//MissionWeiXin::Instance().shareUrlWeiXin(script::getStr("CCWeiXinSharUrl"),
+	//script::getStr("CCWeiXinSharTitle"),
 	//kCCWeiXinSharDes,
 	//MissionWeiXin::SHARE_SESSION);
 }
@@ -222,7 +224,7 @@ void XZDDGameScence::OnSocketSubPrivateEnd(CMD_GF_Private_End_Info* pNetInfo)
 	else
 	{
 		int iTime = utility::parseInt(WidgetFun::getWidgetUserInfo(pJieSuanNode,"Time"))+3;
-		WidgetFun::getChildWidget(pRootNode,"PrivateEndPlane")->runAction(cocos2d::CCVisibleAction::create(iTime,true));
+		WidgetFun::getChildWidget(pRootNode,"PrivateEndPlane")->runAction(script::CCVisibleAction::create(iTime,true));
 	}
 
 	if(HaveOptionRule(GAME_OPTION_RULE_PRIVATAEND_RETURN_HOME))
@@ -238,7 +240,7 @@ void XZDDGameScence::OnSocketSubPrivateDismissInfo(CMD_GF_Private_Dismiss_Info* 
 	pNode->setVisible(true);
 	if (pNetInfo->dwDissUserCout == 0)
 	{
-		pNode->runAction(cocos2d::CCVisibleAction::create(1.0f,false));
+		pNode->runAction(script::CCVisibleAction::create(1.0f,false));
 		return;
 	}
 	int kChairID[4] = {1,1,1,1};
@@ -308,8 +310,8 @@ void XZDDGameScence::XZDDButton_WeiXinFriend(cocos2d::Ref*,WidgetUserInfo*)//ÒªÇ
 	friendPrivateInfo();
 	/*kHNWeiXinSharDes = utility::getScriptReplaceValue("CCWeiXinSharDes",
 	(int)m_kPrivateRoomInfo.dwRoomNum,(int)m_kPrivateRoomInfo.dwPlayTotal,kGameTypeStr);
-	MissionWeiXin::Instance().shareUrlWeiXin(utility::getScriptString("CCWeiXinSharUrl"),
-	utility::getScriptString("CCWeiXinSharTitle"),
+	MissionWeiXin::Instance().shareUrlWeiXin(script::getStr("CCWeiXinSharUrl"),
+	script::getStr("CCWeiXinSharTitle"),
 	kHNWeiXinSharDes,
 	MissionWeiXin::SHARE_SESSION);*/
 }

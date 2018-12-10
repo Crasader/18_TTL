@@ -1,5 +1,8 @@
 #include "CGPPersonalInfoMission.h"
 
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
+#include "Platform/PFDefine/data/GlobalUserInfo.h"
+
 CGPPersonalInfoMission::CGPPersonalInfoMission(const char* url, int port)
 : CSocketMission(url, port)
 {

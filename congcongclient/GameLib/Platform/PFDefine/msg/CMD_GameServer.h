@@ -2,8 +2,8 @@
 #define CMD_GAME_SERVER_HEAD_FILE
 
 #include "../df/datastream.h"
-#include "../df/types.h"
-#include "GameLib/Game/Game/GameDefine.h"
+#include "../df/Struct.h"
+#include "../df/Property.h"
 
 //////////////////////////////////////////////////////////////////////////////////
 //登录命令
@@ -132,8 +132,8 @@ struct CMD_GR_ConfigServer
 //道具配置
 struct CMD_GR_ConfigProperty
 {
-	byte							cbPropertyCount;					//道具数目
-	tagPropertyInfo					PropertyInfo[MAX_PROPERTY];			//道具描述
+	byte cbPropertyCount;					//道具数目
+	tagPropertyInfo PropertyInfo[MAX_PROPERTY];			//道具描述
 };
 
 //玩家权限
@@ -295,7 +295,6 @@ struct CMD_GR_TableStatus
 #define SUB_GR_MATCH_GOLDUPDATE		409									//金币更新
 #define SUB_GR_MATCH_ELIMINATE		410									//比赛淘汰
 #define SUB_GR_MATCH_JOIN_RESOULT	411									//加入结果
-
 
 
 //费用提醒

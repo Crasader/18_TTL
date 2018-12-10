@@ -1,5 +1,9 @@
 #include "CGMatchMission.h"
 
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
+#include "Platform/PFDefine/data/GlobalUserInfo.h"
+#include "Platform/PFDefine/data/ServerListData.h"
+#include "Kernel/kernel/server/IServerItem.h"
 
 CGMatchMission::CGMatchMission(const char* url, int port)
 : CCallMission("CGMatchMission",url, port)

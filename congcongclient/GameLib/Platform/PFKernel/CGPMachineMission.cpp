@@ -1,5 +1,8 @@
 #include "CGPMachineMission.h"
 
+#include "Platform/PFDefine/data/GlobalUserInfo.h"
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
+
 CGPMachineMission::CGPMachineMission(const char* url, int port)
 : CSocketMission(url, port)
 {

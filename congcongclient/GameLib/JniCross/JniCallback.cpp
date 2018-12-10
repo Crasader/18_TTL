@@ -1,5 +1,6 @@
+#include <cocos2d.h>
+
 #include "JniCallback.h"
-#include "cocos2d.h"
 #include "Game/Game/MissionWeiXin.h"
 #include "Game/Game/PayMananger.h"
 #include "Game/Game/UserInfo.h"

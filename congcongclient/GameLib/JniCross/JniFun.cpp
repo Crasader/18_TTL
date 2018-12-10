@@ -1,7 +1,8 @@
 #include "JniFun.h"
-#include "cocos2d.h"
-#include "GameLib/Tools/tools/Convert.h"
-#include "GameLib/Game/Script/utility.h"
+#include <cocos2d.h>
+
+#include "Tools/utilityConvert.h"
+#include "Tools/utilityString.h"
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 #include <Jni.h>
@@ -14,6 +15,7 @@
 #define JAVA_CLASSNAME  "org/cocos2dx/cpp/Native"
 
 using namespace cocos2d;
+
 namespace JniFun
 {
 	void onLoginError(int errorCode)
@@ -193,7 +195,6 @@ namespace JniFun
 #endif
 	}
 
-	// ∞Ê±æ∏¸–¬
 	void versionUpdate(const char* url ,const char* desc, const int filesize, const int isUpdate)
 	{
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID

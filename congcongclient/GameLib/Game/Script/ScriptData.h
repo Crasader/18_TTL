@@ -1,6 +1,5 @@
 #pragma once
 
-#include "cocos2d.h"
 #include "StructType.h"
 
 class ScriptDataManager
@@ -55,6 +54,7 @@ public:
 		}
 		kList.insert(std::pair<std::string,T>(kKey,iValue));
 	}
+
 protected:
 	std::map<std::string,bool> m_mapValueBool;
 	std::map<std::string,int> m_mapValueInt;
@@ -63,6 +63,9 @@ protected:
 	std::map<std::string,cocos2d::Vec2> m_mapValuePoint;
 	std::map<std::string,cocos2d::Size> m_mapValueSize;
 };
+
+namespace script
+{
 
 template<class T>
 class ScriptData
@@ -87,3 +90,22 @@ private:
 	T m_kValue;
 };
 
+inline std::string getStr(std::string kName, bool bAssert=true)
+{
+	if (bAssert)
+	{
+		ScriptData<std::string> kTxt(kName);
+		return kTxt.Value();
+	}
+	else
+	{
+		if (ScriptDataManager::haveValue<std::string>(kName))
+		{
+			ScriptData<std::string> kTxt(kName);
+			return kTxt.Value();
+		}
+	}
+	return "";
+}
+
+}

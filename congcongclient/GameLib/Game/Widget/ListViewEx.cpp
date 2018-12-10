@@ -1,6 +1,6 @@
 #include "ListViewEx.h"
 
-NS_CC_BEGIN;
+using namespace widget;
 
 ListViewEx* ListViewEx::create()
 {
@@ -13,4 +13,3 @@ ListViewEx* ListViewEx::create()
 	CC_SAFE_DELETE(widget);
 	return nullptr;
 }
-NS_CC_END;

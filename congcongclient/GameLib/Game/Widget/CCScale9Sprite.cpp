@@ -1,7 +1,6 @@
-
 #include "CCScale9Sprite.h"
 
-NS_CC_BEGIN;
+using namespace widget;
 
 Scale9SpriteEx* Scale9SpriteEx::create(const std::string& file)
 {
@@ -14,5 +13,3 @@ Scale9SpriteEx* Scale9SpriteEx::create(const std::string& file)
 	CC_SAFE_DELETE(pReturn);
 	return nullptr;
 }
-
-NS_CC_END;

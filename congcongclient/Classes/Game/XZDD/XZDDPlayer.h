@@ -1,9 +1,9 @@
-
 #pragma once
 
+#include <cocos2d.h>
+
 #include "Game/Game/GamePlayer.h"
-#include "GameLib/Game/GameLib.h"
-#include "cocos2d.h"
+#include "common.h"
 #include "CMD_XZDD.h"
 
 struct OutCardInfo
@@ -48,7 +48,7 @@ public:
 	virtual void upPlayerState();
 	virtual void showTalkState(CMD_GR_C_TableTalk* pNetInfo);
 public:
-	void setHandCard(BYTE* pCardData,int iCout);
+	void setHandCard(byte* pCardData,int iCout);
 	void setWeaveItem(XZDD::CMD_WeaveItem* pWeave, int iCout);
 	void setOperateResoult(XZDD::CMD_S_OperateResult* pNetInfo);
 	void addNewInCard(int iCard);
@@ -59,39 +59,39 @@ public:
 
 	cocos2d::Node* addHandOutCard(int iCard);
 	void showHandCard();
-	void showHandCard(XZDD::CMD_WeaveItem* pWeave, int iWeaveCout, BYTE* pHandCard, int iHandCout);
+	void showHandCard(XZDD::CMD_WeaveItem* pWeave, int iWeaveCout, byte* pHandCard, int iHandCout);
 	void setCardImagic(cocos2d::Node* pNode,int kValue,std::string kImagicFront);
 	cocos2d::Node* getTouchCardNode(cocos2d::Vec2 kTouchPos);
-	BYTE getTouchCardVlaue(cocos2d::Node* pNode);
+	byte getTouchCardVlaue(cocos2d::Node* pNode);
 	void showHuPai(bool bGaizhu);
-	void showJieSuanCard(cocos2d::Node* pCardNode, XZDD::CMD_WeaveItem* pWeave, int iWeaveCout, BYTE* pHandCard, int iHandCout);
-	void setChiHuCard(BYTE cbCard);
+	void showJieSuanCard(cocos2d::Node* pCardNode, XZDD::CMD_WeaveItem* pWeave, int iWeaveCout, byte* pHandCard, int iHandCout);
+	void setChiHuCard(byte cbCard);
 	void clearChiHuCard();
-	BYTE getChiHuCard();
+	byte getChiHuCard();
 	void showChiHuCard();
-	void removeHandCard(BYTE cbCard);
+	void removeHandCard(byte cbCard);
 public:
-	void removeHandOutCard( BYTE cbCardData );
+	void removeHandOutCard( byte cbCardData );
 	void sortHandCard();
-	BYTE getCanGangCard();//手牌排序;
+	byte getCanGangCard();//手牌排序;
 	void showHuanPai(int nGameType = GAME_TYPE_CHENGDU);
 	void showHuanPaiInit(int nGameType = GAME_TYPE_CHENGDU);
-	void standUpCard(BYTE cbCard,bool nOnly = true);
+	void standUpCard(byte cbCard,bool nOnly = true);
 	void seatDownCard();
-	cocos2d::Node* getCardNodeByCard(BYTE cbCard);
-	void getCardNodeByCard(std::vector<BYTE> CardDataList,std::vector<cocos2d::Node*>& kCardList);
-	bool getHuanCards(BYTE nHuanCard[HUAN_CARD_NUM]);
+	cocos2d::Node* getCardNodeByCard(byte cbCard);
+	void getCardNodeByCard(std::vector<byte> CardDataList,std::vector<cocos2d::Node*>& kCardList);
+	bool getHuanCards(byte nHuanCard[HUAN_CARD_NUM]);
 	int getDefuaultHuanValue(int nIndex);//获取第几个默认换牌的值
 	int getMastKindColor(); //最多张牌花色
 	void showCard();
-	void showCard(BYTE* cbCardData,BYTE cbCardCount);
-	void setHuanPai(BYTE* nHuan);
-	void saveRemoveHuanPai(BYTE* nHuan);
-	void saveHuanPai(BYTE* nHuan);
+	void showCard(byte* cbCardData,byte cbCardCount);
+	void setHuanPai(byte* nHuan);
+	void saveRemoveHuanPai(byte* nHuan);
+	void saveHuanPai(byte* nHuan);
 	void setHuanPai_ChengDu();
 
 	void setQueColor(int nColor);
-	BYTE getQueColor();
+	byte getQueColor();
 	void showXuanQue(bool bShow);
 	void showQueIcon_NoAni();
 	void showQueIconAni();
@@ -107,29 +107,29 @@ public:
 	void runAniMingGang();
 	void runAniAnGang();
 
-	void SET_paiSHUjU(std::vector<BYTE>& shuju,BYTE data);
+	void SET_paiSHUjU(std::vector<byte>& shuju,byte data);
 
-	void SetKeYiHuPai(std::vector<BYTE>  hupaiX_S);
+	void SetKeYiHuPai(std::vector<byte>  hupaiX_S);
 
 	void showjiesuanCard(cocos2d::Node* pCardNode);//结算手牌显示
 
 	XZDD::CMD_WeaveItem* getWeaveItemArray();
-	BYTE getWeaveCount();
+	byte getWeaveCount();
 
-	std::vector<BYTE>  setHuanPaiSiChuan(std::vector<XZDD::Card_Info> kCardInfoList);//四川麻将换牌表
-	std::vector<BYTE>  setHuanPaiChengDu(std::vector<XZDD::Card_Info> kCardInfoList);//成都麻将换牌表
+	std::vector<byte>  setHuanPaiSiChuan(std::vector<XZDD::Card_Info> kCardInfoList);//四川麻将换牌表
+	std::vector<byte>  setHuanPaiChengDu(std::vector<XZDD::Card_Info> kCardInfoList);//成都麻将换牌表
 
 public:
-	BYTE getGangCard(BYTE currentCard);
-	void getGangCardInfo(BYTE* gangCards,BYTE& count,BYTE currentCard);
-	void showGangCards(BYTE* gangCards,BYTE gangCount);
-	BYTE isChiGangCard( BYTE currentCard);
+	byte getGangCard(byte currentCard);
+	void getGangCardInfo(byte* gangCards,byte& count,byte currentCard);
+	void showGangCards(byte* gangCards,byte gangCount);
+	byte isChiGangCard( byte currentCard);
 public:
 	void ClickCard(cocos2d::Node* pCard);
-	int getUpCardList(std::vector<BYTE>& kCardDataList);
+	int getUpCardList(std::vector<byte>& kCardDataList);
 
 public:
-	void setHandCard_EX(std::vector<BYTE> kCardList);
+	void setHandCard_EX(std::vector<byte> kCardList);
 	void setMaskHandCard(std::vector<XZDD::MasterHandCardInfo> kMasterHandCardInfo);
 	void setMingPai(bool bValue);
 public:
@@ -151,31 +151,31 @@ private:
 	int						m_iIdex;
 	cocos2d::Node*			m_pSeatNode;
 
-	BYTE					m_kHandCardData[MAX_COUNT];//手牌数据
-	BYTE					m_kHandCardCout;
+	byte					m_kHandCardData[MAX_COUNT];//手牌数据
+	byte					m_kHandCardCout;
 
 	XZDD::CMD_WeaveItem			m_kWeaveItemArray[MAX_WEAVE];		//组合扑克
-	BYTE					m_kWeaveCount;					//组合数目
+	byte					m_kWeaveCount;					//组合数目
 
-	BYTE				         m_nQueColor;
-	BYTE				         m_pHuanCards[3];
+	byte				         m_nQueColor;
+	byte				         m_pHuanCards[3];
 	std::vector<cocos2d::Node*> m_pHuanCardNodeList;
-	BYTE						 m_nMastKindColor;
+	byte						 m_nMastKindColor;
 
-	BYTE						m_pSaveHuanPai[3];
+	byte						m_pSaveHuanPai[3];
 	std::vector<OutCardInfo>	m_kOutCardList;
 	bool						m_bPlayHSAni;
 
 	bool						m_bGameRecord;
 
-	BYTE                  m_cbChiHuCard;//所胡的牌
+	byte                  m_cbChiHuCard;//所胡的牌
 	cocos2d::Node*         m_pHandOutCard;
 
-	std::vector<BYTE>		m_kHuCardList;//胡牌表
+	std::vector<byte>		m_kHuCardList;//胡牌表
 
 	bool					m_bMingPai;//明牌
 
-	std::vector<BYTE>  shuzu ; //获得能下角的牌
+	std::vector<byte>  shuzu ; //获得能下角的牌
 	bool					m_bBanker;//明牌
 	bool					m_bHSZInitCards;
 };

@@ -1,15 +1,15 @@
 #include "ScriptXMLparse.h"
-#include "Game/Script/utility.h"
-#include "Game/Script/ScriptData.h"
-#include "Game/Script/utility.h"
+#include "Tools/utilityWidget.h"
+#include "ScriptData.h"
 
-USING_NS_CC;
+using namespace cocos2d;
+using namespace script;
 
 ScriptXMLparse::ScriptXMLparse(  std::string xmlFileName )
 {
 	SAXParser parser;
 	parser.setDelegator(this);
-	std::string kFullPath = utility::FullPath(xmlFileName);
+	std::string kFullPath = FullPath(xmlFileName);
 	parser.parse(kFullPath.c_str());
 }
 
@@ -21,7 +21,7 @@ void ScriptXMLparse::startElement(void *ctx, const char *name, const char **atts
 	if(elementName == "ScriptValueBool")
 	{
 		std::string kName = utility::valueForKey("Key", attributeDict);
-		int iValue = (utility::valueForBool("Value", attributeDict));
+		bool iValue = utility::valueForBool("Value", attributeDict);
 		ScriptDataManager::addValue<bool>(kName,iValue);
 	}
 	if(elementName == "ScriptValueInt")
@@ -76,7 +76,6 @@ void ScriptXMLparse::endElement(void *ctx, const char *name)
 {
 
 }
-
 void ScriptXMLparse::textHandler(void *ctx, const char *s, int len)
 {
 

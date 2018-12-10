@@ -1,4 +1,7 @@
 #include "TimeNode.h"
+#include "TimeManager.h"
+
+//using namespace script;
 
 TimeNode::TimeNode()
 	:m_bUseTimeNode(false)

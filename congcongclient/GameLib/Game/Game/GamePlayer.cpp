@@ -1,6 +1,19 @@
 #include "GamePlayer.h"
-#include "Game/GameLib.h"
+
 #include "Platform/PFKernel/CGPIndividualMission.h"
+
+#include "Tools/utilityLog.h"
+#include "Tools/utilityConvert.h"
+#include "Game/Script/ScriptData.h"
+#include "Game/Widget/WidgetFun.h"
+#include "GameNet/ImagicDownManager.h"
+
+#include "Platform/PFDefine/df/DF.h"
+#include "Platform/PFDefine/data/GlobalUserInfo.h"
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
+
+using namespace WidgetFun;
+ using namespace script;
 
 GamePlayer::GamePlayer(IClientUserItem* pUserItem)
 	: m_pUserItem(pUserItem)
@@ -130,7 +143,7 @@ void GamePlayer::requestHeadInfo()
 void GamePlayer::on_GP_UserIndividual(void* data, int dataSize)
 {
 	if (!m_pUserItem) {
-		utility::log("GamePlayer::on_GP_UserIndividual failed !m_pUserItem");
+		utility::filelog("GamePlayer::on_GP_UserIndividual failed !m_pUserItem");
 	}
 	CMD_GP_UserIndividual* pModifyIndividual = (CMD_GP_UserIndividual*)data;
 

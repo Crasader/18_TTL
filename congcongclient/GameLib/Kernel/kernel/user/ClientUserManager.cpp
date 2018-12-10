@@ -1,6 +1,10 @@
+#include <cocos2d.h>
+
 #include "Kernel/kernel/user/ClientUserManager.h"
 
 //////////////////////////////////////////////////////////////////////////////////
+
+USING_NS_CC;
 
 //构造函数
 CClientUserItem::CClientUserItem()

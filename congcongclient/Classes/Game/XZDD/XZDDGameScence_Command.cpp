@@ -1,5 +1,5 @@
 #include "XZDDGameScence.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 
 #include "CMD_XZDD.h"
 

@@ -1,7 +1,11 @@
 #pragma once
 
-#include "cocos2d.h"
-NS_CC_BEGIN;
+#include <cocos2d.h>
+
+USING_NS_CC;
+
+namespace widget
+{
 
 class SliderMenu : public Menu
 {
@@ -46,4 +50,4 @@ private:
 
 };
 
-NS_CC_END
+}

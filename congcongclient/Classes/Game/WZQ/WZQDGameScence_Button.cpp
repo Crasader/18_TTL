@@ -1,13 +1,14 @@
 #include "WZQDGameScence.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 #include "JniCross/JniFun.h"
 
 #include "CMD_WZQ.h"
 #include "WZQDPlayer.h"
 #include "WZQDGameLogic.h"
 #include "WZQDSoundFun.h"
-#include "GameLib/Game/Game/MissionWeiXin.h"
+#include "Game/Game/MissionWeiXin.h"
 
+#include "UTILITY.h"
 
 void WZQDGameScence::initButton()
 {
@@ -50,8 +51,8 @@ void WZQDGameScence::WZQButtonWeiXin(cocos2d::Ref*,WidgetUserInfo*)
 	std::string kCCWeiXinSharDes = utility::getScriptReplaceValue("CCWeiXinSharDes",
 		utility::a_u8("Îå×ÓÆå"),(int)m_kPrivateRoomInfo.dwRoomNum,utility::a_u8(""));
 	MissionWeiXin::Instance().shareTextWeiXin(kCCWeiXinSharDes,MissionWeiXin::SHARE_SESSION);
-	/*MissionWeiXin::Instance().shareUrlWeiXin(utility::getScriptString("CCWeiXinSharUrl"),
-		utility::getScriptString("CCWeiXinSharTitle"),
+	/*MissionWeiXin::Instance().shareUrlWeiXin(script::getStr("CCWeiXinSharUrl"),
+		script::getStr("CCWeiXinSharTitle"),
 		kCCWeiXinSharDes,
 		MissionWeiXin::SHARE_SESSION);*/
 }

@@ -1,9 +1,10 @@
 #include "XZDDGameScence.h"
 #include "XZDDPlayer.h"
-#include "Game/GameLib.h"
+#include "GAME.h"
 #include "CMD_XZDD.h"
 #include "XZDDPlayer.h"
 #include "XZDDGameLogic.h"
+#include UTILITY_WIDGET
 
 class XDZZTouchScence
 	:public cocos2d::CCLayer
@@ -92,9 +93,9 @@ bool XZDDGameScence::ccTouchBegan(cocos2d::Vec2 kPos)
 		{
 			m_Touch_CS  = 1;
 			m_pTouchCardNode = m_pLocal->getTouchCardNode(kPos);
-			BYTE m_paimian = m_pLocal->getTouchCardVlaue(m_pTouchCardNode);
+			byte m_paimian = m_pLocal->getTouchCardVlaue(m_pTouchCardNode);
 
-			std::vector<BYTE> shuju ;
+			std::vector<byte> shuju ;
 			m_pLocal->SET_paiSHUjU(shuju,m_paimian);
 // 			if(shuju.size())
 // 			{
@@ -204,7 +205,7 @@ void XZDDGameScence::SendOutCard(cocos2d::Node* pCard)//≥ˆ≈∆√¸¡Ó
 
 void XZDDGameScence::onHuanPaiTouchEvent(cocos2d::Vec2 kPos)//ªª≈∆√¸¡Ó
 {
-	std::vector<BYTE> kCardDataList;
+	std::vector<byte> kCardDataList;
 	int nColor = m_pLocal->getUpCardList(kCardDataList);
 	int nUpCardNum = kCardDataList.size();
 

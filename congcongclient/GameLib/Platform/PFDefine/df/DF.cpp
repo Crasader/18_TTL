@@ -1,8 +1,11 @@
+#include <cocos2d.h>
+
 #include "DF.h"
 #include "Tools/core/MD5.h"
-#include "cocos2d.h"
-#include "GameLib/Game/Script/ScriptData.h"
-USING_NS_CC;
+#include "Game/Script/ScriptData.h"
+#include "Platform/PFDefine/df/Module.h"
+
+using namespace script;
 
 //////////////////////////////////////////////////////////////////////////
 

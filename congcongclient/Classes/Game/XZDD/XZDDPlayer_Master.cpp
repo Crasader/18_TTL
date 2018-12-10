@@ -2,7 +2,7 @@
 #include "XZDDGameLogic.h"
 #include "XZDDSoundFun.h"
 
-void XZDDPlayer::setHandCard_EX(std::vector<BYTE> kCardList)
+void XZDDPlayer::setHandCard_EX(std::vector<byte> kCardList)
 {
 	int nCardCount = kCardList.size();
 	ASSERT(nCardCount <= MAX_COUNT);

@@ -1,8 +1,11 @@
 #pragma once
 
-#include "cocos2d.h"
+#include <cocos2d.h>
 
-NS_CC_BEGIN
+USING_NS_CC;
+
+namespace widget
+{
 
 class QYLabel : public cocos2d::LabelTTF
 {
@@ -27,4 +30,4 @@ private:
 	LabelTTF* m_pLeft;
 	LabelTTF* m_pRight;
 };
-NS_CC_END
+}

@@ -2,7 +2,8 @@
 #define __FvSmartPointer_H__
 
 #include "FvKernel.h"
-#include "cocos2d.h"
+#include <cocos2d.h>
+USING_NS_CC;
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 #include <sys/atomics.h>
@@ -263,7 +264,7 @@ public:
 			{
 				if (HasZeroReferenceCount( *m_pkObject ))
 				{
-					//FV_ASSERT_DEV( 0 &&
+					//ASSERT_DEV( 0 &&
 					//	"FvConstSmartPointer::FvConstSmartPointer - The reference "
 					//	"count should not be zero\nfor objects that already "
 					//	"have their reference incremented" );

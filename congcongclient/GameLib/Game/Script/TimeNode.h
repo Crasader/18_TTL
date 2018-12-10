@@ -1,6 +1,6 @@
 #pragma once
-#include "cocos2d.h"
-#include "TimeManager.h"
+
+//namespace script {
 
 class TimeNode
 {
@@ -13,3 +13,4 @@ private:
 	bool m_bUseTimeNode;
 };
 
+//}
