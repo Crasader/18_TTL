@@ -654,7 +654,7 @@ void GPHomeCreateRoomPanel_NN::Button_SixRound(cocos2d::Ref*, WidgetUserInfo*)
 	WidgetFun::setVisible(this, "Pic_SixRound", true);
 	WidgetFun::setVisible(this, "Btn_EightRound", true);
 	WidgetFun::setVisible(this, "Pic_EightRound", false);
-	_cbRoundCount = true;
+	_cbRoundCount = 6;
 }
 
 void GPHomeCreateRoomPanel_NN::Button_EightRound(cocos2d::Ref*, WidgetUserInfo*)
@@ -663,7 +663,7 @@ void GPHomeCreateRoomPanel_NN::Button_EightRound(cocos2d::Ref*, WidgetUserInfo*)
 	WidgetFun::setVisible(this, "Pic_SixRound", false);
 	WidgetFun::setVisible(this, "Btn_EightRound", false);
 	WidgetFun::setVisible(this, "Pic_EightRound", true);
-	_cbRoundCount = false;
+	_cbRoundCount = 8;
 }
 
 //////////////////////////////////////////////////////////////////////////

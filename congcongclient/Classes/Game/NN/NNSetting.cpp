@@ -29,9 +29,9 @@ bool NNSetting::init()
 	WidgetManager::addButtonCB("Button_Close", this, button_selector(NNSetting::Button_Close));
 	float sound_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("sound_volume", Constant::DEFAULT_SOUND);
 	float effect_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("effect_volume", Constant::DEFAULT_EFFECT);
-	m_SoundSlider = ControlSlider::create("GamePlaza/HomeScene/progress_bg.png"
-		, "GamePlaza/HomeScene/progress.png"
-		, "GamePlaza/HomeScene/Button_Slider.png");
+	m_SoundSlider = ControlSlider::create("GamePlaza/HomeScene/SettingPanel/progress_bg.png"
+		, "GamePlaza/HomeScene/SettingPanel/progress.png"
+		, "GamePlaza/HomeScene/SettingPanel/Button_Slider.png");
 	m_SoundSlider->addTargetWithActionForControlEvents(this, cccontrol_selector(NNSetting::Slider_Sound), Control::EventType::VALUE_CHANGED);
 	m_SoundSlider->setMinimumValue(0);
 	m_SoundSlider->setMaximumValue(100.0f);
@@ -40,9 +40,9 @@ bool NNSetting::init()
 	auto music_node = WidgetFun::getChildWidgetByName(this,"music_silder_Node");
 	m_SoundSlider->setPosition(music_node->getPosition());
 
-	m_EffectSlider = ControlSlider::create("GamePlaza/HomeScene/progress_bg.png"
-		, "GamePlaza/HomeScene/progress.png"
-		, "GamePlaza/HomeScene/Button_Slider.png");
+	m_EffectSlider = ControlSlider::create("GamePlaza/HomeScene/SettingPanel/progress_bg.png"
+		, "GamePlaza/HomeScene/SettingPanel/progress.png"
+		, "GamePlaza/HomeScene/SettingPanel/Button_Slider.png");
 	m_EffectSlider->addTargetWithActionForControlEvents(this, cccontrol_selector(NNSetting::Slider_Effect), Control::EventType::VALUE_CHANGED);
 	m_EffectSlider->setMinimumValue(0);
 	m_EffectSlider->setMaximumValue(100.0f);

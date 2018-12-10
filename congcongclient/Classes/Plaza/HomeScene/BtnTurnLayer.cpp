@@ -1,7 +1,8 @@
 #include "BtnTurnLayer.h"
 #include "Game/FV/FvSingleton.h"
 #include "Plaza/HomeScene/GPHomeScene.h"
- 
+#include UTILITY_LOG
+
 using namespace experimental;
 
 const float RUNTIME = 0.3f; //动画运行时间  
@@ -32,8 +33,10 @@ bool BtnTurnLayer::init()
 	return true;
 
 }
+
 void BtnTurnLayer::initData()
 {
+	utility::filelog("BtnTurnLayer::initData() error enter here!!");
 	m_curPage =0;
 	m_mapTextrue[0] =Director::getInstance()->getTextureCache()->addImage( "GamePlaza/HomeScene/Tab_QiangZhuangNiuNiu.png");
 	m_mapTextrue[1]	=Director::getInstance()->getTextureCache()->addImage( "GamePlaza/HomeScene/Tab_MengJi.png");

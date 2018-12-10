@@ -258,7 +258,12 @@ void GameManagerBase::OnGRLogonFinish()
 	CCLOG(("GameManager::OnGRLogonFinish"));
 
 	m_eInReconnect = ReconnectStatus_NULL;
+
+	//TODO: window这里要挂, 估计是继承调用导致指针的问题
+#ifndef WIN32
 	TimeManager::Instance().removeByFun(TIME_CALLBACK(GameManagerBase::closeClinet, this));
+#endif // WIN32
+
 
 	//重入判断
 	if (mCServerItem && (mCServerItem->GetMeUserItem()!=NULL)&&(mCServerItem->GetMeUserItem()->GetUserStatus() >= US_SIT))
@@ -499,7 +504,10 @@ void GameManagerBase::StartGameReconnect()
 void GameManagerBase::onEventTCPSocketError(int errorCode)
 {
 	//UserInfo::Instance().checkInGameServer();
+	//TODO: window这里要挂, 估计是继承调用导致指针的问题
+#ifndef WIN32
 	TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(GameManagerBase::closeClinet, this), 3.0f);
+#endif
 }
 void GameManagerBase::closeClinet()
 {
