@@ -2,6 +2,7 @@
 *.vs
 *.suo
 *.sdf
+*.DS_Store
 Python_http_server
 runtime
 运行
