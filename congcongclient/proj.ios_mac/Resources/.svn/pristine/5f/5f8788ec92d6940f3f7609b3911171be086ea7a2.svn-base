@@ -1,9 +1,0 @@
- <root>
-    <WidgetNodeUI Name="RaidersContent">
-		<Property Key="Size" Value="820 4844"/>
-		<WidgetImagic Name="" TextureInfo="GamePlaza/HomeScene/RaidersPanel/Raiders_Content.png">
-		    <Property Key="AnchorPos" Value="0.5 0.5"/>
-			<Property Key="Pos" Value="410 2422"/>
-		</WidgetImagic>
-	</WidgetNodeUI>
- </root>

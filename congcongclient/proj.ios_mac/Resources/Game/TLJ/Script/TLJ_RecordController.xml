@@ -1,6 +1,0 @@
-<root>
-	<LoadSkin Skin="Game/TLJ/Script/TLJ_RecordControllerSkin.xml"/>
-	<Widget Name="" SkinTempName="TLJ_RecordControllerSkin">
-		<Property Key="Pos" Value="667 375"/>
-	</Widget>
-</root>
