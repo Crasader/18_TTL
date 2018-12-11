@@ -4,6 +4,8 @@
 #include "SRLFGameLogic.h"
 #include "UTILITY.h"
 #include USERINFO
+#include "Platform/PFDefine/df/RightDefine.h"
+
 
 void SRLFGameScence::updateUserRight()
 {

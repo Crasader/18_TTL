@@ -5,7 +5,7 @@
 
 #include "NNPlayer.h"
 #include "NNTurnCard.h"
-
+#include "Platform/PFDefine/df/Module.h"
 #include CMD_GAME
 
 struct RoomShareInfo {

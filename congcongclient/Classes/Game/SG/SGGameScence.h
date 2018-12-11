@@ -2,6 +2,7 @@
 
 #include "common.h"
 #include "Game/SG/SGPlayer.h"
+#include "Platform/PFDefine/df/Module.h"
 #include CMD_GAME
 
 class SGGameScence

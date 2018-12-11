@@ -1,7 +1,8 @@
 #pragma once
 #include "CMD_TLJ.h"
 
-#include "DEFINE.h"
+#include "GDEFINE.h"
+#include "Platform/PFDefine/df/Module.h"
 #include "Platform/PFDefine/msg/CMD_GameServer.h"
 #include "TLJHeaders.h"
 #include "TLJPlayer.h"

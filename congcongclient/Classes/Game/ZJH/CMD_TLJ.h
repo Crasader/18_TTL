@@ -1,7 +1,8 @@
 #ifndef CMD_TLJ_HEAD_FILE
 #define CMD_TLJ_HEAD_FILE
-#include "Game/Game/GameBase.h"
- 
+
+#include "GDEFINE.h"
+
 #include <vector>
 
 //////////////////////////////////////////////////////////////////////////

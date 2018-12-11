@@ -1,7 +1,7 @@
 #ifndef CMD_SPARROW_HEAD_FILE
 #define CMD_SPARROW_HEAD_FILE
 
- 
+ #include "GDEFINE.h"
 
 #pragma pack(1)
 

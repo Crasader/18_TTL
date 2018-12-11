@@ -269,7 +269,6 @@
 		180431021F57DEAF0025CC22 /* CGPPasswordMission.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18042FD71F57DEAE0025CC22 /* CGPPasswordMission.cpp */; };
 		180431031F57DEAF0025CC22 /* CGPPersonalInfoMission.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18042FD91F57DEAE0025CC22 /* CGPPersonalInfoMission.cpp */; };
 		180431041F57DEAF0025CC22 /* CGPReqPlayerInfoMission.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18042FDB1F57DEAE0025CC22 /* CGPReqPlayerInfoMission.cpp */; };
-		180431051F57DEAF0025CC22 /* CGPRoomListOnLineMission.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18042FDD1F57DEAE0025CC22 /* CGPRoomListOnLineMission.cpp */; };
 		180431061F57DEAF0025CC22 /* CGPRouletteMission.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18042FDF1F57DEAE0025CC22 /* CGPRouletteMission.cpp */; };
 		180431071F57DEAF0025CC22 /* CGPShopInfoMission.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18042FE11F57DEAE0025CC22 /* CGPShopInfoMission.cpp */; };
 		180431081F57DEAF0025CC22 /* CGPSignInMission.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18042FE31F57DEAE0025CC22 /* CGPSignInMission.cpp */; };
@@ -282,9 +281,7 @@
 		1804310F1F57DEAF0025CC22 /* MD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18042FF51F57DEAE0025CC22 /* MD5.cpp */; };
 		180431371F590B940025CC22 /* libSPaySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 180431361F590B940025CC22 /* libSPaySDK.a */; };
 		180431391F590BAC0025CC22 /* libQJPayWithAliPay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 180431381F590BAC0025CC22 /* libQJPayWithAliPay.a */; };
-		1804313D1F590BE40025CC22 /* libQJPayWithWFTWXPay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1804313A1F590BE40025CC22 /* libQJPayWithWFTWXPay.a */; };
 		1804313E1F590BE40025CC22 /* libQJPayWithWXPay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1804313B1F590BE40025CC22 /* libQJPayWithWXPay.a */; };
-		1804313F1F590BE40025CC22 /* libQJPayWithWXZWXPay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1804313C1F590BE40025CC22 /* libQJPayWithWXZWXPay.a */; };
 		180431411F590C770025CC22 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180431401F590C770025CC22 /* CFNetwork.framework */; };
 		180431431F590CA30025CC22 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180431421F590CA30025CC22 /* AlipaySDK.framework */; };
 		180431451F590CD00025CC22 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180431441F590CD00025CC22 /* CoreMedia.framework */; };
@@ -303,7 +300,6 @@
 		1804315F1F590F3D0025CC22 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1804315D1F590F3D0025CC22 /* AddressBookUI.framework */; };
 		180431611F590F570025CC22 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180431601F590F570025CC22 /* CoreLocation.framework */; };
 		180431631F590F6F0025CC22 /* libz.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 180431621F590F6F0025CC22 /* libz.1.tbd */; };
-		180431651F59100F0025CC22 /* libQJPaySDKDZF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 180431641F59100F0025CC22 /* libQJPaySDKDZF.a */; };
 		18062D131F594DC500F5763B /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18062CE11F594DC500F5763B /* AlipaySDK.bundle */; };
 		18062D141F594DC500F5763B /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18062CE21F594DC500F5763B /* AlipaySDK.framework */; };
 		18062D151F594DC500F5763B /* libQJPayWithAliPay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18062CE31F594DC500F5763B /* libQJPayWithAliPay.a */; };
@@ -313,13 +309,10 @@
 		18062D191F594DC500F5763B /* README.mdown in Sources */ = {isa = PBXBuildFile; fileRef = 18062CEA1F594DC500F5763B /* README.mdown */; };
 		18062D1A1F594DC500F5763B /* libQJPayWithWFTWXPay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18062CEC1F594DC500F5763B /* libQJPayWithWFTWXPay.a */; };
 		18062D1B1F594DC500F5763B /* libQJPayWithWXPay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18062CED1F594DC500F5763B /* libQJPayWithWXPay.a */; };
-		18062D1C1F594DC500F5763B /* libQJPayWithWXZWXPay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18062CEE1F594DC500F5763B /* libQJPayWithWXZWXPay.a */; };
 		18062D1D1F594DC500F5763B /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18062CF11F594DC500F5763B /* libWeChatSDK.a */; };
 		18062D1E1F594DC500F5763B /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18062CF21F594DC500F5763B /* README.txt */; };
 		18062D1F1F594DC500F5763B /* libSPaySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18062D0D1F594DC500F5763B /* libSPaySDK.a */; };
 		18062D201F594DC500F5763B /* SPaySDKResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18062D0E1F594DC500F5763B /* SPaySDKResource.bundle */; };
-		18062D211F594DC500F5763B /* ZWXPaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18062D0F1F594DC500F5763B /* ZWXPaySDK.framework */; };
-		18062D2A1F596E2E00F5763B /* libQJPaySDKDZF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18062D281F596E2E00F5763B /* libQJPaySDKDZF.a */; };
 		186B68691EFAA5C20071CB20 /* IosHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 186B68651EFAA5C20071CB20 /* IosHelper.mm */; };
 		187CFF531EFAC4E300B94306 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187CFF521EFAC4E300B94306 /* AudioToolbox.framework */; };
 		187CFF551EFACEB800B94306 /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 187CFF541EFACEB800B94306 /* libiconv.2.dylib */; };
@@ -482,6 +475,9 @@
 		3C1E02CE21BF48FF001F27C8 /* GPLoginScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C1E024321BF48FD001F27C8 /* GPLoginScene.cpp */; };
 		3C1E02CF21BF48FF001F27C8 /* GPLoginScene_LoginSink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C1E024521BF48FD001F27C8 /* GPLoginScene_LoginSink.cpp */; };
 		3C1E030C21BF49E1001F27C8 /* ios in Resources */ = {isa = PBXBuildFile; fileRef = 3C1E030B21BF49E1001F27C8 /* ios */; };
+		3C30D01221BF9E1A00E20E41 /* utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C30D00C21BF9E1900E20E41 /* utility.cpp */; };
+		3C30D01321BF9E1A00E20E41 /* utilityString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C30D01021BF9E1A00E20E41 /* utilityString.cpp */; };
+		3C30D01421BF9E1A00E20E41 /* utilityWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C30D01121BF9E1A00E20E41 /* utilityWidget.cpp */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
 		503AE10517EB98FF00D1A890 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503AE10317EB98FF00D1A890 /* main.cpp */; };
 		503AE11B17EB9C5A00D1A890 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503AE11A17EB9C5A00D1A890 /* IOKit.framework */; };
@@ -1085,8 +1081,6 @@
 		18042FDA1F57DEAE0025CC22 /* CGPPersonalInfoMission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPPersonalInfoMission.h; sourceTree = "<group>"; };
 		18042FDB1F57DEAE0025CC22 /* CGPReqPlayerInfoMission.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CGPReqPlayerInfoMission.cpp; sourceTree = "<group>"; };
 		18042FDC1F57DEAE0025CC22 /* CGPReqPlayerInfoMission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPReqPlayerInfoMission.h; sourceTree = "<group>"; };
-		18042FDD1F57DEAE0025CC22 /* CGPRoomListOnLineMission.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CGPRoomListOnLineMission.cpp; sourceTree = "<group>"; };
-		18042FDE1F57DEAE0025CC22 /* CGPRoomListOnLineMission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPRoomListOnLineMission.h; sourceTree = "<group>"; };
 		18042FDF1F57DEAE0025CC22 /* CGPRouletteMission.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CGPRouletteMission.cpp; sourceTree = "<group>"; };
 		18042FE01F57DEAE0025CC22 /* CGPRouletteMission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPRouletteMission.h; sourceTree = "<group>"; };
 		18042FE11F57DEAE0025CC22 /* CGPShopInfoMission.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CGPShopInfoMission.cpp; sourceTree = "<group>"; };
@@ -1102,7 +1096,6 @@
 		18042FEB1F57DEAE0025CC22 /* CGUserInGameServerInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CGUserInGameServerInfo.cpp; sourceTree = "<group>"; };
 		18042FEC1F57DEAE0025CC22 /* CGUserInGameServerInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGUserInGameServerInfo.h; sourceTree = "<group>"; };
 		18042FED1F57DEAE0025CC22 /* GPMission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPMission.h; sourceTree = "<group>"; };
-		18042FEE1F57DEAE0025CC22 /* PlatformHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlatformHeader.h; sourceTree = "<group>"; };
 		18042FF11F57DEAE0025CC22 /* CCUserDefault.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCUserDefault.cpp; sourceTree = "<group>"; };
 		18042FF21F57DEAE0025CC22 /* CCUserDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCUserDefault.h; sourceTree = "<group>"; };
 		18042FF31F57DEAE0025CC22 /* Encrypt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Encrypt.cpp; sourceTree = "<group>"; };
@@ -1208,12 +1201,6 @@
 		3C02D68221BF614E00489E90 /* bgplay.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bgplay.mp3; path = ../Resources/bgplay.mp3; sourceTree = "<group>"; };
 		3C02D68321BF614F00489E90 /* TTLNN */ = {isa = PBXFileReference; lastKnownFileType = folder; name = TTLNN; path = ../Resources/TTLNN; sourceTree = "<group>"; };
 		3C02D68421BF614F00489E90 /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sound; path = ../Resources/sound; sourceTree = "<group>"; };
-		3C1E013D21BF48FD001F27C8 /* CMD_Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMD_Game.h; sourceTree = "<group>"; };
-		3C1E013E21BF48FD001F27C8 /* CMD_Logon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMD_Logon.h; sourceTree = "<group>"; };
-		3C1E013F21BF48FD001F27C8 /* COCOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COCOS.h; sourceTree = "<group>"; };
-		3C1E014021BF48FD001F27C8 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
-		3C1E014121BF48FD001F27C8 /* constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constant.h; sourceTree = "<group>"; };
-		3C1E014221BF48FD001F27C8 /* DEFINE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEFINE.h; sourceTree = "<group>"; };
 		3C1E014521BF48FD001F27C8 /* CMD_NN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMD_NN.h; sourceTree = "<group>"; };
 		3C1E014621BF48FD001F27C8 /* NNCalculate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NNCalculate.cpp; sourceTree = "<group>"; };
 		3C1E014721BF48FD001F27C8 /* NNCalculate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNCalculate.h; sourceTree = "<group>"; };
@@ -1388,7 +1375,6 @@
 		3C1E01F621BF48FD001F27C8 /* TLJSettingPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLJSettingPanel.h; sourceTree = "<group>"; };
 		3C1E01F721BF48FD001F27C8 /* TLJSoundFun.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TLJSoundFun.cpp; sourceTree = "<group>"; };
 		3C1E01F821BF48FD001F27C8 /* TLJSoundFun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLJSoundFun.h; sourceTree = "<group>"; };
-		3C1E01F921BF48FD001F27C8 /* GAME.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAME.h; sourceTree = "<group>"; };
 		3C1E01FB21BF48FD001F27C8 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		3C1E01FC21BF48FD001F27C8 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3C1E01FF21BF48FD001F27C8 /* GPGameLink.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GPGameLink.cpp; sourceTree = "<group>"; };
@@ -1458,10 +1444,26 @@
 		3C1E024321BF48FD001F27C8 /* GPLoginScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GPLoginScene.cpp; sourceTree = "<group>"; };
 		3C1E024421BF48FD001F27C8 /* GPLoginScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPLoginScene.h; sourceTree = "<group>"; };
 		3C1E024521BF48FD001F27C8 /* GPLoginScene_LoginSink.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GPLoginScene_LoginSink.cpp; sourceTree = "<group>"; };
-		3C1E024621BF48FD001F27C8 /* SCRIPT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRIPT.h; sourceTree = "<group>"; };
-		3C1E024721BF48FD001F27C8 /* UTILITY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UTILITY.h; sourceTree = "<group>"; };
-		3C1E024821BF48FD001F27C8 /* WIDGET.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WIDGET.h; sourceTree = "<group>"; };
 		3C1E030B21BF49E1001F27C8 /* ios */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ios; sourceTree = "<group>"; };
+		3C30D00721BF9BE600E20E41 /* STD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STD.h; path = ../GameLib/STD.h; sourceTree = "<group>"; };
+		3C30D00A21BF9E1900E20E41 /* utilityLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utilityLog.h; sourceTree = "<group>"; };
+		3C30D00B21BF9E1900E20E41 /* utilityString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utilityString.h; sourceTree = "<group>"; };
+		3C30D00C21BF9E1900E20E41 /* utility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utility.cpp; sourceTree = "<group>"; };
+		3C30D00D21BF9E1900E20E41 /* utilityMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utilityMath.h; sourceTree = "<group>"; };
+		3C30D00E21BF9E1900E20E41 /* utilityConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utilityConvert.h; sourceTree = "<group>"; };
+		3C30D00F21BF9E1A00E20E41 /* utilityWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utilityWidget.h; sourceTree = "<group>"; };
+		3C30D01021BF9E1A00E20E41 /* utilityString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utilityString.cpp; sourceTree = "<group>"; };
+		3C30D01121BF9E1A00E20E41 /* utilityWidget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utilityWidget.cpp; sourceTree = "<group>"; };
+		3C30D01721BFAA2A00E20E41 /* CMD_Logon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMD_Logon.h; path = ../Classes/CMD_Logon.h; sourceTree = "<group>"; };
+		3C30D01821BFAA2A00E20E41 /* UTILITY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UTILITY.h; path = ../Classes/UTILITY.h; sourceTree = "<group>"; };
+		3C30D01921BFAA2A00E20E41 /* COCOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COCOS.h; path = ../Classes/COCOS.h; sourceTree = "<group>"; };
+		3C30D01A21BFAA2B00E20E41 /* GDEFINE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GDEFINE.h; path = ../Classes/GDEFINE.h; sourceTree = "<group>"; };
+		3C30D01B21BFAA2B00E20E41 /* WIDGET.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WIDGET.h; path = ../Classes/WIDGET.h; sourceTree = "<group>"; };
+		3C30D01C21BFAA2B00E20E41 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = common.h; path = ../Classes/common.h; sourceTree = "<group>"; };
+		3C30D01D21BFAA2B00E20E41 /* CMD_Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMD_Game.h; path = ../Classes/CMD_Game.h; sourceTree = "<group>"; };
+		3C30D01E21BFAA2C00E20E41 /* constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = constant.h; path = ../Classes/constant.h; sourceTree = "<group>"; };
+		3C30D01F21BFAA2C00E20E41 /* SCRIPT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCRIPT.h; path = ../Classes/SCRIPT.h; sourceTree = "<group>"; };
+		3C30D02021BFAA3E00E20E41 /* GAME.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAME.h; path = ../Classes/GAME.h; sourceTree = "<group>"; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503AE10317EB98FF00D1A890 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = mac/main.cpp; sourceTree = "<group>"; };
@@ -1489,7 +1491,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18062D211F594DC500F5763B /* ZWXPaySDK.framework in Frameworks */,
 				180431411F590C770025CC22 /* CFNetwork.framework in Frameworks */,
 				180431431F590CA30025CC22 /* AlipaySDK.framework in Frameworks */,
 				18062D1B1F594DC500F5763B /* libQJPayWithWXPay.a in Frameworks */,
@@ -1508,8 +1509,6 @@
 				180431371F590B940025CC22 /* libSPaySDK.a in Frameworks */,
 				187CFF5F1EFAD1CB00B94306 /* CoreText.framework in Frameworks */,
 				1804314B1F590DCE0025CC22 /* JavaScriptCore.framework in Frameworks */,
-				18062D2A1F596E2E00F5763B /* libQJPaySDKDZF.a in Frameworks */,
-				1804313D1F590BE40025CC22 /* libQJPayWithWFTWXPay.a in Frameworks */,
 				187CFF5D1EFAD1A300B94306 /* libWeChatSDK.a in Frameworks */,
 				1804314D1F590E1A0025CC22 /* libWeChatSDK.a in Frameworks */,
 				1804314F1F590E3F0025CC22 /* LocalAuthentication.framework in Frameworks */,
@@ -1525,13 +1524,10 @@
 				1804315F1F590F3D0025CC22 /* AddressBookUI.framework in Frameworks */,
 				180431611F590F570025CC22 /* CoreLocation.framework in Frameworks */,
 				180431631F590F6F0025CC22 /* libz.1.tbd in Frameworks */,
-				1804313F1F590BE40025CC22 /* libQJPayWithWXZWXPay.a in Frameworks */,
 				18062D1D1F594DC500F5763B /* libWeChatSDK.a in Frameworks */,
-				180431651F59100F0025CC22 /* libQJPaySDKDZF.a in Frameworks */,
 				187CFF611EFAD2D000B94306 /* libcurl.a in Frameworks */,
 				187CFF5B1EFAD06F00B94306 /* libsqlite3.dylib in Frameworks */,
 				187CFF551EFACEB800B94306 /* libiconv.2.dylib in Frameworks */,
-				18062D1C1F594DC500F5763B /* libQJPayWithWXZWXPay.a in Frameworks */,
 				187CFF531EFAC4E300B94306 /* AudioToolbox.framework in Frameworks */,
 				52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */,
 				1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */,
@@ -1542,7 +1538,6 @@
 				BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */,
 				BF1712471292920000B8313A /* libz.dylib in Frameworks */,
 				D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */,
-				18062D211F594DC500F5763B /* ZWXPaySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2213,7 +2208,6 @@
 			children = (
 				18042F9E1F57DEAE0025CC22 /* PFDefine */,
 				18042FBC1F57DEAE0025CC22 /* PFKernel */,
-				18042FEE1F57DEAE0025CC22 /* PlatformHeader.h */,
 			);
 			name = Platform;
 			path = ../GameLib/Platform;
@@ -2311,8 +2305,6 @@
 				18042FDA1F57DEAE0025CC22 /* CGPPersonalInfoMission.h */,
 				18042FDB1F57DEAE0025CC22 /* CGPReqPlayerInfoMission.cpp */,
 				18042FDC1F57DEAE0025CC22 /* CGPReqPlayerInfoMission.h */,
-				18042FDD1F57DEAE0025CC22 /* CGPRoomListOnLineMission.cpp */,
-				18042FDE1F57DEAE0025CC22 /* CGPRoomListOnLineMission.h */,
 				18042FDF1F57DEAE0025CC22 /* CGPRouletteMission.cpp */,
 				18042FE01F57DEAE0025CC22 /* CGPRouletteMission.h */,
 				18042FE11F57DEAE0025CC22 /* CGPShopInfoMission.cpp */,
@@ -2335,6 +2327,14 @@
 		18042FEF1F57DEAE0025CC22 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				3C30D00C21BF9E1900E20E41 /* utility.cpp */,
+				3C30D00E21BF9E1900E20E41 /* utilityConvert.h */,
+				3C30D00A21BF9E1900E20E41 /* utilityLog.h */,
+				3C30D00D21BF9E1900E20E41 /* utilityMath.h */,
+				3C30D01021BF9E1A00E20E41 /* utilityString.cpp */,
+				3C30D00B21BF9E1900E20E41 /* utilityString.h */,
+				3C30D01121BF9E1A00E20E41 /* utilityWidget.cpp */,
+				3C30D00F21BF9E1A00E20E41 /* utilityWidget.h */,
 				18042FF01F57DEAE0025CC22 /* core */,
 			);
 			name = Tools;
@@ -2490,6 +2490,7 @@
 		186B64D91EFAA1160071CB20 /* GameLib */ = {
 			isa = PBXGroup;
 			children = (
+				3C30D00721BF9BE600E20E41 /* STD.h */,
 				18042D881F57DEAC0025CC22 /* Android.mk */,
 				18042D891F57DEAC0025CC22 /* Game */,
 				18042F531F57DEAE0025CC22 /* GameNet */,
@@ -2534,6 +2535,16 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				3C30D02021BFAA3E00E20E41 /* GAME.h */,
+				3C30D01D21BFAA2B00E20E41 /* CMD_Game.h */,
+				3C30D01721BFAA2A00E20E41 /* CMD_Logon.h */,
+				3C30D01921BFAA2A00E20E41 /* COCOS.h */,
+				3C30D01C21BFAA2B00E20E41 /* common.h */,
+				3C30D01E21BFAA2C00E20E41 /* constant.h */,
+				3C30D01A21BFAA2B00E20E41 /* GDEFINE.h */,
+				3C30D01F21BFAA2C00E20E41 /* SCRIPT.h */,
+				3C30D01821BFAA2A00E20E41 /* UTILITY.h */,
+				3C30D01B21BFAA2B00E20E41 /* WIDGET.h */,
 				3C1E030B21BF49E1001F27C8 /* ios */,
 				3C1E013C21BF48FD001F27C8 /* Classes */,
 				1810D7431F5E9C77004320B6 /* Resources */,
@@ -2610,19 +2621,9 @@
 		3C1E013C21BF48FD001F27C8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				3C1E013D21BF48FD001F27C8 /* CMD_Game.h */,
-				3C1E013E21BF48FD001F27C8 /* CMD_Logon.h */,
-				3C1E013F21BF48FD001F27C8 /* COCOS.h */,
-				3C1E014021BF48FD001F27C8 /* common.h */,
-				3C1E014121BF48FD001F27C8 /* constant.h */,
-				3C1E014221BF48FD001F27C8 /* DEFINE.h */,
 				3C1E014321BF48FD001F27C8 /* Game */,
-				3C1E01F921BF48FD001F27C8 /* GAME.h */,
 				3C1E01FA21BF48FD001F27C8 /* Main */,
 				3C1E01FD21BF48FD001F27C8 /* Plaza */,
-				3C1E024621BF48FD001F27C8 /* SCRIPT.h */,
-				3C1E024721BF48FD001F27C8 /* UTILITY.h */,
-				3C1E024821BF48FD001F27C8 /* WIDGET.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -3243,8 +3244,10 @@
 				18062D181F594DC500F5763B /* MBProgressHUD.m in Sources */,
 				3C1E024B21BF48FE001F27C8 /* NNGameLogic.cpp in Sources */,
 				180430421F57DEAE0025CC22 /* d_plsf_3.cpp in Sources */,
+				3C30D01221BF9E1A00E20E41 /* utility.cpp in Sources */,
 				180430B81F57DEAE0025CC22 /* window_tab.cpp in Sources */,
 				180430B61F57DEAE0025CC22 /* wavwriter.c in Sources */,
+				3C30D01321BF9E1A00E20E41 /* utilityString.cpp in Sources */,
 				180430FE1F57DEAF0025CC22 /* CGPLoginMission.cpp in Sources */,
 				180430AC1F57DEAE0025CC22 /* sp_enc.cpp in Sources */,
 				3C1E029321BF48FE001F27C8 /* XZDDGameScence_Player.cpp in Sources */,
@@ -3263,6 +3266,7 @@
 				3C1E02C421BF48FE001F27C8 /* GPHomeRaidersPanel.cpp in Sources */,
 				180430D01F57DEAE0025CC22 /* WidgetScenceXmlParse.cpp in Sources */,
 				3C1E028F21BF48FE001F27C8 /* XZDDGameScence_CB.cpp in Sources */,
+				3C30D01421BF9E1A00E20E41 /* utilityWidget.cpp in Sources */,
 				1804305A1F57DEAE0025CC22 /* gain_q.cpp in Sources */,
 				180430F01F57DEAE0025CC22 /* GlobalUnits.cpp in Sources */,
 				180430ED1F57DEAE0025CC22 /* CSocketMission.cpp in Sources */,
@@ -3462,7 +3466,6 @@
 				3C1E02A621BF48FE001F27C8 /* TLJOperate.cpp in Sources */,
 				180430271F57DEAE0025CC22 /* c2_11pf.cpp in Sources */,
 				3C1E02BA21BF48FE001F27C8 /* GPHomeRoomListPanel_TLJ.cpp in Sources */,
-				180431051F57DEAF0025CC22 /* CGPRoomListOnLineMission.cpp in Sources */,
 				3C1E029421BF48FE001F27C8 /* XZDDGameScence_Private.cpp in Sources */,
 				1804303D1F57DEAE0025CC22 /* d4_17pf.cpp in Sources */,
 				180430F51F57DEAF0025CC22 /* CGMatchMission.cpp in Sources */,

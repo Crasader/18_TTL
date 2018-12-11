@@ -1,9 +1,9 @@
 #ifndef CMD_SRLF_HEAD_FILE
 #define CMD_SRLF_HEAD_FILE
- 
-#pragma pack(1)
 
-#include "DEFINE.h"
+#include "GDEFINE.h"
+
+#pragma pack(1)
 
 namespace SRLF
 {

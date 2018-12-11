@@ -2,6 +2,7 @@
 
 #include "common.h"
 #include "CMD_XZDD.h"
+#include "Platform/PFDefine/df/Module.h"
 #include "Plaza/HomeScene/GPHomeMallPanel.h"
 #include CMD_GAME
 

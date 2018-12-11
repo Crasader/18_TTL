@@ -1,10 +1,9 @@
 #pragma once
 
 #include "common.h"
-#include "DEFINE.h"
 #include CMD_GAME
-
 #include "CMD_WZQ.h"
+#include "Platform/PFDefine/df/Module.h"
 #include "Plaza/HomeScene/GPHomeEditNumPanel.h"
 
 class WZQDPlayer;

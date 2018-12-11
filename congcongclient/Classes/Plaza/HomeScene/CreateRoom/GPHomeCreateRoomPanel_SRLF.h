@@ -7,7 +7,7 @@
 #include "Game/Widget/WidgetFun.h"
 #include "Game/Widget/WidgetManager.h"
 #include "Game/Widget/WidgetScenceXmlParse.h"
-#include "DEFINE.h"
+#include "GDEFINE.h"
 
 class GPHomeCreateRoomPanel_SRLF
 	: public cocos2d::Node

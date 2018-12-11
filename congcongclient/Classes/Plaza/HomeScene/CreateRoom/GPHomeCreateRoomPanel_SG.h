@@ -1,6 +1,8 @@
 #pragma once
 
 #include <cocos2d.h>
+
+#include "GDEFINE.h"
 #include "Game/FV/FvSingleton.h"
 #include "Game/FV/FvMask.h"
  
@@ -8,7 +10,6 @@
 #include "Game/Widget/WidgetManager.h"
 #include "Game/Widget/WidgetScenceXmlParse.h"
 
-#include "DEFINE.h"
 
 class GPHomeCreateRoomPanel_SG
 	:public cocos2d::Node

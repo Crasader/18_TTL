@@ -2,7 +2,7 @@
 #include "SimpleAudioEngine.h"
 #include "Game/Script/SoundFun.h"
 #include "WZQDGameLogic.h"
-#include "DEFINE.h"
+#include "GDEFINE.h"
 #include "UTILITY.h"
 
 namespace WZQSoundFun

@@ -3,7 +3,7 @@
  
 #pragma pack(1)
 
-#include "DEFINE.h"
+#include "GDEFINE.h"
 
 namespace XZDD
 {
