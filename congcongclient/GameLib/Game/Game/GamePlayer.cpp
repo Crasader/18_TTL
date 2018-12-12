@@ -13,7 +13,7 @@
 #include "Platform/PFDefine/msg/CMD_LogonServer.h"
 
 using namespace WidgetFun;
- using namespace script;
+using namespace script;
 
 GamePlayer::GamePlayer(IClientUserItem* pUserItem)
 	: m_pUserItem(pUserItem)
@@ -144,6 +144,7 @@ void GamePlayer::on_GP_UserIndividual(void* data, int dataSize)
 {
 	if (!m_pUserItem) {
 		utility::filelog("GamePlayer::on_GP_UserIndividual failed !m_pUserItem");
+		return;
 	}
 	CMD_GP_UserIndividual* pModifyIndividual = (CMD_GP_UserIndividual*)data;
 

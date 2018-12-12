@@ -196,6 +196,8 @@ void NNGameScene::show()
 {
 	initPublicPanel();
 
+	clearRoomShareInfo();
+
 	GPHomeSettingPanel::Instance().hide();
 	GPHomeSettingPanel::Instance().hideOrShowQuitBtn(false);
 
@@ -466,11 +468,13 @@ void NNGameScene::Button_Exit(cocos2d::Ref*, WidgetUserInfo*)
 void NNGameScene::Button_Dismiss(cocos2d::Ref* ref, WidgetUserInfo* pinfo)
 {
 	auto self_player = getLocalPlayer();
-	bool isCreater = (self_player ? NNRoomInfo::Instance().isCreaterPlayer(self_player) : false);//房主
-	if (isCreater) {
-		NNDismissRoom::Instance().show(NN_DismissRoom_InGameSelf);
+	auto isCreater = (self_player ? NNRoomInfo::Instance().isCreaterPlayer(self_player) : false);//房主
+	auto nPlayerCount = getGamePlayerCount();
+	auto cbStatus = getGameStatus();
+	if (isCreater && (nPlayerCount <= 1 || cbStatus <= TTLNN::NNGameStatus_Start)) {
+		GPGameLink::Instance().DismissRoom(true);
 	} else {
-		Button_Exit(ref, pinfo);
+		NNDismissRoom::Instance().show(NN_DismissRoom_InGameSelf);
 	}
 }
 
@@ -650,32 +654,32 @@ void NNGameScene::addRoomshareInfo(CMD_GF_Private_Room_Info* pRoomInfo)
 	std::string strPepleNum = utility::toString(getGamePlayerCount(), "/", (int)m_RoomInfo.bMaxPeopleNum);
 	std::string strRoomType = "";
 	switch (m_RoomInfo.bGameTypeIdex) {
-	case TTLNN::NNGameType_NNBanker: {
-		strRoomType.append(utility::a_u8("牛牛上庄"));
-		break;
-	}
-	case TTLNN::NNGameType_HostBanker: {
-		strRoomType.append(utility::a_u8("固定庄家"));
-		break;
-	}
-	case TTLNN::NNGameType_SnatchBanker: {
-		strRoomType.append(utility::a_u8("自由抢庄"));
-		break;
-	}
-	case TTLNN::NNGameType_SnatchBankerShowCard: {
-		strRoomType.append(utility::a_u8("明牌抢庄"));
-		break;
-	}
-	case TTLNN::NNGameType_AllCompare: {
-		strRoomType.append(utility::a_u8("通比牛牛"));
-		break;
-	}
-	case TTLNN::NNGameType_NNRatio: {
-		strRoomType.append(utility::a_u8("牛几赔几"));
-		break;
-	}
-	default:
-		break;
+		case TTLNN::NNGameType_NNBanker: {
+			strRoomType.append(utility::a_u8("牛牛上庄"));
+			break;
+		}
+		case TTLNN::NNGameType_HostBanker: {
+			strRoomType.append(utility::a_u8("固定庄家"));
+			break;
+		}
+		case TTLNN::NNGameType_SnatchBanker: {
+			strRoomType.append(utility::a_u8("自由抢庄"));
+			break;
+		}
+		case TTLNN::NNGameType_SnatchBankerShowCard: {
+			strRoomType.append(utility::a_u8("明牌抢庄"));
+			break;
+		}
+		case TTLNN::NNGameType_AllCompare: {
+			strRoomType.append(utility::a_u8("通比牛牛"));
+			break;
+		}
+		case TTLNN::NNGameType_NNRatio: {
+			strRoomType.append(utility::a_u8("牛几赔几"));
+			break;
+		}
+		default:
+			break;
 	}
 
 	std::string strBaseScore = "";
@@ -700,7 +704,7 @@ void NNGameScene::addRoomshareInfo(CMD_GF_Private_Room_Info* pRoomInfo)
 			strBaseScore.append("/10");
 		}
 	}
-	auto game_info = GPGameLink::Instance().privateGameInfo();
+	auto& game_info = GPGameLink::Instance().privateGameInfo();
 	std::string strRound = "";
 	strRound = utility::toString(game_info.bPlayCout[m_RoomInfo.bPlayCoutIdex]);
 
@@ -739,12 +743,25 @@ void NNGameScene::addRoomshareInfo(CMD_GF_Private_Room_Info* pRoomInfo)
 	} else {
 		strNickName = UserInfo::Instance().getUserNicName();
 	}
-	shareInfo.strDes = utility::getScriptReplaceValue("CCWeiXinSharDes",
-		player->GetNickName(),
-		bNNBeiShu,
-		nTuiZhu);
+
+	if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZ))) {
+		shareInfo.strDes = utility::getScriptReplaceValue("CCWeiXinSharDes",
+			strNickName,
+			bNNBeiShu,
+			utility::a_u8("闲家推注,"));
+	} else {
+		shareInfo.strDes = utility::getScriptReplaceValue("CCWeiXinSharDes",
+			strNickName,
+			bNNBeiShu,
+			utility::a_u8(" "));
+	}
 
 	_mpShareInfo.insert(std::pair<dword, RoomShareInfo>(pRoomInfo->dwRoomNum, shareInfo));
+}
+
+void NNGameScene::clearRoomShareInfo()
+{
+	_mpShareInfo.clear();
 }
 
 void NNGameScene::OnSocketSubPrivateRoomInfo(CMD_GF_Private_Room_Info* pNetInfo)

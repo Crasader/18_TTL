@@ -74,7 +74,7 @@
 	<ScriptValueStr Key="CCWeiXinShare_Cancel" Value="分享取消"/>
 	<ScriptValueStr Key="StringKey" Value="#"/>
 	<ScriptValueStr Key="CCWeiXinSharTitle" Value="【#】[房号:#],人数:#,#,底分#,#局"/>
-	<ScriptValueStr Key="CCWeiXinSharDes" Value="房主:#,牛牛#倍,#倍推注,让我们一起玩耍吧!"/>
+	<ScriptValueStr Key="CCWeiXinSharDes" Value="房主:#,牛牛#倍,#让我们一起玩耍吧!"/>
 	<ScriptValueStr Key="CCWeiXinSharUrl" Value="http://www.baidu.com"/>
 	
     <ScriptValueStr Key="GameGold" Value="金币"/>
@@ -83,4 +83,3 @@
 	<ScriptValueStr Key="DisMissRoom_Ask" Value="游戏尚未开始，解散房间将不会扣除钻石，确定解散房间吗?"/>
 	<ScriptValueStr Key="DisMissRoom_Wait" Value="玩家申请解散房间，等待其他玩家做出选择，超出1分钟未做选择，则默认同意，房间自动解散."/>
  </root>
- 

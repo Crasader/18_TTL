@@ -91,6 +91,9 @@ void GPHomeScene::showGameRoomList(void* data, size_t dataSize)
 		return;
 	offset = sizeof(CMD_GR_INQURE_TABLES_INFO_DATA_HEAD);	pData = current_data + offset;
 
+	//NNGameScene::pInstance()->clearRoomShareInfo();
+
+	auto& game_info = GPGameLink::Instance().privateGameInfo();
 	//解析每个子控件
 	for (int i = 0; i < iTableNum; i++)
 	{
@@ -104,11 +107,22 @@ void GPHomeScene::showGameRoomList(void* data, size_t dataSize)
 		//房间号
 		std::string strRoomNo = utility::toString(body->dwTableNum);
 		//局数
-		std::string strRoundCount = utility::toString(body->dwOutMatchNum);
+		std::string strRoundCount = utility::toString(game_info.bPlayCout[body->dwEnterMatchNum]);
 		//底分
-		std::string strBaseSorce = utility::toString(body->dwBaseScore);
+		std::string strBaseSorce = utility::toString(body->dwBaseScore, "/", body->dwBaseScore * 2);
 		//人数
 		std::string strSitCout = utility::toString((dword)body->bSitUserSum, "/", (dword)body->bChairSum, utility::a_u8("人"));
+
+		CMD_GF_Private_Room_Info room_info;
+		room_info.bCurPeopleNum = body->bSitUserSum;
+		room_info.bMaxPeopleNum = body->bChairSum;
+		room_info.dwGameRuleIdex = body->dwGameRuleIdex;
+		room_info.dwBaseScore = body->dwBaseScore;
+		room_info.dwCreateUserID = body->dwCreateUserID;
+		room_info.dwRoomNum = body->dwTableNum;
+		room_info.dwPlayCout = game_info.bPlayCout[body->dwEnterMatchNum];
+
+		NNGameScene::pInstance()->addRoomshareInfo(&room_info);
 
 		WidgetFun::setText(pRoomInfo, "Txt_RoomNo", strRoomNo);
 		WidgetFun::setText(pRoomInfo, "Txt_RoundCount", strRoundCount);

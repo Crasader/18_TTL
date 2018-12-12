@@ -114,6 +114,7 @@ public:
 #pragma region 房间相关
 	RoomShareInfo* getShareInfo(dword dwRoomID);
 	void addRoomshareInfo(CMD_GF_Private_Room_Info* pRoomInfo);
+	void clearRoomShareInfo();
 
 	void OnSocketSubPrivateRoomInfo(CMD_GF_Private_Room_Info* pNetInfo);
 	void OnSocketSubPrivateDismissInfo(CMD_GF_Private_Dismiss_Info* pNetInfo);
