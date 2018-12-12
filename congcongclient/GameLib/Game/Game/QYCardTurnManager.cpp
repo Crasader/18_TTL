@@ -1,8 +1,8 @@
-﻿#include "QYCardTurnManager.h"
+#include "QYCardTurnManager.h"
 
 #include "Game/Widget/WidgetFun.h"
 #include "Game/Widget/WidgetManager.h"
-#include "Game/Widget/WidgetScenceXMLparse.h"
+#include "Game/Widget/WidgetScenceXMLParse.h"
 #include "Game/Script/WindowInfo.h"
 #include "Game/Widget/QYCardTurn.h"
 #include "Tools/utilityConvert.h"

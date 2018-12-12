@@ -3,7 +3,7 @@
 #include "Game/Widget/WidgetFun.h"
 #include "Game/Widget/WidgetManager.h"
 #include "Game/Widget/WidgetSkinXMLparse.h"
-#include "Game/Widget/WidgetScenceXMLparse.h"
+#include "Game/Widget/WidgetScenceXMLParse.h"
 #include "JniCross/JniFun.h"
 
  FV_SINGLETON_STORAGE(NoticeMsgBox);

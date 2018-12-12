@@ -20,8 +20,8 @@
 #import "WXApi.h"
 #import "WXApiObject.h"
 
-#import "../proj.ios_mac/zhangling/QJPaySDKDZF.h"
-#import "AppController.h"
+//#import "../proj.ios_mac/zhangling/QJPaySDKDZF.h"
+#import "../proj.ios_mac/ios/AppController.h"
 
 //extern AppDelegate s_sharedApplication;
 
@@ -185,7 +185,7 @@ void IosHelper::beginRecord(const char *_fileName)
     [[AVAudioSession sharedInstance] setActive:YES error:nil];
     [recorder record];
 }
-
+/*
 void IosHelper::sendCongCongPay(const char* appkey,
                                 const char* appsign,
                                 const char* appip,
@@ -250,7 +250,7 @@ void IosHelper::sendCongCongPay(const char* appkey,
     
     [QJPaySDKDZF QJPayStart:_handleDic AppScheme:@"QJPaySDKGUI" appKey:app_Key  andCurrentViewController:ctrol andDelegate:[AppController Instance] Flag:0x80];
 }
-
+*/
 const char * IosHelper::endRecord()
 {
     if (recorder == nil)

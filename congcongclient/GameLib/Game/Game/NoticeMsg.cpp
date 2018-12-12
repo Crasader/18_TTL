@@ -1,6 +1,6 @@
 #include "NoticeMsg.h"
 
-#include "Game/Widget/WidgetScenceXMLparse.h"
+#include "Game/Widget/WidgetScenceXMLParse.h"
 #include "Game/Widget/WidgetSkinXMLparse.h"
 #include "Game/Widget/WidgetFun.h"
 #include "Game/Script/ActionEx.h"
