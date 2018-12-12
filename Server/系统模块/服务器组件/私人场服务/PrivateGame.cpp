@@ -987,21 +987,36 @@ bool PriaveteGame::OnTCPNetworkSubDismissPrivate(VOID * pData, WORD wDataSize, I
 
 	auto pTableFrame = pTableInfo->pITableFrame;
 	ASSERT(pTableFrame); if (!pTableFrame) return false;
-	if (!pTableInfo->bStart && pTableFrame->GetMasterUserID()!= pIServerUserItem->GetUserID())
+
+	//游戏没有开始
+	if (!pTableInfo->bStart)
 	{
-		return true;
+		if (pTableFrame->GetMasterUserID() == pIServerUserItem->GetUserID())
+		{
+			pTableInfo->pITableFrame->SendGameMessage(TEXT("房间已被解散！"), SMT_EJECT);
+			DismissRoom(pTableInfo);
+			ClearRoom(pTableInfo);
+			return true;
+		}
+		else
+		{
+			return true;
+		}
 	}
+	//房间已经结束
 	if (pTableInfo->bInEnd)
 	{
 		return true;
 	}
+	//不同意解散
 	if (pTableInfo->kDismissChairID.size() == 0 && !pCMDInfo->bDismiss)
 	{
 		return true;
 	}
+	//同意解散
 	if(pCMDInfo->bDismiss)
 	{
-		for (int i = 0;i<(int)pTableInfo->kDismissChairID.size();i++)
+		for (size_t i = 0;i<pTableInfo->kDismissChairID.size();i++)
 		{
 			if (pTableInfo->kDismissChairID[i] == pIServerUserItem->GetChairID())
 			{
@@ -1012,7 +1027,7 @@ bool PriaveteGame::OnTCPNetworkSubDismissPrivate(VOID * pData, WORD wDataSize, I
 	}
 	else
 	{
-		for (int i = 0;i<(int)pTableInfo->kNotAgreeChairID.size();i++)
+		for (size_t i = 0;i<pTableInfo->kNotAgreeChairID.size();i++)
 		{
 			if (pTableInfo->kNotAgreeChairID[i] == pIServerUserItem->GetChairID())
 			{
@@ -1928,7 +1943,7 @@ bool PriaveteGame::SendRoomList(IServerUserItem * pIServerUserItem, DWORD dwExcl
 #endif
 		dt_body.bAllowedStrangerJoin = pTableInfo.bAllowedStrangerJoin;
 		dt_body.dwBaseScore = pTableInfo.dwBaseScore;//底注
-		dt_body.dwEnterMatchNum = pTableInfo.dwEnterMatchNum;//入场限制
+		dt_body.dwEnterMatchNum = pTableInfo.bPlayCoutIdex;//局数
 		dt_body.dwOutMatchNum = pTableInfo.dwOutMatchNum;//离场限制
 
 		ds_tables.push(dt_body);
