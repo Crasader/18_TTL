@@ -1647,18 +1647,21 @@ bool CAttemperEngineSink::OnEventUserItemStatus(IServerUserItem * pIServerUserIt
 		}
 	}
 
+	//bool bSend = false;
     if (UserTableID != INVALID_TABLE)
     {
         CTableFrame *pTableFrame = m_TableFrameArray[UserTableID];
-        pTableFrame->SendTableData(INVALID_CHAIR, SUB_GR_USER_STATUS, &UserStatus, sizeof(UserStatus), MDM_GR_USER);
+        pTableFrame->SendTableData(INVALID_CHAIR, SUB_GR_USER_STATUS, &UserStatus, sizeof(UserStatus), MDM_GR_USER, pIServerUserItem);
+		//bSend = true;
     }
     else if(wOldTableID != INVALID_TABLE)
     {
         CTableFrame *pTableFrame = m_TableFrameArray[wOldTableID];
-        pTableFrame->SendTableData(INVALID_CHAIR, SUB_GR_USER_STATUS, &UserStatus, sizeof(UserStatus), MDM_GR_USER);
-    }
+        pTableFrame->SendTableData(INVALID_CHAIR, SUB_GR_USER_STATUS, &UserStatus, sizeof(UserStatus), MDM_GR_USER, pIServerUserItem);
+		//bSend = true;
+	}
 
-    SendData(pIServerUserItem, MDM_GR_USER, SUB_GR_USER_STATUS, &UserStatus, sizeof(UserStatus));
+	SendData(pIServerUserItem, MDM_GR_USER, SUB_GR_USER_STATUS, &UserStatus, sizeof(UserStatus));
 
 	//Àë¿ªÅÐ¶Ï
 	if (pIServerUserItem->GetUserStatus()==US_NULL)

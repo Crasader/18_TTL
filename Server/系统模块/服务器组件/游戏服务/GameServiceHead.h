@@ -1057,7 +1057,7 @@ public:
 	//发送数据
 	virtual bool SendTableData(WORD wChairID, WORD wSubCmdID)=NULL;
 	//发送数据
-	virtual bool SendTableData(WORD wChairID, WORD wSubCmdID, VOID * pData, WORD wDataSize,WORD wMainCmdID=MDM_GF_GAME)=NULL;
+	virtual bool SendTableData(WORD wChairID, WORD wSubCmdID, VOID * pData, WORD wDataSize,WORD wMainCmdID=MDM_GF_GAME, IServerUserItem * pExceptUser = nullptr)=NULL;
 	//发送数据
 	virtual bool SendLookonData(WORD wChairID, WORD wSubCmdID)=NULL;
 	//发送数据
@@ -1223,13 +1223,13 @@ static const GUID IID_ITableUserAction={0xc97c060b,0xcf0e,0x40b7,0x93,0x30,0x97,
 interface ITableUserAction : public IUnknownEx
 {
 	//用户断线
-	virtual bool OnActionUserOffLine(WORD wChairID, IServerUserItem * pIServerUserItem) = NULL;
+	virtual bool OnActionUserOffLine(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem) = NULL;
 	//用户坐下
-	virtual bool OnActionUserSitDown(WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser)=NULL;
+	virtual bool OnActionUserSitDown(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser)=NULL;
 	//用户起来
-	virtual bool OnActionUserStandUp(WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser)=NULL;
+	virtual bool OnActionUserStandUp(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser)=NULL;
 	//用户同意
-	virtual bool OnActionUserOnReady(WORD wChairID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize)=NULL;
+	virtual bool OnActionUserOnReady(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize)=NULL;
 };
 
 //////////////////////////////////////////////////////////////////////////////////
