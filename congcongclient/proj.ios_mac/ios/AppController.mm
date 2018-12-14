@@ -122,7 +122,7 @@ static AppController* instance;
      */
     //We don't need to call this method any more. It will interupt user defined game pause&resume logic
     /* cocos2d::Director::getInstance()->resume(); */
-    [[NSNotificationCenter defaultCenter] postNotificationName:[QJPaySDKDZF WETCHAR] object:nil];
+    //[[NSNotificationCenter defaultCenter] postNotificationName:[QJPaySDKDZF WETCHAR] object:nil];
     instance = self;
 }
 
@@ -164,29 +164,29 @@ static AppController* instance;
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-    if(!MissionWeiXin::Instance().isLogin())
+    //if(!MissionWeiXin::Instance().isLogin())
     {
         return  [WXApi handleOpenURL:url delegate:self];
     }
-    else
+    //else
     {
-        return  [QJPaySDKDZF handleOpenWechatURL:url];
+        //return  [QJPaySDKDZF handleOpenWechatURL:url];
     }
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    if(!MissionWeiXin::Instance().isLogin())
-    {
+//    if(!MissionWeiXin::Instance().isLogin())
+//    {
         BOOL isSuc = [WXApi handleOpenURL:url delegate:self];
         NSLog(@"url %@ isSuc %d",url,isSuc == YES ? 1 : 0);
         return  isSuc;
-    }
-    else
-    {
-        [QJPaySDKDZF handleOpenWechatURL:url];
-        return [QJPaySDKDZF handleOpenURL:url];
-    }
+//    }
+//    else
+//    {
+//        //[QJPaySDKDZF handleOpenWechatURL:url];
+//        return [QJPaySDKDZF handleOpenURL:url];
+//    }
 }
 
 -(void) onReq:(BaseReq*)req
@@ -215,16 +215,16 @@ static AppController* instance;
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options
 {
-    if(!MissionWeiXin::Instance().isLogin())
+    //if(!MissionWeiXin::Instance().isLogin())
     {
         NSLog(@"openURL longin");
         return  [WXApi handleOpenURL:url delegate:self];
     }
-    else
+    //else
     {
         NSLog(@"openURL QJPaySDKDZF");
-        [QJPaySDKDZF handleOpenWechatURL:url];
-        return [QJPaySDKDZF handleOpenURL:url];
+        //[QJPaySDKDZF handleOpenWechatURL:url];
+        //return [QJPaySDKDZF handleOpenURL:url];
     }
 }
 
@@ -232,31 +232,31 @@ static AppController* instance;
 {
     NSString* result = NULL;
     
-    [NSThread sleepForTimeInterval:1.0f];
-    
-    UserInfo::Instance().reqAccountInfo();
-    GameManagerBase::InstanceBase().RequreRefreshTableInfo();
-    
-    switch (response) {
-            
-        case 0:
-            NSLog(@"成功＝＝＝＝＝＝＝＝＝＝＝＝＝");
-            result=@"成功";
-            break;
-            
-        case 1:
-            NSLog(@"取消＝＝＝＝＝＝＝＝＝＝＝＝＝");
-            result=@"取消";
-            break;
-            
-        case -1:
-            NSLog(@"失败＝＝＝＝＝＝＝＝＝＝＝＝＝");
-            result=@"失败";
-            
-            break;
-
-        default:
-            break;
-    }
+//    [NSThread sleepForTimeInterval:1.0f];
+//    
+//    UserInfo::Instance().reqAccountInfo();
+//    GameManagerBase::InstanceBase().RequreRefreshTableInfo();
+//    
+//    switch (response) {
+//            
+//        case 0:
+//            NSLog(@"成功＝＝＝＝＝＝＝＝＝＝＝＝＝");
+//            result=@"成功";
+//            break;
+//            
+//        case 1:
+//            NSLog(@"取消＝＝＝＝＝＝＝＝＝＝＝＝＝");
+//            result=@"取消";
+//            break;
+//            
+//        case -1:
+//            NSLog(@"失败＝＝＝＝＝＝＝＝＝＝＝＝＝");
+//            result=@"失败";
+//            
+//            break;
+//
+//        default:
+//            break;
+//    }
 }
 @end
