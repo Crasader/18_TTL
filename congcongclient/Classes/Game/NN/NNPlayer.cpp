@@ -16,13 +16,13 @@ NNPlayer::NNPlayer()
 	zeromemory(&m_PlayerBets, sizeof(m_PlayerBets));
 	m_Status = TTLNN::NNPlayerStatus_Invalid;
 	m_SnatchBankerRatio = TTLNN::NNSnatchBanker_Invalid;
-
+	//bStartGameOwner = false;
 	m_wPlayCount = 0;
 }
 
 NNPlayer::~NNPlayer()
 {
-
+	clearGameData();
 }
 
 #pragma region 数据处理
@@ -34,6 +34,7 @@ void NNPlayer::clearGameData()
 	zeromemory(&m_PlayerCards, sizeof(m_PlayerCards));
 	zeromemory(&m_CardType, sizeof(m_CardType));
 	zeromemory(&m_Calculate, sizeof(m_Calculate));
+	//bStartGameOwner = false;
 }
 
 void NNPlayer::setValid(bool valid)
@@ -118,6 +119,16 @@ TTLNN::NNPlayerStatus NNPlayer::getPlayerStatus()
 	return m_Status;
 }
 
+//void NNPlayer::setStartGameOwner(bool flag)
+//{
+//	bStartGameOwner = flag;
+//}
+//
+//bool NNPlayer::getStartGameOwner()
+//{
+//	return false;
+//}
+
 //游戏局数
 void NNPlayer::setPlayCount(word wCount)
 {
@@ -174,12 +185,8 @@ void NNPlayer::removeLastCard()
 void NNPlayer::upPlayerState()
 {
 	if (m_Valid) {
-		if (GetUserID() == UserInfo::Instance().getUserID() && GetUserStatus() == US_READY) {
-			NNGameScene::Instance().onReady();
-		} else {
-			NNPlayerPanel::Instance().showPlayer(*this);
-			NNPlayerCard::Instance().showPlayer(*this);
-		}
+		NNPlayerPanel::Instance().showPlayer(*this);
+		NNPlayerCard::Instance().showPlayer(*this);
 	}
 }
 

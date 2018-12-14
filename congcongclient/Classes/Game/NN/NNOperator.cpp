@@ -45,7 +45,7 @@ void NNOperator::initLayout()
 void NNOperator::initButton()
 {
     WidgetManager::addButtonCB("NNOperator_ButtonReady", this, button_selector(NNOperator::Button_Ready));
-    WidgetManager::addButtonCB("NNOperator_ButtonContinue", this, button_selector(NNOperator::Button_Ready));
+    WidgetManager::addButtonCB("NNOperator_ButtonContinue", this, button_selector(NNOperator::Button_Continue));
     //WidgetManager::addButtonCB("NNOperator_ButtonWeiXin", this, button_selector(NNOperator::Button_WeiXin));
     WidgetManager::addButtonCB("NNOperator_ButtonStartGame", this, button_selector(NNOperator::Button_StartGame));
     WidgetManager::addButtonCB("NNOperator_SntachBanker", this, button_selector(NNOperator::Button_SnatchBanker));
@@ -86,26 +86,67 @@ void NNOperator::hide()
 void NNOperator::show(word status)
 {
 	hideNoteTuiZhu();
+	auto local_player = NNGameScene::Instance().getLocalPlayer();
     switch(status) {
 		case TTLNN::NNGameStatus_Free: {
-			std::string strMasterName = "房主";
-			if (NNGameScene::Instance().getMasterPlayer()) {
-				strMasterName = NNGameScene::Instance().getMasterPlayer()->GetNickName();
+			auto master = NNGameScene::Instance().getMasterPlayer();
+			auto creater = NNGameScene::Instance().getCreater();
+
+			//这里要判断是否所有玩家已经准备了
+			bool b_all_ready = true;
+			for (int idx = 0; idx < NNGameScene::MAX_PLAYER; idx++) {
+				auto player = NNGameScene::Instance().getPlayerByChairID(idx);
+				if (player->isValid() && player->GetUserStatus() < US_READY) {
+					b_all_ready = false;
+				}
 			}
-			std::string showText = utility::a_u8("等待 ") + strMasterName + utility::a_u8(" 确认开始游戏");
+
+			//判断是否有开始游戏的权限
+			bool b_start_game_owner = false;
+			if (master) {//如果有房主
+				if (local_player && NNRoomInfo::Instance().isMaster(local_player)) {
+					b_start_game_owner = true;
+				}
+			} else {
+				if (local_player && NNRoomInfo::Instance().isCreater(local_player)) {
+					b_start_game_owner = true;
+				}
+			}
+
+			std::string showText;
+			if (b_all_ready) {
+				std::string strMasterName = "房主";
+				if (master) {
+					strMasterName = NNGameScene::Instance().getMasterPlayer()->GetNickName();
+				} else if (creater) {
+					strMasterName = creater->GetNickName();
+				}
+				if (NNGameScene::Instance().getGamePlayerCount() == 1)
+					showText = utility::a_u8("请等待其他玩家加入");
+				else
+					showText = utility::a_u8(std::string("等待 " + strMasterName + " 确认开始游戏"));
+			} else if (local_player && local_player->GetUserStatus() >= US_READY) {
+				showText = utility::a_u8("等待其他玩家准备");
+			} else {
+				showText = utility::a_u8("请准备");
+			}
 			showMessage(showText);
 
-			if(NNRoomInfo::Instance().isHostPlayer(NNGameScene::Instance().getLocalPlayer())) {
+			//如果有房主, 并且自己是房主
+			if ( NNGameScene::Instance().getGamePlayerCount() >=2 &&
+				b_start_game_owner &&
+				b_all_ready) {
 				showStartGame();
 			} else {
 				hideStartGame();
 			}
+
 			break;
 		}
 
 		case TTLNN::NNGameStatus_HostConfirm: {
-			std::string showText = "请准备";
-			if(NNGameScene::Instance().getLocalPlayer()->getPlayerStatus() == TTLNN::NNPlayerStatus_Ready){
+			std::string showText = utility::a_u8("请准备");
+			if(local_player->GetUserStatus() >= TTLNN::NNPlayerStatus_Ready){
 				showText = utility::a_u8("等待其他玩家准备");
 			}
 			showMessage(showText);
@@ -114,13 +155,13 @@ void NNOperator::show(word status)
 		}
 
 		case TTLNN::NNGameStatus_SnatchBanker: {
-			if(NNGameScene::Instance().getLocalPlayer()->getPlayerStatus() != TTLNN::NNPlayerStatus_Playing) {
+			if(local_player->getPlayerStatus() != TTLNN::NNPlayerStatus_Playing) {
 				std::string showText = utility::a_u8("请等待本局游戏结束");
 				showMessage(showText);
 				break;
 			}
 
-			if(NNGameScene::Instance().getLocalPlayer()->getSnatchBankerRatio() != (word)TTLNN::NNSnatchBanker_Invalid) {
+			if(local_player->getSnatchBankerRatio() != (word)TTLNN::NNSnatchBanker_Invalid) {
 				std::string showText = utility::a_u8("等待抢庄结果");
 				showMessage(showText);
 				hideSnatchButton();
@@ -136,7 +177,7 @@ void NNOperator::show(word status)
 		}
 
 		case TTLNN::NNGameStatus_Call: {
-			if(NNGameScene::Instance().getLocalPlayer()->getPlayerStatus() != TTLNN::NNPlayerStatus_Playing) {
+			if(local_player->getPlayerStatus() != TTLNN::NNPlayerStatus_Playing) {
 				std::string showText = utility::a_u8("请等待本局游戏结束");
 				showMessage(showText);
 				break;
@@ -145,7 +186,7 @@ void NNOperator::show(word status)
 				std::string showText = utility::a_u8("等待其他玩家下注");
 				showMessage(showText);
 			} else {
-				if(NNGameScene::Instance().getLocalPlayer()->getPlayerBets() != 0) {
+				if(local_player->getPlayerBets() != 0) {
 					std::string showText = utility::a_u8("等待其他玩家下注");
 					showMessage(showText);
 					hideCallButtons();
@@ -159,7 +200,7 @@ void NNOperator::show(word status)
 		}
 
 		case TTLNN::NNGameStatus_SplitCard: {
-			if( NULL != NNGameScene::Instance().getLocalPlayer() && NNGameScene::Instance().getLocalPlayer()->getPlayerStatus() != TTLNN::NNPlayerStatus_Playing) {
+			if(local_player && local_player->getPlayerStatus() != TTLNN::NNPlayerStatus_Playing) {
 				std::string showText = utility::a_u8("请等待本局游戏结束");
 				showMessage(showText);
 				break;
@@ -181,7 +222,7 @@ void NNOperator::show(word status)
 		}
 
 		case TTLNN::NNGameStatus_Calculate: {
-			if(NNGameScene::Instance().getLocalPlayer()->getPlayerStatus() != TTLNN::NNPlayerStatus_Playing) {
+			if(local_player->getPlayerStatus() != TTLNN::NNPlayerStatus_Playing) {
 				std::string showText = utility::a_u8("请等待本局游戏结束");
 				showMessage(showText);
 				break;
@@ -448,7 +489,6 @@ void NNOperator::showCalculate()
     if(calculate.isValid) {
         WidgetFun::setVisible(this, "NNOperator_CalculateResult", true);
         auto imagePath = WidgetFun::getWidgetUserInfo(this, "NNOperator_CalculateResult", "Image");
-
         if(calculate.score >= 0) {
             WidgetFun::setImagic(this, "NNOperator_CalculateResult", utility::toString(imagePath, "Win.png"), false);
         } else {
@@ -473,8 +513,13 @@ void NNOperator::Button_StartGame(cocos2d::Ref*, WidgetUserInfo*)
 
 void NNOperator::Button_Ready(cocos2d::Ref*, WidgetUserInfo*)
 {
-	NNGameScene::Instance().onReady();
     NNGameScene::Instance().sendReady();
+}
+
+void NNOperator::Button_Continue(cocos2d::Ref*, WidgetUserInfo*)
+{
+	NNGameScene::Instance().onReady();
+	NNGameScene::Instance().sendReady();
 }
 
 void NNOperator::Button_WeiXin(cocos2d::Ref*, WidgetUserInfo*)
@@ -500,7 +545,6 @@ void NNOperator::Button_Call(cocos2d::Ref*, WidgetUserInfo* pInfo)
 {
 	if(m_byteBet == 0) {
 		//DONE:这里要设置下注的类型
-		//utility::parseUserString(
 		std::string strBet = pInfo->kUserInfo.at("NNOperator_Call_Bets");
 		auto pos = strBet.find('_');
 		if (pos != std::string::npos) {

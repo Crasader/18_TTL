@@ -65,6 +65,7 @@ public:
 #pragma region 按钮逻辑处理
 	void Button_StartGame(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_Ready(cocos2d::Ref*, WidgetUserInfo*);
+	void Button_Continue(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_WeiXin(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_SnatchBanker(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_Call(cocos2d::Ref*, WidgetUserInfo*);
@@ -73,5 +74,7 @@ public:
 	void Button_Hint(cocos2d::Ref*, WidgetUserInfo*);
 	TTLNN::NNPlayerBet  m_byteBet;
 	int  m_byteSnatchRatio;
+	//开始游戏的人
+	bool bShartGameOwner;
 #pragma endregion 按钮逻辑处理
 };

@@ -76,10 +76,12 @@ public:
 	int getGamePlayerCount();
 	NNPlayer* getLocalPlayer();
 	NNPlayer* getMasterPlayer();
+	NNPlayer* getCreater();
 	NNPlayer* getPlayerByChairID(word chairID);
 	int getVisioChairID(NNPlayer& player);
 	bool isBankerUser(NNPlayer& player);
 	//bool isHostUser(NNPlayer& player);
+	NNPlayer** getPlayers();
 #pragma endregion 玩家相关
 
 #pragma region 游戏状态
@@ -136,6 +138,7 @@ public:
 	void sendBet(TTLNN::NNPlayerBet& bet);
 	void sendShowCard();
 
+	void OnEventUserStatus(GamePlayer * pPlayer) override;
 	void onGameStart(const void * pBuffer, word wDataSize);
 	void onHostConfirmStart(const void * pBuffer, word wDataSize);
 	void onSnatchBanker(const void * pBuffer, word wDataSize);

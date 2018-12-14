@@ -351,7 +351,7 @@ NNPlayer* NNGameScene::getLocalPlayer()
 {
     for(int index = 0; index < MAX_PLAYER; ++index) {
         NNPlayer* player = m_Players[index];
-        if(player->GetUserID() == UserInfo::Instance().getUserID()) {
+        if(player->isValid() && player->GetUserID() == UserInfo::Instance().getUserID()) {
             return player;
         }
     }
@@ -363,7 +363,19 @@ NNPlayer* NNGameScene::getMasterPlayer()
 {
 	for (int index = 0; index < MAX_PLAYER; ++index) {
 		NNPlayer* player = m_Players[index];
-		if (player->GetUserID() == m_RoomInfo.dwMasterUserID) {
+		if (player->isValid() && player->GetUserID() == m_RoomInfo.dwMasterUserID) {
+			return player;
+		}
+	}
+
+	return nullptr;
+}
+
+NNPlayer* NNGameScene::getCreater()
+{
+	for (int index = 0; index < MAX_PLAYER; ++index) {
+		NNPlayer* player = m_Players[index];
+		if (player->isValid() && player->GetUserID() == m_RoomInfo.dwCreateUserID) {
 			return player;
 		}
 	}
@@ -404,6 +416,12 @@ bool NNGameScene::isBankerUser(NNPlayer& player)
 {
     return player.GetChairID() == m_BankerUser && m_BankerUser != INVALID_CHAIR;
 }
+
+NNPlayer** NNGameScene::getPlayers()
+{
+	return m_Players;
+}
+
 #pragma endregion 玩家相关
 
 #pragma region 游戏状态
@@ -455,7 +473,7 @@ void NNGameScene::Button_Exit(cocos2d::Ref*, WidgetUserInfo*)
 #ifdef ENABLE_DISMISS_ROOM
 	//1.如果游戏已经开始 解散房间
 	if (NNRoomInfo::Instance().getRoomInfo().dwPlayCout > 0 ) {
-		NNDismissRoom::Instance().show(NN_DismissRoom_InGameSelf);
+		NNDismissRoom::Instance().show(NN_DismissRoom_ApplyForDismiss);
 		return;
 	}
 	//2.如果游戏还没有开始
@@ -468,13 +486,13 @@ void NNGameScene::Button_Exit(cocos2d::Ref*, WidgetUserInfo*)
 void NNGameScene::Button_Dismiss(cocos2d::Ref* ref, WidgetUserInfo* pinfo)
 {
 	auto self_player = getLocalPlayer();
-	auto isCreater = (self_player ? NNRoomInfo::Instance().isCreaterPlayer(self_player) : false);//房主
+	auto isCreater = (self_player ? NNRoomInfo::Instance().isCreater(self_player) : false);//房主
 	auto nPlayerCount = getGamePlayerCount();
 	auto cbStatus = getGameStatus();
 	if (isCreater && (nPlayerCount <= 1 || cbStatus <= TTLNN::NNGameStatus_Start)) {
 		GPGameLink::Instance().DismissRoom(true);
 	} else {
-		NNDismissRoom::Instance().show(NN_DismissRoom_InGameSelf);
+		NNDismissRoom::Instance().show(NN_DismissRoom_ApplyForDismiss);
 	}
 }
 
@@ -773,14 +791,16 @@ void NNGameScene::OnSocketSubPrivateRoomInfo(CMD_GF_Private_Room_Info* pNetInfo)
 	NNRoomInfo::Instance().updateRoomInfo();
 	NNRoomInfo::Instance().show();
 
-	updateUserInfo();
-	NNOperator::Instance().show(m_GameStatus);
-
 	auto self_player = getLocalPlayer();
-	bool isCreater = (self_player ? NNRoomInfo::Instance().isCreaterPlayer(self_player) : false);
 
+	//新房间
+	bool is_new_room = (NNRoomInfo::Instance().getRoomInfo().dwMasterUserID == 0);
+	bool is_creater = (self_player ? NNRoomInfo::Instance().isCreater(self_player) : false);
+	bool is_master = NNRoomInfo::Instance().isMaster(self_player);
 	//如果是创建者
-	if (isCreater) {
+	if ((is_new_room && is_creater)||
+		//或者是房主
+		(self_player && is_master)) {
 		WidgetFun::setVisible(this, "NNGameScene_ButtonDismiss", true);
 	} else {
 		WidgetFun::setVisible(this, "NNGameScene_ButtonDismiss", false);
@@ -806,9 +826,9 @@ void NNGameScene::OnSocketSubPrivateDismissInfo(CMD_GF_Private_Dismiss_Info* pNe
 	}
 
 	if (pNetInfo->dwDissChairID[0] == getLocalPlayer()->GetChairID()) {
-		NNDismissRoom::Instance().show(NN_DismissRoom_InGameSelf, pNetInfo);
+		NNDismissRoom::Instance().show(NN_DismissRoom_ApplyForDismiss, pNetInfo);
 	} else {
-		NNDismissRoom::Instance().show(NN_DismissRoom_InGameOthers, pNetInfo);
+		NNDismissRoom::Instance().show(NN_DismissRoom_ReplyDismiss, pNetInfo);
 	}
 }
 
@@ -901,29 +921,15 @@ void NNGameScene::sendBet(TTLNN::NNPlayerBet& bet)
 
 void NNGameScene::sendShowCard()
 {
-	//亮牌移除最后一张牌
-	//NNPlayerCard_Entity cards = NNGameScene::Instance().getLocalPlayer()->getPlayerCards();
-	//TTLNN::NNCardType_Result result = NNGameLogic::checkNNType(cards.cards, NNRoomInfo::Instance().getRoomInfo().dwGameRuleIdex);
 	TTLNN::CMD_C_UserShowCard showCard;
 	zeromemory(&showCard, sizeof(showCard));
 
-	//if (result.type < TTLNN::NNCardType_WHN && result.type != TTLNN::NNCardType_None && m_SelectCards.size() == 3) {
-	//	int sum = 0;
-	//	for (int index = 0; index < (int)m_SelectCards.size(); ++index) {
-	//		int cardValue = cards.cards[m_SelectCards.at(index)] & MASK_VALUE;
-	//		cardValue = cardValue > 0xa ? 0xa : cardValue;
-	//		sum += cardValue;
-	//	}
-
-	//	if (sum % 10 == 0) {
-	//		zeromemory(result.isCardSelected, sizeof(result.isCardSelected));
-	//		result.isCardSelected[m_SelectCards.at(0)] = true;
-	//		result.isCardSelected[m_SelectCards.at(1)] = true;
-	//		result.isCardSelected[m_SelectCards.at(2)] = true;
-	//	}
-	//}
-	//showCard.result = result;
 	SendSocketData(SUB_C_USER_SHOW_CARD, &showCard, sizeof(showCard));
+}
+
+void NNGameScene::OnEventUserStatus(GamePlayer * pPlayer)
+{
+	NNOperator::Instance().show(m_GameStatus);
 }
 
 void NNGameScene::onGameStart(const void * pBuffer, word wDataSize)

@@ -42,6 +42,9 @@ public:
 	void setPlayerStatus(TTLNN::NNPlayerStatus status);
 	TTLNN::NNPlayerStatus getPlayerStatus();
 
+	//void setStartGameOwner(bool flag);
+	//bool getStartGameOwner();
+
 	//游戏局数
 	void setPlayCount(word wCount);
 	word getPlayCount();
@@ -70,5 +73,6 @@ private:
 	NNCardType_Result m_CardType;
 	NNPlayerSingleCalculate m_Calculate;
 
+	//bool bStartGameOwner;
 	word m_wPlayCount;		//游戏局数
 };
