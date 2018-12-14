@@ -10,17 +10,24 @@
 	<Widget Name="NNDismissRoom_ButtonClose" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="TTLNN/DismissRoom/NNDismissRoom_ButtonClose.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Visible" Value="false"/>
 		<Property Key="Pos" Value="1090 600"/>
 	</Widget>
 	
 	<Widget Name="NNDismissRoom_ButtonConfirm" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="TTLNN/DismissRoom/NNDismissRoom_ButtonConfirm.png"/>
+		<Property Key="NomalTexture" Value="public/Agree.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="840 80"/>
 	</Widget>
 	
 	<Widget Name="NNDismissRoom_ButtonRefuse" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="TTLNN/DismissRoom/NNDismissRoom_ButtonRefuse.png"/>
+		<Property Key="NomalTexture" Value="public/refuse.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="440 80"/>
+	</Widget>
+	
+	<Widget Name="NNDismissRoom_ButtonCancle" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="public/cancle.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="440 80"/>
 	</Widget>

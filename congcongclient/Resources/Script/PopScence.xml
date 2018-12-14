@@ -36,7 +36,7 @@
 			</Widget>
 			<Widget Name="ACPlane2" SkinTempName="Empty">
 				<Widget Name="Button_PopCancel" SkinTempName="ButtonEmpty">
-					<Property Key="NomalTexture" Value="public/js.png"/>
+					<Property Key="NomalTexture" Value="public/cancle.png"/>
 				<Property Key="PressTexture" Value="AutoPress"/>
 					<Property Key="Pos" Value="510 80"/>
 				</Widget>

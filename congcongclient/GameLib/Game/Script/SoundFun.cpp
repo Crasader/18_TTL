@@ -14,16 +14,19 @@ SoundFun::SoundFun()
 	s_fSound2 = 0;
 	m_bPlayButton = true;
 }
+
 void SoundFun::SetSoundBackground(float fValue)
 {
 	CocosDenshion::SimpleAudioEngine::getInstance()->setBackgroundMusicVolume( fValue*(!s_bMute));
 	s_fSound1 = fValue;
 }
+
 void SoundFun::SetSoundEffect(float fValue)
 {
 	CocosDenshion::SimpleAudioEngine::getInstance()->setEffectsVolume( fValue *(!s_bMute));
 	s_fSound2 = fValue;
 }
+
 void SoundFun::playBackMusic(std::string kName)
 {
 	if (m_kBackSound == kName)
@@ -34,10 +37,12 @@ void SoundFun::playBackMusic(std::string kName)
 	kName = s_soundPath + kName;
 	CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(kName.c_str(),true);	
 }
+
 void SoundFun::stopBackMusic()
 {
 	CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();	
 }
+
 void SoundFun::playEffect(std::string kName,bool bPreload)
 {
 	if (s_bMute)
@@ -54,6 +59,7 @@ void SoundFun::playEffect(std::string kName,bool bPreload)
 		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(kName.c_str());
 	}
 }
+
 void SoundFun::playEffectDirect(std::string kName,bool bPreload )
 {
 
@@ -70,6 +76,7 @@ void SoundFun::playEffectDirect(std::string kName,bool bPreload )
 		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(kName.c_str());
 	}
 }
+
 void SoundFun::playCardByGender(int iGender,std::string kName,bool bPreload)
 {
 	if (iGender==1)
@@ -82,11 +89,13 @@ void SoundFun::playCardByGender(int iGender,std::string kName,bool bPreload)
 	}
 	playEffect(kName,bPreload);
 }
+
 void SoundFun::PreloadEffectByGender(std::string kName)
 {
 	playCardByGender(0,kName,true);
 	playCardByGender(1,kName,true);
 }
+
 void SoundFun::setMute(bool bMute)
 {
 	if (s_bMute == bMute)
@@ -114,11 +123,13 @@ void SoundFun::PaseBackMusic()
 	TimeManager::Instance().removeByFun(TIME_CALLBACK(SoundFun::OnResumeBackMusic,this));
 	CocosDenshion::SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
 }
+
 void SoundFun::OnResumeBackMusic()
 {
 	TimeManager::Instance().removeByFun(TIME_CALLBACK(SoundFun::OnResumeBackMusic,this));
 	CocosDenshion::SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
 }
+
 void SoundFun::ResumeBackMusic(float fTime)
 {
 	float fTempValue =  s_fSound2*10.0f;
@@ -143,11 +154,13 @@ void SoundFun::PaseEffectMusic()
 	TimeManager::Instance().removeByFun(TIME_CALLBACK(SoundFun::OnResumeEffectMusic,this));
 	CocosDenshion::SimpleAudioEngine::getInstance()->pauseAllEffects();
 }
+
 void SoundFun::OnResumeEffectMusic()
 {
 	TimeManager::Instance().removeByFun(TIME_CALLBACK(SoundFun::OnResumeEffectMusic,this));
 	CocosDenshion::SimpleAudioEngine::getInstance()->resumeAllEffects();
 }
+
 void SoundFun::ResumeEffectMusic(float fTime)
 {
 	TimeManager::Instance().removeByFun(TIME_CALLBACK(SoundFun::OnResumeEffectMusic,this));
@@ -165,6 +178,7 @@ void SoundFun::setPlayButton(bool bNeed)
 {
 	m_bPlayButton = bNeed;
 }
+
 void SoundFun::playButtonEffect()
 {
 	if (m_bPlayButton )

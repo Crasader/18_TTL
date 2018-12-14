@@ -6,7 +6,7 @@
 #include "Game/Widget/WidgetScenceXMLParse.h"
 #include "JniCross/JniFun.h"
 
- FV_SINGLETON_STORAGE(NoticeMsgBox);
+FV_SINGLETON_STORAGE(NoticeMsgBox);
  
 NoticeMsgBox::NoticeMsgBox()
 	:m_szDownHttp("www.baidu.com")
@@ -15,10 +15,12 @@ NoticeMsgBox::NoticeMsgBox()
 	WidgetScenceXMLparse xml("Script/NoticeMsgBox.xml",this);
 	WidgetManager::addButtonCB("UpDataButton_Ok", this, button_selector(NoticeMsgBox::Button_Ok));
 }
+
 NoticeMsgBox::~NoticeMsgBox()
 {
 
 }
+
 bool NoticeMsgBox::init()
 {
 	if (!Node::init())
@@ -49,10 +51,8 @@ void NoticeMsgBox::show()
 {
 	setVisible(true);
 }
+
 void NoticeMsgBox::hide()
 {
 	setVisible(false);
 }
-
-
-

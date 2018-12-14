@@ -114,12 +114,12 @@
 		
 		<Widget Name="PrivateDismissAction" SkinTempName="Empty">
 			<Widget Name="Button_DismissPrivate" SkinTempName="ButtonEmpty">
-				<Property Key="NomalTexture" Value="public/BUTTON1.png"/>
+				<Property Key="NomalTexture" Value="public/Agree.png"/>
 				<Property Key="PressTexture" Value="AutoPress"/>
 				<Property Key="Pos" Value="-120 -120"/>
 			</Widget>
 			<Widget Name="Button_DismissPrivateNot" SkinTempName="ButtonEmpty">
-				<Property Key="NomalTexture" Value="public/BUTTON2.png"/>
+				<Property Key="NomalTexture" Value="public/refuse.png"/>
 				<Property Key="PressTexture" Value="AutoPress"/>
 				<Property Key="Pos" Value="120 -120"/>
 			</Widget>

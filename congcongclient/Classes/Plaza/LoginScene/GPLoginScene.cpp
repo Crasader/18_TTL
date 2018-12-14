@@ -165,10 +165,13 @@ std::string GPLoginScene::GetWxLoginWin32()
 	{
 		if (num > IndexMax ) num = IndexMin;
 	}
-	if(num < 10) account = utility::toString("test00",num);
-	else if(num < 100) account = utility::toString("test0",num);
-	else account = utility::toString("test",num);
-	cocos2d::UserDefault::getInstance()->setIntegerForKey("Index", num +1);
+	if(num < 10)
+		account = utility::toString("test00",num);
+	else if(num < 100)
+		account = utility::toString("test0",num);
+	else
+		account = utility::toString("test",num);
+	cocos2d::UserDefault::getInstance()->setIntegerForKey("Index",  num + 1);//005);//
 	cocos2d::UserDefault::getInstance()->flush();
 	return utility::toString(account,":111111");
 	//return utility::toString("WeiXinoef1Y1iRB6oyOnOJLK7w995Pe",":WeiXinPassword");

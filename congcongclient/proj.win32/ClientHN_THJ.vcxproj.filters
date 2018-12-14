@@ -569,5 +569,245 @@
     <ClCompile Include="main.cpp">
       <Filter>Main</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Game\SG\SGCalculate.cpp">
+      <Filter>Game\SG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SG\SGCardAnimation.cpp">
+      <Filter>Game\SG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SG\SGDismissRoom.cpp">
+      <Filter>Game\SG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SG\SGGameLogic.cpp">
+      <Filter>Game\SG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SG\SGGameScence.cpp">
+      <Filter>Game\SG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SG\SGGameScene_Touch.cpp">
+      <Filter>Game\SG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SG\SGOperator.cpp">
+      <Filter>Game\SG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SG\SGPlayer.cpp">
+      <Filter>Game\SG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SG\SGPlayerCard.cpp">
+      <Filter>Game\SG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SG\SGPlayerPanel.cpp">
+      <Filter>Game\SG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SG\SGRoomDetail.cpp">
+      <Filter>Game\SG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SG\SGRoomInfo.cpp">
+      <Filter>Game\SG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SG\SGSound.cpp">
+      <Filter>Game\SG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SRLF\SRLFGameLogic.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SRLF\SRLFGameScence.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SRLF\SRLFGameScence_Button.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SRLF\SRLFGameScence_CB.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SRLF\SRLFGameScence_Command.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SRLF\SRLFGameScence_Master.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SRLF\SRLFGameScence_Net.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SRLF\SRLFGameScence_Player.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SRLF\SRLFGameScence_Private.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SRLF\SRLFGameScence_Record.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SRLF\SRLFGameScence_Set.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SRLF\SRLFGameScence_Touch.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SRLF\SRLFPlayer.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SRLF\SRLFPlayer_Card.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SRLF\SRLFPlayer_Master.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SRLF\SRLFRoomDetail.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SRLF\SRLFSetting.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\SRLF\SRLFSoundFun.cpp">
+      <Filter>Game\SRLF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\WZQ\WZQDGameLogic.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\WZQ\WZQDGameScence.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\WZQ\WZQDGameScence_Button.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\WZQ\WZQDGameScence_CB.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\WZQ\WZQDGameScence_Command.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\WZQ\WZQDGameScence_Master.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\WZQ\WZQDGameScence_Net.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\WZQ\WZQDGameScence_Player.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\WZQ\WZQDGameScence_Private.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\WZQ\WZQDGameScence_Record.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\WZQ\WZQDGameScence_Set.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\WZQ\WZQDGameScence_Touch.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\WZQ\WZQDPlayer.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\WZQ\WZQDPlayer_Card.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\WZQ\WZQDPlayer_Master.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\WZQ\WZQDSoundFun.cpp">
+      <Filter>Game\WZQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\XZDD\XZDDGameLogic.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\XZDD\XZDDGameScence.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\XZDD\XZDDGameScence_Button.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\XZDD\XZDDGameScence_CB.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\XZDD\XZDDGameScence_Command.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\XZDD\XZDDGameScence_Master.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\XZDD\XZDDGameScence_Net.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\XZDD\XZDDGameScence_Player.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\XZDD\XZDDGameScence_Private.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\XZDD\XZDDGameScence_Record.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\XZDD\XZDDGameScence_Set.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\XZDD\XZDDGameScence_Touch.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\XZDD\XZDDPlayer.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\XZDD\XZDDPlayer_Card.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\XZDD\XZDDPlayer_Master.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\XZDD\XZDDSoundFun.cpp">
+      <Filter>Game\XZDD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\ZJH\TLJAnimation.cpp">
+      <Filter>Game\ZJH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\ZJH\TLJCalculateDetailPanel.cpp">
+      <Filter>Game\ZJH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\ZJH\TLJCalculatePanel.cpp">
+      <Filter>Game\ZJH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\ZJH\TLJChipContainer.cpp">
+      <Filter>Game\ZJH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\ZJH\TLJDismissRoom.cpp">
+      <Filter>Game\ZJH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\ZJH\TLJDismissRoomConfirm.cpp">
+      <Filter>Game\ZJH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\ZJH\TLJGameLogic.cpp">
+      <Filter>Game\ZJH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\ZJH\TLJGameScence.cpp">
+      <Filter>Game\ZJH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\ZJH\TLJGameScence_Touch.cpp">
+      <Filter>Game\ZJH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\ZJH\TLJInfoPanel.cpp">
+      <Filter>Game\ZJH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\ZJH\TLJOperate.cpp">
+      <Filter>Game\ZJH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\ZJH\TLJPlayer.cpp">
+      <Filter>Game\ZJH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\ZJH\TLJPlayer_Card.cpp">
+      <Filter>Game\ZJH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\ZJH\TLJPlayer_Panel.cpp">
+      <Filter>Game\ZJH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\ZJH\TLJRoomDetail.cpp">
+      <Filter>Game\ZJH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\ZJH\TLJSettingPanel.cpp">
+      <Filter>Game\ZJH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\ZJH\TLJSoundFun.cpp">
+      <Filter>Game\ZJH</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

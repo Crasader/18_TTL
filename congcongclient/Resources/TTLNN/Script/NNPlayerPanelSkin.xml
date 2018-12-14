@@ -207,6 +207,7 @@
 		
 		<WidgetImagic Name="NNPlayer_Host" TextureInfo="TTLNN/Player/NNPlayer_Host.png">
 			<Property Key="Pos" Value="85 125"/>
+			<Property Key="Visible" Value="false"/>
 		</WidgetImagic>
 		
 		<WidgetImagic Name="NNPlayer_Banker" TextureInfo="TTLNN/Player/NNPlayer_Banker.png">
@@ -227,8 +228,8 @@
 		
 		<WidgetImagic Name="NNPlayer_Snatch" TextureInfo="TTLNN/Player/NNPlayer_Snatch_0.png">
 			<UserInfo Key="Image" Value="TTLNN/Player/NNPlayer_Snatch_"/>
-<!-- 			<Property Key="Pos" Value="-15 115"/> -->
-				<Property Key="Pos" Value="-15 52"/> 
+			<!-- <Property Key="Pos" Value="-15 115"/> -->
+			<Property Key="Pos" Value="-15 52"/>
 		</WidgetImagic>
 		
 		<!--

@@ -751,13 +751,13 @@
 			    <Property Key="Pos" Value="330 210"/>
 		    </Widget>
 			<Widget Name="Button_Quit" SkinTempName="ButtonEmpty">
-				<Property Key="NomalTexture" Value="ScenceHome/BUTTON2.png"/>
+				<Property Key="NomalTexture" Value="ScenceHome/refuse.png"/>
 				<Property Key="PressTexture" Value="AutoPress"/>
 				<Property Key="Pos" Value="500 90"/>
 				<Action Key="Hide" Value="TuichuGamePanel"/>
 		    </Widget>
 			<Widget Name="Button_Sure" SkinTempName="ButtonEmpty">
-				<Property Key="NomalTexture" Value="ScenceHome/BUTTON1.png"/>
+				<Property Key="NomalTexture" Value="ScenceHome/Agree.png"/>
 				<Property Key="PressTexture" Value="AutoPress"/>
 				<Property Key="Pos" Value="180 90"/>				
 		    </Widget>
@@ -775,13 +775,13 @@
 			    <Property Key="Pos" Value="330 210"/>
 		    </Widget>
 			<Widget Name="Button_QiehuanzhanghaoNot" SkinTempName="ButtonEmpty">
-				<Property Key="NomalTexture" Value="ScenceHome/BUTTON2.png"/>
+				<Property Key="NomalTexture" Value="ScenceHome/refuse.png"/>
 				<Property Key="PressTexture" Value="AutoPress"/>
 				<Property Key="Pos" Value="500 90"/>
 				<Action Key="Hide" Value="QieHuanZhanghaoPanel"/>
 		    </Widget>
 			<Widget Name="Button_Qiehuanzhanghao" SkinTempName="ButtonEmpty">
-				<Property Key="NomalTexture" Value="ScenceHome/BUTTON1.png"/>
+				<Property Key="NomalTexture" Value="ScenceHome/Agree.png"/>
 				<Property Key="PressTexture" Value="AutoPress"/>
 				<Property Key="Pos" Value="180 90"/>				
 		    </Widget>

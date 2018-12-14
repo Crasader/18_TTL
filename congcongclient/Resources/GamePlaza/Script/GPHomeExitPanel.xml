@@ -8,12 +8,12 @@
 		<Property Key="Pos" Value="330 210"/>
 	</Widget>
 	<Widget Name="Button_Cancel" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="ScenceHome/BUTTON2.png"/>
+		<Property Key="NomalTexture" Value="ScenceHome/refuse.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="500 90"/>
 	</Widget>
 	<Widget Name="Button_Comfirm" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="ScenceHome/BUTTON1.png"/>
+		<Property Key="NomalTexture" Value="ScenceHome/Agree.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="180 90"/>				
 	</Widget>
