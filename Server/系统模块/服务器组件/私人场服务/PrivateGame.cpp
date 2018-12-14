@@ -713,7 +713,6 @@ bool PriaveteGame::OnDBOCreatePrivate(WORD wRequestID, IServerUserItem * pIServe
 		pCurrTableInfo->dwPlayCost = (DWORD)m_kPrivateInfo.lCostGold;
 	}
 	pCurrTableInfo->setRoomNum(iRandNum);
-    pCurrTableInfo->pITableFrame->SetCreateUserID(pIServerUserItem->GetUserID());
 	pCurrTableInfo->kHttpChannel = kChannel;
 	pCurrTableInfo->bRoomType = pPrivate->cbRoomType;
     pCurrTableInfo->dwGameKindID = pPrivate->dwGameKindID;
@@ -750,10 +749,10 @@ bool PriaveteGame::OnDBOCreatePrivate(WORD wRequestID, IServerUserItem * pIServe
 		pCurrTableInfo->dwGameRuleIdex,
 		&pInfo);
 
+	pICurrTableFrame->SetMasterUserID(0);
+	pICurrTableFrame->SetMasterUser(nullptr);
 	pICurrTableFrame->SetCreateUserID(pIServerUserItem->GetUserID());
 	pICurrTableFrame->SetCreateUser(pIServerUserItem);
-	pICurrTableFrame->SetMasterUserID(pIServerUserItem->GetUserID());
-	pICurrTableFrame->SetMasterUser(pIServerUserItem);
 
 	CMD_GF_Create_Private_Sucess kSucessInfo;
 	kSucessInfo.lCurSocre = pPrivate->bSucess;
@@ -785,7 +784,6 @@ bool PriaveteGame::OnTCPNetworkSubCreatePrivate(VOID * pData, WORD wDataSize, IS
 		JoinPrivateRoom(pIServerUserItem,pTableInfo->pITableFrame,pTableInfo);
 		return true;
 	}
-
 
 	if(pCMDInfo->cbGameType == Type_Private)
 	{
@@ -1515,15 +1513,6 @@ bool PriaveteGame::WriteTableScore(ITableFrame* pITableFrame,tagScoreInfo ScoreI
 	return true;
 }
 
-#if defined(ROOM_ONLY_COST_GOLD)
-
-void PriaveteGame::checkUserScore(IServerUserItem * pIServerUserItem,PrivateTableInfo* pTableInfo)
-{
-    
-}
-
-#endif
-
 void PriaveteGame::SendRoomInfo(IServerUserItem * pIServerUserItem, PrivateTableInfo* pTableInfo)
 {
 	ASSERT(pTableInfo); if (!pTableInfo) return;
@@ -1584,7 +1573,7 @@ void PriaveteGame::SendRoomInfo(IServerUserItem * pIServerUserItem, PrivateTable
 }
 
 //断线
-bool PriaveteGame::OnActionUserOffLine(WORD wChairID, IServerUserItem * pIServerUserItem)
+bool PriaveteGame::OnActionUserOffLine(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem)
 {
 	ASSERT(pIServerUserItem); if (!pIServerUserItem) return false;
 
@@ -1640,7 +1629,7 @@ bool PriaveteGame::OnActionUserOffLine(WORD wChairID, IServerUserItem * pIServer
 	return true;
 }
 //用户坐下
-bool PriaveteGame::OnActionUserSitDown(WORD wTableID, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser)
+bool PriaveteGame::OnActionUserSitDown(ITableFrame* pITableFrame, WORD wTableID, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser)
 { 
 	PrivateTableInfo* pTableInfo = getTableInfoByTableID(pIServerUserItem->GetTableID());
 	ASSERT(pTableInfo); if (pTableInfo) return false;
@@ -1649,34 +1638,48 @@ bool PriaveteGame::OnActionUserSitDown(WORD wTableID, WORD wChairID, IServerUser
 }
 
 //用户起立
-bool PriaveteGame::OnActionUserStandUp(WORD wTableID, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser)
+bool PriaveteGame::OnActionUserStandUp(ITableFrame* pITableFrame, WORD wTableID, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser)
 {
 	//移除分组
 	return true;
 }
 
  //用户同意
-bool PriaveteGame::OnActionUserOnReady(WORD wTableID, WORD wChairID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize)
+bool PriaveteGame::OnActionUserOnReady(ITableFrame* pITableFrame, WORD wTableID, WORD wChairID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize)
 { 
 	ASSERT(pIServerUserItem);
 	if (!pIServerUserItem)
 	{
 		return true;
 	}
-	PrivateTableInfo* pTableInfo = getTableInfoByTableID(pIServerUserItem->GetTableID());
+	auto pTableInfo = getTableInfoByTableID(wTableID);
 	if (!pTableInfo)
 	{
-		return true;
-	}
-	if (pTableInfo->bInEnd)
-	{
 		return false;
 	}
-	if (wChairID >= MAX_CHAIR)
+	if (!pITableFrame)
 	{
-		return false;
+		pITableFrame = pTableInfo->pITableFrame;
+		if (!pITableFrame)
+			return false;
 	}
-	//pTableInfo->cbLastOfflineReadyState[wChairID] = 1;
+	//所有人都没准备
+	bool bAllUnready = true;
+	auto pUser = pITableFrame->GetTableUserItem(0);
+	for (WORD idx = 0; idx < pITableFrame->GetChairCount(); idx++)
+	{
+		pUser = pITableFrame->GetTableUserItem(idx);
+		if (pUser && pUser->GetUserStatus() >= US_READY)
+		{
+			bAllUnready = false;
+		}
+	}
+	if (bAllUnready && pIServerUserItem)
+	{
+		pITableFrame->SetMasterUser(pIServerUserItem);
+		SendRoomInfo(nullptr, pTableInfo);
+	}
+
 	return true; 
 }
 
@@ -1778,7 +1781,7 @@ bool PriaveteGame::OnEventReqStandUP(IServerUserItem * pIServerUserItem)
 	return true;
 }
 
-bool PriaveteGame::OnEventClientReady(WORD wChairID,IServerUserItem * pIServerUserItem)
+bool PriaveteGame::OnEventClientReady(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem)
 {
 	ASSERT(pIServerUserItem);
 	if (!pIServerUserItem)
@@ -1794,16 +1797,7 @@ bool PriaveteGame::OnEventClientReady(WORD wChairID,IServerUserItem * pIServerUs
 
 	if (pTableInfo->pITableFrame->GetGameStatus() == GAME_STATUS_FREE)
 	{
-		//if (wChairID < MAX_CHAIR && pTableInfo->cbLastOfflineReadyState[wChairID])
-		//{
-		//	pIServerUserItem->SetUserStatus(US_READY,
-		//		pTableInfo->pITableFrame->GetTableID(),wChairID);
-		//}
-		//else
-		{
-			pIServerUserItem->SetUserStatus(US_SIT,
-				pTableInfo->pITableFrame->GetTableID(),wChairID);
-		}
+		pIServerUserItem->SetUserStatus(US_SIT, pTableInfo->pITableFrame->GetTableID(), wChairID);
 	}
 
 	if (pTableInfo->kDismissChairID.size())
@@ -1811,11 +1805,11 @@ bool PriaveteGame::OnEventClientReady(WORD wChairID,IServerUserItem * pIServerUs
 		CMD_GF_Private_Dismiss_Info kNetInfo;
 		kNetInfo.dwDissUserCout = pTableInfo->kDismissChairID.size();
 		kNetInfo.dwNotAgreeUserCout = pTableInfo->kNotAgreeChairID.size();
-		for (int i = 0;i<(int)pTableInfo->kDismissChairID.size() && i < MAX_CHAIR -1;i++)
+		for (size_t i = 0;i<pTableInfo->kDismissChairID.size() && i < pITableFrame->GetMaxChairCount(); i++)
 		{
 			kNetInfo.dwDissChairID[i] = pTableInfo->kDismissChairID[i];
 		}
-		for (int i = 0;i<(int)pTableInfo->kNotAgreeChairID.size() && i < MAX_CHAIR -1;i++)
+		for (size_t i = 0;i<pTableInfo->kNotAgreeChairID.size() && i < pITableFrame->GetMaxChairCount(); i++)
 		{
 			kNetInfo.dwNotAgreeChairID[i] = pTableInfo->kNotAgreeChairID[i];
 		}

@@ -221,9 +221,9 @@ public:
 	//游戏用户
 public:
 	//发送数据
-	virtual bool SendTableData(WORD wChairID, WORD wSubCmdID);
+	virtual bool SendTableData(WORD wChairID, WORD wSubCmdID) override;
 	//发送数据
-	virtual bool SendTableData(WORD wChairID, WORD wSubCmdID, VOID * pData, WORD wDataSize,WORD wMainCmdID=MDM_GF_GAME);
+	virtual bool SendTableData(WORD wChairID, WORD wSubCmdID, VOID * pData, WORD wDataSize,WORD wMainCmdID=MDM_GF_GAME, IServerUserItem* pExceptUser=nullptr) override;
 
 	//旁观用户
 public:

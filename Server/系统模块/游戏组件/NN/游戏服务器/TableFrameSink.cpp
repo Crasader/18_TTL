@@ -733,10 +733,10 @@ void CTableFrameSink::calculate() {
             }
             NNCardType_Result playerResult = m_PlayerCardTypes[index];
             if (m_GameLogic.comparePlayerCards(bankerResult, playerResult)) {
-                m_PlayerSingleResult[index] = -((SCORE) m_dwCellScore)  * m_PlayerBets[index].wBet * m_GameLogic.getNNRatio(bankerResult, m_GameRuleIdex) * m_BankerRatio;
+                m_PlayerSingleResult[index] = -1 * static_cast<int>(m_PlayerBets[index].wBet * m_GameLogic.getNNRatio(bankerResult, m_GameRuleIdex) * m_BankerRatio);
 				_calculate_total[index].playerScores[_dwCurrentPlayRound] = m_PlayerSingleResult[index];
             } else {
-                m_PlayerSingleResult[index] = ((SCORE) m_dwCellScore) * m_PlayerBets[index].wBet * m_GameLogic.getNNRatio(playerResult, m_GameRuleIdex) * m_BankerRatio;
+                m_PlayerSingleResult[index] = m_PlayerBets[index].wBet * m_GameLogic.getNNRatio(playerResult, m_GameRuleIdex) * m_BankerRatio;
 				_calculate_total[index].playerScores[_dwCurrentPlayRound] = m_PlayerSingleResult[index];
             }
             cmd_calculate.playerScores[index] = m_PlayerSingleResult[index];
@@ -1545,7 +1545,7 @@ bool CTableFrameSink::OnFrameMessage(WORD wSubCmdID, VOID* pDataBuffer, WORD wDa
 }
 
 //用户断线
-bool CTableFrameSink::OnActionUserOffLine(WORD wChairID, IServerUserItem* pIServerUserItem) {
+bool CTableFrameSink::OnActionUserOffLine(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem* pIServerUserItem) {
     WORD chairID = pIServerUserItem->GetChairID();
     if (chairID > NN_GAME_PLAYER) {
         return true;
@@ -1581,7 +1581,7 @@ bool CTableFrameSink::OnActionUserConnect(WORD wChairID, IServerUserItem* pIServ
 }
 
 //用户坐下
-bool CTableFrameSink::OnActionUserSitDown(WORD wChairID, IServerUserItem* pIServerUserItem, bool bLookonUser) {
+bool CTableFrameSink::OnActionUserSitDown(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem* pIServerUserItem, bool bLookonUser) {
     if (wChairID >= 0 && wChairID < NN_GAME_PLAYER && !bLookonUser) {
         m_PlayerStatus[wChairID] = NNPlayerStatus_Sitting;
     }
@@ -1590,7 +1590,7 @@ bool CTableFrameSink::OnActionUserSitDown(WORD wChairID, IServerUserItem* pIServ
 }
 
 //用户起来
-bool CTableFrameSink::OnActionUserStandUp(WORD wChairID, IServerUserItem* pIServerUserItem, bool bLookonUser) {
+bool CTableFrameSink::OnActionUserStandUp(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem* pIServerUserItem, bool bLookonUser) {
     //庄家设置
     if (wChairID >= 0 && wChairID < NN_GAME_PLAYER && bLookonUser == false) {
         m_PlayerStatus[wChairID] = NNPlayerStatus_Invalid;
@@ -1601,7 +1601,7 @@ bool CTableFrameSink::OnActionUserStandUp(WORD wChairID, IServerUserItem* pIServ
     return true;
 }
 
-bool CTableFrameSink::OnActionUserOnReady(WORD wChairID, IServerUserItem* pIServerUserItem, void* pData, WORD wDataSize) {
+bool CTableFrameSink::OnActionUserOnReady(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem* pIServerUserItem, void* pData, WORD wDataSize) {
     if (wChairID < NN_GAME_PLAYER && m_GameStatus < NNGameStatus_Start) {
         m_PlayerStatus[wChairID] = NNPlayerStatus_Ready;
         m_pITableFrame->KillGameTimer(IDI_TIMER_CHECK_USER_STATUS);
@@ -1670,16 +1670,18 @@ bool CTableFrameSink::hasRule(BYTE rule) {
 
 void CTableFrameSink::SetCreateUserID(DWORD dwUserID) {
     _dwCreateUserID = dwUserID;
-	_MasterUserID = dwUserID;
+	//DONE:不需要默认房主
+	//_MasterUserID = dwUserID;
 }
 
 void CTableFrameSink::SetCreateUser(IServerUserItem * pIServerUserItem)
 {
 	_pCreateUser = pIServerUserItem;
 	if (_pCreateUser) {
-		_dwCreateUserID = _MasterUserID;
-		_MasterUserID = pIServerUserItem->GetUserID();
-		_MasterChairID = pIServerUserItem->GetChairID();
+		_dwCreateUserID = pIServerUserItem->GetUserID();
+		//DONE:不需要默认房主
+		//_MasterUserID = pIServerUserItem->GetUserID();
+		//_MasterChairID = pIServerUserItem->GetChairID();
 	} else {
 		_dwCreateUserID = 0;
 	}

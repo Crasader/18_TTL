@@ -891,7 +891,7 @@ bool CTableFrame::SendTableData(WORD wChairID, WORD wSubCmdID)
 }
 
 //发送数据
-bool CTableFrame::SendTableData(WORD wChairID, WORD wSubCmdID, VOID * pData, WORD wDataSize,WORD wMainCmdID)
+bool CTableFrame::SendTableData(WORD wChairID, WORD wSubCmdID, VOID * pData, WORD wDataSize,WORD wMainCmdID, IServerUserItem* pExceptUser)
 {
 	//用户群发
 	if (wChairID==INVALID_CHAIR)
@@ -900,7 +900,12 @@ bool CTableFrame::SendTableData(WORD wChairID, WORD wSubCmdID, VOID * pData, WOR
 		{
 			//获取用户
 			IServerUserItem * pIServerUserItem=GetTableUserItem(i);
-			if ((pIServerUserItem==NULL)||(pIServerUserItem->IsClientReady()==false)) continue;
+			if ((pIServerUserItem == NULL) ||
+				(pIServerUserItem->IsClientReady() == false) ||
+				pExceptUser == pIServerUserItem)
+			{
+				continue;
+			}
 			if ((pIServerUserItem==NULL)) continue;
 
 			//发送数据
@@ -1202,7 +1207,7 @@ bool CTableFrame::OnEventUserOffLine(IServerUserItem * pIServerUserItem)
 		{
 			pIServerUserItem->SetUserStatus(US_OFFLINE,m_wTableID,wChairID);
 			//掉线通知
-			if(m_pIPrivateTableAction!=NULL) m_pIPrivateTableAction->OnActionUserOffLine(wChairID,pIServerUserItem);
+			if(m_pIPrivateTableAction!=NULL) m_pIPrivateTableAction->OnActionUserOffLine(this, wChairID, pIServerUserItem);
 			return true;
 		}
 
@@ -1222,14 +1227,14 @@ bool CTableFrame::OnEventUserOffLine(IServerUserItem * pIServerUserItem)
 					//pIServerUserItem->SetTrusteeUser(true);
 
 					//掉线通知
-					if(m_pITableUserAction!=NULL) m_pITableUserAction->OnActionUserOffLine(wChairID,pIServerUserItem);
+					if(m_pITableUserAction!=NULL) m_pITableUserAction->OnActionUserOffLine(this, wChairID, pIServerUserItem);
 				}
 
 				return true;
 			}
 
 			//掉线通知
-			if(m_pITableUserAction!=NULL) m_pITableUserAction->OnActionUserOffLine(wChairID,pIServerUserItem);
+			if(m_pITableUserAction!=NULL) m_pITableUserAction->OnActionUserOffLine(this, wChairID, pIServerUserItem);
 
 			//断线处理
 			if (m_dwOffLineTime[wChairID]==0L)
@@ -1443,7 +1448,7 @@ bool CTableFrame::OnEventSocketFrame(WORD wSubCmdID, VOID * pData, WORD wDataSiz
 			bool bSendSecret=((cbUserStatus!=US_LOOKON)||(m_bAllowLookon[wChairID]==true));
 			m_pITableFrameSink->OnEventSendGameScene(wChairID,pIServerUserItem,m_cbGameStatus,bSendSecret);
 
-			if(m_pITableFramePrivate!=NULL) m_pITableFramePrivate->OnEventClientReady(wChairID,pIServerUserItem);
+			if(m_pITableFramePrivate!=NULL) m_pITableFramePrivate->OnEventClientReady(this, wChairID,pIServerUserItem);
 
 // 			//错误的逻辑开始判断
 // 			if (EfficacyStartGame(wChairID)==true)
@@ -1464,7 +1469,7 @@ bool CTableFrame::OnEventSocketFrame(WORD wSubCmdID, VOID * pData, WORD wDataSiz
 			if (GetTableUserItem(wChairID)!=pIServerUserItem) return false;
 
 			//效验状态
-			//ASSERT(cbUserStatus==US_SIT);
+			ASSERT(cbUserStatus==US_SIT);
 			if (cbUserStatus!=US_SIT) return true;
 
 			//分组判断
@@ -1475,19 +1480,19 @@ bool CTableFrame::OnEventSocketFrame(WORD wSubCmdID, VOID * pData, WORD wDataSiz
 // 			}
 
 			//事件通知
-			if (m_pITableUserAction!=NULL)
+			if (m_pITableUserAction != NULL)
 			{
-				m_pITableUserAction->OnActionUserOnReady(wChairID,pIServerUserItem,pData,wDataSize);
+				m_pITableUserAction->OnActionUserOnReady(this, wChairID, pIServerUserItem, pData, wDataSize);
 			}
 
 			//事件通知
-			if(m_pIMatchTableAction!=NULL && !m_pIMatchTableAction->OnActionUserOnReady(wChairID,pIServerUserItem, pData,wDataSize))
+			if(m_pIMatchTableAction!=NULL && !m_pIMatchTableAction->OnActionUserOnReady(this, wChairID, pIServerUserItem, pData, wDataSize))
 			{
 				return true;
 			}
 
 			//事件通知
-			if(m_pIPrivateTableAction!=NULL && !m_pIPrivateTableAction->OnActionUserOnReady(wChairID,pIServerUserItem, pData,wDataSize))
+			if(m_pIPrivateTableAction!=NULL && !m_pIPrivateTableAction->OnActionUserOnReady(this, wChairID, pIServerUserItem, pData, wDataSize))
 			{
 				return true;
 			}
@@ -1933,7 +1938,7 @@ bool CTableFrame::PerformStandUpAction(IServerUserItem * pIServerUserItem)
 	{
         WORD wChairID=pIServerUserItem->GetChairID();
 		//掉线通知
-		if(m_pIPrivateTableAction!=NULL && m_pIPrivateTableAction->OnActionUserOffLine(wChairID,pIServerUserItem))
+		if(m_pIPrivateTableAction!=NULL && m_pIPrivateTableAction->OnActionUserOffLine(this, wChairID, pIServerUserItem))
 		{
 			return true;
 		}
@@ -1960,7 +1965,7 @@ bool CTableFrame::PerformStandUpActionReally(IServerUserItem * pIServerUserItem,
 		if(m_pGameServiceOption->wServerType==GAME_GENRE_MATCH)
 		{
 			//掉线通知
-			if(m_pITableUserAction!=NULL) m_pITableUserAction->OnActionUserOffLine(wChairID,pIServerUserItem);
+			if(m_pITableUserAction!=NULL) m_pITableUserAction->OnActionUserOffLine(this, wChairID, pIServerUserItem);
 
 			return true;
 		}
@@ -1985,13 +1990,13 @@ bool CTableFrame::PerformStandUpActionReally(IServerUserItem * pIServerUserItem,
 		//事件通知
 		if (m_pITableUserAction!=NULL)
 		{
-			m_pITableUserAction->OnActionUserStandUp(wChairID,pIServerUserItem,false);
+			m_pITableUserAction->OnActionUserStandUp(this, wChairID,pIServerUserItem,false);
 		}
 
 		//事件通知
-		if(m_pIMatchTableAction!=NULL) m_pIMatchTableAction->OnActionUserStandUp(wChairID,pIServerUserItem,false);
+		if(m_pIMatchTableAction!=NULL) m_pIMatchTableAction->OnActionUserStandUp(this, wChairID, pIServerUserItem, false);
 		//事件通知
-		if(m_pIPrivateTableAction!=NULL) m_pIPrivateTableAction->OnActionUserStandUp(wChairID,pIServerUserItem,false);
+		if(m_pIPrivateTableAction!=NULL) m_pIPrivateTableAction->OnActionUserStandUp(this, wChairID, pIServerUserItem, false);
 
 		//设置变量
 		m_TableUserItemArray[wChairID]=NULL;
@@ -2062,14 +2067,14 @@ bool CTableFrame::PerformStandUpActionReally(IServerUserItem * pIServerUserItem,
 				//事件通知
 				if (m_pITableUserAction!=NULL)
 				{
-					m_pITableUserAction->OnActionUserStandUp(wChairID,pIServerUserItem,true);
+					m_pITableUserAction->OnActionUserStandUp(this, wChairID, pIServerUserItem, true);
 				}
 
 				//事件通知
-				if(m_pIMatchTableAction!=NULL) m_pIMatchTableAction->OnActionUserStandUp(wChairID,pIServerUserItem,true);
+				if(m_pIMatchTableAction!=NULL) m_pIMatchTableAction->OnActionUserStandUp(this, wChairID, pIServerUserItem, true);
 
 				//事件通知
-				if(m_pIPrivateTableAction!=NULL) m_pIPrivateTableAction->OnActionUserStandUp(wChairID,pIServerUserItem,true);
+				if(m_pIPrivateTableAction!=NULL) m_pIPrivateTableAction->OnActionUserStandUp(this, wChairID, pIServerUserItem, true);
 
 				//用户状态
 				pIServerUserItem->SetClientReady(false);
@@ -2197,13 +2202,13 @@ bool CTableFrame::PerformLookonAction(WORD wChairID, IServerUserItem * pIServerU
 	//事件通知
 	if (m_pITableUserAction!=NULL)
 	{
-		m_pITableUserAction->OnActionUserSitDown(wChairID,pIServerUserItem,true);
+		m_pITableUserAction->OnActionUserSitDown(this, wChairID, pIServerUserItem, true);
 	}
 
 	//事件通知
-	if(m_pIMatchTableAction!=NULL) m_pIMatchTableAction->OnActionUserSitDown(wChairID,pIServerUserItem,true);
+	if(m_pIMatchTableAction!=NULL) m_pIMatchTableAction->OnActionUserSitDown(this, wChairID, pIServerUserItem, true);
 	//事件通知
-	if(m_pIPrivateTableAction!=NULL) m_pIPrivateTableAction->OnActionUserSitDown(wChairID,pIServerUserItem,true);
+	if(m_pIPrivateTableAction!=NULL) m_pIPrivateTableAction->OnActionUserSitDown(this, wChairID, pIServerUserItem, true);
 	return true;
 }
 
@@ -2402,19 +2407,19 @@ bool CTableFrame::PerformSitDownAction(WORD wChairID, IServerUserItem * pIServer
 	//事件通知
 	if (m_pITableUserAction!=NULL)
 	{
-		m_pITableUserAction->OnActionUserSitDown(wChairID,pIServerUserItem,false);
+		m_pITableUserAction->OnActionUserSitDown(this, wChairID, pIServerUserItem, false);
 	}
 
 	//事件通知
 	if(m_pIMatchTableAction!=NULL)
 	{
-		m_pIMatchTableAction->OnActionUserSitDown(wChairID,pIServerUserItem,false);
+		m_pIMatchTableAction->OnActionUserSitDown(this, wChairID, pIServerUserItem, false);
 	}
 
 	//事件通知
 	if(m_pIPrivateTableAction!=NULL)
 	{
-		m_pIPrivateTableAction->OnActionUserSitDown(wChairID,pIServerUserItem,false);
+		m_pIPrivateTableAction->OnActionUserSitDown(this, wChairID, pIServerUserItem, false);
 	}
 	
 	return true;
