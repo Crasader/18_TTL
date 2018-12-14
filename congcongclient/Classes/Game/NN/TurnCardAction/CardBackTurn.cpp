@@ -38,7 +38,6 @@ void CardBackTurn::init()
 	switch (_touch->getDirection()) {
 		case CTD_Boom_To_Up:
 			{
-
 				_pClipper = ClippingNode::create();
 
 				cocos2d::log("CardTurnAction::BK create ,anc x = %f, anc y = %f\n",
@@ -90,7 +89,6 @@ void CardBackTurn::init()
 				break;
 			}
 	}
-
 }
 
 void cardturn::CardBackTurn::doMove(float fmove)
@@ -176,7 +174,6 @@ void CardBackTurn::ceateClipShape(CardTurn_Direction cdt_direction)
 			_clipRect[3] = Vec2(_CardRect.getMinX(), _CardRect.getMinY());
 			break;
 	}
-
 }
 
 //////////////////////////////////////////////////////////////////////////

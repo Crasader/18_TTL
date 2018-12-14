@@ -2,7 +2,7 @@
 #include "CardTurnOption.h"
 #include "CardTurnTouch.h"
 
- using namespace cardturn;
+using namespace cardturn;
 using namespace cocos2d;
 
 CardFrontTurn::CardFrontTurn()

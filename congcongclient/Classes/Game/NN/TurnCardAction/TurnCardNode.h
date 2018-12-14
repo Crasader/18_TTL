@@ -9,7 +9,6 @@ using namespace cocos2d;
 
 class TurnCardNode : public cocos2d::Node
 {
-
 public:
 	virtual bool init();
 	virtual void update(float fTime) override;

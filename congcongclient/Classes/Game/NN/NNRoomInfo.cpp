@@ -47,6 +47,7 @@ void NNRoomInfo::initData()
 	for (size_t i = 0; i < NN_GAME_PLAYER; i++) {
 		m_RoomInfo.kWinLoseScore.push_back(0);
 	}
+	m_RoomInfo.dwBaseScore = 1;
 }
 #pragma endregion 初始化
 
@@ -65,7 +66,7 @@ void NNRoomInfo::hide()
 #pragma region 数据接收与刷新显示
 void NNRoomInfo::setRoomInfo(CMD_GF_Private_Room_Info& roomInfo)
 {
-	CCLOG("房间信息底注信息%ld\n",roomInfo.dwBaseScore);
+	CCLOG("NNRoomInfo::setRoomInfo roomInfo.dwBaseScore=%ld\n",roomInfo.dwBaseScore);
 	m_RoomInfo = roomInfo;
 }
 
@@ -78,12 +79,6 @@ void NNRoomInfo::updateRoomInfo()
     label->setAnchorPoint(cocos2d::Vec2(0, 1));
     label->setPosition(Point(10, 710));
     addChild(label);
-	//NNOperator::Instance().showWeiXin();
-	//if (m_RoomInfo.dwPlayCout == 0) {
-	//	NNOperator::Instance().showWeiXin();
-	//} else {
-	//	NNOperator::Instance().hideWeiXin();
-	//}
 
 	if (m_RoomInfo.bGameTypeIdex == TTLNN::NNGameType_HostBanker &&
 		m_RoomInfo.dwPlayCout > 3 &&
@@ -96,12 +91,12 @@ void NNRoomInfo::updateRoomInfo()
 	}
 }
 
-bool NNRoomInfo::isCreaterPlayer(NNPlayer* player)
+bool NNRoomInfo::isCreater(NNPlayer* player)
 {
-	return player && player->GetUserID() == m_RoomInfo.dwMasterUserID;
+	return player && player->GetUserID() == m_RoomInfo.dwCreateUserID;
 }
 
-bool NNRoomInfo::isHostPlayer(NNPlayer* player)
+bool NNRoomInfo::isMaster(NNPlayer* player)
 {
 	return player && (player->GetUserID() == m_RoomInfo.dwMasterUserID);
 }
@@ -236,14 +231,8 @@ std::string NNRoomInfo::getRoomInfoText(bool forShare /*= false*/)
 	}
 	text.append(split);
 
-	if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZRatio_0))) {
-		text.append(utility::a_u8(utility::toString(TuiZhuBeiShu_0, "倍推注")));
-	} else if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZRatio_1))) {
-		text.append(utility::a_u8(utility::toString(TuiZhuBeiShu_1, "倍推注")));
-	} else if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZRatio_2))) {
-		text.append(utility::a_u8(utility::toString(TuiZhuBeiShu_2, "倍推注")));
-	} else if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZRatio_3))) {
-		text.append(utility::a_u8(utility::toString(TuiZhuBeiShu_3, "倍推注")));
+	if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZ))) {
+		text.append(utility::a_u8("闲家推注"));
 	}
 	text.append(split);
 

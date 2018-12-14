@@ -50,10 +50,12 @@ void NNPlayerPanel::showPlayer(NNPlayer& player)
 
         WidgetFun::setVisible(playerNode, "NNPlayer_BankerBG", NNGameScene::Instance().isBankerUser(player));
         WidgetFun::setVisible(playerNode, "NNPlayer_Banker", NNGameScene::Instance().isBankerUser(player));
+
         WidgetFun::setVisible(playerNode, "NNPlayer_Ready", player.GetUserStatus() == US_READY);
         WidgetFun::setVisible(playerNode, "NNPlaye_BetsNode", player.getPlayerBets() != 0);
         WidgetFun::setVisible(playerNode, "NNPlayer_Snatch", player.getSnatchBankerRatio() != (word)TTLNN::NNSnatchBanker_Invalid);
-        WidgetFun::setVisible(playerNode, "NNPlayer_Host", NNRoomInfo::Instance().isHostPlayer(&player));
+		//DONE: 不需要显示房主图标
+		WidgetFun::setVisible(playerNode, "NNPlayer_Host", false);// NNRoomInfo::Instance().isHostPlayer(&player));
 
         WidgetFun::setText(playerNode, "NNPlayer_Name", player.GetNickName());
 		
@@ -61,7 +63,8 @@ void NNPlayerPanel::showPlayer(NNPlayer& player)
 		int nScore = NNRoomInfo::Instance().getRoomInfo().kWinLoseScore[visioChairID];
         WidgetFun::setText(playerNode, "NNPlayer_Score", nScore);
 		
-		WidgetFun::setText(playerNode, "NNPlayer_Bets", player.getPlayerBets());
+		if(NNRoomInfo::Instance().getRoomInfo().dwBaseScore != 0)
+			WidgetFun::setText(playerNode, "NNPlayer_Bets", player.getPlayerBets() / NNRoomInfo::Instance().getRoomInfo().dwBaseScore);
 		
 		if (player.getSnatchBankerRatio() != (word)TTLNN::NNSnatchBanker_Invalid) {
             WidgetFun::setImagic(playerNode, "NNPlayer_Snatch", utility::toString(WidgetFun::getWidgetUserInfo(playerNode, "NNPlayer_Snatch", "Image"), (int)player.getSnatchBankerRatio(), ".png"), false);

@@ -11,21 +11,28 @@ FV_SINGLETON_STORAGE(GPHomeCreateRoomPanel_NN);
 
 GPHomeCreateRoomPanel_NN::GPHomeCreateRoomPanel_NN()
 	: _nRatioRuleIndex(0)//牛牛的规则序号
-	, _bShunZi(true)//顺子牛
-	, _bTongHua(true)//同花牛
-	, _bWuHua(true)//五花牛
-	, _bHuLu(true)//葫芦牛
-	, _bZhaDan(true)//炸弹牛
-	, _bWuXiao(true)//五小牛
+	, _bShunZi(false)//顺子牛
+	, _bTongHua(false)//同花牛
+	, _bWuHua(false)//五花牛
+	, _bHuLu(false)//葫芦牛
+	, _bZhaDan(false)//炸弹牛
+	, _bWuXiao(false)//五小牛
 	, _bCanTuiZhu(false)
 	, _nTuiZhuIndex(0)//闲家推注倍数序号
 	, _nGameType(TTLNN::NNGameType::NNGameType_SnatchBankerShowCard)
-	, _nRoundIndex(0)
 	, _cbRoundCount(6)//六人场或者八人场
 	, _nQiangZhuangBeiShu(1)
 	, _dwBaseScore(1)
 {
     init();
+	std::string strRoomRules = cocos2d::UserDefault::getInstance()->getStringForKey("CreateRoomRules", "0");
+	_nRoundIndex = cocos2d::UserDefault::getInstance()->getIntegerForKey("roundIndex", 0);
+	_nGameRuleIndex = 0;
+	for (size_t idx = 0; idx < strRoomRules.size(); idx++) {
+		byte value = static_cast<byte>(strRoomRules.at(idx) - 48);
+		_nGameRuleIndex *= 10;
+		_nGameRuleIndex += value;
+	}
 }
 
 GPHomeCreateRoomPanel_NN::~GPHomeCreateRoomPanel_NN()
@@ -64,13 +71,10 @@ void GPHomeCreateRoomPanel_NN::initButton()
 	WidgetManager::addButtonCB("NN_CreateRoom_RoundCountBox2", this, button_selector(GPHomeCreateRoomPanel_NN::Button_RoundBox2));
 	WidgetManager::addButtonCB("NN_CreateRoom_RoundCountBox3", this, button_selector(GPHomeCreateRoomPanel_NN::Button_RoundBox3));
 	//推注倍数
-	//WidgetManager::addButtonCB("Check_TuiZhu_1", this, button_selector(GPHomeCreateRoomPanel_NN::Button_TuiZhu1));
 	WidgetManager::addButtonCB("Check_TuiZhu_2", this, button_selector(GPHomeCreateRoomPanel_NN::Button_TuiZhu2));
 	WidgetManager::addButtonCB("Check_TuiZhu_3", this, button_selector(GPHomeCreateRoomPanel_NN::Button_TuiZhu3));
 	WidgetManager::addButtonCB("Check_TuiZhu_4", this, button_selector(GPHomeCreateRoomPanel_NN::Button_TuiZhu4));
-
 	WidgetManager::addButtonCB("Check_CanTuiZhu", this, button_selector(GPHomeCreateRoomPanel_NN::Button_CanTuiZhu));
-
 	//抢庄倍数
 	WidgetManager::addButtonCB("Check_QiangZhuang1", this, button_selector(GPHomeCreateRoomPanel_NN::Button_QiangZhuang1));
 	WidgetManager::addButtonCB("Check_QiangZhuang2", this, button_selector(GPHomeCreateRoomPanel_NN::Button_QiangZhuang2));
@@ -86,7 +90,6 @@ void GPHomeCreateRoomPanel_NN::initButton()
 	WidgetManager::addButtonCB("Check_HuLu", this, button_selector(GPHomeCreateRoomPanel_NN::Button_HuLu));
 	WidgetManager::addButtonCB("Check_ZhaDan", this, button_selector(GPHomeCreateRoomPanel_NN::Button_ZhaDan));
 	WidgetManager::addButtonCB("Check_WuXiao", this, button_selector(GPHomeCreateRoomPanel_NN::Button_WuXiao));
-
 	WidgetManager::addButtonCB("Btn_SixRound", this, button_selector(GPHomeCreateRoomPanel_NN::Button_SixRound));
 	WidgetManager::addButtonCB("Btn_EightRound", this, button_selector(GPHomeCreateRoomPanel_NN::Button_EightRound));
 }
@@ -98,7 +101,12 @@ void GPHomeCreateRoomPanel_NN::initData()
 
 void GPHomeCreateRoomPanel_NN::resetGameData()
 {
-	_nGameRuleIndex = 0;
+	std::string strRoomRules = cocos2d::UserDefault::getInstance()->getStringForKey("CreateRoomRules", "0");
+	for (size_t idx = 0; idx < strRoomRules.size(); idx++) {
+		byte value = static_cast<byte>(strRoomRules.at(idx) - 48);
+		_nGameRuleIndex *= 10;
+		_nGameRuleIndex += value;
+	}
 
 	_bAllowedStrangerJoin = false;
 	_dwEnterMatchNum = 1;
@@ -111,8 +119,7 @@ void GPHomeCreateRoomPanel_NN::show()
 	WidgetFun::setChecked(this, "NN_CreateRoom_RoundCountBox1", false);
 	WidgetFun::setChecked(this, "NN_CreateRoom_RoundCountBox2", false);
 	WidgetFun::setChecked(this, "NN_CreateRoom_RoundCountBox3", false);
-	switch (_nRoundIndex)
-	{
+	switch (_nRoundIndex) {
 	case 0:
 		WidgetFun::setChecked(this, "NN_CreateRoom_RoundCountBox1", true);
 		break;
@@ -124,12 +131,24 @@ void GPHomeCreateRoomPanel_NN::show()
 		break;
 	}
 
+	if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule_TZRatio_0))) {
+		_nTuiZhuIndex = 1;
+		_bCanTuiZhu = true;
+	} else if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule_TZRatio_1))) {
+		_nTuiZhuIndex = 2;
+		_bCanTuiZhu = true;
+	} else if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule_TZRatio_2))) {
+		_nTuiZhuIndex = 3;
+		_bCanTuiZhu = true;
+	} else if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule_TZRatio_3))) {
+		_nTuiZhuIndex = 4;
+		_bCanTuiZhu = true;
+	}
 	//闲家推注选择
 	//WidgetFun::setChecked(this, "Check_TuiZhu_1", false);
 	WidgetFun::setChecked(this, "Check_TuiZhu_2", false);
 	WidgetFun::setChecked(this, "Check_TuiZhu_3", false);
-	switch (_nTuiZhuIndex)
-	{
+	switch (_nTuiZhuIndex) {
 	case 1:
 		//WidgetFun::setChecked(this, "Check_TuiZhu_1", true);
 		break;
@@ -145,37 +164,60 @@ void GPHomeCreateRoomPanel_NN::show()
 	}
 	WidgetFun::setChecked(this, "Check_CanTuiZhu", _bCanTuiZhu);
 
+	if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SpecialRule_SZN))) {
+		_bShunZi = true;
+	}
 	//特殊牌型选择
 	if (_bShunZi)
 		WidgetFun::setChecked(this, "Check_ShunZi", true);
 	else
 		WidgetFun::setChecked(this, "Check_ShunZi", false);
 
+	if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SpecialRule_THN))) {
+		_bTongHua = true;
+	}
 	if (_bTongHua)
 		WidgetFun::setChecked(this, "Check_TongHua", true);
 	else
 		WidgetFun::setChecked(this, "Check_TongHua", false);
 
+	if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SpecialRule_WHN))) {
+		_bWuHua = true;
+	}
 	if (_bWuHua)
 		WidgetFun::setChecked(this, "Check_WuHua", true);
 	else
 		WidgetFun::setChecked(this, "Check_WuHua", false);
 
+	if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SpecialRule_HLN))) {
+		_bHuLu = true;
+	}
 	if (_bHuLu)
 		WidgetFun::setChecked(this, "Check_HuLu", true);
 	else
 		WidgetFun::setChecked(this, "Check_HuLu", false);
 
+	if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SpecialRule_ZDN))) {
+		_bZhaDan = true;
+	}
 	if (_bZhaDan)
 		WidgetFun::setChecked(this, "Check_ZhaDan", true);
 	else
 		WidgetFun::setChecked(this, "Check_ZhaDan", false);
 
+	if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SpecialRule_WXN))) {
+		_bWuXiao = true;
+	}
 	if (_bWuXiao)
 		WidgetFun::setChecked(this, "Check_WuXiao", true);
 	else
 		WidgetFun::setChecked(this, "Check_WuXiao", false);
 
+	if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_Ratio_0))) {
+		_nRatioRuleIndex = 0;
+	} else if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_Ratio_1))) {
+		_nRatioRuleIndex = 1;
+	}
 	if (_nRatioRuleIndex) 
 	{
 		WidgetFun::setChecked(this, "Check_Multiple_Rule1", false);
@@ -187,6 +229,15 @@ void GPHomeCreateRoomPanel_NN::show()
 		WidgetFun::setChecked(this, "Check_Multiple_Rule2", false);
 	}
 
+	if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_Score_0))) {
+		_dwBaseScore = 1;
+	} else if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_Score_1))) {
+		_dwBaseScore = 2;
+	} else if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_Score_2))) {
+		_dwBaseScore = 4;
+	} else {
+		_dwBaseScore = 5;
+	}
 	WidgetFun::setChecked(this, "Check_CreateRoom_DiFen1", false);
 	WidgetFun::setChecked(this, "Check_CreateRoom_DiFen2", false);
 	WidgetFun::setChecked(this, "Check_CreateRoom_DiFen3", false);
@@ -210,6 +261,19 @@ void GPHomeCreateRoomPanel_NN::show()
 		break;
 	}
 
+	//抢庄倍数
+	if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SnatchRatio_0))) {
+		_nQiangZhuangBeiShu = 1;
+	}
+	else if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SnatchRatio_1))) {
+		_nQiangZhuangBeiShu = 2;
+	}
+	else if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SnatchRatio_2))) {
+		_nQiangZhuangBeiShu = 3;
+	}
+	else if(FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SnatchRatio_3))) {
+		_nQiangZhuangBeiShu = 4;
+	}
 	WidgetFun::setChecked(this, "Check_QiangZhuang1", false);
 	WidgetFun::setChecked(this, "Check_QiangZhuang2", false);
 	WidgetFun::setChecked(this, "Check_QiangZhuang3", false);
@@ -230,6 +294,11 @@ void GPHomeCreateRoomPanel_NN::show()
 		break;
 	}
 
+	if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SixRound))) {
+		_cbRoundCount = 6;
+	} else {
+		_cbRoundCount = 8;
+	}
 	if (_cbRoundCount == 6) {
 		WidgetFun::setVisible(this, "Btn_SixRound", false);
 		WidgetFun::setVisible(this, "Pic_SixRound", true);
@@ -242,6 +311,11 @@ void GPHomeCreateRoomPanel_NN::show()
 		WidgetFun::setVisible(this, "Pic_EightRound", true);
 	}
 
+	int roundIndex = cocos2d::UserDefault::getInstance()->getIntegerForKey("roundIndex", -1);
+	if (roundIndex == -1) {
+		roundIndex = 0;
+	}
+	_nRoundIndex = roundIndex;
 	_dwEnterMatchNum = 1;
 	_dwOutMatchNum = 1;
 
@@ -315,10 +389,12 @@ void GPHomeCreateRoomPanel_NN::Button_Confirm(cocos2d::Ref*, WidgetUserInfo*)
 
 	if (_cbRoundCount == 6)
 		FvMask::Add(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SixRound));
+
 	if (_nRatioRuleIndex == 0)
 		FvMask::Add(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_Ratio_0));
 	else
 		FvMask::Add(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_Ratio_1));
+
 	if(_bShunZi)
 		FvMask::Add(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SpecialRule_SZN));
 	if(_bTongHua)
@@ -352,6 +428,9 @@ void GPHomeCreateRoomPanel_NN::Button_Confirm(cocos2d::Ref*, WidgetUserInfo*)
 			FvMask::Add(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_TZRatio_3));
 			break;
 	}
+
+	cocos2d::UserDefault::getInstance()->setStringForKey("CreateRoomRules", utility::toString(_nGameRuleIndex));
+	cocos2d::UserDefault::getInstance()->setIntegerForKey("roundIndex", _nRoundIndex);
 
 	CMD_GR_Create_Private createRoom;
 	zeromemory(&createRoom, sizeof(createRoom));
