@@ -251,16 +251,16 @@ public:
 
     //用户事件
 public:
-    //用户断线
-    virtual bool OnActionUserOffLine(WORD wChairID, IServerUserItem * pIServerUserItem);
+	//用户断线
+	virtual bool OnActionUserOffLine(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem) override;
+	//用户坐下
+	virtual bool OnActionUserSitDown(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser) override;
+	//用户起来
+	virtual bool OnActionUserStandUp(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser) override;
+	//用户同意
+	virtual bool OnActionUserOnReady(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize) override;
     //用户重入
     virtual bool OnActionUserConnect(WORD wChairID, IServerUserItem * pIServerUserItem);
-    //用户坐下
-    virtual bool OnActionUserSitDown(WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser);
-    //用户起立
-    virtual bool OnActionUserStandUp(WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser);
-    //用户同意
-    virtual bool OnActionUserOnReady(WORD wChairID, IServerUserItem * pIServerUserItem, void * pData, WORD wDataSize);
 
     virtual void SetPrivateInfo(BYTE bGameTypeIdex, DWORD bGameRuleIdex, VOID* pData) override;
 

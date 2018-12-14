@@ -61,17 +61,17 @@ public:
 	//用户动作
 public:	
 	//用户断线
-	virtual bool OnActionUserOffLine(WORD wChairID, IServerUserItem * pIServerUserItem);
+	virtual bool OnActionUserOffLine(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem);
 	//用户重入
-	virtual bool OnActionUserConnect(WORD wChairID, IServerUserItem * pIServerUserItem) { return true; }
+	virtual bool OnActionUserConnect(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem) { return true; }
 	//用户坐下
-	virtual bool OnActionUserSitDown(WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser);
+	virtual bool OnActionUserSitDown(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser);
 	//用户起来
-	virtual bool OnActionUserStandUp(WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser);
+	virtual bool OnActionUserStandUp(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser);
 	//用户同意
-	virtual bool OnActionUserOnReady(WORD wChairID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize);		 
+	virtual bool OnActionUserOnReady(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize);
 	//用户进去游戏
-	virtual bool OnEventClientReady(WORD wChairID,IServerUserItem * pIServerUserItem);
+	virtual bool OnEventClientReady(ITableFrame* pITableFrame, WORD wChairID,IServerUserItem * pIServerUserItem);
 
 public:	
 	//用户起来

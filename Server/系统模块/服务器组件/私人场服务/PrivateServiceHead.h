@@ -204,18 +204,17 @@ interface IPrivateEventSink :public IUnknownEx
 	//游戏记录
 	virtual bool WriteTableScore(ITableFrame* pITableFrame,tagScoreInfo ScoreInfoArray[], WORD wScoreCount, datastream& kData) = NULL;	
 	//用户断线
-	virtual bool OnActionUserOffLine(WORD wChairID, IServerUserItem * pIServerUserItem) = NULL;
+	virtual bool OnActionUserOffLine(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem) = NULL;
 	//用户坐下
-	virtual bool OnActionUserSitDown(WORD wTableID, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser)=NULL;
+	virtual bool OnActionUserSitDown(ITableFrame* pITableFrame, WORD wTableID, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser)=NULL;
 	//用户起来
-	virtual bool OnActionUserStandUp(WORD wTableID, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser)=NULL;
+	virtual bool OnActionUserStandUp(ITableFrame* pITableFrame, WORD wTableID, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser)=NULL;
 	//用户同意
-	virtual bool OnActionUserOnReady(WORD wTableID, WORD wChairID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize)=NULL;
+	virtual bool OnActionUserOnReady(ITableFrame* pITableFrame, WORD wTableID, WORD wChairID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize)=NULL;
 	//用户进去游戏
-	virtual bool OnEventClientReady(WORD wChairID,IServerUserItem * pIServerUserItem)=NULL;
-
+	virtual bool OnEventClientReady(ITableFrame* pITableFrame, WORD wChairID,IServerUserItem * pIServerUserItem)=NULL;
 	//私人场用户事件
-	virtual bool AddPrivateAction(ITableFrame* pTbableFrame,DWORD dwChairID, BYTE	bActionIdex)=NULL;
+	virtual bool AddPrivateAction(ITableFrame* pTbableFrame, DWORD dwChairID, BYTE	bActionIdex)=NULL;
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -233,21 +232,19 @@ interface ITableFramePrivate : public IUnknownEx
 	//管理接口
 public:
 	//设置接口
-	virtual bool  SetPrivateEventSink(IUnknownEx * pIUnknownEx)=NULL;
+	virtual bool SetPrivateEventSink(IUnknownEx * pIUnknownEx)=NULL;
 	//初始化
-	virtual bool  InitTableFramePrivate(IUnknownEx * pIUnknownEx)=NULL;
+	virtual bool InitTableFramePrivate(IUnknownEx * pIUnknownEx)=NULL;
 	//写牌局信息
 	virtual bool WriteTableScore(ITableFrame* pITableFrame,tagScoreInfo ScoreInfoArray[], WORD wScoreCount,datastream& kData)=NULL;	
 	//用户进去游戏
-	virtual bool OnEventClientReady(WORD wChairID,IServerUserItem * pIServerUserItem) = NULL;
-
-
+	virtual bool OnEventClientReady(ITableFrame* pITableFrame, WORD wChairID,IServerUserItem * pIServerUserItem) = NULL;
 	//游戏事件
 public:
 	//游戏开始
-	virtual bool  OnEventGameStart(ITableFrame *pITableFrame, WORD wChairCount)=NULL;
+	virtual bool OnEventGameStart(ITableFrame *pITableFrame, WORD wChairCount)=NULL;
 	//游戏结束
-	virtual bool  OnEventGameEnd(ITableFrame *pITableFrame,WORD wChairID, IServerUserItem * pIServerUserItem, BYTE cbReason)=NULL;
+	virtual bool OnEventGameEnd(ITableFrame *pITableFrame,WORD wChairID, IServerUserItem * pIServerUserItem, BYTE cbReason)=NULL;
 	//用户事件
 	virtual bool AddPrivateAction(ITableFrame* pTbableFrame,DWORD dwChairID, BYTE	bActionIdex) = NULL;
 };

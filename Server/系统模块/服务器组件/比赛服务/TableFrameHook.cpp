@@ -80,7 +80,7 @@ bool  CTableFrameHook::OnEventGameEnd(ITableFrame *pITableFrame, WORD wChairID, 
 }
 
 //用户坐下
-bool CTableFrameHook::OnActionUserSitDown(WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser)
+bool CTableFrameHook::OnActionUserSitDown(ITableFrame *pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser)
 {
 	if(m_pMatchEventSink!=NULL)  
 	{
@@ -91,7 +91,7 @@ bool CTableFrameHook::OnActionUserSitDown(WORD wChairID, IServerUserItem * pISer
 }
 
 //用户起来
-bool CTableFrameHook::OnActionUserStandUp(WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser)
+bool CTableFrameHook::OnActionUserStandUp(ITableFrame *pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser)
 {
 	if(m_pMatchEventSink!=NULL) 
 	{
@@ -102,7 +102,7 @@ bool CTableFrameHook::OnActionUserStandUp(WORD wChairID, IServerUserItem * pISer
 }
 
 //用户同意
-bool CTableFrameHook::OnActionUserOnReady(WORD wChairID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize)
+bool CTableFrameHook::OnActionUserOnReady(ITableFrame *pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize)
 {
 	if(m_pMatchEventSink!=NULL)
 	{

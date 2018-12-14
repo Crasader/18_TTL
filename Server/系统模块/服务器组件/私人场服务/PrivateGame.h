@@ -68,9 +68,6 @@ public:
 	bool JoinPrivateRoom(IServerUserItem * pIServerUserItem,ITableFrame * pICurrTableFrame, PrivateTableInfo* pTableInfo = NULL);
 	void SendRoomInfo(IServerUserItem * pIServerUserItem,PrivateTableInfo* pTableInfo);
 	bool SendRoomList(IServerUserItem * pIServerUserItem, DWORD dwExcludeNumber = -1);
-#if defined(ROOM_ONLY_COST_GOLD)
-    void checkUserScore(IServerUserItem * pIServerUserItem,PrivateTableInfo* pTableInfo);
-#endif
 
 	PrivateTableInfo* getTableInfoByRoomID(DWORD dwRoomID);
 	PrivateTableInfo* getTableInfoByCreaterID(DWORD dwUserID);
@@ -145,35 +142,35 @@ public:
 	//事件接口
 public:
 	//用户登录
-	virtual bool OnEventUserLogon(IServerUserItem * pIServerUserItem);
+	virtual bool OnEventUserLogon(IServerUserItem * pIServerUserItem) override;
 	//用户登出
-	virtual bool OnEventUserLogout(IServerUserItem * pIServerUserItem);
+	virtual bool OnEventUserLogout(IServerUserItem * pIServerUserItem) override;
 	//进入事件
-	virtual bool OnEventEnterPrivate(DWORD dwSocketID ,VOID* pData,DWORD dwUserIP, bool bIsMobile);	
+	virtual bool OnEventEnterPrivate(DWORD dwSocketID ,VOID* pData,DWORD dwUserIP, bool bIsMobile) override;
 	//用户参赛
-	virtual bool OnEventUserJoinPrivate(IServerUserItem * pIServerUserItem, BYTE cbReason,DWORD dwSocketID);
+	virtual bool OnEventUserJoinPrivate(IServerUserItem * pIServerUserItem, BYTE cbReason,DWORD dwSocketID) override;
 	//用户退赛
-	virtual bool OnEventUserQuitPrivate(IServerUserItem * pIServerUserItem, BYTE cbReason, WORD *pBestRank=NULL, DWORD dwContextID=INVALID_WORD);
+	virtual bool OnEventUserQuitPrivate(IServerUserItem * pIServerUserItem, BYTE cbReason, WORD *pBestRank=NULL, DWORD dwContextID=INVALID_WORD) override;
 
 	 //功能函数
 public:
 	 //游戏开始
-	 virtual bool OnEventGameStart(ITableFrame *pITableFrame, WORD wChairCount);
+	 virtual bool OnEventGameStart(ITableFrame *pITableFrame, WORD wChairCount) override;
 	 //游戏结束
-	 virtual bool OnEventGameEnd(ITableFrame *pITableFrame,WORD wChairID, IServerUserItem * pIServerUserItem, BYTE cbReason);
+	 virtual bool OnEventGameEnd(ITableFrame *pITableFrame,WORD wChairID, IServerUserItem * pIServerUserItem, BYTE cbReason) override;
 	 //用户进去游戏
-	 virtual bool OnEventClientReady(WORD wChairID,IServerUserItem * pIServerUserItem);
+	 virtual bool OnEventClientReady(ITableFrame *pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem) override;
 
 	 //用户事件
 public:
 	 //用户断线
-	 virtual bool OnActionUserOffLine(WORD wChairID, IServerUserItem * pIServerUserItem);
+	 virtual bool OnActionUserOffLine(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem);
 	 //用户坐下
-	 virtual bool OnActionUserSitDown(WORD wTableID, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser);
+	 virtual bool OnActionUserSitDown(ITableFrame* pITableFrame, WORD wTableID, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser);
 	 //用户起来
-	 virtual bool OnActionUserStandUp(WORD wTableID, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser);
+	 virtual bool OnActionUserStandUp(ITableFrame* pITableFrame, WORD wTableID, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser);
 	 //用户同意
-	 virtual bool OnActionUserOnReady(WORD wTableID, WORD wChairID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize);
+	 virtual bool OnActionUserOnReady(ITableFrame* pITableFrame, WORD wTableID, WORD wChairID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize);
 	
 public:
 	 //用户起来

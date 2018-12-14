@@ -99,53 +99,53 @@ bool CTableFramePrivate::AddPrivateAction(ITableFrame* pTbableFrame,DWORD dwChai
 	
 }
 
-bool CTableFramePrivate::OnActionUserOffLine(WORD wChairID, IServerUserItem * pIServerUserItem)
+bool CTableFramePrivate::OnActionUserOffLine(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem)
 {
 	if(m_pPrivateEventSink!=NULL)  
 	{
-		return m_pPrivateEventSink->OnActionUserOffLine(wChairID,pIServerUserItem);
+		return m_pPrivateEventSink->OnActionUserOffLine(pITableFrame, wChairID,pIServerUserItem);
 	}
 	return false;
 }
 //用户坐下
-bool CTableFramePrivate::OnActionUserSitDown(WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser)
+bool CTableFramePrivate::OnActionUserSitDown(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser)
 {
 	if(m_pPrivateEventSink!=NULL)  
 	{
-		return m_pPrivateEventSink->OnActionUserSitDown(m_pITableFrame->GetTableID(),wChairID, pIServerUserItem, bLookonUser);
+		return m_pPrivateEventSink->OnActionUserSitDown(pITableFrame, m_pITableFrame->GetTableID(),wChairID, pIServerUserItem, bLookonUser);
 	}
 
 	return false;
 }
 
 //用户起来
-bool CTableFramePrivate::OnActionUserStandUp(WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser)
+bool CTableFramePrivate::OnActionUserStandUp(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser)
 {
 	if(m_pPrivateEventSink!=NULL) 
 	{
-		return m_pPrivateEventSink->OnActionUserStandUp(m_pITableFrame->GetTableID(),wChairID, pIServerUserItem, bLookonUser);
+		return m_pPrivateEventSink->OnActionUserStandUp(pITableFrame, m_pITableFrame->GetTableID(),wChairID, pIServerUserItem, bLookonUser);
 	}
 
 	return false;
 }
 
 //用户同意
-bool CTableFramePrivate::OnActionUserOnReady(WORD wChairID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize)
+bool CTableFramePrivate::OnActionUserOnReady(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize)
 {
 	if(m_pPrivateEventSink!=NULL)
 	{
-		return m_pPrivateEventSink->OnActionUserOnReady(m_pITableFrame->GetTableID(),wChairID, pIServerUserItem ,pData ,wDataSize);
+		return m_pPrivateEventSink->OnActionUserOnReady(pITableFrame, m_pITableFrame->GetTableID(),wChairID, pIServerUserItem ,pData ,wDataSize);
 	}
 
 	return false;
 }
 
 //用户进去游戏
-bool CTableFramePrivate::OnEventClientReady(WORD wChairID,IServerUserItem * pIServerUserItem)
+bool CTableFramePrivate::OnEventClientReady(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem)
 {
 	if(m_pPrivateEventSink!=NULL)
 	{
-		return m_pPrivateEventSink->OnEventClientReady(wChairID,pIServerUserItem);
+		return m_pPrivateEventSink->OnEventClientReady(pITableFrame, wChairID, pIServerUserItem);
 	}
 
 	return false;
