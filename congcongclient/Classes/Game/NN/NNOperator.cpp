@@ -147,7 +147,7 @@ void NNOperator::show(word status)
 		case TTLNN::NNGameStatus_HostConfirm: {
 			std::string showText = utility::a_u8("请准备");
 			if(local_player->GetUserStatus() >= TTLNN::NNPlayerStatus_Ready){
-				showText = utility::a_u8("等待其他玩家准备");
+				showText = utility::a_u8("请等待发牌");
 			}
 			showMessage(showText);
 			hideStartGame();
