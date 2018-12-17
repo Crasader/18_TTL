@@ -669,9 +669,9 @@ void NNGameScene::addRoomshareInfo(CMD_GF_Private_Room_Info* pRoomInfo)
 
 	shareInfo.strUrl = utility::a_u8(utility::toString("http://114.115.164.158:8080/evokeapp.html?refresh=0&room_id=", (int)m_RoomInfo.dwRoomNum));
 
-	std::string strPepleNum = utility::toString(getGamePlayerCount(), "/", (int)m_RoomInfo.bMaxPeopleNum);
+	std::string strPepleNum = utility::toString(getGamePlayerCount(), "/", (int)pRoomInfo->bMaxPeopleNum);
 	std::string strRoomType = "";
-	switch (m_RoomInfo.bGameTypeIdex) {
+	switch (pRoomInfo->bGameTypeIdex) {
 		case TTLNN::NNGameType_NNBanker: {
 			strRoomType.append(utility::a_u8("牛牛上庄"));
 			break;
@@ -701,34 +701,34 @@ void NNGameScene::addRoomshareInfo(CMD_GF_Private_Room_Info* pRoomInfo)
 	}
 
 	std::string strBaseScore = "";
-	if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_Score_0))) {
+	if (FvMask::HasAny(pRoomInfo->dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_Score_0))) {
 		strBaseScore.append("1");
-		if (m_RoomInfo.bGameTypeIdex != TTLNN::NNGameType_AllCompare) {
+		if (pRoomInfo->bGameTypeIdex != TTLNN::NNGameType_AllCompare) {
 			strBaseScore.append("/2");
 		}
-	} else if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_Score_1))) {
+	} else if (FvMask::HasAny(pRoomInfo->dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_Score_1))) {
 		strBaseScore.append("2");
-		if (m_RoomInfo.bGameTypeIdex != TTLNN::NNGameType_AllCompare) {
+		if (pRoomInfo->bGameTypeIdex != TTLNN::NNGameType_AllCompare) {
 			strBaseScore.append("/4");
 		}
-	} else if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_Score_2))) {
+	} else if (FvMask::HasAny(pRoomInfo->dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_Score_2))) {
 		strBaseScore.append("4");
-		if (m_RoomInfo.bGameTypeIdex != TTLNN::NNGameType_AllCompare) {
+		if (pRoomInfo->bGameTypeIdex != TTLNN::NNGameType_AllCompare) {
 			strBaseScore.append("/8");
 		}
 	} else {
 		strBaseScore.append("5");
-		if (m_RoomInfo.bGameTypeIdex != TTLNN::NNGameType_AllCompare) {
+		if (pRoomInfo->bGameTypeIdex != TTLNN::NNGameType_AllCompare) {
 			strBaseScore.append("/10");
 		}
 	}
 	auto& game_info = GPGameLink::Instance().privateGameInfo();
 	std::string strRound = "";
-	strRound = utility::toString(game_info.bPlayCout[m_RoomInfo.bPlayCoutIdex]);
+	strRound = utility::toString(game_info.bPlayCout[pRoomInfo->bPlayCoutIdex]);
 
 	shareInfo.strTitle = utility::getScriptReplaceValue("CCWeiXinSharTitle",
 		ScriptData<std::string>("CCWeiXinShare_Server_Name").Value(),
-		m_RoomInfo.dwRoomNum,
+		pRoomInfo->dwRoomNum,
 		strPepleNum,
 		strRoomType,
 		strBaseScore,
@@ -737,36 +737,36 @@ void NNGameScene::addRoomshareInfo(CMD_GF_Private_Room_Info* pRoomInfo)
 	//倍数
 	int bNNBeiShu;
 	//牛牛4倍
-	if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_Ratio_0))) {
+	if (FvMask::HasAny(pRoomInfo->dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_Ratio_0))) {
 		bNNBeiShu = 4;
 	} else {
 		bNNBeiShu = 3;
 	}
 
 	int nTuiZhu = 0;
-	if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZRatio_0))) {
+	if (FvMask::HasAny(pRoomInfo->dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZRatio_0))) {
 		nTuiZhu = TuiZhuBeiShu_0;
-	} else if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZRatio_1))) {
+	} else if (FvMask::HasAny(pRoomInfo->dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZRatio_1))) {
 		nTuiZhu = TuiZhuBeiShu_1;
-	} else if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZRatio_2))) {
+	} else if (FvMask::HasAny(pRoomInfo->dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZRatio_2))) {
 		nTuiZhu = TuiZhuBeiShu_2;
-	} else if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZRatio_3))) {
+	} else if (FvMask::HasAny(pRoomInfo->dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZRatio_3))) {
 		nTuiZhu = TuiZhuBeiShu_3;
 	}
 
 	std::string strNickName = " ";
 	auto* player = getMaster();
 	if (player) {
-		strNickName = utility::a_u8(utility::toString("房主:", player->GetNickName()));
+		strNickName = utility::a_u8("房主:") + player->GetNickName() + ",";
 	} else {
 		player = getCreater();
 		if(player)
-			strNickName = utility::a_u8(utility::toString("房主:", player->GetNickName()));
+			strNickName = utility::a_u8("房主:") + player->GetNickName() + ",";
 		//else
 			//strNickName = UserInfo::Instance().getUserNicName();
 	}
 
-	if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZ))) {
+	if (FvMask::HasAny(pRoomInfo->dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZ))) {
 		shareInfo.strDes = utility::getScriptReplaceValue("CCWeiXinSharDes",
 			strNickName,
 			bNNBeiShu,

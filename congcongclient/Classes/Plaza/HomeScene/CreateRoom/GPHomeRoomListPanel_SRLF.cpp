@@ -74,14 +74,14 @@ void GPHomeRoomListPanel_SRLF::RefreshListView(void* data, size_t dataSize){
         if(pItemNode == nullptr) continue;
         //规则
         std::string strRule;
-        if(body->bBloodFightMode) //血战到底
-        {
-            strRule.append("血战到底 ");
-        }
-        if(body->bPassionationMode) //激情模式
-        {
-            strRule.append("激情模式");
-        }
+        //if(body->bBloodFightMode) //血战到底
+        //{
+        //    strRule.append("血战到底 ");
+        //}
+        //if(body->bPassionationMode) //激情模式
+        //{
+        //    strRule.append("激情模式");
+        //}
 
         //人数
         std::string strSitCout = utility::toString((dword)body->bSitUserSum, "/", (dword)body->bChairSum, utility::a_u8("人"));

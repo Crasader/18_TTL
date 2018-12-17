@@ -120,7 +120,9 @@ void GPHomeScene::showGameRoomList(void* data, size_t dataSize)
 		room_info.dwBaseScore = body->dwBaseScore;
 		room_info.dwCreateUserID = body->dwCreateUserID;
 		room_info.dwRoomNum = body->dwTableNum;
-		room_info.dwPlayCout = game_info.bPlayCout[body->dwEnterMatchNum];
+		room_info.dwPlayCout = body->bCurPlayCount;
+		room_info.bPlayCoutIdex = body->bToTalPlayIndex;
+		room_info.bGameTypeIdex = body->bGameTypeIdex;
 
 		NNGameScene::pInstance()->addRoomshareInfo(&room_info);
 

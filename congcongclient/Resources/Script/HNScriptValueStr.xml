@@ -74,7 +74,7 @@
 	<ScriptValueStr Key="CCWeiXinShare_Cancel" Value="分享取消"/>
 	<ScriptValueStr Key="StringKey" Value="#"/>
 	<ScriptValueStr Key="CCWeiXinSharTitle" Value="【#】[房号:#],人数:#,#,底分#,#局"/>
-	<ScriptValueStr Key="CCWeiXinSharDes" Value="#,牛牛#倍,#让我们一起玩耍吧!"/>
+	<ScriptValueStr Key="CCWeiXinSharDes" Value="#牛牛#倍,#让我们一起玩耍吧!"/>
 	<ScriptValueStr Key="CCWeiXinSharUrl" Value="http://www.baidu.com"/>
 	
     <ScriptValueStr Key="GameGold" Value="金币"/>

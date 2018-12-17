@@ -171,7 +171,7 @@ std::string GPLoginScene::GetWxLoginWin32()
 		account = utility::toString("test0",num);
 	else
 		account = utility::toString("test",num);
-	cocos2d::UserDefault::getInstance()->setIntegerForKey("Index",  num + 1);//005);//
+	cocos2d::UserDefault::getInstance()->setIntegerForKey("Index", 005);//num + 1);//
 	cocos2d::UserDefault::getInstance()->flush();
 	return utility::toString(account,":111111");
 	//return utility::toString("WeiXinoef1Y1iRB6oyOnOJLK7w995Pe",":WeiXinPassword");

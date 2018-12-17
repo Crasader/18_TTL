@@ -69,14 +69,14 @@ void GPHomeRoomListPanel_WZQ::RefreshListView(void* data, size_t dataSize){
         if(pItemNode == nullptr) continue;
         //规则
         std::string strRule;
-        if(body->bBloodFightMode) //血战到底
-        {
-            //strRule.append("五子棋 ");
-        }
-        if(body->bPassionationMode) //激情模式
-        {
-            //strRule.append("五子棋");
-        }
+        //if(body->bBloodFightMode) //血战到底
+        //{
+        //    //strRule.append("五子棋 ");
+        //}
+        //if(body->bPassionationMode) //激情模式
+        //{
+        //    //strRule.append("五子棋");
+        //}
 		strRule.append("五子棋");
         //人数
         std::string strSitCout = utility::toString((dword)body->bSitUserSum, "/", (dword)body->bChairSum, utility::a_u8("人"));
