@@ -176,7 +176,6 @@ void CServerItem::OnUserItemUpdate(IClientUserItem* pIClientUserItem, const tagU
 
 void CServerItem::OnUserItemUpdate(IClientUserItem* pIClientUserItem, const tagUserStatus& LastStatus)
 {
-	utility::filelog("CServerItem::OnUserItemUpdate.");
 	//变量定义
 	tagUserInfo * pUserInfo=pIClientUserItem->GetUserInfo();
 	tagUserInfo * pMeUserInfo=m_pMeUserItem->GetUserInfo();
@@ -190,14 +189,14 @@ void CServerItem::OnUserItemUpdate(IClientUserItem* pIClientUserItem, const tagU
 	// 更新界面上的分数
 	if (mIServerItemSink)
 	{
-		utility::filelog("CServerItem::OnUserItemUpdate 更新界面上的分数\n");
+		utility::filelog("CServerItem::OnUserItemUpdate OnGRUserUpdate");
 		mIServerItemSink->OnGRUserUpdate(pIClientUserItem);
 	}
 	
 	//桌子离开
 	if ((wLastTableID!=INVALID_TABLE)&&((wLastTableID!=wNowTableID)||(wLastChairID!=wNowChairID)))
 	{
-		utility::filelog("CServerItem::OnUserItemUpdate 桌子离开\n");
+		utility::filelog("CServerItem::OnUserItemUpdate out table");
 		IClientUserItem * pITableUserItem=m_TableFrame.GetClientUserItem(wLastTableID,wLastChairID);
 		if (pITableUserItem==pIClientUserItem)
 			m_TableFrame.SetClientUserItem(wLastTableID,wLastChairID,0);
@@ -206,7 +205,7 @@ void CServerItem::OnUserItemUpdate(IClientUserItem* pIClientUserItem, const tagU
 	//桌子加入
 	if ((wNowTableID!=INVALID_TABLE)&&(cbNowStatus!=US_LOOKON)&&((wNowTableID!=wLastTableID)||(wNowChairID!=wLastChairID)))
 	{
-		utility::filelog("CServerItem::OnUserItemUpdate 桌子加入\n");
+		utility::filelog("CServerItem::OnUserItemUpdate enter table");
 		//厌恶判断（黑名单）
 		if(pUserInfo->dwUserID != pMeUserInfo->dwUserID && cbNowStatus == US_SIT && pMeUserInfo->wTableID == wNowTableID)
 		{
@@ -220,7 +219,7 @@ void CServerItem::OnUserItemUpdate(IClientUserItem* pIClientUserItem, const tagU
 	//桌子状态
 	if ((m_TableFrame.GetChairCount() < MAX_CHAIR)&&(wNowTableID!=INVALID_TABLE)&&(wNowTableID==wLastTableID)&&(wNowChairID==wLastChairID))
 	{
-		utility::filelog("CServerItem::OnUserItemUpdate 桌子状态\n");
+		utility::filelog("CServerItem::OnUserItemUpdate UpdateTableView");
 		m_TableFrame.UpdateTableView(wNowTableID);
 	}
 
@@ -230,7 +229,7 @@ void CServerItem::OnUserItemUpdate(IClientUserItem* pIClientUserItem, const tagU
 		cbLastStatus == US_SIT &&
 		pGameMan->getInCenter())
 	{
-		utility::filelog("CServerItem::OnUserItemUpdate 玩家自己从大厅返回游戏\n");
+		utility::filelog("CServerItem::OnUserItemUpdate CreateGame");
 		pGameMan->CreateGame();
 		IServerItem::get()->OnGFGameReady();
 	}
@@ -294,7 +293,7 @@ void CServerItem::OnUserItemUpdate(IClientUserItem* pIClientUserItem, const tagU
 	//状态改变
 	if ((wNowTableID!=INVALID_TABLE)&&(wNowTableID==wLastTableID)&&(pMeUserInfo->wTableID==wNowTableID))
 	{
-		utility::filelog("CServerItem::OnUserItemUpdate 状态改变\n");
+		utility::filelog("CServerItem::OnUserItemUpdate OnEventUserStatus status changed");
 		//游戏通知
 		tagUserStatus UserStatus;
 		UserStatus.wTableID=wNowTableID;

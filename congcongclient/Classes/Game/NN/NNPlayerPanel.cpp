@@ -60,7 +60,7 @@ void NNPlayerPanel::showPlayer(NNPlayer& player)
         WidgetFun::setText(playerNode, "NNPlayer_Name", player.GetNickName());
 		
 		//DONE:设置玩家分数
-		int nScore = NNRoomInfo::Instance().getRoomInfo().kWinLoseScore[visioChairID];
+		int nScore = NNRoomInfo::Instance().getRoomInfo().kWinLoseScore[player.GetChairID()];
         WidgetFun::setText(playerNode, "NNPlayer_Score", nScore);
 		
 		if(NNRoomInfo::Instance().getRoomInfo().dwBaseScore != 0)
