@@ -146,7 +146,7 @@ void NNDismissRoom::replyDismiss()
 	pNode->addChild(label2);
 
 	bool isPlayerChosed = false;
-	auto local = NNGameScene::Instance().getLocalPlayer();
+	auto local = NNGameScene::Instance().getSelf();
 
 	for (dword index = 0; _dismiss_info != nullptr && index < _dismiss_info->dwDissUserCout; ++index) {
 		if (local && _dismiss_info->dwDissChairID[index] == local->GetChairID()) {

@@ -86,10 +86,10 @@ void NNOperator::hide()
 void NNOperator::show(word status)
 {
 	hideNoteTuiZhu();
-	auto local_player = NNGameScene::Instance().getLocalPlayer();
+	auto local_player = NNGameScene::Instance().getSelf();
     switch(status) {
 		case TTLNN::NNGameStatus_Free: {
-			auto master = NNGameScene::Instance().getMasterPlayer();
+			auto master = NNGameScene::Instance().getMaster();
 			auto creater = NNGameScene::Instance().getCreater();
 
 			//这里要判断是否所有玩家已经准备了
@@ -117,7 +117,7 @@ void NNOperator::show(word status)
 			if (b_all_ready) {
 				std::string strMasterName = "房主";
 				if (master) {
-					strMasterName = NNGameScene::Instance().getMasterPlayer()->GetNickName();
+					strMasterName = NNGameScene::Instance().getMaster()->GetNickName();
 				} else if (creater) {
 					strMasterName = creater->GetNickName();
 				}
@@ -182,7 +182,7 @@ void NNOperator::show(word status)
 				showMessage(showText);
 				break;
 			}
-			if(NNGameScene::Instance().isBankerUser(*NNGameScene::Instance().getLocalPlayer())) {
+			if(NNGameScene::Instance().isBankerUser(*NNGameScene::Instance().getSelf())) {
 				std::string showText = utility::a_u8("等待其他玩家下注");
 				showMessage(showText);
 			} else {
@@ -454,7 +454,7 @@ void NNOperator::updateSplitCalculate()
         return;
     }
 
-    NNPlayerCard_Entity cards = NNGameScene::Instance().getLocalPlayer()->getPlayerCards();
+    NNPlayerCard_Entity cards = NNGameScene::Instance().getSelf()->getPlayerCards();
     std::vector<int> cardsSelected = NNGameScene::Instance().getSelectCards();
 
     int sum = 0;
@@ -468,7 +468,7 @@ void NNOperator::updateSplitCalculate()
         auto pNode = WidgetFun::getChildWidget(this, utility::toString("NNOperator_CalculateNum_", i));
         pNode->setVisible(true);
 
-        int cardValue = NNGameScene::Instance().getLocalPlayer()->getPlayerCards().cards[cardsSelected.at(i)] & MASK_VALUE;
+        int cardValue = NNGameScene::Instance().getSelf()->getPlayerCards().cards[cardsSelected.at(i)] & MASK_VALUE;
         cardValue = (cardValue > 0xa ? 0xa : cardValue);
         WidgetFun::setText(pNode, cardValue);
         sum += cardValue;
@@ -484,7 +484,7 @@ void NNOperator::updateSplitCalculate()
 
 void NNOperator::showCalculate()
 {
-    NNPlayerSingleCalculate calculate = NNGameScene::Instance().getLocalPlayer()->getPlayerSingleCalculate();
+    NNPlayerSingleCalculate calculate = NNGameScene::Instance().getSelf()->getPlayerSingleCalculate();
 
     if(calculate.isValid) {
         WidgetFun::setVisible(this, "NNOperator_CalculateResult", true);
@@ -563,7 +563,7 @@ void NNOperator::Button_ShowCard(cocos2d::Ref*, WidgetUserInfo*)
 
 void NNOperator::Button_CuoCard(cocos2d::Ref*, WidgetUserInfo*)
 {
-	NNPlayer* player = NNGameScene::Instance().getLocalPlayer();
+	NNPlayer* player = NNGameScene::Instance().getSelf();
 	if (player->isValid() && player->getPlayerCards().isValid) {
 		int index = MAX_HAND_CARD - 1;
 		int indexCard =  NNGameLogic::getCardIndex(player->getPlayerCards().cards[index]);
@@ -578,7 +578,7 @@ void NNOperator::Button_CuoCard(cocos2d::Ref*, WidgetUserInfo*)
 
 void NNOperator::Button_Hint(cocos2d::Ref*, WidgetUserInfo*)
 {
-    NNPlayerCard_Entity cards = NNGameScene::Instance().getLocalPlayer()->getPlayerCards();
+    NNPlayerCard_Entity cards = NNGameScene::Instance().getSelf()->getPlayerCards();
     TTLNN::NNCardType_Result result = NNGameLogic::checkNNType(cards.cards, NNRoomInfo::Instance().getRoomInfo().dwGameRuleIdex);
 
     std::vector<int> temp;

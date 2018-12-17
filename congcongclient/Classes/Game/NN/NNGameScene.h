@@ -74,8 +74,8 @@ public:
 	GamePlayer* CreatePlayer(IClientUserItem * pIClientUserItem);
 	void updateUserInfo();
 	int getGamePlayerCount();
-	NNPlayer* getLocalPlayer();
-	NNPlayer* getMasterPlayer();
+	NNPlayer* getSelf();
+	NNPlayer* getMaster();
 	NNPlayer* getCreater();
 	NNPlayer* getPlayerByChairID(word chairID);
 	int getVisioChairID(NNPlayer& player);

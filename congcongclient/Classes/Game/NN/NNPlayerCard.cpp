@@ -74,7 +74,7 @@ void NNPlayerCard::showPlayer(NNPlayer& player)
 						 else
 							 WidgetFun::setImagic(pCard, utility::toString(WidgetFun::getWidgetUserInfo(pNode, "Image"),"0.png"), false);
 					}
-                    if(&player == NNGameScene::Instance().getLocalPlayer()) {
+                    if(&player == NNGameScene::Instance().getSelf()) {
                         if(!NNGameScene::Instance().isSplitCard()) {
                             WidgetFun::getChildWidget(pNode, utility::toString("Card_", index))->setPositionY(CARD_DWON_POSY);
                             continue;
@@ -314,7 +314,7 @@ void NNPlayerCard::sendPlayerCard()
 	}
 
 	totalDelay = singleDelay * cardCount + 0.5;
-	NNPlayer* player = NNGameScene::Instance().getLocalPlayer();
+	NNPlayer* player = NNGameScene::Instance().getSelf();
 	if (player->isValid() && player->getPlayerCards().isValid) {
 		auto pCardNode = WidgetFun::getChildWidget(this, utility::toString("PlayerCard_", 0));
 		for (int index = 0; index < player->getPlayerCards().cardCount; index++){

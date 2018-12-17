@@ -92,7 +92,7 @@ void NNTurnCard::createTurnCard(int cardIndex)
 		Vec2(visibleSize.width/2 ,visibleSize.height/2),
 		8,
 		glTurnCardFinish);
-		NNPlayerCard_Entity playerCards = NNGameScene::Instance().getLocalPlayer()->getPlayerCards();
+		NNPlayerCard_Entity playerCards = NNGameScene::Instance().getSelf()->getPlayerCards();
 		for (int index=0;index<4;index++)
 		{
 			auto pTempNode =WidgetFun::getChildWidgetByName(this,utility::toString("CardImg_",index));

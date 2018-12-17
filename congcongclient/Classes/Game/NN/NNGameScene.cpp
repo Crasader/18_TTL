@@ -347,7 +347,7 @@ int NNGameScene::getGamePlayerCount()
 	return count;
 }
 
-NNPlayer* NNGameScene::getLocalPlayer()
+NNPlayer* NNGameScene::getSelf()
 {
     for(int index = 0; index < MAX_PLAYER; ++index) {
         NNPlayer* player = m_Players[index];
@@ -359,7 +359,7 @@ NNPlayer* NNGameScene::getLocalPlayer()
     return nullptr;
 }
 
-NNPlayer* NNGameScene::getMasterPlayer()
+NNPlayer* NNGameScene::getMaster()
 {
 	for (int index = 0; index < MAX_PLAYER; ++index) {
 		NNPlayer* player = m_Players[index];
@@ -398,12 +398,12 @@ int NNGameScene::getVisioChairID(NNPlayer& player)
 // 		return (MAX_PLAYER * MAX_PLAYER - player.GetChairID() + getLocalPlayer()->GetChairID()) % MAX_PLAYER;
 // 	}
 
-    ASSERT(getLocalPlayer()->getUserItem(false) && player.getUserItem(false));
+    ASSERT(getSelf()->getUserItem(false) && player.getUserItem(false));
 	CCLOG("NNGameScene::getVisioChairID m_RoomInfo.bMaxPeopleNum = %d, player.GetChairID() = %d, m_RoomInfo.dwRoomNum = %d",
 		static_cast<int>(m_RoomInfo.bMaxPeopleNum),
 		static_cast<int>(player.GetChairID()),
 		static_cast<int>(m_RoomInfo.dwRoomNum));
-	auto tmpPlayer = getLocalPlayer();
+	auto tmpPlayer = getSelf();
 	if (tmpPlayer) {
 		CCLOG("NNGameScene::getVisioChairID getLocalPlayer() = %d",
 			static_cast<int>(tmpPlayer->GetChairID()));
@@ -485,7 +485,7 @@ void NNGameScene::Button_Exit(cocos2d::Ref*, WidgetUserInfo*)
 
 void NNGameScene::Button_Dismiss(cocos2d::Ref* ref, WidgetUserInfo* pinfo)
 {
-	auto self_player = getLocalPlayer();
+	auto self_player = getSelf();
 	auto isCreater = (self_player ? NNRoomInfo::Instance().isCreater(self_player) : false);//房主
 	auto nPlayerCount = getGamePlayerCount();
 	auto cbStatus = getGameStatus();
@@ -573,7 +573,7 @@ void NNGameScene::Button_TalkEnd(cocos2d::Ref*, WidgetUserInfo*)
 	SoundFun::Instance().ResumeBackMusic();
 	std::string kFileName = JniFun::stopSoundRecord();
 	if (kFileName != "") {
-		auto tmpPlayer = getLocalPlayer();
+		auto tmpPlayer = getSelf();
 		word playerID = tmpPlayer ? tmpPlayer->GetChairID() : 0;
 		sendTalkFile(playerID, kFileName);
 	}
@@ -607,7 +607,7 @@ void NNGameScene::Button_TalkDefine(cocos2d::Ref*,WidgetUserInfo* pUserInfo)
 	int iUserIdex = utility::parseInt(WidgetFun::getUserInfoValue(pUserInfo,"Idex"))+1;
 	std::string kTaskStr = WidgetFun::getUserInfoValue(pUserInfo,"Txt");
 	std::string kTxt = NNSound::getDefineSound(UserInfo::Instance().getGender(),utility::toString(iUserIdex));
-	sendTalkDefine(getLocalPlayer()->GetChairID(),utility::toString(kTxt,":",kTaskStr));
+	sendTalkDefine(getSelf()->GetChairID(),utility::toString(kTxt,":",kTaskStr));
 	WidgetFun::setVisible(this,"NNGameTalkPlane",false);
 }
 
@@ -615,7 +615,7 @@ void NNGameScene::Button_Send_TalkStr( cocos2d::Ref*,WidgetUserInfo* )
 {
 		return;
 	std::string kTxt = WidgetFun::getEditeText(this,"GameTalkEdit");
-	sendTalkString(getLocalPlayer()->GetChairID(),kTxt);
+	sendTalkString(getSelf()->GetChairID(),kTxt);
 	WidgetFun::setVisible(this,"NNGameTalkPlane",false);
 	WidgetFun::setEditeText(this,"GameTalkEdit","");
 }
@@ -623,7 +623,7 @@ void NNGameScene::Button_Send_TalkStr( cocos2d::Ref*,WidgetUserInfo* )
 void NNGameScene::HNMJButton_BiaoQing(cocos2d::Ref*,WidgetUserInfo* pUserInfo)
 {
 	std::string kFile = WidgetFun::getUserInfoValue(pUserInfo,"File");
-	sendTalkBiaoQing(getLocalPlayer()->GetChairID(),kFile);
+	sendTalkBiaoQing(getSelf()->GetChairID(),kFile);
 	WidgetFun::setVisible(this,"NNGameTalkPlane",false);
 }
 
@@ -754,12 +754,16 @@ void NNGameScene::addRoomshareInfo(CMD_GF_Private_Room_Info* pRoomInfo)
 		nTuiZhu = TuiZhuBeiShu_3;
 	}
 
-	std::string strNickName ;
-	auto* player = getMasterPlayer();
+	std::string strNickName = " ";
+	auto* player = getMaster();
 	if (player) {
-		strNickName = getMasterPlayer()->GetNickName();
+		strNickName = utility::a_u8(utility::toString("房主:", player->GetNickName()));
 	} else {
-		strNickName = UserInfo::Instance().getUserNicName();
+		player = getCreater();
+		if(player)
+			strNickName = utility::a_u8(utility::toString("房主:", player->GetNickName()));
+		//else
+			//strNickName = UserInfo::Instance().getUserNicName();
 	}
 
 	if (FvMask::HasAny(m_RoomInfo.dwGameRuleIdex, _MASK_(TTLNN::NNGameRule_TZ))) {
@@ -791,7 +795,7 @@ void NNGameScene::OnSocketSubPrivateRoomInfo(CMD_GF_Private_Room_Info* pNetInfo)
 	NNRoomInfo::Instance().updateRoomInfo();
 	NNRoomInfo::Instance().show();
 
-	auto self_player = getLocalPlayer();
+	auto self_player = getSelf();
 
 	//新房间
 	bool is_new_room = (NNRoomInfo::Instance().getRoomInfo().dwMasterUserID == 0);
@@ -825,7 +829,7 @@ void NNGameScene::OnSocketSubPrivateDismissInfo(CMD_GF_Private_Dismiss_Info* pNe
 		return;
 	}
 
-	if (pNetInfo->dwDissChairID[0] == getLocalPlayer()->GetChairID()) {
+	if (pNetInfo->dwDissChairID[0] == getSelf()->GetChairID()) {
 		NNDismissRoom::Instance().show(NN_DismissRoom_ApplyForDismiss, pNetInfo);
 	} else {
 		NNDismissRoom::Instance().show(NN_DismissRoom_ReplyDismiss, pNetInfo);
@@ -862,7 +866,7 @@ bool NNGameScene::ccTouchBegan(cocos2d::Vec2 kPos)
 
 	if (itor != m_SelectCards.end()) {
 		m_SelectCards.erase(itor);
-		getLocalPlayer()->upPlayerInfo();
+		getSelf()->upPlayerInfo();
 		NNOperator::Instance().updateSplitCalculate();
 		return true;
 	}
@@ -873,14 +877,14 @@ bool NNGameScene::ccTouchBegan(cocos2d::Vec2 kPos)
 
 	m_SelectCards.push_back(cardIndex);
 	std::sort(m_SelectCards.begin(), m_SelectCards.end());
-	getLocalPlayer()->upPlayerInfo();
+	getSelf()->upPlayerInfo();
 	NNOperator::Instance().updateSplitCalculate();
 	return true;
 }
 
 bool NNGameScene::isSplitCard()
 {
-	return m_GameStatus == TTLNN::NNGameStatus_SplitCard && getLocalPlayer()->getPlayerCardType().type == TTLNN::NNCardType_Invalid;
+	return m_GameStatus == TTLNN::NNGameStatus_SplitCard && getSelf()->getPlayerCardType().type == TTLNN::NNCardType_Invalid;
 }
 
 void NNGameScene::setSelectCards(std::vector<int> selectCards)
@@ -999,7 +1003,7 @@ void NNGameScene::onUserSnatchBanker(const void * pBuffer, word wDataSize)
 	m_Players[pInfo->userChairID]->setSnatchBankerRatio(pInfo->ratio);
 	m_Players[pInfo->userChairID]->upPlayerInfo();
 
-	if (pInfo->userChairID == getLocalPlayer()->GetChairID()) {
+	if (pInfo->userChairID == getSelf()->GetChairID()) {
 		NNOperator::Instance().hideNoteTuiZhu();
 	}
 	NNOperator::Instance().show(m_GameStatus);
@@ -1020,7 +1024,7 @@ void NNGameScene::onBankerInfo(const void * pBuffer, word wDataSize)
 	m_BankerRatio = pInfo->bankerRatio;
 
 	int local_chair_id = 0;
-	auto player = getLocalPlayer();
+	auto player = getSelf();
 	if (player)
 		local_chair_id = player->GetChairID();
 
@@ -1120,7 +1124,7 @@ void NNGameScene::onUserShowCard(const void* pBuffer, word wDataSize)
 	m_Players[pInfo->chairID]->setPlayerCards(pInfo->playerCards, MAX_HAND_CARD);
 	m_Players[pInfo->chairID]->setPlayerCardType(pInfo->result);
 	m_Players[pInfo->chairID]->upPlayerInfo();
-	if(m_Players[pInfo->chairID]->GetUserID() == getLocalPlayer()->GetUserID())
+	if(m_Players[pInfo->chairID]->GetUserID() == getSelf()->GetUserID())
 	{	
 		NNTurnCard::Instance().hide();
 		NNOperator::Instance().show(m_GameStatus);
@@ -1143,7 +1147,7 @@ void NNGameScene::onCalculate(const void* pBuffer, word wDataSize)
 	m_GameStatus = TTLNN::NNGameStatus_Calculate;
 	NNOperator::Instance().show(m_GameStatus);
 
-	if (getLocalPlayer()->getPlayerSingleCalculate().score >= 0) {
+	if (getSelf()->getPlayerSingleCalculate().score >= 0) {
 		NNSound::playEffect(NNSound::NN_WIN);
 	} else {
 		NNSound::playEffect(NNSound::NN_LOSE);
