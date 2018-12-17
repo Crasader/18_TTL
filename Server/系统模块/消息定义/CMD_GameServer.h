@@ -863,37 +863,41 @@ struct CMD_GR_Join_Private
 //私人场房间信息
 struct CMD_GF_Private_Room_Info
 {
-	BYTE bPlayCoutIdex;//玩家局数0 1，  8 或者16局
+	DWORD dwRoomNum;//房间号
+
+	BYTE bPlayCoutIdex;//总局数索引
 	BYTE bGameTypeIdex;//游戏类型
-	BYTE bRoomType;
-	BYTE bStartGame;
+	BYTE bRoomType;//游戏类型
+	BYTE bStartGame;//游戏是否开始
 	BYTE bCurPeopleNum;//当前人数
 	BYTE bMaxPeopleNum;//最大人数
+
 	DWORD dwGameRuleIdex;//游戏规则
-	DWORD dwPlayCout;//游戏局数
-	DWORD dwRoomNum;
+	DWORD dwPlayCout;//当前游戏已经玩的局数
+	DWORD dwPlayTotal;//总局数
 	DWORD dwMasterUserID;//房主
 	DWORD dwCreateUserID;//创建者
-	DWORD dwPlayTotal;//总局数	
-	DWORD dwBaseScore;//底注
+	DWORD dwBaseScore;//底分
 	DWORD dwEnterMatchNum;//入场限制
 	DWORD dwOutMatchNum;//离场限制
 	std::vector<int> kWinLoseScore;
 
 	void StreamValue(datastream& kData, bool bSend)
 	{
+		Stream_VALUE(dwRoomNum);
+
 		Stream_VALUE(bPlayCoutIdex);
 		Stream_VALUE(bGameTypeIdex);
 		Stream_VALUE(bRoomType);
 		Stream_VALUE(bStartGame);
 		Stream_VALUE(bCurPeopleNum);
 		Stream_VALUE(bMaxPeopleNum);
+
 		Stream_VALUE(dwGameRuleIdex);
 		Stream_VALUE(dwPlayCout);
-		Stream_VALUE(dwRoomNum);
+		Stream_VALUE(dwPlayTotal);
 		Stream_VALUE(dwCreateUserID);
 		Stream_VALUE(dwMasterUserID);
-		Stream_VALUE(dwPlayTotal);
 		Stream_VALUE(dwBaseScore);
 		Stream_VALUE(dwEnterMatchNum);
 		Stream_VALUE(dwOutMatchNum);
@@ -914,17 +918,19 @@ struct CMD_GR_INQURE_TABLES_INFO_DATA_HEAD
 
 struct CMD_GR_INQURE_TABLES_INFO_DATA_BODY
 {
-    BYTE                                                                    bSitUserSum;				//当前人数
-	BYTE                                                                    bChairSum;					//允许的最大玩家数
-    bool                                                                    bAllowedStrangerJoin;	    //是否允许陌生人加入
-    bool                                                                    bPassionationMode;	        //激情模式开关
-    bool                                                                    bBloodFightMode;	        //血战到底开关
-    DWORD                                                                   dwCreateUserID;             //房主
-    DWORD                                                                   dwTableNum;                 //房号
-    DWORD                                                                   dwGameRuleIdex;				//游戏规则
-    DWORD                                                                   dwBaseScore;                //底注
-    DWORD                                                                   dwEnterMatchNum;			//入场限制
-    DWORD                                                                   dwOutMatchNum;				//离场限制
+	BYTE bGameTypeIdex;//游戏类型
+	BYTE bSitUserSum;//当前人数
+	BYTE bChairSum;//允许的最大玩家数
+	BYTE bCurPlayCount;//当前已玩局数
+	BYTE bToTalPlayIndex;//总局数索引
+	DWORD dwCreateUserID;//创建者
+	DWORD dwMasterID;//房主
+	DWORD dwTableNum;//房号
+	DWORD dwGameRuleIdex;//游戏规则
+	DWORD dwBaseScore;//底注
+	DWORD dwEnterMatchNum;//入场限制
+	DWORD dwOutMatchNum;//离场限制
+	bool bAllowedStrangerJoin;//是否允许陌生人加入
 };
 
 //解散房间
