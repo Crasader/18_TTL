@@ -185,8 +185,13 @@ void NNPlayer::removeLastCard()
 void NNPlayer::upPlayerState()
 {
 	if (m_Valid) {
-		NNPlayerPanel::Instance().showPlayer(*this);
-		NNPlayerCard::Instance().showPlayer(*this);
+		//DONE: 服务器发送准备状态的时候只能这样清掉之前的游戏数据
+		if (GetUserID() == UserInfo::Instance().getUserID() && GetUserStatus() == US_READY) {
+			NNGameScene::Instance().onReady();
+		} else {
+			NNPlayerPanel::Instance().showPlayer(*this);
+			NNPlayerCard::Instance().showPlayer(*this);
+		}
 	}
 }
 
