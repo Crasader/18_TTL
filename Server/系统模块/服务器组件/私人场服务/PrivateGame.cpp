@@ -1602,8 +1602,8 @@ bool PriaveteGame::OnActionUserOffLine(ITableFrame* pITableFrame, WORD wChairID,
 	if (!pTableInfo->bStart) {
 		//房主掉了, 切换房主
 		if (pTableFrame->GetMasterUserID() == pIServerUserItem->GetUserID()) {
-			//TODO:切换房主
-			pTableFrame->SwitchMaster(pIServerUserItem);
+			//DONE:没有房主了, 切换锤子
+			//pTableFrame->SwitchMaster(pIServerUserItem);
 		} else {//其他人掉了,踢掉他
 			pTableFrame->PerformStandUpActionReally(pIServerUserItem);
 		}
@@ -1937,8 +1937,11 @@ bool PriaveteGame::SendRoomList(IServerUserItem * pIServerUserItem, DWORD dwExcl
 #endif
 		dt_body.bAllowedStrangerJoin = pTableInfo.bAllowedStrangerJoin;
 		dt_body.dwBaseScore = pTableInfo.dwBaseScore;//底注
-		dt_body.dwEnterMatchNum = pTableInfo.bPlayCoutIdex;//局数
+		dt_body.bCurPlayCount = static_cast<BYTE>(pTableInfo.dwStartPlayCout);
+		dt_body.bToTalPlayIndex = pTableInfo.bPlayCoutIdex;
+		dt_body.dwEnterMatchNum = pTableInfo.dwEnterMatchNum;//局数
 		dt_body.dwOutMatchNum = pTableInfo.dwOutMatchNum;//离场限制
+		dt_body.bGameTypeIdex = pTableInfo.bGameTypeIdex;//游戏类型
 
 		ds_tables.push(dt_body);
 
