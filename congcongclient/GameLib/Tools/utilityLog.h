@@ -6,11 +6,11 @@
 namespace utility
 {
 
-static std::string s_kDebugFileName = "";
+extern std::string s_kDebugFileName;
 
 inline void setDebugFileName(std::string kName)
 {
-	s_kDebugFileName = kName + ".txt";
+	s_kDebugFileName = cocos2d::FileUtils::getInstance()->getWritablePath() + kName + ".txt";
 }
 
 inline std::string getDebugFileName()
@@ -37,12 +37,12 @@ inline void filelog(const char * format, ...)
 	strcat(buf, "\n");
 	strcat(buf, "\0");
 
-	std::string kStr = getTimeStr() + ": ";// utility::toString(s_kTime, " ", buf);
 	CCLOG("%s", buf);
+	std::string kStr = getTimeStr() + ": " + buf;
 
-	if (s_kDebugFileName != "")
+	std::string kPathTxt = getDebugFileName();
+	if (kPathTxt != "")
 	{
-		std::string kPathTxt = getDebugFileName();
 		FILE* file = fopen(kPathTxt.c_str(), "rb+");
 		if (!file)
 		{
