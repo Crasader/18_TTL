@@ -1729,8 +1729,10 @@ bool CTableFrameSink::SetMasterUser(IServerUserItem * pIServerUserItem)
 	_pMasterUser = pIServerUserItem;
 	if (_pMasterUser) {
 		_MasterUserID = _pMasterUser->GetUserID();
+		_MasterChairID = _pMasterUser->GetChairID();
 	} else {
 		_MasterUserID = 0;
+		_MasterChairID = 0;
 	}
 	return true;
 }
