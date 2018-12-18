@@ -2,12 +2,14 @@
 	<Widget Name="" SkinTempName="BtnFullEmpty"/>
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/background.png"/>
+		<Property Key="Scale" Value="0.5"/>
 		<Property Key="Pos" Value="640 360"/>
 	</Widget>
+	
 	<Widget Name="Button_Close" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/Button_Close.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="892 553"/>
+		<Property Key="Pos" Value="962 503"/>
 	</Widget>
 
 	<Widget Name="" SkinTempName="ImagicEmpty">
