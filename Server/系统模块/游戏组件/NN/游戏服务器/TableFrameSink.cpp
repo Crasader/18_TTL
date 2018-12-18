@@ -68,7 +68,7 @@ CTableFrameSink::CTableFrameSink()
     RepositionSink();
 
     //wcb
-#if 0//_DEBUG
+#if defined TEST_CONSOLE
     AllocConsole();										//打开控制台窗口以显示调试信息
     SetConsoleTitleA("Debug Win Output");					//设置标题
     HANDLE hCon = GetStdHandle(STD_OUTPUT_HANDLE);		//获取控制台输出句柄
@@ -187,7 +187,7 @@ void CTableFrameSink::Shuffle() {
 void CTableFrameSink::rationCardForUser(WORD cardCount) {
     std::vector<BYTE> cardList;
 
-#ifdef _DEBUG
+#if defined TEST_CODE
 	//DONE:手牌配牌
 	//0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, //方块
 	m_GameCards[0] = 0x22;
@@ -384,8 +384,7 @@ bool CTableFrameSink::isAdminUser(DWORD userID) {
 }
 
 void CTableFrameSink::rationCardForUser_Add() {
-
-#ifdef DEBUG
+#if defined TEST_CODE
 	//DONE:加牌配牌
 	m_GameCards[0] = 0x16;
 	m_GameCards[1] = 0x17;
@@ -868,6 +867,28 @@ bool CTableFrameSink::OnEventGameConclude(WORD wChairID, IServerUserItem* pIServ
 			datastream dataStream;
 			m_GameRecord.StreamValue(dataStream, true);
 			m_pITableFrame->WriteTableScore(ScoreInfoArray, m_pITableFrame->GetChairCount(), dataStream);
+
+#if defined TEST_CONSOLE
+			WORD count = m_pITableFrame->GetSitUserCount();
+			for (WORD i= 0; i < count; i++) {
+				switch (ScoreInfoArray[i].cbType)
+				{
+				case SCORE_TYPE_WIN:
+					printf("player %d win %d\n", i, ScoreInfoArray[i].lScore);
+					break;
+				case SCORE_TYPE_LOSE:
+					printf("player %d lose %d\n", i, ScoreInfoArray[i].lScore);
+					break;
+				case 	SCORE_TYPE_DRAW:
+					printf("player %d draw %d\n", i, ScoreInfoArray[i].lScore);
+					break;
+				default:
+					break;
+				}
+			}
+			printf("\n");
+#endif
+
 			bool needDismissRoom = false;
 
 			if (m_GameTypeIdex == NNGameType_HostBanker) {
@@ -909,8 +930,8 @@ bool CTableFrameSink::OnEventGameConclude(WORD wChairID, IServerUserItem* pIServ
                 }
             }
 
-#ifndef _DEBUG
-			//DONE: debug模式下不自动开始下一局
+#if !defined TEST_CODE
+			//DONE: 测试模式下不自动开始下一局
 			m_pITableFrame->SetGameTimer(IDI_TIMER_CHECK_USER_STATUS, TIME_CHECK_USER_STATUS, 1, NULL);
 			m_pITableFrame->SetGameTimer(IDI_TIMER_ALL_USER_READY, TIMER_ALL_USER_READY, 1, NULL);
 #endif

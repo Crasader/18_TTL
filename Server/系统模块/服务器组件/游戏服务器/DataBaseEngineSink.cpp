@@ -807,7 +807,7 @@ bool CDataBaseEngineSink::OnRequestGameScoreRecord(DWORD dwContextID, VOID * pDa
 		{
 			//获取标识
 			DWORD dwDrawID=m_GameDBAide.GetValue_DWORD(TEXT("DrawID"));
-
+			DWORD dwTableID=pGameScoreRecord->wTableID;
 			//写入记录
 			for (WORD i=0;i<(WORD)pGameScoreRecord->GameScoreRecord.size();i++)
 			{
@@ -816,6 +816,7 @@ bool CDataBaseEngineSink::OnRequestGameScoreRecord(DWORD dwContextID, VOID * pDa
 				
 				//房间信息
 				m_GameDBAide.AddParameter(TEXT("@dwDrawID"),dwDrawID);
+				m_GameDBAide.AddParameter(TEXT("@dwTableID"),dwTableID);
 				m_GameDBAide.AddParameter(TEXT("@dwUserID"),pGameScoreRecord->GameScoreRecord[i].dwUserID);
 				m_GameDBAide.AddParameter(TEXT("@wChairID"),pGameScoreRecord->GameScoreRecord[i].wChairID);
 

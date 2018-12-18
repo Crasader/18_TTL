@@ -73,4 +73,5 @@
 
 //·¿¿¨Ä£Ê½
 #define ENABLE_ROOM_CARD_TYPE
-
+//#define TEST_CODE
+#define TEST_CONSOLE

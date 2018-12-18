@@ -3419,7 +3419,7 @@ bool CDataBaseEngineSink::OnRequestGameRecordListEx(DWORD dwContextID, VOID * pD
 		m_TreasureDBAide.AddParameter(TEXT("@dwUserID"), pNetInfo->dwUserID);
 
 		//Ö´ÐÐÃüÁî
-		LONG lResultCode = m_TreasureDBAide.ExecuteProcess(TEXT("GSP_GP_GetPlayerRecordList"), true);
+		LONG lResultCode = m_TreasureDBAide.ExecuteProcess(TEXT("GSP_GP_GetPlayerRecordToTalList"), true);
 
 		//Ö´ÐÐ³É¹¦
 		if (lResultCode == DB_SUCCESS) {
@@ -3429,44 +3429,29 @@ bool CDataBaseEngineSink::OnRequestGameRecordListEx(DWORD dwContextID, VOID * pD
 
 			int tempGameSign = -1;
 			tagGameRecordListItem item;
+			datastream kDataStream;
 
-			//int itemCount = 0;
-			while (m_TreasureDBModule->IsRecordsetEnd() == false)
-			{
-				DWORD drawID = m_TreasureDBAide.GetValue_DWORD(TEXT("DrawID"));
-				DWORD kindID = m_TreasureDBAide.GetValue_DWORD(TEXT("KindID"));
-				DWORD tableID = m_TreasureDBAide.GetValue_DWORD(TEXT("TableID"));
-				
-				//TCHAR szNickName[LEN_NICKNAME];				//µÇÂ¼ÕÊºÅ
-				//m_TreasureDBAide.GetValue_String(TEXT("NickName"), szNickName, CountArray(szNickName));
+			while (m_TreasureDBModule->IsRecordsetEnd() == false) {
+				item.dwKindID = m_TreasureDBAide.GetValue_DWORD(TEXT("KindID"));
+				item.dwTableID = m_TreasureDBAide.GetValue_DWORD(TEXT("TableID"));
+				item.dwUserID = m_TreasureDBAide.GetValue_DWORD(TEXT("UserID"));
 
-				if (drawID != tempGameSign) {
-					//++itemCount;
-					//if (itemCount > 20) {
-					//	break;
-					//}
+				//µÇÂ¼ÕÊºÅ
+				TCHAR szNickName[LEN_NICKNAME] = { 0 };
+				m_TreasureDBAide.GetValue_String(TEXT("NickName"), szNickName, CountArray(szNickName));
+				item.kNickName = szNickName;
 
-					tempGameSign = drawID;
-					item = tagGameRecordListItem();
-					item.dwKindID = kindID;
-					item.iRoomNum = tableID;
-					m_TreasureDBAide.GetValue_SystemTime(TEXT("Time"), item.kPlayTime);
-					kGameRecordList.kList.push_back(item);
-				}
-
-				kGameRecordList.kList.at(kGameRecordList.kList.size() - 1).kUserID.push_back(m_TreasureDBAide.GetValue_DWORD(TEXT("UserID")));
-				//kGameRecordList.kList.at(kGameRecordList.kList.size() - 1).kNickName.push_back(szNickName);
-				kGameRecordList.kList.at(kGameRecordList.kList.size() - 1).kScore.push_back(m_TreasureDBAide.GetValue_LONGLONG(TEXT("Score")));
-
+				item.llScore = m_TreasureDBAide.GetValue_LONGLONG(TEXT("Score"));
 				m_TreasureDBModule->MoveToNext();
+				kGameRecordList.kList.push_back(item);
 			}
 
-			datastream kDataStream;
 			kGameRecordList.StreamValue(kDataStream, true);
 			m_pIDataBaseEngineEvent->OnEventDataBaseResult(DBO_GP_GAME_RECORD_LIST_EX, dwContextID, &kDataStream[0], kDataStream.size());
 		}
 
 		return true;
+
 	} catch (IDataBaseException * pIException) {
 		//Êä³ö´íÎó
 		CTraceService::TraceString(pIException->GetExceptionDescribe(), TraceLevel_Exception);

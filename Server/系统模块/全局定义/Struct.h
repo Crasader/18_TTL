@@ -521,21 +521,20 @@ struct tagPrivateRandTotalRecordList
 };
 
 struct tagGameRecordListItem {
-	DWORD						dwKindID;
-	int							iRoomNum;
-	std::vector<int>			kScore;
-	std::vector<int>			kUserID;
-	std::vector<std::string>	kNickName;
-	SYSTEMTIME					kPlayTime;
-
+	DWORD dwKindID;
+	DWORD dwTableID;
+	SCORE llScore;
+	DWORD dwUserID;
+	std::string	kNickName;
+	SYSTEMTIME kPlayTime;
 	void StreamValue(datastream& kData, bool bSend)
 	{
-		Stream_VALUE(iRoomNum);
-		Stream_VECTOR(kUserID);
-		Stream_VECTOR(kNickName);
-		Stream_VECTOR(kScore);
-		Stream_VALUE_SYSTEMTIME(kPlayTime);
 		Stream_VALUE(dwKindID);
+		Stream_VALUE(dwTableID);
+		Stream_VALUE(dwUserID);
+		Stream_VALUE(kNickName);
+		Stream_VALUE(llScore);
+		Stream_VALUE_SYSTEMTIME(kPlayTime);
 	}
 };
 

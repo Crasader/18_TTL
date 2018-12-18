@@ -160,6 +160,7 @@ CREATE PROC GSP_GR_RecordDrawScore
 
 	-- 房间信息
 	@dwDrawID INT,								-- 局数标识
+	@dwTableID INT,								-- 桌子号
 	@dwUserID INT,								-- 用户标识
 	@wChairID INT,								-- 椅子号码
 
@@ -183,9 +184,9 @@ SET NOCOUNT ON
 BEGIN
 
 	-- 插入记录
-	INSERT RecordDrawScore(DrawID,UserID,ChairID,Score,Grade,Revenue,UserMedal,PlayTimeCount,DBQuestID,InoutIndex,InsertTime)
-	VALUES (@dwDrawID,@dwUserID,@wChairID,@lScore,@lGrade,@lRevenue,@dwUserMedal,@dwPlayTimeCount,@dwDBQuestID,@dwInoutIndex,GetDate())
-	
+	INSERT RecordDrawScore(DrawID,TableID,UserID,ChairID,Score,Grade,Revenue,UserMedal,PlayTimeCount,DBQuestID,InoutIndex,InsertTime)
+	VALUES (@dwDrawID,@dwTableID,@dwUserID,@wChairID,@lScore,@lGrade,@lRevenue,@dwUserMedal,@dwPlayTimeCount,@dwDBQuestID,@dwInoutIndex,GetDate())
+
 END
 
 RETURN 0
