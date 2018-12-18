@@ -241,7 +241,7 @@ void GPHomeScene::initPopupPanels()
 	addPanel(GPHomeEnterRoomPanel::pInstance());
 	addPanel(GPHomeRecordPanel::pInstance());
 	addPanel(GPHomeRankPanel::pInstance());
-	addPanel(GPHomeEditNumPanel::pInstance());
+	//addPanel(GPHomeEditNumPanel::pInstance());
 
 	//////////////////////////////////////////////////////////////////////////
 
@@ -313,9 +313,9 @@ void GPHomeScene::hideAllPanels()
 	}
 	
 	//输入房间键盘
-	if (GPHomeEditNumPanel::pInstance()->getParent() == this) {
-		GPHomeEditNumPanel::pInstance()->hide();
-	}
+	//if (GPHomeEditNumPanel::pInstance()->getParent() == this) {
+	//	GPHomeEditNumPanel::pInstance()->hide();
+	//}
 
 	//DONE:不需要隐藏结算面板
 	//if (NNCalculate::pInstance()->getParent() == this) {
