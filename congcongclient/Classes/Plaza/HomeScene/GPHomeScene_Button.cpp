@@ -56,6 +56,10 @@ void GPHomeScene::Button_Rank( cocos2d::Ref*, WidgetUserInfo* )
 
 void GPHomeScene::Button_Record( cocos2d::Ref*, WidgetUserInfo* )
 {
+	if (_bNeedFlushRecord) {
+		setNeedFlushRecord(false);
+		GPHomeRecordPanel::Instance().sendRecordToTalList();
+	}
 	GPHomeRecordPanel::Instance().show();
 }
 

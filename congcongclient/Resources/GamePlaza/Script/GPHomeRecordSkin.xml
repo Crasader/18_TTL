@@ -20,11 +20,12 @@
 			<Property Key="Color" Value="255 255 255"/>
 		</WidgetTxt>
 
-		<WidgetTxt Name="" ShowTxt="时间：" FontName="public/text.ttf" FontSize="22">
+		<!--<WidgetTxt Name="" ShowTxt="时间：" FontName="public/text.ttf" FontSize="22">
 			<Property Key="AnchorPos" Value="0 0.5"/>
 			<Property Key="Pos" Value="30 56"/>
 			<Property Key="Color" Value="255 255 255"/>
-		</WidgetTxt>
+		</WidgetTxt>-->
+    
 		<WidgetTxt Name="ChallengeTime" ShowTxt="对战时间" FontName="public/text.ttf" FontSize="22">
 			<Property Key="AnchorPos" Value="0 0.5"/>
 			<Property Key="Pos" Value="100 56"/>

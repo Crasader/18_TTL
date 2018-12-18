@@ -3,6 +3,7 @@
 #include UTILITY_CONVERT
 
 FV_SINGLETON_STORAGE(GPHomeRecordPanel);
+
 GPHomeRecordPanel::GPHomeRecordPanel()
 	: m_GameRecordMission(ScriptData<std::string>("address").Value().c_str(), ScriptData<int>("Port").Value())
 {
@@ -29,8 +30,6 @@ bool GPHomeRecordPanel::init()
 void GPHomeRecordPanel::show()
 {
 	setVisible(true);
-	//m_GameRecordMission.GetGameRecordList(UserInfo::Instance().getUserID());
-	m_GameRecordMission.GetGameRecordListEx(UserInfo::Instance().getUserID());
 }
 
 void GPHomeRecordPanel::hide()
@@ -40,36 +39,38 @@ void GPHomeRecordPanel::hide()
 
 #pragma region 回放数据回调
 
+void GPHomeRecordPanel::sendRecordToTalList()
+{
+	m_GameRecordMission.GetGameRecordListEx(UserInfo::Instance().getUserID());
+}
+
 void GPHomeRecordPanel::onGPBackGameRecordListEx(tagGameRecordListEx* pNetInfo)
 {
-	widget::ListViewEx* pList = WidgetFun::getListViewWidget(this, "RecordList0");
-	pList->removeAllChildren();
+	_mpGameScores.clear();
 	for (int i = 0; i < (int)pNetInfo->kList.size(); i++) {
-		tagGameRecordListItem& kInfo = pNetInfo->kList.at(i);
-		//if (kInfo.dwKindID!=21 && kInfo.dwKindID!=888  && kInfo.dwKindID!=999 && kInfo.dwKindID!=317 && kInfo.dwKindID!=302 && kInfo.dwKindID!=303)
-		//{
-		//	continue;
-		//}
-		cocos2d::Node* pItemNode = WidgetManager::Instance().createWidget("GameReocrdListItem", pList);
-		pItemNode->setPositionX(100);
-		//WidgetFun::setButtonImagic(pItemNode, "Button_ShowTotal",WidgetFun::getWidgetUserInfo(WidgetFun::getChildWidgetByName(pItemNode, "Button_ShowTotal"),utility::toString("GameKINDID_",kInfo.dwKindID)),true);
-		WidgetFun::setText(pItemNode, "Txt_GameType",ScriptData<std::string>("CCWeiXinShare_Server_Name").Value());
-		WidgetFun::setText(pItemNode, "ChallengeTime", timeToString(kInfo.kPlayTime));
-		WidgetFun::setText(pItemNode, "RoomNum", utility::toString(kInfo.iRoomNum));
-		WidgetFun::setText(pItemNode, utility::toString("PlayerScore", 0), scoreToString(kInfo.kScore[0]));
-		WidgetFun::setText(pItemNode, utility::toString("PlayerTxt", 0), utility::a_u8(UserInfo::Instance().getUserNicName()));
-		//if (kInfo.kNickName.size() != kInfo.kScore.size()) {
-		//	continue;
-		//}
-		//for (int m = 0; m < (int)kInfo.kNickName.size(); m++) {
-			//if (m >= 6) {
-			//	continue;
-			//}
-		//	WidgetFun::setText(pItemNode, utility::toString("PlayerScore", m),scoreToString(kInfo.kScore[m]));
-		//	WidgetFun::setText(pItemNode, utility::toString("PlayerTxt", m), UserInfo::Instance().getUserNicName()));
-		//}
+		tagGameRecordListItem& record = pNetInfo->kList[i];
+		auto itScore = _mpGameScores.find(record.dwTableID);
+		if (itScore != _mpGameScores.end()) {
+			itScore->second.dwKindID = record.dwKindID;
+			itScore->second.dwTableID = record.dwTableID;
+			itScore->second.kPlayTime = record.kPlayTime;
+			itScore->second.vctScore.push_back(record.llScore);
+			itScore->second.vctUserID.push_back(record.dwUserID);
+			itScore->second.vctNickName.push_back(record.strNickName);
+		} else {
+			GameScoreInfo score_info;
+			score_info.dwKindID = record.dwKindID;
+			score_info.dwTableID = record.dwTableID;
+			score_info.kPlayTime = record.kPlayTime;
+			score_info.vctScore.push_back(record.llScore);
+			score_info.vctUserID.push_back(record.dwUserID);
+			score_info.vctNickName.push_back(record.strNickName);
+			_mpGameScores.insert(std::make_pair(record.dwTableID, score_info));
+		}
 	}
-	pList->forceDoLayout();
+
+	initView();
+
 }
 
 void GPHomeRecordPanel::onGPBackGameRecordList(tagPrivateRandTotalRecordList* pNetInfo)
@@ -140,6 +141,34 @@ void GPHomeRecordPanel::onGPBackGameChildRecord(tagPrivateRandRecordChild* pNetI
 void GPHomeRecordPanel::Button_Cancel(cocos2d::Ref* pRef, WidgetUserInfo * pUserInfo)
 {
 	hide();
+}
+
+void GPHomeRecordPanel::initView()
+{
+	widget::ListViewEx* pList = WidgetFun::getListViewWidget(this, "RecordList0");
+	pList->removeAllChildren();
+	for (auto it = _mpGameScores.begin(); it != _mpGameScores.end(); it++) {
+		GameScoreInfo& kInfo = it->second;
+		//if (kInfo.dwKindID!=21 && kInfo.dwKindID!=888  && kInfo.dwKindID!=999 && kInfo.dwKindID!=317 && kInfo.dwKindID!=302 && kInfo.dwKindID!=303)
+		//{
+		//	continue;
+		//}
+		cocos2d::Node* pItemNode = WidgetManager::Instance().createWidget("GameReocrdListItem", pList);
+		pItemNode->setPositionX(100);
+		WidgetFun::setText(pItemNode, "Txt_GameType", ScriptData<std::string>("CCWeiXinShare_Server_Name").Value());
+		WidgetFun::setVisible(this, "ChallengeTime", false);
+		//WidgetFun::setText(pItemNode, "ChallengeTime", timeToString(kInfo.kPlayTime));
+		WidgetFun::setText(pItemNode, "RoomNum", utility::toString(kInfo.dwTableID));
+
+		for (size_t idx = 0; idx < kInfo.vctScore.size(); idx++) {
+			WidgetFun::setText(pItemNode, utility::toString("PlayerScore", idx), scoreToString(kInfo.vctScore[idx]));
+		}
+		for (size_t idx = 0; idx < kInfo.vctNickName.size(); idx++) {
+			WidgetFun::setText(pItemNode, utility::toString("PlayerTxt", idx), utility::a_u8(kInfo.vctNickName[idx]));
+		}
+		//WidgetFun::setButtonImagic(pItemNode, "Button_ShowTotal",WidgetFun::getWidgetUserInfo(WidgetFun::getChildWidgetByName(pItemNode, "Button_ShowTotal"),utility::toString("GameKINDID_",kInfo.dwKindID)),true);
+	}
+	pList->forceDoLayout();
 }
 
 std::string GPHomeRecordPanel::timeToString(systemtime kSystem)

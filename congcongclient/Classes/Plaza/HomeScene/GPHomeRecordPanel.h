@@ -13,6 +13,15 @@
 #include "Platform/PFKernel/CGPGameRecord.h"
 #include "Plaza/GameManager/GPGameManager.h"
 
+struct GameScoreInfo {
+	dword dwKindID;
+	dword dwTableID;
+	systemtime kPlayTime;
+	std::vector<SCORE> vctScore;
+	std::vector<dword> vctUserID;
+	std::vector<std::string> vctNickName;
+};
+
 class GPHomeRecordPanel
 	: public cocos2d::Node
 	, public CGGameRecordSink
@@ -28,9 +37,14 @@ public:
 	std::string timeToString(systemtime kSystem);
 	std::string scoreToString(int iScore);
 	void Button_Cancel(cocos2d::Ref*, WidgetUserInfo *);
+	void initView();
 
 #pragma region 回放数据回调
+
 public:
+
+	void sendRecordToTalList();
+
 	void onGPBackGameRecordListEx(tagGameRecordListEx* pNetInfo);
 	void onGPBackGameRecordList(tagPrivateRandTotalRecordList* pNetInfo);
 	void onGPBackGameTotalRecord(tagPrivateRandTotalRecord* pNetInfo);
@@ -44,4 +58,5 @@ private:
 	CGPGameRecordMission m_GameRecordMission;
 	tagPrivateRandTotalRecordList m_RecordList;
 	tagPrivateRandTotalRecord m_kPrivateRandTotalRecord;
+	std::map<dword, GameScoreInfo> _mpGameScores;
 };

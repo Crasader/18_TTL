@@ -56,6 +56,7 @@ public:
 	void removeAllPanels();
 	//显示总结算面板
 	void showGameCalculate(CMD_GF_Private_End_Info* pNetInfo);
+	void setNeedFlushRecord(bool flag);
 #pragma region 游戏面板处理
 public:
 	//打开子游戏面板
@@ -116,11 +117,11 @@ protected:
 #pragma endregion
 
 private:
-	cocos2d::Node* _img_head;
-	ssize_t m_selectedItemIndex;
 	CGPopularizeMission m_kPopularizeMission;
 
+	cocos2d::Node* _img_head;
+	ssize_t m_selectedItemIndex;
+	
 	int _nCurrentGameKindID;
-
-	//std::map<dword, RoomShareInfo> _mpShareInfo;
+	bool _bNeedFlushRecord;
 };

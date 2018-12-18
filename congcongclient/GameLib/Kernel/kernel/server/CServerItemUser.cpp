@@ -264,7 +264,7 @@ void CServerItem::OnUserItemUpdate(IClientUserItem* pIClientUserItem, const tagU
 			//自己加入新的桌子
 			if (m_pMeUserItem == pIClientUserItem)
 			{
-				utility::filelog("CServerItem::OnUserItemUpdate m_pMeUserItem == pIClientUserItem\n");
+				utility::filelog("CServerItem::OnUserItemUpdate m_pMeUserItem == pIClientUserItem");
 				//设置变量
 				m_wReqTableID = INVALID_TABLE;
 				m_wReqChairID = INVALID_CHAIR;

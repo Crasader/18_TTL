@@ -637,22 +637,22 @@ struct CMD_GP_PopularizeHttpRes
 	dword dwVersion; //版本
 	char szPopularizeHttp[128]; //http 图片url
 };
-struct tagGameRecordListItem {
-	dword						dwKindID;
-	int							iRoomNum;
-	std::vector<int>			kScore;
-	std::vector<int>			kUserID;
-	std::vector<std::string>	kNickName;
-	systemtime					kPlayTime;
 
+struct tagGameRecordListItem {
+	dword dwKindID;
+	dword dwTableID;
+	SCORE llScore;
+	dword dwUserID;
+	std::string	strNickName;
+	systemtime kPlayTime;
 	void StreamValue(datastream& kData, bool bSend)
 	{
-		Stream_VALUE(iRoomNum);
-		Stream_VECTOR(kUserID);
-		Stream_VECTOR(kNickName);
-		Stream_VECTOR(kScore);
-		Stream_VALUE_SYSTEMTIME(kPlayTime);
 		Stream_VALUE(dwKindID);
+		Stream_VALUE(dwTableID);
+		Stream_VALUE(dwUserID);
+		Stream_VALUE(strNickName);
+		Stream_VALUE(llScore);
+		Stream_VALUE_SYSTEMTIME(kPlayTime);
 	}
 };
 
