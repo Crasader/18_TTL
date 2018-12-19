@@ -3,10 +3,10 @@
 
 #include "common.h"
 #include "CMD_SRLF.h"
-#include CMD_GAME
 #include "Platform/PFDefine/df/Module.h"
 #include "Plaza/HomeScene/CreateRoom/GPHomeCreateRoomPanel_SRLF.h"
 #include "Plaza/HomeScene/GPHomeMallPanel.h"
+#include CMD_GAME
 
 class SRLFPlayer;
 struct CMD_S_GameEnd;

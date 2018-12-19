@@ -1,6 +1,7 @@
 #ifndef _types_H_
 #define _types_H_
 
+#include <cocos2d.h>
 #include "STD.h"
 
 //////////////////////////////////////////////////////////////

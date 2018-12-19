@@ -22,6 +22,7 @@ GamePlayer::GamePlayer(IClientUserItem* pUserItem)
 	m_kRequestMissionHead = new CGPReqPlayerInfoMission(ScriptData<std::string>("address").Value().c_str(), ScriptData<int>("Port").Value());
 	m_kRequestMissionHead->setMissionSink(this);
 }
+
 GamePlayer::~GamePlayer()
 {
 	if (m_kRequestMissionHead) {
@@ -40,11 +41,13 @@ void GamePlayer::setUserItem(IClientUserItem* pItem)
 	m_pUserItem = pItem;
 	upPlayerInfo();
 }
+
 IClientUserItem* GamePlayer::getUserItem(bool bAssert)
 {
 	CCAssert(m_pUserItem || !bAssert,"");
 	return m_pUserItem;
 }
+
 word GamePlayer::GetTableID()
 {
 	if (!m_pUserItem) {
@@ -52,6 +55,7 @@ word GamePlayer::GetTableID()
 	}
 	return m_pUserItem->GetTableID();
 }
+
 word GamePlayer::GetChairID()
 {
 	if (!m_pUserItem) {
@@ -59,6 +63,7 @@ word GamePlayer::GetChairID()
 	}
 	return m_pUserItem->GetChairID();
 }
+
 byte GamePlayer::GetUserStatus()
 {
 	if (!m_pUserItem) {
@@ -66,6 +71,7 @@ byte GamePlayer::GetUserStatus()
 	}
 	return m_pUserItem->GetUserStatus();
 }
+
 SCORE GamePlayer::GetUserScore()
 {
 	if (!m_pUserItem) {
@@ -73,6 +79,7 @@ SCORE GamePlayer::GetUserScore()
 	}
 	return m_pUserItem->GetUserScore();
 }
+
 word GamePlayer::GetFaceID()
 {
 	if (!m_pUserItem) {
@@ -80,6 +87,7 @@ word GamePlayer::GetFaceID()
 	}
 	return m_pUserItem->GetFaceID();
 }
+
 byte GamePlayer::GetGender()
 {
 	if (!m_pUserItem) {
@@ -87,6 +95,7 @@ byte GamePlayer::GetGender()
 	}
 	return m_pUserItem->GetGender();
 }
+
 dword GamePlayer::GetUserID()
 {
 	if (!m_pUserItem) {
@@ -94,6 +103,7 @@ dword GamePlayer::GetUserID()
 	}
 	return m_pUserItem->GetUserID();
 }
+
 dword GamePlayer::GetGameID()
 {
 	if (!m_pUserItem) {
@@ -101,6 +111,7 @@ dword GamePlayer::GetGameID()
 	}
 	return m_pUserItem->GetGameID();
 }
+
 std::string GamePlayer::GetNickName()
 {
 	if (!m_pUserItem) {
@@ -108,6 +119,7 @@ std::string GamePlayer::GetNickName()
 	}
 	return utility::a_u8(m_pUserItem->GetNickName());
 }
+
 std::string GamePlayer::GetHeadHttp()
 {
 	if (!m_pUserItem) {
@@ -115,6 +127,7 @@ std::string GamePlayer::GetHeadHttp()
 	}
 	return m_pUserItem->GetUserInfo()->szHeadHttp;
 }
+
 tagUserInfo * GamePlayer::GetUserInfo()
 {
 	if (!m_pUserItem) {
@@ -134,12 +147,14 @@ void GamePlayer::requesUserInfo()
 		m_kRequestMissionHead->QUERY_GP_USER_INDIVIDUAL(m_pUserItem->GetUserID());
 	}
 }
+
 void GamePlayer::requestHeadInfo()
 {
 	if (m_pUserItem && m_pUserItem->GetUserInfo()->szHeadHttp[0] == 0) {
 		m_kRequestMissionHead->requreUserInfoSingle(DTP_GP_UI_HEAD_HTTP);
 	}
 }
+
 void GamePlayer::on_GP_UserIndividual(void* data, int dataSize)
 {
 	if (!m_pUserItem) {
@@ -201,6 +216,7 @@ void GamePlayer::on_GP_UserIndividual(void* data, int dataSize)
 		pGlobalUserInfo->upPlayerInfo();
 	}
 }
+
 void GamePlayer::onUserInfoSingle(void * data, int size)
 {
 

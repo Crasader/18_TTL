@@ -146,7 +146,7 @@ void NNOperator::show(word status)
 
 		case TTLNN::NNGameStatus_HostConfirm: {
 			std::string showText = utility::a_u8("请准备");
-			if(local_player->GetUserStatus() >= TTLNN::NNPlayerStatus_Ready){
+			if(local_player && local_player->GetUserStatus() >= TTLNN::NNPlayerStatus_Ready){
 				showText = utility::a_u8("请等待发牌");
 			}
 			showMessage(showText);
@@ -155,13 +155,13 @@ void NNOperator::show(word status)
 		}
 
 		case TTLNN::NNGameStatus_SnatchBanker: {
-			if(local_player->getPlayerStatus() != TTLNN::NNPlayerStatus_Playing) {
+			if(local_player && local_player->getPlayerStatus() != TTLNN::NNPlayerStatus_Playing) {
 				std::string showText = utility::a_u8("请等待本局游戏结束");
 				showMessage(showText);
 				break;
 			}
 
-			if(local_player->getSnatchBankerRatio() != (word)TTLNN::NNSnatchBanker_Invalid) {
+			if(local_player && local_player->getSnatchBankerRatio() != (word)TTLNN::NNSnatchBanker_Invalid) {
 				std::string showText = utility::a_u8("等待抢庄结果");
 				showMessage(showText);
 				hideSnatchButton();
@@ -177,12 +177,13 @@ void NNOperator::show(word status)
 		}
 
 		case TTLNN::NNGameStatus_Call: {
-			if(local_player->getPlayerStatus() != TTLNN::NNPlayerStatus_Playing) {
+			if(local_player && local_player->getPlayerStatus() != TTLNN::NNPlayerStatus_Playing) {
 				std::string showText = utility::a_u8("请等待本局游戏结束");
 				showMessage(showText);
 				break;
 			}
-			if(NNGameScene::Instance().isBankerUser(*NNGameScene::Instance().getSelf())) {
+			auto self = NNGameScene::Instance().getSelf();
+			if(self && NNGameScene::Instance().isBankerUser(*self)) {
 				std::string showText = utility::a_u8("等待其他玩家下注");
 				showMessage(showText);
 			} else {
@@ -222,7 +223,7 @@ void NNOperator::show(word status)
 		}
 
 		case TTLNN::NNGameStatus_Calculate: {
-			if(local_player->getPlayerStatus() != TTLNN::NNPlayerStatus_Playing) {
+			if(local_player && local_player->getPlayerStatus() != TTLNN::NNPlayerStatus_Playing) {
 				std::string showText = utility::a_u8("请等待本局游戏结束");
 				showMessage(showText);
 				break;

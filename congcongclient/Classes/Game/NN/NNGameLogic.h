@@ -6,6 +6,7 @@
 #include "Game/NN/CMD_NN.h"
 
 #pragma pack(1)
+
 //////////////////////////////////////////////////////////////////////////
 //Âß¼­ÑÚÂë
 #define MASK_COLOR 0xF0 //»¨É«ÑÚÂë
@@ -20,7 +21,9 @@
 class NNGameLogic
 {
 public:
+
 	const static byte GAME_CARDS[MAX_CARD_COUNT];
+
 	const static std::string GAME_CARDS_NAME[MAX_CARD_COUNT];
 
 public:
@@ -37,6 +40,9 @@ public:
 
 	static int getCardIndex(byte cardData);
 };
+
 //////////////////////////////////////////////////////////////////////////
+
 #pragma pack()
+
 #endif
