@@ -205,6 +205,7 @@
 
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/Button_Cancel.png"/>
+		<Property Key="Scale" Value="0.5"/>
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="Pos" Value="472.23 160.18"/>
 	</Widget>
@@ -231,6 +232,7 @@
 
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/Button_Delete.png"/>
+		<Property Key="Scale" Value="0.5"/>
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="Pos" Value="813.84 160.18"/>
 	</Widget>	
