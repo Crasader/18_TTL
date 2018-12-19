@@ -99,7 +99,7 @@ void NNGameScene::initLayout()
 void NNGameScene::initButton()
 {
     WidgetManager::addButtonCB("NNGameScene_ButtonMenu", this, button_selector(NNGameScene::Button_Menu));
-	WidgetManager::addButtonCB("NNGameScene_ButtonHelp", this, button_selector(NNGameScene::Button_Help));
+	//WidgetManager::addButtonCB("NNGameScene_ButtonHelp", this, button_selector(NNGameScene::Button_Help));
     WidgetManager::addButtonCB("NNGameScene_ButtonLeave", this, button_selector(NNGameScene::Button_Exit));
 	WidgetManager::addButtonCB("NNGameScene_ButtonDismiss", this, button_selector(NNGameScene::Button_Dismiss));
 	WidgetManager::addButtonCB("NNGameScene_ButtonSetting", this, button_selector(NNGameScene::Button_Setting));
@@ -119,7 +119,7 @@ void NNGameScene::initButton()
 	WidgetManager::addButtonCB("HNMJButton_BiaoQing5",this,button_selector(NNGameScene::HNMJButton_BiaoQing));
 	WidgetManager::addButtonCB("HNMJButton_BiaoQing6",this,button_selector(NNGameScene::HNMJButton_BiaoQing));
 	WidgetManager::addButtonCB("HNMJButton_BiaoQing7",this,button_selector(NNGameScene::HNMJButton_BiaoQing));
-	WidgetManager::addButtonCB("NNGameScene_ChongZhi",this,button_selector(NNGameScene::Button_ChongZhi));
+	//WidgetManager::addButtonCB("NNGameScene_ChongZhi",this,button_selector(NNGameScene::Button_ChongZhi));
 	WidgetManager::addButtonCB("NNGameScene_ButtonShare",this,button_selector(NNGameScene::Button_Share));
 	
 }
@@ -131,10 +131,10 @@ void NNGameScene::initPublicPanel()
 		GPHomeSettingPanel::pInstance()->removeFromParent();
 		addChild(GPHomeSettingPanel::pInstance());
 	}
-	if (GPHomeMallPanel::pInstance()->getParent() != this) {
-		GPHomeMallPanel::pInstance()->removeFromParent();
-		addChild(GPHomeMallPanel::pInstance());
-	}
+	//if (GPHomeMallPanel::pInstance()->getParent() != this) {
+	//	GPHomeMallPanel::pInstance()->removeFromParent();
+	//	addChild(GPHomeMallPanel::pInstance());
+	//}
 }
 
 void NNGameScene::initPanel()

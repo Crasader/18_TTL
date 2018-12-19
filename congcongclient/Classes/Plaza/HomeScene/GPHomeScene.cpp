@@ -220,10 +220,10 @@ bool GPHomeScene::initPublicPanel()
 		GPHomeSettingPanel::pInstance()->removeFromParent();
 		addPanel(GPHomeSettingPanel::pInstance());
 	}
-	if (GPHomeMallPanel::pInstance()->getParent() != this) {
-		GPHomeMallPanel::pInstance()->removeFromParent();
-		addPanel(GPHomeMallPanel::pInstance());
-	}
+	//if (GPHomeMallPanel::pInstance()->getParent() != this) {
+	//	GPHomeMallPanel::pInstance()->removeFromParent();
+	//	addPanel(GPHomeMallPanel::pInstance());
+	//}
 	if (GPHomeSharePanel::pInstance()->getParent() != this) {
 		GPHomeSharePanel::pInstance()->removeFromParent();
 		addPanel(GPHomeSharePanel::pInstance());
@@ -240,7 +240,7 @@ void GPHomeScene::initPopupPanels()
 	addPanel(GPHomeUserInfoPanel::pInstance());
 	addPanel(GPHomeEnterRoomPanel::pInstance());
 	addPanel(GPHomeRecordPanel::pInstance());
-	addPanel(GPHomeRankPanel::pInstance());
+	//addPanel(GPHomeRankPanel::pInstance());
 	//addPanel(GPHomeEditNumPanel::pInstance());
 
 	//////////////////////////////////////////////////////////////////////////
@@ -299,15 +299,15 @@ void GPHomeScene::hideAllPanels()
 	if (GPHomeEnterRoomPanel::pInstance()->getParent() == this) {
 		GPHomeEnterRoomPanel::pInstance()->hide();
 	}
-	if (GPHomeMallPanel::pInstance()->getParent() == this) {
-		GPHomeMallPanel::pInstance()->hide();
-	}
+	//if (GPHomeMallPanel::pInstance()->getParent() == this) {
+	//	GPHomeMallPanel::pInstance()->hide();
+	//}
 	if (GPHomeRecordPanel::pInstance()->getParent() == this) {
 		GPHomeRecordPanel::pInstance()->hide();
 	}
-	if (GPHomeRankPanel::pInstance()->getParent() == this) {
-		GPHomeRankPanel::pInstance()->hide();
-	}
+	//if (GPHomeRankPanel::pInstance()->getParent() == this) {
+	//	GPHomeRankPanel::pInstance()->hide();
+	//}
 	if (GPHomeCreateRoomPanel_NN::pInstance()->getParent() == this) {
 		GPHomeCreateRoomPanel_NN::pInstance()->hide();
 	}

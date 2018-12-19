@@ -135,8 +135,8 @@ void GPHomeRecordPanel::onGPBackGameChildRecord(tagPrivateRandRecordChild* pNetI
 {
 	GPGameManager::Instance().StartHNMJRecord(pNetInfo->kRecordGame);
 }
-#pragma endregion 回放数据回调
 
+#pragma endregion 回放数据回调
 
 void GPHomeRecordPanel::Button_Cancel(cocos2d::Ref* pRef, WidgetUserInfo * pUserInfo)
 {

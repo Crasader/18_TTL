@@ -333,6 +333,7 @@ void NNOperator::showSnatchButton()
         auto pSnatchButton = WidgetManager::Instance().createWidget("NNOperator_SntachBanker", pSnatchNode);
         float offsetIndex = index - centerIndex;
         pSnatchButton->setPosition(centerPos + addPos * offsetIndex);
+		pSnatchButton->setScale(0.60);
         WidgetFun::setWidgetUserInfo(pSnatchButton, "NNOperator_SnatchRatio", utility::toString(index));
         WidgetFun::setButtonImagic(pSnatchButton, utility::toString(image, index, ".png"), true);
     }

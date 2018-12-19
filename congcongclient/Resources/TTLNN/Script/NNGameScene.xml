@@ -8,31 +8,32 @@
 		<Property Key="Scale" Value="0.666"/>
 	</Widget>
 
-	<Widget Name="NNGameScene_ButtonHelp" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonHelp.png"/>
-		<Property Key="PressTexture" Value="AutoPress"/>
-<!-- 		<Property Key="Pos" Value="120 580"/>  -->
-		<Property Key="Pos" Value="900 675"/>
-	</Widget>
+	<!-- <Widget Name="NNGameScene_ButtonHelp" SkinTempName="ButtonEmpty"> -->
+		<!-- <Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonHelp.png"/> -->
+		<!-- <Property Key="PressTexture" Value="AutoPress"/> -->
+		<!-- <Property Key="Pos" Value="120 580"/> -->
+		<!-- <Property Key="Pos" Value="900 675"/> -->
+	<!-- </Widget> -->
 
 	<Widget Name="NNGameScene_ButtonShare" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Btn_Share.png"/>
+		<Property Key="Scale" Value="0.66"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
-<!-- 		<Property Key="Pos" Value="50 580"/>  -->
-		<Property Key="Pos" Value="1000 675"/>
+		<Property Key="Pos" Value="1100 665"/>
 	</Widget>
 
-	<Widget Name="NNGameScene_ChongZhi" SkinTempName="ButtonEmpty">
+	<!--<Widget Name="NNGameScene_ChongZhi" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/MallPanel/Btn_ChongZhi.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Visible" Value="false"/>
 		<Property Key="Pos" Value="1101 675"/>
-	</Widget>
+	</Widget>-->
 
 	<Widget Name="NNGameScene_ButtonMenu" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonMenu.png"/>
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Btn_Setting.png"/>
+		<Property Key="Scale" Value="0.66"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="1150 675"/>
+		<Property Key="Pos" Value="1200 665"/>
 	</Widget>
 
 	<Widget Name="NNGameScene_MenuNode" SkinTempName="Empty">
@@ -70,7 +71,6 @@
 		<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonMessage.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="1220 140"/>
-<!-- 		<Action Key="Show" Value="NNGameTalkPlane"/> -->
 	</Widget>
 
 	<Widget Name="NNGameScene_ButtonDropBanker" SkinTempName="ButtonEmpty">

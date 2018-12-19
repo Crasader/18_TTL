@@ -54,12 +54,12 @@
 	
 	<WidgetNode Name="PlayerCardReultNode">
 		<WidgetImagic Name="" TextureInfo="TTLNN/PlayerCard/NNPlayerCard_ResultBG.png">
-			<Property Key="Pos" Value="175 50"/>
+			<Property Key="Pos" Value="175 80"/>
 			<Property Key="ScaleX" Value="1.9"/>
 		</WidgetImagic>
 		
 		<WidgetImagic Name="PlayerCardType" TextureInfo="TTLNN/PlayerCard/CardType/NNCardType_0.png">
-			<Property Key="Pos" Value="175 50"/>
+			<Property Key="Pos" Value="175 80"/>
 		</WidgetImagic>
 	</WidgetNode>
 	
@@ -97,12 +97,12 @@
 	</WidgetImagic>
 	<WidgetNode Name="PlayerCardReultNode">
 		<WidgetImagic Name="" TextureInfo="TTLNN/PlayerCard/NNPlayerCard_ResultBG.png">
-			<Property Key="Pos" Value="175 23"/>
+			<Property Key="Pos" Value="175 53"/>
 			<Property Key="ScaleX" Value="1.9"/>
 		</WidgetImagic>
 		
 		<WidgetImagic Name="PlayerCardType" TextureInfo="TTLNN/PlayerCard/CardType/NNCardType_0.png">
-			<Property Key="Pos" Value="175 23"/>
+			<Property Key="Pos" Value="175 53"/>
 		</WidgetImagic>
 	</WidgetNode>
 	

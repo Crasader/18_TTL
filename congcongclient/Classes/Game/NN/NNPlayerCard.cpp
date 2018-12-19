@@ -369,7 +369,7 @@ void NNPlayerCard::sendPlayerCardAdd()
 			auto sprite = Sprite::create("TTLNN/PlayerCard/poker_0.png");
 			sprite->setPosition(Vec2(640, 360));
 			sprite->setAnchorPoint(Vec2(0.5, 0.5));
-			sprite->setScale(0.5);
+			sprite->setScale(0.6);
 			addChild(sprite);
 			m_TempCards.push_back(sprite);
 			if (0 == visioChairID) {

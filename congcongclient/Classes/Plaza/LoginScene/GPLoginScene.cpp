@@ -35,7 +35,8 @@ bool GPLoginScene::init()
     WidgetManager::addButtonCB("Button_WeiXinLogon", this, button_selector(GPLoginScene::Button_WeiXinLogon));
     WidgetManager::addButtonCB("Button_UserXieYiCheak", this, button_selector(GPLoginScene::Button_UserXieYiCheak));
     WidgetManager::addButtonCB("Button_UserXieYi", this, button_selector(GPLoginScene::Button_UserXieYi));
-
+	WidgetManager::addButtonCB("Button_BG", this, button_selector(GPLoginScene::Button_BG));
+	
     WidgetFun::setEnable(this, "Button_WeiXinLogon", isChecked);
 	//if (bPlayLoginAni)
 	{
@@ -155,7 +156,7 @@ std::string GPLoginScene::GetWxLoginWin32()
 #if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
 	int IndexMin = ScriptData<int>("IndexMin").Value();
 	int IndexMax = ScriptData<int>("IndexMax").Value();
-	int num = cocos2d::UserDefault::getInstance()->getIntegerForKey("Index",IndexMin);
+	int num = cocos2d::UserDefault::getInstance()->getIntegerForKey("Index", IndexMin);
 	bool isLocked = ScriptData<bool>("AccountLocked").Value();
 	std::string account("");
 	if( isLocked == true)
@@ -171,10 +172,9 @@ std::string GPLoginScene::GetWxLoginWin32()
 		account = utility::toString("test0",num);
 	else
 		account = utility::toString("test",num);
-	cocos2d::UserDefault::getInstance()->setIntegerForKey("Index", num + 1);//005);//
+	cocos2d::UserDefault::getInstance()->setIntegerForKey("Index", num + 1);
 	cocos2d::UserDefault::getInstance()->flush();
 	return utility::toString(account,":111111");
-	//return utility::toString("WeiXinoef1Y1iRB6oyOnOJLK7w995Pe",":WeiXinPassword");
 #endif
 }
 
@@ -197,5 +197,10 @@ void GPLoginScene::Button_UserXieYiCheak(cocos2d::Ref*, WidgetUserInfo*)
 void GPLoginScene::Button_UserXieYi(cocos2d::Ref*, WidgetUserInfo*)
 {
     WidgetFun::setVisible(this, "XieYiNode", true);
+}
+
+void GPLoginScene::Button_BG(cocos2d::Ref *, WidgetUserInfo *)
+{
+	WidgetFun::setVisible(this, "XieYiNode", false);
 }
 
