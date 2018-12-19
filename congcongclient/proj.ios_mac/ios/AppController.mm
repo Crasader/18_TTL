@@ -98,7 +98,7 @@ static AppController* instance;
     
     app->run();
 
-    [WXApi registerApp:@"wx8b14a867396e0c11" withDescription:@"com-ttd-test"];
+    [WXApi registerApp:@"wx3cadb286cad49c5d" withDescription:@"com-ttd-test"];
     
     instance = self;
     
@@ -207,7 +207,7 @@ static AppController* instance;
         if(resp.errCode == 0)
         {
             SendAuthResp *authResp = (SendAuthResp *)resp;
-            NSString *strMsg = [NSString stringWithFormat:@"wx8b14a867396e0c11:73e855219043d02c29d7c420bd322361:%@:authorization_code", authResp.code];
+            NSString *strMsg = [NSString stringWithFormat:@"%@:authorization_code", authResp.code];
             MissionWeiXin::Instance().Req_Access_token([strMsg cStringUsingEncoding:NSUTF8StringEncoding]);
         }
     }

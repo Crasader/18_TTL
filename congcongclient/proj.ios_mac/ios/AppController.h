@@ -6,7 +6,6 @@
 
 @interface AppController : NSObject </*QJPayManagerDelegate,*/WXApiDelegate,UIApplicationDelegate> {
     UIWindow *window;
-    
 }
 
 @property(nonatomic, readonly) RootViewController* viewController;

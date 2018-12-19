@@ -25,8 +25,8 @@
 
 //extern AppDelegate s_sharedApplication;
 
-NSString* appId =@"0000001168";
-NSString* app_Key =@"23c700ceb48401216f52ef136dba6a9b";
+NSString* appId =@"wx3cadb286cad49c5d";
+NSString* app_Key =@"b298e9fafabc890e69a35eb88e24cb74";
 
 #endif//
 

@@ -16,9 +16,14 @@ typedef unsigned long long uint64;
 typedef unsigned char byte;
 typedef unsigned int uint;
 typedef unsigned short word;
-typedef unsigned long dword;
-typedef long long longlong;
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+typedef unsigned int dword;
+typedef unsigned short wchar;
+#else
 typedef wchar_t wchar;
+typedef unsigned long dword;
+#endif
+typedef long long longlong;
 typedef long long SCORE;
 
 #define TRUE 1

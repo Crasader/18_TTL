@@ -2937,7 +2937,7 @@
 				LastUpgradeCheck = 0820;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = PT4EL83PRW;
+						DevelopmentTeam = VF9FUTSY9T;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -3495,7 +3495,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMPRESS_PNG_FILES = NO;
-				DEVELOPMENT_TEAM = PT4EL83PRW;
+				DEVELOPMENT_TEAM = VF9FUTSY9T;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3535,12 +3535,12 @@
 					"$(PROJECT_DIR)/IosApi",
 				);
 				MACH_O_TYPE = mh_execute;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.guojiang.niufantiangg;
+				PRODUCT_BUNDLE_IDENTIFIER = com.guojiang.niufantian;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -3548,7 +3548,7 @@
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END) $(SRCROOT)/../Classes $(SRCROOT)/../GameLib";
-				VALID_ARCHS = "armv7 arm64";
+				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Debug;
 		};
@@ -3561,7 +3561,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMPRESS_PNG_FILES = NO;
-				DEVELOPMENT_TEAM = PT4EL83PRW;
+				DEVELOPMENT_TEAM = VF9FUTSY9T;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3603,14 +3603,14 @@
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.guojiang.niufantiangg;
+				PRODUCT_BUNDLE_IDENTIFIER = com.guojiang.niufantian;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END) $(SRCROOT)/../Classes $(SRCROOT)/../GameLib";
-				VALID_ARCHS = "armv7 arm64";
+				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Release;
 		};
