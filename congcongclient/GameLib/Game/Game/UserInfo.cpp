@@ -22,7 +22,9 @@ void UserInfo::reqAccountInfo(float fWaiteTime)
 {
 	if (fWaiteTime > 0.01f)
 	{
+#if CC_TARGET_PLATFORM != CC_PLATFORM_WIN32
 		TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(UserInfo::on_reqAccountInfo, this),fWaiteTime);
+#endif
 	}
 	else
 	{

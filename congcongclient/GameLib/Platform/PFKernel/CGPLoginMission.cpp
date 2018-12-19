@@ -383,7 +383,6 @@ bool CGPLoginMission::onSocketListKind(void* data, int size)
 	{
 		tagGameKind* pGameKind = (tagGameKind*)&(pNetInfo[i*itemSize]);
 		pSevList->InsertGameKind(pGameKind);
-
 	}
 	return true;
 }
@@ -406,6 +405,7 @@ bool CGPLoginMission::onSocketListServer(void* data, int size)
 	}
 	return true;
 }
+
 //比赛列表
 bool CGPLoginMission::onSocketListMatch(void* data, int size)
 {
@@ -433,7 +433,6 @@ bool CGPLoginMission::onSocketListMatch(void* data, int size)
 	}
 
 	return true;
-
 }
 
 // 列表完成
@@ -445,6 +444,7 @@ bool CGPLoginMission::onSocketListFinish(void* data, int size)
 
 	return true;
 }
+
 //列表配置
 bool CGPLoginMission::onSocketListConfig(void* data, int size)
 {
@@ -453,7 +453,6 @@ bool CGPLoginMission::onSocketListConfig(void* data, int size)
 	CMD_GP_ListConfig* pListConfig = (CMD_GP_ListConfig*)data;
 	return true;
 }
-
 
 //////////////////////////////////////////////////////////////////////////
 // 在线更新
@@ -477,7 +476,6 @@ bool CGPLoginMission::onSocketServerOnline(void* data, int size)
 	//变量定义
 	
 	return true;
-
 }
 
 // 在线更新完成

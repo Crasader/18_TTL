@@ -519,8 +519,10 @@ void NNGameScene::Button_TalkBegin(cocos2d::Ref*, WidgetUserInfo*)
 	SoundFun::Instance().PaseBackMusic();
 	JniFun::startSoundRecord();
 	//最大时间到了自动结束说话
+#if CC_TARGET_PLATFORM != CC_PLATFORM_WIN32
 	int iTimeID_max = TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(NNGameScene::TalkEnd, this), MAX_SPEAK_TIME)->iIdex;
 	WidgetFun::setWidgetUserInfo(this, "NNGameScene_ButtonTalk", "iTimeID_max", utility::toString(iTimeID_max));
+#endif
 }
 
 void NNGameScene::TalkEnd()
@@ -549,8 +551,10 @@ void NNGameScene::Button_TalkEnd(cocos2d::Ref*, WidgetUserInfo*)
 		std::string strTimeIDMin = WidgetFun::getWidgetUserInfo(this, "NNGameScene_ButtonTalk", "iTimeID_min");
 		//如果狂点, 可能会多次触发最小时间计时器, 只让他生效一次
 		if (strTimeIDMin == WidgetNotFindUserInfo) {
+#if CC_TARGET_PLATFORM != CC_PLATFORM_WIN32
 			int nTimeID_min = TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(NNGameScene::TalkEnd, this), MIN_SPEAK_TIME)->iIdex;
 			WidgetFun::setWidgetUserInfo(this, "NNGameScene_ButtonTalk", "iTimeID_min", utility::toString(nTimeID_min));
+#endif
 		}
 		return;
 	}
@@ -567,8 +571,11 @@ void NNGameScene::Button_TalkEnd(cocos2d::Ref*, WidgetUserInfo*)
 	_dwSpeak_time_begin = 0;
 	_dwSpeak_time_end = 0;
 	_dwSpeak_time_interval = INTERVAL_SPEAK_TIME;
+
+#if CC_TARGET_PLATFORM != CC_PLATFORM_WIN32
 	int nTimeID_interval = TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(NNGameScene::TalkInterval, this), _dwSpeak_time_interval)->iIdex;
 	WidgetFun::setWidgetUserInfo(this, "NNGameScene_ButtonTalk", "iTimeID_interval", utility::toString(nTimeID_interval));
+#endif
 
 	SoundFun::Instance().ResumeBackMusic();
 	std::string kFileName = JniFun::stopSoundRecord();

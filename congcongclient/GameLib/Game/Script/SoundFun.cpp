@@ -114,19 +114,22 @@ void SoundFun::playCustomEffect(std::string kName)
 	{
 		return;
 	}
-
 	CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(kName.c_str());
 }
 
 void SoundFun::PaseBackMusic()
 {
+#if CC_TARGET_PLATFORM != CC_PLATFORM_WIN32
 	TimeManager::Instance().removeByFun(TIME_CALLBACK(SoundFun::OnResumeBackMusic,this));
+#endif
 	CocosDenshion::SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
 }
 
 void SoundFun::OnResumeBackMusic()
 {
+#if CC_TARGET_PLATFORM != CC_PLATFORM_WIN32
 	TimeManager::Instance().removeByFun(TIME_CALLBACK(SoundFun::OnResumeBackMusic,this));
+#endif
 	CocosDenshion::SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
 }
 
@@ -138,10 +141,14 @@ void SoundFun::ResumeBackMusic(float fTime)
 		fTempValue = 1.0f;
 	}
 	CocosDenshion::SimpleAudioEngine::getInstance()->setEffectsVolume(fTempValue*(!s_bMute));
+#if CC_TARGET_PLATFORM != CC_PLATFORM_WIN32
 	TimeManager::Instance().removeByFun(TIME_CALLBACK(SoundFun::OnResumeBackMusic,this));
+#endif
 	if (fTime > 0.01f)
 	{
+#if CC_TARGET_PLATFORM != CC_PLATFORM_WIN32
 		TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(SoundFun::OnResumeBackMusic,this),fTime);
+#endif
 	}
 	else
 	{
@@ -151,22 +158,30 @@ void SoundFun::ResumeBackMusic(float fTime)
 
 void SoundFun::PaseEffectMusic()
 {
+#if CC_TARGET_PLATFORM != CC_PLATFORM_WIN32
 	TimeManager::Instance().removeByFun(TIME_CALLBACK(SoundFun::OnResumeEffectMusic,this));
+#endif
 	CocosDenshion::SimpleAudioEngine::getInstance()->pauseAllEffects();
 }
 
 void SoundFun::OnResumeEffectMusic()
 {
+#if CC_TARGET_PLATFORM != CC_PLATFORM_WIN32
 	TimeManager::Instance().removeByFun(TIME_CALLBACK(SoundFun::OnResumeEffectMusic,this));
+#endif
 	CocosDenshion::SimpleAudioEngine::getInstance()->resumeAllEffects();
 }
 
 void SoundFun::ResumeEffectMusic(float fTime)
 {
+#if CC_TARGET_PLATFORM != CC_PLATFORM_WIN32
 	TimeManager::Instance().removeByFun(TIME_CALLBACK(SoundFun::OnResumeEffectMusic,this));
+#endif
 	if (fTime > 0.01f)
 	{
+#if CC_TARGET_PLATFORM != CC_PLATFORM_WIN32
 		TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(SoundFun::OnResumeEffectMusic,this),fTime);
+#endif
 	}
 	else
 	{

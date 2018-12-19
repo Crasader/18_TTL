@@ -467,8 +467,11 @@ void SGGameScence::Button_TalkBegin(cocos2d::Ref*, WidgetUserInfo*)
 
 	cocos2d::UserDefault::getInstance()->setBoolForKey("isRecordStart", true);
 	JniFun::startSoundRecord();
+
+#if CC_TARGET_PLATFORM != CC_PLATFORM_WIN32
 	int iTimeID = TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(SGGameScence::TalkEnd, this), 5.0f)->iIdex;
 	WidgetFun::setWidgetUserInfo(this, "SGGameScene_ButtonTalk", "TimeID", utility::toString(iTimeID));
+#endif
 }
 
 void SGGameScence::TalkEnd()
