@@ -8,9 +8,7 @@
 			<Property Key="Pos" Value="690 360"/>
 		</Widget> 
 	</Widget> -->
-	
-	
-	
+
 	<Widget  Name="HomeScencePlane" SkinTempName="Empty">
 	
 		<Widget SkinTempName="ImagicEmpty">
@@ -478,7 +476,7 @@
 		</Widget>
 		
 		<Widget Name="Button_qd" SkinTempName="ButtonEmpty">
-			<Property Key="NomalTexture" Value="public/qd.png"/>
+			<Property Key="NomalTexture" Value="public/ok.png"/>
 			<Property Key="PressTexture" Value="AutoPress"/>
 			<Property Key="Scale" Value="1.4"/>
 			<Property Key="Pos" Value="640 110"/>

@@ -29,7 +29,7 @@
 			
 			<Widget Name="ACPlane1" SkinTempName="Empty">
 				<Widget Name="Button_PopAccess" SkinTempName="ButtonEmpty">
-					<Property Key="NomalTexture" Value="public/qd.png"/>
+					<Property Key="NomalTexture" Value="public/ok.png"/>
 					<Property Key="PressTexture" Value="AutoPress"/>
 					<Property Key="Pos" Value="365 70"/>
 				</Widget>
@@ -41,7 +41,7 @@
 					<Property Key="Pos" Value="510 80"/>
 				</Widget>
 				<Widget Name="Button_PopAccess" SkinTempName="ButtonEmpty">
-					<Property Key="NomalTexture" Value="public/qd.png"/>
+					<Property Key="NomalTexture" Value="public/ok.png"/>
 					<Property Key="PressTexture" Value="AutoPress"/>
 					<Property Key="Pos" Value="200 80"/>
 				</Widget>

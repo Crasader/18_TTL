@@ -12,7 +12,7 @@
 		<Property Key="Color" Value="15 94 153"/>
 	</Widget>
 	<Widget Name="UpDataButton_Ok" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="public/btn_ok.png"/>
+		<Property Key="NomalTexture" Value="public/ok.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="640 250"/>
 	</Widget>

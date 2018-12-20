@@ -32,7 +32,8 @@ public:
 	void hide();
 
 public:
-	void Button_Confirm(cocos2d::Ref*, WidgetUserInfo*);
+	void Button_OK(cocos2d::Ref*, WidgetUserInfo*);
+	void Button_Agree(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_Refuse(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_Cancle(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_Close(cocos2d::Ref*, WidgetUserInfo*);

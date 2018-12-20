@@ -43,7 +43,8 @@ void NNDismissRoom::initLayout()
 
 void NNDismissRoom::initButton()
 {
-    WidgetManager::addButtonCB("NNDismissRoom_ButtonConfirm", this, button_selector(NNDismissRoom::Button_Confirm));
+	WidgetManager::addButtonCB("NNDismissRoom_ButtonOK", this, button_selector(NNDismissRoom::Button_OK));
+    WidgetManager::addButtonCB("NNDismissRoom_ButtonAgree", this, button_selector(NNDismissRoom::Button_Agree));
     WidgetManager::addButtonCB("NNDismissRoom_ButtonRefuse", this, button_selector(NNDismissRoom::Button_Refuse));
 	WidgetManager::addButtonCB("NNDismissRoom_ButtonCancle", this, button_selector(NNDismissRoom::Button_Cancle));
     WidgetManager::addButtonCB("NNDismissRoom_ButtonClose", this, button_selector(NNDismissRoom::Button_Close));
@@ -95,7 +96,7 @@ void NNDismissRoom::hostBeforeStart()
 {
 	auto pNode = WidgetFun::getChildWidget(this, "NNDismissRoom_ContentNode");
 	std::string text = script::getStr("DisMissRoom_Ask");
-	WidgetFun::setVisible(this, "NNDismissRoom_ButtonConfirm", true);
+	WidgetFun::setVisible(this, "NNDismissRoom_ButtonAgree", true);
 	WidgetFun::setVisible(this, "NNDismissRoom_ButtonRefuse", true);
 	WidgetFun::setVisible(this, "NNDismissRoom_ButtonCancle", false);
 
@@ -112,8 +113,11 @@ void NNDismissRoom::applyForDismiss()
 {
 	auto pNode = WidgetFun::getChildWidget(this, "NNDismissRoom_ContentNode");
 	std::string text = utility::getScriptReplaceValue("DisMissRoom_Wait", "");
-	WidgetFun::setVisible(this, "NNDismissRoom_ButtonConfirm", true);
+
+	WidgetFun::setVisible(this, "NNDismissRoom_ButtonOK", true);
 	WidgetFun::setVisible(this, "NNDismissRoom_ButtonCancle", true);
+
+	WidgetFun::setVisible(this, "NNDismissRoom_ButtonAgree", false);
 	WidgetFun::setVisible(this, "NNDismissRoom_ButtonRefuse", false);
 
 	cocos2d::Label* label = Label::createWithTTF(m_LabelConfig, utility::a_u8(text), TextHAlignment::LEFT, 800);
@@ -163,12 +167,14 @@ void NNDismissRoom::replyDismiss()
 	}
 
 	if (isPlayerChosed) {
-		WidgetFun::setVisible(this, "NNDismissRoom_ButtonConfirm", false);
+		WidgetFun::setVisible(this, "NNDismissRoom_ButtonOK", false);
+		WidgetFun::setVisible(this, "NNDismissRoom_ButtonAgree", false);
 		WidgetFun::setVisible(this, "NNDismissRoom_ButtonRefuse", false);
 		WidgetFun::setVisible(this, "NNDismissRoom_ButtonCancle", false);
 	} else {
-		WidgetFun::setVisible(this, "NNDismissRoom_ButtonConfirm", true);
+		WidgetFun::setVisible(this, "NNDismissRoom_ButtonAgree", true);
 		WidgetFun::setVisible(this, "NNDismissRoom_ButtonRefuse", true);
+		WidgetFun::setVisible(this, "NNDismissRoom_ButtonOK", false);
 		WidgetFun::setVisible(this, "NNDismissRoom_ButtonCancle", false);
 	}
 
@@ -207,9 +213,7 @@ void NNDismissRoom::replyDismiss()
 				}
 			}
 
-			std::string temp = player->GetNickName();
-			text = temp.append(":").append(text);
-			auto label = Label::createWithTTF(labelConfig, utility::a_u8(text));
+			auto label = Label::createWithTTF(labelConfig, player->GetNickName() + ":" + utility::a_u8(text));
 			label->setAnchorPoint(cocos2d::Vec2(0, 0.5));
 			label->setPosition(startPos + addPos * (chairIndex % 3) + addLinePos * (chairIndex / 3));
 			label->setColor(cocos2d::Color3B(255, 255, 255));
@@ -238,7 +242,13 @@ void NNDismissRoom::hide()
     setVisible(false);
 }
 
-void NNDismissRoom::Button_Confirm(cocos2d::Ref*, WidgetUserInfo*)
+void NNDismissRoom::Button_OK(cocos2d::Ref *, WidgetUserInfo *)
+{
+	GPGameLink::Instance().DismissRoom(true);
+	_eDismissRoomType = NN_DismissRoom_None;
+}
+
+void NNDismissRoom::Button_Agree(cocos2d::Ref*, WidgetUserInfo*)
 {
     GPGameLink::Instance().DismissRoom(true);
 	_eDismissRoomType = NN_DismissRoom_None;

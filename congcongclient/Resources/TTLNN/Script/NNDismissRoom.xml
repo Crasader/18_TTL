@@ -13,9 +13,15 @@
 		<Property Key="Visible" Value="false"/>
 		<Property Key="Pos" Value="1090 600"/>
 	</Widget>
-	
-	<Widget Name="NNDismissRoom_ButtonConfirm" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="public/Agree.png"/>
+
+  <Widget Name="NNDismissRoom_ButtonOK" SkinTempName="ButtonEmpty">
+    <Property Key="NomalTexture" Value="public/ok.png"/>
+    <Property Key="PressTexture" Value="AutoPress"/>
+    <Property Key="Pos" Value="840 80"/>
+  </Widget>
+  
+	<Widget Name="NNDismissRoom_ButtonAgree" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="public/agree.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="840 80"/>
 	</Widget>

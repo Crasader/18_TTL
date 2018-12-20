@@ -90,10 +90,9 @@
 		<Property Key="AnchorPos" Value="0 0.5"/>
 		<Property Key="Color" Value="255 255 255"/>
 	</Widget>
-	
 
 	<Widget Name="Button_ok" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/UserInfoPanel/btn_ok.png"/>
+		<Property Key="NomalTexture" Value="public/ok.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="640.00 237.82"/>
 	</Widget>
