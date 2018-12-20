@@ -117,14 +117,14 @@ void NNOperator::show(word status)
 			if (b_all_ready) {
 				std::string strMasterName = "房主";
 				if (master) {
-					strMasterName = NNGameScene::Instance().getMaster()->GetNickName();
+					strMasterName = master->GetNickName();
 				} else if (creater) {
 					strMasterName = creater->GetNickName();
 				}
 				if (NNGameScene::Instance().getGamePlayerCount() == 1)
 					showText = utility::a_u8("请等待其他玩家加入");
 				else
-					showText = utility::a_u8(std::string("等待 " + strMasterName + " 确认开始游戏"));
+					showText = utility::a_u8("等待 ") + strMasterName + utility::a_u8(" 确认开始游戏");
 			} else if (local_player && local_player->GetUserStatus() >= US_READY) {
 				showText = utility::a_u8("等待其他玩家准备");
 			} else {
