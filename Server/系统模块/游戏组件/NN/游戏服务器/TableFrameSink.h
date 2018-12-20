@@ -229,15 +229,17 @@ public:
 	//////////////////////////////////////////////////////////////////////////
     //事件接口
 public:
+	//干掉时间事件
+	virtual void killAllTimerEvent();
     //定时器事件
-    virtual bool OnTimerMessage(DWORD wTimerID, WPARAM wBindParam);
+    virtual bool OnTimerMessage(DWORD wTimerID, WPARAM wBindParam) override;
     //数据事件
-    virtual bool OnDataBaseMessage(WORD wRequestID, VOID * pData, WORD wDataSize)
+    virtual bool OnDataBaseMessage(WORD wRequestID, VOID * pData, WORD wDataSize) override
     {
         return false;
     }
     //积分事件
-    virtual bool OnUserScroeNotify(WORD wChairID, IServerUserItem * pIServerUserItem, BYTE cbReason)
+    virtual bool OnUserScroeNotify(WORD wChairID, IServerUserItem * pIServerUserItem, BYTE cbReason) override
     {
         return false;
     }
@@ -245,9 +247,9 @@ public:
     //网络接口
 public:
     //游戏消息处理
-    virtual bool OnGameMessage(WORD wSubCmdID, VOID * pDataBuffer, WORD wDataSize, IServerUserItem * pIServerUserItem);
+    virtual bool OnGameMessage(WORD wSubCmdID, VOID * pDataBuffer, WORD wDataSize, IServerUserItem * pIServerUserItem) override;
     //框架消息处理
-    virtual bool OnFrameMessage(WORD wSubCmdID, VOID * pDataBuffer, WORD wDataSize, IServerUserItem * pIServerUserItem);
+    virtual bool OnFrameMessage(WORD wSubCmdID, VOID * pDataBuffer, WORD wDataSize, IServerUserItem * pIServerUserItem) override;
 
     //用户事件
 public:
@@ -260,7 +262,7 @@ public:
 	//用户同意
 	virtual bool OnActionUserOnReady(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize) override;
     //用户重入
-    virtual bool OnActionUserConnect(WORD wChairID, IServerUserItem * pIServerUserItem);
+    virtual bool OnActionUserConnect(ITableFrame *pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem) override;
 
     virtual void SetPrivateInfo(BYTE bGameTypeIdex, DWORD bGameRuleIdex, VOID* pData) override;
 

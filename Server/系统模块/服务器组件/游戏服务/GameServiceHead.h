@@ -1224,6 +1224,8 @@ interface ITableUserAction : public IUnknownEx
 {
 	//用户断线
 	virtual bool OnActionUserOffLine(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem) = NULL;
+	//用户重入
+	virtual bool OnActionUserConnect(ITableFrame *pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem) = NULL;
 	//用户坐下
 	virtual bool OnActionUserSitDown(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem, bool bLookonUser)=NULL;
 	//用户起来

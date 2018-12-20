@@ -112,16 +112,7 @@ bool CTableFrameSink::Initialization(IUnknownEx* pIUnknownEx) {
 
 //复位桌子
 VOID CTableFrameSink::RepositionSink() {
-    if (m_pITableFrame) {
-        m_pITableFrame->KillGameTimer(IDI_TIMER_SNATCH_BANKER);
-        m_pITableFrame->KillGameTimer(IDI_TIMER_USER_CALL);
-        m_pITableFrame->KillGameTimer(IDI_TIMER_COMPARE_CARD);
-        m_pITableFrame->KillGameTimer(IDI_TIMER_USER_SPLIT_CARD);
-        m_pITableFrame->KillGameTimer(IDI_TIMER_CALCULATE_SHOW);
-        m_pITableFrame->KillGameTimer(IDI_TIMER_CHECK_USER_STATUS);
-		m_pITableFrame->KillGameTimer(IDI_TIMER_ALL_USER_READY);
-    }
-
+	killAllTimerEvent();
     m_UseCheatingCards = false;
     ZeroMemory(m_PlayerCardsCheating, sizeof(m_PlayerCardsCheating));
     m_BankerRatio = 1;
@@ -337,7 +328,7 @@ void CTableFrameSink::rationCardForUser(WORD cardCount) {
                 cbPlayerCount++;
             }
             ASSERT(cbPlayerCount >= 2);
-
+			
             for (WORD index = 0; index < NN_GAME_PLAYER; ++index) {
                 if (NULL == m_pITableFrame->GetTableUserItem(index)) {
                     continue;
@@ -837,6 +828,19 @@ void CTableFrameSink::callCheatingCards(WORD chairID, bool forWin /*= true*/) {
     }
 }
 
+void CTableFrameSink::killAllTimerEvent()
+{
+	if (m_pITableFrame) {
+		m_pITableFrame->KillGameTimer(IDI_TIMER_SNATCH_BANKER);
+		m_pITableFrame->KillGameTimer(IDI_TIMER_USER_CALL);
+		m_pITableFrame->KillGameTimer(IDI_TIMER_COMPARE_CARD);
+		m_pITableFrame->KillGameTimer(IDI_TIMER_USER_SPLIT_CARD);
+		m_pITableFrame->KillGameTimer(IDI_TIMER_CALCULATE_SHOW);
+		m_pITableFrame->KillGameTimer(IDI_TIMER_CHECK_USER_STATUS);
+		m_pITableFrame->KillGameTimer(IDI_TIMER_ALL_USER_READY);
+	}
+}
+
 //游戏结束
 bool CTableFrameSink::OnEventGameConclude(WORD wChairID, IServerUserItem* pIServerUserItem, BYTE cbReason) {
     switch (cbReason) {
@@ -941,6 +945,7 @@ bool CTableFrameSink::OnEventGameConclude(WORD wChairID, IServerUserItem* pIServ
         case GER_DISMISS: {	//游戏解散
 			calculateTotal();
             m_pITableFrame->ConcludeGame(GS_NN_FREE);
+			killAllTimerEvent();
             return true;
         }
 
@@ -1583,7 +1588,7 @@ bool CTableFrameSink::OnActionUserOffLine(ITableFrame* pITableFrame, WORD wChair
 }
 
 //用户重入
-bool CTableFrameSink::OnActionUserConnect(WORD wChairID, IServerUserItem* pIServerUserItem) {
+bool CTableFrameSink::OnActionUserConnect(ITableFrame *pITableFrame, WORD wChairID, IServerUserItem* pIServerUserItem) {
     WORD chairID = pIServerUserItem->GetChairID();
     if (chairID > NN_GAME_PLAYER) {
         return true;
@@ -1622,14 +1627,15 @@ bool CTableFrameSink::OnActionUserStandUp(ITableFrame* pITableFrame, WORD wChair
     return true;
 }
 
-bool CTableFrameSink::OnActionUserOnReady(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem* pIServerUserItem, void* pData, WORD wDataSize) {
-    if (wChairID < NN_GAME_PLAYER && m_GameStatus < NNGameStatus_Start) {
-        m_PlayerStatus[wChairID] = NNPlayerStatus_Ready;
-        m_pITableFrame->KillGameTimer(IDI_TIMER_CHECK_USER_STATUS);
-        m_pITableFrame->SetGameTimer(IDI_TIMER_CHECK_USER_STATUS, TIME_CHECK_USER_STATUS, 1, NULL);
-    }
+bool CTableFrameSink::OnActionUserOnReady(ITableFrame* pITableFrame, WORD wChairID, IServerUserItem * pIServerUserItem, VOID * pData, WORD wDataSize)
+{
+	if (wChairID < NN_GAME_PLAYER && m_GameStatus < NNGameStatus_Start) {
+		m_PlayerStatus[wChairID] = NNPlayerStatus_Ready;
+		m_pITableFrame->KillGameTimer(IDI_TIMER_CHECK_USER_STATUS);
+		m_pITableFrame->SetGameTimer(IDI_TIMER_CHECK_USER_STATUS, TIME_CHECK_USER_STATUS, 1, NULL);
+	}
 
-    return true;
+	return true;
 }
 
 void CTableFrameSink::SetPrivateInfo(BYTE bGameTypeIdex, DWORD bGameRuleIdex, VOID* pData) {
