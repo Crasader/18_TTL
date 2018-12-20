@@ -9,40 +9,15 @@
 		<Property Key="Scale" Value="0.6666"/>
 	</Widget>
 
-	<!-- 六人场按钮 -->
-	<Widget Name="Btn_SixRound" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/SixRoundYellow.png"/>
-		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="770 720"/>
-		<Property Key="AnchorPos" Value="1 1"/>
+	<!-- 标题 -->
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/title.png"/>
+		<Property Key="Pos" Value="670 714"/>
+		<Property Key="AnchorPos" Value="0.5 1"/>
 		<Property Key="Visible" Value="true"/>
-		<Property Key="Scale" Value="0.6666"/>
-	</Widget>
-	<Widget Name="Pic_SixRound" SkinTempName="ImagicEmpty">
-		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/SixRoundRed.png"/>
-		<Property Key="Pos" Value="770 720"/>
-		<Property Key="AnchorPos" Value="1 1"/>
-		<Property Key="Visible" Value="false"/>
 		<Property Key="Scale" Value="0.6666"/>
 	</Widget>
 
-	<!-- 八人场按钮 -->
-	<Widget Name="Btn_EightRound" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/EightRoundYellow.png"/>
-		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="740 720"/>
-		<Property Key="AnchorPos" Value="0 1"/>
-		<Property Key="Visible" Value="false"/>
-		<Property Key="Scale" Value="0.6666"/>
-	</Widget>
-	<Widget Name="Pic_EightRound" SkinTempName="ImagicEmpty">
-		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/EightRoundRed.png"/>
-		<Property Key="Pos" Value="740 720"/>
-		<Property Key="AnchorPos" Value="0 1"/>
-		<Property Key="Visible" Value="true"/>
-		<Property Key="Scale" Value="0.6666"/>
-	</Widget>
-	
 	<!--关闭房间按钮-->
 	<Widget Name="NN_CreateRoom_ButtonClose" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Button_Close.png"/> 
@@ -55,145 +30,389 @@
 	<!-- 底分文字 -->
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/BaseScore.png"/>
-		<Property Key="Pos" Value="790 540"/>
+		<Property Key="Pos" Value="295 587"/>
 		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Scale" Value="0.6666"/>
+		<Property Key="Scale" Value="0.66"/>
 	</Widget>
 
 	<!-- 底分1 -->
 	<Widget Name="Check_CreateRoom_DiFen1" SkinTempName="public_CheckBox">
 		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
 		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="945 557"/>
+		<Property Key="Pos" Value="464 585"/>
 		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.66"/>
 	</Widget>
 
 	<Widget Name="Txt_CreateRoom_DiFen1" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="24"/>
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="1/2"/>
-		<Property Key="Pos" Value="987 557"/>
+		<Property Key="Pos" Value="525 582"/>
 		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Color" Value="255 100 100"/>
+		<Property Key="Color" Value="156 94 53"/>
 	</Widget>
 
 	<!-- 底分2 -->
 	<Widget Name="Check_CreateRoom_DiFen2" SkinTempName="public_CheckBox">
 		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
 		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="1025 557"/>
+		<Property Key="Pos" Value="664 585"/>
 		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.66"/>
 	</Widget>
 
 	<Widget Name="Txt_CreateRoom_DiFen2" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="24"/>
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="2/4"/>
-		<Property Key="Pos" Value="1067 557"/>
+		<Property Key="Pos" Value="725 582"/>
 		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Color" Value="255 100 100"/>
+		<Property Key="Color" Value="156 94 53"/>
 	</Widget>
 
 	<!-- 底分3 -->
 	<Widget Name="Check_CreateRoom_DiFen3" SkinTempName="public_CheckBox">
 		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
 		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="1110 557"/>
+		<Property Key="Pos" Value="864 585"/>
 		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.66"/>
 	</Widget>
 
 	<Widget Name="Txt_CreateRoom_DiFen3" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="24"/>
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="4/8"/>
-		<Property Key="Pos" Value="1152 557"/>
+		<Property Key="Pos" Value="925 582"/>
 		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Color" Value="255 100 100"/>
+		<Property Key="Color" Value="156 94 53"/>
 	</Widget>
 
 	<!-- 底分4 -->
 	<Widget Name="Check_CreateRoom_DiFen4" SkinTempName="public_CheckBox">
 		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
 		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="1190 557"/>
+		<Property Key="Pos" Value="1064 585"/>
 		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.66"/>
 	</Widget>
 
 	<Widget Name="Txt_CreateRoom_DiFen4" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="24"/>
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="5/10"/>
-		<Property Key="Pos" Value="1227 557"/>
+		<Property Key="Pos" Value="1125 582"/>
 		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Color" Value="255 100 100"/>
+		<Property Key="Color" Value="156 94 53"/>
 	</Widget>
 	
 	<!-- 局数文字 -->
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/RoundCount.png"/>
-		<Property Key="Pos" Value="260 550"/>
+		<Property Key="Pos" Value="295 525"/>
 		<Property Key="AnchorPos" Value="0 0"/>
 		<Property Key="Scale" Value="0.6666"/>
 	</Widget>
 
 	<!-- 局数1 -->
 	<Widget Name="NN_CreateRoom_RoundCountBox1" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
 		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
 		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="420 557"/>
+		<Property Key="Pos" Value="464 525"/>
 		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.66"/>
 	</Widget>
 
 	<Widget Name="NN_CreateRoom_RoundCount1" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="24"/>
-		<Property Key="ShowTxt" Value="5局"/>
-		<Property Key="Pos" Value="470 557"/>
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="32"/>
+		<Property Key="ShowTxt" Value="10局"/>
+		<Property Key="Pos" Value="525 522"/>
 		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Color" Value="255 100 100"/>
+		<Property Key="Color" Value="156 94 53"/>
 	</Widget>
 
 	<!-- 局数2 -->
 	<Widget Name="NN_CreateRoom_RoundCountBox2" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
 		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
 		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="530 557"/>
+		<Property Key="Pos" Value="664 525"/>
 		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.66"/>
 	</Widget>
 
 	<Widget Name="NN_CreateRoom_RoundCount2" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="24"/>
-		<Property Key="ShowTxt" Value="5局"/>
-		<Property Key="Pos" Value="580 557"/>
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="32"/>
+		<Property Key="ShowTxt" Value="20局"/>
+		<Property Key="Pos" Value="725 522"/>
 		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Color" Value="255 100 100"/>
+		<Property Key="Color" Value="156 94 53"/>
 	</Widget>
 
 	<!-- 局数3 -->
 	<Widget Name="NN_CreateRoom_RoundCountBox3" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
 		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
 		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="640 557"/>
+		<Property Key="Pos" Value="864 525"/>
 		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.66"/>
 	</Widget>
 
 	<Widget Name="NN_CreateRoom_RoundCount3" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="24"/>
-		<Property Key="ShowTxt" Value="5局"/>
-		<Property Key="Pos" Value="690 557"/>
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="32"/>
+		<Property Key="ShowTxt" Value="30局"/>
+		<Property Key="Pos" Value="925 522"/>
 		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Color" Value="255 100 100"/>
+		<Property Key="Color" Value="156 94 53"/>
+	</Widget>
+
+	<!-- 抢庄倍数 -->
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/QiangZhuangBeiShu.png"/>
+		<Property Key="Pos" Value="295 401"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.6666"/>
+	</Widget>
+
+	<!-- 抢庄倍数1 -->
+	<Widget Name="Check_QiangZhuang1" SkinTempName="public_CheckBox">
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
+		<Property Key="Pos" Value="464 401"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.6666"/>
+	</Widget>
+
+	<Widget Name="Txt_QiangZhuang1" SkinTempName="TxtEmpty">
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="32"/>
+		<Property Key="ShowTxt" Value="1倍"/>
+		<Property Key="Pos" Value="525 398"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Color" Value="156 94 53"/>
+	</Widget>
+
+	<!-- 抢庄倍数2 -->
+	<Widget Name="Check_QiangZhuang2" SkinTempName="public_CheckBox">
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
+		<Property Key="Pos" Value="664 401"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.6666"/>
+	</Widget>
+
+	<Widget Name="Txt_QiangZhuang2" SkinTempName="TxtEmpty">
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="32"/>
+		<Property Key="ShowTxt" Value="2倍"/>
+		<Property Key="Pos" Value="725 398"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Color" Value="156 94 53"/>
+	</Widget>
+
+	<!-- 抢庄倍数3 -->
+	<Widget Name="Check_QiangZhuang3" SkinTempName="public_CheckBox">
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
+		<Property Key="Pos" Value="864 401"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.6666"/>
+	</Widget>
+
+	<Widget Name="Txt_QiangZhuang3" SkinTempName="TxtEmpty">
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="32"/>
+		<Property Key="ShowTxt" Value="3倍"/>
+		<Property Key="Pos" Value="925 398"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Color" Value="156 94 53"/>
+	</Widget>
+
+	<!-- 抢庄倍数4 -->
+	<Widget Name="Check_QiangZhuang4" SkinTempName="public_CheckBox">
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
+		<Property Key="Pos" Value="1064 401"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.6666"/>
+	</Widget>
+
+	<Widget Name="Txt_QiangZhuang4" SkinTempName="TxtEmpty">
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="32"/>
+		<Property Key="ShowTxt" Value="4倍"/>
+		<Property Key="Pos" Value="1125 398"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Color" Value="156 94 53"/>
+	</Widget>
+
+	<!-- 人数多少 -->
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/ZiDongKaiZhuo.png"/>
+		<Property Key="Pos" Value="295 339"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.6666"/>
+	</Widget>
+
+	<!-- 六人场按钮 -->
+	<Widget Name="Btn_SixRound" SkinTempName="public_CheckBox">
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
+		<Property Key="Pos" Value="464 339"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.6666"/>
+	</Widget>
+
+	<Widget Name="Txt_SixRound" SkinTempName="TxtEmpty">
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="32"/>
+		<Property Key="ShowTxt" Value="六人房"/>
+		<Property Key="Pos" Value="525 336"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Color" Value="156 94 53"/>
+	</Widget>
+	
+	<!-- 八人场按钮 -->
+	<Widget Name="Btn_EightRound" SkinTempName="public_CheckBox">
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
+		<Property Key="Pos" Value="664 339"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.6666"/>
+	</Widget>
+
+	<Widget Name="Txt_EightRound" SkinTempName="TxtEmpty">
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="32"/>
+		<Property Key="ShowTxt" Value="八人房"/>
+		<Property Key="Pos" Value="725 336"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Color" Value="156 94 53"/>
+	</Widget>
+
+	<!-- 特殊牌型 -->
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/TeShuPaiXing.png"/>
+		<Property Key="Pos" Value="295 277"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.6666"/>
+	</Widget>
+	
+	<!-- 特殊牌型1 -->
+	<Widget Name="Check_ShunZi" SkinTempName="public_CheckBox">
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected_sp.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected_sp.png"/>
+		<Property Key="Pos" Value="464 277"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.6666"/>
+	</Widget>
+
+	<Widget Name="Txt_ShunZi" SkinTempName="TxtEmpty">
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="32"/>
+		<Property Key="ShowTxt" Value="顺子牛(5倍)"/>
+		<Property Key="Pos" Value="525 274"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Color" Value="156 94 53"/>
+	</Widget>
+
+	<!-- 特殊牌型2 -->
+	<Widget Name="Check_TongHua" SkinTempName="public_CheckBox">
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected_sp.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected_sp.png"/>
+		<Property Key="Pos" Value="714 277"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.6666"/>
+	</Widget>
+
+	<Widget Name="Txt_TongHua" SkinTempName="TxtEmpty">
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="32"/>
+		<Property Key="ShowTxt" Value="同花牛(5倍)"/>
+		<Property Key="Pos" Value="775 274"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Color" Value="156 94 53"/>
+	</Widget>
+
+	<!-- 特殊牌型3 -->
+	<Widget Name="Check_WuHua" SkinTempName="public_CheckBox">
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected_sp.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected_sp.png"/>
+		<Property Key="Pos" Value="964 277"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.6666"/>
+	</Widget>
+
+	<Widget Name="Txt_WuHua" SkinTempName="TxtEmpty">
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="32"/>
+		<Property Key="ShowTxt" Value="五花牛(5倍)"/>
+		<Property Key="Pos" Value="1025 274"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Color" Value="156 94 53"/>
+	</Widget>
+	
+	<!-- 特殊牌型4 -->
+	<Widget Name="Check_HuLu" SkinTempName="public_CheckBox">
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected_sp.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected_sp.png"/>
+		<Property Key="Pos" Value="464 215"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.6666"/>
+	</Widget>
+
+	<Widget Name="Txt_HuLu" SkinTempName="TxtEmpty">
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="32"/>
+		<Property Key="ShowTxt" Value="葫芦牛(6倍)"/>
+		<Property Key="Pos" Value="525 215"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Color" Value="156 94 53"/>
+	</Widget>
+
+	<!-- 特殊牌型5 -->
+	<Widget Name="Check_ZhaDan" SkinTempName="public_CheckBox">
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected_sp.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected_sp.png"/>
+		<Property Key="Pos" Value="714 215"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.6666"/>
+	</Widget>
+
+	<Widget Name="Txt_ZhaDan" SkinTempName="TxtEmpty">
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="32"/>
+		<Property Key="ShowTxt" Value="炸弹牛(6倍)"/>
+		<Property Key="Pos" Value="775 212"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Color" Value="156 94 53"/>
+	</Widget>
+
+	<!-- 特殊牌型6 -->
+	<Widget Name="Check_WuXiao" SkinTempName="public_CheckBox">
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected_sp.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected_sp.png"/>
+		<Property Key="Pos" Value="964 215"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.6666"/>
+	</Widget>
+
+	<Widget Name="Txt_WuXiao" SkinTempName="TxtEmpty">
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="32"/>
+		<Property Key="ShowTxt" Value="五小牛(8倍)"/>
+		<Property Key="Pos" Value="1025 212"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Color" Value="156 94 53"/>
 	</Widget>
 
 	<!-- 闲家推注 -->
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/XianJiaTuiZhu.png"/>
-		<Property Key="Pos" Value="260 463"/>
+		<Property Key="Pos" Value="295 153"/>
 		<Property Key="AnchorPos" Value="0 0"/>
 		<Property Key="Scale" Value="0.6666"/>
 	</Widget>
@@ -201,342 +420,101 @@
 	<!-- 推注开关 -->
 	<Widget Name="Check_CanTuiZhu" SkinTempName="public_CheckBox">
 		<UserInfo Key="Index" Value="1"/>
-		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
-		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="420 480"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-	</Widget>
-	
-	<!-- 推注倍数1 -->
-<!-- 	<Widget Name="Check_TuiZhu_1" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
-		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
-		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="420 480"/>
-		<Property Key="Visible" Value="false"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-	</Widget> -->
-
-	<!-- <Widget Name="Txt_TuiZhu_1" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="24"/>
-		<Property Key="ShowTxt" Value="无"/>
-		<Property Key="Pos" Value="465 480"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Visible" Value="false"/>
-		<Property Key="Color" Value="255 100 100"/>
-	</Widget> -->
-
-	<!-- 推注倍数2 -->
-	<Widget Name="Check_TuiZhu_2" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
-		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
-		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="505 480"/>
-		<Property Key="Visible" Value="false"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-	</Widget>
-
-	<Widget Name="Txt_TuiZhu_2" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="24"/>
-		<Property Key="ShowTxt" Value="5倍"/>
-		<Property Key="Pos" Value="550 480"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Visible" Value="false"/>
-		<Property Key="Color" Value="255 100 100"/>
-	</Widget>
-
-	<!-- 推注倍数3 -->
-	<Widget Name="Check_TuiZhu_3" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
-		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
-		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="600 480"/>
-		<Property Key="Visible" Value="false"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-	</Widget>
-
-	<Widget Name="Txt_TuiZhu_3" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="24"/>
-		<Property Key="ShowTxt" Value="10倍"/>
-		<Property Key="Pos" Value="645 480"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Visible" Value="false"/>
-		<Property Key="Color" Value="255 100 100"/>
-	</Widget>
-	
-	<!-- 推注倍数4 -->
-	<Widget Name="Check_TuiZhu_4" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
-		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
-		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="705 480"/>
-		<Property Key="Visible" Value="false"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-	</Widget>
-
-	<Widget Name="Txt_TuiZhu_4" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="24"/>
-		<Property Key="ShowTxt" Value="20倍"/>
-		<Property Key="Pos" Value="750 480"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Visible" Value="false"/>
-		<Property Key="Color" Value="255 100 100"/>
-	</Widget>
-
-	<!-- 抢庄倍数 -->
-	<Widget Name="" SkinTempName="ImagicEmpty">
-		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/QiangZhuangBeiShu.png"/>
-		<Property Key="Pos" Value="800 470"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Scale" Value="0.6666"/>
-	</Widget>
-
-	<!-- 抢庄倍数1 -->
-	<Widget Name="Check_QiangZhuang1" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
-		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
-		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="960 478"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-	</Widget>
-
-	<Widget Name="Txt_QiangZhuang1" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="24"/>
-		<Property Key="ShowTxt" Value="1"/>
-		<Property Key="Pos" Value="1005 473"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Color" Value="255 100 100"/>
-	</Widget>
-
-	<!-- 抢庄倍数2 -->
-	<Widget Name="Check_QiangZhuang2" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
-		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
-		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="1040 478"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-	</Widget>
-
-	<Widget Name="Txt_QiangZhuang2" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="24"/>
-		<Property Key="ShowTxt" Value="2"/>
-		<Property Key="Pos" Value="1085 478"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Color" Value="255 100 100"/>
-	</Widget>
-
-	<!-- 抢庄倍数3 -->
-	<Widget Name="Check_QiangZhuang3" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
-		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
-		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="1125 478"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-	</Widget>
-
-	<Widget Name="Txt_QiangZhuang3" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="24"/>
-		<Property Key="ShowTxt" Value="3"/>
-		<Property Key="Pos" Value="1170 478"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Color" Value="255 100 100"/>
-	</Widget>
-
-	<!-- 抢庄倍数4 -->
-	<Widget Name="Check_QiangZhuang4" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
-		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
-		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="1205 478"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-	</Widget>
-
-	<Widget Name="Txt_QiangZhuang4" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="24"/>
-		<Property Key="ShowTxt" Value="4"/>
-		<Property Key="Pos" Value="1245 478"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Color" Value="255 100 100"/>
-	</Widget>
-
-	<!-- 特殊牌型 -->
-	<Widget Name="" SkinTempName="ImagicEmpty">
-		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/TeShuPaiXing.png"/>
-		<Property Key="Pos" Value="260 383"/>
+		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected_sp.png"/>
+		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected_sp.png"/>
+		<Property Key="Pos" Value="464 150"/>
 		<Property Key="AnchorPos" Value="0 0"/>
 		<Property Key="Scale" Value="0.6666"/>
 	</Widget>
 	
-	<!-- 特殊牌型1 -->
-	<Widget Name="Check_ShunZi" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
-		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
-		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="420 400"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-	</Widget>
-
-	<Widget Name="Txt_ShunZi" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="24"/>
-		<Property Key="ShowTxt" Value="顺子牛(5倍)"/>
-		<Property Key="Pos" Value="470 400"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Color" Value="255 100 100"/>
-	</Widget>
-
-	<!-- 特殊牌型2 -->
-	<Widget Name="Check_TongHua" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
-		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
-		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="640 400"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-	</Widget>
-
-	<Widget Name="Txt_TongHua" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="24"/>
-		<Property Key="ShowTxt" Value="同花牛(5倍)"/>
-		<Property Key="Pos" Value="690 400"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Color" Value="255 100 100"/>
-	</Widget>
-
-	<!-- 特殊牌型3 -->
-	<Widget Name="Check_WuHua" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
-		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
-		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="860 400"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-	</Widget>
-
-	<Widget Name="Txt_WuHua" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="24"/>
-		<Property Key="ShowTxt" Value="五花牛(5倍)"/>
-		<Property Key="Pos" Value="910 400"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Color" Value="255 100 100"/>
-	</Widget>
-	
-	<!-- 特殊牌型4 -->
-	<Widget Name="Check_HuLu" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
-		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
-		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="420 320"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-	</Widget>
-
-	<Widget Name="Txt_HuLu" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="24"/>
-		<Property Key="ShowTxt" Value="葫芦牛(6倍)"/>
-		<Property Key="Pos" Value="470 320"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Color" Value="255 100 100"/>
-	</Widget>
-
-	<!-- 特殊牌型5 -->
-	<Widget Name="Check_ZhaDan" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
-		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
-		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="640 320"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-	</Widget>
-
-	<Widget Name="Txt_ZhaDan" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="24"/>
-		<Property Key="ShowTxt" Value="炸弹牛(6倍)"/>
-		<Property Key="Pos" Value="690 320"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Color" Value="255 100 100"/>
-	</Widget>
-
-	<!-- 特殊牌型6 -->
-	<Widget Name="Check_WuXiao" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
-		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
-		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Pos" Value="860 320"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-	</Widget>
-
-	<Widget Name="Txt_WuXiao" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="24"/>
-		<Property Key="ShowTxt" Value="五小牛(8倍)"/>
-		<Property Key="Pos" Value="910 320"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Color" Value="255 100 100"/>
-	</Widget>
-	
-	<!-- 翻倍规则文字 -->
+	<!-- 翻倍规则标题 -->
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/DoubleRule.png"/>
-		<Property Key="Pos" Value="267 220"/>
+		<Property Key="Pos" Value="295 463"/>
 		<Property Key="AnchorPos" Value="0 0"/>
 		<Property Key="Scale" Value="0.6666"/>
 	</Widget>
-	
-	<!-- 翻倍规则1 -->
-	<Widget Name="" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
+	<!-- 翻倍按钮0 -->
+	<Widget Name="Btn_fanBei0" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/FanBeiBG.png"/>
+		<Property Key="PressTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/FanBeiBG.png"/>
+		<Property Key="Pos" Value="712 460"/>
+		<Property Key="AnchorPos" Value="0.5 0"/>
+		<Property Key="Scale" Value="0.6666"/>
+	</Widget>
+	<!-- 翻倍按钮提示 -->
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/FanBeiButton.png"/>
+		<Property Key="Pos" Value="930 477"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.6666"/>
+	</Widget>
+	<!-- 翻倍按钮1 -->
+	<Widget Name="Btn_fanBei1" SkinTempName="ButtonEmpty">
+		<Property Key="Index" Value="-1"/>
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/FanBeiBG.png"/>
+		<Property Key="PressTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/FanBeiBG.png"/>
+		<Property Key="Pos" Value="712 413.8"/>
+		<Property Key="AnchorPos" Value="0.5 0"/>
+		<Property Key="Scale" Value="0.6666"/>
+		<Property Key="Visible" Value="false"/>
+	</Widget>
+	<!-- 翻倍按钮2 -->
+	<Widget Name="Btn_fanBei2" SkinTempName="ButtonEmpty">
+		<Property Key="Index" Value="-1"/>
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/FanBeiBG.png"/>
+		<Property Key="PressTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/FanBeiBG.png"/>
+		<Property Key="Pos" Value="712 367.6"/>
+		<Property Key="AnchorPos" Value="0.5 0"/>
+		<Property Key="Scale" Value="0.6666"/>
+		<Property Key="Visible" Value="false"/>
+	</Widget>
+	<!-- 翻倍规则0 -->
+	<Widget Name="Txt_FanBei0_1" SkinTempName="TxtEmpty">
+		<Property Key="FontName" Value="public/text.ttf"/>
 		<Property Key="FontSize" Value="24"/>
 		<Property Key="ShowTxt" Value="牛牛×4 牛九×3 牛八×2 牛七×2"/>
-		<Property Key="Color" Value="255 100 100"/>
-		<Property Key="Pos" Value="460 235.5"/>
-		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Pos" Value="712 460"/>
+		<Property Key="AnchorPos" Value="0.5 0"/>
+		<Property Key="Color" Value="156 94 53"/>
 	</Widget>
-	
-	<Widget Name="Check_Multiple_Rule1" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
-		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
-		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Color" Value="255 100 100"/>
-		<Property Key="Pos" Value="420 235.5"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-	</Widget>
-	
-	<!-- 翻倍规则2 -->
-	<Widget Name="" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
+	<Widget Name="Txt_FanBei0_2" SkinTempName="TxtEmpty">
+		<Property Key="FontName" Value="public/text.ttf"/>
 		<Property Key="FontSize" Value="24"/>
 		<Property Key="ShowTxt" Value="牛牛×3 牛九×3 牛八×2"/>
-		<Property Key="Color" Value="255 100 100"/>
-		<Property Key="Pos" Value="930 235.5"/>
-		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Pos" Value="712 460"/>
+		<Property Key="AnchorPos" Value="0.5 0"/>
+		<Property Key="Color" Value="156 94 53"/>
 	</Widget>
-	
-	<Widget Name="Check_Multiple_Rule2" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
-		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
-		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="Color" Value="255 100 100"/>
-		<Property Key="Pos" Value="880 235.5"/>
-		<Property Key="AnchorPos" Value="0 0"/>
+	<!-- 翻倍规则1 -->
+	<Widget Name="Txt_FanBei1" SkinTempName="TxtEmpty">
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="24"/>
+		<Property Key="ShowTxt" Value="牛牛×4 牛九×3 牛八×2 牛七×2"/>
+		<Property Key="Pos" Value="712 413.8"/>
+		<Property Key="AnchorPos" Value="0.5 0"/>
+		<Property Key="Color" Value="156 94 53"/>
+		<Property Key="Visible" Value="false"/>
 	</Widget>
-	
+	<!-- 翻倍规则2 -->
+	<Widget Name="Txt_FanBei2" SkinTempName="TxtEmpty">
+		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontSize" Value="24"/>
+		<Property Key="ShowTxt" Value="牛牛×3 牛九×3 牛八×2"/>
+		<Property Key="Pos" Value="712 367.6"/>
+		<Property Key="AnchorPos" Value="0.5 0"/>
+		<Property Key="Color" Value="156 94 53"/>
+		<Property Key="Visible" Value="false"/>
+	</Widget>
+
 	<!-- 备注文字 -->
 	<Widget Name="Txt_Note" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="public/text.ttf"/>
 		<Property Key="FontSize" Value="24"/>
 		<Property Key="ShowTxt" Value="备注:首局结算前解散不扣除房卡"/>
-		<Property Key="Color" Value="255 40 40"/>
-		<Property Key="Pos" Value="680 130"/>
+		<Property Key="Pos" Value="680 125"/>
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="Color" Value="255 40 40"/>
 	</Widget>
 	
 	<!--创建房间按钮-->
@@ -547,98 +525,4 @@
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="Scale" Value="0.6666"/>
 	</Widget>
-
-	<!-- 是否允许陌生人加入 -->
-<!-- 	<Widget Name="NN_CreateRoom_AllowedStranger" SkinTempName="public_CheckBox">
-		<UserInfo Key="Index" Value="1"/>
-		<Property Key="UnSelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
-		<Property Key="SelectTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
-		<Property Key="AnchorPos" Value="0 0.5"/>
-		<Property Key="Pos" Value="589 446.57"/>
-	</Widget> -->
-
-<!-- 	<Widget Name="" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="24"/>
-		<Property Key="ShowTxt" Value="是否允许陌生人加入"/>
-		<Property Key="Pos" Value="629 446.57"/>
-		<Property Key="AnchorPos" Value="0 0.5"/>
-		<Property Key="Color" Value="255 255 255"/>
-	</Widget> -->
-	
-	<!--入场限制-->
-<!-- 	<Widget Name="" SkinTempName="ImagicEmpty">
-		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/title_3.png"/>
-		<Property Key="Pos" Value="500 555.5"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-	</Widget> -->
-	
-<!-- 	<Widget Name="NN_CreateRoom_EnterNum_Btn" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/CreateRoom_EditBox.png"/> 
-		<Property Key="PressTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/CreateRoom_EditBox.png"/> 
-		<Property Key="Pos" Value="592 339.53"/>
-		<UserInfo Key="ScoreType" Value="2"/>
-		<Property Key="AnchorPos" Value="0 0.5"/>		
-	</Widget>
-
-	<Widget Name="NN_CreateRoom_EnterNum_Txt" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="30"/>
-		<Property Key="ShowTxt" Value="200"/>
-		<Property Key="Pos" Value="662.84 339.53"/>
-		<Property Key="AnchorPos" Value="0.5 0.5"/>
-		<Property Key="Color" Value="255 255 255"/>
-	</Widget>
-
-	<Widget Name="" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="30"/>
-		<Property Key="ShowTxt" Value="元宝"/>
-		<Property Key="Pos" Value="744.13 339.53"/>
-		<Property Key="AnchorPos" Value="0 0.5"/>
-		<Property Key="Color" Value="255 255 255"/>
-	</Widget> -->
-
-	<!--离场限制-->
-<!-- 	<Widget Name="NN_CreateRoom_OutNum_Btn" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/CreateRoom_EditBox.png"/> 
-		<Property Key="PressTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/CreateRoom_EditBox.png"/> 
-		<Property Key="Pos" Value="592 285.76"/>
-		<Property Key="AnchorPos" Value="0 0.5"/>
-		<UserInfo Key="ScoreType" Value="3"/>
-	</Widget>
-
-	<Widget Name="" SkinTempName="ImagicEmpty">
-		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/title_5.png"/>
-		<Property Key="Pos" Value="446.50 285.76"/>
-		<Property Key="AnchorPos" Value="0 0.5"/>
-	</Widget>
-	
-	<Widget Name="NN_CreateRoom_OutNum_Txt" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="30"/>
-		<Property Key="ShowTxt" Value="100"/>
-		<Property Key="Pos" Value="662.84 285.76"/>
-		<Property Key="AnchorPos" Value="0.5 0.5"/>
-		<Property Key="Color" Value="255 255 255"/>
-	</Widget>
-
-	<Widget Name="" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="30"/>
-		<Property Key="ShowTxt" Value="元宝"/>
-		<Property Key="Pos" Value="744.13 285.76"/>
-		<Property Key="AnchorPos" Value="0 0.5"/>
-		<Property Key="Color" Value="255 255 255"/>
-	</Widget> -->
-	
-<!-- 
-	<Widget Name="" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
-		<Property Key="FontSize" Value="30"/>
-		<Property Key="ShowTxt" Value="元宝"/>
-		<Property Key="Pos" Value="744.13 392.80"/>
-		<Property Key="AnchorPos" Value="0 0.5"/>
-		<Property Key="Color" Value="255 255 255"/>
-	</Widget> -->
 </Widget>
