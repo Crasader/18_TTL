@@ -1,14 +1,16 @@
 <Widget Name="GPHomeUserInfoPanel" SkinTempName="Empty">
 	<Widget Name="" SkinTempName="BtnFullEmpty"/>
 	<Widget Name="" SkinTempName="ImagicEmpty">
-		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/UserInfoPanel/background.png"/>
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/background.png"/>
 		<Property Key="Pos" Value="640 360"/>
+		<Property Key="Scale" Value="0.5"/>
 	</Widget>
 
 	<Widget Name="Button_Close" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/UserInfoPanel/btn_close.png"/>
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Button_Close.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="900 514"/>
+		<Property Key="Pos" Value="980 514"/>
+		<Property Key="Scale" Value="0.5"/>
 	</Widget>
 	
 	<Widget Name="User_Avar1" SkinTempName="ImagicEmpty">
@@ -21,10 +23,10 @@
 		<Property Key="Pos" Value="469.80 360.44"/>
 	</Widget>
 
-	<Widget Name="" SkinTempName="ImagicEmpty">
-		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/UserInfoPanel/title.png"/>
-		<Property Key="Pos" Value="640 514"/>
-	</Widget>
+	<!-- <Widget Name="" SkinTempName="ImagicEmpty"> -->
+		<!-- <Property Key="ImagicTexture" Value="GamePlaza/HomeScene/UserInfoPanel/title.png"/> -->
+		<!-- <Property Key="Pos" Value="640 514"/> -->
+	<!-- </Widget> -->
 
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/UserInfoPanel/title_nick.png"/>
@@ -94,6 +96,6 @@
 	<Widget Name="Button_ok" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="public/ok.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="640.00 237.82"/>
+		<Property Key="Pos" Value="640.00 180"/>
 	</Widget>
 </Widget>

@@ -7,10 +7,10 @@
 	</Widget>
 	
 	<Widget Name="Button_Close" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/Button_Close.png"/>
-		<Property Key="Scale" Value="0.66"/>
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Button_Close.png"/>
+		<Property Key="Scale" Value="0.5"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="1080 570"/>
+		<Property Key="Pos" Value="1080 565"/>
 	</Widget>
 
 	<Widget Name="" SkinTempName="ImagicEmpty">

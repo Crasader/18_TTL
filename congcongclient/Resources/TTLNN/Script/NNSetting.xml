@@ -40,7 +40,7 @@
 	</Widget>
 	
 	<Widget Name="Button_Close" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/SettingPanel/Button_Close.png"/>
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Button_Close.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="938 540"/>
 	</Widget>

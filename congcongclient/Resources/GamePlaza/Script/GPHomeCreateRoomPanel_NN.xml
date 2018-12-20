@@ -45,10 +45,11 @@
 	
 	<!--关闭房间按钮-->
 	<Widget Name="NN_CreateRoom_ButtonClose" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/btn_close.png"/> 
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Button_Close.png"/> 
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="AnchorPos" Value="1 1"/>
 		<Property Key="Pos" Value="1270 710"/>
+		<Property Key="Scale" Value="0.5"/>
 	</Widget>
 
 	<!-- 底分文字 -->

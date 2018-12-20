@@ -1,14 +1,15 @@
 <Widget Name="" SkinTempName="Empty">
 	<Widget Name="" SkinTempName="BtnFullEmpty"/>
 	<Widget Name="" SkinTempName="ImagicEmpty">
-		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/SettingPanel/background.png"/>
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/background.png"/>
+		<Property Key="Scale" Value="0.5"/>
 		<Property Key="Pos" Value="640 360"/>
 	</Widget>
 
-	<Widget Name="" SkinTempName="ImagicEmpty">
+	<!--<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/SettingPanel/title.png"/>
 		<Property Key="Pos" Value="640 514"/>
-	</Widget>
+	</Widget>-->
 
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/SettingPanel/title_music.png"/>
@@ -37,8 +38,9 @@
 	</Widget>
 	
 	<Widget Name="Button_Close" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/SettingPanel/Button_Close.png"/>
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Button_Close.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="900 514"/>
+		<Property Key="Pos" Value="970 514"/>
+		<Property Key="Scale" Value="0.5"/>
 	</Widget>
 </Widget>

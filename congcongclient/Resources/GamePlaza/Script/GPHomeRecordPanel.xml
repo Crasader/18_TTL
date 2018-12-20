@@ -3,23 +3,24 @@
 <Widget Name="" SkinTempName="Empty">
 	<Widget Name="" SkinTempName="BtnFullEmpty"/>
 	<Widget Name="" SkinTempName="ImagicEmpty">
-		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/RankPanel/background.png"/>
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/background.png"/>
 		<Property Key="Pos" Value="640 360"/>
+		<Property Key="Scale" Value="0.8"/>
 	</Widget>
 
-	<Widget Name="" SkinTempName="ImagicEmpty">
-		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/RecordPanel/title.png"/>
-		<Property Key="Pos" Value="640 605"/>
-	</Widget>
+	<!-- <Widget Name="" SkinTempName="ImagicEmpty"> -->
+		<!-- <Property Key="ImagicTexture" Value="GamePlaza/HomeScene/RecordPanel/title.png"/> -->
+		<!-- <Property Key="Pos" Value="640 605"/> -->
+	<!-- </Widget> -->
 
 	<Widget Name="Button_Close" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/RankPanel/btn_close.png"/>
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Button_Close.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="1040 604"/>
+		<Property Key="Pos" Value="1170 610"/>
+		<Property Key="Scale" Value="0.6"/>
 	</Widget>
 
 	<Widget Name="RecordList0" SkinTempName="List">
-<!-- 		<Property Key="Size" Value="860 422"/> -->
 		<Property Key="Size" Value="860 460"/> 
 		<Property Key="AnchorPos" Value="0 0"/>
 		<Property Key="Pos" Value="213 101"/>
