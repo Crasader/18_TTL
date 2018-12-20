@@ -159,7 +159,6 @@ void CSocketEngine::onSocketError(int errorCode)
 {
 	if (mISocketEngineSink != 0)
 		mISocketEngineSink->onEventTCPSocketError(errorCode);
-
 }
 
 void CSocketEngine::onSocketData(void* data, int dataSize)

@@ -71,9 +71,6 @@ void GPHomeCreateRoomPanel_NN::initButton()
 	WidgetManager::addButtonCB("NN_CreateRoom_RoundCountBox2", this, button_selector(GPHomeCreateRoomPanel_NN::Button_RoundBox2));
 	WidgetManager::addButtonCB("NN_CreateRoom_RoundCountBox3", this, button_selector(GPHomeCreateRoomPanel_NN::Button_RoundBox3));
 	//推注倍数
-	WidgetManager::addButtonCB("Check_TuiZhu_2", this, button_selector(GPHomeCreateRoomPanel_NN::Button_TuiZhu2));
-	WidgetManager::addButtonCB("Check_TuiZhu_3", this, button_selector(GPHomeCreateRoomPanel_NN::Button_TuiZhu3));
-	WidgetManager::addButtonCB("Check_TuiZhu_4", this, button_selector(GPHomeCreateRoomPanel_NN::Button_TuiZhu4));
 	WidgetManager::addButtonCB("Check_CanTuiZhu", this, button_selector(GPHomeCreateRoomPanel_NN::Button_CanTuiZhu));
 	//抢庄倍数
 	WidgetManager::addButtonCB("Check_QiangZhuang1", this, button_selector(GPHomeCreateRoomPanel_NN::Button_QiangZhuang1));
@@ -81,8 +78,9 @@ void GPHomeCreateRoomPanel_NN::initButton()
 	WidgetManager::addButtonCB("Check_QiangZhuang3", this, button_selector(GPHomeCreateRoomPanel_NN::Button_QiangZhuang3));
 	WidgetManager::addButtonCB("Check_QiangZhuang4", this, button_selector(GPHomeCreateRoomPanel_NN::Button_QiangZhuang4));
 	//翻倍规则
-	WidgetManager::addButtonCB("Check_Multiple_Rule1", this, button_selector(GPHomeCreateRoomPanel_NN::Button_MutipleRule1));
-	WidgetManager::addButtonCB("Check_Multiple_Rule2", this, button_selector(GPHomeCreateRoomPanel_NN::Button_MutipleRule2));
+	WidgetManager::addButtonCB("Btn_fanBei0", this, button_selector(GPHomeCreateRoomPanel_NN::Button_FanBei0));
+	WidgetManager::addButtonCB("Btn_fanBei1", this, button_selector(GPHomeCreateRoomPanel_NN::Button_FanBei1));
+	WidgetManager::addButtonCB("Btn_fanBei2", this, button_selector(GPHomeCreateRoomPanel_NN::Button_FanBei2));
 	//特殊牌型
 	WidgetManager::addButtonCB("Check_ShunZi", this, button_selector(GPHomeCreateRoomPanel_NN::Button_ShunZi));
 	WidgetManager::addButtonCB("Check_TongHua", this, button_selector(GPHomeCreateRoomPanel_NN::Button_TongHua));
@@ -131,37 +129,6 @@ void GPHomeCreateRoomPanel_NN::show()
 		break;
 	}
 
-	if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule_TZRatio_0))) {
-		_nTuiZhuIndex = 1;
-		_bCanTuiZhu = true;
-	} else if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule_TZRatio_1))) {
-		_nTuiZhuIndex = 2;
-		_bCanTuiZhu = true;
-	} else if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule_TZRatio_2))) {
-		_nTuiZhuIndex = 3;
-		_bCanTuiZhu = true;
-	} else if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule_TZRatio_3))) {
-		_nTuiZhuIndex = 4;
-		_bCanTuiZhu = true;
-	}
-	//闲家推注选择
-	//WidgetFun::setChecked(this, "Check_TuiZhu_1", false);
-	WidgetFun::setChecked(this, "Check_TuiZhu_2", false);
-	WidgetFun::setChecked(this, "Check_TuiZhu_3", false);
-	switch (_nTuiZhuIndex) {
-	case 1:
-		//WidgetFun::setChecked(this, "Check_TuiZhu_1", true);
-		break;
-	case 2:
-		WidgetFun::setChecked(this, "Check_TuiZhu_2", true);
-		break;
-	case 3:
-		WidgetFun::setChecked(this, "Check_TuiZhu_3", true);
-		break;
-	case 4:
-		WidgetFun::setChecked(this, "Check_TuiZhu_4", true);
-		break;
-	}
 	WidgetFun::setChecked(this, "Check_CanTuiZhu", _bCanTuiZhu);
 
 	if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SpecialRule_SZN))) {
@@ -218,15 +185,13 @@ void GPHomeCreateRoomPanel_NN::show()
 	} else if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_Ratio_1))) {
 		_nRatioRuleIndex = 1;
 	}
-	if (_nRatioRuleIndex) 
+	if (_nRatioRuleIndex == 0) 
 	{
-		WidgetFun::setChecked(this, "Check_Multiple_Rule1", false);
-		WidgetFun::setChecked(this, "Check_Multiple_Rule2", true);
-	}
-	else
-	{
-		WidgetFun::setChecked(this, "Check_Multiple_Rule1", true);
-		WidgetFun::setChecked(this, "Check_Multiple_Rule2", false);
+		WidgetFun::setVisible(this, "Txt_FanBei0_1", true);
+		WidgetFun::setVisible(this, "Txt_FanBei0_2", false);
+	} else {
+		WidgetFun::setVisible(this, "Txt_FanBei0_1", false);
+		WidgetFun::setVisible(this, "Txt_FanBei0_2", true);
 	}
 
 	if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_Score_0))) {
@@ -300,15 +265,11 @@ void GPHomeCreateRoomPanel_NN::show()
 		_cbRoundCount = 8;
 	}
 	if (_cbRoundCount == 6) {
-		WidgetFun::setVisible(this, "Btn_SixRound", false);
-		WidgetFun::setVisible(this, "Pic_SixRound", true);
-		WidgetFun::setVisible(this, "Btn_EightRound", true);
-		WidgetFun::setVisible(this, "Pic_EightRound", false);
+		WidgetFun::setChecked(this, "Btn_SixRound", true);
+		WidgetFun::setChecked(this, "Btn_EightRound", false);
 	} else if(_cbRoundCount == 8) {
-		WidgetFun::setVisible(this, "Btn_SixRound", true);
-		WidgetFun::setVisible(this, "Pic_SixRound", false);
-		WidgetFun::setVisible(this, "Btn_EightRound", false);
-		WidgetFun::setVisible(this, "Pic_EightRound", true);
+		WidgetFun::setChecked(this, "Btn_SixRound", false);
+		WidgetFun::setChecked(this, "Btn_EightRound", true);
 	}
 
 	int roundIndex = cocos2d::UserDefault::getInstance()->getIntegerForKey("roundIndex", -1);
@@ -482,70 +443,6 @@ void GPHomeCreateRoomPanel_NN::Button_RoundBox3(cocos2d::Ref*, WidgetUserInfo*)
 	_nRoundIndex = 2;
 }
 
-void GPHomeCreateRoomPanel_NN::Button_TuiZhu1(cocos2d::Ref*, WidgetUserInfo*)
-{
-	if (_nTuiZhuIndex == 1) {
-		WidgetFun::setChecked(this, "Check_TuiZhu_1", false);
-		_nTuiZhuIndex = 0;
-	}
-	else
-	{
-		WidgetFun::setChecked(this, "Check_TuiZhu_1", true);
-		WidgetFun::setChecked(this, "Check_TuiZhu_2", false);
-		WidgetFun::setChecked(this, "Check_TuiZhu_3", false);
-		WidgetFun::setChecked(this, "Check_TuiZhu_4", false);
-		_nTuiZhuIndex = 1;
-	}
-}
-
-void GPHomeCreateRoomPanel_NN::Button_TuiZhu2(cocos2d::Ref*, WidgetUserInfo*)
-{
-	if (_nTuiZhuIndex == 2) {
-		WidgetFun::setChecked(this, "Check_TuiZhu_2", false);
-		_nTuiZhuIndex = 0;
-	}
-	else
-	{
-		WidgetFun::setChecked(this, "Check_TuiZhu_1", false);
-		WidgetFun::setChecked(this, "Check_TuiZhu_2", true);
-		WidgetFun::setChecked(this, "Check_TuiZhu_3", false);
-		WidgetFun::setChecked(this, "Check_TuiZhu_4", false);
-		_nTuiZhuIndex = 2;
-	}
-}
-
-void GPHomeCreateRoomPanel_NN::Button_TuiZhu3(cocos2d::Ref*, WidgetUserInfo*)
-{
-	if (_nTuiZhuIndex == 3) {
-		WidgetFun::setChecked(this, "Check_TuiZhu_1", false);
-		_nTuiZhuIndex = 0;
-	}
-	else
-	{
-		WidgetFun::setChecked(this, "Check_TuiZhu_1", false);
-		WidgetFun::setChecked(this, "Check_TuiZhu_2", false);
-		WidgetFun::setChecked(this, "Check_TuiZhu_3", true);
-		WidgetFun::setChecked(this, "Check_TuiZhu_4", false);
-		_nTuiZhuIndex = 3;
-	}
-}
-
-void GPHomeCreateRoomPanel_NN::Button_TuiZhu4(cocos2d::Ref*, WidgetUserInfo*)
-{
-	if (_nTuiZhuIndex == 4) {
-		WidgetFun::setChecked(this, "Check_TuiZhu_1", false);
-		_nTuiZhuIndex = 0;
-	}
-	else
-	{
-		WidgetFun::setChecked(this, "Check_TuiZhu_1", false);
-		WidgetFun::setChecked(this, "Check_TuiZhu_2", false);
-		WidgetFun::setChecked(this, "Check_TuiZhu_3", false);
-		WidgetFun::setChecked(this, "Check_TuiZhu_4", true);
-		_nTuiZhuIndex = 4;
-	}
-}
-
 void GPHomeCreateRoomPanel_NN::Button_CanTuiZhu(cocos2d::Ref*, WidgetUserInfo*)
 {
 	_bCanTuiZhu = !_bCanTuiZhu;
@@ -636,17 +533,33 @@ void GPHomeCreateRoomPanel_NN::Button_WuXiao(cocos2d::Ref*, WidgetUserInfo*)
 	}
 }
 
-void GPHomeCreateRoomPanel_NN::Button_MutipleRule1(cocos2d::Ref*, WidgetUserInfo*)
+void GPHomeCreateRoomPanel_NN::Button_FanBei0(cocos2d::Ref *, WidgetUserInfo *)
 {
-	WidgetFun::setChecked(this, "Check_Multiple_Rule1", true);
-	WidgetFun::setChecked(this, "Check_Multiple_Rule2", false);
+	WidgetFun::setVisible(this, "Btn_fanBei1", true);
+	WidgetFun::setVisible(this, "Btn_fanBei2", true);
+	WidgetFun::setVisible(this, "Txt_FanBei1", true);
+	WidgetFun::setVisible(this, "Txt_FanBei2", true);
+}
+
+void GPHomeCreateRoomPanel_NN::Button_FanBei1(cocos2d::Ref *, WidgetUserInfo *)
+{
+	WidgetFun::setVisible(this, "Btn_fanBei1", false);
+	WidgetFun::setVisible(this, "Btn_fanBei2", false);
+	WidgetFun::setVisible(this, "Txt_FanBei1", false);
+	WidgetFun::setVisible(this, "Txt_FanBei2", false);
+	WidgetFun::setVisible(this, "Txt_FanBei0_1", true);
+	WidgetFun::setVisible(this, "Txt_FanBei0_2", false);
 	_nRatioRuleIndex = 0;
 }
 
-void GPHomeCreateRoomPanel_NN::Button_MutipleRule2(cocos2d::Ref*, WidgetUserInfo*)
+void GPHomeCreateRoomPanel_NN::Button_FanBei2(cocos2d::Ref*, WidgetUserInfo*)
 {
-	WidgetFun::setChecked(this, "Check_Multiple_Rule1", false);
-	WidgetFun::setChecked(this, "Check_Multiple_Rule2", true);
+	WidgetFun::setVisible(this, "Btn_fanBei1", false);
+	WidgetFun::setVisible(this, "Btn_fanBei2", false);
+	WidgetFun::setVisible(this, "Txt_FanBei1", false);
+	WidgetFun::setVisible(this, "Txt_FanBei2", false);
+	WidgetFun::setVisible(this, "Txt_FanBei0_1", false);
+	WidgetFun::setVisible(this, "Txt_FanBei0_2", true);
 	_nRatioRuleIndex = 1;
 }
 
@@ -729,19 +642,15 @@ void GPHomeCreateRoomPanel_NN::Button_RoomType_MPQZ(cocos2d::Ref*, WidgetUserInf
 
 void GPHomeCreateRoomPanel_NN::Button_SixRound(cocos2d::Ref*, WidgetUserInfo*)
 {
-	WidgetFun::setVisible(this, "Btn_SixRound", false);
-	WidgetFun::setVisible(this, "Pic_SixRound", true);
-	WidgetFun::setVisible(this, "Btn_EightRound", true);
-	WidgetFun::setVisible(this, "Pic_EightRound", false);
+	WidgetFun::setChecked(this, "Btn_SixRound", true);
+	WidgetFun::setChecked(this, "Btn_EightRound", false);
 	_cbRoundCount = 6;
 }
 
 void GPHomeCreateRoomPanel_NN::Button_EightRound(cocos2d::Ref*, WidgetUserInfo*)
 {
-	WidgetFun::setVisible(this, "Btn_SixRound", true);
-	WidgetFun::setVisible(this, "Pic_SixRound", false);
-	WidgetFun::setVisible(this, "Btn_EightRound", false);
-	WidgetFun::setVisible(this, "Pic_EightRound", true);
+	WidgetFun::setChecked(this, "Btn_SixRound", false);
+	WidgetFun::setChecked(this, "Btn_EightRound", true);
 	_cbRoundCount = 8;
 }
 
