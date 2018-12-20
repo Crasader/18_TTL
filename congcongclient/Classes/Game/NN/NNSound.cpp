@@ -15,10 +15,9 @@ std::string NNSound::getVoicePath()
 
 void NNSound::playNN(TTLNN::NNCardType cardType,NNPlayer* pPlayer)
 {
-	//bool canPlayEffect = cocos2d::UserDefault::getInstance()->getBoolForKey("NN_Voice");
 	bool canPlayEffect = cocos2d::UserDefault::getInstance()->getFloatForKey("effect_volume",1.f) > 0;
 	if (canPlayEffect) {
-		std::string voicePath = utility::toString(NNSound::VOICE_PATH,pPlayer->GetGender() ? NNSound::MAN_PATH : NNSound::WOMEN_PATH , "NN_", cardType - TTLNN::NNCardType_None, FILE_TAIL);
+		std::string voicePath = utility::toString(NNSound::VOICE_PATH, "NN_", cardType - TTLNN::NNCardType_None, FILE_TAIL);
 		SoundFun::Instance().playEffect(voicePath);
 	}
 }
