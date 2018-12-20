@@ -1602,11 +1602,11 @@ bool PriaveteGame::OnActionUserOffLine(ITableFrame* pITableFrame, WORD wChairID,
 	if (!pTableInfo->bStart) {
 		//房主掉了, 切换房主
 		if (pTableFrame->GetMasterUserID() == pIServerUserItem->GetUserID()) {
-			//DONE:没有房主了, 切换锤子
-			//pTableFrame->SwitchMaster(pIServerUserItem);
-		} else {//其他人掉了,踢掉他
-			pTableFrame->PerformStandUpActionReally(pIServerUserItem);
-		}
+			pTableFrame->SwitchMaster(pIServerUserItem);
+		} 
+		//踢掉他
+		pTableFrame->PerformStandUpActionReally(pIServerUserItem);
+		SendRoomInfo(NULL, pTableInfo);
 		return true;
 	}
 	//游戏没有结束

@@ -1765,8 +1765,8 @@ bool CTableFrameSink::SwitchMaster(IServerUserItem * pIServerUserItem)
 	{
 		IServerUserItem* pServerItemNext = m_pITableFrame->GetTableUserItem(idx);
 		if (pServerItemNext == nullptr) continue;
-		//如果有其他玩家, 并且不是房主, 则设置为房主
-		if (pServerItemNext->GetUserID() != 0 && pServerItemNext->GetUserID() != _MasterUserID)
+		//如果有其他玩家, 并且不是房主, 并且已经准备, 则设置为房主
+		if (pServerItemNext->GetUserStatus() >= US_READY && pServerItemNext->GetUserID() != 0 && pServerItemNext->GetUserID() != _MasterUserID)
 		{
 			SetMasterUser(pServerItemNext);
 			m_pITableFrame->SendRoomMessage(pServerItemNext, TEXT("你已经成为房主。"), SMT_EJECT);
