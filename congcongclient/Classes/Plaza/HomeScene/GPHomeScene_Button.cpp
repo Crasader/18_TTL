@@ -14,7 +14,7 @@ using namespace experimental;
 
 void GPHomeScene::initButton()
 {
-	WidgetManager::addButtonCB("Button_Header", this, button_selector(GPHomeScene::Button_Header));
+	//WidgetManager::addButtonCB("Button_Header", this, button_selector(GPHomeScene::Button_Header));
 	WidgetManager::addButtonCB("Button_Share", this, button_selector(GPHomeScene::Button_Share));
 	WidgetManager::addButtonCB("Button_ADDGOLD", this, button_selector(GPHomeScene::Button_Mall));
 	WidgetManager::addButtonCB("Btn_Mall", this, button_selector(GPHomeScene::Button_Mall));
@@ -22,7 +22,8 @@ void GPHomeScene::initButton()
 	//WidgetManager::addButtonCB("Btn_Rank", this, button_selector(GPHomeScene::Button_Rank));
 	//WidgetManager::addButtonCB("Button_Rank", this, button_selector(GPHomeScene::Button_Rank));
 	WidgetManager::addButtonCB("Button_Record", this, button_selector(GPHomeScene::Button_Record));
-	WidgetManager::addButtonCB("Btn_Invitation", this, button_selector(GPHomeScene::Button_Invitation));
+	WidgetManager::addButtonCB("Btn_Invitation0", this, button_selector(GPHomeScene::Button_Invitation));
+	WidgetManager::addButtonCB("Btn_Invitation1", this, button_selector(GPHomeScene::Button_Invitation));
 	WidgetManager::addButtonCB("Button_JoinGame", this, button_selector(GPHomeScene::Button_Join));
 	WidgetManager::addButtonCB("Btn_RoomList_Join", this, button_selector(GPHomeScene::Button_RoomList_Join));
 	WidgetManager::addButtonCB("Button_CreateGame", this, button_selector(GPHomeScene::Button_CreateGame));
@@ -35,7 +36,7 @@ void GPHomeScene::Button_Share(cocos2d::Ref* pRef, WidgetUserInfo* pInfo)
 
 void GPHomeScene::Button_Header(cocos2d::Ref* pRef, WidgetUserInfo* pInfo)
 {
-	GPHomeUserInfoPanel::Instance().show();
+	//GPHomeUserInfoPanel::Instance().show();
 }
 
 void GPHomeScene::Button_Mall( cocos2d::Ref*, WidgetUserInfo* )

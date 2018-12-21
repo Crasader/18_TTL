@@ -8,6 +8,29 @@
 		<Property Key="Scale" Value="0.666"/>
 	</Widget>
 
+	<!-- 税收提示 -->
+	<Widget Name="GameTax" SkinTempName="NNGameTax">
+		<Property Key="Pos" Value="640 440"/>
+	</Widget>
+
+	<Widget Name="NNGameScene_ButtonTalk" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonTalk.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="1130 140"/>
+	</Widget>
+
+	<Widget Name="NNGameScene_ButtonMessage" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonMessage.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="1220 140"/>
+	</Widget>
+
+	<Widget Name="NNGameScene_ButtonDropBanker" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonDropBanker.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="950 112"/>
+	</Widget>
+
 	<!-- <Widget Name="NNGameScene_ButtonHelp" SkinTempName="ButtonEmpty"> -->
 		<!-- <Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonHelp.png"/> -->
 		<!-- <Property Key="PressTexture" Value="AutoPress"/> -->
@@ -16,8 +39,8 @@
 	<!-- </Widget> -->
 
 	<Widget Name="NNGameScene_ButtonShare" SkinTempName="ButtonEmpty">
+		<Property Key="Index" Value="-1"/>
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Btn_Share.png"/>
-		<Property Key="Scale" Value="0.66"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="1100 665"/>
 	</Widget>
@@ -30,13 +53,14 @@
 	</Widget>-->
 
 	<Widget Name="NNGameScene_ButtonMenu" SkinTempName="ButtonEmpty">
+		<Property Key="Index" Value="-1"/>
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Btn_Setting.png"/>
-		<Property Key="Scale" Value="0.66"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="1200 665"/>
 	</Widget>
 
 	<Widget Name="NNGameScene_MenuNode" SkinTempName="Empty">
+		<Property Key="Index" Value="-1"/>
 		<Property Key="Visible" Value="false"/>
 		<Widget Name="" SkinTempName="ImagicEmpty">
 			<Property Key="ImagicTexture" Value="TTLNN/GameScene/NNGameScene_MenuContentBG.png"/>
@@ -60,28 +84,5 @@
 			<Property Key="Pos" Value="1162 640"/> 
 		</Widget>
 	</Widget>
-
-	<Widget Name="NNGameScene_ButtonTalk" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonTalk.png"/>
-		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="1130 140"/>
-	</Widget>
-
-	<Widget Name="NNGameScene_ButtonMessage" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonMessage.png"/>
-		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="1220 140"/>
-	</Widget>
-
-	<Widget Name="NNGameScene_ButtonDropBanker" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonDropBanker.png"/>
-		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="950 112"/>
-	</Widget>
-
-	<!-- 税收提示 -->
-	<Widget Name="GameTax" SkinTempName="NNGameTax">
-		<Property Key="Pos" Value="640 440"/>
-	</Widget>
-
+	
 </Widget>

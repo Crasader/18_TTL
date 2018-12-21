@@ -93,21 +93,21 @@ Node* GPSceneManager::createCircleAvatar(cocos2d::Node* pRootNode, const std::st
 	auto stSize = stencil->getContentSize();
 
 	if (viewSize.height < stSize.height || viewSize.width < stSize.width) {
-		auto scaleHeight = stSize.height * 0.76f / viewSize.height;
-		auto scaleWidth = stSize.width * 0.76f / viewSize.width;
+		auto scaleHeight = stSize.height * 0.92f / viewSize.height;
+		auto scaleWidth = stSize.width * 0.92f / viewSize.width;
 		auto targetScale = utility::Max(scaleWidth, scaleHeight);
 		sprite->setScale(targetScale);
 	}else{
-		auto scaleHeight = viewSize.height * 0.76f / stSize.height;
-		auto scaleWidth  = viewSize.width * 0.76f / stSize.width;
+		auto scaleHeight = viewSize.height * 0.92f / stSize.height;
+		auto scaleWidth  = viewSize.width * 0.92f / stSize.width;
 		auto targetScale = utility::Min(scaleWidth, scaleHeight);
 		sprite->setScale(targetScale);
 	}
-	stencil->setScale(0.83f,0.83f);
+	stencil->setScale(1.05f,1.05f);
 	pClip->setAlphaThreshold(.7f);
 	pClip->setStencil(stencil);
+	pClip->setInverted(true);
 	pClip->addChild(sprite);
-	pClip->setInverted(false);
 	pRootNode->addChild(pClip);
 	pClip->setPosition(position);
 	return sprite;

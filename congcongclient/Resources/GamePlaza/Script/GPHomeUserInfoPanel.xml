@@ -10,16 +10,15 @@
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Button_Close.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="980 514"/>
-		<Property Key="Scale" Value="0.5"/>
 	</Widget>
 	
 	<Widget Name="User_Avar1" SkinTempName="ImagicEmpty">
-		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/UserInfoPanel/headbox.png"/>
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/Tou_OutSide.png"/>
 		<Property Key="Pos" Value="469.80 360.44"/>
 	</Widget>
 	
 	<Widget Name="User_Avar" SkinTempName="ImagicEmpty">
-		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/UserInfoPanel/headbox.png"/>
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/Tou_OutSide.png"/>
 		<Property Key="Pos" Value="469.80 360.44"/>
 	</Widget>
 
@@ -44,7 +43,7 @@
 	</Widget>
 	
 	<Widget Name="Nick_Txt" SkinTempName="TxtName32Empty">
-		<Property Key="Font" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="public/text.ttf"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value=""/>
 		<Property Key="Pos" Value="662.28 416.44"/>
@@ -53,7 +52,7 @@
 	</Widget>
 
 	<Widget Name="" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="public/text.ttf"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="女"/>
 		<Property Key="Pos" Value="718.04 359.27"/>
@@ -63,7 +62,7 @@
 	
 
 	<Widget Name="" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="public/text.ttf"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="男"/>
 		<Property Key="Pos" Value="807.31 360.27"/>
@@ -85,17 +84,11 @@
 	</Widget>
 	
 	<Widget Name="ID_Txt" SkinTempName="TxtEmpty">
-		<Property Key="Font" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="public/text.ttf"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="110"/>
 		<Property Key="Pos" Value="664.39 302.44"/>
 		<Property Key="AnchorPos" Value="0 0.5"/>
 		<Property Key="Color" Value="255 255 255"/>
-	</Widget>
-
-	<Widget Name="Button_ok" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="public/ok.png"/>
-		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="640.00 180"/>
 	</Widget>
 </Widget>

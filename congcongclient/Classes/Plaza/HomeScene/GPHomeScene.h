@@ -14,7 +14,7 @@
 
 #include "GPHomeSettingPanel.h"
 #include "GPHomeSharePanel.h"
-#include "GPHomeUserInfoPanel.h"
+//#include "GPHomeUserInfoPanel.h"
 #include "GPHomeEnterRoomPanel.h"
 #include "GPHomeEditNumPanel.h"
 #include "GPHomePromotionPanel.h"

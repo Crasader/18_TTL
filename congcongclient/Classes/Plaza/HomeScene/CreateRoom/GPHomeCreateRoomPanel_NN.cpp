@@ -129,6 +129,9 @@ void GPHomeCreateRoomPanel_NN::show()
 		break;
 	}
 
+	if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_TZ))) {
+		_bCanTuiZhu = true;
+	}
 	WidgetFun::setChecked(this, "Check_CanTuiZhu", _bCanTuiZhu);
 
 	if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SpecialRule_SZN))) {

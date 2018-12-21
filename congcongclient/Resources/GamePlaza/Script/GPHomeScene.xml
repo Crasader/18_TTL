@@ -7,67 +7,71 @@
 		<Property Key="Pos" Value="0 0"/>
 		<Widget Name="Home_Background" SkinTempName="ImagicEmpty">
 			<Property Key="AnchorPos" Value="0.5 0.5"/>
-			<Property Key="Scale" Value="0.666"/>
 			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/background.jpg"/>
 			<Property Key="Pos" Value="640 360"/>
 		</Widget>
-
-		<!--头像背景-->
-		<Widget Name="" SkinTempName="ImagicEmpty">
-			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/playerInfoBg.png"/>
-			<Property Key="Pos" Value="40 626"/>
-			<Property Key="AnchorPos" Value="0 0"/>
+		<Widget Name="Home_Title" SkinTempName="ImagicEmpty">
+			<Property Key="AnchorPos" Value="0.5 1"/>
+			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/Titles.png"/>
+			<Property Key="Pos" Value="640 720"/>
+		</Widget>
+		<Widget Name="Home_Logo" SkinTempName="ImagicEmpty">
+			<Property Key="AnchorPos" Value="0.5 1"/>
+			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/logo.png"/>
+			<Property Key="Pos" Value="640 716"/>
 		</Widget>
 
 		<!--头像-->
 		<Widget Name="Img_HeaderBG" SkinTempName="ImagicEmpty">
 			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/Tou_OutSide.png"/>
-			<Property Key="Pos" Value="75 672"/>
+			<Property Key="Pos" Value="160 665"/>
 			<Property Key="AnchorPos" Value="0.5 0.5"/>
 		</Widget>
 
 		<!--头像-->
-		<Widget Name="Button_Header" SkinTempName="ButtonEmpty">
-			<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Tou_OutSide.png"/>
-			<Property Key="PressTexture" Value="AutoPress"/>
-			<Property Key="Pos" Value="75 672"/>
+		<Widget Name="Button_Header" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/Tou_OutSide.png"/>
+			<Property Key="Pos" Value="160 665"/>
 			<Property Key="AnchorPos" Value="0.5 0.5"/>
 		</Widget>
 
+		<!--性别-->
+		<Widget Name="Img_UserSex_Male" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/male.png"/>
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Pos" Value="239 685"/>
+		</Widget>
+		<!--性别-->
+		<Widget Name="Img_UserSex_Female" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/famale.png"/>
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Pos" Value="239 685"/>
+		</Widget>
+		
 		<!--名字-->
-		<Widget Name="Home_UserName" SkinTempName="TxtEmpty">
-			<Property Key="AnchorPos" Value="0 0.5"/>
-			<Property Key="FontSize" Value="20"/>
+		<Widget Name="Txt_UserName" SkinTempName="TxtEmpty">
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="FontSize" Value="30"/>
 			<Property Key="ShowTxt" Value="姓名"/>
 			<Property Key="FontName" Value="public/text.ttf"/>
 			<Property Key="Color" Value="255 255 255"/>
-			<Property Key="Pos" Value="117 688"/>
+			<Property Key="Pos" Value="310 685"/>
 		</Widget>
 		
 		<!--ID-->
-		<Widget Name="Home_UserID" SkinTempName="TxtEmpty">
-			<Property Key="AnchorPos" Value="0 0.5"/>
-			<Property Key="FontSize" Value="20"/>
-			<Property Key="ShowTxt" Value="ID:1234567"/>
-			<Property Key="FontName" Value="public/text.ttf"/>
-			<Property Key="Color" Value="255 255 255"/>
-			<Property Key="Pos" Value="117 656"/>
-		</Widget>
-
-		<Widget Name="" SkinTempName="ImagicEmpty">
-			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/level_Icon.png"/>
-			<Property Key="Pos" Value="230 656"/>
+		<Widget Name="Img_UserID" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/ID.png"/>
 			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Pos" Value="239 635"/>
 		</Widget>
-
-		<!--LEVEl-->
-		<Widget Name="Home_UserLV" SkinTempName="TxtEmpty">
-			<Property Key="AnchorPos" Value="0 0.5"/>
-			<Property Key="FontSize" Value="20"/>
-			<Property Key="ShowTxt" Value="等级:7"/>
+		
+		<Widget Name="Txt_UserID" SkinTempName="TxtEmpty">
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="FontSize" Value="30"/>
+			<Property Key="ShowTxt" Value="姓名"/>
 			<Property Key="FontName" Value="public/text.ttf"/>
 			<Property Key="Color" Value="255 255 255"/>
-			<Property Key="Pos" Value="250 656"/>
+			<Property Key="Pos" Value="310 635"/>
 		</Widget>
 
 		<!--金砖-->
@@ -85,7 +89,7 @@
 			<Property Key="AnchorPos" Value="0.5 0.5"/>
 		</Widget>
 
-		<Widget Name="Home_GoldNum" SkinTempName="TxtEmpty">
+		<Widget Name="Txt_GoldNum" SkinTempName="TxtEmpty">
 			<Property Key="Visible" Value="false"/>
 			<Property Key="AnchorPos" Value="0 0.5"/>
 			<Property Key="FontSize" Value="24"/>
@@ -109,67 +113,100 @@
 			<Property Key="Pos" Value="928 669"/>
 		</Widget>-->
 
+		<!--战绩-->
+		<Widget Name="Button_Record" SkinTempName="ButtonEmpty">
+			<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Btn_ZhanJi.png"/>
+			<Property Key="PressTexture" Value="AutoPress"/>
+			<Property Key="Pos" Value="935 669"/>
+		</Widget>
+		
 		<!--微信分享-->
 		<Widget Name="Button_Share" SkinTempName="ButtonEmpty">
 			<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Btn_Share.png"/>
-      		<Property Key="Scale" Value="0.66"/>
 			<Property Key="PressTexture" Value="AutoPress"/>
 			<Property Key="AnchorPos" Value="0.5 0.5"/>
-			<Property Key="Pos" Value="1028 669"/>
+			<Property Key="Pos" Value="1048 669"/>
 		</Widget>
 
 		<!--游戏设置-->
 		<Widget Name="Button_Setting" SkinTempName="ButtonEmpty">
 			<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Btn_Setting.png"/>
-      		<Property Key="Scale" Value="0.66"/>
 			<Property Key="PressTexture" Value="AutoPress"/>
 			<Property Key="AnchorPos" Value="0.5 0.5"/>			
-			<Property Key="Pos" Value="1228 669"/>
+			<Property Key="Pos" Value="1159 669"/>
+		</Widget>
+		
+		<Widget Name="Button_CreateGame" SkinTempName="ButtonEmpty">
+			<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Btn_CreateGame.png"/>
+			<Property Key="PressTexture" Value="AutoPress"/>
+			<Property Key="Pos" Value="1010 400"/>
 		</Widget>
 
-		<!--战绩-->
-		<Widget Name="Button_Record" SkinTempName="ButtonEmpty">
-			<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Btn_ZhanJi.png"/>
-      		<Property Key="Scale" Value="0.66"/>
+		<Widget Name="Button_JoinGame" SkinTempName="ButtonEmpty">
+			<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Btn_JoinGame.png"/>
 			<Property Key="PressTexture" Value="AutoPress"/>
-			<Property Key="Pos" Value="1128 669"/>
+			<Property Key="Pos" Value="1010 200"/>
 		</Widget>
 		
 		<!--房间列表-->
-		<Widget Name="BG_RoomList" SkinTempName="ImagicEmpty">
+		<Widget Name="Img_RoomList" SkinTempName="ImagicEmpty">
 			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/BG_RoomList.png"/>
 			<Property Key="Pos" Value="400 280"/>
 			<Property Key="AnchorPos" Value="0.5 0.5"/>
 		</Widget>
 		
 		<!--房间列表-->
-		<Widget Name="View_RoomList" SkinTempName="List">
-			<Property Key="Size" Value="680 360"/>
+		<Widget Name="Img_RoomListTitle" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/roomListTitle.png"/>
+			<Property Key="Pos" Value="400 445"/>
 			<Property Key="AnchorPos" Value="0.5 0.5"/>
-			<Property Key="Pos" Value="400 220"/>
+		</Widget>
+		<Widget Name="View_RoomList" SkinTempName="List">
+			<Property Key="Size" Value="683 340"/>
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Pos" Value="407 245"/>
 			<Property Key="Direction" Value="1"/>
 			<Property Key="HideBack" Value="true"/>
 		</Widget>
+		<Widget Name="Img_RoomListDetailTitle" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/RoomListDetailTitle.jpg"/>
+			<Property Key="Pos" Value="395 400"/>
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+		</Widget>
+		<Widget Name="Img_RoomListEmpty" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/empty.png"/>
+			<Property Key="Pos" Value="407 245"/>
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+		</Widget>
+		<Widget Name="Txt_RoomListEmpty" SkinTempName="TxtEmpty">
+			<Property Key="FontName" Value="public/text.ttf"/>
+			<Property Key="FontSize" Value="24"/>
+			<Property Key="ShowTxt" Value="快去创建房间和好友一起游戏吧"/>
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
+			<Property Key="Color" Value="109 59 8"/>
+			<Property Key="Pos" Value="407 150"/>
+		</Widget>
 		
-		<Widget Name="Button_CreateGame" SkinTempName="ButtonEmpty">
-			<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Btn_CreateGame.png"/>
-			<Property Key="PressTexture" Value="AutoPress"/>
-			<Property Key="Pos" Value="1000 400"/>
+		<!--灯笼-->
+		<Widget Name="Img_DengLong" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/denglong.png"/>
+			<Property Key="Pos" Value="77 278"/>
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
 		</Widget>
-
-		<Widget Name="Button_JoinGame" SkinTempName="ButtonEmpty">
-			<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Btn_JoinGame.png"/>
-			<Property Key="PressTexture" Value="AutoPress"/>
-			<Property Key="Pos" Value="1000 200"/>
+		<!--猪-->
+		<Widget Name="Img_Pig" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/zhu.png"/>
+			<Property Key="Pos" Value="700 330"/>
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
 		</Widget>
-
+		
 		<Widget Name="Node_Notice" SkinTempName="Empty">
-			<Property Key="Pos" Value="250 340"/>
+			<Property Key="Pos" Value="250 280"/>
 			<Property Key="AnchorPos" Value="0.5 0.5"/>
 		</Widget>
 
 		<Widget Name="Speaker" SkinTempName="SpeakerTxtNode">
-			<Property Key="Pos" Value="73.64 551.83"/>
+			<Property Key="Pos" Value="73.64 491.83"/>
 		</Widget>
 
 	</Widget>

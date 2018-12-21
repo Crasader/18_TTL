@@ -68,7 +68,7 @@
 
 	<ScriptValueStr Key="GPHomeSpeakerTxt" Value="果酱棋牌，欢迎您的到来！"/>
 	<ScriptValueStr Key="CCWeiXinShare_Game_Name" Value="果酱棋牌"/>
-	<ScriptValueStr Key="CCWeiXinShare_Server_Name" Value="牛翻天"/>
+	<ScriptValueStr Key="CCWeiXinShare_Server_Name" Value="悠闲牛"/>
 	<ScriptValueStr Key="CCWeiXinShare_introduce" Value="让我们一起来玩耍"/>
 	<ScriptValueStr Key="CCWeiXinShare_OK" Value="分享成功"/>
 	<ScriptValueStr Key="CCWeiXinShare_Cancel" Value="分享取消"/>
