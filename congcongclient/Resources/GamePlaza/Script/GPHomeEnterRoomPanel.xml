@@ -21,7 +21,7 @@
 	<Widget Name="Home_RoomNum1" SkinTempName="TxtEmpty">
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="FontSize" Value="40"/>
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="Pos" Value="437.82 505.05"/>
 	</Widget>
 
@@ -33,7 +33,7 @@
 	<Widget Name="Home_RoomNum2" SkinTempName="TxtEmpty">
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="FontSize" Value="40"/>
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="Pos" Value="520.02 505.05"/>
 	</Widget>
 	<Widget Name="" SkinTempName="ImagicEmpty">
@@ -44,7 +44,7 @@
 	<Widget Name="Home_RoomNum3" SkinTempName="TxtEmpty">
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="FontSize" Value="40"/>
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="Pos" Value="602.23 505.05"/>
 	</Widget>
 	<Widget Name="" SkinTempName="ImagicEmpty">
@@ -55,7 +55,7 @@
 	<Widget Name="Home_RoomNum4" SkinTempName="TxtEmpty">
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="FontSize" Value="40"/>
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="Pos" Value="684.43 505.05"/>
 	</Widget>
 	<Widget Name="" SkinTempName="ImagicEmpty">
@@ -66,7 +66,7 @@
 	<Widget Name="Home_RoomNum5" SkinTempName="TxtEmpty">
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="FontSize" Value="40"/>
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="Pos" Value="766.63 505.05"/>
 	</Widget>
 	<Widget Name="" SkinTempName="ImagicEmpty">
@@ -77,7 +77,7 @@
 	<Widget Name="Home_RoomNum6" SkinTempName="TxtEmpty">
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="FontSize" Value="40"/>
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="Pos" Value="848.84 505.05"/>
 	</Widget>
 	

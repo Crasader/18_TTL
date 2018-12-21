@@ -44,7 +44,7 @@
 	</Widget>
 
 	<Widget Name="Txt_CreateRoom_DiFen1" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="1/2"/>
 		<Property Key="Pos" Value="525 582"/>
@@ -62,7 +62,7 @@
 	</Widget>
 
 	<Widget Name="Txt_CreateRoom_DiFen2" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="2/4"/>
 		<Property Key="Pos" Value="725 582"/>
@@ -80,7 +80,7 @@
 	</Widget>
 
 	<Widget Name="Txt_CreateRoom_DiFen3" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="4/8"/>
 		<Property Key="Pos" Value="925 582"/>
@@ -98,7 +98,7 @@
 	</Widget>
 
 	<Widget Name="Txt_CreateRoom_DiFen4" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="5/10"/>
 		<Property Key="Pos" Value="1125 582"/>
@@ -124,7 +124,7 @@
 	</Widget>
 
 	<Widget Name="NN_CreateRoom_RoundCount1" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="10局"/>
 		<Property Key="Pos" Value="525 522"/>
@@ -142,7 +142,7 @@
 	</Widget>
 
 	<Widget Name="NN_CreateRoom_RoundCount2" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="20局"/>
 		<Property Key="Pos" Value="725 522"/>
@@ -160,7 +160,7 @@
 	</Widget>
 
 	<Widget Name="NN_CreateRoom_RoundCount3" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="30局"/>
 		<Property Key="Pos" Value="925 522"/>
@@ -186,7 +186,7 @@
 	</Widget>
 
 	<Widget Name="Txt_QiangZhuang1" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="1倍"/>
 		<Property Key="Pos" Value="525 398"/>
@@ -204,7 +204,7 @@
 	</Widget>
 
 	<Widget Name="Txt_QiangZhuang2" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="2倍"/>
 		<Property Key="Pos" Value="725 398"/>
@@ -222,7 +222,7 @@
 	</Widget>
 
 	<Widget Name="Txt_QiangZhuang3" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="3倍"/>
 		<Property Key="Pos" Value="925 398"/>
@@ -240,7 +240,7 @@
 	</Widget>
 
 	<Widget Name="Txt_QiangZhuang4" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="4倍"/>
 		<Property Key="Pos" Value="1125 398"/>
@@ -266,7 +266,7 @@
 	</Widget>
 
 	<Widget Name="Txt_SixRound" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="六人房"/>
 		<Property Key="Pos" Value="525 336"/>
@@ -284,7 +284,7 @@
 	</Widget>
 
 	<Widget Name="Txt_EightRound" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="八人房"/>
 		<Property Key="Pos" Value="725 336"/>
@@ -310,7 +310,7 @@
 	</Widget>
 
 	<Widget Name="Txt_ShunZi" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="顺子牛(5倍)"/>
 		<Property Key="Pos" Value="525 274"/>
@@ -328,7 +328,7 @@
 	</Widget>
 
 	<Widget Name="Txt_TongHua" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="同花牛(5倍)"/>
 		<Property Key="Pos" Value="775 274"/>
@@ -346,7 +346,7 @@
 	</Widget>
 
 	<Widget Name="Txt_WuHua" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="五花牛(5倍)"/>
 		<Property Key="Pos" Value="1025 274"/>
@@ -364,7 +364,7 @@
 	</Widget>
 
 	<Widget Name="Txt_HuLu" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="葫芦牛(6倍)"/>
 		<Property Key="Pos" Value="525 215"/>
@@ -382,7 +382,7 @@
 	</Widget>
 
 	<Widget Name="Txt_ZhaDan" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="炸弹牛(6倍)"/>
 		<Property Key="Pos" Value="775 212"/>
@@ -400,7 +400,7 @@
 	</Widget>
 
 	<Widget Name="Txt_WuXiao" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="五小牛(8倍)"/>
 		<Property Key="Pos" Value="1025 212"/>
@@ -470,7 +470,7 @@
 	</Widget>
 	<!-- 翻倍规则0 -->
 	<Widget Name="Txt_FanBei0_1" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="24"/>
 		<Property Key="ShowTxt" Value="牛牛×4 牛九×3 牛八×2 牛七×2"/>
 		<Property Key="Pos" Value="712 464"/>
@@ -478,7 +478,7 @@
 		<Property Key="Color" Value="156 94 53"/>
 	</Widget>
 	<Widget Name="Txt_FanBei0_2" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="24"/>
 		<Property Key="ShowTxt" Value="牛牛×3 牛九×3 牛八×2"/>
 		<Property Key="Pos" Value="712 464"/>
@@ -487,7 +487,7 @@
 	</Widget>
 	<!-- 翻倍规则1 -->
 	<Widget Name="Txt_FanBei1" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="24"/>
 		<Property Key="ShowTxt" Value="牛牛×4 牛九×3 牛八×2 牛七×2"/>
 		<Property Key="Pos" Value="712 417.8"/>
@@ -497,7 +497,7 @@
 	</Widget>
 	<!-- 翻倍规则2 -->
 	<Widget Name="Txt_FanBei2" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="24"/>
 		<Property Key="ShowTxt" Value="牛牛×3 牛九×3 牛八×2"/>
 		<Property Key="Pos" Value="712 371.6"/>
@@ -508,7 +508,7 @@
 
 	<!-- 备注文字 -->
 	<!-- <Widget Name="Txt_Note" SkinTempName="TxtEmpty"> -->
-		<!-- <Property Key="FontName" Value="public/text.ttf"/> -->
+		<!-- <Property Key="FontName" Value="Font/true_type.ttf"/> -->
 		<!-- <Property Key="FontSize" Value="24"/> -->
 		<!-- <Property Key="ShowTxt" Value="备注:首局结算前解散不扣除房卡"/> -->
 		<!-- <Property Key="Pos" Value="680 125"/> -->

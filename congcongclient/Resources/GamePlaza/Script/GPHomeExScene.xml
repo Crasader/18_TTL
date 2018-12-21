@@ -18,7 +18,7 @@
 	<Widget Name="HomeEx_NickName" SkinTempName="TxtEmpty">
 		<Property Key="AnchorPos" Value="0 0.5"/>
 		<Property Key="FontSize" Value="24"/>
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="Color" Value="255 255 255"/>
 		<Property Key="ShowTxt" Value="123456"/>
 		<Property Key="Pos" Value="170 670"/>
@@ -27,7 +27,7 @@
 	<Widget Name="" SkinTempName="TxtEmpty">
 		<Property Key="AnchorPos" Value="1 0.5"/>
 		<Property Key="FontSize" Value="24"/>
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="ShowTxt" Value="ID:"/>
 		<Property Key="Color" Value="255 255 255"/>
 		<Property Key="Pos" Value="205 640"/>
@@ -35,7 +35,7 @@
 	<Widget Name="HomeEx_UserID" SkinTempName="TxtEmpty">
 		<Property Key="AnchorPos" Value="0 0.5"/>
 		<Property Key="FontSize" Value="24"/>
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="Color" Value="255 255 255"/>
 		<Property Key="Pos" Value="210 640"/>
 	</Widget>
@@ -96,7 +96,7 @@
 	<Widget Name="HomeEx_GoldCount" SkinTempName="TxtEmpty">
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="FontSize" Value="25"/>
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="Color" Value="255 255 255"/>
 		<Property Key="Pos" Value="460 690"/>
 	</Widget>
@@ -113,7 +113,7 @@
 	<Widget Name="HomeEx_DiamondCount" SkinTempName="TxtEmpty">
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="FontSize" Value="25"/>
-		<Property Key="FontName" Value="public/text.ttf"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="Color" Value="255 255 255"/>
 		<Property Key="Pos" Value="460 645"/>
 	</Widget>

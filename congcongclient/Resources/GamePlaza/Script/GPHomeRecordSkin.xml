@@ -14,102 +14,102 @@
 			<Property Key="Pos" Value="0 20"/>
 		</WidgetButton>
 
-		<WidgetTxt Name="Txt_GameType" ShowTxt="" FontName="public/text.ttf" FontSize="22">
+		<WidgetTxt Name="Txt_GameType" ShowTxt="" FontName="Font/true_type.ttf" FontSize="22">
 			<Property Key="Pos" Value="80 152"/>
 			<Property Key="AnchorPos" Value="0.5 0.5"/>
 			<Property Key="Color" Value="255 255 255"/>
 		</WidgetTxt>
 
-		<!--<WidgetTxt Name="" ShowTxt="时间：" FontName="public/text.ttf" FontSize="22">
+		<!--<WidgetTxt Name="" ShowTxt="时间：" FontName="Font/true_type.ttf" FontSize="22">
 			<Property Key="AnchorPos" Value="0 0.5"/>
 			<Property Key="Pos" Value="30 56"/>
 			<Property Key="Color" Value="255 255 255"/>
 		</WidgetTxt>-->
     
-		<WidgetTxt Name="ChallengeTime" ShowTxt="对战时间" FontName="public/text.ttf" FontSize="22">
-			<Property Key="AnchorPos" Value="0 0.5"/>
-			<Property Key="Pos" Value="100 56"/>
-			<Property Key="Color" Value="255 255 255"/>
-		</WidgetTxt>
+		<!-- <WidgetTxt Name="ChallengeTime" ShowTxt="对战时间" FontName="Font/true_type.ttf" FontSize="22"> -->
+			<!-- <Property Key="AnchorPos" Value="0 0.5"/> -->
+			<!-- <Property Key="Pos" Value="100 56"/> -->
+			<!-- <Property Key="Color" Value="255 255 255"/> -->
+		<!-- </WidgetTxt> -->
 
-		<WidgetTxt Name="" ShowTxt="房间号：" FontName="public/text.ttf" FontSize="22">
+		<WidgetTxt Name="" ShowTxt="房间号：" FontName="Font/true_type.ttf" FontSize="22">
 			<Property Key="Pos" Value="30 107"/>
 			<Property Key="AnchorPos" Value="0 0.5"/>
 			<Property Key="Color" Value="255 255 255"/>
 		</WidgetTxt>
 
-		<WidgetTxt Name="RoomNum" ShowTxt="" FontName="public/text.ttf" FontSize="22">
+		<WidgetTxt Name="RoomNum" ShowTxt="" FontName="Font/true_type.ttf" FontSize="22">
 			<Property Key="Pos" Value="120 107"/>
 			<Property Key="AnchorPos" Value="0 0.5"/>
 			<Property Key="Color" Value="255 255 255"/>
 		</WidgetTxt>
-		<WidgetTxt Name="PlayerTxt0" ShowTxt="" FontName="public/text.ttf" FontSize="20">
+		<WidgetTxt Name="PlayerTxt0" ShowTxt="" FontName="Font/true_type.ttf" FontSize="20">
 			<Property Key="Pos" Value="260 126"/>
 			<Property Key="AnchorPos" Value="0 0.5"/>
 			<Property Key="Color" Value="255 255 255"/>
 			<Property Key="Dimensions" Value="132 20"/>	
 		</WidgetTxt>
-		<WidgetTxt Name="PlayerTxt1" ShowTxt="" FontName="public/text.ttf" FontSize="20">
+		<WidgetTxt Name="PlayerTxt1" ShowTxt="" FontName="Font/true_type.ttf" FontSize="20">
 			<Property Key="Pos" Value="432 126"/>
 			<Property Key="AnchorPos" Value="0 0.5"/>
 			<Property Key="Color" Value="255 255 255"/>
 			<Property Key="Dimensions" Value="132 20"/>	
 		</WidgetTxt>
-		<WidgetTxt Name="PlayerTxt2" ShowTxt="" FontName="public/text.ttf" FontSize="20">
+		<WidgetTxt Name="PlayerTxt2" ShowTxt="" FontName="Font/true_type.ttf" FontSize="20">
 			<Property Key="Pos" Value="260 70"/>
 			<Property Key="AnchorPos" Value="0 0.5"/>
 			<Property Key="Color" Value="255 255 255"/>
 			<Property Key="Dimensions" Value="132 20"/>	
 		</WidgetTxt>
-		<WidgetTxt Name="PlayerTxt3" ShowTxt="" FontName="public/text.ttf" FontSize="20">
+		<WidgetTxt Name="PlayerTxt3" ShowTxt="" FontName="Font/true_type.ttf" FontSize="20">
 			<Property Key="Pos" Value="432 70"/>
 			<Property Key="AnchorPos" Value="0 0.5"/>
 			<Property Key="Color" Value="255 255 255"/>
 			<Property Key="Dimensions" Value="132 20"/>	
 		</WidgetTxt>
 
-		<WidgetTxt Name="PlayerTxt4" ShowTxt="" FontName="public/text.ttf" FontSize="20">
+		<WidgetTxt Name="PlayerTxt4" ShowTxt="" FontName="Font/true_type.ttf" FontSize="20">
 			<Property Key="Pos" Value="604 126"/>
 			<Property Key="AnchorPos" Value="0 0.5"/>
 			<Property Key="Color" Value="255 255 255"/>
 			<Property Key="Dimensions" Value="132 20"/>	
 		</WidgetTxt>
 
-		<WidgetTxt Name="PlayerTxt5" ShowTxt="" FontName="public/text.ttf" FontSize="20">
+		<WidgetTxt Name="PlayerTxt5" ShowTxt="" FontName="Font/true_type.ttf" FontSize="20">
 			<Property Key="Pos" Value="604 70"/>
 			<Property Key="AnchorPos" Value="0 0.5"/>
 			<Property Key="Color" Value="255 255 255"/>
 			<Property Key="Dimensions" Value="132 20"/>	
 		</WidgetTxt>
 		
-		<WidgetTxt Name="PlayerScore0" ShowTxt="" FontName="public/text.ttf" FontSize="20">
+		<WidgetTxt Name="PlayerScore0" ShowTxt="" FontName="Font/true_type.ttf" FontSize="20">
 			<Property Key="Pos" Value="260 100"/>
 			<Property Key="AnchorPos" Value="0 0.5"/>
 			<Property Key="Color" Value="255 255 255"/>
 		</WidgetTxt>
-		<WidgetTxt Name="PlayerScore1" ShowTxt="" FontName="public/text.ttf" FontSize="20">
+		<WidgetTxt Name="PlayerScore1" ShowTxt="" FontName="Font/true_type.ttf" FontSize="20">
 			<Property Key="Pos" Value="432 100"/>
 			<Property Key="AnchorPos" Value="0 0.5"/>
 			<Property Key="Color" Value="255 255 255"/>
 		</WidgetTxt>
-		<WidgetTxt Name="PlayerScore2" ShowTxt="" FontName="public/text.ttf" FontSize="20">
+		<WidgetTxt Name="PlayerScore2" ShowTxt="" FontName="Font/true_type.ttf" FontSize="20">
 			<Property Key="Pos" Value="260 43"/>
 			<Property Key="AnchorPos" Value="0 0.5"/>
 			<Property Key="Color" Value="255 255 255"/>
 		</WidgetTxt>
-		<WidgetTxt Name="PlayerScore3" ShowTxt="" FontName="public/text.ttf" FontSize="20">
+		<WidgetTxt Name="PlayerScore3" ShowTxt="" FontName="Font/true_type.ttf" FontSize="20">
 			<Property Key="Pos" Value="432 43"/>
 			<Property Key="AnchorPos" Value="0 0.5"/>
 			<Property Key="Color" Value="255 255 255"/>
 		</WidgetTxt>
 
-		<WidgetTxt Name="PlayerScore4" ShowTxt="" FontName="public/text.ttf" FontSize="20">
+		<WidgetTxt Name="PlayerScore4" ShowTxt="" FontName="Font/true_type.ttf" FontSize="20">
 			<Property Key="Pos" Value="604 100"/>
 			<Property Key="AnchorPos" Value="0 0.5"/>
 			<Property Key="Color" Value="255 255 255"/>
 		</WidgetTxt>
 
-		<WidgetTxt Name="PlayerScore5" ShowTxt="" FontName="public/text.ttf" FontSize="20">
+		<WidgetTxt Name="PlayerScore5" ShowTxt="" FontName="Font/true_type.ttf" FontSize="20">
 			<Property Key="Pos" Value="604 43"/>
 			<Property Key="AnchorPos" Value="0 0.5"/>
 			<Property Key="Color" Value="255 255 255"/>
@@ -124,28 +124,28 @@
 		    <Property Key="Scale" Value="0.9"/>
 			<Property Key="Pos" Value="590 60"/>
 		</Widget9Sprite>
-		<WidgetTxt Name="IdexTxt" ShowTxt="0" FontName="public/text.ttf" FontSize="26">
+		<WidgetTxt Name="IdexTxt" ShowTxt="0" FontName="Font/true_type.ttf" FontSize="26">
 			<Property Key="Pos" Value="110 60"/>
 			<Property Key="Color" Value="51 23 16"/>
 		</WidgetTxt>
-		<WidgetTxt Name="PlayTime" ShowTxt="2988:10:10" FontName="public/text.ttf" FontSize="26">
+		<WidgetTxt Name="PlayTime" ShowTxt="2988:10:10" FontName="Font/true_type.ttf" FontSize="26">
 			<Property Key="Pos" Value="178 60"/>
 			<Property Key="AnchorPos" Value="0 0.5"/>
 			<Property Key="Color" Value="51 23 16"/>
 		</WidgetTxt>
-		<WidgetTxt Name="PlayerTxt0" ShowTxt="1" FontName="public/text.ttf" FontSize="26">
+		<WidgetTxt Name="PlayerTxt0" ShowTxt="1" FontName="Font/true_type.ttf" FontSize="26">
 			<Property Key="Pos" Value="430 60"/>
 			<Property Key="Color" Value="51 23 16"/>
 		</WidgetTxt>
-		<WidgetTxt Name="PlayerTxt1" ShowTxt="1" FontName="public/text.ttf" FontSize="26">
+		<WidgetTxt Name="PlayerTxt1" ShowTxt="1" FontName="Font/true_type.ttf" FontSize="26">
 			<Property Key="Pos" Value="590 60"/>
 			<Property Key="Color" Value="51 23 16"/>
 		</WidgetTxt>
-		<WidgetTxt Name="PlayerTxt2" ShowTxt="1" FontName="public/text.ttf" FontSize="26">
+		<WidgetTxt Name="PlayerTxt2" ShowTxt="1" FontName="Font/true_type.ttf" FontSize="26">
 			<Property Key="Pos" Value="760 60"/>
 			<Property Key="Color" Value="51 23 16"/>
 		</WidgetTxt>
-		<WidgetTxt Name="PlayerTxt3" ShowTxt="1" FontName="public/text.ttf" FontSize="26">
+		<WidgetTxt Name="PlayerTxt3" ShowTxt="1" FontName="Font/true_type.ttf" FontSize="26">
 			<Property Key="Pos" Value="910 60"/>
 			<Property Key="Color" Value="51 23 16"/>
 		</WidgetTxt>

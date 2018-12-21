@@ -82,7 +82,7 @@ void GPHomeRecordPanel::onGPBackGameRecordList(tagPrivateRandTotalRecordList* pN
 		tagPrivateRandTotalRecord& kInfo = pNetInfo->kList[i];
 		cocos2d::Node* pItemNode = WidgetManager::Instance().createWidget("GameReocrdListItem", pList);
 		WidgetFun::setWidgetUserInfo(pItemNode, "Button_ShowTotal", "RecordID", utility::toString(kInfo.iRecordID));
-		WidgetFun::setText(pItemNode, "ChallengeTime", timeToString(kInfo.kPlayTime));
+		//WidgetFun::setText(pItemNode, "ChallengeTime", timeToString(kInfo.kPlayTime));
 		WidgetFun::setText(pItemNode, "RoomNum", utility::toString(kInfo.iRoomNum));
 		if (kInfo.kNickName.size() != kInfo.kScore.size()) {
 			continue;
@@ -156,7 +156,6 @@ void GPHomeRecordPanel::initView()
 		cocos2d::Node* pItemNode = WidgetManager::Instance().createWidget("GameReocrdListItem", pList);
 		pItemNode->setPositionX(100);
 		WidgetFun::setText(pItemNode, "Txt_GameType", ScriptData<std::string>("CCWeiXinShare_Server_Name").Value());
-		WidgetFun::setVisible(this, "ChallengeTime", false);
 		//WidgetFun::setText(pItemNode, "ChallengeTime", timeToString(kInfo.kPlayTime));
 		WidgetFun::setText(pItemNode, "RoomNum", utility::toString(kInfo.dwTableID));
 
