@@ -47,7 +47,7 @@
 			<Property Key="AnchorPos" Value="0.5 0.5"/>
 			<Property Key="Pos" Value="239 685"/>
 		</Widget>
-		
+
 		<!--名字-->
 		<Widget Name="Txt_UserName" SkinTempName="TxtEmpty">
 			<Property Key="AnchorPos" Value="0.5 0.5"/>
@@ -57,14 +57,14 @@
 			<Property Key="Color" Value="255 255 255"/>
 			<Property Key="Pos" Value="310 685"/>
 		</Widget>
-		
+
 		<!--ID-->
 		<Widget Name="Img_UserID" SkinTempName="ImagicEmpty">
 			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/ID.png"/>
 			<Property Key="AnchorPos" Value="0.5 0.5"/>
 			<Property Key="Pos" Value="239 635"/>
 		</Widget>
-		
+
 		<Widget Name="Txt_UserID" SkinTempName="TxtEmpty">
 			<Property Key="AnchorPos" Value="0.5 0.5"/>
 			<Property Key="FontSize" Value="30"/>
@@ -119,7 +119,7 @@
 			<Property Key="PressTexture" Value="AutoPress"/>
 			<Property Key="Pos" Value="935 669"/>
 		</Widget>
-		
+
 		<!--微信分享-->
 		<Widget Name="Button_Share" SkinTempName="ButtonEmpty">
 			<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Btn_Share.png"/>
@@ -135,17 +135,17 @@
 			<Property Key="AnchorPos" Value="0.5 0.5"/>			
 			<Property Key="Pos" Value="1159 669"/>
 		</Widget>
-		
+
 		<Widget Name="Button_CreateGame" SkinTempName="ButtonEmpty">
 			<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Btn_CreateGame.png"/>
 			<Property Key="PressTexture" Value="AutoPress"/>
-			<Property Key="Pos" Value="1010 400"/>
+			<Property Key="Pos" Value="1010 350"/>
 		</Widget>
 
 		<Widget Name="Button_JoinGame" SkinTempName="ButtonEmpty">
 			<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Btn_JoinGame.png"/>
 			<Property Key="PressTexture" Value="AutoPress"/>
-			<Property Key="Pos" Value="1010 200"/>
+			<Property Key="Pos" Value="1010 150"/>
 		</Widget>
 		
 		<!--房间列表-->

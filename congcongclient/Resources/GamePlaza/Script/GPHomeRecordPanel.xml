@@ -16,7 +16,7 @@
 	<Widget Name="Button_Close" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Button_Close.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="1170 610"/>
+		<Property Key="Pos" Value="1100 570"/>
 	</Widget>
 
 	<Widget Name="RecordList0" SkinTempName="List">
