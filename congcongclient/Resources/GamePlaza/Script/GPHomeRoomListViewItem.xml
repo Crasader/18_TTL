@@ -21,7 +21,7 @@
 			<Property Key="Pos" Value="262 10"/>
 			<Property Key="Color" Value="108 61 9"/>
 		</WidgetTxt>
-		<WidgetTxt Name="Txt_PlayerCount" ShowTxt="2/8人" FontName="Font/true_type.ttf" FontSize="24">
+		<WidgetTxt Name="Txt_PlayerCount" SkinTempName="TxtEmpty" ShowTxt="2/8人" FontName="Font/mini_kaiti.ttf" FontSize="24">
 			<Property Key="AnchorPos" Value="0 0"/>
 			<Property Key="Pos" Value="370 10"/>
 			<Property Key="Color" Value="108 61 9"/>

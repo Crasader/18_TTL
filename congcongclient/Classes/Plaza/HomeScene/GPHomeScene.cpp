@@ -145,7 +145,6 @@ void GPHomeScene::showGameRoomList(void* data, size_t dataSize)
 			WidgetFun::setWidgetUserInfo(pItemNode, "Btn_Invitation1", "RoomID", strRoomNo);
 		}
 
-		WidgetFun::setWidgetUserInfo(pItemNode, "Btn_Invitation0", "RoomID", strRoomNo);
 		WidgetFun::setWidgetUserInfo(pItemNode, "Btn_RoomList_Join", "RoomID", strRoomNo);
 
 		WidgetFun::setVisible(pItemNode, "GameRoomInfoListViewItem", true);

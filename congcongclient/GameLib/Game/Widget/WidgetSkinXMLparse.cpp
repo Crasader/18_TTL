@@ -473,7 +473,6 @@ void WidgetSkinXMLparse::parseSkin(std::string& elementName,std::map<std::string
 
 		pTempWidgetInfo = pClipper;
 	}
-	
 	else if (elementName=="WidgetSkinChild")
 	{
 		std::string kSkinTempName = utility::valueForKey("SkinTempName",attributeDict);
@@ -520,7 +519,6 @@ void WidgetSkinXMLparse::parseSkin(std::string& elementName,std::map<std::string
 		}
 		m_pWidgetInfos.push_back(pTempWidgetInfo);
 	}
-
 }
 void WidgetSkinXMLparse::startElement(void *ctx, const char *name, const char **atts)
 {

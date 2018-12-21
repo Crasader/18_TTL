@@ -37,7 +37,7 @@ void SGRoomInfo::initLayout()
 
 void SGRoomInfo::initData()
 {
-    m_LabelConfig.fontFilePath = "Font/TTLNN.TTF";
+    m_LabelConfig.fontFilePath = "Font/mini_kaiti.ttf";
     m_LabelConfig.fontSize = 20;
     m_LabelConfig.glyphs = GlyphCollection::DYNAMIC;
     m_LabelConfig.customGlyphs = nullptr;
