@@ -51,13 +51,6 @@ CTableFrameSink::CTableFrameSink()
     ZeroMemory(m_GameCards, MAX_CARD_COUNT);
 	ZeroMemory(m_PlayerSingleResultRecord, sizeof(m_PlayerSingleResultRecord));
 	ZeroMemory(_calculate_total, sizeof(_calculate_total));
-	_dwCurrentPlayRound = 0;
-
-	_pMasterUser = nullptr;
-	_MasterChairID = 0;
-	_MasterUserID = 0;
-	_pCreateUser = nullptr;
-    _dwCreateUserID = 0;
 
 	g_TuiZhuRatio[0] = TuiZhuBeiShu_0;
 	g_TuiZhuRatio[1] = TuiZhuBeiShu_1;
@@ -66,6 +59,7 @@ CTableFrameSink::CTableFrameSink()
 
     //游戏变量
     RepositionSink();
+	RepositionSinkGloabals();
 
     //wcb
 #if defined TEST_CONSOLE
@@ -130,6 +124,16 @@ VOID CTableFrameSink::RepositionSink() {
 	_wCurTuiZhuRatio = 0;
 
     return;
+}
+
+void CTableFrameSink::RepositionSinkGloabals()
+{
+	_dwCurrentPlayRound = 0;
+	_pMasterUser = nullptr;
+	_MasterChairID = 0;
+	_MasterUserID = 0;
+	_pCreateUser = nullptr;
+	_dwCreateUserID = 0;
 }
 
 //游戏开始
@@ -914,6 +918,7 @@ bool CTableFrameSink::OnEventGameConclude(WORD wChairID, IServerUserItem* pIServ
 
 			_dwCurrentPlayRound++;
 			if (_dwCurrentPlayRound >= _dwTotalPlayRound) {
+				RepositionSinkGloabals();
 				calculateTotal();
 			}
 
@@ -1270,7 +1275,7 @@ bool CTableFrameSink::OnGameMessage(WORD wSubCmdID, VOID* pDataBuffer, WORD wDat
 
                 if (canStartGame && playerCount >= 2) {
                     m_GameStatus = NNGameStatus_Start;
-                    m_pITableFrame->StartGame();
+                    m_pITableFrame->StartGame(_dwCurrentPlayRound==0);
                 }
 
                 return true;

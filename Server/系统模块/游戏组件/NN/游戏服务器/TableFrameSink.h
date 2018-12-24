@@ -169,8 +169,9 @@ public:
     //初始化
     virtual bool Initialization(IUnknownEx * pIUnknownEx);
     //复位桌子
-    virtual VOID RepositionSink();
-
+    virtual VOID RepositionSink() override;
+	//复位
+	virtual void RepositionSinkGloabals() override;
     //查询接口
 public:
     //查询限额
