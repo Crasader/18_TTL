@@ -3355,7 +3355,9 @@ bool CDataBaseEngineSink::OnRequestGameRecordList(DWORD dwContextID, VOID * pDat
 		//构造参数
 		m_TreasureDBAide.ResetParameter();
 
-		m_TreasureDBAide.AddParameter(TEXT("@dwUserID"),pNetInfo->dwUserID);
+		m_TreasureDBAide.AddParameter(TEXT("@dwUserID"), pNetInfo->dwUserID);
+		m_TreasureDBAide.AddParameter(TEXT("@DrawID"), pNetInfo->dwDrawID);
+		m_TreasureDBAide.AddParameter(TEXT("@UpOrDown"), pNetInfo->bUpOrDown);
 
 		//执行命令
 		LONG lResultCode = m_TreasureDBAide.ExecuteProcess(TEXT("GSP_GP_GameRecord_List_RecordID"),true);
@@ -3413,10 +3415,11 @@ bool CDataBaseEngineSink::OnRequestGameRecordListEx(DWORD dwContextID, VOID * pD
 	{
 		//请求处理
 		DBR_GP_GameRecordList * pNetInfo = (DBR_GP_GameRecordList *)pData;
-
 		//构造参数
 		m_TreasureDBAide.ResetParameter();
 		m_TreasureDBAide.AddParameter(TEXT("@dwUserID"), pNetInfo->dwUserID);
+		m_TreasureDBAide.AddParameter(TEXT("@DrawID"), pNetInfo->dwDrawID);
+		m_TreasureDBAide.AddParameter(TEXT("@UpOrDown"), pNetInfo->bUpOrDown);
 
 		//执行命令
 		LONG lResultCode = m_TreasureDBAide.ExecuteProcess(TEXT("GSP_GP_GetPlayerRecordToTalList"), true);
@@ -3427,21 +3430,29 @@ bool CDataBaseEngineSink::OnRequestGameRecordListEx(DWORD dwContextID, VOID * pD
 			tagGameRecordListEx kGameRecordList;
 			kGameRecordList.dwUserID = pNetInfo->dwUserID;
 
-			int tempGameSign = -1;
 			tagGameRecordListItem item;
 			datastream kDataStream;
 
 			while (m_TreasureDBModule->IsRecordsetEnd() == false) {
 				item.dwKindID = m_TreasureDBAide.GetValue_DWORD(TEXT("KindID"));
+				item.wServerID = m_TreasureDBAide.GetValue_WORD(TEXT("ServerID"));
 				item.dwTableID = m_TreasureDBAide.GetValue_DWORD(TEXT("TableID"));
-				item.dwUserID = m_TreasureDBAide.GetValue_DWORD(TEXT("UserID"));
-
+				item.dwStartTime = m_TreasureDBAide.GetValue_DWORD(TEXT("StartTime"));
+				item.dwBaseScore = m_TreasureDBAide.GetValue_DWORD(TEXT("BaseScore"));
+				item.dwRulesBytes = m_TreasureDBAide.GetValue_DWORD(TEXT("RulesBytes"));
+				item.dwUserID = m_TreasureDBAide.GetValue_WORD(TEXT("UserID"));
+				item.dwMinDrawID = m_TreasureDBAide.GetValue_WORD(TEXT("MinDrawID"));
+				item.dwMaxDrawID = m_TreasureDBAide.GetValue_WORD(TEXT("MaxDrawID"));
+				item.llScore = m_TreasureDBAide.GetValue_LONGLONG(TEXT("Score"));
 				//登录帐号
 				TCHAR szNickName[LEN_NICKNAME] = { 0 };
 				m_TreasureDBAide.GetValue_String(TEXT("NickName"), szNickName, CountArray(szNickName));
 				item.kNickName = szNickName;
+				//登录帐号
+				TCHAR szHeadHttp[LEN_USER_NOTE] = { 0 };
+				m_TreasureDBAide.GetValue_String(TEXT("HeadHttp"), szHeadHttp, CountArray(szHeadHttp));
+				item.strHeadHttp = szHeadHttp;
 
-				item.llScore = m_TreasureDBAide.GetValue_LONGLONG(TEXT("Score"));
 				m_TreasureDBModule->MoveToNext();
 				kGameRecordList.kList.push_back(item);
 			}

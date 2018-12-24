@@ -765,6 +765,7 @@ bool CDataBaseEngineSink::OnRequestGameScoreRecord(DWORD dwContextID, VOID * pDa
 
 		DBR_GR_GameScoreRecord kNetInfo;
 		kNetInfo.StreamValue(kDataStream,false);
+
 		//变量定义
 		DBR_GR_GameScoreRecord * pGameScoreRecord=&kNetInfo;
 		dwUserID=INVALID_DWORD;
@@ -776,6 +777,8 @@ bool CDataBaseEngineSink::OnRequestGameScoreRecord(DWORD dwContextID, VOID * pDa
 
 		//桌子信息
 		m_GameDBAide.AddParameter(TEXT("@wTableID"),pGameScoreRecord->wTableID);
+		m_GameDBAide.AddParameter(TEXT("@dwRulesBytes"), pGameScoreRecord->dwRulesBytes);
+		m_GameDBAide.AddParameter(TEXT("@dwBaseScore"), pGameScoreRecord->dwBaseScore);
 		m_GameDBAide.AddParameter(TEXT("@wUserCount"),pGameScoreRecord->wUserCount);
 		m_GameDBAide.AddParameter(TEXT("@wAndroidCount"),pGameScoreRecord->wAndroidCount);
 
@@ -790,13 +793,15 @@ bool CDataBaseEngineSink::OnRequestGameScoreRecord(DWORD dwContextID, VOID * pDa
 		//时间信息
 		m_GameDBAide.AddParameter(TEXT("@SystemTimeStart"),pGameScoreRecord->SystemTimeStart);
 		m_GameDBAide.AddParameter(TEXT("@SystemTimeConclude"),pGameScoreRecord->SystemTimeConclude);
+		m_GameDBAide.AddParameter(TEXT("@InsertTime"), static_cast<DWORD>(time(nullptr)));
 
 		if (pGameScoreRecord->dataGameDefine.size() == 0)
 		{
 			pGameScoreRecord->dataGameDefine.pushValue((BYTE)0);
 		}
 
-		m_GameDBAide.AddParameter(TEXT("@dataUserDefine"),(BYTE*)&pGameScoreRecord->dataGameDefine[0],
+		m_GameDBAide.AddParameter(TEXT("@dataUserDefine"),
+			(BYTE*)&pGameScoreRecord->dataGameDefine[0],
 			(ULONG)pGameScoreRecord->dataGameDefine.size());
 
 		//执行查询
@@ -813,7 +818,7 @@ bool CDataBaseEngineSink::OnRequestGameScoreRecord(DWORD dwContextID, VOID * pDa
 			{
 				//重置参数
 				m_GameDBAide.ResetParameter();
-				
+
 				//房间信息
 				m_GameDBAide.AddParameter(TEXT("@dwDrawID"),dwDrawID);
 				m_GameDBAide.AddParameter(TEXT("@dwTableID"),dwTableID);
@@ -830,6 +835,8 @@ bool CDataBaseEngineSink::OnRequestGameScoreRecord(DWORD dwContextID, VOID * pDa
 				m_GameDBAide.AddParameter(TEXT("@lRevenue"),pGameScoreRecord->GameScoreRecord[i].lRevenue);
 				m_GameDBAide.AddParameter(TEXT("@dwUserMedal"),pGameScoreRecord->GameScoreRecord[i].dwUserMemal);
 				m_GameDBAide.AddParameter(TEXT("@dwPlayTimeCount"),pGameScoreRecord->GameScoreRecord[i].dwPlayTimeCount);
+				m_GameDBAide.AddParameter(TEXT("@InsertTime"), static_cast<DWORD>(time(nullptr)));
+				m_GameDBAide.AddParameter(TEXT("@StartTime"), pGameScoreRecord->SystemTimeStart);
 
 				//执行查询
 				m_GameDBAide.ExecuteProcess(TEXT("GSP_GR_RecordDrawScore"),false);

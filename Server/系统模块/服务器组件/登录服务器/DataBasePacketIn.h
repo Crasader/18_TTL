@@ -515,16 +515,19 @@ struct DBR_GP_MatchUnSignup
 	TCHAR							szMachineID[LEN_MACHINE_ID];		//机器序列
 };
 
-
 //游戏记录
 struct DBR_GP_GameRecordList
 {
-	DWORD							dwUserID;							
+	DWORD dwUserID;	
+	DWORD dwDrawID;
+	BYTE bUpOrDown;
 };
 
 struct DBR_GP_GameRecordListEx
 {
-	DWORD							dwUserID;
+	DWORD dwUserID;
+	DWORD dwDrawID;
+	BYTE bUpOrDown;
 };
 
 //游戏回放

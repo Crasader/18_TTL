@@ -203,40 +203,43 @@ struct DBR_GR_GameScoreRecord
 		wRecordCount = 0;
 	}
 	//桌子信息
-	DWORD							wTableID;							//桌子号码
-	WORD							wUserCount;							//用户数目
-	WORD							wAndroidCount;						//机器数目
+	DWORD wTableID;//桌子号码
+	WORD wUserCount;//用户数目
+	WORD wAndroidCount;//机器数目
+	DWORD dwPrivateID;//私人房标识
+	DWORD dwRulesBytes;//规则标识
+	DWORD dwBaseScore;//底分
 
-	DWORD							dwPrivateID;						//私人房标识
-	
 	//损耗税收
-	SCORE							lWasteCount;						//损耗数目
-	SCORE							lRevenueCount;						//税收数目
+	SCORE lWasteCount;//损耗数目
+	SCORE lRevenueCount;	//税收数目
 
 	//统计信息
-	DWORD							dwUserMemal;						//奖牌数目
-	DWORD							dwPlayTimeCount;					//游戏时间
+	DWORD dwUserMemal;//奖牌数目
+	DWORD dwPlayTimeCount;//游戏时间
 
 	//时间信息
-	SYSTEMTIME						SystemTimeStart;					//开始时间
-	SYSTEMTIME						SystemTimeConclude;					//结束时间
+	DWORD SystemTimeStart;//开始时间
+	DWORD SystemTimeConclude;//结束时间
 
 	//积分记录
-	WORD							wRecordCount;						//记录数目
-	datastream						dataGameDefine;
-	std::vector<tagGameScoreRecord>	GameScoreRecord;			//游戏记录
+	WORD wRecordCount;//记录数目
+	datastream dataGameDefine;
+	std::vector<tagGameScoreRecord>	GameScoreRecord;//游戏记录
 	void StreamValue(datastream& kData,bool bSend)
 	{
 		Stream_VALUE(wTableID);
 		Stream_VALUE(wUserCount);
+		Stream_VALUE(dwRulesBytes);//规则标识
+		Stream_VALUE(dwBaseScore);//底分
 		Stream_VALUE(wAndroidCount);
 		Stream_VALUE(dwPrivateID);
 		Stream_VALUE(lWasteCount);
 		Stream_VALUE(lRevenueCount);
 		Stream_VALUE(dwUserMemal);
+		Stream_VALUE(SystemTimeStart);
+		Stream_VALUE(SystemTimeConclude);
 		Stream_DATA(dataGameDefine);
-		Stream_VALUE_SYSTEMTIME(SystemTimeStart);
-		Stream_VALUE_SYSTEMTIME(SystemTimeConclude);
 		StructVecotrMember(tagGameScoreRecord,GameScoreRecord);
 	}
 };
@@ -244,23 +247,23 @@ struct DBR_GR_GameScoreRecord
 //私人场记录
 struct BR_GR_PrivateRandTotalRecord
 {
-	DWORD						dwPrivateID;	//私人房标识
-	int							iRoomNum;
+	DWORD dwPrivateID;	//私人房标识
+	DWORD dwRoomNum;
+	WORD dwPlayTime;
 	std::vector<int>			kUserID;
-	std::vector<std::string>	kNickName;
 	std::vector<int>			kToatlScore;
-	SYSTEMTIME					kPlayTime;
-
+	std::vector<std::string>	kNickName;
 	void StreamValue(datastream& kData,bool bSend)
 	{
 		Stream_VALUE(dwPrivateID);
-		Stream_VALUE(iRoomNum);
+		Stream_VALUE(dwRoomNum);
+		Stream_VALUE(dwPlayTime);
 		Stream_VECTOR(kUserID);
-		Stream_VECTOR(kNickName);
 		Stream_VECTOR(kToatlScore);
-		Stream_VALUE_SYSTEMTIME(kPlayTime);
+		Stream_VECTOR(kNickName);
 	}
 };
+
 //存入游戏币
 struct DBR_GR_UserSaveScore
 {

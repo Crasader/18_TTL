@@ -1125,6 +1125,8 @@ bool CAttemperEngineSink::OnTCPNetworkMainPCUserService(WORD wSubCmdID, VOID * p
 
 			//构造数据
 			kDBInfo.dwUserID = pNetInfo->dwUserID;
+			kDBInfo.dwDrawID = pNetInfo->dwDrawID;
+			kDBInfo.bUpOrDown = pNetInfo->bUpOrDown;
 
 			//投递请求
 			m_pIDataBaseEngine->PostDataBaseRequest(DBR_GP_GAME_RECORD_LIST,dwSocketID,&kDBInfo,sizeof(kDBInfo));
@@ -1144,9 +1146,12 @@ bool CAttemperEngineSink::OnTCPNetworkMainPCUserService(WORD wSubCmdID, VOID * p
 
 		//构造数据
 		kDBInfo.dwUserID = pNetInfo->dwUserID;
+		kDBInfo.dwDrawID = pNetInfo->dwDrawID;
+		kDBInfo.bUpOrDown = pNetInfo->bUpOrDown;
 
 		//投递请求
 		m_pIDataBaseEngine->PostDataBaseRequest(DBR_GP_GAME_RECORD_LIST_EX, dwSocketID, &kDBInfo, sizeof(kDBInfo));
+
 		return true;
 	}
 	case SUB_GP_GAME_RECORD_TOTAL://游戏记录
