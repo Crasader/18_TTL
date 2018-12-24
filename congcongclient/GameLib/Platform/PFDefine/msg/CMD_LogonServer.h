@@ -439,6 +439,7 @@ struct CMD_GR_MatchAwardList
 #define SUB_GP_GAME_RECORD_TOTAL		551		
 #define SUB_GP_GAME_RECORD_CHILD		552	
 #define SUB_GP_GAME_RECORD_LIST_EX			553			
+
 //推荐相关
 #define SUB_GP_POPULARIZE_LIST 560 //获取推荐人列表
 #define SUB_GP_POPULARIZE_BIND 561 //绑定推荐码
@@ -464,9 +465,11 @@ struct CMD_GR_MatchAwardList
 #define  SUB_GP_EXCHANGE_DONE					1002						//兑换
 
 //游戏记录
-struct CMD_GP_GetGameRecordList
+struct CMD_GP_GetGameRecord_List
 {
-	dword							dwUserID;							
+	dword dwUserID;
+	dword dwDrawID;
+	BYTE bUpOrDown;
 };
 
 //商城数据
@@ -640,19 +643,32 @@ struct CMD_GP_PopularizeHttpRes
 
 struct tagGameRecordListItem {
 	dword dwKindID;
+	word wServerID;
 	dword dwTableID;
-	SCORE llScore;
+	dword dwStartTime;
+	dword dwBaseScore;
+	dword dwRulesBytes;
 	dword dwUserID;
+	dword dwMinDrawID;
+	dword dwMaxDrawID;
+	SCORE llScore;
 	std::string	strNickName;
-	systemtime kPlayTime;
+	std::string strHeadHttp;
+
 	void StreamValue(datastream& kData, bool bSend)
 	{
 		Stream_VALUE(dwKindID);
+		Stream_VALUE(wServerID);
 		Stream_VALUE(dwTableID);
+		Stream_VALUE(dwStartTime);
+		Stream_VALUE(dwBaseScore);
+		Stream_VALUE(dwRulesBytes);
 		Stream_VALUE(dwUserID);
-		Stream_VALUE(strNickName);
+		Stream_VALUE(dwMinDrawID);
+		Stream_VALUE(dwMaxDrawID);
 		Stream_VALUE(llScore);
-		Stream_VALUE_SYSTEMTIME(kPlayTime);
+		Stream_VALUE(strNickName);
+		Stream_VALUE(strHeadHttp);
 	}
 };
 

@@ -41,7 +41,11 @@ void GPHomeRecordPanel::hide()
 
 void GPHomeRecordPanel::sendRecordToTalList()
 {
-	m_GameRecordMission.GetGameRecordListEx(UserInfo::Instance().getUserID());
+	CMD_GP_GetGameRecord_List kNetInfo;
+	//TODO:填上请求记录列表信息
+	memset(&kNetInfo, 0, sizeof(kNetInfo));
+	kNetInfo.dwUserID = UserInfo::Instance().getUserID();
+	m_GameRecordMission.GetGameRecordListEx(kNetInfo);
 }
 
 void GPHomeRecordPanel::onGPBackGameRecordListEx(tagGameRecordListEx* pNetInfo)
@@ -49,28 +53,39 @@ void GPHomeRecordPanel::onGPBackGameRecordListEx(tagGameRecordListEx* pNetInfo)
 	_mpGameScores.clear();
 	for (int i = 0; i < (int)pNetInfo->kList.size(); i++) {
 		tagGameRecordListItem& record = pNetInfo->kList[i];
-		auto itScore = _mpGameScores.find(record.dwTableID);
+		auto itScore = _mpGameScores.find(record.dwStartTime);
 		if (itScore != _mpGameScores.end()) {
 			itScore->second.dwKindID = record.dwKindID;
+			itScore->second.wServerID = record.wServerID;
 			itScore->second.dwTableID = record.dwTableID;
-			itScore->second.kPlayTime = record.kPlayTime;
+			itScore->second.dwStartTime = record.dwStartTime;
+			itScore->second.dwBaseScore = record.dwBaseScore;
+			itScore->second.dwRulesBytes = record.dwRulesBytes;
+			itScore->second.dwMinDrawID = record.dwMinDrawID;
+			itScore->second.dwMaxDrawID = record.dwMaxDrawID;
 			itScore->second.vctScore.push_back(record.llScore);
 			itScore->second.vctUserID.push_back(record.dwUserID);
 			itScore->second.vctNickName.push_back(record.strNickName);
+			itScore->second.vctHeadHttp.push_back(record.strHeadHttp);
 		} else {
 			GameScoreInfo score_info;
 			score_info.dwKindID = record.dwKindID;
+			score_info.wServerID = record.wServerID;
 			score_info.dwTableID = record.dwTableID;
-			score_info.kPlayTime = record.kPlayTime;
+			score_info.dwStartTime = record.dwStartTime;
+			score_info.dwBaseScore = record.dwBaseScore;
+			score_info.dwRulesBytes = record.dwRulesBytes;
+			score_info.dwMinDrawID = record.dwMinDrawID;
+			score_info.dwMaxDrawID = record.dwMaxDrawID;
 			score_info.vctScore.push_back(record.llScore);
 			score_info.vctUserID.push_back(record.dwUserID);
 			score_info.vctNickName.push_back(record.strNickName);
-			_mpGameScores.insert(std::make_pair(record.dwTableID, score_info));
+			score_info.vctHeadHttp.push_back(record.strHeadHttp);
+			_mpGameScores.insert(std::make_pair(record.dwStartTime, score_info));
 		}
 	}
 
 	initView();
-
 }
 
 void GPHomeRecordPanel::onGPBackGameRecordList(tagPrivateRandTotalRecordList* pNetInfo)

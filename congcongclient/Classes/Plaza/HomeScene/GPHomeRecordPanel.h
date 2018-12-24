@@ -15,10 +15,16 @@
 
 struct GameScoreInfo {
 	dword dwKindID;
+	dword wServerID;
 	dword dwTableID;
-	systemtime kPlayTime;
+	dword dwStartTime;
+	dword dwBaseScore;
+	dword dwRulesBytes;
+	dword dwMinDrawID;
+	dword dwMaxDrawID;
 	std::vector<SCORE> vctScore;
 	std::vector<dword> vctUserID;
+	std::vector<std::string>vctHeadHttp;
 	std::vector<std::string> vctNickName;
 };
 

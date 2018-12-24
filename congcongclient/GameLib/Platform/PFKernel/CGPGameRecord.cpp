@@ -19,22 +19,24 @@ void CGPGameRecordMission::setMissionSink(CGGameRecordSink* pIGPKefuMissionSink)
 	mIGPGameRecordSink = pIGPKefuMissionSink;
 }
 
-void CGPGameRecordMission::GetGameRecordList(int iUserID)
+void CGPGameRecordMission::GetGameRecordList(CMD_GP_GetGameRecord_List listData)
 {
 	CCLOG("CGPGameRecordMission::GetGameRecordList\n");
 
-	addLinkCallFun(CC_CALLBACK_0(CGPGameRecordMission::CB_GetGameRecordList,this,iUserID));
+	addLinkCallFun(CC_CALLBACK_0(CGPGameRecordMission::CB_GetGameRecordList,this, listData));
 
 	start();
 }
-void CGPGameRecordMission::CB_GetGameRecordList(int iUserID)
+
+void CGPGameRecordMission::CB_GetGameRecordList(CMD_GP_GetGameRecord_List listData)
 {
 	CCLOG("CGPGameRecordMission::CB_GetGameRecordList\n");
-	CMD_GP_GetGameRecordList kNetInfo;
-	kNetInfo.dwUserID = iUserID;
+	CMD_GP_GetGameRecord_List kNetInfo;
+	kNetInfo = listData;
 
 	send(MDM_GP_USER_SERVICE,SUB_GP_GAME_RECORD_LIST,&kNetInfo,sizeof(kNetInfo));
 }
+
 void CGPGameRecordMission::Net_GetGameRecordList(void* data, int dataSize)
 {
 	CCLOG("CGPGameRecordMission::Net_GetGameRecordList\n");
@@ -51,20 +53,20 @@ void CGPGameRecordMission::Net_GetGameRecordList(void* data, int dataSize)
 	stop();
 }
 
-void CGPGameRecordMission::GetGameRecordListEx(int iUserID)
+void CGPGameRecordMission::GetGameRecordListEx(CMD_GP_GetGameRecord_List listData)
 {
 	CCLOG("CGPGameRecordMission::GetGameRecordListEx\n");
 
-	addLinkCallFun(CC_CALLBACK_0(CGPGameRecordMission::CB_GetGameRecordListEx, this, iUserID));
+	addLinkCallFun(CC_CALLBACK_0(CGPGameRecordMission::CB_GetGameRecordListEx, this, listData));
 
 	start();
 }
 
-void CGPGameRecordMission::CB_GetGameRecordListEx(int iUserID)
+void CGPGameRecordMission::CB_GetGameRecordListEx(CMD_GP_GetGameRecord_List listData)
 {
 	CCLOG("CGPGameRecordMission::CB_GetGameRecordListEx\n");
-	CMD_GP_GetGameRecordList kNetInfo;
-	kNetInfo.dwUserID = iUserID;
+	CMD_GP_GetGameRecord_List kNetInfo;
+	kNetInfo = listData;
 
 	send(MDM_GP_USER_SERVICE, SUB_GP_GAME_RECORD_LIST_EX, &kNetInfo, sizeof(kNetInfo));
 }
@@ -93,14 +95,15 @@ void CGPGameRecordMission::GetPrivateRandTotalRecord(int iRecordID)
 
 	start();
 }
+
 void CGPGameRecordMission::CB_PrivateRandTotalRecord(int iRecordID)
 {
 	CMD_GP_GetGameTotalRecord kNetInfo;
 	kNetInfo.dwUserID = 0;
 	kNetInfo.dwRecordID = iRecordID;
 	send(MDM_GP_USER_SERVICE, SUB_GP_GAME_RECORD_TOTAL,&kNetInfo,sizeof(CMD_GP_GetGameTotalRecord));
-
 }
+
 void CGPGameRecordMission::Net_PrivateRandTotalRecord(void* data, int dataSize)
 {
 
@@ -114,7 +117,6 @@ void CGPGameRecordMission::Net_PrivateRandTotalRecord(void* data, int dataSize)
 	}
 
 	stop();
-
 }
 
 void CGPGameRecordMission::GetPrivateRandChildRecord(int iChildRecordID)
@@ -124,8 +126,8 @@ void CGPGameRecordMission::GetPrivateRandChildRecord(int iChildRecordID)
 	addLinkCallFun(CC_CALLBACK_0(CGPGameRecordMission::CB_PrivateRandChildRecord,this,iChildRecordID));
 
 	start();
-
 }
+
 void CGPGameRecordMission::CB_PrivateRandChildRecord(int iChildRecordID)
 {
 	CMD_GP_GetGameChildRecord kNetInfo;
@@ -133,6 +135,7 @@ void CGPGameRecordMission::CB_PrivateRandChildRecord(int iChildRecordID)
 	kNetInfo.dwRecordID = iChildRecordID;
 	send(MDM_GP_USER_SERVICE, SUB_GP_GAME_RECORD_CHILD,&kNetInfo,sizeof(CMD_GP_GetGameChildRecord));
 }
+
 void CGPGameRecordMission::Net_PrivateRandChildRecord(void* data, int dataSize)
 {
 	datastream kStream(data,dataSize);
