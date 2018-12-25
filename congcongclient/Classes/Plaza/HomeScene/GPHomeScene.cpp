@@ -23,7 +23,7 @@ GPHomeScene::GPHomeScene()
 	, _img_head(NULL)
 	, m_kPopularizeMission(ScriptData<std::string>("address").Value().c_str(), ScriptData<int>("Port").Value())
 	, _nCurrentGameKindID(ScriptData<int>("GameKind").Value())
-	, _bNeedFlushRecord(true)
+	, _b_avtive_buttons(true)
 {
 	m_kPopularizeMission.setMissionSink(this);
 	UserInfo::Instance().addUpPlayerInfoCB(this, QY_CALLFUNC_SELECTOR(GPHomeScene::flushUserInfo));
@@ -52,19 +52,16 @@ bool GPHomeScene::init()
 	if (_img_head == nullptr) {
 		auto pHeadBG = WidgetFun::getChildWidgetByName(this, "Img_HeaderBG");
 
-		auto pos = Vec2(pHeadBG->getContentSize().width/2 + 2, pHeadBG->getContentSize().height/2 - 2);
-		std::string headPath = "GamePlaza/HomeScene/avatar_male.png";
-		std::string stencilPath = "GamePlaza/HomeScene/avatar_male.png";
+		auto pos = Vec2(pHeadBG->getContentSize().width/2, pHeadBG->getContentSize().height/2);
+		std::string headPath = "GamePlaza/HomeScene/Tou_OutSide.png";
+		std::string stencilPath = "GamePlaza/HomeScene/Tou_OutSide.png";
 
 		_img_head = GPSceneManager::createCircleAvatar(WidgetFun::getChildWidgetByName(this,"Button_Header"), headPath, stencilPath, pos);
-
-		WidgetFun::setImagic(pHeadBG,"GamePlaza/HomeScene/avatar_male.png",true);
 	}
 	float sound_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("sound_volume", Constant::DEFAULT_SOUND);
 	float effect_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("effect_volume", Constant::DEFAULT_EFFECT);
 	CocosDenshion::SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(sound_volume);
 	CocosDenshion::SimpleAudioEngine::getInstance()->setEffectsVolume(effect_volume);
-
 	return true;
 }
 
@@ -88,8 +85,14 @@ void GPHomeScene::showGameRoomList(void* data, size_t dataSize)
 	if (iGameID != _nCurrentGameKindID)
 		return;
 	int iTableNum = (static_cast<CMD_GR_INQURE_TABLES_INFO_DATA_HEAD*>(pData))->dwTablesTotal;
-	if (iTableNum == 0)
+	if (iTableNum == 0) {
+		WidgetFun::setVisible(this, "Img_RoomListEmpty", true);
+		WidgetFun::setVisible(this, "Txt_RoomListEmpty", true);
 		return;
+	} else {
+		WidgetFun::setVisible(this, "Img_RoomListEmpty", false);
+		WidgetFun::setVisible(this, "Txt_RoomListEmpty", false);
+	}
 	offset = sizeof(CMD_GR_INQURE_TABLES_INFO_DATA_HEAD);	pData = current_data + offset;
 
 	//NNGameScene::pInstance()->clearRoomShareInfo();
@@ -132,7 +135,16 @@ void GPHomeScene::showGameRoomList(void* data, size_t dataSize)
 		WidgetFun::setText(pRoomInfo, "Txt_Score", strBaseSorce);
 		WidgetFun::setText(pRoomInfo, "Txt_PlayerCount", strSitCout);
 
-		WidgetFun::setWidgetUserInfo(pItemNode, "Btn_Invitation", "RoomID", strRoomNo);
+		if (i % 2 == 0) {
+			WidgetFun::setVisible(pItemNode, "Btn_Invitation0", true);
+			WidgetFun::setVisible(pItemNode, "Btn_Invitation1", false);
+			WidgetFun::setWidgetUserInfo(pItemNode, "Btn_Invitation0", "RoomID", strRoomNo);
+		} else {
+			WidgetFun::setVisible(pItemNode, "Btn_Invitation0", false);
+			WidgetFun::setVisible(pItemNode, "Btn_Invitation1", true);
+			WidgetFun::setWidgetUserInfo(pItemNode, "Btn_Invitation1", "RoomID", strRoomNo);
+		}
+
 		WidgetFun::setWidgetUserInfo(pItemNode, "Btn_RoomList_Join", "RoomID", strRoomNo);
 
 		WidgetFun::setVisible(pItemNode, "GameRoomInfoListViewItem", true);
@@ -210,7 +222,7 @@ void GPHomeScene::onEnterScene()
 	flushUserInfo();
 
 	GPGameLink::pInstance()->ConnectAndInqureTables(NNGameScene::KIND_ID);
-	setNeedFlushRecord(true);
+	setActiveButtons(true);
 	SoundFun::Instance().playBackMusic("bgplay.mp3");
 }
 
@@ -237,7 +249,7 @@ void GPHomeScene::initPopupPanels()
 
 	//////////////////////////////////////////////////////////////////////////
 
-	addPanel(GPHomeUserInfoPanel::pInstance());
+	//addPanel(GPHomeUserInfoPanel::pInstance());
 	addPanel(GPHomeEnterRoomPanel::pInstance());
 	addPanel(GPHomeRecordPanel::pInstance());
 	//addPanel(GPHomeRankPanel::pInstance());
@@ -293,9 +305,9 @@ void GPHomeScene::hideAllPanels()
 	if (GPHomeSharePanel::pInstance()->getParent() == this) {
 		GPHomeSharePanel::pInstance()->hide();
 	}
-	if (GPHomeUserInfoPanel::pInstance()->getParent() == this) {
-		GPHomeUserInfoPanel::pInstance()->hide();
-	}
+	//if (GPHomeUserInfoPanel::pInstance()->getParent() == this) {
+	//	GPHomeUserInfoPanel::pInstance()->hide();
+	//}
 	if (GPHomeEnterRoomPanel::pInstance()->getParent() == this) {
 		GPHomeEnterRoomPanel::pInstance()->hide();
 	}
@@ -389,9 +401,9 @@ void GPHomeScene::removeAllPanels()
 	if (GPHomeSharePanel::pInstance()->getParent() == this) {
 		removeChild(GPHomeSharePanel::pInstance());
 	}
-	if (GPHomeUserInfoPanel::pInstance()->getParent() == this) {
-		removeChild(GPHomeUserInfoPanel::pInstance());
-	}
+	//if (GPHomeUserInfoPanel::pInstance()->getParent() == this) {
+	//	removeChild(GPHomeUserInfoPanel::pInstance());
+	//}
 	if (GPHomeEnterRoomPanel::pInstance()->getParent() == this) {
 		removeChild(GPHomeEnterRoomPanel::pInstance());
 	}
@@ -427,9 +439,9 @@ void GPHomeScene::showGameCalculate(CMD_GF_Private_End_Info* pNetInfo)
 	NNCalculate::Instance().show(pNetInfo);
 }
 
-void GPHomeScene::setNeedFlushRecord(bool flag)
+void GPHomeScene::setActiveButtons(bool flag)
 {
-	_bNeedFlushRecord = flag;
+	_b_avtive_buttons = flag;
 }
 
 //DONE:没被调用过了
@@ -483,12 +495,22 @@ void GPHomeScene::onLogonSucess()
 
 void GPHomeScene::flushUserInfo()
 {
-	WidgetFun::setText(this, "Home_UserID", utility::paseInt(UserInfo::Instance().getUserID(), 6));
-	WidgetFun::setText(this, "Home_UserName",UserInfo::Instance().getUserNicName());
+	WidgetFun::setText(this, "Txt_UserID", utility::paseInt(UserInfo::Instance().getUserID(), 6));
+	WidgetFun::setText(this, "Txt_UserName",UserInfo::Instance().getUserNicName());
 	//WidgetFun::setText(this, "Home_RoomCardNum",UserInfo::Instance().getUserInsure());
-	WidgetFun::setText(this, "Home_GoldNum",UserInfo::Instance().getUserScore());
-	flushPlayerLevel();
-
+	WidgetFun::setText(this, "Txt_GoldNum",UserInfo::Instance().getUserScore());
+	//flushPlayerLevel();
+	switch (UserInfo::Instance().getGender())
+	{
+	case UserSex::US_Male:
+		WidgetFun::setVisible(this, "Img_UserSex_Male", true);
+		WidgetFun::setVisible(this, "Img_UserSex_Female", false);
+		break;
+	case UserSex::US_Femal:
+		WidgetFun::setVisible(this, "Img_UserSex_Female", true);
+		WidgetFun::setVisible(this, "Img_UserSex_Male", false);
+		break;
+	}
 	if (UserInfo::Instance().getHeadHttp() != "") {
 		ImagicDownManager::Instance().addDown(_img_head,UserInfo::Instance().getHeadHttp(), UserInfo::Instance().getUserID());
 		std::string headUrl = "";

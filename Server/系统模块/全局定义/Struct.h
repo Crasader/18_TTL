@@ -522,19 +522,36 @@ struct tagPrivateRandTotalRecordList
 
 struct tagGameRecordListItem {
 	DWORD dwKindID;
+	WORD wServerID;
 	DWORD dwTableID;
-	SCORE llScore;
+	DWORD dwStartTime;
+	DWORD dwBaseScore;
+	DWORD dwRulesBytes;
+	WORD wGameType;
 	DWORD dwUserID;
+	DWORD dwMinDrawID;
+	DWORD dwMaxDrawID;
+	WORD wDrawCount;
+	SCORE llScore;
 	std::string	kNickName;
-	SYSTEMTIME kPlayTime;
+	std::string strHeadHttp;
+
 	void StreamValue(datastream& kData, bool bSend)
 	{
 		Stream_VALUE(dwKindID);
+		Stream_VALUE(wServerID);
 		Stream_VALUE(dwTableID);
+		Stream_VALUE(dwStartTime);
+		Stream_VALUE(dwBaseScore);
+		Stream_VALUE(dwRulesBytes);
+		Stream_VALUE(wGameType);
 		Stream_VALUE(dwUserID);
-		Stream_VALUE(kNickName);
+		Stream_VALUE(dwMinDrawID);
+		Stream_VALUE(dwMaxDrawID);
+		Stream_VALUE(wDrawCount);
 		Stream_VALUE(llScore);
-		Stream_VALUE_SYSTEMTIME(kPlayTime);
+		Stream_VALUE(kNickName);
+		Stream_VALUE(strHeadHttp);
 	}
 };
 

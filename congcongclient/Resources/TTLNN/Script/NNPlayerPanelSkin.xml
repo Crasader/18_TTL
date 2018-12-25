@@ -26,11 +26,11 @@
 			<Property Key="Pos" Value="260 125"/>
 		</WidgetImagic>
 		
-		<WidgetTxt Name="NNPlayer_Name" FontName="Font/TTLNN.TTF" FontSize="16" ShowTxt="123456789">
+		<WidgetTxt Name="NNPlayer_Name" FontName="Font/mini_kaiti.ttf" FontSize="16" ShowTxt="123456789">
 			<Property Key="Pos" Value="195 90"/>
 		</WidgetTxt>
 		
-		<WidgetTxt Name="NNPlayer_Score" FontName="Font/TTLNN.TTF" FontSize="20" ShowTxt="12345">
+		<WidgetTxt Name="NNPlayer_Score" FontName="Font/mini_kaiti.ttf" FontSize="20" ShowTxt="12345">
 			<Property Key="Pos" Value="205 52"/>
 		</WidgetTxt>
 		
@@ -49,7 +49,7 @@
 				<Property Key="Pos" Value="315 45"/>
 			</WidgetImagic>
 			
-			<WidgetTxt Name="NNPlayer_Bets" FontName="Font/TTLNN.TTF" FontSize="28" ShowTxt="8">
+			<WidgetTxt Name="NNPlayer_Bets" FontName="Font/mini_kaiti.ttf" FontSize="28" ShowTxt="8">
 				<Property Key="Pos" Value="323 45"/>
 				<Property Key="Color" Value="251 222 104"/>
 			</WidgetTxt>
@@ -59,7 +59,7 @@
 				<Property Key="Pos" Value="195 140"/>
 			</WidgetImagic>
 			
-			<WidgetTxt Name="NNPlayer_Bets" FontName="Font/TTLNN.TTF" FontSize="28" ShowTxt="8">
+			<WidgetTxt Name="NNPlayer_Bets" FontName="Font/mini_kaiti.ttf" FontSize="28" ShowTxt="8">
 				<Property Key="Pos" Value="200 140"/>
 				<Property Key="AnchorPos" Value="0 0.5"/>
 				<Property Key="Color" Value="251 222 104"/>
@@ -214,11 +214,11 @@
 			<Property Key="Pos" Value="260 125"/>
 		</WidgetImagic>
 		
-		<WidgetTxt Name="NNPlayer_Name" FontName="Font/TTLNN.TTF" FontSize="16" ShowTxt="123456789">
+		<WidgetTxt Name="NNPlayer_Name" FontName="Font/mini_kaiti.ttf" FontSize="16" ShowTxt="123456789">
 			<Property Key="Pos" Value="195 90"/>
 		</WidgetTxt>
 		
-		<WidgetTxt Name="NNPlayer_Score" FontName="Font/TTLNN.TTF" FontSize="20" ShowTxt="1234">
+		<WidgetTxt Name="NNPlayer_Score" FontName="Font/mini_kaiti.ttf" FontSize="20" ShowTxt="1234">
 			<Property Key="Pos" Value="205 52"/>
 		</WidgetTxt>
 		
@@ -238,7 +238,7 @@
 				<Property Key="Pos" Value="-15 45"/>
 			</WidgetImagic>
 			
-			<WidgetTxt Name="NNPlayer_Bets" FontName="Font/TTLNN.TTF" FontSize="28" ShowTxt="8">
+			<WidgetTxt Name="NNPlayer_Bets" FontName="Font/mini_kaiti.ttf" FontSize="28" ShowTxt="8">
 				<Property Key="Pos" Value="-7 45"/>
 				<Property Key="Color" Value="251 222 104"/>
 			</WidgetTxt>
@@ -250,7 +250,7 @@
 				<Property Key="Pos" Value="195 140"/>
 			</WidgetImagic>
 			
-			<WidgetTxt Name="NNPlayer_Bets" FontName="Font/TTLNN.TTF" FontSize="28" ShowTxt="8">
+			<WidgetTxt Name="NNPlayer_Bets" FontName="Font/mini_kaiti.ttf" FontSize="28" ShowTxt="8">
 				<Property Key="Pos" Value="187 140"/>
 				<Property Key="AnchorPos" Value="0 0.5"/>
 				<Property Key="Color" Value="251 222 104"/>

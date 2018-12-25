@@ -1,30 +1,133 @@
 <root>
 <LoadSkin Skin="GamePlaza/Script/GPHomeRecordSkin.xml"/>
 <Widget Name="" SkinTempName="Empty">
-	<Widget Name="" SkinTempName="BtnFullEmpty"/>
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/background.png"/>
 		<Property Key="Pos" Value="640 360"/>
-		<Property Key="Scale" Value="0.8"/>
 	</Widget>
+	
+	<Widget Name ="View" SkinTempName="Empty">
+		<Property Key="Pos" Value="0 0"/>
+		<Widget Name="" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/RecordPanel/bg.png"/>
+			<Property Key="Pos" Value="640 360"/>
+		</Widget>
 
-	<!-- <Widget Name="" SkinTempName="ImagicEmpty"> -->
-		<!-- <Property Key="ImagicTexture" Value="GamePlaza/HomeScene/RecordPanel/title.png"/> -->
-		<!-- <Property Key="Pos" Value="640 605"/> -->
-	<!-- </Widget> -->
-
+		<Widget Name ="Button_Record" SkinTempName="Empty">
+			<!-- 详情 -->
+			<Widget Name="Button_ShowDetail" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="GamePlaza/HomeScene/RecordPanel/detail.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="980 580"/>
+			</Widget>
+			<!-- 分享 -->
+			<Widget Name="Button_Share" SkinTempName="ButtonEmpty">
+				<Property Key="NomalTexture" Value="GamePlaza/HomeScene/RecordPanel/Share.png"/>
+				<Property Key="PressTexture" Value="AutoPress"/>
+				<Property Key="Pos" Value="1100 580"/>
+			</Widget>
+		</Widget>
+		
+		<Widget Name ="Txt_Titles" SkinTempName="Empty">
+			<!-- 房间号 -->
+			<Widget Name="" SkinTempName="TxtEmpty">
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
+				<Property Key="FontSize" Value="20"/>
+				<Property Key="ShowTxt" Value="房间:"/>
+				<Property Key="FontName" Value="Font/true_type.ttf"/>
+				<Property Key="Color" Value="142 100 62"/>
+				<Property Key="Pos" Value="120 580"/>
+			</Widget>
+			<Widget Name="Txt_RoomNo" SkinTempName="TxtEmpty">
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
+				<Property Key="FontSize" Value="20"/>
+				<Property Key="ShowTxt" Value="123456"/>
+				<Property Key="FontName" Value="Font/true_type.ttf"/>
+				<Property Key="Color" Value="142 100 62"/>
+				<Property Key="Pos" Value="200 580"/>
+			</Widget>
+			
+			<!-- 局数 -->
+			<Widget Name="" SkinTempName="TxtEmpty">
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
+				<Property Key="FontSize" Value="20"/>
+				<Property Key="ShowTxt" Value="局数:"/>
+				<Property Key="FontName" Value="Font/true_type.ttf"/>
+				<Property Key="Color" Value="142 100 62"/>
+				<Property Key="Pos" Value="300 580"/>
+			</Widget>
+			<Widget Name="Txt_RoundSum" SkinTempName="TxtEmpty">
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
+				<Property Key="FontSize" Value="20"/>
+				<Property Key="ShowTxt" Value="20"/>
+				<Property Key="FontName" Value="Font/true_type.ttf"/>
+				<Property Key="Color" Value="142 100 62"/>
+				<Property Key="Pos" Value="360 580"/>
+			</Widget>
+			
+			<!-- 底分 -->
+			<Widget Name="" SkinTempName="TxtEmpty">
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
+				<Property Key="FontSize" Value="20"/>
+				<Property Key="ShowTxt" Value="底分:"/>
+				<Property Key="FontName" Value="Font/true_type.ttf"/>
+				<Property Key="Color" Value="142 100 62"/>
+				<Property Key="Pos" Value="440 580"/>
+			</Widget>
+			<Widget Name="Txt_BaseScore" SkinTempName="TxtEmpty">
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
+				<Property Key="FontSize" Value="20"/>
+				<Property Key="ShowTxt" Value="5/10"/>
+				<Property Key="FontName" Value="Font/true_type.ttf"/>
+				<Property Key="Color" Value="142 100 62"/>
+				<Property Key="Pos" Value="500 580"/>
+			</Widget>
+			
+			<!-- 类型 -->
+			<Widget Name="Txt_RoomType" SkinTempName="TxtEmpty">
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
+				<Property Key="FontSize" Value="20"/>
+				<Property Key="ShowTxt" Value="明牌抢庄"/>
+				<Property Key="FontName" Value="Font/true_type.ttf"/>
+				<Property Key="Color" Value="142 100 62"/>
+				<Property Key="Pos" Value="600 580"/>
+			</Widget>
+			
+			<!-- 时间 -->
+			<Widget Name="Txt_Time" SkinTempName="TxtEmpty">
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
+				<Property Key="FontSize" Value="20"/>
+				<Property Key="ShowTxt" Value="2018/12/21 aa:aa:aa"/>
+				<Property Key="FontName" Value="Font/true_type.ttf"/>
+				<Property Key="Color" Value="142 100 62"/>
+				<Property Key="Pos" Value="780 580"/>
+			</Widget>
+			
+			<!-- 坐标 -->
+			<Widget Name="Items_Score1" SkinTempName="Empty">
+				<UserInfo Key="BeginPos" Value="190 460"/>
+				<UserInfo Key="Offset" Value="300 0"/>
+			</Widget>
+			
+			<Widget Name="Items_Score2" SkinTempName="Empty">
+				<UserInfo Key="BeginPos" Value="190 270"/>
+				<UserInfo Key="Offset" Value="300 0"/>
+			</Widget>
+		</Widget>
+	</Widget>
+			
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/RecordPanel/title.png"/>
+		<Property Key="Pos" Value="640 646"/>
+		<Property Key="Scale" Value="0.9"/>
+	</Widget>
+	
 	<Widget Name="Button_Close" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Button_Close.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="1170 610"/>
-		<Property Key="Scale" Value="0.6"/>
+		<Property Key="Pos" Value="1220 650"/>
+		<Property Key="Scale" Value="1.2"/>
 	</Widget>
-
-	<Widget Name="RecordList0" SkinTempName="List">
-		<Property Key="Size" Value="860 460"/> 
-		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Pos" Value="213 101"/>
-		<Property Key="HideBack" Value="false"/>
-	</Widget>
+	
 </Widget>
 </root>

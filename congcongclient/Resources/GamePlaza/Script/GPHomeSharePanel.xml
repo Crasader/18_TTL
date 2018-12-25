@@ -10,7 +10,7 @@
 		<!-- <Property Key="ImagicTexture" Value="GamePlaza/HomeScene/SharePanel/title.png"/> -->
 		<!-- <Property Key="Pos" Value="640 512.75"/> -->
 	<!-- </Widget> -->
-	
+
 	<Widget Name="Button_ShareToFriend" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/SharePanel/Button_ShareToFriend.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
@@ -21,7 +21,7 @@
 		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/SharePanel/Button_ShareToFriend_title.png"/>
 		<Property Key="Pos" Value="510.80 233.87"/>
 	</Widget>
-	
+
 	<Widget Name="Button_ShareToFriendCircle" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/SharePanel/Button_ShareToFriendCircle.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
@@ -32,11 +32,10 @@
 		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/SharePanel/Button_ShareToFriendCircle_title.png"/>
 		<Property Key="Pos" Value="766.57 233.87"/>
 	</Widget>
-	
+
 	<Widget Name="Button_Close" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Button_Close.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="966.98 512.75"/>
-		<Property Key="Scale" Value="0.5"/>
+		<Property Key="Pos" Value="910 492.75"/>
 	</Widget>
 </Widget>

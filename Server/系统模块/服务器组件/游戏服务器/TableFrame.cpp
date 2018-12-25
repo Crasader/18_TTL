@@ -106,8 +106,14 @@ VOID * CTableFrame::QueryInterface(REFGUID Guid, DWORD dwQueryVer)
 	return NULL;
 }
 
+void CTableFrame::RepositionSinkGlobals()
+{
+	if (m_pITableFrameSink)
+		m_pITableFrameSink->RepositionSinkGloabals();
+}
+
 //开始游戏
-bool CTableFrame::StartGame()
+bool CTableFrame::StartGame(bool bFirstRound)
 {
 	//游戏状态
 	ASSERT(m_bDrawStarted==false);
@@ -123,8 +129,11 @@ bool CTableFrame::StartGame()
 	m_bTableStarted=true;
 
 	//开始时间
-	GetLocalTime(&m_SystemTimeStart);
-	m_dwDrawStartTime=(DWORD)time(NULL);
+	if (bFirstRound)
+	{
+		m_SystemTimeStart = static_cast<DWORD>(time(nullptr));
+	}
+	m_dwDrawStartTime=static_cast<DWORD>(time(nullptr));
 
 	//开始设置
 	if (bGameStarted==false)
@@ -238,7 +247,11 @@ bool CTableFrame::ConcludeGame(BYTE cbGameStatus)
 			//设置变量
 			if (m_pGameServiceOption->wServerType == GAME_GENRE_EDUCATE) {
 				if (m_pITableInfoExtra != nullptr) {
-					GameScoreRecord.wTableID = static_cast<PrivateTableInfo*>(m_pITableInfoExtra)->dwRoomNum;
+					auto pTablInfo = static_cast<PrivateTableInfo*>(m_pITableInfoExtra);
+					GameScoreRecord.wTableID = pTablInfo->dwRoomNum;
+					GameScoreRecord.dwBaseScore = pTablInfo->dwBaseScore;
+					GameScoreRecord.dwRulesBytes = pTablInfo->dwGameRuleIdex;
+					GameScoreRecord.wGameType = static_cast<WORD>(pTablInfo->bGameTypeIdex);
 				}
 			}
 
@@ -250,7 +263,7 @@ bool CTableFrame::ConcludeGame(BYTE cbGameStatus)
 
 			//游戏时间
 			GameScoreRecord.SystemTimeStart=m_SystemTimeStart;
-			GetLocalTime(&GameScoreRecord.SystemTimeConclude);
+			GameScoreRecord.SystemTimeConclude=static_cast<DWORD>(time(nullptr));
 
 			//用户积分
 			for (INT_PTR i=0;i<m_GameScoreRecordActive.GetCount();i++)

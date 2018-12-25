@@ -42,12 +42,6 @@ public:
 	void Button_RoundBox2(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_RoundBox3(cocos2d::Ref*, WidgetUserInfo*);
 
-	//推注倍数
-	void Button_TuiZhu1(cocos2d::Ref*, WidgetUserInfo*);
-	void Button_TuiZhu2(cocos2d::Ref*, WidgetUserInfo*);
-	void Button_TuiZhu3(cocos2d::Ref*, WidgetUserInfo*);
-	void Button_TuiZhu4(cocos2d::Ref*, WidgetUserInfo*);
-
 	void Button_CanTuiZhu(cocos2d::Ref*, WidgetUserInfo*);
 
 	//特殊牌型
@@ -59,8 +53,9 @@ public:
 	void Button_WuXiao(cocos2d::Ref*, WidgetUserInfo*);
 
 	//翻倍规则
-	void Button_MutipleRule1(cocos2d::Ref*, WidgetUserInfo*);
-	void Button_MutipleRule2(cocos2d::Ref*, WidgetUserInfo*);
+	void Button_FanBei0(cocos2d::Ref*, WidgetUserInfo*);
+	void Button_FanBei1(cocos2d::Ref*, WidgetUserInfo*);
+	void Button_FanBei2(cocos2d::Ref*, WidgetUserInfo*);
 
 	//底分倍数
 	void Button_DiFen1(cocos2d::Ref*, WidgetUserInfo*);

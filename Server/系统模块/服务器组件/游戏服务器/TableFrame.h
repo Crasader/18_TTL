@@ -41,8 +41,8 @@ protected:
 
 	//时间变量
 protected:
-	DWORD							m_dwDrawStartTime;					//开始时间
-	SYSTEMTIME						m_SystemTimeStart;					//开始时间
+	DWORD							m_dwDrawStartTime;				//一把游戏开始时间
+	DWORD							m_SystemTimeStart;					//整局游戏开始时间
 
 	//动态属性
 protected:
@@ -112,7 +112,8 @@ public:
 	virtual VOID Release() { delete this; }
 	//接口查询
 	virtual VOID * QueryInterface(REFGUID Guid, DWORD dwQueryVer);
-
+	//清除信息
+	virtual void RepositionSinkGlobals() override;
 	//属性接口
 public:
 	//桌子号码
@@ -173,7 +174,7 @@ public:
 	//控制接口
 public:
 	//开始游戏
-	virtual bool StartGame();
+	virtual bool StartGame(bool bFirstRound=false)override;
 	//开始游戏
 	virtual void SetChairCount(WORD wChairCout);
 	//解散游戏

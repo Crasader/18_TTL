@@ -1,7 +1,7 @@
  <root>
 	<ScriptValueFloat Key="UseWidth" Value="1280"/>
 	<ScriptValueFloat Key="UseHeight" Value="720"/>
- 	<ScriptValueStr Key="address" Value="192.168.43.6"/>
+ 	<ScriptValueStr Key="address" Value="114.115.164.158"/>
 	<!-- <ScriptValueStr Key="address" Value="114.115.164.158"/> -->
 	<!-- <ScriptValueStr Key="address" Value="127.0.0.1"/> -->
 	<!-- <ScriptValueStr Key="address" Value="192.168.43.6"/> -->

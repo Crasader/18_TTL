@@ -1,14 +1,18 @@
 <Widget Name="" SkinTempName="Empty">
 	<Widget Name="" SkinTempName="BtnFullEmpty"/>
 	<Widget Name="" SkinTempName="ImagicEmpty">
-		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/background.png"/>
-		<Property Key="Scale" Value="0.66"/>
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/background.png"/>
+		<Property Key="Scale" Value="0.8"/>
 		<Property Key="Pos" Value="640 360"/>
+	</Widget>
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/title.png"/>
+		<Property Key="Scale" Value="0.8"/>
+		<Property Key="Pos" Value="640 590"/>
 	</Widget>
 	
 	<Widget Name="Button_Close" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Button_Close.png"/>
-		<Property Key="Scale" Value="0.5"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="1080 565"/>
 	</Widget>
@@ -16,75 +20,78 @@
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/inputNumBox.png"/>
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
-		<Property Key="Pos" Value="437.82 505.05"/>
+		<Property Key="Pos" Value="445 505.05"/>
 	</Widget>
-
 	<Widget Name="Home_RoomNum1" SkinTempName="TxtEmpty">
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="FontSize" Value="40"/>
-		<Property Key="FontName" Value="public/text.ttf"/>
-		<Property Key="Pos" Value="437.82 505.05"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
+		<Property Key="Pos" Value="445 505.05"/>
 	</Widget>
 
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/inputNumBox.png"/>
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
-		<Property Key="Pos" Value="520.02 505.05"/>
+		<Property Key="Pos" Value="524.02 505.05"/>
 	</Widget>
 	<Widget Name="Home_RoomNum2" SkinTempName="TxtEmpty">
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="FontSize" Value="40"/>
-		<Property Key="FontName" Value="public/text.ttf"/>
-		<Property Key="Pos" Value="520.02 505.05"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
+		<Property Key="Pos" Value="524.02 505.05"/>
 	</Widget>
+	
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/inputNumBox.png"/>
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
-		<Property Key="Pos" Value="602.23 505.05"/>
+		<Property Key="Pos" Value="603 505.05"/>
 	</Widget>
 	<Widget Name="Home_RoomNum3" SkinTempName="TxtEmpty">
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="FontSize" Value="40"/>
-		<Property Key="FontName" Value="public/text.ttf"/>
-		<Property Key="Pos" Value="602.23 505.05"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
+		<Property Key="Pos" Value="603 505.05"/>
 	</Widget>
+	
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/inputNumBox.png"/>
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
-		<Property Key="Pos" Value="684.43 505.05"/>
+		<Property Key="Pos" Value="680.43 505.05"/>
 	</Widget>
 	<Widget Name="Home_RoomNum4" SkinTempName="TxtEmpty">
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="FontSize" Value="40"/>
-		<Property Key="FontName" Value="public/text.ttf"/>
-		<Property Key="Pos" Value="684.43 505.05"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
+		<Property Key="Pos" Value="680.43 505.05"/>
 	</Widget>
+	
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/inputNumBox.png"/>
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
-		<Property Key="Pos" Value="766.63 505.05"/>
+		<Property Key="Pos" Value="755.63 505.05"/>
 	</Widget>
 	<Widget Name="Home_RoomNum5" SkinTempName="TxtEmpty">
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="FontSize" Value="40"/>
-		<Property Key="FontName" Value="public/text.ttf"/>
-		<Property Key="Pos" Value="766.63 505.05"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
+		<Property Key="Pos" Value="755.63 505.05"/>
 	</Widget>
+	
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/inputNumBox.png"/>
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
-		<Property Key="Pos" Value="848.84 505.05"/>
+		<Property Key="Pos" Value="835 505.05"/>
 	</Widget>
 	<Widget Name="Home_RoomNum6" SkinTempName="TxtEmpty">
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="FontSize" Value="40"/>
-		<Property Key="FontName" Value="public/text.ttf"/>
-		<Property Key="Pos" Value="848.84 505.05"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
+		<Property Key="Pos" Value="835 505.05"/>
 	</Widget>
 	
 	<Widget Name="Button_One" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/btn.png"/>
-		<Property Key="Scale" Value="0.5"/>
+		<Property Key="Scale" Value="0.60"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="472.23 397.04"/>
 	</Widget>
@@ -96,7 +103,7 @@
 	
 	<Widget Name="Button_Two" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/btn.png"/>
-		<Property Key="Scale" Value="0.5"/>
+		<Property Key="Scale" Value="0.60"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="644.22 397.04"/>
 	</Widget>
@@ -107,7 +114,7 @@
 	</Widget>
 	<Widget Name="Button_Three" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/btn.png"/>
-		<Property Key="Scale" Value="0.5"/>
+		<Property Key="Scale" Value="0.60"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="813.84 397.04"/>
 	</Widget>
@@ -120,7 +127,7 @@
 	
 	<Widget Name="Button_Four" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/btn.png"/>
-		<Property Key="Scale" Value="0.5"/>
+		<Property Key="Scale" Value="0.60"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="472.23 319.04"/>
 	</Widget>
@@ -133,7 +140,7 @@
 	
 	<Widget Name="Button_Five" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/btn.png"/>
-		<Property Key="Scale" Value="0.5"/>
+		<Property Key="Scale" Value="0.60"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="644.22 319.04"/>
 	</Widget>
@@ -146,7 +153,7 @@
 
 	<Widget Name="Button_Six" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/btn.png"/>
-		<Property Key="Scale" Value="0.5"/>
+		<Property Key="Scale" Value="0.60"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="813.84 319.04"/>
 	</Widget>
@@ -159,7 +166,7 @@
 	
 	<Widget Name="Button_Seven" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/btn.png"/>
-		<Property Key="Scale" Value="0.5"/>
+		<Property Key="Scale" Value="0.60"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="472.23 239.82"/>
 	</Widget>
@@ -172,7 +179,7 @@
 	
 	<Widget Name="Button_Eight" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/btn.png"/>
-		<Property Key="Scale" Value="0.5"/>
+		<Property Key="Scale" Value="0.60"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="644.22 239.82"/>
 	</Widget>
@@ -185,7 +192,7 @@
 	
 	<Widget Name="Button_Nine" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/btn.png"/>
-		<Property Key="Scale" Value="0.5"/>
+		<Property Key="Scale" Value="0.60"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="813.84 239.82"/>
 	</Widget>
@@ -198,21 +205,21 @@
 	
 	<Widget Name="Button_Cancel" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/btn.png"/>
-		<Property Key="Scale" Value="0.5"/>
+		<Property Key="Scale" Value="0.60"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="472.23 160.18"/>
 	</Widget>
 
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/Button_Cancel.png"/>
-		<Property Key="Scale" Value="0.5"/>
+		<Property Key="Scale" Value="0.60"/>
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="Pos" Value="472.23 160.18"/>
 	</Widget>
 	
 	<Widget Name="Button_Zero" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/btn.png"/>
-		<Property Key="Scale" Value="0.5"/>
+		<Property Key="Scale" Value="0.60"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="644.22 160.18"/>
 	</Widget>
@@ -225,14 +232,14 @@
 	
 	<Widget Name="Button_Delete" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/btn.png"/>
-		<Property Key="Scale" Value="0.5"/>
+		<Property Key="Scale" Value="0.60"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="813.84 160.18"/>
 	</Widget>
 
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/EnterRoomPanel/Button_Delete.png"/>
-		<Property Key="Scale" Value="0.5"/>
+		<Property Key="Scale" Value="0.60"/>
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="Pos" Value="813.84 160.18"/>
 	</Widget>	

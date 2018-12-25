@@ -14,7 +14,7 @@ using namespace experimental;
 
 void GPHomeScene::initButton()
 {
-	WidgetManager::addButtonCB("Button_Header", this, button_selector(GPHomeScene::Button_Header));
+	//WidgetManager::addButtonCB("Button_Header", this, button_selector(GPHomeScene::Button_Header));
 	WidgetManager::addButtonCB("Button_Share", this, button_selector(GPHomeScene::Button_Share));
 	WidgetManager::addButtonCB("Button_ADDGOLD", this, button_selector(GPHomeScene::Button_Mall));
 	WidgetManager::addButtonCB("Btn_Mall", this, button_selector(GPHomeScene::Button_Mall));
@@ -22,45 +22,11 @@ void GPHomeScene::initButton()
 	//WidgetManager::addButtonCB("Btn_Rank", this, button_selector(GPHomeScene::Button_Rank));
 	//WidgetManager::addButtonCB("Button_Rank", this, button_selector(GPHomeScene::Button_Rank));
 	WidgetManager::addButtonCB("Button_Record", this, button_selector(GPHomeScene::Button_Record));
-	WidgetManager::addButtonCB("Btn_Invitation", this, button_selector(GPHomeScene::Button_Invitation));
+	WidgetManager::addButtonCB("Btn_Invitation0", this, button_selector(GPHomeScene::Button_Invitation));
+	WidgetManager::addButtonCB("Btn_Invitation1", this, button_selector(GPHomeScene::Button_Invitation));
 	WidgetManager::addButtonCB("Button_JoinGame", this, button_selector(GPHomeScene::Button_Join));
 	WidgetManager::addButtonCB("Btn_RoomList_Join", this, button_selector(GPHomeScene::Button_RoomList_Join));
 	WidgetManager::addButtonCB("Button_CreateGame", this, button_selector(GPHomeScene::Button_CreateGame));
-}
-
-void GPHomeScene::Button_Share(cocos2d::Ref* pRef, WidgetUserInfo* pInfo)
-{
-	GPHomeSharePanel::Instance().show();
-}
-
-void GPHomeScene::Button_Header(cocos2d::Ref* pRef, WidgetUserInfo* pInfo)
-{
-	GPHomeUserInfoPanel::Instance().show();
-}
-
-void GPHomeScene::Button_Mall( cocos2d::Ref*, WidgetUserInfo* )
-{
-	GPHomeMallPanel::Instance().show();
-}
-
-void GPHomeScene::Button_Setting( cocos2d::Ref*, WidgetUserInfo* )
-{
-	GPHomeSettingPanel::Instance().show();
-	GPHomeSettingPanel::Instance().hideOrShowQuitBtn(true);
-}
-
-void GPHomeScene::Button_Rank( cocos2d::Ref*, WidgetUserInfo* )
-{
-	GPHomeRankPanel::Instance().show();
-}
-
-void GPHomeScene::Button_Record( cocos2d::Ref*, WidgetUserInfo* )
-{
-	if (_bNeedFlushRecord) {
-		setNeedFlushRecord(false);
-		GPHomeRecordPanel::Instance().sendRecordToTalList();
-	}
-	GPHomeRecordPanel::Instance().show();
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -212,10 +178,51 @@ void GPHomeScene::openSubGame(int curPage)
 	}
 }
 
+void GPHomeScene::Button_Header(cocos2d::Ref* pRef, WidgetUserInfo* pInfo)
+{
+	//GPHomeUserInfoPanel::Instance().show();
+}
+
+void GPHomeScene::Button_Mall(cocos2d::Ref*, WidgetUserInfo*)
+{
+	GPHomeMallPanel::Instance().show();
+}
+
+void GPHomeScene::Button_Rank(cocos2d::Ref*, WidgetUserInfo*)
+{
+	GPHomeRankPanel::Instance().show();
+}
+
 //////////////////////////////////////////////////////////////////////////
+
+void GPHomeScene::Button_Share(cocos2d::Ref* pRef, WidgetUserInfo* pInfo)
+{
+	if (!_b_avtive_buttons)
+		return;
+	GPHomeSharePanel::Instance().show();
+}
+
+void GPHomeScene::Button_Setting(cocos2d::Ref*, WidgetUserInfo*)
+{
+	if (!_b_avtive_buttons)
+		return;
+	GPHomeSettingPanel::Instance().show();
+	GPHomeSettingPanel::Instance().hideOrShowQuitBtn(true);
+}
+
+void GPHomeScene::Button_Record(cocos2d::Ref*, WidgetUserInfo*)
+{
+	if (!_b_avtive_buttons)
+		return;
+	setActiveButtons(false);
+	GPHomeRecordPanel::Instance().sendRecordToTalList();
+	GPHomeRecordPanel::Instance().show();
+}
 
 void GPHomeScene::Button_Invitation(cocos2d::Ref*, WidgetUserInfo* pUserInfo)
 {
+	if (!_b_avtive_buttons)
+		return;
 	int iRecordChildID = utility::parseInt(WidgetFun::getUserInfoValue(pUserInfo, "RoomID"));
 	auto pRoomInfo = NNGameScene::Instance().getShareInfo(static_cast<dword>(iRecordChildID));
 
@@ -225,6 +232,8 @@ void GPHomeScene::Button_Invitation(cocos2d::Ref*, WidgetUserInfo* pUserInfo)
 
 void GPHomeScene::Button_Join(cocos2d::Ref*, WidgetUserInfo* pUserInfo)
 {
+	if (!_b_avtive_buttons)
+		return;
 	int iRecordChildID = utility::parseInt(WidgetFun::getUserInfoValue(pUserInfo, "RoomID"));
 	//DONE:显示输入房号面板
 	GPHomeEnterRoomPanel::Instance().show();
@@ -232,11 +241,15 @@ void GPHomeScene::Button_Join(cocos2d::Ref*, WidgetUserInfo* pUserInfo)
 
 void GPHomeScene::Button_CreateGame(cocos2d::Ref*, WidgetUserInfo*)
 {
+	if (!_b_avtive_buttons)
+		return;
 	GPHomeCreateRoomPanel_NN::Instance().show();
 }
 
 void GPHomeScene::Button_RoomList_Join(cocos2d::Ref*, WidgetUserInfo* pUserInfo)
 {
+	if (!_b_avtive_buttons)
+		return;
 	int iRecordChildID = utility::parseInt(WidgetFun::getUserInfoValue(pUserInfo, "RoomID"));
 	GPGameLink::Instance().JoinRoom(utility::toString(iRecordChildID));
 }

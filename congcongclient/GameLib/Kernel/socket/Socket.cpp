@@ -2,6 +2,7 @@
 #include <map>
 #include <cocos2d.h>
 #include "Socket.h"
+#include "Tools/utilityLog.h"
 
 using namespace gamelib;
 
@@ -60,20 +61,21 @@ void CSocket::onConnected()
 
 void CSocket::onConnectTimeout()
 {
-	cocos2d::log("CSocket::onConnectTimeout %s.\n", mSocketSink == 0 ? "null" : "no null");
+	utility::filelog("CSocket::onConnectTimeout %s.", mSocketSink == 0 ? "null" : "no null");
 	if (mSocketSink)
 		mSocketSink->onSocketTimeOut();
 }
+
 void CSocket::onDisconnected()
 {
-	cocos2d::log("CSocket::onDisconnected %s.\n", mSocketSink == 0 ? "null" : "no null");
+	utility::filelog("CSocket::onDisconnected %s.", mSocketSink == 0 ? "null" : "no null");
 	if (mSocketSink)
 		mSocketSink->onSocketShut();
 }
 
 void CSocket::onExceptionCaught(CCSocketStatus eStatus)
 {
-	cocos2d::log("CSocket::onSocketError %s.\n", mSocketSink == 0 ? "null" : "no null");
+	utility::filelog("CSocket::onExceptionCaught mSocketSink = %s.", mSocketSink == 0 ? "null" : "no null");
 	if (mSocketSink)
 		mSocketSink->onSocketError(eStatus);
 }

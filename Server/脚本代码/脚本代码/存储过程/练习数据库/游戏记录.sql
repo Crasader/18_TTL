@@ -115,6 +115,9 @@ CREATE PROC GSP_GR_RecordDrawInfo
 
 	-- 桌子信息
 	@wTableID INT,								-- 桌子号码
+	@dwRulesBytes BIGINT,						-- 规则
+	@dwBaseScore BIGINT,						-- 底分
+	@wGameType BIGINT,							-- 游戏类型
 	@wUserCount INT,							-- 用户数目
 	@wAndroidCount INT,							-- 机器数目
 
@@ -127,9 +130,9 @@ CREATE PROC GSP_GR_RecordDrawInfo
 	@dwPlayTimeCount INT,						-- 游戏时间
 
 	-- 时间信息
-	@SystemTimeStart DATETIME,					-- 开始时间
-	@SystemTimeConclude DATETIME,				-- 结束时间
-
+	@SystemTimeStart BIGINT,					-- 开始时间
+	@SystemTimeConclude BIGINT,					-- 结束时间
+	@InsertTime BIGINT,							-- 插入时间
 	@dataUserDefine image						-- 游戏自定义数据
 	
 WITH ENCRYPTION AS
@@ -141,8 +144,8 @@ SET NOCOUNT ON
 BEGIN
 
 	-- 插入记录
-	INSERT RecordDrawInfo(KindID,ServerID,TableID,UserCount,AndroidCount,Waste,Revenue,UserMedal,StartTime,ConcludeTime,DrawCourse)
-	VALUES (@wKindID,@wServerID,@wTableID,@wUserCount,@wAndroidCount,@lWasteCount,@lRevenueCount,@dwUserMemal,@SystemTimeStart,@SystemTimeConclude,@dataUserDefine)
+	INSERT RecordDrawInfo(KindID,ServerID,TableID,RulesBytes,BaseScore,GameType,UserCount,AndroidCount,Waste,Revenue,UserMedal,StartTime,ConcludeTime,DrawCourse, InsertTime)
+	VALUES (@wKindID,@wServerID,@wTableID,@dwRulesBytes,@dwBaseScore,@wGameType,@wUserCount,@wAndroidCount,@lWasteCount,@lRevenueCount,@dwUserMemal,@SystemTimeStart,@SystemTimeConclude,@dataUserDefine,@InsertTime)
 	
 	-- 读取记录
 	SELECT SCOPE_IDENTITY() AS DrawID
@@ -173,7 +176,9 @@ CREATE PROC GSP_GR_RecordDrawScore
 	@lGrade BIGINT,								-- 用户成绩
 	@lRevenue BIGINT,							-- 用户税收
 	@dwUserMedal INT,							-- 奖牌数目
-	@dwPlayTimeCount INT						-- 游戏时间
+	@dwPlayTimeCount INT,						-- 游戏时间
+	@InsertTime BIGINT,							-- 时间戳
+	@StartTime BIGINT							-- 时间戳
 
 WITH ENCRYPTION AS
 
@@ -184,8 +189,8 @@ SET NOCOUNT ON
 BEGIN
 
 	-- 插入记录
-	INSERT RecordDrawScore(DrawID,TableID,UserID,ChairID,Score,Grade,Revenue,UserMedal,PlayTimeCount,DBQuestID,InoutIndex,InsertTime)
-	VALUES (@dwDrawID,@dwTableID,@dwUserID,@wChairID,@lScore,@lGrade,@lRevenue,@dwUserMedal,@dwPlayTimeCount,@dwDBQuestID,@dwInoutIndex,GetDate())
+	INSERT RecordDrawScore(DrawID,TableID,UserID,ChairID,Score,Grade,Revenue,UserMedal,PlayTimeCount,DBQuestID,InoutIndex,InsertTime,StartTime)
+	VALUES (@dwDrawID,@dwTableID,@dwUserID,@wChairID,@lScore,@lGrade,@lRevenue,@dwUserMedal,@dwPlayTimeCount,@dwDBQuestID,@dwInoutIndex,@InsertTime,@StartTime)
 
 END
 

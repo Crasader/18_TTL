@@ -52,7 +52,7 @@ void NNDismissRoom::initButton()
 
 void NNDismissRoom::initData()
 {
-    m_LabelConfig.fontFilePath = "Font/TTLNN.TTF";
+    m_LabelConfig.fontFilePath = "Font/mini_kaiti.ttf";
     m_LabelConfig.fontSize = 32;
     m_LabelConfig.glyphs = GlyphCollection::DYNAMIC;
     m_LabelConfig.customGlyphs = nullptr;
@@ -183,7 +183,7 @@ void NNDismissRoom::replyDismiss()
 	auto addLinePos = utility::parsePoint(WidgetFun::getWidgetUserInfo(pNode, "AddLinePos"));
 
 	TTFConfig labelConfig;
-	labelConfig.fontFilePath = "Font/TTLNN.TTF";
+	labelConfig.fontFilePath = "Font/mini_kaiti.ttf";
 	labelConfig.fontSize = 28;
 	labelConfig.glyphs = GlyphCollection::DYNAMIC;
 	labelConfig.customGlyphs = nullptr;

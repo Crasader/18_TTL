@@ -7,7 +7,6 @@
 		<Widget Name="Button_BG" SkinTempName="ButtonEmpty">
 			<Property Key="NomalTexture" Value="GamePlaza/LoginScene/bj.jpg"/>
 			<Property Key="PressTexture" Value="GamePlaza/LoginScene/bj.jpg"/>
-			<Property Key="Scale" Value="0.666"/>
 		</Widget>
 
 		<Widget Name="Button_WeiXinLogon" SkinTempName="ButtonEmpty">

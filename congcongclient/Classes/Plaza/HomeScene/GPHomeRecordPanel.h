@@ -13,17 +13,39 @@
 #include "Platform/PFKernel/CGPGameRecord.h"
 #include "Plaza/GameManager/GPGameManager.h"
 
+enum Record_Touch_State {
+	RTS_Null,
+	RTS_Touched,
+	RTS_End,
+};
+
+//查找状态
+enum Record_Inqure_State {
+	RIT_Null,
+	RIT_Up = -1,
+	RIT_Down = 1,
+};
+
 struct GameScoreInfo {
 	dword dwKindID;
+	dword wServerID;
 	dword dwTableID;
-	systemtime kPlayTime;
+	dword dwStartTime;
+	dword dwBaseScore;
+	dword dwRulesBytes;
+	word wGameType;
+	dword dwMinDrawID;
+	dword dwMaxDrawID;
+	word wDrawCount;
 	std::vector<SCORE> vctScore;
 	std::vector<dword> vctUserID;
+	std::vector<std::string>vctHeadHttp;
 	std::vector<std::string> vctNickName;
 };
 
 class GPHomeRecordPanel
-	: public cocos2d::Node
+	//: public cocos2d::Node
+	: public cocos2d::Layer
 	, public CGGameRecordSink
 	, public FvSingleton<GPHomeRecordPanel>
 {
@@ -31,6 +53,7 @@ public:
 	GPHomeRecordPanel();
 	~GPHomeRecordPanel();
 public:
+	void update(float fpass) override;
 	bool init();
 	void show();
 	void hide();
@@ -43,7 +66,7 @@ public:
 
 public:
 
-	void sendRecordToTalList();
+	void sendRecordToTalList(Record_Inqure_State nUpOrDown=RIT_Null);
 
 	void onGPBackGameRecordListEx(tagGameRecordListEx* pNetInfo);
 	void onGPBackGameRecordList(tagPrivateRandTotalRecordList* pNetInfo);
@@ -54,9 +77,35 @@ public:
 
 #pragma endregion 回放数据回调
 
+//TouchEvent////////////////////////////////////////////////////////////////////////
+	
+	void initTouchEvent();
+	bool onTouchBegan(Touch* touch, Event* pEvent);
+	void onTouchMoved(Touch *pTouch, Event *pEvent);
+	void onTouchEnded(Touch *pTouch, Event *pEvent);
+	int isNeedUpdateView();
+	//是否有下一把的数据
+	bool checkNextScoreInfo();
+
 private:
+	//////////////////////////////////////////////////////////////////////////
+
+	cocos2d::Vec2 _touch_begin;
+	cocos2d::Vec2 _touch_end;
+	//是否是激活状态
+	bool _bActive;
+	//是否需要更新显示, 用于update请求
+	Record_Inqure_State _inqure_state_update;
+	//是否需要更新显示, 用于保存更新状态
+	Record_Inqure_State _inqure_state_view;
+	GameScoreInfo* _cur_score_info;
+	Record_Touch_State _touch_state;
+	float _bg_offset;
+	//////////////////////////////////////////////////////////////////////////
+
 	CGPGameRecordMission m_GameRecordMission;
 	tagPrivateRandTotalRecordList m_RecordList;
 	tagPrivateRandTotalRecord m_kPrivateRandTotalRecord;
 	std::map<dword, GameScoreInfo> _mpGameScores;
+	std::list<dword> _lstScoreInfoIndex;
 };

@@ -1,6 +1,7 @@
 #pragma once
 #include <cocos2d.h>
 #include "Kernel/network/CCallMission.h"
+#include "Platform/PFDefine/msg/CMD_LogonServer.h"
 
 //////////////////////////////////////////////////////////////////////////
 // 
@@ -31,13 +32,13 @@ public:
 	// 设置回调接口
 	void setMissionSink(CGGameRecordSink* pIGPKefuMissionSink);
 
-	void GetGameRecordList(int iUserID);
-	void CB_GetGameRecordList(int iUserID);
+	void GetGameRecordList(CMD_GP_GetGameRecord_List listData);
+	void CB_GetGameRecordList(CMD_GP_GetGameRecord_List listData);
 	void Net_GetGameRecordList(void* data, int dataSize);
 
 	// 金币输赢记录
-	void GetGameRecordListEx(int iUserID);
-	void CB_GetGameRecordListEx(int iUserID);
+	void GetGameRecordListEx(CMD_GP_GetGameRecord_List listData);
+	void CB_GetGameRecordListEx(CMD_GP_GetGameRecord_List listData);
 	void Net_GetGameRecordListEx(void* data, int dataSize);
 
 	void GetPrivateRandTotalRecord(int iRecordID);

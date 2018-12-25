@@ -5,6 +5,7 @@
 #include "NoticeMsgBox.h"
 #include "UserInfo.h"
 #include "Tools/utilityConvert.h"
+#include "Tools/utilityLog.h"
 #include "JniCross/JniFun.h"
 #include "GameScriptNet.h"
 #include "Game/Game/MissionWeiXin.h"
@@ -352,6 +353,7 @@ void GameManagerBase::OnGRUserEnter(IClientUserItem* pIClientUserItem)
 {
 	CCLOG("GameManager::OnGRUserEnter %s", pIClientUserItem->GetNickName());
 }
+
 //用户更新
 void GameManagerBase::OnGRUserUpdate(IClientUserItem* pIClientUserItem)
 {
@@ -361,10 +363,11 @@ void GameManagerBase::OnGRUserUpdate(IClientUserItem* pIClientUserItem)
 	{
 	}
 }
+
 //用户删除
 void GameManagerBase::OnGRUserDelete(IClientUserItem* pIClientUserItem)
 {
-	CCLOG("GameManager::OnGRUserDelete");
+	utility::filelog("GameManager::OnGRUserDelete");
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -494,6 +497,7 @@ void GameManagerBase::disconnectServer()
 		}
 	}
 }
+
 void GameManagerBase::StartGameReconnect()
 {
 	if (IServerItem::get()->IsService()) {
@@ -501,14 +505,15 @@ void GameManagerBase::StartGameReconnect()
 		disconnectServer();
 	}
 }
+
 void GameManagerBase::onEventTCPSocketError(int errorCode)
 {
-	//UserInfo::Instance().checkInGameServer();
 	//TODO: window这里要挂, 估计是继承调用导致指针的问题
 #if CC_TARGET_PLATFORM != CC_PLATFORM_WIN32
 	TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(GameManagerBase::closeClinet, this), 3.0f);
 #endif
 }
+
 void GameManagerBase::closeClinet()
 {
 	if (mCServerItem) {

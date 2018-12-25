@@ -388,23 +388,22 @@ struct tagVariationInfo
 struct tagGameScoreRecord
 {
 	//用户信息
-	DWORD							dwUserID;							//用户标识
-	WORD							wChairID;							//椅子号码
-	BYTE							cbAndroid;							//机器标志
+	DWORD dwUserID;							//用户标识
+	WORD wChairID;							//椅子号码
+	BYTE cbAndroid;							//机器标志
 
 	//成绩信息
-	SCORE							lScore;								//用户分数
-	SCORE							lGrade;								//用户成绩
-	SCORE							lRevenue;							//游戏税收
+	SCORE lScore;								//用户分数
+	SCORE lGrade;								//用户成绩
+	SCORE lRevenue;							//游戏税收
 
 	//用户信息
-	DWORD							dwDBQuestID;						//请求标识
-	DWORD							dwInoutIndex;						//记录索引
+	DWORD dwDBQuestID;						//请求标识
+	DWORD dwInoutIndex;						//记录索引
 
 	//附加信息
-	DWORD							dwUserMemal;						//奖牌数目
-	DWORD							dwPlayTimeCount;					//游戏时长
-
+	DWORD dwUserMemal;						//奖牌数目
+	DWORD dwPlayTimeCount;					//游戏时长
 
 	void StreamValue(datastream& kData,bool bSend)
 	{
@@ -1008,7 +1007,9 @@ public:
 	//控制接口
 public:
 	//开始游戏
-	virtual bool StartGame()=NULL;
+	virtual bool StartGame(bool bFirstRound=false)=NULL;
+	//清除数据
+	virtual void RepositionSinkGlobals() = NULL;
 	//开始游戏
 	virtual VOID SetChairCount(WORD wChairCount)=NULL;
 	//解散游戏
@@ -1144,6 +1145,7 @@ interface ITableFrameSink : public IUnknownEx
 public:
 	//复位接口
 	virtual VOID RepositionSink()=NULL;
+	virtual VOID RepositionSinkGloabals() = NULL;
 	//配置接口
 	virtual bool Initialization(IUnknownEx * pIUnknownEx)=NULL;
 

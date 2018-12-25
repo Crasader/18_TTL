@@ -334,7 +334,9 @@ struct CMD_GP_ServerOnline
 //游戏记录
 struct CMD_GP_GetGameRecord_List
 {
-	DWORD							dwUserID;							
+	DWORD dwUserID;
+	DWORD dwDrawID;
+	BYTE bUpOrDown;
 };
 
 //游戏记录

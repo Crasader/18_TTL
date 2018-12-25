@@ -42,7 +42,7 @@ void SGDismissRoom::initButton()
 
 void SGDismissRoom::initData()
 {
-    m_LabelConfig.fontFilePath = "Font/TTLNN.TTF";
+    m_LabelConfig.fontFilePath = "Font/mini_kaiti.ttf";
     m_LabelConfig.fontSize = 32;
     m_LabelConfig.glyphs = GlyphCollection::DYNAMIC;
     m_LabelConfig.customGlyphs = nullptr;
@@ -131,7 +131,7 @@ void SGDismissRoom::show(SG_DismissRoom_Type type, CMD_GF_Private_Dismiss_Info* 
 	auto addLinePos = utility::parsePoint(WidgetFun::getWidgetUserInfo(pNode, "AddLinePos"));
 
 	TTFConfig labelConfig;
-	labelConfig.fontFilePath = "Font/TTLNN.TTF";
+	labelConfig.fontFilePath = "Font/mini_kaiti.ttf";
 	labelConfig.fontSize = 28;
 	labelConfig.glyphs = GlyphCollection::DYNAMIC;
 	labelConfig.customGlyphs = nullptr;

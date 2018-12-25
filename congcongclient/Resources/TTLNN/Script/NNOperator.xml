@@ -8,7 +8,7 @@
 	</Widget>
 	
 	<Widget Name="NNOperator_Message" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="Font/TTLNN.TTF"/>
+		<Property Key="FontName" Value="Font/mini_kaiti.ttf"/>
 		<Property Key="FontSize" Value="24"/>
 		<Property Key="Pos" Value="640 270"/>
 		<Property Key="Color" Value="255 165 0"/>
@@ -23,12 +23,12 @@
 </Widget>
 
 <Widget Name="NNOperator_TuiZhuNode" SkinTempName="TxtEmpty">
-	<Property Key="Font" Value="Font/TTLNN.TTF"/>
+	<Property Key="FontName" Value="Font/mini_kaiti.ttf"/>
 	<Property Key="FontSize" Value="28"/>
 	<Property Key="ShowTxt" Value="推注:40"/>
 	<Property Key="Pos" Value="380 180"/>
 	<Property Key="AnchorPos" Value="0 0"/>
-	<Property Key="Color" Value="255 100 40"/>
+	<Property Key="Color" Value="255 165 0"/>
 	<Property Key="Visible" Value="false"/>
 </Widget>
 

@@ -1066,12 +1066,13 @@ bool PriaveteGame::OnTCPNetworkSubDismissPrivate(VOID * pData, WORD wDataSize, I
 	}
 	if (bClearDismissInfo)
 	{
-		pTableInfo->kNotAgreeChairID.clear();
-		pTableInfo->kDismissChairID.clear();
-		pTableInfo->fDismissPastTime = 0;
 		kNetInfo.dwDissUserCout = pTableInfo->kDismissChairID.size();
 		kNetInfo.dwNotAgreeUserCout = pTableInfo->kNotAgreeChairID.size();
 		SendTableData(pTableInfo->pITableFrame,MDM_GR_PRIVATE,SUB_GR_PRIVATE_DISMISS,&kNetInfo,sizeof(kNetInfo));
+		pTableInfo->pITableFrame->RepositionSinkGlobals();
+		pTableInfo->kNotAgreeChairID.clear();
+		pTableInfo->kDismissChairID.clear();
+		pTableInfo->fDismissPastTime = 0;
 	}
 	return true;
 }

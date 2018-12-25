@@ -27,14 +27,14 @@ bool GPHomeUserInfoPanel::init() {
 	
 	WidgetScenceXMLparse sharePanel("GamePlaza/Script/GPHomeUserInfoPanel.xml", this);
 	WidgetManager::addButtonCB("Button_Close", this, button_selector(GPHomeUserInfoPanel::Button_Close));
-	WidgetManager::addButtonCB("Button_ok", this, button_selector(GPHomeUserInfoPanel::Button_Close));
+	//WidgetManager::addButtonCB("Button_ok", this, button_selector(GPHomeUserInfoPanel::Button_Close));
 	UserInfo::Instance().addUpPlayerInfoCB(this, QY_CALLFUNC_SELECTOR(GPHomeUserInfoPanel::onUserInfo));
 	if (_spUserHread == nullptr) {
 		auto spHead = WidgetFun::getChildWidgetByName(this, "User_Avar1");
 		auto pos = Vec2(spHead->getContentSize().width/2, spHead->getContentSize().height/2);
 		WidgetFun::setImagic(WidgetFun::getChildWidgetByName(this, "User_Avar"), "GamePlaza/HomeScene/Tou_OutSide.png", true);
-		std::string headPath = "GamePlaza/HomeScene/avatar_male.png";
-		std::string stencilPath = "GamePlaza/HomeScene/UserInfoPanel/headbox.png";
+		std::string headPath = "GamePlaza/HomeScene/Tou_OutSide.png";
+		std::string stencilPath = "GamePlaza/HomeScene/Tou_OutSide.png";
 		_spUserHread = createCircleAvatar(spHead,	headPath,	stencilPath, pos);
 	}
 	return true;
@@ -81,17 +81,17 @@ cocos2d::Node* GPHomeUserInfoPanel::createCircleAvatar(cocos2d::Node* pRootNode,
 	auto ctSize = stencil->getContentSize();
 
 	if (viewSize.height < ctSize.height || viewSize.width < ctSize.width) {
-		auto scaleHeight = ctSize.height * 0.9f / viewSize.height;
-		auto scaleWidth = ctSize.width * 0.9f / viewSize.width;
+		auto scaleHeight = ctSize.height * 0.92f / viewSize.height;
+		auto scaleWidth = ctSize.width * 0.92f / viewSize.width;
 		auto targetScale = utility::Max(scaleWidth, scaleHeight);
 		sprite->setScale(targetScale);
 	}
 	
-	stencil->setScale(1.2f,1.2f);
+	stencil->setScale(1.05f,1.05f);
 	pClip->setAlphaThreshold(.7f);
 	pClip->setStencil(stencil);
 	pClip->addChild(sprite);
-	pClip->setInverted(false);
+	pClip->setInverted(true);
 	pRootNode->addChild(pClip);
 	pClip->setPosition(position);
 	return sprite;
