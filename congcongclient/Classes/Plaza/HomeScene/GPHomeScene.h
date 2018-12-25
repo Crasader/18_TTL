@@ -56,7 +56,7 @@ public:
 	void removeAllPanels();
 	//显示总结算面板
 	void showGameCalculate(CMD_GF_Private_End_Info* pNetInfo);
-	void setNeedFlushRecord(bool flag);
+	void setActiveButtons(bool flag);
 #pragma region 游戏面板处理
 public:
 	//打开子游戏面板
@@ -123,5 +123,6 @@ private:
 	ssize_t m_selectedItemIndex;
 	
 	int _nCurrentGameKindID;
-	bool _bNeedFlushRecord;
+	//是否激活当前的button
+	bool _b_avtive_buttons;
 };

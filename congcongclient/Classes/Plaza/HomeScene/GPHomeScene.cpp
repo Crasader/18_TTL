@@ -23,7 +23,7 @@ GPHomeScene::GPHomeScene()
 	, _img_head(NULL)
 	, m_kPopularizeMission(ScriptData<std::string>("address").Value().c_str(), ScriptData<int>("Port").Value())
 	, _nCurrentGameKindID(ScriptData<int>("GameKind").Value())
-	, _bNeedFlushRecord(true)
+	, _b_avtive_buttons(true)
 {
 	m_kPopularizeMission.setMissionSink(this);
 	UserInfo::Instance().addUpPlayerInfoCB(this, QY_CALLFUNC_SELECTOR(GPHomeScene::flushUserInfo));
@@ -222,7 +222,7 @@ void GPHomeScene::onEnterScene()
 	flushUserInfo();
 
 	GPGameLink::pInstance()->ConnectAndInqureTables(NNGameScene::KIND_ID);
-	setNeedFlushRecord(true);
+	setActiveButtons(true);
 	SoundFun::Instance().playBackMusic("bgplay.mp3");
 }
 
@@ -439,9 +439,9 @@ void GPHomeScene::showGameCalculate(CMD_GF_Private_End_Info* pNetInfo)
 	NNCalculate::Instance().show(pNetInfo);
 }
 
-void GPHomeScene::setNeedFlushRecord(bool flag)
+void GPHomeScene::setActiveButtons(bool flag)
 {
-	_bNeedFlushRecord = flag;
+	_b_avtive_buttons = flag;
 }
 
 //DONE:没被调用过了
