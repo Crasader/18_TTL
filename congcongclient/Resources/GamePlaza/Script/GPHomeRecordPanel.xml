@@ -22,7 +22,7 @@
 			</Widget>
 			<!-- 分享 -->
 			<Widget Name="Button_Share" SkinTempName="ButtonEmpty">
-				<Property Key="NomalTexture" Value="GamePlaza/HomeScene/RecordPanel/Share.png"/>
+				<Property Key="NomalTexture" Value="GamePlaza/HomeScene/RecordPanel/share.png"/>
 				<Property Key="PressTexture" Value="AutoPress"/>
 				<Property Key="Pos" Value="1100 580"/>
 			</Widget>

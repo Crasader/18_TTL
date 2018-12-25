@@ -6,11 +6,6 @@
 		<Property Key="Pos" Value="640 360"/>
 	</Widget>
 
-	<!--<Widget Name="" SkinTempName="ImagicEmpty">
-		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/SettingPanel/title.png"/>
-		<Property Key="Pos" Value="640 514"/>
-	</Widget>-->
-
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/SettingPanel/title_music.png"/>
 		<Property Key="AnchorPos" Value="0 0.5"/>

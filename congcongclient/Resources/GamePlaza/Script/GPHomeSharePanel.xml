@@ -6,11 +6,6 @@
 		<Property Key="Scale" Value="0.5"/>
 	</Widget>
 
-	<!-- <Widget Name="" SkinTempName="ImagicEmpty"> -->
-		<!-- <Property Key="ImagicTexture" Value="GamePlaza/HomeScene/SharePanel/title.png"/> -->
-		<!-- <Property Key="Pos" Value="640 512.75"/> -->
-	<!-- </Widget> -->
-
 	<Widget Name="Button_ShareToFriend" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/SharePanel/Button_ShareToFriend.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>

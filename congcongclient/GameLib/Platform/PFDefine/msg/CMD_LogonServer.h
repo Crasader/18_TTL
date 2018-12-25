@@ -469,7 +469,7 @@ struct CMD_GP_GetGameRecord_List
 {
 	dword dwUserID;
 	dword dwDrawID;
-	BYTE bUpOrDown;
+	byte bUpOrDown;
 };
 
 //商城数据
