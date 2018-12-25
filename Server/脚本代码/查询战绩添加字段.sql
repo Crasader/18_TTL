@@ -19,8 +19,10 @@ ALTER TABLE [dbo].RecordDrawInfo ADD ConcludeTime BIGINT NOT NULL default 0
 ALTER TABLE [dbo].RecordDrawScore DROP COLUMN InSertTime
 ALTER TABLE [dbo].RecordDrawScore ADD InSertTime BIGINT NOT NULL default 0
 
+ALTER TABLE [dbo].RecordDrawScore ADD StartTime BIGINT NOT NULL default 0
+
 */
 
-ALTER TABLE [dbo].RecordDrawScore ADD StartTime BIGINT NOT NULL default 0
+ALTER TABLE [dbo].RecordDrawInfo ADD GameType INT NOT NULL default 0
 
 GO

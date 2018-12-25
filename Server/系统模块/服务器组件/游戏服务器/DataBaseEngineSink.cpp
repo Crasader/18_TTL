@@ -779,6 +779,7 @@ bool CDataBaseEngineSink::OnRequestGameScoreRecord(DWORD dwContextID, VOID * pDa
 		m_GameDBAide.AddParameter(TEXT("@wTableID"),pGameScoreRecord->wTableID);
 		m_GameDBAide.AddParameter(TEXT("@dwRulesBytes"), pGameScoreRecord->dwRulesBytes);
 		m_GameDBAide.AddParameter(TEXT("@dwBaseScore"), pGameScoreRecord->dwBaseScore);
+		m_GameDBAide.AddParameter(TEXT("@wGameType"), pGameScoreRecord->wGameType);
 		m_GameDBAide.AddParameter(TEXT("@wUserCount"),pGameScoreRecord->wUserCount);
 		m_GameDBAide.AddParameter(TEXT("@wAndroidCount"),pGameScoreRecord->wAndroidCount);
 

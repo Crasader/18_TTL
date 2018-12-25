@@ -209,6 +209,7 @@ struct DBR_GR_GameScoreRecord
 	DWORD dwPrivateID;//私人房标识
 	DWORD dwRulesBytes;//规则标识
 	DWORD dwBaseScore;//底分
+	WORD wGameType;//游戏类型
 
 	//损耗税收
 	SCORE lWasteCount;//损耗数目
@@ -232,6 +233,7 @@ struct DBR_GR_GameScoreRecord
 		Stream_VALUE(wUserCount);
 		Stream_VALUE(dwRulesBytes);//规则标识
 		Stream_VALUE(dwBaseScore);//底分
+		Stream_VALUE(wGameType);
 		Stream_VALUE(wAndroidCount);
 		Stream_VALUE(dwPrivateID);
 		Stream_VALUE(lWasteCount);

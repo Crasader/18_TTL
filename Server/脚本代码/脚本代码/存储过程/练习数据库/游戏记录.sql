@@ -115,8 +115,9 @@ CREATE PROC GSP_GR_RecordDrawInfo
 
 	-- 桌子信息
 	@wTableID INT,								-- 桌子号码
-	@dwRulesBytes BIGINT,							-- 规则
-	@dwBaseScore BIGINT,							-- 底分
+	@dwRulesBytes BIGINT,						-- 规则
+	@dwBaseScore BIGINT,						-- 底分
+	@wGameType BIGINT,							-- 游戏类型
 	@wUserCount INT,							-- 用户数目
 	@wAndroidCount INT,							-- 机器数目
 
@@ -143,8 +144,8 @@ SET NOCOUNT ON
 BEGIN
 
 	-- 插入记录
-	INSERT RecordDrawInfo(KindID,ServerID,TableID,RulesBytes,BaseScore,UserCount,AndroidCount,Waste,Revenue,UserMedal,StartTime,ConcludeTime,DrawCourse, InsertTime)
-	VALUES (@wKindID,@wServerID,@wTableID,@dwRulesBytes,@dwBaseScore,@wUserCount,@wAndroidCount,@lWasteCount,@lRevenueCount,@dwUserMemal,@SystemTimeStart,@SystemTimeConclude,@dataUserDefine,@InsertTime)
+	INSERT RecordDrawInfo(KindID,ServerID,TableID,RulesBytes,BaseScore,GameType,UserCount,AndroidCount,Waste,Revenue,UserMedal,StartTime,ConcludeTime,DrawCourse, InsertTime)
+	VALUES (@wKindID,@wServerID,@wTableID,@dwRulesBytes,@dwBaseScore,@wGameType,@wUserCount,@wAndroidCount,@lWasteCount,@lRevenueCount,@dwUserMemal,@SystemTimeStart,@SystemTimeConclude,@dataUserDefine,@InsertTime)
 	
 	-- 读取记录
 	SELECT SCOPE_IDENTITY() AS DrawID

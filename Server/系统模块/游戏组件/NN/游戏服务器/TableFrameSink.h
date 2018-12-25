@@ -84,13 +84,13 @@ struct  NNGameRecord {
     std::vector<NNGameRecordOperateResult> kAction;
     void StreamValue(datastream& kData, bool bSend)
     {
-        StructVecotrMember(NNGameRecordPlayer, kPlayers);
-        StructVecotrMember(NNGameRecordOperateResult, kAction);
         Stream_VALUE(dwKindID);
         Stream_VALUE(dwVersion);
 		Stream_VALUE(gameTypeIndex);
 		Stream_VALUE(gameRuleIndex);
 		Stream_VALUE(hostUser);
+        StructVecotrMember(NNGameRecordPlayer, kPlayers);
+        StructVecotrMember(NNGameRecordOperateResult, kAction);
     }
 };
 

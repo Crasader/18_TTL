@@ -251,6 +251,7 @@ bool CTableFrame::ConcludeGame(BYTE cbGameStatus)
 					GameScoreRecord.wTableID = pTablInfo->dwRoomNum;
 					GameScoreRecord.dwBaseScore = pTablInfo->dwBaseScore;
 					GameScoreRecord.dwRulesBytes = pTablInfo->dwGameRuleIdex;
+					GameScoreRecord.wGameType = static_cast<WORD>(pTablInfo->bGameTypeIdex);
 				}
 			}
 

@@ -527,9 +527,11 @@ struct tagGameRecordListItem {
 	DWORD dwStartTime;
 	DWORD dwBaseScore;
 	DWORD dwRulesBytes;
+	WORD wGameType;
 	DWORD dwUserID;
 	DWORD dwMinDrawID;
 	DWORD dwMaxDrawID;
+	WORD wDrawCount;
 	SCORE llScore;
 	std::string	kNickName;
 	std::string strHeadHttp;
@@ -542,9 +544,11 @@ struct tagGameRecordListItem {
 		Stream_VALUE(dwStartTime);
 		Stream_VALUE(dwBaseScore);
 		Stream_VALUE(dwRulesBytes);
+		Stream_VALUE(wGameType);
 		Stream_VALUE(dwUserID);
 		Stream_VALUE(dwMinDrawID);
 		Stream_VALUE(dwMaxDrawID);
+		Stream_VALUE(wDrawCount);
 		Stream_VALUE(llScore);
 		Stream_VALUE(kNickName);
 		Stream_VALUE(strHeadHttp);

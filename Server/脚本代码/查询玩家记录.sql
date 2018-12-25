@@ -57,7 +57,8 @@ BEGIN
 			[dbo].[RecordDrawScore].StartTime,
 			Min([dbo].[RecordDrawScore].DrawID) AS MinDrawID,
 			Max([dbo].[RecordDrawScore].DrawID) AS MaxDrawID,
-			SUM([dbo].[RecordDrawScore].DrawID) AS DrawIDs
+			SUM([dbo].[RecordDrawScore].DrawID) AS DrawIDs,
+			COUNT([dbo].[RecordDrawScore].DrawID) AS DrawCount
 		FROM [dbo].[RecordDrawScore]
 		WHERE [dbo].[RecordDrawScore].UserID = '+ STR(@UserID)
 
@@ -79,7 +80,8 @@ BEGIN
 		StartTime BIGINT,
 		MinDrawID BIGINT,
 		MaxDrawID BIGINT,
-		DrawIDs BIGINT
+		DrawIDs BIGINT,
+		DrawCount INT,
 	)
 
 	INSERT INTO #TableID EXEC (@strFindTableBegin + @strCondition + @strFindTableEnd)
@@ -92,7 +94,8 @@ BEGIN
 			[dbo].[RecordDrawScore].TableID,
 			[dbo].[RecordDrawScore].UserID,
 			[#TableID].MinDrawID,
-			[#TableID].MaxDrawID
+			[#TableID].MaxDrawID,
+			[#TableID].DrawCount
 		INTO #DrawIDs
 		FROM [dbo].[RecordDrawScore]
 			JOIN [#TableID] ON [#TableID].TableID = [dbo].[RecordDrawScore].TableID
@@ -112,9 +115,11 @@ BEGIN
 		[dbo].[RecordDrawInfo].ServerID,
 		[dbo].[RecordDrawInfo].BaseScore,
 		[dbo].[RecordDrawInfo].RulesBytes,
+		[dbo].[RecordDrawInfo].GameType,
 		[dbo].[RecordDrawInfo].StartTime,
 		[#DrawIDs].MinDrawID,
-		[#DrawIDs].MaxDrawID
+		[#DrawIDs].MaxDrawID,
+		[#DrawIDs].DrawCount
 		INTO [#DrawInfo]
 		FROM [#DrawIDs]
 			LEFT JOIN [dbo].[RecordDrawScore] ON [#DrawIDs].DrawID = [dbo].[RecordDrawScore].DrawID
@@ -125,9 +130,11 @@ BEGIN
 				[dbo].[RecordDrawInfo].ServerID,
 				[dbo].[RecordDrawInfo].BaseScore,
 				[dbo].[RecordDrawInfo].RulesBytes,
+				[dbo].[RecordDrawInfo].GameType,
 				[dbo].[RecordDrawInfo].StartTime,
 				[#DrawIDs].MinDrawID,
-				[#DrawIDs].MaxDrawID
+				[#DrawIDs].MaxDrawID,
+				[#DrawIDs].DrawCount
 
 	--4.用选出的牌局信息再去匹配玩家的头像和姓名
 	SELECT 
@@ -141,8 +148,10 @@ BEGIN
 		[#DrawInfo].Score,
 		[#DrawInfo].BaseScore,
 		[#DrawInfo].RulesBytes,
+		[#DrawInfo].GameType,
 		[#DrawInfo].MinDrawID,
-		[#DrawInfo].MaxDrawID
+		[#DrawInfo].MaxDrawID,
+		[#DrawInfo].DrawCount
 		FROM [#DrawInfo]
 			LEFT JOIN [QPAccountsDB].[dbo].[AccountsInfo] ON [#DrawInfo].UserID = [QPAccountsDB].[dbo].[AccountsInfo].UserID
 			LEFT JOIN [QPAccountsDB].[dbo].[IndividualDatum] ON [#DrawInfo].UserID = [QPAccountsDB].[dbo].[IndividualDatum].UserID
@@ -155,9 +164,11 @@ BEGIN
 				[#DrawInfo].ServerID,
 				[#DrawInfo].BaseScore,
 				[#DrawInfo].RulesBytes,
+				[#DrawInfo].GameType,
 				[#DrawInfo].StartTime,
 				[#DrawInfo].MinDrawID,
-				[#DrawInfo].MaxDrawID
+				[#DrawInfo].MaxDrawID,
+				[#DrawInfo].DrawCount
 
 	SET @Ret = 4
 
