@@ -170,8 +170,7 @@ void GPHomeRecordPanel::initView()
 	pButtomList->removeAllChildren();
 
 	if (_cur_score_info == nullptr) {
-		WidgetFun::setVisible(this, "Button_Record", false);
-		WidgetFun::setVisible(this, "Txt_Titles", false);
+		WidgetFun::setVisible(this, "View", false);
 		return;
 	}
 

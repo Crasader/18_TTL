@@ -1,5 +1,4 @@
 #include "GPLoginScene.h"
-
 #include "common.h"
 #include "constant.h"
 
