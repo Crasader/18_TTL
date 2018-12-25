@@ -1,4 +1,4 @@
-﻿ <root>
+ <root>
 	<ScriptValueFloat Key="UseWidth" Value="1280"/>
 	<ScriptValueFloat Key="UseHeight" Value="720"/>
  	<ScriptValueStr Key="address" Value="192.168.43.6"/>
