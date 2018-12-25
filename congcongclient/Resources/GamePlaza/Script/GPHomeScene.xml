@@ -33,7 +33,6 @@
 			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/Tou_OutSide.png"/>
 			<Property Key="Pos" Value="160 665"/>
 			<Property Key="AnchorPos" Value="0.5 0.5"/>
-			<Property Key="Visible" Value="false"/>
 		</Widget>
 
 		<!--性别-->
@@ -41,13 +40,14 @@
 			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/male.png"/>
 			<Property Key="AnchorPos" Value="0.5 0.5"/>
 			<Property Key="Pos" Value="239 685"/>
-			<Property Key="Visible" Value="false"/>
+      			<Property Key="Visible" Value="false"/>
 		</Widget>
 		<!--性别-->
 		<Widget Name="Img_UserSex_Female" SkinTempName="ImagicEmpty">
 			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/famale.png"/>
 			<Property Key="AnchorPos" Value="0.5 0.5"/>
 			<Property Key="Pos" Value="239 685"/>
+      			<Property Key="Visible" Value="false"/>
 		</Widget>
 
 		<!--名字-->
