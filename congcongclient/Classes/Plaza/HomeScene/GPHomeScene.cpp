@@ -507,8 +507,8 @@ void GPHomeScene::flushUserInfo()
 		WidgetFun::setVisible(this, "Img_UserSex_Female", false);
 		break;
 	case UserSex::US_Femal:
-		WidgetFun::setVisible(this, "Img_UserSex_Female", true);
 		WidgetFun::setVisible(this, "Img_UserSex_Male", false);
+		WidgetFun::setVisible(this, "Img_UserSex_Female", true);
 		break;
 	}
 	if (UserInfo::Instance().getHeadHttp() != "") {
