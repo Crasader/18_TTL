@@ -111,7 +111,7 @@ void GPHomeScene::showGameRoomList(void* data, size_t dataSize)
 		//房间号
 		std::string strRoomNo = utility::toString(body->dwTableNum);
 		//局数
-		std::string strRoundCount = utility::toString(game_info.bPlayCout[body->dwEnterMatchNum]);
+		std::string strRoundCount = utility::toString(game_info.bPlayCout[body->bToTalPlayIndex]);
 		//底分
 		std::string strBaseSorce = utility::toString(body->dwBaseScore, "/", body->dwBaseScore * 2);
 		//人数
@@ -527,6 +527,7 @@ void GPHomeScene::flushUserInfo()
 }
 
 #pragma region CGPopularizeSink
+
 void GPHomeScene::onGPNoticeResult(tagGameMatch&	pGameMatchInfo, bool bSucess, const char* pStr)
 {
 	NoticeMsg::Instance().ShowTopMsg(utility::a_u8(pStr));
