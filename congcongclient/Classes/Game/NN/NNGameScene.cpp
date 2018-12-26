@@ -6,7 +6,7 @@
 
 #include "NNGameScene.h"
 #include "NNRoomInfo.h"
-#include "NNRoomDetail.h"
+#include "NNGameRules.h"
 
 #include "Game/NN/NNPlayerPanel.h"
 #include "Game/NN/NNPlayerCard.h"
@@ -99,7 +99,7 @@ void NNGameScene::initLayout()
 void NNGameScene::initButton()
 {
     WidgetManager::addButtonCB("NNGameScene_ButtonMenu", this, button_selector(NNGameScene::Button_Menu));
-	//WidgetManager::addButtonCB("NNGameScene_ButtonHelp", this, button_selector(NNGameScene::Button_Help));
+	WidgetManager::addButtonCB("NNGameScene_ButtonHelp", this, button_selector(NNGameScene::Button_Help));
     WidgetManager::addButtonCB("NNGameScene_ButtonLeave", this, button_selector(NNGameScene::Button_Exit));
 	WidgetManager::addButtonCB("NNGameScene_ButtonDismiss", this, button_selector(NNGameScene::Button_Dismiss));
 	WidgetManager::addButtonCB("NNGameScene_ButtonSetting", this, button_selector(NNGameScene::Button_Setting));
@@ -147,7 +147,7 @@ void NNGameScene::initPanel()
 	addChild(NNPlayerCard::pInstance());
     addChild(NNPlayerPanel::pInstance());
 	addChild(NNOperator::pInstance());
-	addChild(NNRoomDetail::pInstance());
+	addChild(NNGameRules::pInstance());
 	addChild(NNDismissRoom::pInstance());
 	addChild(NNTurnCard::pInstance());
 
@@ -292,7 +292,7 @@ void NNGameScene::clearPanel()
 	NNTurnCard::Instance().hide();
 	//NNSetting::Instance().hide();
 	GPHomeSettingPanel::Instance().hide();
-	NNRoomDetail::Instance().hide();
+	NNGameRules::Instance().hide();
 }
 
 void NNGameScene::hideMenuPanel()
@@ -465,7 +465,7 @@ void NNGameScene::Button_Menu(cocos2d::Ref*, WidgetUserInfo*)
 
 void NNGameScene::Button_Help(cocos2d::Ref*, WidgetUserInfo*)
 {
-	NNRoomDetail::Instance().show();
+	NNGameRules::Instance().show();
 }
 
 void NNGameScene::Button_Exit(cocos2d::Ref*, WidgetUserInfo*)
@@ -674,7 +674,7 @@ void NNGameScene::addRoomshareInfo(CMD_GF_Private_Room_Info* pRoomInfo)
 		shareInfo = itIndex->second;
 	}
 
-	shareInfo.strUrl = utility::a_u8(utility::toString("http://114.115.164.158:8080/evokeapp.html?refresh=0&room_id=", (int)m_RoomInfo.dwRoomNum));
+	shareInfo.strUrl = utility::a_u8(utility::toString("http://www.51guojiang.com/app/yxn/evokeapp.html?refresh=0&room_id=", (int)m_RoomInfo.dwRoomNum));
 
 	std::string strPepleNum = utility::toString(getGamePlayerCount(), "/", (int)pRoomInfo->bMaxPeopleNum);
 	std::string strRoomType = "";

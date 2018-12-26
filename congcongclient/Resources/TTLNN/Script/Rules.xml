@@ -1,0 +1,114 @@
+<Widget  Name="Rules" SkinTempName="Empty">
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/background.png"/>
+		<Property Key="Pos" Value="640 360"/>
+	</Widget>
+
+	<!-- 排列规则 -->
+	<Widget Name="Arrange_Rules" SkinTempName="Empty">
+		<UserInfo Key="ViewPortBegin" Value="50 40"/>
+		<UserInfo Key="ViewPortSize" Value="1185 580"/>
+		<UserInfo Key="BeginXTitle" Value="60"/>
+		<UserInfo Key="BeginXContent" Value="80"/>
+		<UserInfo Key="BeginY" Value="600"/>
+		<UserInfo Key="OffsetTitle" Value="0 300"/>
+		<UserInfo Key="OffsetContent" Value="0 250"/>
+		<UserInfo Key="FontSizeTitle" Value="32"/>
+		<UserInfo Key="MaxLineNumber" Value="10"/>
+		<UserInfo Key="LineInterval" Value="10"/>
+		<UserInfo Key="LineWidthContent" Value="1120"/>
+		<UserInfo Key="FontSizeContent" Value="24"/>
+		<UserInfo Key="FontSizeTitle" Value="32"/>
+		<UserInfo Key="FontColorTilte" Value="142 100 62"/>
+		<UserInfo Key="FontColorContent" Value="142 100 62"/>
+		<UserInfo Key="FontNameTitle" Value="Font/mini_kaiti.ttf"/>
+		<UserInfo Key="FontNameContent" Value="Font/stheiti_light.ttc"/>
+	</Widget>
+
+	<!-- 牌型 -->
+	<Widget Name="Txts_PaiXing" SkinTempName="Empty">
+		<UserInfo Key="1_0" Value="一、牌型规则"/>
+		<UserInfo Key="1_1" Value="    牌面数值：10、J、Q、K都为10，其他按牌面数字计算。取其中3张牌数值相加，如果是10的倍数，则剩余两张牌相加之和取个位数即为牛X。如：4/9/8/7/K，(4+9+7=20)(K+8=18)，此牌型为牛八。如果余两张牌相加之和也是10的倍数即为牛牛牌型，如：4/9/7/J/Q/=20,则为牛牛。"/>
+		<UserInfo Key="1_2" Value="1、五小牛：五张牌都小于或等于5，且牌点总数小于或等于10"/>
+		<UserInfo Key="1_3" Value="2、炸弹牛：五张牌中有四张一样的牌，此时无需有牛。若庄家闲家都是四炸牌型，则比较四张一样的牌的大小"/>
+		<UserInfo Key="1_4" Value="3、葫芦牛：牌型为AAA+BB为葫芦牛"/>
+		<UserInfo Key="1_5" Value="4、同花牛：五张花色相同的牌，牌型相同比花色(花色为黑桃>红桃>梅花>方块)"/>
+		<UserInfo Key="1_6" Value="5、五花牛：五张牌都由10、J、Q、K中的任意一张组成，例如10 J Q Q K"/>
+		<UserInfo Key="1_7" Value="6、顺子牛：五张牌是12345的牌型"/>
+		<UserInfo Key="1_8" Value="7、五张牌按最大的牌型计算"/>
+		<UserInfo Key="1_9" Value="8、大小关系：五小牛>炸弹牛>葫芦牛>同花牛>五花牛>顺子牛>牛牛>牛九>牛八>牛七>牛六>牛五>牛四>牛三>牛二>牛一>无牛"/>
+	</Widget>
+
+	<!-- 积分 -->
+	<Widget Name="Txts_JiFen_1" SkinTempName="Empty">
+		<UserInfo Key="1_0" Value="二、积分计算"/>
+		<UserInfo Key="1_1" Value="具体积分规则："/>
+		<UserInfo Key="1_2" Value="底分=1"/>
+		<UserInfo Key="1_3" Value="牌型积分"/>
+		<UserInfo Key="1_5" Value="五小牛-----8倍"/>
+		<UserInfo Key="1_5" Value="炸弹牛-----6倍"/>
+		<UserInfo Key="1_6" Value="葫芦牛-----6倍"/>
+		<UserInfo Key="1_7" Value="同花牛-----5倍"/>
+		<UserInfo Key="1_8" Value="五花牛-----5倍"/>
+		<UserInfo Key="1_9" Value="顺子牛-----5倍"/>
+		<UserInfo Key="1_6" Value="牛牛-----3倍"/>
+		<UserInfo Key="1_7" Value="牛八、牛九-----2倍"/>
+		<UserInfo Key="1_8" Value="牛七以下-----1倍"/>
+		<UserInfo Key="1_9" Value="积分=选择倍数*牌型积分"/>
+		<UserInfo Key="1_10" Value="比如：庄家选5倍抢庄；此时庄家抓到五小牛这种大牌此时闲家出：5*8=40分"/>
+	</Widget>
+
+	<!-- 积分 -->
+	<Widget Name="Txts_JiFen_2" SkinTempName="Empty">
+		<UserInfo Key="1_0" Value="二、积分计算"/>
+		<UserInfo Key="1_1" Value="具体积分规则："/>
+		<UserInfo Key="1_2" Value="底分=1"/>
+		<UserInfo Key="1_3" Value="牌型积分"/>
+		<UserInfo Key="1_5" Value="五小牛-----8倍"/>
+		<UserInfo Key="1_5" Value="炸弹牛-----6倍"/>
+		<UserInfo Key="1_6" Value="葫芦牛-----6倍"/>
+		<UserInfo Key="1_7" Value="同花牛-----5倍"/>
+		<UserInfo Key="1_8" Value="五花牛-----5倍"/>
+		<UserInfo Key="1_9" Value="顺子牛-----5倍"/>
+		<UserInfo Key="1_6" Value="牛牛-----4倍"/>
+		<UserInfo Key="1_7" Value="牛八、牛九-----3倍"/>
+		<UserInfo Key="1_8" Value="牛七以下-----2倍"/>
+		<UserInfo Key="1_9" Value="积分=选择倍数*牌型积分"/>
+		<UserInfo Key="1_10" Value="比如：庄家选5倍抢庄；此时庄家抓到五小牛这种大牌此时闲家出：5*8=40分"/>
+	</Widget>
+
+	<!-- 庄家规则 -->
+	<Widget Name="Txts_ZhuangJia" SkinTempName="Empty">
+		<UserInfo Key="1_0" Value="三、庄家规则"/>
+		<UserInfo Key="1_1" Value="1、自由抢庄：每局开始玩家均可以选择是否抢庄，如果只有一个玩家抢庄，则抢庄玩家坐庄；如果多人抢庄，则从中随机一名玩家坐庄，如果无人抢庄，则从中随机一名玩家坐庄"/>
+		<UserInfo Key="1_2" Value="2、牛牛上庄：第一局随机庄家。在玩家抓到牛牛牌型之后，下一局会成为庄家；如果一局中有多名玩家抓到牛牛牌型，则牛牛最大的玩家下一局坐庄；如果本局无牛牛牌型，则本局庄家下局连庄"/>
+		<UserInfo Key="1_3" Value="3、明牌抢庄：玩家根据手中已经亮开的四张牌决定抢庄或者不抢，抢庄倍数最大的玩家坐庄；如果多名玩家都选择最大倍数，则从中随机一名玩家坐庄；如果无人抢庄，则从所有玩家中随机一名坐庄"/>
+		<UserInfo Key="1_5" Value="4、通比牛牛：无庄家，速度快，牌最大的玩家赢全场"/>
+	</Widget>
+
+	<!-- 闲家推注 -->
+	<Widget Name="Txts_TuiZhu" SkinTempName="Empty">
+		<UserInfo Key="1_0" Value="四、闲家推注"/>
+		<UserInfo Key="1_1" Value="闲家上局胜利后，本局依然为闲家则可以推注"/>
+		<UserInfo Key="1_2" Value="不可连续推注，推注明细如下："/>
+		<UserInfo Key="1_3" Value="游戏底分      1/2分  2/4分  4/8分  5/10分"/>
+		<UserInfo Key="1_4" Value="没牛---牛三    3分    6分    12分   15分 "/>
+		<UserInfo Key="1_5" Value="牛四---牛六    4分    8分    16分   20分"/>
+		<UserInfo Key="1_6" Value="牛七---牛九    8分   16分    32分   40分"/>
+		<UserInfo Key="1_7" Value="牛牛---以上   10分   20分    40分   50分"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/RecordPanel/title.png"/>
+		<Property Key="Pos" Value="640 646"/>
+		<Property Key="Scale" Value="0.9"/>
+	</Widget>
+	
+	<Widget Name="Button_Close" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Button_Close.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="1220 650"/>
+		<Property Key="Scale" Value="1.2"/>
+	</Widget>
+	
+ </Widget>

@@ -181,7 +181,7 @@
 			<Property Key="AnchorPos" Value="0.5 0.5"/>
 		</Widget>
 		<Widget Name="Txt_RoomListEmpty" SkinTempName="TxtEmpty">
-			<Property Key="FontName" Value="Font/true_type.ttf"/>
+			<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
 			<Property Key="FontSize" Value="24"/>
 			<Property Key="ShowTxt" Value="快去创建房间和好友一起游戏吧"/>
 			<Property Key="AnchorPos" Value="0.5 0.5"/>

@@ -31,12 +31,11 @@
 		<Property Key="Pos" Value="950 112"/>
 	</Widget>
 
-	<!-- <Widget Name="NNGameScene_ButtonHelp" SkinTempName="ButtonEmpty"> -->
-		<!-- <Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonHelp.png"/> -->
-		<!-- <Property Key="PressTexture" Value="AutoPress"/> -->
-		<!-- <Property Key="Pos" Value="120 580"/> -->
-		<!-- <Property Key="Pos" Value="900 675"/> -->
-	<!-- </Widget> -->
+	<Widget Name="NNGameScene_ButtonHelp" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonHelp.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="900 675"/>
+	</Widget>
 
 	<Widget Name="NNGameScene_ButtonShare" SkinTempName="ButtonEmpty">
 		<Property Key="Index" Value="-1"/>
@@ -44,13 +43,6 @@
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="1100 665"/>
 	</Widget>
-
-	<!--<Widget Name="NNGameScene_ChongZhi" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/MallPanel/Btn_ChongZhi.png"/>
-		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Visible" Value="false"/>
-		<Property Key="Pos" Value="1101 675"/>
-	</Widget>-->
 
 	<Widget Name="NNGameScene_ButtonMenu" SkinTempName="ButtonEmpty">
 		<Property Key="Index" Value="-1"/>

@@ -34,7 +34,7 @@
 				<Property Key="AnchorPos" Value="0.5 0.5"/>
 				<Property Key="FontSize" Value="20"/>
 				<Property Key="ShowTxt" Value="房间:"/>
-				<Property Key="FontName" Value="Font/true_type.ttf"/>
+				<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
 				<Property Key="Color" Value="142 100 62"/>
 				<Property Key="Pos" Value="120 580"/>
 			</Widget>
@@ -42,7 +42,7 @@
 				<Property Key="AnchorPos" Value="0.5 0.5"/>
 				<Property Key="FontSize" Value="20"/>
 				<Property Key="ShowTxt" Value="123456"/>
-				<Property Key="FontName" Value="Font/true_type.ttf"/>
+				<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
 				<Property Key="Color" Value="142 100 62"/>
 				<Property Key="Pos" Value="200 580"/>
 			</Widget>
@@ -52,7 +52,7 @@
 				<Property Key="AnchorPos" Value="0.5 0.5"/>
 				<Property Key="FontSize" Value="20"/>
 				<Property Key="ShowTxt" Value="局数:"/>
-				<Property Key="FontName" Value="Font/true_type.ttf"/>
+				<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
 				<Property Key="Color" Value="142 100 62"/>
 				<Property Key="Pos" Value="300 580"/>
 			</Widget>
@@ -60,7 +60,7 @@
 				<Property Key="AnchorPos" Value="0.5 0.5"/>
 				<Property Key="FontSize" Value="20"/>
 				<Property Key="ShowTxt" Value="20"/>
-				<Property Key="FontName" Value="Font/true_type.ttf"/>
+				<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
 				<Property Key="Color" Value="142 100 62"/>
 				<Property Key="Pos" Value="360 580"/>
 			</Widget>
@@ -70,7 +70,7 @@
 				<Property Key="AnchorPos" Value="0.5 0.5"/>
 				<Property Key="FontSize" Value="20"/>
 				<Property Key="ShowTxt" Value="底分:"/>
-				<Property Key="FontName" Value="Font/true_type.ttf"/>
+				<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
 				<Property Key="Color" Value="142 100 62"/>
 				<Property Key="Pos" Value="440 580"/>
 			</Widget>
@@ -78,7 +78,7 @@
 				<Property Key="AnchorPos" Value="0.5 0.5"/>
 				<Property Key="FontSize" Value="20"/>
 				<Property Key="ShowTxt" Value="5/10"/>
-				<Property Key="FontName" Value="Font/true_type.ttf"/>
+				<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
 				<Property Key="Color" Value="142 100 62"/>
 				<Property Key="Pos" Value="500 580"/>
 			</Widget>
@@ -88,7 +88,7 @@
 				<Property Key="AnchorPos" Value="0.5 0.5"/>
 				<Property Key="FontSize" Value="20"/>
 				<Property Key="ShowTxt" Value="明牌抢庄"/>
-				<Property Key="FontName" Value="Font/true_type.ttf"/>
+				<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
 				<Property Key="Color" Value="142 100 62"/>
 				<Property Key="Pos" Value="600 580"/>
 			</Widget>
@@ -98,7 +98,7 @@
 				<Property Key="AnchorPos" Value="0.5 0.5"/>
 				<Property Key="FontSize" Value="20"/>
 				<Property Key="ShowTxt" Value="2018/12/21 aa:aa:aa"/>
-				<Property Key="FontName" Value="Font/true_type.ttf"/>
+				<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
 				<Property Key="Color" Value="142 100 62"/>
 				<Property Key="Pos" Value="780 580"/>
 			</Widget>

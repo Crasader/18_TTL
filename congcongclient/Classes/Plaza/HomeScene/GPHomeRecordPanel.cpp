@@ -4,6 +4,7 @@
 #include IMAGE_DOWN
 #include UTILITY_CONVERT
 #include UTILITY_WIDGET
+#include UTILITY_LOG
 
 FV_SINGLETON_STORAGE(GPHomeRecordPanel);
 
@@ -41,7 +42,7 @@ void GPHomeRecordPanel::update(float fpass)
 			auto pView = WidgetFun::getChildWidget(this, "View");
 			_bg_offset = pView->getPosition().y;
 			_bg_offset = _bg_offset / 2.f;
-			if (_bg_offset < 10.f) {
+			if (_bg_offset < 10.f || _bg_offset > -10.f) {
 				_bg_offset = 0;
 				_touch_state = RTS_Null;
 			}
@@ -125,14 +126,17 @@ void GPHomeRecordPanel::onGPBackGameRecordListEx(tagGameRecordListEx* pNetInfo)
 		//如果已经有当前的记录了, 则查看当前玩家分数是否已经重复
 		if (itScore != _mpGameScores.end()) {
 			auto& vctUserID = itScore->second.vctUserID;
-			if (std::find(vctUserID.begin(), vctUserID.end(), record.dwUserID) == vctUserID.end()) {
+			auto it_userID = std::find(vctUserID.begin(), vctUserID.end(), record.dwUserID);
+			if (it_userID == vctUserID.end()) {
 				vctUserID.push_back(record.dwUserID);
 			} else {
+				utility::filelog("record.dwUserID = %d", static_cast<int>(record.dwUserID));
+				utility::filelog("it_userID = %d", static_cast<int>(*it_userID));
 				continue;
 			}
 			itScore->second.vctNickName.push_back(record.strNickName);
 			itScore->second.vctHeadHttp.push_back(record.strHeadHttp);
-			itScore->second.vctScore.push_back(record.llScore);
+			itScore->second.vctScore.push_back(static_cast<long long>(record.llScore));
 		} else {
 			GameScoreInfo score_info;
 			score_info.dwKindID = record.dwKindID;
@@ -145,17 +149,15 @@ void GPHomeRecordPanel::onGPBackGameRecordListEx(tagGameRecordListEx* pNetInfo)
 			score_info.dwMinDrawID = record.dwMinDrawID;
 			score_info.dwMaxDrawID = record.dwMaxDrawID;
 			score_info.wDrawCount = record.wDrawCount;
-			score_info.vctScore.push_back(record.llScore);
-			score_info.vctUserID.push_back(record.dwUserID);
+			score_info.vctUserID.push_back(static_cast<dword>(record.dwUserID));
+			score_info.vctScore.push_back(static_cast<long long>(record.llScore));
 			score_info.vctNickName.push_back(record.strNickName);
 			score_info.vctHeadHttp.push_back(record.strHeadHttp);
-
 			_lstScoreInfoIndex.push_back(record.dwStartTime);
 			_lstScoreInfoIndex.sort();
 			_mpGameScores.insert(std::make_pair(record.dwStartTime, score_info));
 		}
 	}
-
 	checkNextScoreInfo();
 	initView();
 }

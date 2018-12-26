@@ -93,9 +93,6 @@
     <ClInclude Include="..\Classes\Game\NN\NNPlayerPanel.h">
       <Filter>Game\NN</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Game\NN\NNRoomDetail.h">
-      <Filter>Game\NN</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Game\NN\NNRoomInfo.h">
       <Filter>Game\NN</Filter>
     </ClInclude>
@@ -399,6 +396,9 @@
     <ClInclude Include="main.h">
       <Filter>Main</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Game\NN\NNGameRules.h">
+      <Filter>Game\NN</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\Game\NN\NNCalculate.cpp">
@@ -426,9 +426,6 @@
       <Filter>Game\NN</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Game\NN\NNPlayerPanel.cpp">
-      <Filter>Game\NN</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Game\NN\NNRoomDetail.cpp">
       <Filter>Game\NN</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Game\NN\NNRoomInfo.cpp">
@@ -808,6 +805,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Game\ZJH\TLJSoundFun.cpp">
       <Filter>Game\ZJH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\NN\NNGameRules.cpp">
+      <Filter>Game\NN</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

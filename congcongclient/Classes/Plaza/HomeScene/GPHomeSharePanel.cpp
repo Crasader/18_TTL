@@ -41,7 +41,7 @@ void GPHomeSharePanel::hide()
 
 void GPHomeSharePanel::Button_ShareToFriend(cocos2d::Ref* pRef, WidgetUserInfo* pInfo)
 {
-	std::string strUrl = utility::a_u8("http://114.115.164.158:8080/evokeapp.html");
+	std::string strUrl = utility::a_u8("http://www.51guojiang.com/app/yxn/evokeapp.html");
 	std::string strTitle = ScriptData<std::string>("CCWeiXinShare_Game_Name").Value();
 	std::string strIntroduce = ScriptData<std::string>("CCWeiXinShare_introduce").Value();
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
@@ -53,7 +53,7 @@ void GPHomeSharePanel::Button_ShareToFriend(cocos2d::Ref* pRef, WidgetUserInfo* 
 
 void GPHomeSharePanel::Button_ShareToFriendCircle(cocos2d::Ref* pRef, WidgetUserInfo* pInfo)
 {
-	std::string strUrl = utility::a_u8("http://114.115.164.158:8080/evokeapp.html");
+	std::string strUrl = utility::a_u8("http://www.51guojiang.com/app/yxn/evokeapp.html");
 	std::string strTitle = ScriptData<std::string>("CCWeiXinShare_Game_Name").Value();
 	std::string strIntroduce = ScriptData<std::string>("CCWeiXinShare_introduce").Value();
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID

@@ -177,7 +177,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Game\NN\NNPlayer.h" />
     <ClInclude Include="..\Classes\Game\NN\NNPlayerCard.h" />
     <ClInclude Include="..\Classes\Game\NN\NNPlayerPanel.h" />
-    <ClInclude Include="..\Classes\Game\NN\NNRoomDetail.h" />
+    <ClInclude Include="..\Classes\Game\NN\NNGameRules.h" />
     <ClInclude Include="..\Classes\Game\NN\NNRoomInfo.h" />
     <ClInclude Include="..\Classes\Game\NN\NNSetting.h" />
     <ClInclude Include="..\Classes\Game\NN\NNSound.h" />
@@ -289,7 +289,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Game\NN\NNPlayer.cpp" />
     <ClCompile Include="..\Classes\Game\NN\NNPlayerCard.cpp" />
     <ClCompile Include="..\Classes\Game\NN\NNPlayerPanel.cpp" />
-    <ClCompile Include="..\Classes\Game\NN\NNRoomDetail.cpp" />
+    <ClCompile Include="..\Classes\Game\NN\NNGameRules.cpp" />
     <ClCompile Include="..\Classes\Game\NN\NNRoomInfo.cpp" />
     <ClCompile Include="..\Classes\Game\NN\NNSetting.cpp" />
     <ClCompile Include="..\Classes\Game\NN\NNSound.cpp" />

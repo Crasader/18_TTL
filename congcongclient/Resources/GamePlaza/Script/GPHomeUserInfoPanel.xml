@@ -43,7 +43,7 @@
 	</Widget>
 	
 	<Widget Name="Nick_Txt" SkinTempName="TxtName32Empty">
-		<Property Key="FontName" Value="Font/true_type.ttf"/>
+		<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value=""/>
 		<Property Key="Pos" Value="662.28 416.44"/>
@@ -52,7 +52,7 @@
 	</Widget>
 
 	<Widget Name="" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="Font/true_type.ttf"/>
+		<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="女"/>
 		<Property Key="Pos" Value="718.04 359.27"/>
@@ -62,7 +62,7 @@
 	
 
 	<Widget Name="" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="Font/true_type.ttf"/>
+		<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="男"/>
 		<Property Key="Pos" Value="807.31 360.27"/>
@@ -84,7 +84,7 @@
 	</Widget>
 	
 	<Widget Name="ID_Txt" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="Font/true_type.ttf"/>
+		<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
 		<Property Key="FontSize" Value="32"/>
 		<Property Key="ShowTxt" Value="110"/>
 		<Property Key="Pos" Value="664.39 302.44"/>

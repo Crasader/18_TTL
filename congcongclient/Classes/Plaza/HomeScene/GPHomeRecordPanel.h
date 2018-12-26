@@ -26,6 +26,7 @@ enum Record_Inqure_State {
 	RIT_Down = 1,
 };
 
+#pragma pack(1)
 struct GameScoreInfo {
 	dword dwKindID;
 	dword wServerID;
@@ -37,11 +38,12 @@ struct GameScoreInfo {
 	dword dwMinDrawID;
 	dword dwMaxDrawID;
 	word wDrawCount;
-	std::vector<SCORE> vctScore;
+	std::vector<long long> vctScore;
 	std::vector<dword> vctUserID;
 	std::vector<std::string>vctHeadHttp;
 	std::vector<std::string> vctNickName;
 };
+#pragma pack()
 
 class GPHomeRecordPanel
 	//: public cocos2d::Node
