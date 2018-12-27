@@ -989,7 +989,10 @@ bool PriaveteGame::OnTCPNetworkSubDismissPrivate(VOID * pData, WORD wDataSize, I
 	//游戏没有开始
 	if (!pTableInfo->bStart)
 	{
-		if (pTableFrame->GetMasterUserID() == pIServerUserItem->GetUserID())
+		//如果有房主,并且是房主
+		if ((pTableFrame->GetMasterUserID() == pIServerUserItem->GetUserID()) ||
+			//如果没有房主,并且是创建者
+			(pTableFrame->GetMasterUserID() == 0 && pTableFrame->GetCreateUserID() == pIServerUserItem->GetUserID()))
 		{
 			pTableInfo->pITableFrame->SendGameMessage(TEXT("房间已被解散！"), SMT_EJECT);
 			DismissRoom(pTableInfo);
