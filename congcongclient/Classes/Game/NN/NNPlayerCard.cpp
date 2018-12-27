@@ -433,10 +433,10 @@ void NNPlayerCard::removeLastCard(NNPlayer& player)
 //翻牌动作  
 void NNPlayerCard::startOrbitAction(cocos2d::Sprite* sprite, int cardIndex)
 {
-	//扑克牌反面  
+	//扑克牌反面
 	CCSprite* pokerBack = sprite;
 
-	//扑克牌正面  
+	//扑克牌正面
 	CCSprite* pokerFront = Sprite::create(utility::toString("TTLNN/PlayerCard/poker_", cardIndex, ".png"));
 	pokerFront->setPosition(sprite->getPosition());
 	pokerFront->setVisible(false);

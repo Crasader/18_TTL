@@ -334,7 +334,7 @@ void NNOperator::showSnatchButton()
         auto pSnatchButton = WidgetManager::Instance().createWidget("NNOperator_SntachBanker", pSnatchNode);
         float offsetIndex = index - centerIndex;
         pSnatchButton->setPosition(centerPos + addPos * offsetIndex);
-		pSnatchButton->setScale(0.60);
+		pSnatchButton->setScale(0.65);
         WidgetFun::setWidgetUserInfo(pSnatchButton, "NNOperator_SnatchRatio", utility::toString(index));
         WidgetFun::setButtonImagic(pSnatchButton, utility::toString(image, index, ".png"), true);
     }
@@ -366,6 +366,7 @@ void NNOperator::showCallButtons()
 		//if (temp[index].wBetType != TTLNN::NNGameBetType::NNGBT_TuiZhu) {
 			auto pSnatchButton = WidgetManager::Instance().createWidget("NNOperator_Call", pCallNode);
 			pSnatchButton->setPosition(centerPos + addPos * posIndex);
+			pSnatchButton->setScale(0.9);
 			WidgetFun::setWidgetUserInfo(pSnatchButton, "NNOperator_Call_Bets", utility::toString(temp[index].wBet, "_", temp[index].wBetType));
 			WidgetFun::setButtonImagic(pSnatchButton, utility::toString(image, temp[index].wBet, ".png"), true);
 		//} else {

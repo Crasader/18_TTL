@@ -18,7 +18,7 @@
 
 <Widget Name="NNOperator_SnatchBankerNode" SkinTempName="Empty">
 	<UserInfo Key="CenterPos" Value="640 200"/>
-	<UserInfo Key="AddPos" Value="130 0"/>
+	<UserInfo Key="AddPos" Value="121 0"/>
 	<UserInfo Key="Image" Value="TTLNN/Operator/NNOperator_ButtonSnatchBanker_"/>
 </Widget>
 
@@ -37,35 +37,6 @@
 	<UserInfo Key="AddPos" Value="120 0"/>
 	<UserInfo Key="Image" Value="TTLNN/Operator/NNOperator_ButtonCall_"/>
 </Widget>
-
-<!--Widget Name="NNOperator_CallNode" SkinTempName="Empty">
-	<UserInfo Key="Image" Value="TTLNN/Operator/NNOperator_ButtonCall_"/>
-	<Widget Name="NNOperator_ButtonCall_0" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="TTLNN/Operator/NNOperator_ButtonCall_1.png"/>
-		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="400 200"/>
-	</Widget>
-	<Widget Name="NNOperator_ButtonCall_1" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="TTLNN/Operator/NNOperator_ButtonCall_1.png"/>
-		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="490 200"/>
-	</Widget>
-	<Widget Name="NNOperator_ButtonCall_2" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="TTLNN/Operator/NNOperator_ButtonCall_1.png"/>
-		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="580 200"/>
-	</Widget>
-	<Widget Name="NNOperator_ButtonCall_3" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="TTLNN/Operator/NNOperator_ButtonCall_1.png"/>
-		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="670 200"/>
-	</Widget>
-	<Widget Name="NNOperator_ButtonCall_4" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="TTLNN/Operator/NNOperator_ButtonCall_1.png"/>
-		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="760 200"/>
-	</Widget>
-</Widget-->
 
 <Widget Name="NNOperator_AlarmNode" SkinTempName="Empty">
 	<UserInfo Key="Image" Value="public/Alarm/Timer_"/>

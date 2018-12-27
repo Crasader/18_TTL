@@ -19,7 +19,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Gamelib", "Gamelib.vcxproj"
 		{41E34993-647E-4282-8384-4AB1AE31A452} = {41E34993-647E-4282-8384-4AB1AE31A452}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ClientHN_THJ", "ClientHN_THJ.vcxproj", "{C4D520E0-1B78-4EFC-A4BA-547F9B1116C2}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game", "ClientHN_THJ.vcxproj", "{C4D520E0-1B78-4EFC-A4BA-547F9B1116C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

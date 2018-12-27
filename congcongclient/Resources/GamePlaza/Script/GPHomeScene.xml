@@ -38,43 +38,41 @@
 		<!--性别-->
 		<Widget Name="Img_UserSex_Male" SkinTempName="ImagicEmpty">
 			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/male.png"/>
-			<Property Key="AnchorPos" Value="0.5 0.5"/>
-			<Property Key="Pos" Value="239 685"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="230 685"/>
       			<Property Key="Visible" Value="false"/>
 		</Widget>
 		<!--性别-->
 		<Widget Name="Img_UserSex_Female" SkinTempName="ImagicEmpty">
 			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/famale.png"/>
-			<Property Key="AnchorPos" Value="0.5 0.5"/>
-			<Property Key="Pos" Value="239 685"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="230 685"/>
       			<Property Key="Visible" Value="false"/>
 		</Widget>
-
-		<!--名字-->
-		<Widget Name="Txt_UserName" SkinTempName="TxtEmpty">
-			<Property Key="AnchorPos" Value="0.5 0.5"/>
-			<Property Key="FontSize" Value="30"/>
-			<Property Key="ShowTxt" Value="姓名"/>
-			<Property Key="FontName" Value="Font/mini_kaiti.ttf"/>
-			<Property Key="Color" Value="255 255 255"/>
-			<Property Key="Pos" Value="310 685"/>
-		</Widget>
-
 		<!--ID-->
 		<Widget Name="Img_UserID" SkinTempName="ImagicEmpty">
 			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/ID.png"/>
-			<Property Key="AnchorPos" Value="0.5 0.5"/>
-			<Property Key="Pos" Value="239 635"/>
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="Pos" Value="230 635"/>
+		</Widget>
+		<Widget Name="Txt_UserID" SkinTempName="TxtEmpty">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="FontSize" Value="32"/>
+			<Property Key="ShowTxt" Value="姓名"/>
+			<Property Key="FontName" Value="Font/true_type.ttf"/>
+			<Property Key="Color" Value="255 255 255"/>
+			<Property Key="Pos" Value="280 635"/>
+		</Widget>
+		<!--名字-->
+		<Widget Name="Txt_UserName" SkinTempName="TxtEmpty">
+			<Property Key="AnchorPos" Value="0 0.5"/>
+			<Property Key="FontSize" Value="32"/>
+			<Property Key="ShowTxt" Value="姓名"/>
+			<Property Key="FontName" Value="Font/true_type.ttf"/>
+			<Property Key="Color" Value="255 255 255"/>
+			<Property Key="Pos" Value="280 685"/>
 		</Widget>
 
-		<Widget Name="Txt_UserID" SkinTempName="TxtEmpty">
-			<Property Key="AnchorPos" Value="0.5 0.5"/>
-			<Property Key="FontSize" Value="30"/>
-			<Property Key="ShowTxt" Value="姓名"/>
-			<Property Key="FontName" Value="Font/mini_kaiti.ttf"/>
-			<Property Key="Color" Value="255 255 255"/>
-			<Property Key="Pos" Value="310 635"/>
-		</Widget>
 
 		<!--金砖-->
 		<Widget Name="Home_GoldBg" SkinTempName="ImagicEmpty">
@@ -181,7 +179,7 @@
 			<Property Key="AnchorPos" Value="0.5 0.5"/>
 		</Widget>
 		<Widget Name="Txt_RoomListEmpty" SkinTempName="TxtEmpty">
-			<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
+			<Property Key="FontName" Value="Font/true_type.ttf"/>
 			<Property Key="FontSize" Value="24"/>
 			<Property Key="ShowTxt" Value="快去创建房间和好友一起游戏吧"/>
 			<Property Key="AnchorPos" Value="0.5 0.5"/>

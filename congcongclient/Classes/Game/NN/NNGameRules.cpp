@@ -117,7 +117,7 @@ void NNGameRules::initView()
 		Clipper->addChild(label);
 	}
 
-	offsetH += nLineInterval * 2;
+	offsetH += nLineInterval * 3;
 
 	//////////////////////////////////////////////////////////////////////////
 
@@ -147,7 +147,7 @@ void NNGameRules::initView()
 		Clipper->addChild(label);
 	}
 
-	offsetH += nLineInterval * 2;
+	offsetH += nLineInterval * 3;
 
 	//////////////////////////////////////////////////////////////////////////
 
@@ -177,7 +177,7 @@ void NNGameRules::initView()
 		Clipper->addChild(label);
 	}
 
-	offsetH += nLineInterval * 2;
+	offsetH += nLineInterval * 3;
 
 	//////////////////////////////////////////////////////////////////////////
 
@@ -206,8 +206,6 @@ void NNGameRules::initView()
 		_plable.push_back(label);
 		Clipper->addChild(label);
 	}
-
-	offsetH += nLineInterval * 2;
 
 	_max_move_h = offsetH + 60;
 	this->addChild(Clipper);

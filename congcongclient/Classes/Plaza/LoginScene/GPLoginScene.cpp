@@ -171,10 +171,13 @@ std::string GPLoginScene::GetWxLoginWin32()
 		account = utility::toString("test0",num);
 	else
 		account = utility::toString("test",num);
-	account = "WeiXinoznOM0oURRnxOpbFnZdxsyxRU";
 	cocos2d::UserDefault::getInstance()->setIntegerForKey("Index", num + 1);
 	cocos2d::UserDefault::getInstance()->flush();
-	return utility::toString(account,":WeiXinPassword");
+
+	//account = "WeiXinoznOM0oURRnxOpbFnZdxsyxRU";
+	std::string pass = "111111";
+	std::string tocken = utility::toString(account, ":",  pass);
+	return tocken;
 #endif
 }
 

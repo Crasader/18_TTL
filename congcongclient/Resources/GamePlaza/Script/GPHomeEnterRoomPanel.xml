@@ -25,7 +25,7 @@
 	<Widget Name="Home_RoomNum1" SkinTempName="TxtEmpty">
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="FontSize" Value="40"/>
-		<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="Pos" Value="445 502.05"/>
 	</Widget>
 
@@ -37,7 +37,7 @@
 	<Widget Name="Home_RoomNum2" SkinTempName="TxtEmpty">
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="FontSize" Value="40"/>
-		<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="Pos" Value="524.02 502.05"/>
 	</Widget>
 	
@@ -49,7 +49,7 @@
 	<Widget Name="Home_RoomNum3" SkinTempName="TxtEmpty">
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="FontSize" Value="40"/>
-		<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="Pos" Value="603 502.05"/>
 	</Widget>
 	
@@ -61,7 +61,7 @@
 	<Widget Name="Home_RoomNum4" SkinTempName="TxtEmpty">
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="FontSize" Value="40"/>
-		<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="Pos" Value="680.43 502.05"/>
 	</Widget>
 	
@@ -73,7 +73,7 @@
 	<Widget Name="Home_RoomNum5" SkinTempName="TxtEmpty">
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="FontSize" Value="40"/>
-		<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="Pos" Value="755.63 502.05"/>
 	</Widget>
 	
@@ -85,7 +85,7 @@
 	<Widget Name="Home_RoomNum6" SkinTempName="TxtEmpty">
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="FontSize" Value="40"/>
-		<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="Pos" Value="835 502.05"/>
 	</Widget>
 	

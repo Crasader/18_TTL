@@ -22,7 +22,7 @@
 		<UserInfo Key="FontColorTilte" Value="142 100 62"/>
 		<UserInfo Key="FontColorContent" Value="142 100 62"/>
 		<UserInfo Key="FontNameTitle" Value="Font/mini_kaiti.ttf"/>
-		<UserInfo Key="FontNameContent" Value="Font/stheiti_light.ttc"/>
+		<UserInfo Key="FontNameContent" Value="Font/true_type.ttf"/>
 	</Widget>
 
 	<!-- 牌型 -->

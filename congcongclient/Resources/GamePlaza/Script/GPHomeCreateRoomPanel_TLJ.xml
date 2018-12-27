@@ -40,7 +40,7 @@
 	</Widget>
 
 	<Widget Name="" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="24"/>
 		<Property Key="ShowTxt" Value="是否允许陌生人加入"/>
 		<Property Key="Pos" Value="628.53 512.57"/>
@@ -66,7 +66,7 @@
 	</Widget>
 
 	<Widget Name="" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="24"/>
 		<Property Key="ShowTxt" Value="普通模式"/>
 		<Property Key="Pos" Value="628.53 453.12"/>
@@ -83,7 +83,7 @@
 	</Widget>
 
 	<Widget Name="" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="24"/>
 		<Property Key="ShowTxt" Value="激情模式"/>
 		<Property Key="Pos" Value="767.13 453.12"/>
@@ -101,7 +101,7 @@
 	</Widget>
 
 	<Widget Name="" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="24"/>
 		<Property Key="ShowTxt" Value="必焖三圈"/>
 		<Property Key="Pos" Value="628.53 401.21"/>
@@ -124,7 +124,7 @@
 		<UserInfo Key="ScoreType" Value="1"/>
 	</Widget>
 	<Widget Name="TLJ_CreateRoom_GameScore_Txt" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="30"/>
 		<Property Key="ShowTxt" Value="10"/>
 		<Property Key="Pos" Value="662.84 335.80"/>
@@ -147,7 +147,7 @@
 		<UserInfo Key="ScoreType" Value="2"/>
 	</Widget>
 	<Widget Name="TLJ_CreateRoom_EnterNum_Txt" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="30"/>
 		<Property Key="ShowTxt" Value="200"/>
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
@@ -169,7 +169,7 @@
 		<UserInfo Key="ScoreType" Value="3"/>
 	</Widget>
 	<Widget Name="TLJ_CreateRoom_OutNum_Txt" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="30"/>
 		<Property Key="ShowTxt" Value="100"/>
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
@@ -178,7 +178,7 @@
 	</Widget>
 
 	<Widget Name="" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="30"/>
 		<Property Key="ShowTxt" Value="元宝"/>
 		<Property Key="Pos" Value="744.13 335.80"/>
@@ -187,7 +187,7 @@
 	</Widget>
 
 	<Widget Name="" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="30"/>
 		<Property Key="ShowTxt" Value="元宝"/>
 		<Property Key="Pos" Value="744.13 284.95"/>
@@ -196,7 +196,7 @@
 	</Widget>
 
 	<Widget Name="" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="Font/stheiti_light.ttc"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
 		<Property Key="FontSize" Value="30"/>
 		<Property Key="ShowTxt" Value="元宝"/>
 		<Property Key="Pos" Value="744.13 228.29"/>

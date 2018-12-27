@@ -6,17 +6,17 @@
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="AnchorPos" Value="0 0.5"/>
 		<Property Key="Pos" Value="60 0"/>
-		<WidgetTxt Name="Txt_RoomNo" ShowTxt="123456" FontName="Font/stheiti_light.ttc" FontSize="24">
+		<WidgetTxt Name="Txt_RoomNo" ShowTxt="123456" FontName="Font/true_type.ttf" FontSize="24">
 			<Property Key="AnchorPos" Value="0 0"/>
 			<Property Key="Pos" Value="24 10"/>
 			<Property Key="Color" Value="108 61 9"/>
 		</WidgetTxt>
-		<WidgetTxt Name="Txt_RoundCount" ShowTxt="10" FontName="Font/stheiti_light.ttc" FontSize="24">
+		<WidgetTxt Name="Txt_RoundCount" ShowTxt="10" FontName="Font/true_type.ttf" FontSize="24">
 			<Property Key="AnchorPos" Value="0 0"/>
 			<Property Key="Pos" Value="160 10"/>
 			<Property Key="Color" Value="108 61 9"/>
 		</WidgetTxt>
-		<WidgetTxt Name="Txt_Score" ShowTxt="50" FontName="Font/stheiti_light.ttc" FontSize="24">
+		<WidgetTxt Name="Txt_Score" ShowTxt="50" FontName="Font/true_type.ttf" FontSize="24">
 			<Property Key="AnchorPos" Value="0 0"/>
 			<Property Key="Pos" Value="262 10"/>
 			<Property Key="Color" Value="108 61 9"/>
