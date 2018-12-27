@@ -85,6 +85,7 @@ public:
 #pragma endregion 玩家相关
 
 #pragma region 游戏状态
+	void playSoundSnachBanker(float fPass);
 	bool IsInGame();
 	word getGameStatus();
 	TTLNN::NNPlayerBet* getAllBets();

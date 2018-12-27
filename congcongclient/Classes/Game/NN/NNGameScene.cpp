@@ -967,7 +967,7 @@ void NNGameScene::onGameStart(const void * pBuffer, word wDataSize)
 		showGameTax(iGameTax);
 	}
 #endif
-
+	NNSound::playEffect(NNSound::GAME_START);
 }
 
 void NNGameScene::onHostConfirmStart(const void * pBuffer, word wDataSize)
@@ -975,6 +975,11 @@ void NNGameScene::onHostConfirmStart(const void * pBuffer, word wDataSize)
 	m_GameStatus = TTLNN::NNGameStatus_HostConfirm;
 	NNOperator::Instance().show(m_GameStatus);
 	NNSound::playEffect(NNSound::BUTTON_EFFECT);
+}
+
+void NNGameScene::playSoundSnachBanker(float fPass)
+{
+	NNSound::playEffect(NNSound::START_SNACHBANKER);
 }
 
 void NNGameScene::onSnatchBanker(const void * pBuffer, word wDataSize)
@@ -995,8 +1000,9 @@ void NNGameScene::onSnatchBanker(const void * pBuffer, word wDataSize)
 	}
 	NNOperator::Instance().showNoteTuiZhu(pInfo->bTuiZhu);
 	m_MaxRatio = pInfo->maxRatio;
-	NNSound::playEffect(NNSound::GAME_START);
 	NNPlayerCard::Instance().sendPlayerCard();
+
+	this->scheduleOnce(schedule_selector(NNGameScene::playSoundSnachBanker), 3.0);
 }
 
 void NNGameScene::onUserSnatchBanker(const void * pBuffer, word wDataSize)
@@ -1056,7 +1062,7 @@ void NNGameScene::onBankerInfo(const void * pBuffer, word wDataSize)
 	updateUserInfo();
 	NNOperator::Instance().show(m_GameStatus);
 	NNOperator::Instance().showTimes(TIME_FOR_USER_CALL);
-	NNSound::playEffect(NNSound::GAME_START);
+	NNSound::playEffect(NNSound::START_BET);
 }
 
 void NNGameScene::onUserCall(const void* pBuffer, word wDataSize)
@@ -1097,6 +1103,7 @@ void NNGameScene::onSendCardAll(const void* pBuffer, word wDataSize)
 		}
 	}
 
+	NNSound::playEffect(NNSound::START_BET);
 	m_GameStatus = TTLNN::NNGameStatus_SplitCard;
 	NNPlayerCard::Instance().sendPlayerCard();
 }

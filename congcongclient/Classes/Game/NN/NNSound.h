@@ -14,6 +14,8 @@ namespace NNSound
 
 	const static std::string BUTTON_EFFECT = "NN_Button.mp3";
 	const static std::string USER_CALL = "NN_Bets.mp3";
+	const static std::string START_BET = "NN_Start_bet.mp3";
+	const static std::string START_SNACHBANKER = "NN_SnachBaker.mp3";
 	const static std::string GAME_START = "NN_Start.mp3";
 	const static std::string NN_WIN = "NN_Win.mp3";
 	const static std::string NN_LOSE = "NN_Lose.mp3";
