@@ -223,7 +223,7 @@ void GPHomeRecordPanel::initView()
 			beginPos = utility::parsePoint(WidgetFun::getWidgetUserInfo(this, "Items_Score2", utility::toString("BeginPos")));
 			addPos = utility::parsePoint(WidgetFun::getWidgetUserInfo(this, "Items_Score2", utility::toString("Offset"))) * (idx);
 		}
-		WidgetFun::setText(pItemNode, "Txt_Name", kInfo.vctNickName[idx]);
+		WidgetFun::setText(pItemNode, "Txt_Name", utility::a_u8(kInfo.vctNickName[idx]));
 		std::string str_id;
 		std::string idsmall = utility::toString(kInfo.vctUserID[idx]);
 		int nBuWei = 6 - idsmall.size();
