@@ -94,6 +94,8 @@ public:
 #pragma endregion 游戏状态
 
 #pragma region 按钮消息
+	void setButtonsEnable(bool flag);
+
 	void Button_Menu(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_Help(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_Exit(cocos2d::Ref*, WidgetUserInfo*);
@@ -126,7 +128,6 @@ public:
 
 #pragma region 分牌触摸消息处理
 public:
-	void initTouch();
 	bool ccTouchBegan(cocos2d::Vec2 kPos);
 	bool isSplitCard();
 	void setSelectCards(std::vector<int> selectCards);

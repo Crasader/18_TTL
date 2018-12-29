@@ -165,14 +165,12 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\COCOS.h" />
     <ClInclude Include="..\Classes\common.h" />
     <ClInclude Include="..\Classes\constant.h" />
-    <ClInclude Include="..\Classes\DEFINE.h" />
     <ClInclude Include="..\Classes\GAME.h" />
     <ClInclude Include="..\Classes\Game\NN\CMD_NN.h" />
     <ClInclude Include="..\Classes\Game\NN\NNCalculate.h" />
     <ClInclude Include="..\Classes\Game\NN\NNDismissRoom.h" />
     <ClInclude Include="..\Classes\Game\NN\NNGameLogic.h" />
     <ClInclude Include="..\Classes\Game\NN\NNGameScene.h" />
-    <ClInclude Include="..\Classes\Game\NN\NNGameScene_Touch.h" />
     <ClInclude Include="..\Classes\Game\NN\NNOperator.h" />
     <ClInclude Include="..\Classes\Game\NN\NNPlayer.h" />
     <ClInclude Include="..\Classes\Game\NN\NNPlayerCard.h" />
@@ -240,6 +238,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Game\ZJH\TLJRoomDetail.h" />
     <ClInclude Include="..\Classes\Game\ZJH\TLJSettingPanel.h" />
     <ClInclude Include="..\Classes\Game\ZJH\TLJSoundFun.h" />
+    <ClInclude Include="..\Classes\GDEFINE.h" />
     <ClInclude Include="..\Classes\Main\AppDelegate.h" />
     <ClInclude Include="..\Classes\Plaza\GameManager\GPGameLink.h" />
     <ClInclude Include="..\Classes\Plaza\GameManager\GPGameManager.h" />
@@ -284,7 +283,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Game\NN\NNDismissRoom.cpp" />
     <ClCompile Include="..\Classes\Game\NN\NNGameLogic.cpp" />
     <ClCompile Include="..\Classes\Game\NN\NNGameScene.cpp" />
-    <ClCompile Include="..\Classes\Game\NN\NNGameScene_Touch.cpp" />
     <ClCompile Include="..\Classes\Game\NN\NNOperator.cpp" />
     <ClCompile Include="..\Classes\Game\NN\NNPlayer.cpp" />
     <ClCompile Include="..\Classes\Game\NN\NNPlayerCard.cpp" />

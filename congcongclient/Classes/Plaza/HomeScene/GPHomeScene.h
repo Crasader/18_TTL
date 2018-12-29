@@ -1,32 +1,21 @@
 #pragma once
-#include <cocos2d.h>
-#include "Game/FV/FvSingleton.h"
-#include "Game/Widget/WidgetScenceXmlParse.h"
-#include "Game/Widget/WidgetManager.h"
-#include "Game/Widget/WidgetFun.h"
-#include "Game/Game/NoticeMsg.h"
-#include "SimpleAudioEngine.h"
-#include "Platform/PFKernel/CGPLoginMission.h"
-#include <GameNet/ImagicDownManager.h>
-#include <Game/Game/UserInfo.h>
-#include <Platform/PFKernel/CGPopularizeMission.h>
 
+#include "GAME.h"
 
 #include "GPHomeSettingPanel.h"
 #include "GPHomeSharePanel.h"
 //#include "GPHomeUserInfoPanel.h"
 #include "GPHomeEnterRoomPanel.h"
 #include "GPHomeEditNumPanel.h"
-#include "GPHomePromotionPanel.h"
-#include "GPHomeMorePanel.h"
-#include "GPHomeServicePanel.h"
-#include "GPHomeMallPanel.h"
+//#include "GPHomePromotionPanel.h"
+//#include "GPHomeMorePanel.h"
+//#include "GPHomeServicePanel.h"
+//#include "GPHomeMallPanel.h"
 #include "GPHomeRecordPanel.h"
-#include "GPHomeRankPanel.h"
+//#include "GPHomeRankPanel.h"
 
 class GPHomeScene
 	: public cocos2d::Node
-	, public CGPopularizeSink 
 	, public FvSingleton<GPHomeScene>
 {
 public:
@@ -56,14 +45,18 @@ public:
 	void removeAllPanels();
 	//显示总结算面板
 	void showGameCalculate(CMD_GF_Private_End_Info* pNetInfo);
-	void setActiveButtons(bool flag);
+
 #pragma region 游戏面板处理
+
 public:
 	//打开子游戏面板
 	void openSubGame(int curPage);
 	//牛翻天新加的////////////////////////////////////////////////////////////////////////
 	//展示房间列表
 	void showGameRoomList(void* data, size_t dataSize);
+	//激活按钮
+	void setButtonsEnable(bool flag);
+
 protected:
 	//初始化子游戏列表控件
 	void initGamePanelList();
@@ -81,7 +74,7 @@ protected:
 	bool initPublicPanel();
 	void initPopupPanels();
 	void addPanel(cocos2d::Node*);
-	//void showExitPanel();
+
 #pragma endregion
 
 #pragma region 用户信息
@@ -117,12 +110,10 @@ protected:
 #pragma endregion
 
 private:
-	CGPopularizeMission m_kPopularizeMission;
 
 	cocos2d::Node* _img_head;
 	ssize_t m_selectedItemIndex;
-	
 	int _nCurrentGameKindID;
-	//是否激活当前的button
-	bool _b_avtive_buttons;
+
+	cocos2d::Node* pNodeList;
 };

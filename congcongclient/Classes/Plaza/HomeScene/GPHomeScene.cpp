@@ -1,17 +1,18 @@
-#include <cocos2d/cocos/editor-support/cocostudio/ActionTimeline/CSLoader.h>
+//#include <cocos2d/cocos/editor-support/cocostudio/ActionTimeline/CSLoader.h>
 #include <Game/Game/NoticeMsg.h>
 #include <Game/Game/UserInfo.h>
 
-#include "GPHomeScene.h"
 #include "common.h"
+#include "constant.h"
+#include "GPHomeScene.h"
 #include "../GameManager/GPGameLink.h"
 #include "CreateRoom/GPHomeCreateRoom.h"
-#include "BtnTurnLayer.h"
-
+//#include "BtnTurnLayer.h"
 #include "Game/NN/NNGameScene.h"
 #include "Game/NN/NNCalculate.h"
-#include "constant.h"
-#include "UTILITY.h"
+#include UTILITY_CONVERT
+#include UTILITY_LOG
+#include IMAGE_DOWN
 
 using namespace experimental;
 
@@ -19,13 +20,9 @@ FV_SINGLETON_STORAGE(GPHomeScene);
 
 GPHomeScene::GPHomeScene()
 	: m_selectedItemIndex(0)
-	//,m_pSpriteSpeaker(NULL)
 	, _img_head(NULL)
-	, m_kPopularizeMission(ScriptData<std::string>("address").Value().c_str(), ScriptData<int>("Port").Value())
 	, _nCurrentGameKindID(ScriptData<int>("GameKind").Value())
-	, _b_avtive_buttons(true)
 {
-	m_kPopularizeMission.setMissionSink(this);
 	UserInfo::Instance().addUpPlayerInfoCB(this, QY_CALLFUNC_SELECTOR(GPHomeScene::flushUserInfo));
 	UserInfo::Instance().addLoginSucessCB(this, QY_CALLFUNC_SELECTOR(GPHomeScene::onLogonSucess));
 	init();
@@ -222,7 +219,7 @@ void GPHomeScene::onEnterScene()
 	flushUserInfo();
 
 	GPGameLink::pInstance()->ConnectAndInqureTables(NNGameScene::KIND_ID);
-	setActiveButtons(true);
+	setButtonsEnable(true);
 	SoundFun::Instance().playBackMusic("bgplay.mp3");
 }
 
@@ -407,15 +404,15 @@ void GPHomeScene::removeAllPanels()
 	if (GPHomeEnterRoomPanel::pInstance()->getParent() == this) {
 		removeChild(GPHomeEnterRoomPanel::pInstance());
 	}
-	if (GPHomeMallPanel::pInstance()->getParent() == this) {
-		removeChild(GPHomeMallPanel::pInstance());
-	}
+	//if (GPHomeMallPanel::pInstance()->getParent() == this) {
+	//	removeChild(GPHomeMallPanel::pInstance());
+	//}
 	if (GPHomeRecordPanel::pInstance()->getParent() == this) {
 		removeChild(GPHomeRecordPanel::pInstance());
 	}
-	if (GPHomeRankPanel::pInstance()->getParent() == this) {
-		removeChild(GPHomeRankPanel::pInstance());
-	}
+	//if (GPHomeRankPanel::pInstance()->getParent() == this) {
+	//	removeChild(GPHomeRankPanel::pInstance());
+	//}
 	//牛牛还是要干掉
 	if (GPHomeCreateRoomPanel_NN::pInstance()->getParent() == this) {
 		removeChild(GPHomeCreateRoomPanel_NN::pInstance());
@@ -437,11 +434,6 @@ void GPHomeScene::removeAllPanels()
 void GPHomeScene::showGameCalculate(CMD_GF_Private_End_Info* pNetInfo)
 {
 	NNCalculate::Instance().show(pNetInfo);
-}
-
-void GPHomeScene::setActiveButtons(bool flag)
-{
-	_b_avtive_buttons = flag;
 }
 
 //DONE:没被调用过了

@@ -50,7 +50,7 @@ void GPHomeRecordPanel::show()
 void GPHomeRecordPanel::hide()
 {
 	_bActive = false;
-	GPHomeScene::Instance().setActiveButtons(true);
+	GPHomeScene::Instance().setButtonsEnable(true);
 	setVisible(false);
 }
 

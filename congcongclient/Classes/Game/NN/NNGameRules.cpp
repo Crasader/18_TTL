@@ -1,6 +1,7 @@
 #include "NNGameRules.h"
 #include "NNRoomInfo.h"
 #include "Game/NN/CMD_NN.h"
+#include "NNGameScene.h"
 #include "UTILITY.h"
 #include CMD_GAME
 
@@ -291,11 +292,13 @@ void NNGameRules::onTouchCancel(Touch * touch, Event * ev)
 
 void NNGameRules::show()
 {
+	NNGameScene::Instance().setButtonsEnable(false);
     setVisible(true);
 }
 
 void NNGameRules::hide()
 {
+	NNGameScene::Instance().setButtonsEnable(true);
     setVisible(false);
 }
 

@@ -1,5 +1,5 @@
 #include "GPHomeMorePanel.h"
-#include "Plaza/HomeScene/GPHomeServicePanel.h"
+//#include "Plaza/HomeScene/GPHomeServicePanel.h"
 #include "Plaza/HomeScene/GPHomeSettingPanel.h"
 
 FV_SINGLETON_STORAGE(GPHomeMorePanel);
@@ -54,7 +54,7 @@ void GPHomeMorePanel::Button_Close(cocos2d::Ref*, WidgetUserInfo*)
 
 void GPHomeMorePanel::Button_Service(cocos2d::Ref*, WidgetUserInfo*)
 {
-	GPHomeServicePanel::Instance().show();
+	//GPHomeServicePanel::Instance().show();
 	hide();
 }
 

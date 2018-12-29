@@ -11,7 +11,6 @@
 #include "Game/NN/NNPlayerPanel.h"
 #include "Game/NN/NNPlayerCard.h"
 #include "Game/NN/NNOperator.h"
-#include "Game/NN/NNGameScene_Touch.h"
 #include "Game/NN/NNGameLogic.h"
 #include "Game/NN/NNSound.h"
 #include "Game/NN/NNDismissRoom.h"
@@ -56,12 +55,11 @@ bool NNGameScene::init()
     }
 	initData();
     initLayout();
-	initTouch();
     initButton();
 	initPanel();
 	initNet();
 	initTalkSence();
-
+	setButtonsEnable(true);
     return true;
 }
 
@@ -450,10 +448,39 @@ word NNGameScene::getBankerRatio()
 	return m_BankerRatio;
 }
 
-
 #pragma endregion 游戏状态
 
 #pragma region 按钮消息
+
+void NNGameScene::setButtonsEnable(bool flag)
+{
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "NNGameScene_ButtonMenu"))->setTouchEnabled(flag);
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "NNGameScene_ButtonHelp"))->setTouchEnabled(flag);
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "NNGameScene_ButtonLeave"))->setTouchEnabled(flag);
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "NNGameScene_ButtonDismiss"))->setTouchEnabled(flag);
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "NNGameScene_ButtonSetting"))->setTouchEnabled(flag);
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "NNGameScene_ButtonTalk"))->setTouchEnabled(flag);
+
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "NNGameScene_ButtonDropBanker"))->setTouchEnabled(flag);
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "NNGameScene_ButtonMessage"))->setTouchEnabled(flag);
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "NNButton_TalkDefine"))->setTouchEnabled(flag);
+	auto pNode = WidgetFun::getChildWidget(this, "Button_Send_TalkStr");
+	if (pNode)
+		dynamic_cast<cocos2d::ui::Button*>(pNode)->setTouchEnabled(flag);
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "Button_TalkType_List"))->setTouchEnabled(flag);
+
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "Button_TalkType_BiaoQing"))->setTouchEnabled(flag);
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "HNMJButton_BiaoQing0"))->setTouchEnabled(flag);
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "HNMJButton_BiaoQing1"))->setTouchEnabled(flag);
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "HNMJButton_BiaoQing2"))->setTouchEnabled(flag);
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "HNMJButton_BiaoQing3"))->setTouchEnabled(flag);
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "HNMJButton_BiaoQing4"))->setTouchEnabled(flag);
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "HNMJButton_BiaoQing5"))->setTouchEnabled(flag);
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "HNMJButton_BiaoQing6"))->setTouchEnabled(flag);
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "HNMJButton_BiaoQing7"))->setTouchEnabled(flag);
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "NNGameScene_ButtonShare"))->setTouchEnabled(flag);
+}
+
 void NNGameScene::Button_Menu(cocos2d::Ref*, WidgetUserInfo*)
 {
     if(WidgetFun::isWidgetVisble(this, "NNGameScene_MenuNode")) {
@@ -850,12 +877,6 @@ void NNGameScene::OnSocketSubPrivateEnd(CMD_GF_Private_End_Info* pNetInfo)
 #pragma endregion 房间信息
 
 #pragma region 分牌触摸消息处理
-void NNGameScene::initTouch()
-{
-	NNGameScene_Touch* pTouchScene = new NNGameScene_Touch;
-	pTouchScene->init();
-	addChild(pTouchScene);
-}
 
 bool NNGameScene::ccTouchBegan(cocos2d::Vec2 kPos)
 {

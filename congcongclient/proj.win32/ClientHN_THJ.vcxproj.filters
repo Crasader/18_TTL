@@ -78,9 +78,6 @@
     <ClInclude Include="..\Classes\Game\NN\NNGameScene.h">
       <Filter>Game\NN</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Game\NN\NNGameScene_Touch.h">
-      <Filter>Game\NN</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Game\NN\NNOperator.h">
       <Filter>Game\NN</Filter>
     </ClInclude>
@@ -375,9 +372,6 @@
     <ClInclude Include="..\Classes\constant.h">
       <Filter>common</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\DEFINE.h">
-      <Filter>common</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\GAME.h">
       <Filter>common</Filter>
     </ClInclude>
@@ -399,6 +393,9 @@
     <ClInclude Include="..\Classes\Game\NN\NNGameRules.h">
       <Filter>Game\NN</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\GDEFINE.h">
+      <Filter>common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\Game\NN\NNCalculate.cpp">
@@ -411,9 +408,6 @@
       <Filter>Game\NN</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Game\NN\NNGameScene.cpp">
-      <Filter>Game\NN</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Game\NN\NNGameScene_Touch.cpp">
       <Filter>Game\NN</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Game\NN\NNOperator.cpp">
