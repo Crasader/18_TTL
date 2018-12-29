@@ -157,8 +157,8 @@
 			<Property Key="Pos" Value="200 145"/>
 			<UserInfo Key="Pos_2" Value="-200 145"/>
 			<Property Key="Visible" Value="false"/>
-			<Widget9Sprite Name="public_9sprite" BackTexture="Talk/msg_bubble_btm.png" Size="300 60">	
-				<Property Key="InsetsRect" Value="35 46 5 5"/>
+			<Widget9Sprite Name="public_9sprite" BackTexture="Talk/msg_bubble_btm.png" Size="300 60" InsetsRect="35 46 5 5">	
+				<!-- <Property Key="InsetsRect" Value="35 46 5 5"/> -->
 			</Widget9Sprite>
 			<WidgetLayout Name="NNPlayer_LayoutNode">
 				<Property Key="ClippingEnabled" Value="true"/>
@@ -347,8 +347,8 @@
 			<Property Key="Pos" Value="200 145"/>
 			<UserInfo Key="Pos_2" Value="-200 145"/>
 			<Property Key="Visible" Value="false"/>
-			<Widget9Sprite Name="public_9sprite" BackTexture="Talk/msg_bubble_btm.png" Size="300 60">	
-				<Property Key="InsetsRect" Value="35 46 5 5"/>
+			<Widget9Sprite Name="public_9sprite" BackTexture="Talk/msg_bubble_btm.png" Size="300 60" InsetsRect="35 46 5 5">	
+				<!-- <Property Key="InsetsRect" Value="35 46 5 5"/> -->
 			</Widget9Sprite>
 			<WidgetLayout Name="NNPlayer_LayoutNode">
 				<Property Key="ClippingEnabled" Value="true"/>

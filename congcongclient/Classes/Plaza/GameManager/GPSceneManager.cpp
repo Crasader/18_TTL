@@ -51,7 +51,7 @@ void GPSceneManager::init()
 	addGameNode(GPHomeScene::pInstance());
 
 	_pRootNode->addChild(PopScence::pInstance());
-	_pRootNode->addChild(EffectScence::pInstance());
+	//_pRootNode->addChild(EffectScence::pInstance());
 	_pRootNode->addChild(NoticeMsg::pInstance());
 	_pRootNode->addChild(NoticeMsgBox::pInstance());
 	NoticeMsgBox::Instance().hide();

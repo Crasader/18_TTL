@@ -170,14 +170,11 @@ namespace utility
 
 	inline void createAttributeDict(std::map<std::string, std::string>& attributeDict, const char **atts)
 	{
-		if (atts && atts[0])
+		for (int i = 0; atts[i] && atts[i + 1]; i += 2)
 		{
-			for (int i = 0; atts[i]; i += 2)
-			{
-				std::string key = (char*)atts[i];
-				std::string value = (char*)atts[i + 1];
-				attributeDict.insert(std::pair<std::string, std::string>(key, value));
-			}
+			std::string key = (char*)atts[i];
+			std::string value = (char*)atts[i + 1];
+			attributeDict.insert(std::pair<std::string, std::string>(key, value));
 		}
 	}
 

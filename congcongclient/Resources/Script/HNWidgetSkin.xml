@@ -8,14 +8,16 @@
 	<WidgetNode Name="Empty">
 	</WidgetNode>
 	
-	<Widget9Sprite Name="public_9sprite" BackTexture="public/9Scale.png" Size="100 100">	
+	<Widget9Sprite Name="public_9sprite" BackTexture="public/9Scale.png" Size="100 100" InsetsRect="0 0 1 1">
 	</Widget9Sprite>
 	
 	<WidgetCheckBox Name="public_CheckBox" UnSelectTexture="UI/Empty.png" SelectTexture="UI/Empty.png">	
 	</WidgetCheckBox>
 	
+	<WidgetDrawNode Name="DrawNodeEmpty">
+	</WidgetDrawNode>
 	
-	<WidgetClipper Name="public_Clipper">	
+	<WidgetClipper Name="ClipperEmpty">
 	</WidgetClipper>
 	
 	<WidgetLayout Name="LayoutEmpty">

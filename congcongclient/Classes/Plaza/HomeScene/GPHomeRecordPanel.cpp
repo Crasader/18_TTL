@@ -1,10 +1,8 @@
 #include "GPHomeRecordPanel.h"
 #include "GPHomeScene.h"
 #include "GAME.h"
+#include "UTILITY.h"
 #include IMAGE_DOWN
-#include UTILITY_CONVERT
-#include UTILITY_WIDGET
-#include UTILITY_LOG
 
 FV_SINGLETON_STORAGE(GPHomeRecordPanel);
 
@@ -16,8 +14,10 @@ GPHomeRecordPanel::GPHomeRecordPanel()
 	, _cur_score_info(nullptr)
 	, _inqure_state_update(RIT_Null)
 	, _inqure_state_view(RIT_Null)
-	, _touch_state(RTS_Null)
+	, _view_touch_begin_y(0.f)
+	, _move_state(RMS_Null)
 	, _bg_offset(0.f)
+	, _view_original_y(0.f)
 {
 	init();
 	m_GameRecordMission.setMissionSink(this);
@@ -26,41 +26,6 @@ GPHomeRecordPanel::GPHomeRecordPanel()
 GPHomeRecordPanel::~GPHomeRecordPanel()
 {
 
-}
-
-void GPHomeRecordPanel::update(float fpass)
-{
-	if (_bActive) {
-		switch (_touch_state)
-		{
-		case RTS_Null:
-			break;
-		case RTS_Touched:
-			break;
-		case RTS_End:
-		default:
-			auto pView = WidgetFun::getChildWidget(this, "View");
-			_bg_offset = pView->getPosition().y;
-			_bg_offset = _bg_offset / 2.f;
-			if (_bg_offset < 10.f || _bg_offset > -10.f) {
-				_bg_offset = 0;
-				_touch_state = RTS_Null;
-			}
-			WidgetFun::setPos(pView, cocos2d::Vec2(pView->getPosition().x, _bg_offset));
-			break;
-		}
-
-		//如果需要更新
-		if (_inqure_state_update != 0) {
-			//如果现在的数据里面没有上一把的数据了
-			if (!checkNextScoreInfo()) {
-				sendRecordToTalList(_inqure_state_update);
-			} else {
-				initView();
-			}
-			_inqure_state_update = RIT_Null;
-		}
-	}
 }
 
 bool GPHomeRecordPanel::init()
@@ -164,20 +129,29 @@ void GPHomeRecordPanel::onGPBackGameRecordListEx(tagGameRecordListEx* pNetInfo)
 
 void GPHomeRecordPanel::initView()
 {
+	auto pView = WidgetFun::getChildWidget(this, "View");
+
+	auto pClipNode = WidgetFun::getChildWidget(this, "Clp_Panal");
+	auto vertext = utility::parsePoints(WidgetFun::getWidgetUserInfo(pClipNode, "ClipeRect"));
+	auto pCliper = dynamic_cast<cocos2d::ClippingNode*>(pClipNode);
+	auto pDrawNode = dynamic_cast<cocos2d::DrawNode*>(pCliper->getStencil());
+
+	pDrawNode->drawPolygon(&vertext[0], vertext.size(), cocos2d::Color4F::BLACK, 0, cocos2d::Color4F::BLACK);
+	pCliper->setStencil(pDrawNode);
+
+	//pCliper->setInverted(true);
+
 	//第一排的显示
-	auto pTopList = WidgetFun::getChildWidget(this, "Items_Score1");
-	auto pButtomList = WidgetFun::getChildWidget(this, "Items_Score2");
+	auto pTopList = WidgetFun::getChildWidget(pView, "Items_Score1");
+	auto pButtomList = WidgetFun::getChildWidget(pView, "Items_Score2");
 
 	pTopList->removeAllChildren();
 	pButtomList->removeAllChildren();
 
 	if (_cur_score_info == nullptr) {
-		WidgetFun::setVisible(this, "View", false);
+		pView->setVisible(false);
 		return;
 	}
-
-	//TODO:这个后面要干掉
-	WidgetFun::setVisible(this, "Button_Record", false);
 
 	GameScoreInfo& kInfo = *_cur_score_info;
 
@@ -245,7 +219,8 @@ void GPHomeRecordPanel::initView()
 		pItemNode->setPosition(beginPos + addPos);
 		pItemNode->setVisible(true);
 	}
-	//}
+	_view_original_y = 0;
+	_view_touch_begin_y = pView->getPosition().y;
 }
 
 void GPHomeRecordPanel::onGPBackGameRecordList(tagPrivateRandTotalRecordList* pNetInfo)
@@ -374,42 +349,179 @@ void GPHomeRecordPanel::initTouchEvent()
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listenerT, this);
 }
 
+#define auto_move_speed 30.f
+#define screen_high 720.f
+
+void GPHomeRecordPanel::update(float fpass)
+{
+	if (!_bActive)
+		return;
+	auto pView = WidgetFun::getChildWidget(this, "View");
+	if (!pView) return;
+	switch (_move_state)
+	{
+	case RMS_Null:
+		break;
+	case RMS_TurnPage:
+		switch (_inqure_state_update)
+		{
+		case RIT_Null:
+			break;
+		case RIT_Up:
+			_bg_offset = pView->getPosition().y;
+			if (_bg_offset < 0) {
+				_bg_offset -= auto_move_speed;
+				if (_bg_offset < -screen_high) {
+					_bg_offset = screen_high;
+				}
+			} else if (_bg_offset >= 0) {
+				_bg_offset = (_bg_offset * 4 / 5);
+				if (utility::fAbs(_bg_offset) <= 10) {
+					_bg_offset = 0;
+					_move_state = RMS_Null;
+					_inqure_state_update = RIT_Null;
+				}
+			}
+			pView->setPosition(pView->getPosition().x, _bg_offset);
+			break;
+		case RIT_Down:
+			_bg_offset = pView->getPosition().y;
+			if (_bg_offset > 0) {
+				_bg_offset += auto_move_speed;
+				if (_bg_offset > screen_high) {
+					_bg_offset = -screen_high;
+				}
+			} else if (_bg_offset <= 0) {
+				_bg_offset = (_bg_offset * 4 / 5);
+				if (utility::fAbs(_bg_offset) <= 10) {
+					_bg_offset = 0;
+					_move_state = RMS_Null;
+					_inqure_state_update = RIT_Null;
+				}
+			}
+			pView->setPosition(pView->getPosition().x, _bg_offset);
+			break;
+		default:
+			break;
+		}
+		break;
+	case RMS_RollBack:
+		_bg_offset = (pView->getPosition().y * 4 / 5);
+		if (utility::fAbs(_bg_offset) <= 10) {
+			_bg_offset = 0;
+			_move_state = RMS_Null;
+		}
+		pView->setPosition(pView->getPosition().x, _bg_offset);
+		break;
+	case RMS_Touch:
+		break;
+	default:
+		break;
+	}
+}
+
 bool GPHomeRecordPanel::onTouchBegan(Touch* touch, Event* pEvent)
 {
-	_touch_state = RTS_Touched;
-	_touch_begin = touch->getLocation();
+	if (!_bActive)
+		return false;
+	auto pView = WidgetFun::getChildWidget(this, "View");
+	switch (_move_state)
+	{
+	case RMS_Null:
+		_move_state = RMS_Touch;
+		_touch_begin = cocos2d::Vec2(0, 0);
+		_touch_end = cocos2d::Vec2(0, 0);
+		_bg_offset = 0.f;
+
+		_touch_begin = touch->getLocation();
+		CCLOG("onTouchBegan _touch_begin = %f, _touch_end.y = %f, _bg_offset =%f", _touch_begin.y, _touch_end.y, _bg_offset);
+		if (pView) {
+			_view_touch_begin_y = pView->getPosition().y;
+		}
+		break;
+	case RMS_TurnPage:
+		break;
+	case RMS_Touch:
+		break;
+	default:
+		break;
+	}
 	return true;
 }
 
 void GPHomeRecordPanel::onTouchMoved(Touch *touch, Event *pEvent)
 {
-	_bg_offset = touch->getLocation().y - _touch_begin.y;
-
+	if (!_bActive)
+		return;
 	auto pView = WidgetFun::getChildWidget(this, "View");
-	WidgetFun::setPos(pView, cocos2d::Vec2(pView->getPosition().x, _bg_offset));
+	switch (_move_state)
+	{
+	case RMS_Null:
+		break;
+	case RMS_TurnPage:
+		break;
+	case RMS_Touch:
+		_touch_end = touch->getLocation();
+		_bg_offset = _touch_end.y - _touch_begin.y;
+		//CCLOG("onTouchMoved _touch_begin = %f, _touch_end.y = %f, _bg_offset =%f", _touch_begin.y, _touch_end.y, _bg_offset);
+		pView->setPosition(pView->getPosition().x, _view_touch_begin_y + _bg_offset);
+		break;
+	default:
+		break;
+	}
 }
 
 void GPHomeRecordPanel::onTouchEnded(Touch *touch, Event *pEvent)
 {
-	if (!_bActive) {
+	if (!_bActive)
 		return;
+	auto pView = WidgetFun::getChildWidget(this, "View");
+	float offset = 0.f;
+	switch (_move_state)
+	{
+	case RMS_Null:
+		break;
+	case RMS_TurnPage:
+		break;
+	case RMS_Touch:
+		//CCLOG("onTouchEnded _touch_begin = %f, _touch_end.y = %f, _bg_offset =%f", _touch_begin.y, _touch_end.y, _bg_offset);
+		//已经移动的距离
+		if (isNeedUpdateView()) {
+			_move_state = RMS_TurnPage;
+		} else if (pView) {
+			_move_state = RMS_RollBack;
+		}
+		break;
+	default:
+		break;
 	}
-	_touch_state = RTS_End;
-	_touch_end = touch->getLocation();
-	isNeedUpdateView();
 }
 
 int GPHomeRecordPanel::isNeedUpdateView()
 {
-	if (_touch_end.y - _touch_begin.y > 100) {
+	auto pView = WidgetFun::getChildWidget(this, "View");
+	if (pView->getPosition().y > (screen_high / 3)) {
 		_inqure_state_update = RIT_Down;
 		_inqure_state_view = RIT_Down;
-	} else if (_touch_end.y - _touch_begin.y < -100) {
+		_touch_begin = cocos2d::Vec2(0, 0);
+		_touch_end = cocos2d::Vec2(0, 0);
+		if (!checkNextScoreInfo()) {
+			sendRecordToTalList(_inqure_state_update);
+		} else {
+			initView();
+		}
+	} else if (pView->getPosition().y < -(screen_high / 3)) {
 		_inqure_state_update = RIT_Up;
 		_inqure_state_view = RIT_Up;
+		_touch_begin = cocos2d::Vec2(0, 0);
+		_touch_end = cocos2d::Vec2(0, 0);
+		if (!checkNextScoreInfo()) {
+			sendRecordToTalList(_inqure_state_update);
+		} else {
+			initView();
+		}
 	}
-	_touch_begin = cocos2d::Vec2(0, 0);
-	_touch_end = cocos2d::Vec2(0, 0);
+
 	return _inqure_state_update;
 }
 

@@ -20,14 +20,14 @@
 		<!-- 姓名 -->
 		<WidgetTxt Name="Txt_Name" ShowTxt="Test01" FontName="Font/true_type.ttf" FontSize="24">
 			<Property Key="Pos" Value="170 150"/>
-			<Property Key="Color" Value="142 100 62"/>
+			<Property Key="Color" Value="82 40 2"/>
 		</WidgetTxt>
 		<WidgetImagic Name="Img_ID" TextureInfo="GamePlaza/HomeScene/RecordPanel/ID.png">
 			<Property Key="Pos" Value="130 100"/>
 		</WidgetImagic>
 		<WidgetTxt Name="Txt_ID" ShowTxt="123456" FontName="Font/true_type.ttf" FontSize="24">
 			<Property Key="Pos" Value="190 100"/>
-			<Property Key="Color" Value="142 100 62"/>
+			<Property Key="Color" Value="82 40 2"/>
 		</WidgetTxt>
 		
 		<!-- 成绩 -->
@@ -36,7 +36,7 @@
 		</WidgetImagic>
 		<WidgetTxt Name="Txt_Score" ShowTxt="123456" FontName="Font/true_type.ttf" FontSize="24">
 			<Property Key="Pos" Value="170 30"/>
-			<Property Key="Color" Value="142 100 62"/>
+			<Property Key="Color" Value="82 40 2"/>
 		</WidgetTxt>
 		
 		<!-- 大赢家 -->

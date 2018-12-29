@@ -466,11 +466,14 @@ void WidgetSkinXMLparse::parseSkin(std::string& elementName,std::map<std::string
 
 		pTempWidgetInfo = pPanle;
 	}
+	else if (elementName == WidgetDrawNode::getType())
+	{
+		WidgetDrawNode* pDrawNode = new WidgetDrawNode;
+		pTempWidgetInfo = pDrawNode;
+	}
 	else if (elementName==WidgetClipper::getType())
 	{
 		WidgetClipper* pClipper = new WidgetClipper;
-		pClipper->kSize = utility::valueForSize("Size",attributeDict);
-
 		pTempWidgetInfo = pClipper;
 	}
 	else if (elementName=="WidgetSkinChild")

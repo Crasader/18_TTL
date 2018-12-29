@@ -19,8 +19,8 @@
 		<UserInfo Key="LineWidthContent" Value="1120"/>
 		<UserInfo Key="FontSizeContent" Value="24"/>
 		<UserInfo Key="FontSizeTitle" Value="32"/>
-		<UserInfo Key="FontColorTilte" Value="142 100 62"/>
-		<UserInfo Key="FontColorContent" Value="142 100 62"/>
+		<UserInfo Key="FontColorTilte" Value="82 40 2"/>
+		<UserInfo Key="FontColorContent" Value="82 40 2"/>
 		<UserInfo Key="FontNameTitle" Value="Font/mini_kaiti.ttf"/>
 		<UserInfo Key="FontNameContent" Value="Font/true_type.ttf"/>
 	</Widget>

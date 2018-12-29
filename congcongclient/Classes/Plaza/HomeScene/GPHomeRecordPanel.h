@@ -4,7 +4,7 @@
 #include "Game/FV/FvSingleton.h"
 #include "Game/Game/UserInfo.h"
 #include "Game/Game/GameBase.h"
- 
+
 #include "Game/Script/TimeNode.h"
 #include "Game/Widget/WidgetDefine.h"
 #include "Game/Widget/WidgetFun.h"
@@ -13,10 +13,11 @@
 #include "Platform/PFKernel/CGPGameRecord.h"
 #include "Plaza/GameManager/GPGameManager.h"
 
-enum Record_Touch_State {
-	RTS_Null,
-	RTS_Touched,
-	RTS_End,
+enum Record_Moved_State {
+	RMS_Null,
+	RMS_TurnPage,
+	RMS_RollBack,
+	RMS_Touch,
 };
 
 //查找状态
@@ -90,6 +91,7 @@ public:
 	bool checkNextScoreInfo();
 
 private:
+
 	//////////////////////////////////////////////////////////////////////////
 
 	cocos2d::Vec2 _touch_begin;
@@ -101,8 +103,13 @@ private:
 	//是否需要更新显示, 用于保存更新状态
 	Record_Inqure_State _inqure_state_view;
 	GameScoreInfo* _cur_score_info;
-	Record_Touch_State _touch_state;
+	//Record_Touch_State _touch_state;
+	Record_Moved_State _move_state;
+
+	float _view_original_y;
+	float _view_touch_begin_y;
 	float _bg_offset;
+
 	//////////////////////////////////////////////////////////////////////////
 
 	CGPGameRecordMission m_GameRecordMission;

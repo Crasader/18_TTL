@@ -416,6 +416,21 @@ struct WidgetLayout:WidgetInfo
 	}
 };
 
+struct WidgetDrawNode :WidgetInfo
+{
+	static const char* getType()
+	{
+		return "WidgetDrawNode";
+	}
+	virtual WidgetInfo* copyNode()
+	{
+		WidgetDrawNode* pWidget = new WidgetDrawNode;
+		*pWidget = *this;
+		return pWidget;
+	}
+	std::vector<cocos2d::Vec2> _vertex;
+};
+
 struct WidgetClipper:WidgetInfo
 {
 	static const char* getType()
@@ -428,7 +443,7 @@ struct WidgetClipper:WidgetInfo
 		*pWidget = *this;
 		return pWidget;
 	}
-	cocos2d::Size kSize;
+	cocos2d::DrawNode* _drawNode;
 };
 
 typedef std::map<std::string,WidgetInfo*> WidgetInfoListP;

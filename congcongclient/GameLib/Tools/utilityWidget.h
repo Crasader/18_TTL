@@ -78,6 +78,16 @@ namespace utility
 		return toString(p.width, " ", p.height);
 	}
 
+	inline void CCAssertWithDes(bool bAssert, std::string kDes1, std::string kDes2)
+	{
+		if (bAssert)
+		{
+			return;
+		}
+		std::string kDes = kDes1 + kDes2;
+		CCAssert(bAssert, kDes.c_str());
+	}
+
 	inline cocos2d::Vec2 parsePoint(std::string kValue)
 	{
 		cocos2d::Vec2 kPoint;
@@ -87,7 +97,21 @@ namespace utility
 			kPoint.x = parseFloat(kStr[0]);
 			kPoint.y = parseFloat(kStr[1]);
 		}
+		else
+		{
+			utility::CCAssertWithDes(false, kValue, " parseRect Error");
+		}
 		return kPoint;
+	}
+
+	inline std::vector<cocos2d::Vec2> parsePoints(std::string kValue)
+	{
+		auto vctStrPos = utility::split(kValue, ":");
+		std::vector<cocos2d::Vec2> pos;
+		for (size_t idx = 0; idx < vctStrPos.size(); idx++) {
+			pos.push_back(utility::parsePoint(vctStrPos[idx]));
+		}
+		return pos;
 	}
 
 	inline cocos2d::Rect parseRect(std::string kValue)
@@ -103,7 +127,7 @@ namespace utility
 		}
 		else
 		{
-			//	utility::CCAssertWithDes(false,kValue," parseRect Error");
+			utility::CCAssertWithDes(false, kValue," parseRect Error");
 		}
 		return kRect;
 	}
@@ -129,7 +153,7 @@ namespace utility
 		}
 		else
 		{
-			CCASSERT(false, "");
+			utility::CCAssertWithDes(false, kStr, " parseRect Error");
 		}
 		return kValue;
 	}
@@ -161,7 +185,7 @@ namespace utility
 		}
 		else
 		{
-			CCASSERT(false, "");
+			utility::CCAssertWithDes(false, kStr, " parseRect Error");
 		}
 		return kValue;
 	}
@@ -177,18 +201,9 @@ namespace utility
 		}
 		else
 		{
+			utility::CCAssertWithDes(false, kValue, " parseRect Error");
 		}
 		return kSize;
-	}
-
-	inline void CCAssertWithDes(bool bAssert, std::string kDes1, std::string kDes2)
-	{
-		if (bAssert)
-		{
-			return;
-		}
-		std::string kDes = kDes1 + kDes2;
-		CCAssert(bAssert, kDes.c_str());
 	}
 
 	inline float getRandFloat(const RandFloat& kRand)

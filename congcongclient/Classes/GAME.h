@@ -2,7 +2,6 @@
 #include "Game/FV/FvMask.h"
 #include "Game/Game/NoticeMsg.h"
 #include "Game/Game/NoticeMsgBox.h"
-#include "Game/Game/EffectScence.h"
 #include "Game/Game/PopScence.h"
 #include "Game/Game/GameBase.h"
 #include "Game/Game/GameManagerBase.h"

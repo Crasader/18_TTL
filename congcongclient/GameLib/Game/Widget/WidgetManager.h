@@ -65,6 +65,7 @@ public:
 	cocos2d::Node* createWidgetSelectBox(WidgetSelectBox* pInfo);
 	cocos2d::Node* createWidgetLayout( WidgetLayout* pInfo );
 	cocos2d::Node* createWidgetNodeUI(WidgetNodeUI* pInfo);
+	cocos2d::Node* createWidgetDrawNode(WidgetDrawNode* pInfo);
 	cocos2d::Node* createWidgetClipper(WidgetClipper* pInfo);
 	
 	void changeImagicProperty(cocos2d::Node* pNode,std::string kKey,std::string kValue);
@@ -87,6 +88,7 @@ public:
 	void changeSelectBoxProperty(cocos2d::Node* pNode,std::string kKey,std::string kValue);
 	void changeLayoutProperty( cocos2d::Node* pNode,std::string kKey,std::string kValue );
 	void changeNodeUIProperty(cocos2d::Node* pNode,std::string kKey,std::string kValue);
+	void changeDrawNodeProperty(cocos2d::Node* pNode, std::string kKey, std::string kValue);
 	void changeClipperProperty(cocos2d::Node* pNode,std::string kKey,std::string kValue);
 
 	void changePropertyByType(cocos2d::Node* pNode,std::string kType,std::string kKey,std::string kValue);

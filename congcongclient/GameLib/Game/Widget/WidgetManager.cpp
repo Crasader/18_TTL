@@ -340,7 +340,7 @@ WidgetInfo* WidgetManager::getWidgetInfo(std::string kName,bool bAssert)
 	{
 		return itor->second;
 	}
-	//if (bAssert)
+	if (bAssert)
 	{
 		std::string kTxt = kName + " can'fin widget";
 		CCAssert(false,kTxt.c_str());
@@ -399,6 +399,7 @@ cocos2d::Node* WidgetManager::createWidget(WidgetInfo* pWidgetInfo,cocos2d::Node
 	CREATE_WIDGET(SelectBox);
 	CREATE_WIDGET(Layout);
 	CREATE_WIDGET(NodeUI);
+	CREATE_WIDGET(DrawNode);
 	CREATE_WIDGET(Clipper);
 	CREATE_WIDGET(RichText);
 	if (!pNode)
@@ -449,34 +450,68 @@ void WidgetManager::changePropertyByType(cocos2d::Node* pNode,std::string kType,
 	CHANGE_WIDGET_PROPERTY(SelectBox);
 	CHANGE_WIDGET_PROPERTY(Layout);
 	CHANGE_WIDGET_PROPERTY(NodeUI);
+	CHANGE_WIDGET_PROPERTY(DrawNode);
 	CHANGE_WIDGET_PROPERTY(Clipper);
 	CHANGE_WIDGET_PROPERTY(RichText);
 
 	changeProperty(pNode,kKey,kValue);
 }
+
 cocos2d::Node* WidgetManager::createWidgetNode(WidgetNode* pInfo)
 {
 	Node* pNode = cocos2d::Node::create();
 	return cocos2d::Node::create();
 }
+
 void WidgetManager::changeNodeProperty(cocos2d::Node* pNode,std::string kKey,std::string kValue)
 {
 
 }
+
 cocos2d::Node* WidgetManager::createWidgetNodeUI(WidgetNodeUI* pInfo)
 {
 	ui::Widget* pNode = ui::Widget::create();
 	return pNode;
 }
+
 void WidgetManager::changeNodeUIProperty(cocos2d::Node* pNode,std::string kKey,std::string kValue)
 {
 
 }
+
+void WidgetManager::changeDrawNodeProperty(cocos2d::Node * pNode, std::string kKey, std::string kValue)
+{
+	cocos2d::DrawNode* pDrawNode = WidgetFun::castNode<cocos2d::DrawNode>(pNode);
+	if (kKey == "vertexes")
+	{
+		auto vctStrPos = utility::split(kValue, ":");
+		std::vector<cocos2d::Vec2> pos;
+		for (size_t idx = 0; idx < vctStrPos.size(); idx++) {
+			pos.push_back(utility::parsePoint(vctStrPos[idx]));
+		}
+		if (pos.size() > 3) {
+			pDrawNode->drawPolygon(&(pos[0]), pos.size(), cocos2d::Color4F::BLACK, 0, cocos2d::Color4F::BLACK);
+		}
+	}
+}
+
+cocos2d::Node* WidgetManager::createWidgetDrawNode(WidgetDrawNode* pInfo)
+{
+	cocos2d::DrawNode* pDrawNode = cocos2d::DrawNode::create();
+	if (pInfo->_vertex.size() >= 3) {
+		pDrawNode->drawPolygon(&(pInfo->_vertex[0]), pInfo->_vertex.size(), cocos2d::Color4F::BLACK, 0, cocos2d::Color4F::BLACK);
+	}
+	return pDrawNode;
+}
+
 cocos2d::Node* WidgetManager::createWidgetClipper(WidgetClipper* pInfo)
 {
 	cocos2d::ClippingNode* pClipper = cocos2d::ClippingNode::create();
+	pInfo->_drawNode = cocos2d::DrawNode::create();
+	pClipper->setStencil(pInfo->_drawNode);
 	return pClipper;
 }
+
 void WidgetManager::changeClipperProperty(cocos2d::Node* pNode,std::string kKey,std::string kValue)
 {
 	cocos2d::ClippingNode* pClipper = WidgetFun::castNode<cocos2d::ClippingNode>(pNode);
@@ -485,12 +520,10 @@ void WidgetManager::changeClipperProperty(cocos2d::Node* pNode,std::string kKey,
 		cocos2d::Node* pTempNode = WidgetFun::getChildWidget(pClipper,kValue);
 		pClipper->setStencil(pTempNode);
 	}
-
 	if (kKey == "alphaThreshold")
 	{
 		pClipper->setAlphaThreshold(utility::parseFloat(kValue));
 	}
-    
 	if (kKey == "inverted")
 	{
 		pClipper->setInverted(utility::parseBool(kValue));
@@ -500,6 +533,7 @@ void WidgetManager::changeClipperProperty(cocos2d::Node* pNode,std::string kKey,
 		pClipper->getStencil()->setPosition(utility::parsePoint(kValue));
 	}
 }
+
 cocos2d::Node* WidgetManager::createWidgetImagic(WidgetImagic* pInfo)
 {
 	if (pInfo->bUsePixWidth)
@@ -511,6 +545,7 @@ cocos2d::Node* WidgetManager::createWidgetImagic(WidgetImagic* pInfo)
 	CCAssert(pSprite && pSprite->getTexture(),"");
 	return pSprite;
 }
+
 void WidgetManager::changeImagicProperty(cocos2d::Node* pNode,std::string kKey,std::string kValue)
 {
 	Sprite* pSprite = WidgetFun::castNode<Sprite>(pNode);
@@ -707,12 +742,14 @@ void WidgetManager::changeTxtAtlasProperty(cocos2d::Node* pNode,std::string kKey
 		pLableAction->setIsInShaortTxt(utility::parseBool(kValue.c_str()));
 	}
 }
+
 cocos2d::Node* WidgetManager::createWidgetEdit(WidgetEdit* pInfo)
 {
 	EditBoxWidget* pTextField = EditBoxWidget::create(pInfo->kSize,Scale9SpriteEx::create(pInfo->kBackTexture));
 	pTextField->setPlaceHolder(pInfo->kShowTxt.c_str());
 	return pTextField;
 }
+
 void WidgetManager::changeEditProperty(cocos2d::Node* pNode,std::string kKey,std::string kValue)
 {
 	EditBoxWidget* pEdit = dynamic_cast<EditBoxWidget*>(pNode);
@@ -765,6 +802,7 @@ void WidgetManager::changeEditProperty(cocos2d::Node* pNode,std::string kKey,std
 		pEdit->setInputMode(EditBoxWidget::InputMode::ANY);
 	}
 }
+
 cocos2d::Node* WidgetManager::createWidgetCheckBox(WidgetCheckBox* pInfo)
 {
 	ui::CheckBox* checkBox = ui::CheckBox::create(pInfo->kUnSelectTexture,
@@ -773,6 +811,7 @@ cocos2d::Node* WidgetManager::createWidgetCheckBox(WidgetCheckBox* pInfo)
 	checkBox->addEventListenerCheckBox(this,checkboxselectedeventselector(WidgetManager::CheckButtonReleaseEx));
 	return checkBox;
 }
+
 void WidgetManager::changeCheckBoxProperty(cocos2d::Node* pNode,std::string kKey,std::string kValue)
 {
 	cocos2d::ui::CheckBox* pCheckBox = dynamic_cast<cocos2d::ui::CheckBox*>(pNode);

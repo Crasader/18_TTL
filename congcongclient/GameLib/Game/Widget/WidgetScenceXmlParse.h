@@ -9,9 +9,9 @@
 
 class ScenceBase;
 
-
 class WidgetScenceXMLparse : public cocos2d::SAXDelegator
 {
+
 public:
 
 	WidgetScenceXMLparse(std::string xmlFileName,cocos2d::Node* pNode);
@@ -23,8 +23,11 @@ public:
 	static void setTest(bool bValue);
 
 private:
-	std::vector<cocos2d::Node*> m_pAddNodes;
-	std::vector<WidgetInfo*> m_pWidgetInfos;
-	cocos2d::Node*           m_pRootNode;
+
+	std::vector<cocos2d::Node*> _pAddNodes;
+	std::vector<WidgetInfo*> _pWidgetInfos;
+	cocos2d::Node* _pRootNode;
+	std::string _xmlName;
 };
+
 #endif // __XMLParse_H__
