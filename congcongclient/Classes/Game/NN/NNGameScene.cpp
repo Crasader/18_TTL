@@ -6,7 +6,6 @@
 
 #include "NNGameScene.h"
 #include "NNRoomInfo.h"
-#include "NNGameRules.h"
 
 #include "Game/NN/NNPlayerPanel.h"
 #include "Game/NN/NNPlayerCard.h"
@@ -97,7 +96,7 @@ void NNGameScene::initLayout()
 void NNGameScene::initButton()
 {
     WidgetManager::addButtonCB("NNGameScene_ButtonMenu", this, button_selector(NNGameScene::Button_Menu));
-	WidgetManager::addButtonCB("NNGameScene_ButtonHelp", this, button_selector(NNGameScene::Button_Help));
+	//WidgetManager::addButtonCB("NNGameScene_ButtonHelp", this, button_selector(NNGameScene::Button_Help));
     WidgetManager::addButtonCB("NNGameScene_ButtonLeave", this, button_selector(NNGameScene::Button_Exit));
 	WidgetManager::addButtonCB("NNGameScene_ButtonDismiss", this, button_selector(NNGameScene::Button_Dismiss));
 	WidgetManager::addButtonCB("NNGameScene_ButtonSetting", this, button_selector(NNGameScene::Button_Setting));
@@ -145,7 +144,6 @@ void NNGameScene::initPanel()
 	addChild(NNPlayerCard::pInstance());
     addChild(NNPlayerPanel::pInstance());
 	addChild(NNOperator::pInstance());
-	addChild(NNGameRules::pInstance());
 	addChild(NNDismissRoom::pInstance());
 	addChild(NNTurnCard::pInstance());
 
@@ -290,7 +288,7 @@ void NNGameScene::clearPanel()
 	NNTurnCard::Instance().hide();
 	//NNSetting::Instance().hide();
 	GPHomeSettingPanel::Instance().hide();
-	NNGameRules::Instance().hide();
+	//NNGameRules::Instance().hide();
 }
 
 void NNGameScene::hideMenuPanel()
@@ -455,7 +453,7 @@ word NNGameScene::getBankerRatio()
 void NNGameScene::setButtonsEnable(bool flag)
 {
 	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "NNGameScene_ButtonMenu"))->setTouchEnabled(flag);
-	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "NNGameScene_ButtonHelp"))->setTouchEnabled(flag);
+	//dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "NNGameScene_ButtonHelp"))->setTouchEnabled(flag);
 	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "NNGameScene_ButtonLeave"))->setTouchEnabled(flag);
 	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "NNGameScene_ButtonDismiss"))->setTouchEnabled(flag);
 	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "NNGameScene_ButtonSetting"))->setTouchEnabled(flag);
@@ -492,7 +490,7 @@ void NNGameScene::Button_Menu(cocos2d::Ref*, WidgetUserInfo*)
 
 void NNGameScene::Button_Help(cocos2d::Ref*, WidgetUserInfo*)
 {
-	NNGameRules::Instance().show();
+	//NNGameRules::Instance().show();
 }
 
 void NNGameScene::Button_Exit(cocos2d::Ref*, WidgetUserInfo*)

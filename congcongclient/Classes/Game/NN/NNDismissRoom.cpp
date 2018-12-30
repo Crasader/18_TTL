@@ -47,7 +47,7 @@ void NNDismissRoom::initButton()
     WidgetManager::addButtonCB("NNDismissRoom_ButtonAgree", this, button_selector(NNDismissRoom::Button_Agree));
     WidgetManager::addButtonCB("NNDismissRoom_ButtonRefuse", this, button_selector(NNDismissRoom::Button_Refuse));
 	WidgetManager::addButtonCB("NNDismissRoom_ButtonCancle", this, button_selector(NNDismissRoom::Button_Cancle));
-    WidgetManager::addButtonCB("NNDismissRoom_ButtonClose", this, button_selector(NNDismissRoom::Button_Close));
+    //WidgetManager::addButtonCB("NNDismissRoom_ButtonClose", this, button_selector(NNDismissRoom::Button_Close));
 }
 
 void NNDismissRoom::initData()

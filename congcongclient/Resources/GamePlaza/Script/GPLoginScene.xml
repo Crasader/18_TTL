@@ -11,6 +11,7 @@
 
 		<Widget Name="Button_WeiXinLogon" SkinTempName="ButtonEmpty">
 			<Property Key="NomalTexture" Value="GamePlaza/LoginScene/Button_WeiXinLogon.png"/>
+			<Property Key="PressTexture" Value="GamePlaza/LoginScene/Button_WeiXinLogon.png"/>
 			<!-- <Property Key="PressTexture" Value="AutoPress"/> -->
 			<!-- <Property Key="Pos" Value="0 -150"/> -->
 			<Property Key="Pos" Value="0 -180"/>
@@ -24,7 +25,7 @@
 		</Widget>
  		<Widget Name="Button_UserXieYi" SkinTempName="ButtonEmpty">
 			<Property Key="NomalTexture" Value="GamePlaza/LoginScene/wenzi.png"/>
-			<Property Key="PressTexture" Value="AutoPress"/>
+			<Property Key="PressTexture" Value="GamePlaza/LoginScene/wenzi.png"/>
 			<Property Key="Pos" Value="-20 -250"/>
 		</Widget>
 	</Widget>

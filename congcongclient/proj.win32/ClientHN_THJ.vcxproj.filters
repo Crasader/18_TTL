@@ -13,9 +13,6 @@
     <Filter Include="Main">
       <UniqueIdentifier>{bbe34a61-2b68-4d70-9612-8f3119667209}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Plaza\GameManager">
-      <UniqueIdentifier>{ed32e7d6-5840-47d9-8852-6ec4751e649a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Plaza\HomeScene">
       <UniqueIdentifier>{635aafae-9e6e-4f85-846c-978349e60072}</UniqueIdentifier>
     </Filter>
@@ -48,6 +45,9 @@
     </Filter>
     <Filter Include="common">
       <UniqueIdentifier>{7d271043-a1ec-4eb2-a55d-183241115445}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plaza\HomeScene\CreateRoom\GameManager">
+      <UniqueIdentifier>{ed32e7d6-5840-47d9-8852-6ec4751e649a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -127,13 +127,13 @@
       <Filter>Main</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Plaza\GameManager\GPGameLink.h">
-      <Filter>Plaza\GameManager</Filter>
+      <Filter>Plaza\HomeScene\CreateRoom\GameManager</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Plaza\GameManager\GPGameManager.h">
-      <Filter>Plaza\GameManager</Filter>
+      <Filter>Plaza\HomeScene\CreateRoom\GameManager</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Plaza\GameManager\GPSceneManager.h">
-      <Filter>Plaza\GameManager</Filter>
+      <Filter>Plaza\HomeScene\CreateRoom\GameManager</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Plaza\HomeScene\BtnTurnLayer.h">
       <Filter>Plaza\HomeScene</Filter>
@@ -456,13 +456,13 @@
       <Filter>Main</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Plaza\GameManager\GPGameLink.cpp">
-      <Filter>Plaza\GameManager</Filter>
+      <Filter>Plaza\HomeScene\CreateRoom\GameManager</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Plaza\GameManager\GPGameManager.cpp">
-      <Filter>Plaza\GameManager</Filter>
+      <Filter>Plaza\HomeScene\CreateRoom\GameManager</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Plaza\GameManager\GPSceneManager.cpp">
-      <Filter>Plaza\GameManager</Filter>
+      <Filter>Plaza\HomeScene\CreateRoom\GameManager</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Plaza\HomeScene\BtnTurnLayer.cpp">
       <Filter>Plaza\HomeScene</Filter>

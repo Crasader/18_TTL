@@ -2,23 +2,16 @@
 	<Widget SkinTempName="BtnFullEmpty"/>
 	
 	<Widget Name="" SkinTempName="ImagicEmpty">
-		<Property Key="ImagicTexture" Value="TTLNN/DismissRoom/NNDismissRoom_BG.png"/>
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/background.png"/>
+		<Property Key="Scale" Value="0.9"/>
 		<Property Key="Pos" Value="640 360"/>
-		<Property Key="Scale" Value="1.5"/>
-	</Widget>
-	
-	<Widget Name="NNDismissRoom_ButtonClose" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="TTLNN/DismissRoom/NNDismissRoom_ButtonClose.png"/>
-		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Visible" Value="false"/>
-		<Property Key="Pos" Value="1090 600"/>
 	</Widget>
 
-  <Widget Name="NNDismissRoom_ButtonOK" SkinTempName="ButtonEmpty">
-    <Property Key="NomalTexture" Value="public/ok.png"/>
-    <Property Key="PressTexture" Value="AutoPress"/>
-    <Property Key="Pos" Value="840 80"/>
-  </Widget>
+	  <Widget Name="NNDismissRoom_ButtonOK" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="public/ok.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="840 80"/>
+	  </Widget>
   
 	<Widget Name="NNDismissRoom_ButtonAgree" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="public/agree.png"/>

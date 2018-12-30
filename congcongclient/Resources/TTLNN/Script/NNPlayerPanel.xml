@@ -1,49 +1,42 @@
 <LoadSkin Skin="TTLNN/Script/NNPlayerPanelSkin.xml"/>
 
 <Widget Name="NNPlayer_0" SkinTempName="NNPlayer_LeftSkin">
-	<Property Key="Pos" Value="150 75"/>
+	<Property Key="Pos" Value="260 105"/>
+	<Property Key="Scale" Value="1.5"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
 </Widget>
 
-<Widget Name="NNPlayer_1" SkinTempName="NNPlayer_RightSkin">
-	<Property Key="Scale" Value="0.8"/>
+<Widget Name="NNPlayer_1" SkinTempName="NNPlayer_LeftSkin">
 	<Property Key="Pos" Value="1150 340"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
 </Widget>
 
-<Widget Name="NNPlayer_2" SkinTempName="NNPlayer_RightSkin">
-	<Property Key="Scale" Value="0.8"/>
+<Widget Name="NNPlayer_2" SkinTempName="NNPlayer_LeftSkin">
 	<Property Key="Pos" Value="1150 520"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
 </Widget>
 
 <Widget Name="NNPlayer_3" SkinTempName="NNPlayer_LeftSkin">
-	<Property Key="Scale" Value="0.8"/>
 	<Property Key="Pos" Value="120 575"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
 </Widget>
 
 <Widget Name="NNPlayer_4" SkinTempName="NNPlayer_LeftSkin">
-	<Property Key="Scale" Value="0.8"/>
  	<Property Key="Pos" Value="120 415"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
 </Widget>
 
 <Widget Name="NNPlayer_5" SkinTempName="NNPlayer_LeftSkin">
-	<Property Key="Scale" Value="0.8"/>
 	<Property Key="Pos" Value="120 255"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
 </Widget>
 
-<Widget Name="NNPlayer_6" SkinTempName="NNPlayer_LeftSkin">
-	<Property Key="Scale" Value="0.8"/>
+<Widget Name="NNPlayer_6" SkinTempName="NNPlayer_RightSkin">
 	<Property Key="Pos" Value="400 650"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
 </Widget>
 
 <Widget Name="NNPlayer_7" SkinTempName="NNPlayer_RightSkin">
-	<Property Key="Scale" Value="0.8"/>
 	<Property Key="Pos" Value="700 650"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
 </Widget>
-

@@ -168,22 +168,19 @@ void GPHomeEnterRoomPanel::updateRoomNum()
 {
 	for (int index = 0; index < msRoomNum.length(); ++index)
 	{
-		std::string widgetName = "Home_RoomNum";
-		std::stringstream temp;
-		temp << (index + 1);
-		widgetName.append(temp.str());
-		WidgetFun::setText(this, widgetName , msRoomNum.c_str()[index]);
-	}
-	for (int index = msRoomNum.length(); index < 6; ++index)
-	{
-		std::string widgetName = "Home_RoomNum";
-		std::stringstream temp;
-		temp << (index + 1);
-		widgetName.append(temp.str());
-		WidgetFun::setText(this, widgetName, "");
+		std::string widgetName = utility::toString("Home_RoomNum", index + 1);
+		WidgetFun::setImagic(this, widgetName , utility::toString("GamePlaza/HomeScene/EnterRoomPanel/", msRoomNum.c_str()[index], ".png"));
+		WidgetFun::setVisible(this, widgetName, true);
 	}
 
-	if (msRoomNum.length() == 6) {
+	for (int index = msRoomNum.length(); index < 6; ++index)
+	{
+		std::string widgetName = utility::toString("Home_RoomNum", index + 1);
+		WidgetFun::setVisible(this, widgetName, false);
+	}
+
+	if (msRoomNum.length() == 6)
+	{
 		GPGameLink::Instance().JoinRoom(msRoomNum);
 	}
 }

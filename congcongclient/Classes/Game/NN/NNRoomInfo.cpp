@@ -38,8 +38,8 @@ void NNRoomInfo::initLayout()
 
 void NNRoomInfo::initData()
 {
-    m_LabelConfig.fontFilePath = "Font/mini_kaiti.ttf";
-    m_LabelConfig.fontSize = 20;
+    m_LabelConfig.fontFilePath = "Font/true_type.ttf";
+    m_LabelConfig.fontSize = 22;
     m_LabelConfig.glyphs = GlyphCollection::DYNAMIC;
     m_LabelConfig.customGlyphs = nullptr;
     m_LabelConfig.distanceFieldEnabled = false;
@@ -75,9 +75,10 @@ void NNRoomInfo::updateRoomInfo()
     removeAllChildren();
 
     auto label = Label::createWithTTF(m_LabelConfig, getRoomInfoText(), TextHAlignment::LEFT);
-    label->setLineSpacing(5);
+    label->setLineSpacing(3);
     label->setAnchorPoint(cocos2d::Vec2(0, 1));
     label->setPosition(Point(10, 710));
+	label->setColor(cocos2d::Color3B(255, 225, 60));
     addChild(label);
 
 	if (m_RoomInfo.bGameTypeIdex == TTLNN::NNGameType_HostBanker &&

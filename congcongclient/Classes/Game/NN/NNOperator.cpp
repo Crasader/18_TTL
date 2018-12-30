@@ -52,7 +52,7 @@ void NNOperator::initButton()
     WidgetManager::addButtonCB("NNOperator_Call", this, button_selector(NNOperator::Button_Call));
     WidgetManager::addButtonCB("NNOperator_ButtonShowCard", this, button_selector(NNOperator::Button_ShowCard));
 	WidgetManager::addButtonCB("NNOperator_ButtonCuoCard", this, button_selector(NNOperator::Button_CuoCard));
-    WidgetManager::addButtonCB("NNOperator_ButtonHint", this, button_selector(NNOperator::Button_Hint));
+    //WidgetManager::addButtonCB("NNOperator_ButtonHint", this, button_selector(NNOperator::Button_Hint));
 }
 #pragma endregion 初始化
 
@@ -92,7 +92,7 @@ void NNOperator::show(word status)
 			auto master = NNGameScene::Instance().getMaster();
 			auto creater = NNGameScene::Instance().getCreater();
 
-			//这里要判断是否所有玩家已经准备了
+			//这里要判断是否所有玩家已经入座了
 			bool b_all_ready = true;
 			for (int idx = 0; idx < NNGameScene::MAX_PLAYER; idx++) {
 				auto player = NNGameScene::Instance().getPlayerByChairID(idx);
@@ -126,9 +126,9 @@ void NNOperator::show(word status)
 				else
 					showText = utility::a_u8("等待 ") + strMasterName + utility::a_u8(" 确认开始游戏");
 			} else if (local_player && local_player->GetUserStatus() >= US_READY) {
-				showText = utility::a_u8("等待其他玩家准备");
+				showText = utility::a_u8("等待其他玩家入座");
 			} else {
-				showText = utility::a_u8("请准备");
+				showText = utility::a_u8("请入座");
 			}
 			showMessage(showText);
 
@@ -145,7 +145,7 @@ void NNOperator::show(word status)
 		}
 
 		case TTLNN::NNGameStatus_HostConfirm: {
-			std::string showText = utility::a_u8("请准备");
+			std::string showText = utility::a_u8("请入座");
 			if(local_player && local_player->GetUserStatus() >= TTLNN::NNPlayerStatus_Ready){
 				showText = utility::a_u8("请等待发牌");
 			}
@@ -427,14 +427,14 @@ void NNOperator::showSplitButton()
 {
     WidgetFun::setVisible(this, "NNOperator_ButtonShowCard", true);
 	WidgetFun::setVisible(this, "NNOperator_ButtonCuoCard", true);
-    WidgetFun::setVisible(this, "NNOperator_ButtonHint", false);//不显提示牌按钮
+    //WidgetFun::setVisible(this, "NNOperator_ButtonHint", false);//不显提示牌按钮
 }
 
 void NNOperator::hideSplitButton()
 {
     WidgetFun::setVisible(this, "NNOperator_ButtonShowCard", false);
 	WidgetFun::setVisible(this, "NNOperator_ButtonCuoCard", false);
-    WidgetFun::setVisible(this, "NNOperator_ButtonHint", false);
+    //WidgetFun::setVisible(this, "NNOperator_ButtonHint", false);
 }
 
 void NNOperator::showSplitCalculate()

@@ -48,7 +48,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     if(!glview) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-		glview = GLViewImpl::createWithRect("GameBase", Rect(0, 0, 800, 470));
+		glview = GLViewImpl::createWithRect("GameBase", Rect(0, 0, 1280, 720));
 #else
         glview = GLViewImpl::create("GameBase");
 #endif

@@ -8,11 +8,11 @@
 	</Widget>
 	
 	<Widget Name="NNOperator_Message" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="Font/mini_kaiti.ttf"/>
-		<Property Key="FontSize" Value="24"/>
-		<Property Key="Pos" Value="640 270"/>
+		<Property Key="FontName" Value="Font/true_type.ttf"/>
+		<Property Key="FontSize" Value="28"/>
+		<Property Key="Pos" Value="640 307"/>
 		<Property Key="Color" Value="255 165 0"/>
-		<Property Key="ShowTxt" Value="请准备"/>
+		<Property Key="ShowTxt" Value="请入座"/>
 	</Widget>
 </Widget>
 
@@ -23,7 +23,7 @@
 </Widget>
 
 <Widget Name="NNOperator_TuiZhuNode" SkinTempName="TxtEmpty">
-	<Property Key="FontName" Value="Font/mini_kaiti.ttf"/>
+	<Property Key="FontName" Value="Font/true_type.ttf"/>
 	<Property Key="FontSize" Value="28"/>
 	<Property Key="ShowTxt" Value="推注:40"/>
 	<Property Key="Pos" Value="380 180"/>
@@ -43,15 +43,15 @@
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="Scale" Value="1.1"/>
 		<Property Key="ImagicTexture" Value="public/Alarm/AlarmBG.png"/>
-		<Property Key="Pos" Value="640 360"/>
+		<Property Key="Pos" Value="640 385"/>
 	</Widget>
 	<Widget Name="NNAlarm_Timer_0" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="public/Alarm/Timer_0.png"/>
-		<Property Key="Pos" Value="628 360"/>
+		<Property Key="Pos" Value="628 385"/>
 	</Widget>
 	<Widget Name="NNAlarm_Timer_1" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="public/Alarm/Timer_0.png"/>
-		<Property Key="Pos" Value="646 360"/>
+		<Property Key="Pos" Value="646 385"/>
 	</Widget>
 </Widget>
 
@@ -118,7 +118,7 @@
 </Widget>
 
 <Widget Name="NNOperator_ButtonContinue" SkinTempName="ButtonEmpty">
-	<Property Key="NomalTexture" Value="TTLNN/Operator/NNOperator_ButtonContinue.png"/>
+	<Property Key="NomalTexture" Value="TTLNN/Operator/NNOperator_ButtonReady.png"/>
 	<Property Key="PressTexture" Value="AutoPress"/>
 	<Property Key="Pos" Value="950 50"/>
 </Widget>
@@ -137,8 +137,8 @@
 	<Property Key="Pos" Value="540 220"/>
 </Widget>
 
-<Widget Name="NNOperator_ButtonHint" SkinTempName="ButtonEmpty">
+<!--<Widget Name="NNOperator_ButtonHint" SkinTempName="ButtonEmpty">
 	<Property Key="NomalTexture" Value="TTLNN/Operator/NNOperator_ButtonHint.png"/>
 	<Property Key="PressTexture" Value="AutoPress"/>
 	<Property Key="Pos" Value="1000 50"/>
-</Widget>
+</Widget>-->

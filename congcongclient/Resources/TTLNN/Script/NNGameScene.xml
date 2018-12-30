@@ -4,8 +4,12 @@
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="TTLNN/GameScene/NNGameScene_BG.jpg"/>
 		<Property Key="Pos" Value="640 360"/>
-		<Property Key="AnchorPos" Value="0.5 0.5"/>
 		<Property Key="Scale" Value="0.666"/>
+	</Widget>
+
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="TTLNN/GameScene/logo.png"/>
+		<Property Key="Pos" Value="1080 70"/>
 	</Widget>
 
 	<!-- 税收提示 -->
@@ -16,65 +20,107 @@
 	<Widget Name="NNGameScene_ButtonTalk" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonTalk.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="1130 140"/>
+		<Property Key="Pos" Value="1220 225"/>
 	</Widget>
 
 	<Widget Name="NNGameScene_ButtonMessage" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonMessage.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="1220 140"/>
+		<Property Key="Pos" Value="1220 105"/>
 	</Widget>
 
+	<Widget Name="NNGameScene_ButtonShare" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="TTLNN/GameScene/share.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="1060 175"/>
+	</Widget>
+	
 	<Widget Name="NNGameScene_ButtonDropBanker" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonDropBanker.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="950 112"/>
 	</Widget>
 
-	<Widget Name="NNGameScene_ButtonHelp" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonHelp.png"/>
-		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="900 675"/>
-	</Widget>
-
-	<Widget Name="NNGameScene_ButtonShare" SkinTempName="ButtonEmpty">
-		<Property Key="Index" Value="-1"/>
-		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Btn_Share.png"/>
-		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="1100 665"/>
-	</Widget>
-
-	<Widget Name="NNGameScene_ButtonMenu" SkinTempName="ButtonEmpty">
-		<Property Key="Index" Value="-1"/>
-		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Btn_Setting.png"/>
-		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="1200 665"/>
-	</Widget>
+	<!-- <Widget Name="NNGameScene_ButtonHelp" SkinTempName="ButtonEmpty"> -->
+		<!-- <Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonHelp.png"/> -->
+		<!-- <Property Key="PressTexture" Value="AutoPress"/> -->
+		<!-- <Property Key="Pos" Value="900 675"/> -->
+	<!-- </Widget> -->
 
 	<Widget Name="NNGameScene_MenuNode" SkinTempName="Empty">
 		<Property Key="Index" Value="-1"/>
 		<Property Key="Visible" Value="false"/>
 		<Widget Name="" SkinTempName="ImagicEmpty">
+			<Property Key="Index" Value="-1"/>
 			<Property Key="ImagicTexture" Value="TTLNN/GameScene/NNGameScene_MenuContentBG.png"/>
-			<Property Key="Scale" Value="1.4"/>
-			<Property Key="Pos" Value="1150 580"/>
+			<Property Key="Pos" Value="1188 520"/>
 		</Widget>
 		<Widget Name="NNGameScene_ButtonSetting" SkinTempName="ButtonEmpty">
-			<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonSetting.png"/>
+			<Property Key="Index" Value="-1"/>
+			<Property Key="NomalTexture" Value="TTLNN/GameScene/menu_btn.png"/>
 			<Property Key="PressTexture" Value="AutoPress"/>
-			<Property Key="Pos" Value="1162 528"/>
+			<Property Key="Pos" Value="1188 560"/>
 		</Widget>
+		<Widget Name="" SkinTempName="ImagicEmpty">
+			<Property Key="Index" Value="-1"/>
+			<Property Key="ImagicTexture" Value="TTLNN/GameScene/NNGameScene_ButtonSetting.png"/>
+			<Property Key="Pos" Value="1136 560"/>
+		</Widget>
+		<Widget Name="" SkinTempName="TxtEmpty">
+			<Property Key="Index" Value="-1"/>
+			<Property Key="FontName" Value="Font/true_type.ttf"/>
+			<Property Key="FontSize" Value="22"/>
+			<Property Key="ShowTxt" Value="设      置"/>
+			<Property Key="Pos" Value="1216 560"/>
+			<Property Key="Color" Value="247 199 115"/>
+		</Widget>
+		
 		<Widget Name="NNGameScene_ButtonLeave" SkinTempName="ButtonEmpty">
-			<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonLeave.png"/>
+			<Property Key="Index" Value="-1"/>
+			<Property Key="NomalTexture" Value="TTLNN/GameScene/menu_btn.png"/>
 			<Property Key="PressTexture" Value="AutoPress"/>
-			<Property Key="Pos" Value="1162 584"/> 
+			<Property Key="Pos" Value="1188 480"/>
 		</Widget>
+		<Widget Name="" SkinTempName="ImagicEmpty">
+			<Property Key="Index" Value="-1"/>
+			<Property Key="ImagicTexture" Value="TTLNN/GameScene/NNGameScene_ButtonSetting.png"/>
+			<Property Key="Pos" Value="1136 480"/> 
+		</Widget>
+		<Widget Name="" SkinTempName="TxtEmpty">
+			<Property Key="Index" Value="-1"/>
+			<Property Key="FontName" Value="Font/true_type.ttf"/>
+			<Property Key="FontSize" Value="22"/>
+			<Property Key="ShowTxt" Value="离开房间"/>
+			<Property Key="Pos" Value="1216 480"/>
+			<Property Key="Color" Value="247 199 115"/>
+		</Widget>
+		
 		<Widget Name="NNGameScene_ButtonDismiss" SkinTempName="ButtonEmpty">
-			<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonDismiss.png"/>
+			<Property Key="Index" Value="-1"/>
+			<Property Key="NomalTexture" Value="TTLNN/GameScene/menu_btn.png"/>
 			<Property Key="PressTexture" Value="AutoPress"/>
-			<Property Key="Scale" Value="1.4"/>
-			<Property Key="Pos" Value="1162 640"/> 
+			<Property Key="Pos" Value="1188 400"/>
+			<Widget Name="" SkinTempName="ImagicEmpty">
+				<Property Key="Index" Value="-1"/>
+				<Property Key="ImagicTexture" Value="TTLNN/GameScene/NNGameScene_ButtonSetting.png"/>
+				<Property Key="Pos" Value="41.5 30"/> 
+			</Widget>
+			<Widget Name="" SkinTempName="TxtEmpty">
+				<Property Key="Index" Value="-1"/>
+				<Property Key="FontName" Value="Font/true_type.ttf"/>
+				<Property Key="FontSize" Value="22"/>
+				<Property Key="ShowTxt" Value="解散房间"/>
+				<Property Key="Pos" Value="121 30"/>
+				<Property Key="Color" Value="247 199 115"/>
+			</Widget>
 		</Widget>
+	</Widget>
+
+	<Widget Name="NNGameScene_ButtonMenu" SkinTempName="ButtonEmpty">
+		<Property Key="Index" Value="-1"/>
+		<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonMenu.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="1220 660"/>
 	</Widget>
 
 </Widget>

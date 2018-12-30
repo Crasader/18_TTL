@@ -1,6 +1,7 @@
 #include "GPHomeScene.h"
 #include "Plaza/GameManager/GPGameLink.h"
 #include "Game/NN/NNGameScene.h"
+#include "Game/NN/NNGameRules.h"
 #include "Game/Game/MissionWeiXin.h"
 #include "CreateRoom/GPHomeCreateRoomPanel_NN.h"
 #include "CreateRoom/GPHomeRoomListPanel_NN.h"
@@ -27,6 +28,7 @@ void GPHomeScene::initButton()
 	WidgetManager::addButtonCB("Button_JoinGame", this, button_selector(GPHomeScene::Button_Join));
 	WidgetManager::addButtonCB("Btn_RoomList_Join", this, button_selector(GPHomeScene::Button_RoomList_Join));
 	WidgetManager::addButtonCB("Button_CreateGame", this, button_selector(GPHomeScene::Button_CreateGame));
+	WidgetManager::addButtonCB("Button_GameRules", this, button_selector(GPHomeScene::Button_Rule));
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -232,6 +234,12 @@ void GPHomeScene::Button_Record(cocos2d::Ref*, WidgetUserInfo*)
 	setButtonsEnable(false);
 	GPHomeRecordPanel::Instance().sendRecordToTalList();
 	GPHomeRecordPanel::Instance().show();
+}
+
+void GPHomeScene::Button_Rule(cocos2d::Ref*, WidgetUserInfo*)
+{
+	setButtonsEnable(false);
+	NNGameRules::Instance().show();
 }
 
 void GPHomeScene::Button_Invitation(cocos2d::Ref*, WidgetUserInfo* pUserInfo)

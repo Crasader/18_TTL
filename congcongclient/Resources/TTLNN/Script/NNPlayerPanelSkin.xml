@@ -2,71 +2,66 @@
 	<WidgetNode Name="NNPlayer_LeftSkin">
 		<Property Key="Size" Value="300 150"/>
 		<Property Key="AnchorPos" Value="0 0"/>
+		<!-- 半透明背景 -->
 		<WidgetImagic Name="" TextureInfo="TTLNN/Player/NNPlayer_BG.png">
 			<Property Key="Pos" Value="150 75"/>
 		</WidgetImagic>
-		
-		<WidgetImagic Name="NNPlayer_BankerBG" TextureInfo="TTLNN/Player/NNPlayer_BankerBG.png">
-			<Property Key="Pos" Value="150 80"/>
-		</WidgetImagic>
-		
-		<WidgetImagic Name="" TextureInfo="TTLNN/Player/NNPlayer_AvatarBG.png">
-			<Property Key="Pos" Value="85 80"/>
-		</WidgetImagic>
-		
+		<!-- 头像 -->
 		<WidgetImagic Name="NNPlayer_Avatar" TextureInfo="TTLNN/Player/NNPlayer_Avatar.png">
-			<Property Key="Pos" Value="85 80"/>
+			<Property Key="Pos" Value="150 87"/>
 		</WidgetImagic>
-		
+		<!-- 名字 -->
+		<WidgetImagic Name="" TextureInfo="TTLNN/Player/nickName.png">
+			<Property Key="Pos" Value="150 64"/>
+		</WidgetImagic>
+		<WidgetTxt Name="NNPlayer_Name" FontName="Font/true_type.ttf" FontSize="16" ShowTxt="123456789">
+			<Property Key="Pos" Value="150 67"/>
+		</WidgetTxt>
+		<!-- 准备 -->
+		<WidgetImagic Name="NNPlayer_Ready" TextureInfo="TTLNN/Player/NNPlayer_Ready.png">
+			<Property Key="Pos" Value="150 87"/>
+		</WidgetImagic>
+		<!-- 头像框 -->
+		<WidgetImagic Name="" TextureInfo="TTLNN/Player/NNPlayer_AvatarBG.png">
+			<Property Key="Pos" Value="153 83"/>
+		</WidgetImagic>
+		<!-- 庄家 -->
+		<WidgetImagic Name="NNPlayer_BankerBG" TextureInfo="TTLNN/Player/NNPlayer_BankerBG.png">
+			<Property Key="Pos" Value="150 75"/>
+		</WidgetImagic>
+		<WidgetImagic Name="NNPlayer_Banker" TextureInfo="TTLNN/Player/NNPlayer_Banker.png">
+			<Property Key="Pos" Value="190 125.5"/>
+		</WidgetImagic>
+		<!-- 房主 -->
 		<WidgetImagic Name="NNPlayer_Host" TextureInfo="TTLNN/Player/NNPlayer_Host.png">
 			<Property Key="Pos" Value="85 125"/>
 		</WidgetImagic>
-		
-		<WidgetImagic Name="NNPlayer_Banker" TextureInfo="TTLNN/Player/NNPlayer_Banker.png">
-			<Property Key="Pos" Value="260 125"/>
-		</WidgetImagic>
-		
-		<WidgetTxt Name="NNPlayer_Name" FontName="Font/mini_kaiti.ttf" FontSize="16" ShowTxt="123456789">
-			<Property Key="Pos" Value="195 90"/>
+		<!-- 分数 -->
+		<WidgetTxt Name="NNPlayer_Score" FontName="Font/true_type.ttf" FontSize="20" ShowTxt="12345">
+			<Property Key="Pos" Value="150 37"/>
+			<Property Key="Color" Value="251 222 104"/>
 		</WidgetTxt>
-		
-		<WidgetTxt Name="NNPlayer_Score" FontName="Font/mini_kaiti.ttf" FontSize="20" ShowTxt="12345">
-			<Property Key="Pos" Value="205 52"/>
-		</WidgetTxt>
-		
-		<WidgetImagic Name="NNPlayer_Ready" TextureInfo="TTLNN/Player/NNPlayer_Ready.png">
-			<Property Key="Pos" Value="295 65"/>
-		</WidgetImagic>
-		
+		<!-- 抢庄倍数 -->
 		<WidgetImagic Name="NNPlayer_Snatch" TextureInfo="TTLNN/Player/NNPlayer_Snatch_0.png">
 			<UserInfo Key="Image" Value="TTLNN/Player/NNPlayer_Snatch_"/>
 			<!-- <Property Key="Pos" Value="315 90"/> -->
-			<Property Key="Pos" Value="315 52"/>
+			<Property Key="Pos" Value="150 87"/>
 		</WidgetImagic>
-		
-		<!-- <WidgetNode Name="NNPlaye_BetsNode">
-			<WidgetImagic Name="" TextureInfo="TTLNN/Player/NNPlayer_BetsBG.png">
-				<Property Key="Pos" Value="315 45"/>
-			</WidgetImagic>
-			
-			<WidgetTxt Name="NNPlayer_Bets" FontName="Font/mini_kaiti.ttf" FontSize="28" ShowTxt="8">
-				<Property Key="Pos" Value="323 45"/>
-				<Property Key="Color" Value="251 222 104"/>
-			</WidgetTxt>
-		</WidgetNode> -->
+		<!-- 下注分数 -->
 		<WidgetNode Name="NNPlaye_BetsNode">
+			<Property Key="Pos" Value="150 130"/>
+			<Property Key="Scale" Value="0.7"/>
 			<WidgetImagic Name="" TextureInfo="TTLNN/Player/NNPlayer_BetsBG.png">
-				<Property Key="Pos" Value="195 140"/>
+				<Property Key="Pos" Value="0 10"/>
 			</WidgetImagic>
-			
-			<WidgetTxt Name="NNPlayer_Bets" FontName="Font/mini_kaiti.ttf" FontSize="28" ShowTxt="8">
-				<Property Key="Pos" Value="200 140"/>
-				<Property Key="AnchorPos" Value="0 0.5"/>
+			<WidgetTxt Name="NNPlayer_Bets" FontName="Font/true_type.ttf" FontSize="28" ShowTxt="8">
+				<Property Key="Pos" Value="0 10"/>
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
 				<Property Key="Color" Value="251 222 104"/>
 			</WidgetTxt>
 		</WidgetNode>
 		
-		<WidgetImagic Name="NNPlayer_TalkAction" TextureInfo="TTLNN/Player/TalkLeft/1.png">
+		<WidgetImagic Name="NNPlayer_TalkAction" TextureInfo="TTLNN/Player/Talk/1.png">
 			<!-- <Property Key="Pos" Value="315 115"/> -->
 			<Property Key="Pos" Value="85 145"/>
 			<Property Key="Visible" Value="false"/>
@@ -82,7 +77,7 @@
 					<Visible Visible="false"/>
 				</WaiteTime>
 			</EmptyAction>
-			<WidgetImagic Name="TalkPic1" TextureInfo="TTLNN/Player/TalkLeft/2.png">
+			<WidgetImagic Name="TalkPic1" TextureInfo="TTLNN/Player/Talk/2.png">
 				<Property Key="Pos" Value="12 15"/>
 				<EmptyAction Name="Start" SaveAction="true">
 					<Visible Visible="false" Name="Start1">
@@ -105,7 +100,7 @@
 					</WaiteTime>
 				</EmptyAction>
 			</WidgetImagic>
-			<WidgetImagic Name="TalkPic2" TextureInfo="TTLNN/Player/TalkLeft/3.png">
+			<WidgetImagic Name="TalkPic2" TextureInfo="TTLNN/Player/Talk/3.png">
 				<Property Key="Pos" Value="12 15"/>
 				<EmptyAction Name="Start" SaveAction="true">
 					<Visible Visible="false" Name="Start1">
@@ -128,7 +123,7 @@
 					</WaiteTime>
 				</EmptyAction>
 			</WidgetImagic>
-			<WidgetImagic Name="TalkPic3" TextureInfo="TTLNN/Player/TalkLeft/4.png">
+			<WidgetImagic Name="TalkPic3" TextureInfo="TTLNN/Player/Talk/4.png">
 				<Property Key="Pos" Value="12 15"/>
 				<EmptyAction Name="Start" SaveAction="true">
 					<Visible Visible="false" Name="Start1">
@@ -162,13 +157,13 @@
 			</Widget9Sprite>
 			<WidgetLayout Name="NNPlayer_LayoutNode">
 				<Property Key="ClippingEnabled" Value="true"/>
-				<Property Key="Size" Value="280 50"/>
+				<Property Key="Size" Value="280 32"/>
 				<Property Key="Pos" Value="0 10"/>
 				<Property Key="HideBack"/>
 				<Property Key="AnchorPos" Value="0.5 0.5"/>
 				<WidgetNode Name="">
 					<Property Key="Pos" Value="5 20"/>
-					<WidgetTxt Name="NNPlayer_TalkTxt" ShowTxt="1000" FontName="" FontSize="35">
+					<WidgetTxt Name="NNPlayer_TalkTxt" ShowTxt="1000" FontName="Font/mini_kaiti.ttf" FontSize="28">
 						<Property Key="ShowTxt" Value="TalkTxt"/>
 						<Property Key="AnchorPos" Value="0 0.5"/>
 						<Property Key="Color" Value="137 53 25"/>
@@ -189,75 +184,67 @@
 	<WidgetNode Name="NNPlayer_RightSkin">
 		<Property Key="Size" Value="300 150"/>
 		<Property Key="AnchorPos" Value="0 0"/>
-		<WidgetImagic Name="" TextureInfo="TTLNN/Player/NNPlayer_BG.png">
+		
+		<!-- 半透明背景 -->
+		<WidgetImagic Name="" TextureInfo="TTLNN/Player/NNPlayer_BG_H.png">
 			<Property Key="Pos" Value="150 75"/>
 		</WidgetImagic>
-		
-		<WidgetImagic Name="NNPlayer_BankerBG" TextureInfo="TTLNN/Player/NNPlayer_BankerBG.png">
-			<Property Key="Pos" Value="150 80"/>
-		</WidgetImagic>
-		
-		<WidgetImagic Name="" TextureInfo="TTLNN/Player/NNPlayer_AvatarBG.png">
-			<Property Key="Pos" Value="85 80"/>
-		</WidgetImagic>
-		
+		<!-- 头像 -->
 		<WidgetImagic Name="NNPlayer_Avatar" TextureInfo="TTLNN/Player/NNPlayer_Avatar.png">
-			<Property Key="Pos" Value="85 80"/>
+			<Property Key="Pos" Value="130 75"/>
 		</WidgetImagic>
-		
+		<!-- 名字 -->
+		<WidgetImagic Name="" TextureInfo="TTLNN/Player/nickName.png">
+			<Property Key="Pos" Value="130 54"/>
+		</WidgetImagic>
+		<WidgetTxt Name="NNPlayer_Name" FontName="Font/true_type.ttf" FontSize="16" ShowTxt="123456789">
+			<Property Key="Pos" Value="130 57"/>
+		</WidgetTxt>
+		<!-- 准备 -->
+		<WidgetImagic Name="NNPlayer_Ready" TextureInfo="TTLNN/Player/NNPlayer_Ready.png">
+			<Property Key="Pos" Value="130 87"/>
+		</WidgetImagic>
+		<!-- 庄家 -->
+		<WidgetImagic Name="NNPlayer_BankerBG" TextureInfo="TTLNN/Player/NNPlayer_BankerBG_H.png">
+			<Property Key="Pos" Value="150 75"/>
+		</WidgetImagic>
+		<WidgetImagic Name="NNPlayer_Banker" TextureInfo="TTLNN/Player/NNPlayer_Banker.png">
+			<Property Key="Pos" Value="212 115"/>
+		</WidgetImagic>
+		<!-- 头像框 -->
+		<WidgetImagic Name="" TextureInfo="TTLNN/Player/NNPlayer_AvatarBG.png">
+			<Property Key="Pos" Value="133 71"/>
+		</WidgetImagic>
+		<!-- 分数 -->
+		<WidgetTxt Name="NNPlayer_Score" FontName="Font/true_type.ttf" FontSize="20" ShowTxt="12345">
+			<Property Key="Pos" Value="188 75"/>
+			<Property Key="Color" Value="251 222 104"/>
+		</WidgetTxt>
+		<!-- 抢庄倍数 -->
+		<WidgetImagic Name="NNPlayer_Snatch" TextureInfo="TTLNN/Player/NNPlayer_Snatch_0.png">
+			<UserInfo Key="Image" Value="TTLNN/Player/NNPlayer_Snatch_"/>
+			<Property Key="Pos" Value="130 75"/>
+		</WidgetImagic>
+		<!-- 房主 -->
 		<WidgetImagic Name="NNPlayer_Host" TextureInfo="TTLNN/Player/NNPlayer_Host.png">
 			<Property Key="Pos" Value="85 125"/>
 			<Property Key="Visible" Value="false"/>
 		</WidgetImagic>
-		
-		<WidgetImagic Name="NNPlayer_Banker" TextureInfo="TTLNN/Player/NNPlayer_Banker.png">
-			<Property Key="Pos" Value="260 125"/>
-		</WidgetImagic>
-		
-		<WidgetTxt Name="NNPlayer_Name" FontName="Font/mini_kaiti.ttf" FontSize="16" ShowTxt="123456789">
-			<Property Key="Pos" Value="195 90"/>
-		</WidgetTxt>
-		
-		<WidgetTxt Name="NNPlayer_Score" FontName="Font/mini_kaiti.ttf" FontSize="20" ShowTxt="1234">
-			<Property Key="Pos" Value="205 52"/>
-		</WidgetTxt>
-		
-		<WidgetImagic Name="NNPlayer_Ready" TextureInfo="TTLNN/Player/NNPlayer_Ready.png">
-			<Property Key="Pos" Value="5 65"/>
-		</WidgetImagic>
-		
-		<WidgetImagic Name="NNPlayer_Snatch" TextureInfo="TTLNN/Player/NNPlayer_Snatch_0.png">
-			<UserInfo Key="Image" Value="TTLNN/Player/NNPlayer_Snatch_"/>
-			<!-- <Property Key="Pos" Value="-15 115"/> -->
-			<Property Key="Pos" Value="-15 52"/>
-		</WidgetImagic>
-		
-		<!--
- 		<WidgetNode Name="NNPlaye_BetsNode">
-			<WidgetImagic Name="" TextureInfo="TTLNN/Player/NNPlayer_BetsBG.png">
-				<Property Key="Pos" Value="-15 45"/>
-			</WidgetImagic>
-			
-			<WidgetTxt Name="NNPlayer_Bets" FontName="Font/mini_kaiti.ttf" FontSize="28" ShowTxt="8">
-				<Property Key="Pos" Value="-7 45"/>
-				<Property Key="Color" Value="251 222 104"/>
-			</WidgetTxt>
-		</WidgetNode> 
-		-->
 
 		<WidgetNode Name="NNPlaye_BetsNode">
+			<Property Key="Pos" Value="150 125"/>
+			<Property Key="Scale" Value="0.7"/>
 			<WidgetImagic Name="" TextureInfo="TTLNN/Player/NNPlayer_BetsBG.png">
-				<Property Key="Pos" Value="195 140"/>
+				<Property Key="Pos" Value="0 10"/>
 			</WidgetImagic>
-			
-			<WidgetTxt Name="NNPlayer_Bets" FontName="Font/mini_kaiti.ttf" FontSize="28" ShowTxt="8">
-				<Property Key="Pos" Value="187 140"/>
-				<Property Key="AnchorPos" Value="0 0.5"/>
+			<WidgetTxt Name="NNPlayer_Bets" FontName="Font/true_type.ttf" FontSize="28" ShowTxt="8">
+				<Property Key="Pos" Value="0 10"/>
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
 				<Property Key="Color" Value="251 222 104"/>
 			</WidgetTxt>
 		</WidgetNode>
 		
-		<WidgetImagic Name="NNPlayer_TalkAction" TextureInfo="TTLNN/Player/TalkLeft/1.png">
+		<WidgetImagic Name="NNPlayer_TalkAction" TextureInfo="TTLNN/Player/Talk/1.png">
 			<Property Key="Pos" Value="-15 45"/>
 			<Property Key="Visible" Value="false"/>
 			<EmptyAction Name="Start" SaveAction="true">
@@ -272,7 +259,7 @@
 					<Visible Visible="false"/>
 				</WaiteTime>
 			</EmptyAction>
-			<WidgetImagic Name="TalkPic1" TextureInfo="TTLNN/Player/TalkLeft/2.png">
+			<WidgetImagic Name="TalkPic1" TextureInfo="TTLNN/Player/Talk/2.png">
 				<Property Key="Pos" Value="12 15"/>
 				<EmptyAction Name="Start" SaveAction="true">
 					<Visible Visible="false" Name="Start1">
@@ -295,7 +282,7 @@
 					</WaiteTime>
 				</EmptyAction>
 			</WidgetImagic>
-			<WidgetImagic Name="TalkPic2" TextureInfo="TTLNN/Player/TalkLeft/3.png">
+			<WidgetImagic Name="TalkPic2" TextureInfo="TTLNN/Player/Talk/3.png">
 				<Property Key="Pos" Value="12 15"/>
 				<EmptyAction Name="Start" SaveAction="true">
 					<Visible Visible="false" Name="Start1">
@@ -318,7 +305,7 @@
 					</WaiteTime>
 				</EmptyAction>
 			</WidgetImagic>
-			<WidgetImagic Name="TalkPic3" TextureInfo="TTLNN/Player/TalkLeft/4.png">
+			<WidgetImagic Name="TalkPic3" TextureInfo="TTLNN/Player/Talk/4.png">
 				<Property Key="Pos" Value="12 15"/>
 				<EmptyAction Name="Start" SaveAction="true">
 					<Visible Visible="false" Name="Start1">

@@ -1,4 +1,3 @@
-//#include <cocos2d/cocos/editor-support/cocostudio/ActionTimeline/CSLoader.h>
 #include <Game/Game/NoticeMsg.h>
 #include <Game/Game/UserInfo.h>
 
@@ -7,9 +6,10 @@
 #include "GPHomeScene.h"
 #include "../GameManager/GPGameLink.h"
 #include "CreateRoom/GPHomeCreateRoom.h"
-//#include "BtnTurnLayer.h"
 #include "Game/NN/NNGameScene.h"
 #include "Game/NN/NNCalculate.h"
+#include "Game/NN/NNGameRules.h"
+
 #include UTILITY_CONVERT
 #include UTILITY_LOG
 #include IMAGE_DOWN
@@ -153,7 +153,7 @@ void GPHomeScene::showGameRoomList(void* data, size_t dataSize)
 
 void GPHomeScene::initPaoMaDeng()
 {
-	playPaoMaDeng(WidgetFun::getChildWidgetByName(this,"Speaker"),"SpeakerTxt","SpeakerLayoutNode", utility::a_u8("¹û½´ÓéÀÖ»¶Ó­Äú£¡"),NULL);
+	playPaoMaDeng(WidgetFun::getChildWidgetByName(this,"Speaker"),"SpeakerTxt","SpeakerLayoutNode", utility::a_u8("¹û½´ÓéÀÖ»¶Ó­Äú£¡"), NULL);
 }
 
 void GPHomeScene::flushPlayerLevel()
@@ -220,6 +220,9 @@ void GPHomeScene::onEnterScene()
 
 	GPGameLink::pInstance()->ConnectAndInqureTables(NNGameScene::KIND_ID);
 	setButtonsEnable(true);
+	WidgetFun::runWidgetAction(this, "Ani_DengLong", "DengLongAnimationStart");
+	WidgetFun::runWidgetAction(this, "Ani_XueHua", "XueHuaAnimationStart");
+	
 	SoundFun::Instance().playBackMusic("bgplay.mp3");
 }
 
@@ -251,7 +254,7 @@ void GPHomeScene::initPopupPanels()
 	addPanel(GPHomeRecordPanel::pInstance());
 	//addPanel(GPHomeRankPanel::pInstance());
 	//addPanel(GPHomeEditNumPanel::pInstance());
-
+	addPanel(NNGameRules::pInstance());
 	//////////////////////////////////////////////////////////////////////////
 
 	addPanel(GPHomeCreateRoomPanel_NN::pInstance());
@@ -313,6 +316,9 @@ void GPHomeScene::hideAllPanels()
 	//}
 	if (GPHomeRecordPanel::pInstance()->getParent() == this) {
 		GPHomeRecordPanel::pInstance()->hide();
+	}
+	if (NNGameRules::pInstance()->getParent() == this) {
+		NNGameRules::pInstance()->hide();
 	}
 	//if (GPHomeRankPanel::pInstance()->getParent() == this) {
 	//	GPHomeRankPanel::pInstance()->hide();

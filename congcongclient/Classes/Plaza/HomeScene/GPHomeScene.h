@@ -93,6 +93,7 @@ protected:
 	void Button_Setting(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_Rank( cocos2d::Ref*, WidgetUserInfo* );
 	void Button_Record( cocos2d::Ref*, WidgetUserInfo* );
+	void Button_Rule(cocos2d::Ref*, WidgetUserInfo*);
 
 	void Button_NN(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_SRLF(cocos2d::Ref*, WidgetUserInfo*);

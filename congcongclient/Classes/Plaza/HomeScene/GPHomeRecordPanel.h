@@ -47,8 +47,8 @@ struct GameScoreInfo {
 #pragma pack()
 
 class GPHomeRecordPanel
-	//: public cocos2d::Node
-	: public cocos2d::Layer
+	: public cocos2d::Node
+	//: public cocos2d::Layer
 	, public CGGameRecordSink
 	, public FvSingleton<GPHomeRecordPanel>
 {
