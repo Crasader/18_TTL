@@ -41,14 +41,15 @@ private:
 
 	float updateInterval;
 
-	float _label_offset;
 	cocos2d::Vec2 _TouchBegbin;
 	cocos2d::Vec2 _TouchMoved;
 
 	Rules_Touch_State _touch_state;
 	std::vector<cocos2d::Label*> _plable;
+	std::vector<cocos2d::Vec2> _vct_lable_riginal_pos;
 	cocos2d::Vec2 _original_title_position;
 	cocos2d::Vec2 _cur_title_position;
 
 	float _max_move_h;
+	bool _actived;
 };

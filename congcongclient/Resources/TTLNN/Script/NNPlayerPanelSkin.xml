@@ -60,93 +60,21 @@
 				<Property Key="Color" Value="251 222 104"/>
 			</WidgetTxt>
 		</WidgetNode>
-		
-		<WidgetImagic Name="NNPlayer_TalkAction" TextureInfo="TTLNN/Player/Talk/1.png">
-			<!-- <Property Key="Pos" Value="315 115"/> -->
-			<Property Key="Pos" Value="85 145"/>
-			<Property Key="Visible" Value="false"/>
-			<EmptyAction Name="Start" SaveAction="true">
-				<Visible Visible="true"/>
-				<CallAction OtherNodeName="TalkPic1" OtherActionName="Start">
-					<CallAction OtherNodeName="TalkPic2" OtherActionName="Start">
-						<CallAction OtherNodeName="TalkPic3" OtherActionName="Start">
-						</CallAction>
-					</CallAction>
+
+		<WidgetNode Name="NNPlayer_TalkAction">
+			<Property Key="Pos" Value="150 87"/>
+			<UserInfo Key="Imagic" Value="TTLNN/Player/Talk"/>
+			<Visible Name="Start" Visible="true" SaveAction="true">
+				<CallAction OtherNodeName="NNPlayer_TalkAnimation" OtherActionName="Start">
 				</CallAction>
-				<WaiteTime Time="3.6" >
-					<Visible Visible="false"/>
-				</WaiteTime>
-			</EmptyAction>
-			<WidgetImagic Name="TalkPic1" TextureInfo="TTLNN/Player/Talk/2.png">
-				<Property Key="Pos" Value="12 15"/>
-				<EmptyAction Name="Start" SaveAction="true">
-					<Visible Visible="false" Name="Start1">
-						<WaiteTime Time="0.3" >
-							<Visible Visible="true">
-								<WaiteTime Time="1.2" >
-									<Visible Visible="false">
-										<WaiteTime Time="0.3">
-											<CallAction SelfActionName="Start1">
-											</CallAction>
-										</WaiteTime>
-									</Visible>
-								</WaiteTime>
-							</Visible>
-						</WaiteTime>
-					</Visible>
-					<WaiteTime Time="3.6" >
-						<StopAllAction >
-						</StopAllAction>
-					</WaiteTime>
-				</EmptyAction>
-			</WidgetImagic>
-			<WidgetImagic Name="TalkPic2" TextureInfo="TTLNN/Player/Talk/3.png">
-				<Property Key="Pos" Value="12 15"/>
-				<EmptyAction Name="Start" SaveAction="true">
-					<Visible Visible="false" Name="Start1">
-						<WaiteTime Time="0.6" >
-							<Visible Visible="true">
-								<WaiteTime Time="0.6" >
-									<Visible Visible="false">
-										<WaiteTime Time="0.6">
-											<CallAction SelfActionName="Start1">
-											</CallAction>
-										</WaiteTime>
-									</Visible>
-								</WaiteTime>
-							</Visible>
-						</WaiteTime>
-					</Visible>
-					<WaiteTime Time="3.6" >
-						<StopAllAction >
-						</StopAllAction>
-					</WaiteTime>
-				</EmptyAction>
-			</WidgetImagic>
-			<WidgetImagic Name="TalkPic3" TextureInfo="TTLNN/Player/Talk/4.png">
-				<Property Key="Pos" Value="12 15"/>
-				<EmptyAction Name="Start" SaveAction="true">
-					<Visible Visible="false" Name="Start1">
-						<WaiteTime Time="0.9" >
-							<Visible Visible="true">
-								<WaiteTime Time="0.3" >
-									<Visible Visible="false">
-										<WaiteTime Time="0.6">
-											<CallAction SelfActionName="Start1">
-											</CallAction>
-										</WaiteTime>
-									</Visible>
-								</WaiteTime>
-							</Visible>
-						</WaiteTime>
-					</Visible>
-					<WaiteTime Time="3.6" >
-						<StopAllAction >
-						</StopAllAction>
-					</WaiteTime>
-				</EmptyAction>
-			</WidgetImagic>
-		</WidgetImagic>
+			</Visible>
+			<WidgetAnimation Name="NNPlayer_TalkAnimation">
+				<Property Key="Time" Value="0.3"/>
+				<Property Key="Loop" Value="false"/>
+				<RunAnim Name="Start" AnimName="TTLNN/Player/Talk/:1:4:.png" SaveAction="true">
+				</RunAnim>
+			</WidgetAnimation>
+		</WidgetNode>
 
 		<WidgetNode Name="NNPlayer_TalkTxtNode">
 			<Property Key="Pos" Value="200 145"/>
@@ -243,93 +171,23 @@
 				<Property Key="Color" Value="251 222 104"/>
 			</WidgetTxt>
 		</WidgetNode>
-		
-		<WidgetImagic Name="NNPlayer_TalkAction" TextureInfo="TTLNN/Player/Talk/1.png">
-			<Property Key="Pos" Value="-15 45"/>
-			<Property Key="Visible" Value="false"/>
-			<EmptyAction Name="Start" SaveAction="true">
-				<Visible Visible="true"/>
-				<CallAction OtherNodeName="TalkPic1" OtherActionName="Start">
-					<CallAction OtherNodeName="TalkPic2" OtherActionName="Start">
-						<CallAction OtherNodeName="TalkPic3" OtherActionName="Start">
-						</CallAction>
-					</CallAction>
-				</CallAction>
-				<WaiteTime Time="3.6" >
-					<Visible Visible="false"/>
-				</WaiteTime>
-			</EmptyAction>
-			<WidgetImagic Name="TalkPic1" TextureInfo="TTLNN/Player/Talk/2.png">
-				<Property Key="Pos" Value="12 15"/>
-				<EmptyAction Name="Start" SaveAction="true">
-					<Visible Visible="false" Name="Start1">
-						<WaiteTime Time="0.3" >
-							<Visible Visible="true">
-								<WaiteTime Time="1.2" >
-									<Visible Visible="false">
-										<WaiteTime Time="0.3">
-											<CallAction SelfActionName="Start1">
-											</CallAction>
-										</WaiteTime>
-									</Visible>
-								</WaiteTime>
-							</Visible>
-						</WaiteTime>
-					</Visible>
-					<WaiteTime Time="3.6" >
-						<StopAllAction >
-						</StopAllAction>
-					</WaiteTime>
-				</EmptyAction>
-			</WidgetImagic>
-			<WidgetImagic Name="TalkPic2" TextureInfo="TTLNN/Player/Talk/3.png">
-				<Property Key="Pos" Value="12 15"/>
-				<EmptyAction Name="Start" SaveAction="true">
-					<Visible Visible="false" Name="Start1">
-						<WaiteTime Time="0.6" >
-							<Visible Visible="true">
-								<WaiteTime Time="0.6" >
-									<Visible Visible="false">
-										<WaiteTime Time="0.6">
-											<CallAction SelfActionName="Start1">
-											</CallAction>
-										</WaiteTime>
-									</Visible>
-								</WaiteTime>
-							</Visible>
-						</WaiteTime>
-					</Visible>
-					<WaiteTime Time="3.6" >
-						<StopAllAction >
-						</StopAllAction>
-					</WaiteTime>
-				</EmptyAction>
-			</WidgetImagic>
-			<WidgetImagic Name="TalkPic3" TextureInfo="TTLNN/Player/Talk/4.png">
-				<Property Key="Pos" Value="12 15"/>
-				<EmptyAction Name="Start" SaveAction="true">
-					<Visible Visible="false" Name="Start1">
-						<WaiteTime Time="0.9" >
-							<Visible Visible="true">
-								<WaiteTime Time="0.3" >
-									<Visible Visible="false">
-										<WaiteTime Time="0.6">
-											<CallAction SelfActionName="Start1">
-											</CallAction>
-										</WaiteTime>
-									</Visible>
-								</WaiteTime>
-							</Visible>
-						</WaiteTime>
-					</Visible>
-					<WaiteTime Time="3.6" >
-						<StopAllAction >
-						</StopAllAction>
-					</WaiteTime>
-				</EmptyAction>
-			</WidgetImagic>
-		</WidgetImagic>
 
+		<WidgetNode Name="NNPlayer_TalkAction">
+			<Property Key="Pos" Value="130 75"/>
+			<Property Key="Visible" Value="false"/>
+			<UserInfo Key="Imagic" Value="TTLNN/Player/Talk"/>
+			<Visible Name="XueHuaAnimationStart" Visible="true" SaveAction="true">
+				<CallAction OtherNodeName="NNPlayer_TalkAnimation" OtherActionName="Start">
+				</CallAction>
+			</Visible>
+			<WidgetAnimation Name="NNPlayer_TalkAnimation">
+				<Property Key="Time" Value="0.08"/>
+				<Property Key="Loop" Value="true"/>
+				<RunAnim Name="Start" AnimName="TTLNN/Player/Talk/:1:4:.png" SaveAction="true">
+				</RunAnim>
+			</WidgetAnimation>
+		</WidgetNode>
+	
 		<WidgetNode Name="NNPlayer_TalkTxtNode">
 			<Property Key="Pos" Value="200 145"/>
 			<UserInfo Key="Pos_2" Value="-200 145"/>

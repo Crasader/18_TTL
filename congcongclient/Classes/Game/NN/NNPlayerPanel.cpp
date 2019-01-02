@@ -113,6 +113,7 @@ void NNPlayerPanel::playerTalk(NNPlayer& player,CMD_GR_C_TableTalk* pNetInfo)//Ï
 	{
 		if (!WidgetFun::getChildWidget(playerNode, "NNPlayer_TalkAction")) return;
 		WidgetFun::runWidgetAction(playerNode, "NNPlayer_TalkAction", "Start");
+		WidgetFun::setVisible(playerNode, true);
 	}
 	if (pNetInfo->cbType == CMD_GR_C_TableTalk::TYPE_WORD)
 	{

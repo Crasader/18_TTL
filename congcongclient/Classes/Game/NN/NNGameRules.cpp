@@ -13,11 +13,10 @@ NNGameRules::NNGameRules()
 	: _touch_state(RTS_Null)
 	, _TouchBegbin(0 ,0)
 	, _TouchMoved(0, 0)
-	, updateInterval(0)
-	, _label_offset(0)
 	, _cur_title_position(0, 0)
 	, _original_title_position(0, 0)
 	, _max_move_h(0.f)
+	, _actived(false)
 {
     init();
 }
@@ -93,11 +92,12 @@ void NNGameRules::initView()
 	std::string strTitlePaiXing = WidgetFun::getWidgetUserInfo(this, "Txts_PaiXing", "1_0");
 	auto label = Label::createWithTTF(TitleConfig, strTitlePaiXing, TextHAlignment::CENTER, nLineWidthContent);
 	label->setPosition(BeginXTitle, BeginY - offsetH);
+	label->setAnchorPoint(cocos2d::Vec2(0.f, 0.5f));
+	label->setColor(Titlecolor);
 	_original_title_position = { BeginXTitle, BeginY - offsetH };
 	_cur_title_position = _original_title_position;
-	label->setColor(Titlecolor);
-	label->setAnchorPoint(cocos2d::Vec2(0.f, 0.5f));
 	_plable.push_back(label);
+	_vct_lable_riginal_pos.push_back(label->getPosition());
 	Clipper->addChild(label);
 	offsetH += label->getContentSize().height;
 
@@ -115,6 +115,7 @@ void NNGameRules::initView()
 		offsetH += label->getContentSize().height;
 		offsetH += nLineInterval;
 		_plable.push_back(label);
+		_vct_lable_riginal_pos.push_back(label->getPosition());
 		Clipper->addChild(label);
 	}
 
@@ -128,6 +129,7 @@ void NNGameRules::initView()
 	label->setColor(Titlecolor);
 	label->setAnchorPoint(cocos2d::Vec2(0.f, 0.5f));
 	_plable.push_back(label);
+	_vct_lable_riginal_pos.push_back(label->getPosition());
 	Clipper->addChild(label);
 	offsetH += label->getContentSize().height;
 
@@ -145,6 +147,7 @@ void NNGameRules::initView()
 		offsetH += label->getContentSize().height;
 		offsetH += nLineInterval;
 		_plable.push_back(label);
+		_vct_lable_riginal_pos.push_back(label->getPosition());
 		Clipper->addChild(label);
 	}
 
@@ -158,6 +161,7 @@ void NNGameRules::initView()
 	label->setColor(Titlecolor);
 	label->setAnchorPoint(cocos2d::Vec2(0.f, 0.5f));
 	_plable.push_back(label);
+	_vct_lable_riginal_pos.push_back(label->getPosition());
 	Clipper->addChild(label);
 	offsetH += label->getContentSize().height;
 
@@ -175,6 +179,7 @@ void NNGameRules::initView()
 		offsetH += label->getContentSize().height;
 		offsetH += nLineInterval;
 		_plable.push_back(label);
+		_vct_lable_riginal_pos.push_back(label->getPosition());
 		Clipper->addChild(label);
 	}
 
@@ -188,6 +193,7 @@ void NNGameRules::initView()
 	label->setColor(Titlecolor);
 	label->setAnchorPoint(cocos2d::Vec2(0.f, 0.5f));
 	_plable.push_back(label);
+	_vct_lable_riginal_pos.push_back(label->getPosition());
 	Clipper->addChild(label);
 	offsetH += label->getContentSize().height;
 
@@ -205,10 +211,11 @@ void NNGameRules::initView()
 		offsetH += label->getContentSize().height;
 		offsetH += nLineInterval;
 		_plable.push_back(label);
+		_vct_lable_riginal_pos.push_back(label->getPosition());
 		Clipper->addChild(label);
 	}
 
-	_max_move_h = offsetH + 60;
+	_max_move_h = offsetH - 400;
 	this->addChild(Clipper);
 }
 
@@ -241,47 +248,54 @@ void NNGameRules::initEvent()
 
 void NNGameRules::update(float fpass)
 {
-	updateInterval += fpass;
-	if (updateInterval >= UPDATE_INTERVAL) {
-		updateInterval = 0;
-		switch (_touch_state)
-		{
-		case RTS_Touched:
-			break;
-		case RTS_Moved:
-			_label_offset = _TouchMoved.y - _TouchBegbin.y;
-			if (_cur_title_position.y +  _label_offset > _max_move_h) {
-				_label_offset = _max_move_h - _cur_title_position.y;
-			} else if(_cur_title_position.y - _original_title_position.y + _label_offset < 0) {
-				_label_offset = _original_title_position.y - _cur_title_position.y;
-			}
-			_cur_title_position.y += _label_offset;
-			for (size_t idx = 0; idx < _plable.size(); idx++) {
-				auto pos = _plable[idx]->getPosition();
-				_plable[idx]->setPosition(pos.x, pos.y + _label_offset);
-			}
-			break;
-		case RTS_End:
-			break;
-		}
+	if (_plable.size() == 0 || !_actived) {
+		return;
 	}
 }
 
 bool NNGameRules::onTouchBegin(Touch * touch, Event * ev)
 {
+	if (_plable.size() == 0 || !_actived) {
+		return false;
+	}
 	_touch_state = RTS_Touched;
 	_TouchBegbin = touch->getLocation();
+	_cur_title_position.y = _plable[0]->getPosition().y;
 	return true;
 }
 
 void NNGameRules::onTouchMove(Touch * touch, Event * ev)
 {
+	if (_plable.size() == 0 || !_actived) {
+		return;
+	}
 	_touch_state = RTS_Moved;
 	_TouchMoved = touch->getLocation();
+
+	float flabel_offset = _TouchMoved.y - _TouchBegbin.y;
+	if (_cur_title_position.y + flabel_offset < _original_title_position.y) {
+		flabel_offset = _original_title_position.y - _cur_title_position.y;
+	} else if (_cur_title_position.y + flabel_offset > _original_title_position.y + _max_move_h) {
+		flabel_offset = (_original_title_position.y + _max_move_h) - (_cur_title_position.y) ;
+	}
+
+	CCLOG("flabel_offset =%f", flabel_offset);
+
+	auto& pos_title = _plable[0]->getPosition();
+	_plable[0]->setPosition(pos_title.x, _cur_title_position.y + flabel_offset);
+	auto offset = 0.f;
+	for (size_t idx = 1; idx < _plable.size(); idx++) {
+		auto& pos = _plable[idx]->getPosition();
+		offset += _vct_lable_riginal_pos[idx].y - _vct_lable_riginal_pos[idx - 1].y;
+		_plable[idx]->setPosition(pos.x, pos_title.y + offset);
+	}
 }
 
 void NNGameRules::onTouchEnd(Touch * touch, Event * ev)
 {
+	if (_plable.size() == 0 || !_actived) {
+		return;
+	}
 	_touch_state = RTS_End;
 }
 
@@ -294,12 +308,14 @@ void NNGameRules::show()
 {
 	GPHomeScene::Instance().setButtonsEnable(false);
     setVisible(true);
+	_actived = true;
 }
 
 void NNGameRules::hide()
 {
 	GPHomeScene::Instance().setButtonsEnable(true);
     setVisible(false);
+	_actived = false;
 }
 
 void NNGameRules::Button_Close(cocos2d::Ref*, WidgetUserInfo*)
