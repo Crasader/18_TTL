@@ -6,7 +6,7 @@
 #include "Game/NN/CMD_NN.h"
 #include "UTILITY.h"
 #include USERINFO
- 
+
 FV_SINGLETON_STORAGE(GPHomeCreateRoomPanel_NN);
 
 GPHomeCreateRoomPanel_NN::GPHomeCreateRoomPanel_NN()
@@ -538,18 +538,24 @@ void GPHomeCreateRoomPanel_NN::Button_WuXiao(cocos2d::Ref*, WidgetUserInfo*)
 
 void GPHomeCreateRoomPanel_NN::Button_FanBei0(cocos2d::Ref *, WidgetUserInfo *)
 {
-	WidgetFun::setVisible(this, "Btn_fanBei1", true);
-	WidgetFun::setVisible(this, "Btn_fanBei2", true);
-	WidgetFun::setVisible(this, "Txt_FanBei1", true);
-	WidgetFun::setVisible(this, "Txt_FanBei2", true);
+	auto pFanBei = WidgetFun::getChildWidget(this, "Img_fanBei");
+	pFanBei->setVisible(true);
+	if (_nRatioRuleIndex == 0) {
+		WidgetFun::setVisible(pFanBei, "Btn_fanBei1_checked", true);
+		WidgetFun::setVisible(pFanBei, "Btn_fanBei1_unchecked", false);
+		WidgetFun::setVisible(pFanBei, "Btn_fanBei2_checked", false);
+		WidgetFun::setVisible(pFanBei, "Btn_fanBei2_unchecked", true);
+	} else {
+		WidgetFun::setVisible(pFanBei, "Btn_fanBei1_checked", false);
+		WidgetFun::setVisible(pFanBei, "Btn_fanBei1_unchecked", true);
+		WidgetFun::setVisible(pFanBei, "Btn_fanBei2_checked", true);
+		WidgetFun::setVisible(pFanBei, "Btn_fanBei2_unchecked", false);
+	}
 }
 
 void GPHomeCreateRoomPanel_NN::Button_FanBei1(cocos2d::Ref *, WidgetUserInfo *)
 {
-	WidgetFun::setVisible(this, "Btn_fanBei1", false);
-	WidgetFun::setVisible(this, "Btn_fanBei2", false);
-	WidgetFun::setVisible(this, "Txt_FanBei1", false);
-	WidgetFun::setVisible(this, "Txt_FanBei2", false);
+	WidgetFun::setVisible(this, "Img_fanBei", false);
 	WidgetFun::setVisible(this, "Txt_FanBei0_1", true);
 	WidgetFun::setVisible(this, "Txt_FanBei0_2", false);
 	_nRatioRuleIndex = 0;
@@ -557,10 +563,7 @@ void GPHomeCreateRoomPanel_NN::Button_FanBei1(cocos2d::Ref *, WidgetUserInfo *)
 
 void GPHomeCreateRoomPanel_NN::Button_FanBei2(cocos2d::Ref*, WidgetUserInfo*)
 {
-	WidgetFun::setVisible(this, "Btn_fanBei1", false);
-	WidgetFun::setVisible(this, "Btn_fanBei2", false);
-	WidgetFun::setVisible(this, "Txt_FanBei1", false);
-	WidgetFun::setVisible(this, "Txt_FanBei2", false);
+	WidgetFun::setVisible(this, "Img_fanBei", false);
 	WidgetFun::setVisible(this, "Txt_FanBei0_1", false);
 	WidgetFun::setVisible(this, "Txt_FanBei0_2", true);
 	_nRatioRuleIndex = 1;

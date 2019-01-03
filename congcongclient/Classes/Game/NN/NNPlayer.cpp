@@ -72,7 +72,7 @@ word NNPlayer::getSnatchBankerRatio()
 	return m_SnatchBankerRatio;
 }
 
-void NNPlayer::setPlayerCards(byte cards[MAX_HAND_CARD], word count)
+void NNPlayer::setPlayerCards(byte* cards, word count)
 {
 	m_PlayerCards = NNPlayerCard_Entity(cards, count);
 }

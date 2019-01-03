@@ -8,7 +8,9 @@
 #include "UTILITY.h"
 
 FV_SINGLETON_STORAGE(NNPlayerCard);
+
 NNPlayerCard::NNPlayerCard()
+	:_b_fan(false)
 {
     init();
 }
@@ -66,13 +68,19 @@ void NNPlayerCard::showPlayer(NNPlayer& player)
                 for(int index = 0; index < playerCards.cardCount; ++index) {
                     auto pCard = WidgetFun::getChildWidget(pNode, utility::toString("Card_", index));
                     pCard->setVisible(true);
-					if( index < 4 ){ 
+					if( index < 4 ) {
 						WidgetFun::setImagic(pCard, utility::toString(WidgetFun::getWidgetUserInfo(pNode, "Image"), NNGameLogic::getCardIndex(playerCards.cards[index]), ".png"), false);
-					}else{
-						 if(!NNGameScene::Instance().isSplitCard())
+					} else {
+						if (!NNGameScene::Instance().isSplitCard()) {
 							 WidgetFun::setImagic(pCard, utility::toString(WidgetFun::getWidgetUserInfo(pNode, "Image"), NNGameLogic::getCardIndex(playerCards.cards[index]), ".png"), false);
-						 else
-							 WidgetFun::setImagic(pCard, utility::toString(WidgetFun::getWidgetUserInfo(pNode, "Image"),"0.png"), false);
+						} else {
+							auto self = NNGameScene::Instance().getSelf();
+							if (self && self->GetUserID() == player.GetUserID() && _b_fan == true) {
+								WidgetFun::setImagic(pCard, utility::toString(WidgetFun::getWidgetUserInfo(pNode, "Image"), NNGameLogic::getCardIndex(playerCards.cards[index]), ".png"), false);
+							} else {
+								WidgetFun::setImagic(pCard, utility::toString(WidgetFun::getWidgetUserInfo(pNode, "Image"),"0.png"), false);
+							}
+						}
 					}
                     if(&player == NNGameScene::Instance().getSelf()) {
                         if(!NNGameScene::Instance().isSplitCard()) {
@@ -270,7 +278,8 @@ void NNPlayerCard::hidePlayer(word visioChairID)
 #pragma endregion 显示与隐藏
 
 #pragma region 发牌动作
-void NNPlayerCard::sendPlayerCard()
+
+void NNPlayerCard::onSendPlayerCard()
 {
 	for (int index = 0; index < NNGameScene::MAX_PLAYER; ++index) {
 		hidePlayer(index);
@@ -280,8 +289,7 @@ void NNPlayerCard::sendPlayerCard()
 	float totalDelay = 0;
 	float cardCount = 0;
 	float singleDelay = 0.1f;
-	std::vector<Sprite*> selfTempCard = std::vector<Sprite*>();
-	selfTempCard.clear();
+	std::vector<Sprite*> selfTempCard;
 	for (int cardIndex = 0; cardIndex < MAX_HAND_CARD; ++cardIndex) {
 		for (int index = 0; index < NN_GAME_PLAYER; ++index) {
 			NNPlayer* player = NNGameScene::Instance().getPlayerByChairID(index);
@@ -304,7 +312,10 @@ void NNPlayerCard::sendPlayerCard()
 						selfTempCard.push_back(sprite);
 					}
 					WidgetFun::getChildWidget(pCardNode, utility::toString("Card_", cardIndex))->setPositionY(CARD_DWON_POSY);
-					auto targetPos = WidgetFun::getChildWidget(pCardNode, utility::toString("Card_", cardIndex))->getPosition()*pCardNode->getScale() + pCardNode->getPosition() - Vec2(pCardNode->getScaleX() *pCardNode->getContentSize().width * pCardNode->getAnchorPoint().x, pCardNode->getScaleY() * pCardNode->getContentSize().height * pCardNode->getAnchorPoint().y);
+					auto targetPos = WidgetFun::getChildWidget(pCardNode, utility::toString("Card_", cardIndex))->getPosition() * pCardNode->getScale() +
+												pCardNode->getPosition() -
+												Vec2(pCardNode->getScaleX() *pCardNode->getContentSize().width * pCardNode->getAnchorPoint().x,
+														pCardNode->getScaleY() * pCardNode->getContentSize().height * pCardNode->getAnchorPoint().y);
 					CCActionInterval * moveTo = CCMoveTo::create(0.5, targetPos);
 					CCActionInterval * scaleTo = CCScaleTo::create(0.5, pCardNode->getScale());
 					CCActionInterval * rotateTo = CCRotateTo::create(0.5, 720);
@@ -318,12 +329,15 @@ void NNPlayerCard::sendPlayerCard()
 	if (player->isValid() && player->getPlayerCards().isValid) {
 		auto pCardNode = WidgetFun::getChildWidget(this, utility::toString("PlayerCard_", 0));
 		for (int index = 0; index < player->getPlayerCards().cardCount; index++){
-			auto targetPos = WidgetFun::getChildWidget(pCardNode, utility::toString("Card_", index))->getPosition()*pCardNode->getScale() + pCardNode->getPosition() - Vec2(pCardNode->getScaleX() *pCardNode->getContentSize().width * pCardNode->getAnchorPoint().x, pCardNode->getScaleY() * pCardNode->getContentSize().height * pCardNode->getAnchorPoint().y);
+			auto targetPos = WidgetFun::getChildWidget(pCardNode, utility::toString("Card_", index))->getPosition() * pCardNode->getScale() +
+										pCardNode->getPosition() -
+										Vec2(pCardNode->getScaleX() *pCardNode->getContentSize().width * pCardNode->getAnchorPoint().x,
+												pCardNode->getScaleY() * pCardNode->getContentSize().height * pCardNode->getAnchorPoint().y);
 			totalDelay += singleDelay;
 			DelayTime* delay = DelayTime::create(totalDelay);
 
 			CallFunc* func = CallFunc::create([=] {
-				startOrbitAction(selfTempCard.at(index), NNGameLogic::getCardIndex(player->getPlayerCards().cards[index]));
+				startOrbitAction(selfTempCard.at(index), NNGameLogic::getCardIndex(player->getPlayerCards().cards[index]), &m_TempCards);
 			});
 
 			selfTempCard.at(index)->runAction(CCSequence::create(delay, func, nullptr));
@@ -336,7 +350,7 @@ void NNPlayerCard::sendPlayerCard()
 		NNGameScene::Instance().updateUserInfo();
 		NNOperator::Instance().show(NNGameScene::Instance().getGameStatus());
 		NNOperator::Instance().showTimes(TIME_FOR_USER_SPLIT_CARD);
-		for (int index = 0; index < m_TempCards.size(); ++index) {
+		for (size_t index = 0; index < m_TempCards.size(); ++index) {
 			if (this == m_TempCards.at(index)->getParent()) {
 				removeChild(m_TempCards.at(index));
 			}
@@ -346,7 +360,7 @@ void NNPlayerCard::sendPlayerCard()
 	runAction(CCSequence::create(delay, func, nullptr));
 }
 
-void NNPlayerCard::sendPlayerCardAdd()
+void NNPlayerCard::onSendPlayerCardAdd()
 {
 	m_TempCards.clear();
 	float totalDelay = 0;
@@ -369,36 +383,23 @@ void NNPlayerCard::sendPlayerCardAdd()
 			auto sprite = Sprite::create("TTLNN/PlayerCard/poker_0.png");
 			sprite->setPosition(Vec2(640, 360));
 			sprite->setAnchorPoint(Vec2(0.5, 0.5));
-			sprite->setScale(0.6);
+			sprite->setScale(0.6f);
 			addChild(sprite);
 			m_TempCards.push_back(sprite);
 			if (0 == visioChairID) {
 				selfTempCard.push_back(sprite);
 			}
 			WidgetFun::getChildWidget(pCardNode, utility::toString("Card_", cardIndex))->setPositionY(CARD_DWON_POSY);
-			auto targetPos = WidgetFun::getChildWidget(pCardNode, utility::toString("Card_", cardIndex))->getPosition()*pCardNode->getScale() + pCardNode->getPosition() - Vec2(pCardNode->getScaleX() *pCardNode->getContentSize().width * pCardNode->getAnchorPoint().x, pCardNode->getScaleY() * pCardNode->getContentSize().height * pCardNode->getAnchorPoint().y);
+			auto targetPos = WidgetFun::getChildWidget(pCardNode, utility::toString("Card_", cardIndex))->getPosition() * pCardNode->getScale() +
+										pCardNode->getPosition() -
+										Vec2(pCardNode->getScaleX() *pCardNode->getContentSize().width * pCardNode->getAnchorPoint().x,
+												pCardNode->getScaleY() * pCardNode->getContentSize().height * pCardNode->getAnchorPoint().y);
 			CCActionInterval * moveTo = CCMoveTo::create(0.5, targetPos);
 			CCActionInterval * scaleTo = CCScaleTo::create(0.5, pCardNode->getScale());
 			CCActionInterval * rotateTo = CCRotateTo::create(0.5, 720);
 			sprite->runAction(CCSequence::create(delay, CCSpawn::create(moveTo, scaleTo, rotateTo, nullptr), nullptr));
 		}
 	}
-
-	/*totalDelay = singleDelay * cardCount + 0.5;
-	NNPlayer* player = NNGameScene::Instance().getLocalPlayer();
-	if (player->isValid() && player->getPlayerCards().isValid) {
-		auto pCardNode = WidgetFun::getChildWidget(this, utility::toString("PlayerCard_", 0));
-		int index = MAX_HAND_CARD - 1;
-		auto targetPos = WidgetFun::getChildWidget(pCardNode, utility::toString("Card_", index))->getPosition()*pCardNode->getScale() + pCardNode->getPosition() - Vec2(pCardNode->getScaleX() *pCardNode->getContentSize().width * pCardNode->getAnchorPoint().x, pCardNode->getScaleY() * pCardNode->getContentSize().height * pCardNode->getAnchorPoint().y);
-		totalDelay += singleDelay;
-		DelayTime* delay = DelayTime::create(totalDelay);
-		CallFunc* func = CallFunc::create([=] {
-			startOrbitAction(selfTempCard.at(0), NNGameLogic::getCardIndex(player->getPlayerCards().cards[index]));
-		});
-        if(selfTempCard.size() > 0){
-            selfTempCard.at(0)->runAction(CCSequence::create(delay, func, nullptr));
-        }
-	}*/
 
 	totalDelay += 1.5;
 	DelayTime* delay = DelayTime::create(totalDelay);
@@ -407,11 +408,11 @@ void NNPlayerCard::sendPlayerCardAdd()
 		NNGameScene::Instance().updateUserInfo();
 		NNOperator::Instance().show(NNGameScene::Instance().getGameStatus());
 		NNOperator::Instance().showTimes(TIME_FOR_USER_SPLIT_CARD);
-		for (int index = 0; index < m_TempCards.size(); ++index) {
+		for (size_t index = 0; index < m_TempCards.size(); ++index) {
 			if (this == m_TempCards.at(index)->getParent()) {
 				auto pCardNode = WidgetFun::getChildWidget(this, utility::toString("PlayerCard_", index));
 				int cardindex  = MAX_HAND_CARD - 1;
-				auto pCard     = WidgetFun::getChildWidget(pCardNode, utility::toString("Card_", cardindex));
+				auto pCard = WidgetFun::getChildWidget(pCardNode, utility::toString("Card_", cardindex));
 				pCard->setVisible(true);
 				removeChild(m_TempCards.at(index));
 			}
@@ -420,6 +421,42 @@ void NNPlayerCard::sendPlayerCardAdd()
 	});
 	runAction(CCSequence::create(delay, func, nullptr));
 }
+
+void NNPlayerCard::fanCard(int index)
+{
+	NNPlayer* player = NNGameScene::Instance().getSelf();
+	cocos2d::Sprite* spAction = nullptr;
+	cocos2d::Sprite* targetCard = nullptr;
+	if (player) {
+		auto cards = WidgetFun::getChildWidget(this, utility::toString("PlayerCard_", player->getVisioChairID()));
+		targetCard = dynamic_cast<cocos2d::Sprite*>(WidgetFun::getChildWidget(cards, "Card_4"));
+		if (targetCard) {
+			auto targetPos = targetCard->getPosition() * cards->getScale() +
+										cards->getPosition() -
+										Vec2(cards->getScaleX() * cards->getContentSize().width * cards->getAnchorPoint().x,
+												cards->getScaleY() * cards->getContentSize().height * cards->getAnchorPoint().y);
+			spAction = startOrbitAction(targetCard,
+				NNGameLogic::getCardIndex(player->getPlayerCards().cards[index]),
+				nullptr,
+				&targetPos);
+		}
+	}
+
+	float fDelay = 0.25f;
+	DelayTime* delay = DelayTime::create(fDelay);
+	CallFunc* func = CallFunc::create([=] {
+		_b_fan = true;
+		player->upPlayerInfo();
+		targetCard->setRotation3D(cocos2d::Vertex3F(0.f, 0.f, 0.f));
+		spAction->setRotation3D(cocos2d::Vertex3F(0.f, 0.f, 0.f));
+		if (spAction) {
+			spAction->setVisible(false);
+			this->removeChild(spAction);
+		}
+	});
+	runAction(CCSequence::create(delay, func, nullptr));
+}
+
 void NNPlayerCard::removeLastCard(NNPlayer& player)
 {
 	/*for (auto itor = m_TempCards.begin(); itor !=  m_TempCards.end(); itor++) {
@@ -430,58 +467,79 @@ void NNPlayerCard::removeLastCard(NNPlayer& player)
 	m_TempCards.clear();*/
 }
 
-//翻牌动作  
-void NNPlayerCard::startOrbitAction(cocos2d::Sprite* sprite, int cardIndex)
+void NNPlayerCard::setFanPai(bool flag)
+{
+	_b_fan = flag;
+}
+
+//翻牌动作
+cocos2d::Sprite* NNPlayerCard::startOrbitAction(cocos2d::Sprite* sprite, int cardIndex, std::vector<cocos2d::Sprite*>* spList, cocos2d::Vec2* offset, float fobTime)
 {
 	//扑克牌反面
 	CCSprite* pokerBack = sprite;
-
 	//扑克牌正面
 	CCSprite* pokerFront = Sprite::create(utility::toString("TTLNN/PlayerCard/poker_", cardIndex, ".png"));
-	pokerFront->setPosition(sprite->getPosition());
+
+	if (offset) {
+		pokerFront->setPosition(*offset);
+	} else {
+		pokerFront->setPosition(sprite->getPosition());
+	}
+	if (spList) {
+		spList->push_back(pokerFront);
+	}
+
 	pokerFront->setVisible(false);
-	addChild(pokerFront);
-	m_TempCards.push_back(pokerFront);
-	
-	float orbitTime = 0.25;
+	this->addChild(pokerFront);
+
 	//第一个参数是旋转的时间，第二个参数是起始半径，第三个参数半径差，第四个参数是起始Z角，第五个参数是旋转Z角差，第六个参数是起始X角，最后一个参数旋转X角差，  
 	if (pokerFront->isVisible() == false) {
+
 		//第一个参数是旋转的时间，第二个参数是起始半径，第三个参数半径差，第四个参数是起始Z角，第五个参数是旋转Z角差，第六个参数是起始X角，最后一个参数旋转X角差，  
-		CCOrbitCamera* orbitFront = CCOrbitCamera::create(orbitTime, 1, 0, 270, 90, 0, 0);
-		CCSequence* sequenceFront = CCSequence::createWithTwoActions(CCShow::create(), orbitFront);
-		CCTargetedAction* targetFront = CCTargetedAction::create(pokerFront, sequenceFront);
+		CCOrbitCamera* orbitBack = CCOrbitCamera::create(fobTime, 1, 0, -180, 180, 0, 0);
+		CCOrbitCamera* orbitFront = CCOrbitCamera::create(fobTime, 1, 0, -180, 180, 0, 0);
 
-		CCOrbitCamera* orbitBack = CCOrbitCamera::create(orbitTime, 1, 0, 0, 90, 0, 0);
-		pokerBack->runAction(CCSequence::create(orbitBack, CCHide::create(), targetFront, NULL));
-	} else if (pokerFront->isVisible() == true){
-		CCOrbitCamera* orbitFront = CCOrbitCamera::create(orbitTime, 1, 0, 270, 90, 0, 0);
-		CCSequence* sequenceFront = CCSequence::createWithTwoActions(CCShow::create(), orbitFront);
-		CCTargetedAction* targetFront = CCTargetedAction::create(pokerBack, sequenceFront);
+		pokerBack->runAction(CCSequence::create(orbitBack, CCHide::create(), nullptr));
+		pokerFront->runAction(CCSequence::create(orbitFront, CCShow::create(), nullptr));
 
-		CCOrbitCamera* orbitBack = CCOrbitCamera::create(orbitTime, 1, 0, 0, 90, 0, 0);
-		pokerFront->runAction(CCSequence::create(orbitBack, CCHide::create(), targetFront,  NULL));
+		//等他转完, 只转90度要出问题
+		//CCOrbitCamera* orbitBackEnd = CCOrbitCamera::create(fobTime, 1, 0, 90, -90, 0, 0);
+		//pokerBack->runAction(CCSequence::create(orbitBackEnd, CCHide::create(), nullptr));
+
+	} else if (pokerFront->isVisible() == true) {
+
+		CCOrbitCamera* orbitBack = CCOrbitCamera::create(fobTime, 1, 0, 180, 180, 0, 0);
+		CCOrbitCamera* orbitFront = CCOrbitCamera::create(fobTime, 1, 0, -180, 180, 0, 0);
+
+		pokerBack->runAction(CCSequence::create(orbitBack, CCHide::create(), nullptr));
+		pokerFront->runAction(CCSequence::create(orbitBack, CCShow::create(), nullptr));
+
+		//等他转完, 只转90度要出问题
+		//CCOrbitCamera* orbitBackEnd = CCOrbitCamera::create(fobTime, 1, 0, 90, -90, 0, 0);
+		//pokerFront->runAction(CCSequence::create(orbitBackEnd, CCHide::create(), nullptr));
+
 	}
+
+	return pokerFront;
 }
+
 #pragma endregion 发牌动作
 
 #pragma region 摸牌判断
+
 int NNPlayerCard::getTouchCard(cocos2d::Vec2 kTouchPos)
 {
     cocos2d::Node* pNode = WidgetFun::getChildWidget(this, "PlayerCard_0");
-
     for(int i = MAX_HAND_CARD - 1; i >= 0; --i) {
         cocos2d::Sprite* pSprite = dynamic_cast<Sprite*>(WidgetFun::getChildWidget(pNode, utility::toString("Card_", i)));
-
         if(pSprite == NULL) {
             continue;
         }
-
         if(utility::IsSpriteInTouch(kTouchPos, pSprite)) {
             return i;
         }
     }
-
     return -1;
 }
-#pragma endregion 摸牌判断
 
+#pragma endregion 摸牌判断

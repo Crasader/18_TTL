@@ -71,6 +71,7 @@ public:
 	void Button_Call(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_ShowCard(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_CuoCard(cocos2d::Ref*, WidgetUserInfo*);
+	void Button_FanCard(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_Hint(cocos2d::Ref*, WidgetUserInfo*);
 	TTLNN::NNPlayerBet  m_byteBet;
 	int  m_byteSnatchRatio;

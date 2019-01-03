@@ -441,33 +441,6 @@
 		<Property Key="AnchorPos" Value="0.5 0"/>
 		<Property Key="Scale" Value="0.6666"/>
 	</Widget>
-	<!-- 翻倍按钮提示 -->
-	<Widget Name="" SkinTempName="ImagicEmpty">
-		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/FanBeiButton.png"/>
-		<Property Key="Pos" Value="930 477"/>
-		<Property Key="AnchorPos" Value="0 0"/>
-		<Property Key="Scale" Value="0.66"/>
-	</Widget>
-	<!-- 翻倍按钮1 -->
-	<Widget Name="Btn_fanBei1" SkinTempName="ButtonEmpty">
-		<Property Key="Index" Value="-1"/>
-		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/FanBeiBG.png"/>
-		<Property Key="PressTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/FanBeiBG.png"/>
-		<Property Key="Pos" Value="712 413.8"/>
-		<Property Key="AnchorPos" Value="0.5 0"/>
-		<Property Key="Scale" Value="0.65"/>
-		<Property Key="Visible" Value="false"/>
-	</Widget>
-	<!-- 翻倍按钮2 -->
-	<Widget Name="Btn_fanBei2" SkinTempName="ButtonEmpty">
-		<Property Key="Index" Value="-1"/>
-		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/FanBeiBG.png"/>
-		<Property Key="PressTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/FanBeiBG.png"/>
-		<Property Key="Pos" Value="712 367.6"/>
-		<Property Key="AnchorPos" Value="0.5 0"/>
-		<Property Key="Scale" Value="0.65"/>
-		<Property Key="Visible" Value="false"/>
-	</Widget>
 	<!-- 翻倍规则0 -->
 	<Widget Name="Txt_FanBei0_1" SkinTempName="TxtEmpty">
 		<Property Key="FontName" Value="Font/true_type.ttf"/>
@@ -485,25 +458,77 @@
 		<Property Key="AnchorPos" Value="0.5 0"/>
 		<Property Key="Color" Value="156 94 53"/>
 	</Widget>
-	<!-- 翻倍规则1 -->
-	<Widget Name="Txt_FanBei1" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="Font/true_type.ttf"/>
-		<Property Key="FontSize" Value="26"/>
-		<Property Key="ShowTxt" Value="牛牛×4 牛九×3 牛八×2 牛七×2"/>
-		<Property Key="Pos" Value="712 417.8"/>
-		<Property Key="AnchorPos" Value="0.5 0"/>
-		<Property Key="Color" Value="156 94 53"/>
+	<!-- 翻倍按钮0 -->
+	<Widget Name="Img_fanBei" SkinTempName="ImagicEmpty">
+		<Property Key="Index" Value="-1"/>
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/FanBeiBtn.png"/>
+		<Property Key="Pos" Value="715 390"/>
+		<Property Key="AnchorPos" Value="0.5 0.5"/>
+		<Property Key="Scale" Value="0.65"/>
 		<Property Key="Visible" Value="false"/>
+		<!-- 翻倍按钮1 -->
+		<Widget Name="Btn_fanBei1" SkinTempName="ButtonEmpty">
+			<Property Key="Index" Value="-1"/>
+			<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/FanBeiBGSmall.png"/>
+			<Property Key="PressTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/FanBeiBGSmall.png"/>
+			<Property Key="Pos" Value="16 37"/>
+			<Property Key="AnchorPos" Value="0 0"/>
+		</Widget>
+		<Widget Name="Btn_fanBei1_unchecked" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
+			<Property Key="Pos" Value="20 40"/>
+			<Property Key="AnchorPos" Value="0 0"/>
+		</Widget>
+		<Widget Name="Btn_fanBei1_checked" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
+			<Property Key="Pos" Value="20 40"/>
+			<Property Key="AnchorPos" Value="0 0"/>
+		</Widget>
+		<!-- 翻倍规则1 -->
+		<Widget Name="Txt_FanBei1" SkinTempName="TxtEmpty">
+			<Property Key="FontName" Value="Font/true_type.ttf"/>
+			<Property Key="FontSize" Value="26"/>
+			<Property Key="ShowTxt" Value="牛牛×4 牛九×3 牛八×2 牛七×2"/>
+			<Property Key="Pos" Value="400 50"/>
+			<Property Key="AnchorPos" Value="0.5 0"/>
+			<Property Key="Color" Value="156 94 53"/>
+			<Property Key="Scale" Value="1.6"/>
+		</Widget>
+		<!-- 翻倍按钮2 -->
+		<Widget Name="Btn_fanBei2" SkinTempName="ButtonEmpty">
+			<Property Key="Index" Value="-1"/>
+			<Property Key="NomalTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/FanBeiBGSmall.png"/>
+			<Property Key="PressTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/FanBeiBGSmall.png"/>
+			<Property Key="Pos" Value="16 138"/>
+			<Property Key="AnchorPos" Value="0 0"/>
+		</Widget>
+		<Widget Name="Btn_fanBei2_unchecked" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/unselected.png"/>
+			<Property Key="Pos" Value="20 142"/>
+			<Property Key="AnchorPos" Value="0 0"/>
+		</Widget>
+		<Widget Name="Btn_fanBei2_checked" SkinTempName="ImagicEmpty">
+			<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/selected.png"/>
+			<Property Key="Pos" Value="20 142"/>
+			<Property Key="AnchorPos" Value="0 0"/>
+		</Widget>
+		<!-- 翻倍规则2 -->
+		<Widget Name="Txt_FanBei2" SkinTempName="TxtEmpty">
+			<Property Key="FontName" Value="Font/true_type.ttf"/>
+			<Property Key="FontSize" Value="26"/>
+			<Property Key="ShowTxt" Value="牛牛×3 牛九×3 牛八×2"/>
+			<Property Key="Pos" Value="400 151"/>
+			<Property Key="AnchorPos" Value="0.5 0"/>
+			<Property Key="Color" Value="156 94 53"/>
+			<Property Key="Scale" Value="1.6"/>
+		</Widget>
 	</Widget>
-	<!-- 翻倍规则2 -->
-	<Widget Name="Txt_FanBei2" SkinTempName="TxtEmpty">
-		<Property Key="FontName" Value="Font/true_type.ttf"/>
-		<Property Key="FontSize" Value="26"/>
-		<Property Key="ShowTxt" Value="牛牛×3 牛九×3 牛八×2"/>
-		<Property Key="Pos" Value="712 371.6"/>
-		<Property Key="AnchorPos" Value="0.5 0"/>
-		<Property Key="Color" Value="156 94 53"/>
-		<Property Key="Visible" Value="false"/>
+	<!-- 翻倍按钮提示 -->
+	<Widget Name="" SkinTempName="ImagicEmpty">
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/CreateRoomPanel/FanBeiButton.png"/>
+		<Property Key="Pos" Value="930 477"/>
+		<Property Key="AnchorPos" Value="0 0"/>
+		<Property Key="Scale" Value="0.66"/>
 	</Widget>
 	
 	<!--创建房间按钮-->

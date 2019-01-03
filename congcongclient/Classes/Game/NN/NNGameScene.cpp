@@ -1019,7 +1019,7 @@ void NNGameScene::onSnatchBanker(const void * pBuffer, word wDataSize)
 	}
 	NNOperator::Instance().showNoteTuiZhu(pInfo->bTuiZhu);
 	m_MaxRatio = pInfo->maxRatio;
-	NNPlayerCard::Instance().sendPlayerCard();
+	NNPlayerCard::Instance().onSendPlayerCard();
 
 	this->scheduleOnce(schedule_selector(NNGameScene::playSoundSnachBanker), 3.0);
 }
@@ -1124,7 +1124,7 @@ void NNGameScene::onSendCardAll(const void* pBuffer, word wDataSize)
 
 	NNSound::playEffect(NNSound::START_BET);
 	m_GameStatus = TTLNN::NNGameStatus_SplitCard;
-	NNPlayerCard::Instance().sendPlayerCard();
+	NNPlayerCard::Instance().onSendPlayerCard();
 }
 
 void NNGameScene::onSendCardAdd(const void* pBuffer, word wDataSize)
@@ -1142,8 +1142,9 @@ void NNGameScene::onSendCardAdd(const void* pBuffer, word wDataSize)
 		}
 	}
 
+	NNPlayerCard::Instance().setFanPai(false);
 	m_GameStatus = TTLNN::NNGameStatus_SplitCard;
-	NNPlayerCard::Instance().sendPlayerCardAdd();
+	NNPlayerCard::Instance().onSendPlayerCardAdd();
 }
 
 void NNGameScene::onUserShowCard(const void* pBuffer, word wDataSize)
@@ -1157,8 +1158,7 @@ void NNGameScene::onUserShowCard(const void* pBuffer, word wDataSize)
 	m_Players[pInfo->chairID]->setPlayerCards(pInfo->playerCards, MAX_HAND_CARD);
 	m_Players[pInfo->chairID]->setPlayerCardType(pInfo->result);
 	m_Players[pInfo->chairID]->upPlayerInfo();
-	if(m_Players[pInfo->chairID]->GetUserID() == getSelf()->GetUserID())
-	{	
+	if(m_Players[pInfo->chairID]->GetUserID() == getSelf()->GetUserID()) {	
 		NNTurnCard::Instance().hide();
 		NNOperator::Instance().show(m_GameStatus);
 	}

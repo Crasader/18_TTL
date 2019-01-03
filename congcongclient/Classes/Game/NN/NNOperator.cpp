@@ -6,6 +6,7 @@
 #include "Game/NN/NNGameScene.h"
 #include "Game/NN/NNRoomInfo.h"
 #include "Game/NN/NNGameLogic.h"
+#include "Game/NN/NNPlayerCard.h"
 
 #include "UTILITY.h"
 
@@ -46,14 +47,16 @@ void NNOperator::initButton()
 {
     WidgetManager::addButtonCB("NNOperator_ButtonReady", this, button_selector(NNOperator::Button_Ready));
     WidgetManager::addButtonCB("NNOperator_ButtonContinue", this, button_selector(NNOperator::Button_Continue));
-    //WidgetManager::addButtonCB("NNOperator_ButtonWeiXin", this, button_selector(NNOperator::Button_WeiXin));
     WidgetManager::addButtonCB("NNOperator_ButtonStartGame", this, button_selector(NNOperator::Button_StartGame));
     WidgetManager::addButtonCB("NNOperator_SntachBanker", this, button_selector(NNOperator::Button_SnatchBanker));
     WidgetManager::addButtonCB("NNOperator_Call", this, button_selector(NNOperator::Button_Call));
     WidgetManager::addButtonCB("NNOperator_ButtonShowCard", this, button_selector(NNOperator::Button_ShowCard));
 	WidgetManager::addButtonCB("NNOperator_ButtonCuoCard", this, button_selector(NNOperator::Button_CuoCard));
+	WidgetManager::addButtonCB("NNOperator_ButtonFanCard", this, button_selector(NNOperator::Button_FanCard));
+    //WidgetManager::addButtonCB("NNOperator_ButtonWeiXin", this, button_selector(NNOperator::Button_WeiXin));
     //WidgetManager::addButtonCB("NNOperator_ButtonHint", this, button_selector(NNOperator::Button_Hint));
 }
+
 #pragma endregion 初始化
 
 #pragma region 显示与隐藏
@@ -334,7 +337,7 @@ void NNOperator::showSnatchButton()
         auto pSnatchButton = WidgetManager::Instance().createWidget("NNOperator_SntachBanker", pSnatchNode);
         float offsetIndex = index - centerIndex;
         pSnatchButton->setPosition(centerPos + addPos * offsetIndex);
-		pSnatchButton->setScale(0.65);
+		pSnatchButton->setScale(0.65f);
         WidgetFun::setWidgetUserInfo(pSnatchButton, "NNOperator_SnatchRatio", utility::toString(index));
         WidgetFun::setButtonImagic(pSnatchButton, utility::toString(image, index, ".png"), true);
     }
@@ -366,7 +369,7 @@ void NNOperator::showCallButtons()
 		//if (temp[index].wBetType != TTLNN::NNGameBetType::NNGBT_TuiZhu) {
 			auto pSnatchButton = WidgetManager::Instance().createWidget("NNOperator_Call", pCallNode);
 			pSnatchButton->setPosition(centerPos + addPos * posIndex);
-			pSnatchButton->setScale(0.9);
+			pSnatchButton->setScale(0.9f);
 			WidgetFun::setWidgetUserInfo(pSnatchButton, "NNOperator_Call_Bets", utility::toString(temp[index].wBet, "_", temp[index].wBetType));
 			WidgetFun::setButtonImagic(pSnatchButton, utility::toString(image, temp[index].wBet, ".png"), true);
 		//} else {
@@ -427,14 +430,14 @@ void NNOperator::showSplitButton()
 {
     WidgetFun::setVisible(this, "NNOperator_ButtonShowCard", true);
 	WidgetFun::setVisible(this, "NNOperator_ButtonCuoCard", true);
-    //WidgetFun::setVisible(this, "NNOperator_ButtonHint", false);//不显提示牌按钮
+	WidgetFun::setVisible(this, "NNOperator_ButtonFanCard", true);
 }
 
 void NNOperator::hideSplitButton()
 {
     WidgetFun::setVisible(this, "NNOperator_ButtonShowCard", false);
 	WidgetFun::setVisible(this, "NNOperator_ButtonCuoCard", false);
-    //WidgetFun::setVisible(this, "NNOperator_ButtonHint", false);
+	WidgetFun::setVisible(this, "NNOperator_ButtonFanCard", false);
 }
 
 void NNOperator::showSplitCalculate()
@@ -577,6 +580,12 @@ void NNOperator::Button_CuoCard(cocos2d::Ref*, WidgetUserInfo*)
 		NNTurnCard::Instance().createTurnCard(1);
 	}
 	//NNGameScene::Instance().sendShowCard();
+}
+
+void NNOperator::Button_FanCard(cocos2d::Ref*, WidgetUserInfo*)
+{
+	WidgetFun::setVisible(this, "NNOperator_ButtonFanCard", false);
+	NNPlayerCard::Instance().fanCard(4);
 }
 
 void NNOperator::Button_Hint(cocos2d::Ref*, WidgetUserInfo*)

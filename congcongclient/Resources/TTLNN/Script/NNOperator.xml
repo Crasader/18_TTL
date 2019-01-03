@@ -123,22 +123,20 @@
 	<Property Key="Pos" Value="950 50"/>
 </Widget>
  
-<Widget Name="NNOperator_ButtonShowCard" SkinTempName="ButtonEmpty">
-	<Property Key="NomalTexture" Value="TTLNN/Operator/NNOperator_ButtonShowCard.png"/>
-	<Property Key="PressTexture" Value="AutoPress"/>
-	<!-- <Property Key="Pos" Value="1000 120"/> -->
-	<Property Key="Pos" Value="740 220"/>
-</Widget>
-
 <Widget Name="NNOperator_ButtonCuoCard" SkinTempName="ButtonEmpty">
 	<Property Key="NomalTexture" Value="TTLNN/Operator/NNOperator_ButtonCuoCard.png"/>
 	<Property Key="PressTexture" Value="AutoPress"/>
-	<!-- <Property Key="Pos" Value="1000 120"/> -->
-	<Property Key="Pos" Value="540 220"/>
+	<Property Key="Pos" Value="440 220"/>
 </Widget>
 
-<!--<Widget Name="NNOperator_ButtonHint" SkinTempName="ButtonEmpty">
-	<Property Key="NomalTexture" Value="TTLNN/Operator/NNOperator_ButtonHint.png"/>
+<Widget Name="NNOperator_ButtonShowCard" SkinTempName="ButtonEmpty">
+	<Property Key="NomalTexture" Value="TTLNN/Operator/NNOperator_ButtonShowCard.png"/>
 	<Property Key="PressTexture" Value="AutoPress"/>
-	<Property Key="Pos" Value="1000 50"/>
-</Widget>-->
+	<Property Key="Pos" Value="640 220"/>
+</Widget>
+ 
+<Widget Name="NNOperator_ButtonFanCard" SkinTempName="ButtonEmpty">
+	<Property Key="NomalTexture" Value="TTLNN/Operator/NNOperator_ButtonFanCard.png"/>
+	<Property Key="PressTexture" Value="AutoPress"/>
+	<Property Key="Pos" Value="840 220"/>
+</Widget>

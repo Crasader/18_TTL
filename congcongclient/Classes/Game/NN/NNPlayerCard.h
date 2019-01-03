@@ -31,16 +31,21 @@ public:
 #pragma endregion 显示与隐藏
 
 #pragma region 发牌动作
-	void sendPlayerCard();
-	void sendPlayerCardAdd();
-	void startOrbitAction(cocos2d::Sprite* sprite, int cardIndex);
+	void onSendPlayerCard();
+	void onSendPlayerCardAdd();
+	void fanCard(int index);
+	cocos2d::Sprite* startOrbitAction(cocos2d::Sprite* sprite, int cardIndex, std::vector<cocos2d::Sprite*>* spList, cocos2d::Vec2* offset = nullptr, float fobTime = 0.25);
 	void removeLastCard(NNPlayer& player);
+	void setFanPai(bool flag);
 #pragma endregion 发牌动作
 
 #pragma region 摸牌判断
 	int getTouchCard(cocos2d::Vec2 kTouchPos);
 #pragma endregion 摸牌判断
-
+	
 private:
+	//没得意义的临时卡组, 用来消除翻拍动作临时精灵
 	std::vector<cocos2d::Sprite*> m_TempCards;
+	//这一把是否已经翻盘
+	bool _b_fan;
 };
