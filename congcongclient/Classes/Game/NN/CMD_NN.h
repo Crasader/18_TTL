@@ -290,7 +290,7 @@ struct NNPlayerBet {
 #define SUB_S_USER_TRUSTEESHIP 112 //玩家托管
 #define SUB_S_CALCULATE_TOTAL 113 //总结算
 
-#define SUB_S_ANDROID_RULE			200                                 //发送规则给机器人
+#define SUB_S_ANDROID_RULE			200//发送规则给机器人
 
 struct CMD_S_AndroidRule {
     byte cbGameTypeIdex;	//游戏类型

@@ -386,19 +386,18 @@ struct CMD_GR_Private_Info_Server
 //私人场信息
 struct CMD_GR_Private_Info
 {	
-	word							wKindID;
-	SCORE						iCostGold;
-	word							bPlayCout[4];							//玩家局数
-	SCORE						lPlayCost[4];							//消耗点数
-	char							szGameType[4][32];						//游戏类型
-	char							szGameRule[4][32];						//游戏规则
-
-    bool									                                        bAllowedStrangerJoin;	//是否允许陌生人加入
-    bool									                                        bPassionationMode;	//激情模式开关
-    bool									                                        bBloodFightMode;	//血战到底开关
-    dword                                                                      dwBaseScore;                 //底注
-    dword                                                                      dwEnterMatchNum;       //入场限制
-    dword                                                                      dwOutMatchNum;         //离场限制
+	word	 wKindID;
+	SCORE llCostGold;
+	word	 bPlayCout[4];							//玩家局数
+	SCORE lPlayCost[4];							//消耗点数
+	char szGameType[4][32];						//游戏类型
+	char szGameRule[4][32];						//游戏规则
+    bool bAllowedStrangerJoin;//是否允许陌生人加入
+    bool bPassionationMode;//激情模式开关
+    bool bBloodFightMode;//血战到底开关
+    dword dwBaseScore;//底注
+    dword dwEnterMatchNum;//入场限制
+    dword dwOutMatchNum;//离场限制
 };
 
 enum RoomType
@@ -445,7 +444,7 @@ struct CMD_GF_Private_Room_Info
 
 	byte bPlayCoutIdex;//玩家总局数索引
 	byte bGameTypeIdex;//游戏类型
-	byte bRoomType;
+	byte bServerType;//服务器类型
 	byte bStartGame;
 	byte bCurPeopleNum;//当前人数
 	byte bMaxPeopleNum;//最大人数
@@ -463,7 +462,7 @@ struct CMD_GF_Private_Room_Info
 	CMD_GF_Private_Room_Info& operator=(CMD_GF_Private_Room_Info& val) {
 		this->bPlayCoutIdex = val.bPlayCoutIdex;
 		this->bGameTypeIdex = val.bGameTypeIdex;
-		this->bRoomType = val.bRoomType;
+		this->bServerType = val.bServerType;
 		this->bStartGame = val.bStartGame;
 		this->bCurPeopleNum = val.bCurPeopleNum;
 		this->bMaxPeopleNum = val.bMaxPeopleNum;
@@ -489,7 +488,7 @@ struct CMD_GF_Private_Room_Info
 
 		Stream_VALUE(bPlayCoutIdex);
 		Stream_VALUE(bGameTypeIdex);
-		Stream_VALUE(bRoomType);
+		Stream_VALUE(bServerType);
 		Stream_VALUE(bStartGame);
 		Stream_VALUE(bCurPeopleNum);
 		Stream_VALUE(bMaxPeopleNum);

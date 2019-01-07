@@ -25,14 +25,12 @@ GPHomeCreateRoomPanel_NN::GPHomeCreateRoomPanel_NN()
 	, _dwBaseScore(1)
 {
     init();
-	std::string strRoomRules = cocos2d::UserDefault::getInstance()->getStringForKey("CreateRoomRules", "0");
+
 	_nRoundIndex = cocos2d::UserDefault::getInstance()->getIntegerForKey("roundIndex", 0);
-	_nGameRuleIndex = 0;
-	for (size_t idx = 0; idx < strRoomRules.size(); idx++) {
-		byte value = static_cast<byte>(strRoomRules.at(idx) - 48);
-		_nGameRuleIndex *= 10;
-		_nGameRuleIndex += value;
-	}
+	_nGameType = cocos2d::UserDefault::getInstance()->getIntegerForKey("gametype", TTLNN::NNGameType::NNGameType_SnatchBankerShowCard);
+	std::string strRoomRules = cocos2d::UserDefault::getInstance()->getStringForKey("CreateRoomRules", "0");
+	_nGameRuleIndex = utility::parseInt(strRoomRules);
+
 }
 
 GPHomeCreateRoomPanel_NN::~GPHomeCreateRoomPanel_NN()
@@ -66,6 +64,10 @@ void GPHomeCreateRoomPanel_NN::initButton()
 	WidgetManager::addButtonCB("Check_CreateRoom_DiFen2", this, button_selector(GPHomeCreateRoomPanel_NN::Button_DiFen2));
 	WidgetManager::addButtonCB("Check_CreateRoom_DiFen3", this, button_selector(GPHomeCreateRoomPanel_NN::Button_DiFen3));
 	WidgetManager::addButtonCB("Check_CreateRoom_DiFen4", this, button_selector(GPHomeCreateRoomPanel_NN::Button_DiFen4));
+	//基本规则
+	WidgetManager::addButtonCB("btn_tongbi", this, button_selector(GPHomeCreateRoomPanel_NN::Button_TongBi));
+	WidgetManager::addButtonCB("btn_ziyou", this, button_selector(GPHomeCreateRoomPanel_NN::Button_ZiYou));
+	WidgetManager::addButtonCB("btn_mingpai", this, button_selector(GPHomeCreateRoomPanel_NN::Button_MingPai));
 	//局数选择
 	WidgetManager::addButtonCB("NN_CreateRoom_RoundCountBox1", this, button_selector(GPHomeCreateRoomPanel_NN::Button_RoundBox1));
 	WidgetManager::addButtonCB("NN_CreateRoom_RoundCountBox2", this, button_selector(GPHomeCreateRoomPanel_NN::Button_RoundBox2));
@@ -100,11 +102,7 @@ void GPHomeCreateRoomPanel_NN::initData()
 void GPHomeCreateRoomPanel_NN::resetGameData()
 {
 	std::string strRoomRules = cocos2d::UserDefault::getInstance()->getStringForKey("CreateRoomRules", "0");
-	for (size_t idx = 0; idx < strRoomRules.size(); idx++) {
-		byte value = static_cast<byte>(strRoomRules.at(idx) - 48);
-		_nGameRuleIndex *= 10;
-		_nGameRuleIndex += value;
-	}
+	_nGameRuleIndex = utility::parseInt(strRoomRules);
 
 	_bAllowedStrangerJoin = false;
 	_dwEnterMatchNum = 1;
@@ -113,6 +111,94 @@ void GPHomeCreateRoomPanel_NN::resetGameData()
 
 void GPHomeCreateRoomPanel_NN::show()
 {
+	auto qiangzhuang = WidgetFun::getChildWidget(this, "qiangzhuang");
+	auto tuizhu = WidgetFun::getChildWidget(this, "tuizhu");
+	std::string strRoomRules = cocos2d::UserDefault::getInstance()->getStringForKey("CreateRoomRules", "0");
+
+	switch (_nGameType)
+	{
+	case 	TTLNN::NNGameType::NNGameType_NNBanker://牛牛上庄
+		break;
+	case TTLNN::NNGameType::NNGameType_HostBanker://固定庄家
+		break;
+	case	TTLNN::NNGameType::NNGameType_SnatchBanker://自由抢庄
+
+		WidgetFun::setVisible(this, "btn_ziyou", false);
+		WidgetFun::setVisible(this, "btn_mingbai", true);
+		WidgetFun::setVisible(this, "btn_tongbi", true);
+
+		break;
+	case	TTLNN::NNGameType::NNGameType_SnatchBankerShowCard://明牌抢庄
+
+		WidgetFun::setVisible(this, "qiangzhuang", true);
+		WidgetFun::setVisible(this, "tuizhu", true);
+
+		WidgetFun::setVisible(this, "btn_ziyou", true);
+		WidgetFun::setVisible(this, "btn_mingpai", false);
+		WidgetFun::setVisible(this, "btn_tongbi", true);
+
+		if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_TZ))) {
+			_bCanTuiZhu = true;
+		}
+		WidgetFun::setChecked(tuizhu, "Check_CanTuiZhu", _bCanTuiZhu);
+
+		//抢庄倍数
+		if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SnatchRatio_0))) {
+			_nQiangZhuangBeiShu = 1;
+		}
+		else if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SnatchRatio_1))) {
+			_nQiangZhuangBeiShu = 2;
+		}
+		else if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SnatchRatio_2))) {
+			_nQiangZhuangBeiShu = 3;
+		}
+		else if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SnatchRatio_3))) {
+			_nQiangZhuangBeiShu = 4;
+		}
+		WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang1", false);
+		WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang2", false);
+		WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang3", false);
+		WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang4", false);
+		switch (_nQiangZhuangBeiShu)
+		{
+		case 1:
+			WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang1", true);
+			break;
+		case 2:
+			WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang2", true);
+			break;
+		case 3:
+			WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang3", true);
+			break;
+		case 4:
+			WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang4", true);
+			break;
+		}
+		WidgetFun::setText(this, "Txt_CreateRoom_DiFen1", "1/2");
+		WidgetFun::setText(this, "Txt_CreateRoom_DiFen2", "2/4");
+		WidgetFun::setText(this, "Txt_CreateRoom_DiFen3", "4/8");
+		WidgetFun::setText(this, "Txt_CreateRoom_DiFen4", "5/10");
+		break;
+	case	TTLNN::NNGameType::NNGameType_AllCompare://通比牛牛
+
+		WidgetFun::setVisible(this, "btn_ziyou", true);
+		WidgetFun::setVisible(this, "btn_mingpai", true);
+		WidgetFun::setVisible(this, "btn_tongbi", false);
+
+		WidgetFun::setText(this, "Txt_CreateRoom_DiFen1", "1");
+		WidgetFun::setText(this, "Txt_CreateRoom_DiFen2", "2");
+		WidgetFun::setText(this, "Txt_CreateRoom_DiFen3", "4");
+		WidgetFun::setText(this, "Txt_CreateRoom_DiFen4", "5");
+
+		WidgetFun::setVisible(this, "qiangzhuang", false);
+		WidgetFun::setVisible(this, "tuizhu", false);
+		break;
+	case	TTLNN::NNGameType::NNGameType_NNRatio://牛几赔几
+		break;
+	case	TTLNN::NNGameType::NNGameType_HLN://葫芦牛
+		break;
+	}
+
 	//局数选择
 	WidgetFun::setChecked(this, "NN_CreateRoom_RoundCountBox1", false);
 	WidgetFun::setChecked(this, "NN_CreateRoom_RoundCountBox2", false);
@@ -128,11 +214,6 @@ void GPHomeCreateRoomPanel_NN::show()
 		WidgetFun::setChecked(this, "NN_CreateRoom_RoundCountBox3", true);
 		break;
 	}
-
-	if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_TZ))) {
-		_bCanTuiZhu = true;
-	}
-	WidgetFun::setChecked(this, "Check_CanTuiZhu", _bCanTuiZhu);
 
 	if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SpecialRule_SZN))) {
 		_bShunZi = true;
@@ -229,38 +310,6 @@ void GPHomeCreateRoomPanel_NN::show()
 		break;
 	}
 
-	//抢庄倍数
-	if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SnatchRatio_0))) {
-		_nQiangZhuangBeiShu = 1;
-	}
-	else if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SnatchRatio_1))) {
-		_nQiangZhuangBeiShu = 2;
-	}
-	else if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SnatchRatio_2))) {
-		_nQiangZhuangBeiShu = 3;
-	}
-	else if(FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SnatchRatio_3))) {
-		_nQiangZhuangBeiShu = 4;
-	}
-	WidgetFun::setChecked(this, "Check_QiangZhuang1", false);
-	WidgetFun::setChecked(this, "Check_QiangZhuang2", false);
-	WidgetFun::setChecked(this, "Check_QiangZhuang3", false);
-	WidgetFun::setChecked(this, "Check_QiangZhuang4", false);
-	switch (_nQiangZhuangBeiShu)
-	{
-	case 1:
-		WidgetFun::setChecked(this, "Check_QiangZhuang1", true);
-		break;
-	case 2:
-		WidgetFun::setChecked(this, "Check_QiangZhuang2", true);
-		break;
-	case 3:
-		WidgetFun::setChecked(this, "Check_QiangZhuang3", true);
-		break;
-	case 4:
-		WidgetFun::setChecked(this, "Check_QiangZhuang4", true);
-		break;
-	}
 
 	if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_SixRound))) {
 		_cbRoundCount = 6;
@@ -395,6 +444,7 @@ void GPHomeCreateRoomPanel_NN::Button_Confirm(cocos2d::Ref*, WidgetUserInfo*)
 
 	cocos2d::UserDefault::getInstance()->setStringForKey("CreateRoomRules", utility::toString(_nGameRuleIndex));
 	cocos2d::UserDefault::getInstance()->setIntegerForKey("roundIndex", _nRoundIndex);
+	cocos2d::UserDefault::getInstance()->setIntegerForKey("gametype", _nGameType);
 
 	CMD_GR_Create_Private createRoom;
 	zeromemory(&createRoom, sizeof(createRoom));
@@ -449,7 +499,8 @@ void GPHomeCreateRoomPanel_NN::Button_RoundBox3(cocos2d::Ref*, WidgetUserInfo*)
 void GPHomeCreateRoomPanel_NN::Button_CanTuiZhu(cocos2d::Ref*, WidgetUserInfo*)
 {
 	_bCanTuiZhu = !_bCanTuiZhu;
-	WidgetFun::setChecked(this, "Check_CanTuiZhu", _bCanTuiZhu);
+	auto tuizhu = WidgetFun::getChildWidget(this, "tuizhu");
+	WidgetFun::setChecked(tuizhu, "Check_CanTuiZhu", _bCanTuiZhu);
 }
 
 void GPHomeCreateRoomPanel_NN::Button_ShunZi(cocos2d::Ref*, WidgetUserInfo*)
@@ -607,43 +658,42 @@ void GPHomeCreateRoomPanel_NN::Button_DiFen4(cocos2d::Ref*, WidgetUserInfo* pInf
 
 void GPHomeCreateRoomPanel_NN::Button_QiangZhuang1(cocos2d::Ref*, WidgetUserInfo* pInfo)
 {
-	WidgetFun::setChecked(this, "Check_QiangZhuang1", true);
-	WidgetFun::setChecked(this, "Check_QiangZhuang2", false);
-	WidgetFun::setChecked(this, "Check_QiangZhuang3", false);
-	WidgetFun::setChecked(this, "Check_QiangZhuang4", false);
+	auto qiangzhuang = WidgetFun::getChildWidget(this, "qiangzhuang");
+	WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang1", true);
+	WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang2", false);
+	WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang3", false);
+	WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang4", false);
 	_nQiangZhuangBeiShu = 1;
 }
 
 void GPHomeCreateRoomPanel_NN::Button_QiangZhuang2(cocos2d::Ref*, WidgetUserInfo* pInfo)
 {
-	WidgetFun::setChecked(this, "Check_QiangZhuang1", false);
-	WidgetFun::setChecked(this, "Check_QiangZhuang2", true);
-	WidgetFun::setChecked(this, "Check_QiangZhuang3", false);
-	WidgetFun::setChecked(this, "Check_QiangZhuang4", false);
+	auto qiangzhuang = WidgetFun::getChildWidget(this, "qiangzhuang");
+	WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang1", false);
+	WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang2", true);
+	WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang3", false);
+	WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang4", false);
 	_nQiangZhuangBeiShu = 2;
 }
 
 void GPHomeCreateRoomPanel_NN::Button_QiangZhuang3(cocos2d::Ref*, WidgetUserInfo* pInfo)
 {
-	WidgetFun::setChecked(this, "Check_QiangZhuang1", false);
-	WidgetFun::setChecked(this, "Check_QiangZhuang2", false);
-	WidgetFun::setChecked(this, "Check_QiangZhuang3", true);
-	WidgetFun::setChecked(this, "Check_QiangZhuang4", false);
+	auto qiangzhuang = WidgetFun::getChildWidget(this, "qiangzhuang");
+	WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang1", false);
+	WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang2", false);
+	WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang3", true);
+	WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang4", false);
 	_nQiangZhuangBeiShu = 3;
 }
 
 void GPHomeCreateRoomPanel_NN::Button_QiangZhuang4(cocos2d::Ref*, WidgetUserInfo* pInfo)
 {
-	WidgetFun::setChecked(this, "Check_QiangZhuang1", false);
-	WidgetFun::setChecked(this, "Check_QiangZhuang2", false);
-	WidgetFun::setChecked(this, "Check_QiangZhuang3", false);
-	WidgetFun::setChecked(this, "Check_QiangZhuang4", true);
+	auto qiangzhuang = WidgetFun::getChildWidget(this, "qiangzhuang");
+	WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang1", false);
+	WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang2", false);
+	WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang3", false);
+	WidgetFun::setChecked(qiangzhuang, "Check_QiangZhuang4", true);
 	_nQiangZhuangBeiShu = 4;
-}
-
-void GPHomeCreateRoomPanel_NN::Button_RoomType_MPQZ(cocos2d::Ref*, WidgetUserInfo* pInfo)
-{
-	_nGameType = TTLNN::NNGameType::NNGameType_SnatchBankerShowCard;
 }
 
 void GPHomeCreateRoomPanel_NN::Button_SixRound(cocos2d::Ref*, WidgetUserInfo*)
@@ -658,6 +708,33 @@ void GPHomeCreateRoomPanel_NN::Button_EightRound(cocos2d::Ref*, WidgetUserInfo*)
 	WidgetFun::setChecked(this, "Btn_SixRound", false);
 	WidgetFun::setChecked(this, "Btn_EightRound", true);
 	_cbRoundCount = 8;
+}
+
+void GPHomeCreateRoomPanel_NN::Button_MingPai(cocos2d::Ref *, WidgetUserInfo *)
+{
+	WidgetFun::setVisible(this, "btn_mingpai", false);
+	WidgetFun::setVisible(this, "btn_tongbi", true);
+	WidgetFun::setVisible(this, "btn_ziyou", true);
+	_nGameType = TTLNN::NNGameType::NNGameType_SnatchBankerShowCard;
+	show();
+}
+
+void GPHomeCreateRoomPanel_NN::Button_TongBi(cocos2d::Ref *, WidgetUserInfo *)
+{
+	WidgetFun::setVisible(this, "btn_mingpai", true);
+	WidgetFun::setVisible(this, "btn_tongbi", false);
+	WidgetFun::setVisible(this, "btn_ziyou", true);
+	_nGameType = TTLNN::NNGameType::NNGameType_AllCompare;
+	show();
+}
+
+void GPHomeCreateRoomPanel_NN::Button_ZiYou(cocos2d::Ref *, WidgetUserInfo *)
+{
+	WidgetFun::setVisible(this, "btn_mingpai", true);
+	WidgetFun::setVisible(this, "btn_tongbi", true);
+	WidgetFun::setVisible(this, "btn_ziyou", false);
+	_nGameType = TTLNN::NNGameType::NNGameType_SnatchBanker;
+	show();
 }
 
 //////////////////////////////////////////////////////////////////////////

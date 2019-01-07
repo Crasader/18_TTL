@@ -43,15 +43,15 @@
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="Scale" Value="1.1"/>
 		<Property Key="ImagicTexture" Value="public/Alarm/AlarmBG.png"/>
-		<Property Key="Pos" Value="640 385"/>
+		<Property Key="Pos" Value="640 394"/>
 	</Widget>
 	<Widget Name="NNAlarm_Timer_0" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="public/Alarm/Timer_0.png"/>
-		<Property Key="Pos" Value="628 385"/>
+		<Property Key="Pos" Value="628 394"/>
 	</Widget>
 	<Widget Name="NNAlarm_Timer_1" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="public/Alarm/Timer_0.png"/>
-		<Property Key="Pos" Value="646 385"/>
+		<Property Key="Pos" Value="646 394"/>
 	</Widget>
 </Widget>
 
@@ -101,7 +101,7 @@
 <Widget Name="NNOperator_CalculateResult" SkinTempName="ImagicEmpty">
 	<UserInfo Key="Image" Value="TTLNN/Operator/NNOperator_"/>
 	<Property Key="ImagicTexture" Value="TTLNN/Operator/NNOperator_Win.png"/>
-	<Property Key="Pos" Value="640 240"/>
+	<Property Key="Pos" Value="640 233"/>
 	<Property Key="Scale" Value="0.75"/>
 </Widget>
 
@@ -111,32 +111,36 @@
 	<Property Key="Pos" Value="640 200"/>
 </Widget>
 
-<Widget Name="NNOperator_ButtonReady" SkinTempName="ButtonEmpty">
-	<Property Key="NomalTexture" Value="TTLNN/Operator/NNOperator_ButtonReady.png"/>
+<Widget Name="NNOperator_SitDown" SkinTempName="ButtonEmpty">
+	<Property Key="NomalTexture" Value="TTLNN/Operator/NNOperator_SitDown.png"/>
 	<Property Key="PressTexture" Value="AutoPress"/>
-	<Property Key="Pos" Value="640 112"/>
+	<Property Key="Pos" Value="640 117"/>
 </Widget>
 
 <Widget Name="NNOperator_ButtonContinue" SkinTempName="ButtonEmpty">
 	<Property Key="NomalTexture" Value="TTLNN/Operator/NNOperator_ButtonReady.png"/>
 	<Property Key="PressTexture" Value="AutoPress"/>
-	<Property Key="Pos" Value="950 50"/>
-</Widget>
- 
-<Widget Name="NNOperator_ButtonCuoCard" SkinTempName="ButtonEmpty">
-	<Property Key="NomalTexture" Value="TTLNN/Operator/NNOperator_ButtonCuoCard.png"/>
-	<Property Key="PressTexture" Value="AutoPress"/>
-	<Property Key="Pos" Value="440 220"/>
+	<Property Key="Pos" Value="640 306"/>
+	<Property Key="Scale" Value="0.95"/>
 </Widget>
 
 <Widget Name="NNOperator_ButtonShowCard" SkinTempName="ButtonEmpty">
 	<Property Key="NomalTexture" Value="TTLNN/Operator/NNOperator_ButtonShowCard.png"/>
 	<Property Key="PressTexture" Value="AutoPress"/>
-	<Property Key="Pos" Value="640 220"/>
+	<Property Key="Pos" Value="1040 80"/>
 </Widget>
- 
-<Widget Name="NNOperator_ButtonFanCard" SkinTempName="ButtonEmpty">
-	<Property Key="NomalTexture" Value="TTLNN/Operator/NNOperator_ButtonFanCard.png"/>
-	<Property Key="PressTexture" Value="AutoPress"/>
-	<Property Key="Pos" Value="840 220"/>
+
+<Widget Name="Operator_Fist" SkinTempName="Empty">
+	<Widget Name="NNOperator_ButtonCuoCard" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="TTLNN/Operator/NNOperator_ButtonCuoCard.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="1040 120"/>
+		<Property Key="Scale" Value="0.95"/>
+	</Widget>
+	<Widget Name="NNOperator_ButtonFanCard" SkinTempName="ButtonEmpty">
+		<Property Key="NomalTexture" Value="TTLNN/Operator/NNOperator_ButtonFanCard.png"/>
+		<Property Key="PressTexture" Value="AutoPress"/>
+		<Property Key="Pos" Value="1040 42"/>
+		<Property Key="Scale" Value="0.95"/>
+	</Widget>
 </Widget>

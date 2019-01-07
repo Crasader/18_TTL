@@ -45,7 +45,7 @@ void NNOperator::initLayout()
 
 void NNOperator::initButton()
 {
-    WidgetManager::addButtonCB("NNOperator_ButtonReady", this, button_selector(NNOperator::Button_Ready));
+    WidgetManager::addButtonCB("NNOperator_SitDown", this, button_selector(NNOperator::Button_SitDown));
     WidgetManager::addButtonCB("NNOperator_ButtonContinue", this, button_selector(NNOperator::Button_Continue));
     WidgetManager::addButtonCB("NNOperator_ButtonStartGame", this, button_selector(NNOperator::Button_StartGame));
     WidgetManager::addButtonCB("NNOperator_SntachBanker", this, button_selector(NNOperator::Button_SnatchBanker));
@@ -196,8 +196,15 @@ void NNOperator::show(word status)
 					hideCallButtons();
 				} else {
 					std::string showText = utility::a_u8("请下注:");
-					showMessage(showText);
-					showCallButtons();
+					switch(NNRoomInfo::Instance().getRoomInfo().bGameTypeIdex)
+					{
+					case TTLNN::NNGameType_AllCompare:
+						break;
+					default:
+						showMessage(showText);
+						showCallButtons();
+						break;
+					}
 				}
 			}
 			break;
@@ -269,16 +276,17 @@ void NNOperator::hideStartGame()
 
 void NNOperator::showReady()
 {
-    WidgetFun::setVisible(this, "NNOperator_ButtonReady", true);
+    WidgetFun::setVisible(this, "NNOperator_SitDown", true);
 	if(!WidgetFun::isWidgetVisble(this,"NNOperator_AlarmNode"))
 	{
-		showTimes(10);
+		//DONE:取消显示准备时间
+		//showTimes(10);
 	}
 }
 
 void NNOperator::hideReady()
 {
-    WidgetFun::setVisible(this, "NNOperator_ButtonReady", false);
+    WidgetFun::setVisible(this, "NNOperator_SitDown", false);
 	hideTimes();
 }
 
@@ -428,16 +436,13 @@ void NNOperator::hideTimes()
 
 void NNOperator::showSplitButton()
 {
-    WidgetFun::setVisible(this, "NNOperator_ButtonShowCard", true);
-	WidgetFun::setVisible(this, "NNOperator_ButtonCuoCard", true);
-	WidgetFun::setVisible(this, "NNOperator_ButtonFanCard", true);
+	WidgetFun::setVisible(this, "Operator_Fist", true);
 }
 
 void NNOperator::hideSplitButton()
 {
+	WidgetFun::setVisible(this, "Operator_Fist", false);
     WidgetFun::setVisible(this, "NNOperator_ButtonShowCard", false);
-	WidgetFun::setVisible(this, "NNOperator_ButtonCuoCard", false);
-	WidgetFun::setVisible(this, "NNOperator_ButtonFanCard", false);
 }
 
 void NNOperator::showSplitCalculate()
@@ -517,7 +522,7 @@ void NNOperator::Button_StartGame(cocos2d::Ref*, WidgetUserInfo*)
     NNGameScene::Instance().sendGameStart();
 }
 
-void NNOperator::Button_Ready(cocos2d::Ref*, WidgetUserInfo*)
+void NNOperator::Button_SitDown(cocos2d::Ref*, WidgetUserInfo*)
 {
     NNGameScene::Instance().sendReady();
 }
@@ -569,6 +574,8 @@ void NNOperator::Button_ShowCard(cocos2d::Ref*, WidgetUserInfo*)
 
 void NNOperator::Button_CuoCard(cocos2d::Ref*, WidgetUserInfo*)
 {
+	WidgetFun::setVisible(this, "Operator_Fist", false);
+	WidgetFun::setVisible(this, "NNOperator_ButtonShowCard", true);
 	NNPlayer* player = NNGameScene::Instance().getSelf();
 	if (player->isValid() && player->getPlayerCards().isValid) {
 		int index = MAX_HAND_CARD - 1;
@@ -579,12 +586,12 @@ void NNOperator::Button_CuoCard(cocos2d::Ref*, WidgetUserInfo*)
 	{
 		NNTurnCard::Instance().createTurnCard(1);
 	}
-	//NNGameScene::Instance().sendShowCard();
 }
 
 void NNOperator::Button_FanCard(cocos2d::Ref*, WidgetUserInfo*)
 {
-	WidgetFun::setVisible(this, "NNOperator_ButtonFanCard", false);
+	WidgetFun::setVisible(this, "Operator_Fist", false);
+	WidgetFun::setVisible(this, "NNOperator_ButtonShowCard", true);
 	NNPlayerCard::Instance().fanCard(4);
 }
 
