@@ -38,6 +38,11 @@ public:
 	void Button_EightRound(cocos2d::Ref*, WidgetUserInfo*);
 
 	//选择局数按钮
+	void Button_MingPai(cocos2d::Ref*, WidgetUserInfo*);
+	void Button_TongBi(cocos2d::Ref*, WidgetUserInfo*);
+	void Button_ZiYou(cocos2d::Ref*, WidgetUserInfo*);
+
+	//选择局数按钮
 	void Button_RoundBox1(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_RoundBox2(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_RoundBox3(cocos2d::Ref*, WidgetUserInfo*);
@@ -69,9 +74,6 @@ public:
 	void Button_QiangZhuang3(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_QiangZhuang4(cocos2d::Ref*, WidgetUserInfo*);
 
-	//房间类型
-	//名牌抢庄
-	void Button_RoomType_MPQZ(cocos2d::Ref*, WidgetUserInfo*);
 	//////////////////////////////////////////////////////////////////////////
 
 	void updateScore(byte cbIndex,dword wScore);
@@ -84,6 +86,7 @@ private:
 	int								_nGameType;//游戏类型
 	dword							_dwBaseScore;//底注
 	int								_nQiangZhuangBeiShu;//抢庄倍数
+	byte								_bRoomType;//房间类型
 	//游戏规则////////////////////////////////////////////////////////////////////////
 
 	bool								_bCanTuiZhu;// 是否推注

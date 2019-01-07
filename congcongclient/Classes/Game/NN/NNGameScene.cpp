@@ -34,6 +34,8 @@ dword NNGameScene::_dwSpeak_time_begin = 0;
 dword NNGameScene::_dwSpeak_time_end = 0;
 dword NNGameScene::_dwSpeak_time_interval = 0;
 
+using namespace TTLNN;
+
 NNGameScene::NNGameScene()
 	:GameBase(0, 0)
 {
@@ -228,6 +230,7 @@ void NNGameScene::hideReady()
 void NNGameScene::onReady()
 {
 	m_SelectCards.clear();
+	NNPlayerCard::Instance().setFanPai(false);
 	if (NNRoomInfo::Instance().getRoomInfo().dwPlayCout != 0) {
 		for (int index = 0; index < MAX_PLAYER; ++index) {
 			m_Players[index]->clearGameData();
@@ -979,6 +982,8 @@ void NNGameScene::onGameStart(const void * pBuffer, word wDataSize)
 	NNPlayer* pLocalPlayer = getPlayerByChairID(m_pSelfPlayer->GetChairID());
 	pLocalPlayer->setPlayCount(pLocalPlayer->getPlayCount()+1);
 
+	WidgetFun::setVisible(this, "NNGameScene_ButtonShare", false);
+
 #ifdef SHOW_SERVICE_CORE
 	//扣税收显示(仅首局显示)
 	if(pLocalPlayer->getPlayCount()==1){
@@ -986,6 +991,7 @@ void NNGameScene::onGameStart(const void * pBuffer, word wDataSize)
 		showGameTax(iGameTax);
 	}
 #endif
+
 	NNSound::playEffect(NNSound::GAME_START);
 }
 
@@ -1009,9 +1015,9 @@ void NNGameScene::onSnatchBanker(const void * pBuffer, word wDataSize)
 	}
 
 	m_GameStatus = TTLNN::NNGameStatus_SnatchBanker;
-	
+
 	TTLNN::CMD_S_SnatchBanker* pInfo = (TTLNN::CMD_S_SnatchBanker*) pBuffer;
-	
+
 	for (int index = 0; index < MAX_PLAYER; ++index) {
 		if (pInfo->status[index] == TTLNN::NNPlayerStatus_Playing) {
 			m_Players[index]->setPlayerCards(pInfo->cards[index], pInfo->cardCount);
@@ -1019,6 +1025,7 @@ void NNGameScene::onSnatchBanker(const void * pBuffer, word wDataSize)
 	}
 	NNOperator::Instance().showNoteTuiZhu(pInfo->bTuiZhu);
 	m_MaxRatio = pInfo->maxRatio;
+
 	NNPlayerCard::Instance().onSendPlayerCard();
 
 	this->scheduleOnce(schedule_selector(NNGameScene::playSoundSnachBanker), 3.0);
@@ -1124,6 +1131,7 @@ void NNGameScene::onSendCardAll(const void* pBuffer, word wDataSize)
 
 	NNSound::playEffect(NNSound::START_BET);
 	m_GameStatus = TTLNN::NNGameStatus_SplitCard;
+
 	NNPlayerCard::Instance().onSendPlayerCard();
 }
 
@@ -1142,7 +1150,6 @@ void NNGameScene::onSendCardAdd(const void* pBuffer, word wDataSize)
 		}
 	}
 
-	NNPlayerCard::Instance().setFanPai(false);
 	m_GameStatus = TTLNN::NNGameStatus_SplitCard;
 	NNPlayerCard::Instance().onSendPlayerCardAdd();
 }

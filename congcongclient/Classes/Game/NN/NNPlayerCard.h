@@ -3,6 +3,8 @@
 #include "common.h"
 #include "NNPlayer.h"
 
+using namespace TTLNN;
+
 class NNPlayerCard
 	: public cocos2d::Node
 	, public FvSingleton<NNPlayerCard>
@@ -42,10 +44,12 @@ public:
 #pragma region 摸牌判断
 	int getTouchCard(cocos2d::Vec2 kTouchPos);
 #pragma endregion 摸牌判断
-	
+
+protected:
+	void clearTurningCard();
 private:
-	//没得意义的临时卡组, 用来消除翻拍动作临时精灵
-	std::vector<cocos2d::Sprite*> m_TempCards;
+	//没得意义的临时卡组, 用来消除翻拍动作临时精灵, 正则表达式中使用了
+	std::vector<cocos2d::Sprite*> _turning_cards;
 	//这一把是否已经翻盘
 	bool _b_fan;
 };

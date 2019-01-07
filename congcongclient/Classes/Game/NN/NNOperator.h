@@ -64,7 +64,7 @@ public:
 
 #pragma region °´Å¥Âß¼­´¦Àí
 	void Button_StartGame(cocos2d::Ref*, WidgetUserInfo*);
-	void Button_Ready(cocos2d::Ref*, WidgetUserInfo*);
+	void Button_SitDown(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_Continue(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_WeiXin(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_SnatchBanker(cocos2d::Ref*, WidgetUserInfo*);
