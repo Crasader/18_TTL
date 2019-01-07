@@ -165,6 +165,9 @@ void GPHomeRecordPanel::initView()
 	case 4:
 		WidgetFun::setText(this, "Txt_RoomType", utility::a_u8("通比牛牛"));
 		break;
+	case 2:
+		WidgetFun::setText(this, "Txt_RoomType", utility::a_u8("自由抢庄"));
+		break;
 	default:
 		WidgetFun::setText(this, "Txt_RoomType", utility::a_u8("明牌抢庄"));
 		break;

@@ -73,12 +73,20 @@ void NNPlayerCard::showPlayer(NNPlayer& player)
                     pCard->setVisible(true);
 					switch (game_type)
 					{
-					case TTLNN::NNGameType_AllCompare:
-						
+					case TTLNN::NNGameType_SnatchBanker:
 						if (self && self->GetUserID() == player.GetUserID()) {
 							if (_b_fan == true) {
 								WidgetFun::setImagic(pCard, utility::toString(WidgetFun::getWidgetUserInfo(pNode, "Image"), NNGameLogic::getCardIndex(playerCards.cards[index]), ".png"), false);
-							} else if (!NNGameScene::Instance().isSplitCard()) {
+							} else {
+								WidgetFun::setImagic(pCard, utility::toString(WidgetFun::getWidgetUserInfo(pNode, "Image"), "0.png"), false);
+							}
+						}
+						break;
+					case TTLNN::NNGameType_AllCompare:
+						if (self && self->GetUserID() == player.GetUserID()) {
+							if (_b_fan == true) {
+								WidgetFun::setImagic(pCard, utility::toString(WidgetFun::getWidgetUserInfo(pNode, "Image"), NNGameLogic::getCardIndex(playerCards.cards[index]), ".png"), false);
+							} else if (!NNGameScene::Instance().isStatusSplitCard()) {
 								WidgetFun::setImagic(pCard, utility::toString(WidgetFun::getWidgetUserInfo(pNode, "Image"), NNGameLogic::getCardIndex(playerCards.cards[index]), ".png"), false);
 							} else {
 								WidgetFun::setImagic(pCard, utility::toString(WidgetFun::getWidgetUserInfo(pNode, "Image"), "0.png"), false);
@@ -89,14 +97,12 @@ void NNPlayerCard::showPlayer(NNPlayer& player)
 						break;
 					case TTLNN::NNGameType_HostBanker:
 						break;
-					case TTLNN::NNGameType_SnatchBanker:
-						break;
 					case TTLNN::NNGameType_SnatchBankerShowCard:
 						WidgetFun::setImagic(pCard, utility::toString(WidgetFun::getWidgetUserInfo(pNode, "Image"), NNGameLogic::getCardIndex(playerCards.cards[index]), ".png"), false);
 						//最后一张牌
 						if (index == 4) {
 							//没有拆牌
-							if (!NNGameScene::Instance().isSplitCard()) {
+							if (!NNGameScene::Instance().isStatusSplitCard()) {
 								WidgetFun::setImagic(pCard, utility::toString(WidgetFun::getWidgetUserInfo(pNode, "Image"), NNGameLogic::getCardIndex(playerCards.cards[index]), ".png"), false);
 							} else {
 								//已经翻牌
@@ -117,7 +123,7 @@ void NNPlayerCard::showPlayer(NNPlayer& player)
 					}
 
                     if(&player == NNGameScene::Instance().getSelf()) {
-                        if(!NNGameScene::Instance().isSplitCard()) {
+                        if(!NNGameScene::Instance().isStatusSplitCard()) {
                             WidgetFun::getChildWidget(pNode, utility::toString("Card_", index))->setPositionY(CARD_DWON_POSY);
                             continue;
                         }
@@ -365,7 +371,9 @@ void NNPlayerCard::onSendPlayerCard()
 
 	//翻拍动作
 	//如果不是同比牛牛, 则翻牌
-	if (game_type != NNGameType::NNGameType_AllCompare) {
+	if (game_type != NNGameType::NNGameType_AllCompare &&
+		game_type != NNGameType::NNGameType_SnatchBanker
+		) {
 		totalDelay = singleDelay * cardCount + 0.5;
 		NNPlayer* player = NNGameScene::Instance().getSelf();
 		if (player->isValid() && player->getPlayerCards().isValid) {
@@ -477,8 +485,6 @@ void NNPlayerCard::fanCard(int index)
 		break;
 	case TTLNN::NNGameType_HostBanker:
 		break;
-	case TTLNN::NNGameType_SnatchBanker:
-		break;
 	case TTLNN::NNGameType_SnatchBankerShowCard:
 		targetCard = dynamic_cast<cocos2d::Sprite*>(WidgetFun::getChildWidget(cards, "Card_4"));
 		if (targetCard) {
@@ -493,6 +499,7 @@ void NNPlayerCard::fanCard(int index)
 			fDelayTime += 0.25;
 		}
 		break;
+	case TTLNN::NNGameType_SnatchBanker:
 	case TTLNN::NNGameType_AllCompare:
 		for (word index = 0; index < player->getPlayerCards().cardCount; index++) {
 			targetCard = dynamic_cast<cocos2d::Sprite*>(WidgetFun::getChildWidget(cards, utility::toString("Card_", static_cast<int>(index))));
@@ -537,6 +544,11 @@ void NNPlayerCard::removeLastCard(NNPlayer& player)
 void NNPlayerCard::setFanPai(bool flag)
 {
 	_b_fan = flag;
+}
+
+bool NNPlayerCard::getFanPai()
+{
+	return _b_fan;
 }
 
 //翻牌动作

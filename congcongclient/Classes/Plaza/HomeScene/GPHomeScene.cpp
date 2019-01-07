@@ -481,9 +481,9 @@ void GPHomeScene::removeGamepanels()
 	if (GPHomeCreateRoomPanel_XZDD::pInstance()->getParent() == this) {
 		removeChild(GPHomeCreateRoomPanel_XZDD::pInstance());
 	}
-	if (GPHomeEditNumPanel::pInstance()->getParent() == this) {
-		removeChild(GPHomeEditNumPanel::pInstance());
-	}
+	//if (GPHomeEditNumPanel::pInstance()->getParent() == this) {
+	//	removeChild(GPHomeEditNumPanel::pInstance());
+	//}
 }
 
 void GPHomeScene::onLogonSucess()

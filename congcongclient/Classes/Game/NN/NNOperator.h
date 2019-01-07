@@ -51,6 +51,10 @@ public:
 	void showTimes(int times);
 	void hideTimes();
 
+	//œ‘ æ∑≠≈∆∫Õ¥Í≈∆
+	void showOperaterFirst();
+	void hideOperaterFirst();
+
 	void showSplitButton();
 	void hideSplitButton();
 

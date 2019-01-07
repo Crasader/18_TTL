@@ -79,6 +79,7 @@ void NNOperator::hide()
     hideCallButtons();
     hideTimes();
     hideSplitButton();
+	hideOperaterFirst();
     hideSplitCalculate();
     hideCalculate();
 	m_byteSnatchRatio=0;
@@ -217,16 +218,19 @@ void NNOperator::show(word status)
 				break;
 			}
 
-			if(NNGameScene::Instance().isSplitCard()) {
+			if(NNGameScene::Instance().isStatusSplitCard()) {
 				std::string showText = utility::a_u8("请拆牌");
-				//showMessage(showText);
 				hideMessage();
 				showSplitButton();
+				if (!NNPlayerCard::Instance().getFanPai()) {
+					showOperaterFirst();
+				}
 				updateSplitCalculate();
 			} else {
 				std::string showText = utility::a_u8("请等待其他玩家亮牌");
 				showMessage(showText);
 				hideSplitButton();
+				hideOperaterFirst();
 				hideSplitCalculate();
 			}
 			break;
@@ -339,6 +343,9 @@ void NNOperator::showSnatchButton()
     auto image = WidgetFun::getWidgetUserInfo(this, "NNOperator_SnatchBankerNode", "Image");
 
     int maxRatio = NNGameScene::Instance().getSnatchRatio();
+	if (NNRoomInfo::Instance().getRoomInfo().bGameTypeIdex == NNGameType_SnatchBanker) {
+		maxRatio = 1;
+	}
     float centerIndex = maxRatio / 2.f;
 
     for(int index = 0; index <= maxRatio; ++index) {
@@ -434,15 +441,43 @@ void NNOperator::hideTimes()
     WidgetFun::setVisible(this, "NNOperator_AlarmNode", false);
 }
 
+void NNOperator::showOperaterFirst()
+{
+	auto pFirst = WidgetFun::getChildWidget(this, "Operator_Fist");
+	auto liangpai = WidgetFun::getChildWidget(this, "NNOperator_ButtonShowCard");
+
+	switch (NNRoomInfo::Instance().getRoomInfo().bGameTypeIdex)
+	{
+	case NNGameType_SnatchBankerShowCard:
+		WidgetFun::setVisible(pFirst, "NNOperator_ButtonCuoCard", true);
+		break;
+	case NNGameType_SnatchBanker://自由抢庄
+		WidgetFun::setVisible(pFirst, "NNOperator_ButtonCuoCard", false);
+		break;
+	case NNGameType_AllCompare://通比牛牛
+		WidgetFun::setVisible(pFirst, "NNOperator_ButtonCuoCard", false);
+		break;
+	default:
+		break;
+	}
+	WidgetFun::setVisible(pFirst, "Operator_Fist", true);
+}
+
+void NNOperator::hideOperaterFirst()
+{
+	WidgetFun::setVisible(this, "Operator_Fist", false);
+	WidgetFun::setVisible(this, "NNOperator_ButtonShowCard", false);
+}
+
 void NNOperator::showSplitButton()
 {
-	WidgetFun::setVisible(this, "Operator_Fist", true);
+	//WidgetFun::setVisible(this, "Operator_Fist", true);
 }
 
 void NNOperator::hideSplitButton()
 {
-	WidgetFun::setVisible(this, "Operator_Fist", false);
-    WidgetFun::setVisible(this, "NNOperator_ButtonShowCard", false);
+	//WidgetFun::setVisible(this, "Operator_Fist", false);
+    //WidgetFun::setVisible(this, "NNOperator_ButtonShowCard", false);
 }
 
 void NNOperator::showSplitCalculate()

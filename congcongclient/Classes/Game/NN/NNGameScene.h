@@ -129,7 +129,7 @@ public:
 #pragma region 分牌触摸消息处理
 public:
 	bool ccTouchBegan(cocos2d::Vec2 kPos);
-	bool isSplitCard();
+	bool isStatusSplitCard();
 	void setSelectCards(std::vector<int> selectCards);
 	std::vector<int> getSelectCards();
 #pragma endregion 触摸消息处理

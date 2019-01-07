@@ -881,7 +881,7 @@ void NNGameScene::OnSocketSubPrivateEnd(CMD_GF_Private_End_Info* pNetInfo)
 
 bool NNGameScene::ccTouchBegan(cocos2d::Vec2 kPos)
 {
-	if (!isSplitCard()) {
+	if (!isStatusSplitCard()) {
 		return false;
 	}
 
@@ -911,9 +911,14 @@ bool NNGameScene::ccTouchBegan(cocos2d::Vec2 kPos)
 	return true;
 }
 
-bool NNGameScene::isSplitCard()
+bool NNGameScene::isStatusSplitCard()
 {
-	return m_GameStatus == TTLNN::NNGameStatus_SplitCard && getSelf()->getPlayerCardType().type == TTLNN::NNCardType_Invalid;
+	auto player = getSelf();
+	if (!getSelf()) {
+		return false;
+	}
+	auto type = player->getPlayerCardType().type;
+	return m_GameStatus == TTLNN::NNGameStatus_SplitCard && type == TTLNN::NNCardType_Invalid;
 }
 
 void NNGameScene::setSelectCards(std::vector<int> selectCards)

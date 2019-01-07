@@ -6,7 +6,7 @@
 #include "GPHomeSharePanel.h"
 //#include "GPHomeUserInfoPanel.h"
 #include "GPHomeEnterRoomPanel.h"
-#include "GPHomeEditNumPanel.h"
+//#include "GPHomeEditNumPanel.h"
 //#include "GPHomePromotionPanel.h"
 //#include "GPHomeMorePanel.h"
 //#include "GPHomeServicePanel.h"

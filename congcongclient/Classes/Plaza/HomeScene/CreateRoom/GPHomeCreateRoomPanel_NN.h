@@ -76,8 +76,6 @@ public:
 
 	//////////////////////////////////////////////////////////////////////////
 
-	void updateScore(byte cbIndex,dword wScore);
-
 private:
 
 	int								_nRoundIndex;	//局数选择序号
@@ -87,6 +85,7 @@ private:
 	dword							_dwBaseScore;//底注
 	int								_nQiangZhuangBeiShu;//抢庄倍数
 	byte								_bRoomType;//房间类型
+
 	//游戏规则////////////////////////////////////////////////////////////////////////
 
 	bool								_bCanTuiZhu;// 是否推注

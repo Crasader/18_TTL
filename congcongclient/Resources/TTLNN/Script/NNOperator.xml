@@ -127,7 +127,7 @@
 <Widget Name="NNOperator_ButtonShowCard" SkinTempName="ButtonEmpty">
 	<Property Key="NomalTexture" Value="TTLNN/Operator/NNOperator_ButtonShowCard.png"/>
 	<Property Key="PressTexture" Value="AutoPress"/>
-	<Property Key="Pos" Value="1040 80"/>
+	<Property Key="Pos" Value="1040 42"/>
 </Widget>
 
 <Widget Name="Operator_Fist" SkinTempName="Empty">

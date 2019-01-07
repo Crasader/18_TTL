@@ -224,7 +224,7 @@ void GPHomeEditNumPanel::Button_Confirm(cocos2d::Ref*, WidgetUserInfo*)
 	}
 
 	if(m_GameType == "TTLNN"){
-		GPHomeCreateRoomPanel_NN::Instance().updateScore(m_cbIndex,iScore);
+		//GPHomeCreateRoomPanel_NN::Instance().updateScore(m_cbIndex,iScore);
 	}
 	//else if(m_GameType == "SRLF"){
 	//	GPHomeCreateRoomPanel_SRLF::Instance().updateScore(m_cbIndex,iScore);

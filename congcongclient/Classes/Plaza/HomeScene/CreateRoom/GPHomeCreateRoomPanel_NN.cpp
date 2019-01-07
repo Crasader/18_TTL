@@ -124,8 +124,16 @@ void GPHomeCreateRoomPanel_NN::show()
 	case	TTLNN::NNGameType::NNGameType_SnatchBanker://自由抢庄
 
 		WidgetFun::setVisible(this, "btn_ziyou", false);
-		WidgetFun::setVisible(this, "btn_mingbai", true);
+		WidgetFun::setVisible(this, "btn_mingpai", true);
 		WidgetFun::setVisible(this, "btn_tongbi", true);
+
+		WidgetFun::setVisible(this, "qiangzhuang", false);
+		WidgetFun::setVisible(this, "tuizhu", true);
+
+		WidgetFun::setText(this, "Txt_CreateRoom_DiFen1", "1/2");
+		WidgetFun::setText(this, "Txt_CreateRoom_DiFen2", "2/4");
+		WidgetFun::setText(this, "Txt_CreateRoom_DiFen3", "4/8");
+		WidgetFun::setText(this, "Txt_CreateRoom_DiFen4", "5/10");
 
 		break;
 	case	TTLNN::NNGameType::NNGameType_SnatchBankerShowCard://明牌抢庄
@@ -185,13 +193,14 @@ void GPHomeCreateRoomPanel_NN::show()
 		WidgetFun::setVisible(this, "btn_mingpai", true);
 		WidgetFun::setVisible(this, "btn_tongbi", false);
 
+		WidgetFun::setVisible(this, "qiangzhuang", false);
+		WidgetFun::setVisible(this, "tuizhu", false);
+
 		WidgetFun::setText(this, "Txt_CreateRoom_DiFen1", "1");
 		WidgetFun::setText(this, "Txt_CreateRoom_DiFen2", "2");
 		WidgetFun::setText(this, "Txt_CreateRoom_DiFen3", "4");
 		WidgetFun::setText(this, "Txt_CreateRoom_DiFen4", "5");
 
-		WidgetFun::setVisible(this, "qiangzhuang", false);
-		WidgetFun::setVisible(this, "tuizhu", false);
 		break;
 	case	TTLNN::NNGameType::NNGameType_NNRatio://牛几赔几
 		break;
@@ -735,28 +744,4 @@ void GPHomeCreateRoomPanel_NN::Button_ZiYou(cocos2d::Ref *, WidgetUserInfo *)
 	WidgetFun::setVisible(this, "btn_ziyou", false);
 	_nGameType = TTLNN::NNGameType::NNGameType_SnatchBanker;
 	show();
-}
-
-//////////////////////////////////////////////////////////////////////////
-
-void GPHomeCreateRoomPanel_NN::updateScore(byte cbIndex,dword wScore)
-{
-	switch (cbIndex)
-	{
-	case 1:
-		{
-			//WidgetFun::setText(this,"NN_CreateRoom_GameScore_Txt",wScore);
-			//WidgetFun::setText(this,"NN_CreateRoom_EnterNum_Txt",wScore*40);
-			//WidgetFun::setText(this,"NN_CreateRoom_OutNum_Txt",wScore*30);
-			break;
-		}
-	case 2:
-		WidgetFun::setText(this,"NN_CreateRoom_EnterNum_Txt",wScore);
-	break;
-	case 3:
-		WidgetFun::setText(this,"NN_CreateRoom_OutNum_Txt",wScore);
-	break;
-	default:
-	break;
-	}
 }

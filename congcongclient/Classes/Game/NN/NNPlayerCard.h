@@ -39,6 +39,7 @@ public:
 	cocos2d::Sprite* startOrbitAction(cocos2d::Sprite* sprite, int cardIndex, std::vector<cocos2d::Sprite*>* spList, cocos2d::Vec2* offset = nullptr, float fobTime = 0.25);
 	void removeLastCard(NNPlayer& player);
 	void setFanPai(bool flag);
+	bool getFanPai();
 #pragma endregion ·¢ÅÆ¶¯×÷
 
 #pragma region ÃþÅÆÅÐ¶Ï
