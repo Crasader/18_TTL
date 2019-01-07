@@ -106,26 +106,18 @@
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
 	</Widget>
 
-	<!--顶部操作按钮--><!--
-	<Widget Name="Button_Rule" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/rule.png"/>
-		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="AnchorPos" Value="0.5 0.5"/>			
-		<Property Key="Pos" Value="928 669"/>
-	</Widget>-->
-
 	<!--游戏规则-->
 	<Widget Name="Button_GameRules" SkinTempName="ButtonEmpty">
-		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/rule.png"/>
+		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Btn_Rule.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="822 669"/>
+		<Property Key="Pos" Value="842 669"/>
 	</Widget>
 
 	<!--战绩-->
 	<Widget Name="Button_Record" SkinTempName="ButtonEmpty">
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Btn_ZhanJi.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="935 669"/>
+		<Property Key="Pos" Value="960 669"/>
 	</Widget>
 
 	<!--微信分享-->
@@ -133,7 +125,7 @@
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Btn_Share.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="AnchorPos" Value="0.5 0.5"/>
-		<Property Key="Pos" Value="1048 669"/>
+		<Property Key="Pos" Value="1078 669"/>
 	</Widget>
 
 	<!--游戏设置-->
@@ -141,7 +133,7 @@
 		<Property Key="NomalTexture" Value="GamePlaza/HomeScene/Btn_Setting.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="AnchorPos" Value="0.5 0.5"/>			
-		<Property Key="Pos" Value="1159 669"/>
+		<Property Key="Pos" Value="1194 669"/>
 	</Widget>
 
 	<Widget Name="Button_CreateGame" SkinTempName="ButtonEmpty">

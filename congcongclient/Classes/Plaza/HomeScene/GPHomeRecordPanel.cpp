@@ -162,6 +162,9 @@ void GPHomeRecordPanel::initView()
 	case 3:
 		WidgetFun::setText(this, "Txt_RoomType", utility::a_u8("Ã÷ÅÆÇÀ×¯"));
 		break;
+	case 4:
+		WidgetFun::setText(this, "Txt_RoomType", utility::a_u8("Í¨±ÈÅ£Å£"));
+		break;
 	default:
 		WidgetFun::setText(this, "Txt_RoomType", utility::a_u8("Ã÷ÅÆÇÀ×¯"));
 		break;
