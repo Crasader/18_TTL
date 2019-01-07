@@ -7,19 +7,19 @@
 	</WidgetImagic>
 	
 	<WidgetImagic Name="Card_1" TextureInfo="TTLNN/PlayerCard/poker_0.png">
-		<Property Key="Pos" Value="162 80"/>
+		<Property Key="Pos" Value="165 80"/>
 	</WidgetImagic>
 	
 	<WidgetImagic Name="Card_2" TextureInfo="TTLNN/PlayerCard/poker_0.png">
-		<Property Key="Pos" Value="275 80"/>
+		<Property Key="Pos" Value="281 80"/>
 	</WidgetImagic>
 	
 	<WidgetImagic Name="Card_3" TextureInfo="TTLNN/PlayerCard/poker_0.png">
-		<Property Key="Pos" Value="388 80"/>
+		<Property Key="Pos" Value="397 80"/>
 	</WidgetImagic>
 	
 	<WidgetImagic Name="Card_4" TextureInfo="TTLNN/PlayerCard/poker_0.png">
-		<Property Key="Pos" Value="501 80"/>
+		<Property Key="Pos" Value="513 80"/>
 	</WidgetImagic>
 	
 	<WidgetNode Name="PlayerCardReultNode">

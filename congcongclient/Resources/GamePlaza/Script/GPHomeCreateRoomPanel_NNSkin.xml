@@ -19,13 +19,13 @@
 		<Proprety Key="AnchorPos" Value="0.5 0.5"/>
 	</WidgetCheckBox>
 	
-	<WidgetTxt Name="NN_CreateRoom_TextMenu" ShowTxt="123" FontName="Font/mini_kaiti.ttf" FontSize="45">
+	<WidgetTxt Name="NN_CreateRoom_TextMenu" ShowTxt="123" FontName="Font/true_type.ttf" FontSize="45">
 		<Proprety Key="AnchorPos" Value="0.5 0.5"/>
 		<Proprety Key="Color" Value="254 213 117"/>
 		<Proprety Key="FontName" Value="Font/mini_kaiti.ttf"/>
 	</WidgetTxt>
 	
-	<WidgetTxt Name="NN_CreateRoom_TextItem" ShowTxt="123" FontName="Font/mini_kaiti.ttf" FontSize="30">
+	<WidgetTxt Name="NN_CreateRoom_TextItem" ShowTxt="123" FontName="Font/true_type.ttf" FontSize="30">
 		<Proprety Key="AnchorPos" Value="0 0.5"/>
 		<Proprety Key="Color" Value="254 213 117"/>
 	</WidgetTxt>

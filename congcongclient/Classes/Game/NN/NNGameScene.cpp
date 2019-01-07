@@ -857,6 +857,8 @@ void NNGameScene::OnSocketSubPrivateDismissInfo(CMD_GF_Private_Dismiss_Info* pNe
 		info.append(m_Players[pNetInfo->dwNotAgreeChairID[0]]->GetNickName());
 		info.append(utility::a_u8("¾Ü¾ø½âÉ¢ÓÎÏ·!"));
 		NoticeMsg::Instance().ShowTopMsg(info);
+		NNDismissRoom::Instance().hide();
+		return;
 	}
 
 	if (pNetInfo->dwDissUserCout == 0) {

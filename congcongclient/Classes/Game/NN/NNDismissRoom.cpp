@@ -52,12 +52,6 @@ void NNDismissRoom::initButton()
 
 void NNDismissRoom::initData()
 {
-    m_LabelConfig.fontFilePath = "Font/mini_kaiti.ttf";
-    m_LabelConfig.fontSize = 32;
-    m_LabelConfig.glyphs = GlyphCollection::DYNAMIC;
-    m_LabelConfig.customGlyphs = nullptr;
-    m_LabelConfig.distanceFieldEnabled = false;
-    m_LabelConfig.outlineSize = 0;
 }
 
 void NNDismissRoom::update(float ftime)
@@ -100,9 +94,17 @@ void NNDismissRoom::hostBeforeStart()
 	WidgetFun::setVisible(this, "NNDismissRoom_ButtonRefuse", true);
 	WidgetFun::setVisible(this, "NNDismissRoom_ButtonCancle", false);
 
+	TTFConfig m_LabelConfig;
+	m_LabelConfig.fontFilePath = "Font/true_type.ttf";
+	m_LabelConfig.fontSize = 36;
+	m_LabelConfig.glyphs = GlyphCollection::DYNAMIC;
+	m_LabelConfig.customGlyphs = nullptr;
+	m_LabelConfig.distanceFieldEnabled = false;
+	m_LabelConfig.outlineSize = 0;
+
 	cocos2d::Label* label = Label::createWithTTF(m_LabelConfig, utility::a_u8(text), TextHAlignment::LEFT, 800);
 	label->setLineSpacing(20);
-	label->setPosition(Point(640, 360));
+	label->setPosition(Point(640, 560));
 	label->setColor(cocos2d::Color3B(255, 255, 255));
 
 	pNode->removeAllChildren();
@@ -112,7 +114,9 @@ void NNDismissRoom::hostBeforeStart()
 void NNDismissRoom::applyForDismiss()
 {
 	auto pNode = WidgetFun::getChildWidget(this, "NNDismissRoom_ContentNode");
-	std::string text = utility::getScriptReplaceValue("DisMissRoom_Wait", "");
+	pNode->removeAllChildren();
+
+	std::string text = utility::getScriptReplaceValue("DisMissRoom_Wait_1", " ");
 
 	WidgetFun::setVisible(this, "NNDismissRoom_ButtonOK", true);
 	WidgetFun::setVisible(this, "NNDismissRoom_ButtonCancle", true);
@@ -120,10 +124,18 @@ void NNDismissRoom::applyForDismiss()
 	WidgetFun::setVisible(this, "NNDismissRoom_ButtonAgree", false);
 	WidgetFun::setVisible(this, "NNDismissRoom_ButtonRefuse", false);
 
-	cocos2d::Label* label = Label::createWithTTF(m_LabelConfig, utility::a_u8(text), TextHAlignment::LEFT, 800);
+	TTFConfig m_LabelConfig;
+	m_LabelConfig.fontFilePath = "Font/true_type.ttf";
+	m_LabelConfig.fontSize = 48;
+	m_LabelConfig.glyphs = GlyphCollection::DYNAMIC;
+	m_LabelConfig.customGlyphs = nullptr;
+	m_LabelConfig.distanceFieldEnabled = false;
+	m_LabelConfig.outlineSize = 0;
+
+	cocos2d::Label* label = Label::createWithTTF(m_LabelConfig, utility::a_u8(text), TextHAlignment::LEFT, 1000);
 	label->setLineSpacing(20);
-	label->setPosition(Point(640, 400));
-	label->setColor(cocos2d::Color3B(255, 255, 255));
+	label->setPosition(Point(640, 360));
+	label->setColor(cocos2d::Color3B(158, 88, 52));
 
 	pNode->removeAllChildren();
 	pNode->addChild(label);
@@ -132,22 +144,55 @@ void NNDismissRoom::applyForDismiss()
 void NNDismissRoom::replyDismiss()
 {
 	auto pNode = WidgetFun::getChildWidget(this, "NNDismissRoom_ContentNode");
-	std::string text = utility::getScriptReplaceValue("DisMissRoom_Wait",
-		NNGameScene::Instance().getPlayerByChairID(_dismiss_info->dwDissChairID[0])->GetNickName());
+	auto player = NNGameScene::Instance().getPlayerByChairID(_dismiss_info->dwDissChairID[0]);
+	std::string text;
+	if (player) {
+		std::string name = utility::a_u8("Íæ¼Ò¡¾") + player->GetNickName() + utility::a_u8("¡¿");
+		text = utility::getScriptReplaceValue("DisMissRoom_Wait_1", name);
+	} else {
+		text = utility::getScriptReplaceValue("DisMissRoom_Wait_1", "");
+	}
 
-	auto label = Label::createWithTTF(m_LabelConfig, utility::a_u8(text), TextHAlignment::LEFT, 800);
-	label->setLineSpacing(20);
-	label->setPosition(Point(640, 400));
-	label->setColor(cocos2d::Color3B(255, 255, 255));
+	TTFConfig m_LabelConfig;
+	m_LabelConfig.fontFilePath = "Font/true_type.ttf";
+	m_LabelConfig.fontSize = 36;
+	m_LabelConfig.glyphs = GlyphCollection::DYNAMIC;
+	m_LabelConfig.customGlyphs = nullptr;
+	m_LabelConfig.distanceFieldEnabled = false;
+	m_LabelConfig.outlineSize = 0;
 
-	auto label2 = Label::createWithTTF(m_LabelConfig, utility::a_u8(utility::toString(_nDismissCounter, "Ãë")), TextHAlignment::LEFT, 800);
-	label2->setLineSpacing(20);
-	label2->setPosition(Point(640, 300));
-	label2->setColor(cocos2d::Color3B(255, 160, 160));
+	auto label = Label::createWithTTF(m_LabelConfig, utility::a_u8(text), TextHAlignment::LEFT, 1000);
+	label->setLineSpacing(10);
+	label->setPosition(Point(640, 540));
+	label->setColor(cocos2d::Color3B(158, 88, 52));
+
+	m_LabelConfig.fontSize = 36;
+	m_LabelConfig.glyphs = GlyphCollection::DYNAMIC;
+	m_LabelConfig.customGlyphs = nullptr;
+	m_LabelConfig.distanceFieldEnabled = false;
+	m_LabelConfig.outlineSize = 0;
+
+	text = ScriptData<std::string>("DisMissRoom_Wait_2").Value();
+	auto label2 = Label::createWithTTF(m_LabelConfig, utility::a_u8(text), TextHAlignment::LEFT, 1000);
+	label2->setLineSpacing(10);
+	label2->setPosition(Point(640, 445));
+	label2->setColor(cocos2d::Color3B(224, 21, 4));
+
+	m_LabelConfig.fontSize = 64;
+	m_LabelConfig.glyphs = GlyphCollection::DYNAMIC;
+	m_LabelConfig.customGlyphs = nullptr;
+	m_LabelConfig.distanceFieldEnabled = false;
+	m_LabelConfig.outlineSize = 1;
+
+	auto label3 = Label::createWithTTF(m_LabelConfig, utility::a_u8(utility::toString(_nDismissCounter, "Ãë")), TextHAlignment::LEFT, 800);
+	label3->setLineSpacing(20);
+	label3->setPosition(Point(640, 360));
+	label3->setColor(cocos2d::Color3B(224, 21, 4));
 
 	pNode->removeAllChildren();
 	pNode->addChild(label);
 	pNode->addChild(label2);
+	pNode->addChild(label3);
 
 	bool isPlayerChosed = false;
 	auto local = NNGameScene::Instance().getSelf();
@@ -183,7 +228,7 @@ void NNDismissRoom::replyDismiss()
 	auto addLinePos = utility::parsePoint(WidgetFun::getWidgetUserInfo(pNode, "AddLinePos"));
 
 	TTFConfig labelConfig;
-	labelConfig.fontFilePath = "Font/mini_kaiti.ttf";
+	labelConfig.fontFilePath = "Font/true_type.ttf";
 	labelConfig.fontSize = 28;
 	labelConfig.glyphs = GlyphCollection::DYNAMIC;
 	labelConfig.customGlyphs = nullptr;
@@ -213,10 +258,10 @@ void NNDismissRoom::replyDismiss()
 				}
 			}
 
-			auto label = Label::createWithTTF(labelConfig, player->GetNickName() + ":" + utility::a_u8(text));
+			auto label = Label::createWithTTF(labelConfig, utility::a_u8("¡¾") +player->GetNickName() + utility::a_u8("¡¿ : ") + utility::a_u8(text));
 			label->setAnchorPoint(cocos2d::Vec2(0, 0.5));
 			label->setPosition(startPos + addPos * (chairIndex % 3) + addLinePos * (chairIndex / 3));
-			label->setColor(cocos2d::Color3B(255, 255, 255));
+			label->setColor(cocos2d::Color3B(158, 88, 52));
 			pNode->addChild(label);
 		}
 	}

@@ -81,5 +81,7 @@
     <ScriptValueStr Key="GameAddGold" Value="用户充值金币"/>
 <!-- 解散房间 -->
 	<ScriptValueStr Key="DisMissRoom_Ask" Value="游戏尚未开始，解散房间将不会扣除钻石，确定解散房间吗?"/>
-	<ScriptValueStr Key="DisMissRoom_Wait" Value="#申请解散房间，等待其他玩家做出选择，超出1分钟未做选择，则默认同意，房间自动解散."/>
+  <ScriptValueStr Key="DisMissRoom_Wait_1" Value="#申请解散房间，等待其他玩家做出选择"/>
+  <ScriptValueStr Key="DisMissRoom_Wait_2" Value="【超出1分钟未做选择，则默认同意，房间自动解散.】"/>
+   
  </root>

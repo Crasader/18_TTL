@@ -51,7 +51,7 @@
 		<Property Key="Dimensions" Value="200 32"/>	
 	</WidgetTxt>
 	
-	<WidgetTxt Name="NNText" ShowTxt="Empty" FontName="Font/mini_kaiti.ttf" FontSize="32">
+	<WidgetTxt Name="NNText" ShowTxt="Empty" FontName="Font/true_type.ttf" FontSize="32">
 	</WidgetTxt>
 	
 	<WidgetButton Name="BtnFullEmpty" NomalTexture="UI/FullEmpty.png" PressTexture="UI/FullEmpty.png"  >

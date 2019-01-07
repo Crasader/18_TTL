@@ -21,22 +21,22 @@
 			<Property Key="Scale" Value="0.9"/>
 		</WidgetImagic>
 		
-		<WidgetTxt Name="NNCalculate_Name" FontName="Font/mini_kaiti.ttf" FontSize="20" ShowTxt="123">
+		<WidgetTxt Name="NNCalculate_Name" FontName="Font/true_type.ttf" FontSize="20" ShowTxt="123">
 			<Property Key="Pos" Value="200 160"/>
 			<Property Key="Color" Value="255 40 40"/>
 		</WidgetTxt>
 		
-		<WidgetTxt Name="NNCalculate_ID" FontName="Font/mini_kaiti.ttf" FontSize="20" ShowTxt="123">
+		<WidgetTxt Name="NNCalculate_ID" FontName="Font/true_type.ttf" FontSize="20" ShowTxt="123">
 			<Property Key="Pos" Value="200 120"/>
 			<Property Key="Color" Value="255 40 40"/>
 		</WidgetTxt>
 		
-		<WidgetTxt Name="" FontName="Font/mini_kaiti.ttf" FontSize="40" ShowTxt="总成绩：">
+		<WidgetTxt Name="" FontName="Font/true_type.ttf" FontSize="40" ShowTxt="总成绩：">
 			<Property Key="Pos" Value="100 55"/>
 			<Property Key="Color" Value="255 40 40"/>
 		</WidgetTxt>
 		
-		<WidgetTxt Name="NNCalculate_Score" FontName="Font/mini_kaiti.ttf" FontSize="40" ShowTxt="">
+		<WidgetTxt Name="NNCalculate_Score" FontName="Font/true_type.ttf" FontSize="40" ShowTxt="">
 			<Property Key="Pos" Value="240 55"/>
 			<Property Key="Color" Value="255 40 40"/>
 		</WidgetTxt>

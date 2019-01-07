@@ -91,7 +91,7 @@
 				<Property Key="AnchorPos" Value="0.5 0.5"/>
 				<WidgetNode Name="">
 					<Property Key="Pos" Value="5 20"/>
-					<WidgetTxt Name="NNPlayer_TalkTxt" ShowTxt="1000" FontName="Font/mini_kaiti.ttf" FontSize="28">
+					<WidgetTxt Name="NNPlayer_TalkTxt" ShowTxt="1000" FontName="Font/true_type.ttf" FontSize="28">
 						<Property Key="ShowTxt" Value="TalkTxt"/>
 						<Property Key="AnchorPos" Value="0 0.5"/>
 						<Property Key="Color" Value="137 53 25"/>

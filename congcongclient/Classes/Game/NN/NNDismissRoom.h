@@ -43,7 +43,6 @@ private:
 	float _fPassBegin;
 	float _fPassEnd;
 	int _nDismissCounter;
-	TTFConfig m_LabelConfig;
 	NN_DismissRoom_Type _eDismissRoomType;
 	CMD_GF_Private_Dismiss_Info* _dismiss_info;
 };
