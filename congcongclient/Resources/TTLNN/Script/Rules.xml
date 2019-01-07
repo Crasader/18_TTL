@@ -99,7 +99,7 @@
 	</Widget>
 
 	<Widget Name="" SkinTempName="ImagicEmpty">
-		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/RecordPanel/title.png"/>
+		<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/Img_TitleRule.png"/>
 		<Property Key="Pos" Value="640 646"/>
 		<Property Key="Scale" Value="0.9"/>
 	</Widget>
