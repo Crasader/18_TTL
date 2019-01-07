@@ -36,8 +36,16 @@ void IosHelper::sendAuthRequest()
     SendAuthReq* req =[[[SendAuthReq alloc ] init ] autorelease ];
     req.scope = @"snsapi_userinfo" ;
     req.state = @"123" ;
+    req.openID = @"wx3cadb286cad49c5d";
     //第三方向微信终端发送一个SendAuthReq消息结构
-    [WXApi sendReq:req]; 
+    //[WXApi sendReq:req];
+    
+    if ([WXApi isWXAppInstalled]) {
+        [WXApi sendReq:req];
+    }else{
+        [WXApi sendAuthReq:req viewController:[UIApplication sharedApplication].keyWindow.rootViewController delegate:id<WXApiDelegate>([UIApplication sharedApplication])];
+    }
+    
 }
 
 void IosHelper::shareWithWeixinCircleTxt(const char * pTxt,const char * pUrl){
