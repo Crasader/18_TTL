@@ -269,8 +269,9 @@ struct CMD_S_GameStart {
 };
 
 struct CMD_S_BankerInfo {
-	WORD bankerChairID;
-	WORD bankerRatio; //ÇÀ×¯±¶ÂÊ
+	WORD bankerChairID;//
+	WORD bankerRatio;//ÇÀ×¯±¶ÂÊ
+	BYTE cbSanch;//ÊÇ·ñÊÇÇÀ×¯
 	NNPlayerBet bets[NN_GAME_PLAYER][MAX_STAKE_COUNT];
 };
 

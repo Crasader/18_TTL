@@ -2450,11 +2450,22 @@ bool CTableFrame::SendTableStatus()
 	TableStatus.TableStatus.cbTableLock=IsTableLocked()?TRUE:FALSE;
 	TableStatus.TableStatus.cbPlayStatus=IsTableStarted()?TRUE:FALSE;
 
-	//电脑数据
-	m_pIMainServiceFrame->SendData(BG_COMPUTER,MDM_GR_STATUS,SUB_GR_TABLE_STATUS,&TableStatus,sizeof(TableStatus));
+	//DONE: 这里要发到桌子上,不要群发
+	for (WORD i = 0; i < m_wChairCount; i++)
+	{
+		//获取用户
+		IServerUserItem * pIServerUserItem = GetTableUserItem(i);
+		if ((pIServerUserItem == NULL) ||
+			(pIServerUserItem->IsClientReady() == false))
+		{
+			continue;
+		}
+		if ((pIServerUserItem == NULL)) continue;
 
-	//手机数据
-
+		//发送数据
+		m_pIMainServiceFrame->SendData(pIServerUserItem, MDM_GR_STATUS, SUB_GR_TABLE_STATUS, &TableStatus, sizeof(TableStatus));
+	}
+	//m_pIMainServiceFrame->SendData(BG_COMPUTER, MDM_GR_STATUS, SUB_GR_TABLE_STATUS, &TableStatus, sizeof(TableStatus));
 	return true;
 }
 

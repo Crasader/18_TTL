@@ -613,6 +613,7 @@ void CTableFrameSink::confirmSnatchBanker() {
     ZeroMemory(&bankerInfo, sizeof(bankerInfo));
     bankerInfo.bankerChairID = m_BankerChairID;
     bankerInfo.bankerRatio = m_BankerRatio;
+	bankerInfo.cbSanch = static_cast<BYTE>(maxRatioCount >= 2);
     memcpy(bankerInfo.bets, m_PlayerAllBets, sizeof(m_PlayerAllBets));
     m_pITableFrame->SendTableData(INVALID_CHAIR, SUB_S_BANKER_INFO, &bankerInfo, sizeof(bankerInfo));
 	//m_pITableFrame->SendLookonData(INVALID_CHAIR, SUB_S_BANKER_INFO, &bankerInfo, sizeof(bankerInfo));
