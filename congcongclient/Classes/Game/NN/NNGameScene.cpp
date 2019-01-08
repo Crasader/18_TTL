@@ -421,10 +421,9 @@ NNPlayer** NNGameScene::getPlayers()
 	return m_Players;
 }
 
-int curIndex = 0;
 float NNGameScene::playZhuanZhuangAni()
 {
-	curIndex = 0;
+	_curZhuangIndex = 0;
 	float fDelay;
 	for (fDelay = 0.15; fDelay < 1.5f; fDelay += 0.15f) {
 		DelayTime* delay = DelayTime::create(fDelay);
@@ -434,11 +433,10 @@ float NNGameScene::playZhuanZhuangAni()
 					m_Players[index]->setBanker(false);
 				}
 			}
-			m_Players[curIndex]->setBanker(true);
-			curIndex++;
-			if (curIndex >= MAX_PLAYER || !m_Players[curIndex]->isValid()) {
-				curIndex = 0;
+			if (++_curZhuangIndex > vct_snach_banker.size() - 1) {
+				_curZhuangIndex = 0;
 			}
+			m_Players[vct_snach_banker[_curZhuangIndex]]->setBanker(true);
 		});
 		runAction(CCSequence::create(delay, func, nullptr));
 	}
@@ -1118,7 +1116,14 @@ void NNGameScene::onBankerInfo(const void * pBuffer, word wDataSize)
 		}
 		break;
 	case TTLNN::NNGameType_SnatchBanker:
-		if (pInfo->cbSanch != 0) {
+		int count = 0;
+		vct_snach_banker.clear();
+		for (int i = 0; i < NN_GAME_PLAYER; i++) {
+			if (pInfo->cbSanch[i] != 0) {
+				vct_snach_banker.push_back(i);
+			}
+		}
+		if (vct_snach_banker.size() >= 2) {
 			float fDelayTime = playZhuanZhuangAni();
 			DelayTime* delay = DelayTime::create(fDelayTime);
 			CallFunc* func = CallFunc::create([=] {

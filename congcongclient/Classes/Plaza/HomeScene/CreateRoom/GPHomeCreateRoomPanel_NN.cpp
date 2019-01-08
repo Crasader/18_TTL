@@ -135,6 +135,11 @@ void GPHomeCreateRoomPanel_NN::show()
 		WidgetFun::setText(this, "Txt_CreateRoom_DiFen3", "4/8");
 		WidgetFun::setText(this, "Txt_CreateRoom_DiFen4", "5/10");
 
+		if (FvMask::HasAny(_nGameRuleIndex, _MASK_(TTLNN::NNGameRule::NNGameRule_TZ))) {
+			_bCanTuiZhu = true;
+		}
+		WidgetFun::setChecked(tuizhu, "Check_CanTuiZhu", _bCanTuiZhu);
+
 		break;
 	case	TTLNN::NNGameType::NNGameType_SnatchBankerShowCard://Ã÷ÅÆÇÀ×¯
 

@@ -82,8 +82,12 @@ public:
 	bool isBankerUser(NNPlayer& player);
 	//bool isHostUser(NNPlayer& player);
 	NNPlayer** getPlayers();
+
 	//转庄动画
+	std::vector<byte> vct_snach_banker;
+	int _curZhuangIndex;
 	float playZhuanZhuangAni();
+
 #pragma endregion 玩家相关
 
 #pragma region 游戏状态
