@@ -421,6 +421,30 @@ NNPlayer** NNGameScene::getPlayers()
 	return m_Players;
 }
 
+int curIndex = 0;
+float NNGameScene::playZhuanZhuangAni()
+{
+	curIndex = 0;
+	float fDelay;
+	for (fDelay = 0.15; fDelay < 1.5f; fDelay += 0.15f) {
+		DelayTime* delay = DelayTime::create(fDelay);
+		CallFunc* func = CallFunc::create([=] {
+			for (int index = 0; index < MAX_PLAYER; index++) {
+				if (m_Players[index]->isValid()) {
+					m_Players[index]->setBanker(false);
+				}
+			}
+			m_Players[curIndex]->setBanker(true);
+			curIndex++;
+			if (curIndex >= MAX_PLAYER || !m_Players[curIndex]->isValid()) {
+				curIndex = 0;
+			}
+		});
+		runAction(CCSequence::create(delay, func, nullptr));
+	}
+	return fDelay;
+}
+
 #pragma endregion 玩家相关
 
 #pragma region 游戏状态
@@ -1087,11 +1111,25 @@ void NNGameScene::onBankerInfo(const void * pBuffer, word wDataSize)
 		}
 	}
 
-	if (NNRoomInfo::Instance().getRoomInfo().bGameTypeIdex == TTLNN::NNGameType_AllCompare) {
+	switch (NNRoomInfo::Instance().getRoomInfo().bGameTypeIdex) {
+	case TTLNN::NNGameType_AllCompare:
 		for (int index = 0; index < MAX_PLAYER; ++index) {
 			m_Players[index]->setPlayerBets(m_AllBets[0]);
 		}
+		break;
+	case TTLNN::NNGameType_SnatchBanker:
+		float fDelayTime = playZhuanZhuangAni();
+		DelayTime* delay = DelayTime::create(fDelayTime);
+		CallFunc* func = CallFunc::create([=] {
+			updateUserInfo();
+			NNOperator::Instance().show(m_GameStatus);
+			NNOperator::Instance().showTimes(TIME_FOR_USER_CALL);
+			NNSound::playEffect(NNSound::START_BET);
+		});
+		runAction(CCSequence::create(delay, func, nullptr));
+		return;
 	}
+
 	updateUserInfo();
 	NNOperator::Instance().show(m_GameStatus);
 	NNOperator::Instance().showTimes(TIME_FOR_USER_CALL);

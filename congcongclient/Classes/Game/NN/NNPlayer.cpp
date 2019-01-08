@@ -119,6 +119,11 @@ TTLNN::NNPlayerStatus NNPlayer::getPlayerStatus()
 	return m_Status;
 }
 
+void NNPlayer::setBanker(bool flag)
+{
+	NNPlayerPanel::Instance().setBanker(*this, flag);
+}
+
 //void NNPlayer::setStartGameOwner(bool flag)
 //{
 //	bStartGameOwner = flag;

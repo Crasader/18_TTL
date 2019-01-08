@@ -175,7 +175,7 @@ void NNDismissRoom::replyDismiss()
 	text = ScriptData<std::string>("DisMissRoom_Wait_2").Value();
 	auto label2 = Label::createWithTTF(m_LabelConfig, utility::a_u8(text), TextHAlignment::LEFT, 1000);
 	label2->setLineSpacing(10);
-	label2->setPosition(Point(640, 445));
+	label2->setPosition(Point(640, 465));
 	label2->setColor(cocos2d::Color3B(224, 21, 4));
 
 	m_LabelConfig.fontSize = 64;

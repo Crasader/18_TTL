@@ -31,6 +31,15 @@ void NNPlayerPanel::initLayout()
     WidgetScenceXMLparse playerPanel("TTLNN/Script/NNPlayerPanel.xml", this);
 }
 
+void NNPlayerPanel::setBanker(NNPlayer& player, bool flag)
+{
+	int visioChairID = player.getVisioChairID();
+	if (player.isValid() && visioChairID < NNGameScene::MAX_PLAYER) {
+		auto playerNode = WidgetFun::getChildWidget(this, utility::toString("NNPlayer_", visioChairID));
+		WidgetFun::setVisible(playerNode, "NNPlayer_BankerBG", flag);
+	}
+}
+
 void NNPlayerPanel::showPlayer(NNPlayer& player)
 {
     int visioChairID = player.getVisioChairID();

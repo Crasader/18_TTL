@@ -82,6 +82,8 @@ public:
 	bool isBankerUser(NNPlayer& player);
 	//bool isHostUser(NNPlayer& player);
 	NNPlayer** getPlayers();
+	//转庄动画
+	float playZhuanZhuangAni();
 #pragma endregion 玩家相关
 
 #pragma region 游戏状态

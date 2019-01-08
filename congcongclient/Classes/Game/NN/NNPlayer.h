@@ -40,6 +40,7 @@ public:
 	void setPlayerStatus(TTLNN::NNPlayerStatus status);
 	TTLNN::NNPlayerStatus getPlayerStatus();
 
+	void setBanker(bool flag);
 	//ÓÎÏ·¾ÖÊı
 	void setPlayCount(word wCount);
 	word getPlayCount();
