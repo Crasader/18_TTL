@@ -271,7 +271,7 @@ struct CMD_S_GameStart {
 struct CMD_S_BankerInfo {
 	WORD bankerChairID;//
 	WORD bankerRatio;//抢庄倍率
-	BYTE cbSanch;//是否是抢庄
+	BYTE cbSanch[NN_GAME_PLAYER];//是否是抢庄
 	NNPlayerBet bets[NN_GAME_PLAYER][MAX_STAKE_COUNT];
 };
 

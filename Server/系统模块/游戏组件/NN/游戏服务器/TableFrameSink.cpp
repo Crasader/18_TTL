@@ -583,7 +583,6 @@ void CTableFrameSink::confirmSnatchBanker() {
         m_BankerRatio = maxRatio;
     } else {
         int bankerIndex = rand() % maxRatioCount;
-
         for (int index = 0; index < NN_GAME_PLAYER; ++index) {
             if (m_PlayerBankerRatio[index] == maxRatio) {
                 if (bankerIndex == 0) {
@@ -591,17 +590,14 @@ void CTableFrameSink::confirmSnatchBanker() {
                     m_BankerRatio = max(maxRatio, 1);
                     break;
                 }
-
                 --bankerIndex;
             }
         }
     }
 
     getBets();
-
 	m_GameStatus = NNGameStatus_Call;
 
-    CMD_S_BankerInfo bankerInfo;
     BYTE cbPlyerCount = 0;
     for (WORD index = 0; index < NN_GAME_PLAYER; ++index) {
         if (NULL == m_pITableFrame->GetTableUserItem(index)) {
@@ -610,13 +606,19 @@ void CTableFrameSink::confirmSnatchBanker() {
         cbPlyerCount++;
     }
     ASSERT(cbPlyerCount >= 2);
-    ZeroMemory(&bankerInfo, sizeof(bankerInfo));
+
+	CMD_S_BankerInfo bankerInfo;
+	ZeroMemory(&bankerInfo, sizeof(bankerInfo));
+	for (int index = 0; index < NN_GAME_PLAYER; ++index) {
+		if (m_PlayerBankerRatio[index] == maxRatio) {
+			bankerInfo.cbSanch[index] = 1;
+		}
+	}
+
     bankerInfo.bankerChairID = m_BankerChairID;
     bankerInfo.bankerRatio = m_BankerRatio;
-	bankerInfo.cbSanch = static_cast<BYTE>(maxRatioCount >= 2);
     memcpy(bankerInfo.bets, m_PlayerAllBets, sizeof(m_PlayerAllBets));
     m_pITableFrame->SendTableData(INVALID_CHAIR, SUB_S_BANKER_INFO, &bankerInfo, sizeof(bankerInfo));
-	//m_pITableFrame->SendLookonData(INVALID_CHAIR, SUB_S_BANKER_INFO, &bankerInfo, sizeof(bankerInfo));
     m_pITableFrame->SetGameTimer(IDI_TIMER_USER_CALL, TIME_USER_CALL, 1, NULL);
     addGameOperator(bankerInfo);
 }
@@ -1152,6 +1154,15 @@ bool CTableFrameSink::OnTimerMessage(DWORD wTimerID, WPARAM wBindParam)
                 }
             }
 
+			//是否所有玩家都已经下注
+			bool bAllBeted = true;
+			for (int index = 0; index < NN_GAME_PLAYER; ++index) {
+				if (index != m_BankerChairID && m_PlayerStatus[index] == NNPlayerStatus_Playing && m_PlayerBets[index].wBet == 0) {
+					bAllBeted = false;
+					break;
+				}
+			}
+
 			switch (m_GameTypeIdex) {
 				case NNGameType_HostBanker:
 				case NNGameType_NNBanker: {
@@ -1160,11 +1171,14 @@ bool CTableFrameSink::OnTimerMessage(DWORD wTimerID, WPARAM wBindParam)
 				}
 
 				case NNGameType_SnatchBanker: {
-					m_pITableFrame->SendTableData(INVALID_CHAIR, SUB_S_SPLIT_CARD);
-					//m_pITableFrame->SendLookonData(INVALID_CHAIR, SUB_S_SPLIT_CARD);
-					m_GameStatus = NNGameStatus_SplitCard;
-					m_pITableFrame->KillGameTimer(IDI_TIMER_USER_SPLIT_CARD);
-					m_pITableFrame->SetGameTimer(IDI_TIMER_USER_SPLIT_CARD, TIME_USER_SPLIT_CARD, 1, NULL);
+					if (bAllBeted) {
+						m_GameStatus = NNGameStatus_SplitCard;
+						m_pITableFrame->KillGameTimer(IDI_TIMER_USER_CALL);
+						m_pITableFrame->SendTableData(INVALID_CHAIR, SUB_S_SPLIT_CARD);
+						//m_pITableFrame->SendLookonData(INVALID_CHAIR, SUB_S_SPLIT_CARD);
+						m_pITableFrame->KillGameTimer(IDI_TIMER_USER_SPLIT_CARD);
+						m_pITableFrame->SetGameTimer(IDI_TIMER_USER_SPLIT_CARD, TIME_USER_SPLIT_CARD, 1, NULL);
+					}
 					return true;
 				}
 
@@ -1361,6 +1375,15 @@ bool CTableFrameSink::OnGameMessage(WORD wSubCmdID, VOID* pDataBuffer, WORD wDat
                 return true;
             }
 
+			//是否所有玩家都已经下注
+			bool bAllBeted = true;
+			for (int index = 0; index < NN_GAME_PLAYER; ++index) {
+				if (index != m_BankerChairID && m_PlayerStatus[index] == NNPlayerStatus_Playing && m_PlayerBets[index].wBet == 0) {
+					bAllBeted = false;
+					break;
+				}
+			}
+
             switch (m_GameTypeIdex) {
                 case NNGameType_HostBanker:
                 case NNGameType_NNBanker: {
@@ -1378,11 +1401,14 @@ bool CTableFrameSink::OnGameMessage(WORD wSubCmdID, VOID* pDataBuffer, WORD wDat
                 }
 
                 case NNGameType_SnatchBanker: {
-                    m_pITableFrame->SendTableData(INVALID_CHAIR, SUB_S_SPLIT_CARD);
-					//m_pITableFrame->SendLookonData(INVALID_CHAIR, SUB_S_SPLIT_CARD);
-                    m_GameStatus = NNGameStatus_SplitCard;
-                    m_pITableFrame->KillGameTimer(IDI_TIMER_USER_SPLIT_CARD);
-                    m_pITableFrame->SetGameTimer(IDI_TIMER_USER_SPLIT_CARD, TIME_USER_SPLIT_CARD, 1, NULL);
+					if (bAllBeted) {
+						m_GameStatus = NNGameStatus_SplitCard;
+						m_pITableFrame->KillGameTimer(IDI_TIMER_USER_CALL);
+						m_pITableFrame->SendTableData(INVALID_CHAIR, SUB_S_SPLIT_CARD);
+						//m_pITableFrame->SendLookonData(INVALID_CHAIR, SUB_S_SPLIT_CARD);
+						m_pITableFrame->KillGameTimer(IDI_TIMER_USER_SPLIT_CARD);
+						m_pITableFrame->SetGameTimer(IDI_TIMER_USER_SPLIT_CARD, TIME_USER_SPLIT_CARD, 1, NULL);
+					}
                     return true;
                 }
 
