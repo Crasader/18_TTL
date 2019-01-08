@@ -224,6 +224,7 @@ void NNOperator::show(word status)
 				showSplitButton();
 				if (!NNPlayerCard::Instance().getFanPai()) {
 					showOperaterFirst();
+					showTimes(TIME_FOR_USER_SPLIT_CARD);
 				}
 				updateSplitCalculate();
 			} else {

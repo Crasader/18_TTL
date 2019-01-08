@@ -1118,16 +1118,19 @@ void NNGameScene::onBankerInfo(const void * pBuffer, word wDataSize)
 		}
 		break;
 	case TTLNN::NNGameType_SnatchBanker:
-		float fDelayTime = playZhuanZhuangAni();
-		DelayTime* delay = DelayTime::create(fDelayTime);
-		CallFunc* func = CallFunc::create([=] {
-			updateUserInfo();
-			NNOperator::Instance().show(m_GameStatus);
-			NNOperator::Instance().showTimes(TIME_FOR_USER_CALL);
-			NNSound::playEffect(NNSound::START_BET);
-		});
-		runAction(CCSequence::create(delay, func, nullptr));
-		return;
+		if (pInfo->cbSanch != 0) {
+			float fDelayTime = playZhuanZhuangAni();
+			DelayTime* delay = DelayTime::create(fDelayTime);
+			CallFunc* func = CallFunc::create([=] {
+				updateUserInfo();
+				NNOperator::Instance().show(m_GameStatus);
+				NNOperator::Instance().showTimes(TIME_FOR_USER_CALL);
+				NNSound::playEffect(NNSound::START_BET);
+			});
+			runAction(CCSequence::create(delay, func, nullptr));
+			return;
+		}
+		break;
 	}
 
 	updateUserInfo();
