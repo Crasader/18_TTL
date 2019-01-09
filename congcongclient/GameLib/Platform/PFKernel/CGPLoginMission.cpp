@@ -288,6 +288,7 @@ bool CGPLoginMission::onSocketSubUpdateNotify(void* data, int size)
 	NoticeMsgBox::Instance().show();
 	//JniFun::showWebView(pNetInfo->szDownLoadHttp);
 	
+	//TODO: 显示版本更新提示
 	return true;
 }
 

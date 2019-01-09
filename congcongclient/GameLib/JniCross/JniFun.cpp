@@ -169,7 +169,7 @@ namespace JniFun
 #endif
 	}
 
-	void showWebView(const char* url )
+	void showWebView(const char* url)
 	{
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID

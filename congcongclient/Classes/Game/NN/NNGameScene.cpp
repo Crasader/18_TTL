@@ -160,7 +160,7 @@ void NNGameScene::initData()
 	zeromemory(&m_AllBets, sizeof(m_AllBets));
 	zeromemory(&m_RoomInfo, sizeof(m_RoomInfo));
 
-	//TODO:先设置一个保险的玩家个数
+	//DONE:先设置一个保险的玩家个数
 	m_RoomInfo.bMaxPeopleNum = NN_GAME_PLAYER;
 
     for(int  palyerIndex = 0; palyerIndex < MAX_PLAYER; palyerIndex++) {

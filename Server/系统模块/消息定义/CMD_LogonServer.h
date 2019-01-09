@@ -43,7 +43,7 @@ struct CMD_GP_LogonGameID
 	//登录信息
 	DWORD							dwGameID;							//游戏 I D
 	TCHAR							szPassword[LEN_MD5];				//登录密码
-	BYTE							cbValidateFlags;			        //校验标识
+	DWORD							cbValidateFlags;			        //校验标识
 };
 
 //帐号登录
@@ -56,7 +56,7 @@ struct CMD_GP_LogonAccounts
 	//登录信息
 	TCHAR							szPassword[LEN_MD5];				//登录密码
 	TCHAR							szAccounts[LEN_ACCOUNTS];			//登录帐号
-	BYTE							cbValidateFlags;			        //校验标识
+	DWORD							cbValidateFlags;			        //校验标识
 };
 
 //游客登录

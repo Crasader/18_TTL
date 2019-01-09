@@ -2292,11 +2292,10 @@ bool CAttemperEngineSink::OnTCPNetworkMainMBServerList(WORD wSubCmdID, VOID * pD
 bool CAttemperEngineSink::OnTCPNetworkSubPCLogonGameID(VOID * pData, WORD wDataSize, DWORD dwSocketID)
 {
 	//效验参数
-	ASSERT(wDataSize>=sizeof(CMD_GP_LogonGameID));
-	if (wDataSize<sizeof(CMD_GP_LogonGameID))
+	ASSERT(wDataSize==sizeof(CMD_GP_LogonGameID));
+	if (wDataSize != sizeof(CMD_GP_LogonGameID))
 	{
-		if (wDataSize<sizeof(CMD_GP_LogonGameID)-sizeof(BYTE))
-			return false;
+		return false;
 	}
 
 	//变量定义
@@ -2342,11 +2341,10 @@ bool CAttemperEngineSink::OnTCPNetworkSubPCLogonGameID(VOID * pData, WORD wDataS
 bool CAttemperEngineSink::OnTCPNetworkSubPCLogonAccounts(VOID * pData, WORD wDataSize, DWORD dwSocketID)
 {
 	//效验参数
-	ASSERT(wDataSize>=sizeof(CMD_GP_LogonAccounts));
-	if (wDataSize<sizeof(CMD_GP_LogonAccounts))
+	ASSERT(wDataSize==sizeof(CMD_GP_LogonAccounts));
+	if (wDataSize!=sizeof(CMD_GP_LogonAccounts))
 	{
-		if (wDataSize<sizeof(CMD_GP_LogonAccounts)-sizeof(BYTE))
-			return false;
+		return false;
 	}
 
 	//变量定义

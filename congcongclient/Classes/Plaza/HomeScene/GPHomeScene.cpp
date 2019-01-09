@@ -519,7 +519,7 @@ void GPHomeScene::flushUserInfo()
 			UserInfo::Instance().modeHeadHttp(UserInfo::Instance().getHeadHttp());
 		}
 	} else {
-		//TODO:不得已而为之, 同时发送AccountInfo请求和Individual请求可能导致后面这个链接已经重连了
+		//DONE:不得已而为之, 同时发送AccountInfo请求和Individual请求可能导致后面这个链接已经重连了
 		UserInfo::Instance().reqIndividual();
 	}
 }
