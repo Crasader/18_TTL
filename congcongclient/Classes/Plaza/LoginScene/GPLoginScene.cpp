@@ -185,7 +185,7 @@ std::string GPLoginScene::GetWxLoginWin32()
 
 	//account = "WeiXinoznOM0oURRnxOpbFnZdxsyxRU";
 	//std::string pass = "WeiXinPassword";
-	std::string pass = "222222";
+	//std::string pass = "222222";
 
 	std::string tocken = utility::toString(account, ":",  pass);
 	return tocken;
