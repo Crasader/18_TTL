@@ -55,7 +55,7 @@
 	</Widget>
 </Widget>
 
-<Widget Name="NNOperator_CalculateNode" SkinTempName="Empty">
+<!--<Widget Name="NNOperator_CalculateNode" SkinTempName="Empty">
 	<Property Key="Size" Value="408 64"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
 	<Property Key="Pos" Value="790 240"/>
@@ -96,12 +96,12 @@
 		<Property Key="Pos" Value="154 0"/>
 		<Property Key="Color" Value="255 165 0"/>
 	</Widget>
-</Widget>
+</Widget>-->
 
 <Widget Name="NNOperator_CalculateResult" SkinTempName="ImagicEmpty">
 	<UserInfo Key="Image" Value="TTLNN/Operator/NNOperator_"/>
 	<Property Key="ImagicTexture" Value="TTLNN/Operator/NNOperator_Win.png"/>
-	<Property Key="Pos" Value="640 233"/>
+	<Property Key="Pos" Value="480 160"/>
 	<Property Key="Scale" Value="0.75"/>
 </Widget>
 

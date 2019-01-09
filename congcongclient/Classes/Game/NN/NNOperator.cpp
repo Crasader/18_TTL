@@ -483,22 +483,25 @@ void NNOperator::hideSplitButton()
 void NNOperator::showSplitCalculate()
 {
     show();
-    WidgetFun::setVisible(this, "NNOperator_CalculateNode", false);//不显示拆牌界面
+   //WidgetFun::setVisible(this, "NNOperator_CalculateNode", false);//不显示拆牌界面
 }
 
 void NNOperator::hideSplitCalculate()
 {
-    WidgetFun::setVisible(this, "NNOperator_CalculateNode", false);
+    //WidgetFun::setVisible(this, "NNOperator_CalculateNode", false);
 }
 
 void NNOperator::updateSplitCalculate()
 {
+
     if(NNGameScene::Instance().getGameStatus() == TTLNN::NNGameStatus_SplitCard) {
         showSplitCalculate();
     } else {
         hideSplitCalculate();
         return;
     }
+
+	return;
 
     NNPlayerCard_Entity cards = NNGameScene::Instance().getSelf()->getPlayerCards();
     std::vector<int> cardsSelected = NNGameScene::Instance().getSelectCards();
