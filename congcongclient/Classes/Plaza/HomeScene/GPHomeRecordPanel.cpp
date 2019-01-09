@@ -213,9 +213,9 @@ void GPHomeRecordPanel::initView()
 		str_id += idsmall;
 		WidgetFun::setText(pItemNode, "Txt_ID", str_id);
 		WidgetFun::setText(pItemNode, "Txt_Score", scoreToString(kInfo.vctScore[idx]));
-		if (kInfo.vctScore[idx] == dayingjia) {
+		if (kInfo.vctScore[idx] == dayingjia && dayingjia != 0) {
 			WidgetFun::setVisible(pItemNode, "Img_DaYingJia", true);
-		} else if (kInfo.vctScore[idx] == tuhao) {
+		} else if (kInfo.vctScore[idx] == tuhao && tuhao != 0) {
 			WidgetFun::setVisible(pItemNode, "Img_TuHao", true);
 		}
 

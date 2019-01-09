@@ -5,6 +5,7 @@
 #include "Plaza/GameManager/GPSceneManager.h"
 #include "Game/Game/MissionWeiXin.h"
 #include IMAGE_DOWN
+#include UTILITY_CONVERT
 
 FV_SINGLETON_STORAGE(NNCalculate);
 
@@ -57,33 +58,87 @@ void NNCalculate::hide()
 
 void NNCalculate::update(CMD_GF_Private_End_Info* pInfo)
 {
+	auto& room_info = NNRoomInfo::Instance().getRoomInfo();
+
+	WidgetFun::setText(this, "Txt_RoomNo", room_info.dwRoomNum);
+	WidgetFun::setText(this, "Txt_BaseScore", room_info.dwBaseScore);
+	WidgetFun::setText(this, "Txt_RoundSum", room_info.dwPlayCout);
+
+	switch (room_info.bGameTypeIdex) {
+	case 3:
+		WidgetFun::setText(this, "Txt_RoomType", utility::a_u8("明牌抢庄"));
+		break;
+	case 4:
+		WidgetFun::setText(this, "Txt_RoomType", utility::a_u8("通比牛牛"));
+		break;
+	case 2:
+		WidgetFun::setText(this, "Txt_RoomType", utility::a_u8("自由抢庄"));
+		break;
+	default:
+		WidgetFun::setText(this, "Txt_RoomType", utility::a_u8("明牌抢庄"));
+		break;
+	}
+	time_t tt = time(nullptr);
+	char tmp[64] = { 0 };
+	strftime(tmp, sizeof(tmp), "%Y/%m/%d/ %H:%M:%S", localtime(&tt));
+	WidgetFun::setText(this, "Txt_Time", tmp);
+
 	int nodeIndex = 0;
+	int score_DaYingJia = 0;
+	int score_TuHao = 0;
+
 	for (int index = 0; index < NN_GAME_PLAYER; ++index) {
 		NNPlayer* player = NNGameScene::Instance().getPlayerByChairID(index);
-		if (player->isValid()) {
-			auto playerNode = WidgetFun::getChildWidget(this, utility::toString("NNCalculate_", nodeIndex++));
-			playerNode->setVisible(true);
+		if (!player->isValid()) {
+			continue;
+		}
 
-			WidgetFun::setText(playerNode, "NNCalculate_Name", player->GetNickName());
-			WidgetFun::setText(playerNode, "NNCalculate_ID", utility::toString("ID:", utility::paseInt(player->GetUserID(), 6)));
-			int playerScore = 0;
-			if (pInfo->lPlayerWinLose.size() > index) {
-				playerScore = pInfo->lPlayerWinLose.at(index);
-			} else {
-				playerScore = NNRoomInfo::Instance().getPlayerScore(player);
-			}
-
-			std::string score = utility::toString(playerScore > 0 ? "+" : "", playerScore);
-			WidgetFun::setText(playerNode, "NNCalculate_Score", score);
-			ImagicDownManager::Instance().addDown(WidgetFun::getChildWidget(playerNode, "NNCalculate_Avatar"), player->GetHeadHttp(), player->GetUserID());
-		} else {
-			WidgetFun::setVisible(this, utility::toString("NNCalculate_", index), false);
+		if (score_DaYingJia < pInfo->lPlayerWinLose[index]) {
+			score_DaYingJia = pInfo->lPlayerWinLose[index];
+		}
+		if (score_TuHao > pInfo->lPlayerWinLose[index]) {
+			score_TuHao = pInfo->lPlayerWinLose[index];
 		}
 	}
+
+	for (int index = 0; index < NN_GAME_PLAYER; ++index) {
+		NNPlayer* player = NNGameScene::Instance().getPlayerByChairID(index);
+		if (!player->isValid()) {
+			WidgetFun::setVisible(this, utility::toString("NNCalculate_", index), false);
+			continue;
+		}
+
+		auto playerNode = WidgetFun::getChildWidget(this, utility::toString("NNCalculate_", nodeIndex++));
+		playerNode->setVisible(true);
+
+		WidgetFun::setText(playerNode, "NNCalculate_Name", player->GetNickName());
+		WidgetFun::setText(playerNode, "NNCalculate_ID", utility::toString(utility::paseInt(player->GetUserID(), 6)));
+		int playerScore = 0;
+		if (pInfo->lPlayerWinLose.size() > index) {
+			playerScore = pInfo->lPlayerWinLose.at(index);
+		} else {
+			playerScore = NNRoomInfo::Instance().getPlayerScore(player);
+		}
+
+		std::string score = utility::toString(playerScore > 0 ? "+" : "", playerScore);
+		WidgetFun::setText(playerNode, "NNCalculate_Score", score);
+
+		WidgetFun::setVisible(playerNode, "Img_DaYingJia", false);
+		WidgetFun::setVisible(playerNode, "Img_TuHao", false);
+		if (score_DaYingJia == playerScore && score_DaYingJia != 0) {
+			WidgetFun::setVisible(playerNode, "Img_DaYingJia", true);
+		} else if(score_TuHao == playerScore && score_TuHao != 0) {
+			WidgetFun::setVisible(playerNode, "Img_TuHao", true);
+		}
+
+		ImagicDownManager::Instance().addDown(WidgetFun::getChildWidget(playerNode, "NNCalculate_Avatar"), player->GetHeadHttp(), player->GetUserID());
+	}
 }
+
 #pragma endregion 显示与隐藏
 
 #pragma region 按钮事件
+
 void NNCalculate::Button_BackPlaza(cocos2d::Ref*, WidgetUserInfo*)
 {
 	//DONE:实际上已经回到大厅了
@@ -103,4 +158,5 @@ void NNCalculate::Button_Share(cocos2d::Ref*, WidgetUserInfo*)
 		}
 	}, "screenshot.png");
 }
+
 #pragma endregion 按钮事件

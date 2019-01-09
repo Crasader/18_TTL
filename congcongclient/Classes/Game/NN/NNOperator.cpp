@@ -89,7 +89,6 @@ void NNOperator::hide()
 
 void NNOperator::show(word status)
 {
-	hideNoteTuiZhu();
 	auto local_player = NNGameScene::Instance().getSelf();
     switch(status) {
 		case TTLNN::NNGameStatus_Free: {
@@ -585,7 +584,8 @@ void NNOperator::Button_SnatchBanker(cocos2d::Ref*, WidgetUserInfo* pInfo)
 		NNGameScene::Instance().sendSnatchBanker(snatchRatio);
 		m_byteSnatchRatio = snatchRatio;
 	}
-	hideNoteTuiZhu();
+	auto player = NNGameScene::Instance().getSelf();
+	player->setTuiZhu(0);
 }
 
 void NNOperator::Button_Call(cocos2d::Ref*, WidgetUserInfo* pInfo)

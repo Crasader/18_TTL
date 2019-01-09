@@ -3,75 +3,144 @@
 <Widget Name="" SkinTempName="ImagicEmpty">
 	<Property Key="ImagicTexture" Value="GamePlaza/HomeScene/background.png"/>
 	<Property Key="Pos" Value="640 360"/>
-	<Property Key="Scale" Value="0.95"/>
+</Widget>
+
+<Widget Name="" SkinTempName="ImagicEmpty">
+	<Property Key="ImagicTexture" Value="TTLNN/Calculate/title.png"/>
+	<Property Key="Pos" Value="640 646"/>
+	<Property Key="Scale" Value="0.9"/>
 </Widget>
 
 <Widget Name="NNCalculate_ButtonShare" SkinTempName="ButtonEmpty">
 	<Property Key="NomalTexture" Value="TTLNN/Calculate/NNCalculate_ButtonShare.png"/>
 	<Property Key="PressTexture" Value="AutoPress"/>
-	<Property Key="Pos" Value="340 75"/>
-	<Property Key="Scale" Value="0.666"/>
+	<Property Key="Pos" Value="340 100"/>
 </Widget>
 
 <Widget Name="NNCalculate_ButtonBackPlaza" SkinTempName="ButtonEmpty">
 	<Property Key="NomalTexture" Value="TTLNN/Calculate/NNCalculate_ButtonBackPlaza.png"/>
 	<Property Key="PressTexture" Value="AutoPress"/>
-	<Property Key="Pos" Value="940 75"/>
-	<Property Key="Scale" Value="0.666"/>
+	<Property Key="Pos" Value="940 100"/>
 </Widget>
 
-<Widget Name="NNCalculate_0" SkinTempName="NNCalculateSingle">
-	<Property Key="Pos" Value="220 445"/>
+<!-- 房间号 -->
+<Widget Name="" SkinTempName="TxtEmpty">
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
-	<Property Key="Scale" Value="0.8"/>
+	<Property Key="FontSize" Value="24"/>
+	<Property Key="ShowTxt" Value="房间:"/>
+	<Property Key="FontName" Value="Font/true_type.ttf"/>
+	<Property Key="Color" Value="82 40 2"/>
+	<Property Key="Pos" Value="120 580"/>
+</Widget>
+<Widget Name="Txt_RoomNo" SkinTempName="TxtEmpty">
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="FontSize" Value="24"/>
+	<Property Key="ShowTxt" Value="123456"/>
+	<Property Key="FontName" Value="Font/true_type.ttf"/>
+	<Property Key="Color" Value="82 40 2"/>
+	<Property Key="Pos" Value="200 580"/>
+</Widget>
+
+<!-- 局数 -->
+<Widget Name="" SkinTempName="TxtEmpty">
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="FontSize" Value="24"/>
+	<Property Key="ShowTxt" Value="局数:"/>
+	<Property Key="FontName" Value="Font/true_type.ttf"/>
+	<Property Key="Color" Value="82 40 2"/>
+	<Property Key="Pos" Value="300 580"/>
+</Widget>
+<Widget Name="Txt_RoundSum" SkinTempName="TxtEmpty">
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="FontSize" Value="24"/>
+	<Property Key="ShowTxt" Value="20"/>
+	<Property Key="FontName" Value="Font/true_type.ttf"/>
+	<Property Key="Color" Value="82 40 2"/>
+	<Property Key="Pos" Value="360 580"/>
+</Widget>
+
+<!-- 底分 -->
+<Widget Name="" SkinTempName="TxtEmpty">
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="FontSize" Value="24"/>
+	<Property Key="ShowTxt" Value="底分:"/>
+	<Property Key="FontName" Value="Font/true_type.ttf"/>
+	<Property Key="Color" Value="82 40 2"/>
+	<Property Key="Pos" Value="440 580"/>
+</Widget>
+<Widget Name="Txt_BaseScore" SkinTempName="TxtEmpty">
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="FontSize" Value="24"/>
+	<Property Key="ShowTxt" Value="5/10"/>
+	<Property Key="FontName" Value="Font/true_type.ttf"/>
+	<Property Key="Color" Value="82 40 2"/>
+	<Property Key="Pos" Value="500 580"/>
+</Widget>
+
+<!-- 类型 -->
+<Widget Name="Txt_RoomType" SkinTempName="TxtEmpty">
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="FontSize" Value="24"/>
+	<Property Key="ShowTxt" Value="明牌抢庄"/>
+	<Property Key="FontName" Value="Font/true_type.ttf"/>
+	<Property Key="Color" Value="82 40 2"/>
+	<Property Key="Pos" Value="600 580"/>
+</Widget>
+
+<!-- 时间 -->
+<Widget Name="Txt_Time" SkinTempName="TxtEmpty">
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
+	<Property Key="FontSize" Value="24"/>
+	<Property Key="ShowTxt" Value="2018/12/21 aa:aa:aa"/>
+	<Property Key="FontName" Value="Font/true_type.ttf"/>
+	<Property Key="Color" Value="82 40 2"/>
+	<Property Key="Pos" Value="780 580"/>
+</Widget>
+			
+<Widget Name="NNCalculate_0" SkinTempName="NNCalculateSingle">
+	<Property Key="Pos" Value="190 460"/>
+	<Property Key="AnchorPos" Value="0.5 0.5"/>
 	<Property Key="Color" Value="255 40 40"/>
 </Widget>
 
 <Widget Name="NNCalculate_1" SkinTempName="NNCalculateSingle">
-	<Property Key="Pos" Value="490 445"/>
+	<Property Key="Pos" Value="490 460"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
-	<Property Key="Scale" Value="0.8"/>
 	<Property Key="Color" Value="255 40 40"/>
 </Widget>
 
 <Widget Name="NNCalculate_2" SkinTempName="NNCalculateSingle">
-	<Property Key="Pos" Value="770 445"/>
+	<Property Key="Pos" Value="790 460"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
-	<Property Key="Scale" Value="0.8"/>
 	<Property Key="Color" Value="255 40 40"/>
 </Widget>
 
 <Widget Name="NNCalculate_3" SkinTempName="NNCalculateSingle">
-	<Property Key="Pos" Value="1060 445"/>
+	<Property Key="Pos" Value="1090 460"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
-	<Property Key="Scale" Value="0.8"/>
 	<Property Key="Color" Value="255 40 40"/>
 </Widget>
 
 <Widget Name="NNCalculate_4" SkinTempName="NNCalculateSingle">
-	<Property Key="Pos" Value="220 260"/>
+	<Property Key="Pos" Value="190 270"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
-	<Property Key="Scale" Value="0.8"/>
 	<Property Key="Color" Value="255 40 40"/>
 </Widget>
 
 <Widget Name="NNCalculate_5" SkinTempName="NNCalculateSingle">
-	<Property Key="Pos" Value="490 260"/>
+	<Property Key="Pos" Value="490 270"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
-	<Property Key="Scale" Value="0.8"/>
 	<Property Key="Color" Value="255 40 40"/>
 </Widget>
 
 <Widget Name="NNCalculate_6" SkinTempName="NNCalculateSingle">
-	<Property Key="Pos" Value="770 260"/>
+	<Property Key="Pos" Value="790 270"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
-	<Property Key="Scale" Value="0.8"/>
 	<Property Key="Color" Value="255 40 40"/>
 </Widget>
 
 <Widget Name="NNCalculate_7" SkinTempName="NNCalculateSingle">
-	<Property Key="Pos" Value="1060 260"/>
+	<Property Key="Pos" Value="1090 270"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
-	<Property Key="Scale" Value="0.8"/>
 	<Property Key="Color" Value="255 40 40"/>
 </Widget>

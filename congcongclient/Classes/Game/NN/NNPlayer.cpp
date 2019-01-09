@@ -9,7 +9,8 @@
 #include "UTILITY.h"
 
 NNPlayer::NNPlayer()
-	:GamePlayer(NULL)
+	: GamePlayer(NULL)
+	, _tuizhu(0)
 {
 	m_Valid = false;
 	m_VisioChairID = INVALID_CHAIR;
@@ -35,6 +36,7 @@ void NNPlayer::clearGameData()
 	zeromemory(&m_CardType, sizeof(m_CardType));
 	zeromemory(&m_Calculate, sizeof(m_Calculate));
 	//bStartGameOwner = false;
+	_tuizhu = 0;
 }
 
 void NNPlayer::setValid(bool valid)
@@ -117,6 +119,16 @@ void NNPlayer::setPlayerStatus(TTLNN::NNPlayerStatus status)
 TTLNN::NNPlayerStatus NNPlayer::getPlayerStatus()
 {
 	return m_Status;
+}
+
+void NNPlayer::setTuiZhu(byte bTuiZhu)
+{
+	_tuizhu = bTuiZhu;
+}
+
+int NNPlayer::getTuiZhu()
+{
+	return static_cast<int>(_tuizhu);
 }
 
 void NNPlayer::setBanker(bool flag)

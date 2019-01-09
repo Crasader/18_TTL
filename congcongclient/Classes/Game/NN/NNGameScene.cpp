@@ -552,6 +552,8 @@ void NNGameScene::Button_Setting(cocos2d::Ref*, WidgetUserInfo*)
 	GPHomeSettingPanel::Instance().hideOrShowQuitBtn(false);
 }
 
+#include "NNPlayerPanel.h"
+
 void NNGameScene::Button_TalkBegin(cocos2d::Ref*, WidgetUserInfo*)
 {
 	//说话已经开始
@@ -565,7 +567,10 @@ void NNGameScene::Button_TalkBegin(cocos2d::Ref*, WidgetUserInfo*)
 	if (_dwSpeak_time_begin == 0) {
 		_dwSpeak_time_begin = time(nullptr);
 	}
-
+	auto player = getSelf();
+	CMD_GR_C_TableTalk cmd_talk;
+	cmd_talk.cbType = CMD_GR_C_TableTalk::TYPE_FILE;
+	NNPlayerPanel::Instance().playerTalk(*player, &cmd_talk);
 	SoundFun::Instance().PaseBackMusic();
 	JniFun::startSoundRecord();
 	//最大时间到了自动结束说话
@@ -625,6 +630,8 @@ void NNGameScene::Button_TalkEnd(cocos2d::Ref*, WidgetUserInfo*)
 #if CC_TARGET_PLATFORM != CC_PLATFORM_WIN32
 	int nTimeID_interval = TimeManager::Instance().addCerterTimeCB(TIME_CALLBACK(NNGameScene::TalkInterval, this), _dwSpeak_time_interval)->iIdex;
 	WidgetFun::setWidgetUserInfo(this, "NNGameScene_ButtonTalk", "iTimeID_interval", utility::toString(nTimeID_interval));
+#else
+	_dwSpeak_time_interval = 0;
 #endif
 
 	SoundFun::Instance().ResumeBackMusic();
@@ -1052,7 +1059,13 @@ void NNGameScene::onSnatchBanker(const void * pBuffer, word wDataSize)
 			m_Players[index]->setPlayerCards(pInfo->cards[index], pInfo->cardCount);
 		}
 	}
-	NNOperator::Instance().showNoteTuiZhu(pInfo->bTuiZhu);
+
+	auto player = getSelf();
+	if (player) {
+		player->setTuiZhu(pInfo->bTuiZhu);
+		//NNPlayerPanel::Instance().showPlayer(*player);
+	}
+
 	m_MaxRatio = pInfo->maxRatio;
 
 	NNPlayerCard::Instance().onSendPlayerCard();
@@ -1072,7 +1085,11 @@ void NNGameScene::onUserSnatchBanker(const void * pBuffer, word wDataSize)
 	m_Players[pInfo->userChairID]->upPlayerInfo();
 
 	if (pInfo->userChairID == getSelf()->GetChairID()) {
-		NNOperator::Instance().hideNoteTuiZhu();
+		auto player = getSelf();
+		if (player) {
+			player->setTuiZhu(0);
+			//NNPlayerPanel::Instance().showPlayer(*player);
+		}
 	}
 	NNOperator::Instance().show(m_GameStatus);
 	NNSound::playEffect(NNSound::BUTTON_EFFECT);

@@ -4,6 +4,7 @@
 class AnimationWidget:public MaskSprite
 {
 public:
+
 	AnimationWidget();
 	~AnimationWidget();
 
@@ -21,19 +22,23 @@ public:
 	int getActFrameIdex();
 
 	void setDelayTime(float fTime);
+
 public:
+
 	static std::string ToIdexString(int iIdex);
 	static void getPlistName(std::string kFrames,std::vector<std::string>& kListName,float& fFrameTime);
 	static void getPlistName(std::string kFrames,std::vector<cocos2d::Vec2>& kOffectPos,float& fFrameTime);
+
 private:
-	float							m_fFrameTime;
-	float							m_fActTime;
-	std::string						m_kActRunAnimName;
-	bool							m_bIsLoop;
-	int								m_iActIdex;
-	std::vector<cocos2d::SpriteFrame*>	  m_kFrames;
-	std::vector<std::string>		m_kTextures;
-	std::function<void()>			m_kEndCallFun;
-	float                        m_fDelayTime;
-	float                        m_fPassTime;
+
+	float m_fFrameTime;
+	float m_fActTime;
+	std::string m_kActRunAnimName;
+	bool m_bIsLoop;
+	int m_iActIdex;
+	std::vector<cocos2d::SpriteFrame*> m_kFrames;
+	std::vector<std::string> m_kTextures;
+	std::function<void()> m_kEndCallFun;
+	float m_fDelayTime;
+	float m_fPassTime;
 };

@@ -21,6 +21,9 @@
 		<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonTalk.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
 		<Property Key="Pos" Value="1220 225"/>
+		<UserInfo Key="iTimeID_min" Value="2"/>
+		<UserInfo Key="iTimeID_max" Value="5"/>
+		<UserInfo Key="iTimeID_interval" Value="0"/>
 	</Widget>
 
 	<Widget Name="NNGameScene_ButtonMessage" SkinTempName="ButtonEmpty">

@@ -3,6 +3,7 @@
 #include "Game/NN/NNRoomInfo.h"
 #include "Game/NN/CMD_NN.h"
 #include USERINFO
+#include UTILITY_CONVERT
 
 FV_SINGLETON_STORAGE(NNPlayerPanel);
 NNPlayerPanel::NNPlayerPanel()
@@ -47,12 +48,20 @@ void NNPlayerPanel::showPlayer(NNPlayer& player)
         auto playerNode = WidgetFun::getChildWidget(this, utility::toString("NNPlayer_", visioChairID));
         playerNode->setVisible(true);
 
+		WidgetFun::setVisible(playerNode, "Img_TuiZhu", false);
+		WidgetFun::setVisible(playerNode, "Txt_TuiZhu", false);
+
         if (player.GetUserID() == UserInfo::Instance().getUserID()) {
             if (player.GetUserStatus() < US_READY && NNGameScene::Instance().getGameStatus() < TTLNN::NNGameStatus_Start) {
                 NNGameScene::Instance().showReady();
             } else {
                 NNGameScene::Instance().hideReady();
             }
+			if (player.getTuiZhu() > 0) {
+				WidgetFun::setVisible(playerNode, "Img_TuiZhu", true);
+				WidgetFun::setVisible(playerNode, "Txt_TuiZhu", true);
+				WidgetFun::setText(WidgetFun::getChildWidget(playerNode, "Txt_TuiZhu"), utility::a_u8(utility::toString("ÍÆ ", player.getTuiZhu())));
+			}
         }
 
 		player.setHeadNode(playerNode);
@@ -114,19 +123,22 @@ void NNPlayerPanel::hidePlayer(int playerVisioChairID)
 
 void NNPlayerPanel::playerTalk(NNPlayer& player,CMD_GR_C_TableTalk* pNetInfo)//ÏÔÊ¾¶Ô»°
 {
-	if (!player.isValid())return;
+	if (!player.isValid())
+		return;
 	word visioChairID = player.getVisioChairID();
 	auto playerNode = WidgetFun::getChildWidget(this, utility::toString("NNPlayer_", visioChairID));
 	std::string kStrNet = pNetInfo->strString;
 	if (pNetInfo->cbType == CMD_GR_C_TableTalk::TYPE_FILE)
 	{
-		if (!WidgetFun::getChildWidget(playerNode, "NNPlayer_TalkAction")) return;
+		if (!WidgetFun::getChildWidget(playerNode, "NNPlayer_TalkAction"))
+			return;
 		WidgetFun::runWidgetAction(playerNode, "NNPlayer_TalkAction", "Start");
 		WidgetFun::setVisible(playerNode, true);
 	}
 	if (pNetInfo->cbType == CMD_GR_C_TableTalk::TYPE_WORD)
 	{
-		if (!WidgetFun::getChildWidget(playerNode,"NNPlayer_TalkTxtNode"))return;
+		if (!WidgetFun::getChildWidget(playerNode,"NNPlayer_TalkTxtNode"))
+			return;
 		WidgetFun::runPaoMaDeng(playerNode,"NNPlayer_TalkTxt","NNPlayer_LayoutNode",kStrNet,NULL);
 		cocos2d::Node* pTalkNode = WidgetFun::getChildWidget(playerNode,"NNPlayer_TalkTxtNode");
 		pTalkNode->setVisible(true);
@@ -135,7 +147,8 @@ void NNPlayerPanel::playerTalk(NNPlayer& player,CMD_GR_C_TableTalk* pNetInfo)//Ï
 	}
 	if (pNetInfo->cbType == CMD_GR_C_TableTalk::TYPE_BIAOQING)
 	{
-		if (!WidgetFun::getChildWidget(playerNode,"NNPlayer_BiaoQingNode"))return;
+		if (!WidgetFun::getChildWidget(playerNode,"NNPlayer_BiaoQingNode"))
+			return;
 		WidgetFun::setImagic(playerNode,"NNPlayer_BiaoQingPic",kStrNet);
 		cocos2d::Node* pTalkNode = WidgetFun::getChildWidget(playerNode,"NNPlayer_BiaoQingNode");
 		pTalkNode->setVisible(true);
@@ -144,7 +157,8 @@ void NNPlayerPanel::playerTalk(NNPlayer& player,CMD_GR_C_TableTalk* pNetInfo)//Ï
 	}
 	if (pNetInfo->cbType == CMD_GR_C_TableTalk::TYPE_DEFINE)
 	{
-		if (!WidgetFun::getChildWidget(playerNode, "NNPlayer_TalkAction")) return;
+		if (!WidgetFun::getChildWidget(playerNode, "NNPlayer_TalkAction"))
+			return;
 		WidgetFun::runWidgetAction(playerNode, "NNPlayer_TalkAction", "Start");
 		std::vector<std::string> kStr = utility::split(kStrNet,":");
 		ASSERT(kStr.size()==2);
@@ -154,7 +168,5 @@ void NNPlayerPanel::playerTalk(NNPlayer& player,CMD_GR_C_TableTalk* pNetInfo)//Ï
 		pTalkNode->setVisible(true);
 		pTalkNode->stopAllActions();
 		pTalkNode->runAction(script::CCVisibleAction::create(6.0f,false));
-
 	}
 }
-

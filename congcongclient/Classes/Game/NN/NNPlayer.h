@@ -40,6 +40,8 @@ public:
 	void setPlayerStatus(TTLNN::NNPlayerStatus status);
 	TTLNN::NNPlayerStatus getPlayerStatus();
 
+	void setTuiZhu(byte bTuiZhu);
+	int getTuiZhu();
 	void setBanker(bool flag);
 	//游戏局数
 	void setPlayCount(word wCount);
@@ -70,4 +72,5 @@ private:
 	NNPlayerSingleCalculate m_Calculate;
 
 	word m_wPlayCount;		//游戏局数
+	word _tuizhu;
 };
