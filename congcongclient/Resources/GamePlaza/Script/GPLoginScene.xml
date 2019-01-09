@@ -4,9 +4,8 @@
 		<Property Key="Pos" Value="640 360"/>
 		<Widget SkinTempName="BtnFullEmpty">
 		</Widget>
-		<Widget Name="Button_BG" SkinTempName="ButtonEmpty">
-			<Property Key="NomalTexture" Value="GamePlaza/LoginScene/bj.jpg"/>
-			<Property Key="PressTexture" Value="GamePlaza/LoginScene/bj.jpg"/>
+		<Widget Name="Button_BG" SkinTempName="ImageEmpty">
+			<Property Key="ImagicTexture" Value="GamePlaza/LoginScene/bj.jpg"/>
 		</Widget>
 
 		<Widget Name="Button_WeiXinLogon" SkinTempName="ButtonEmpty">
@@ -21,7 +20,7 @@
 			<Property Key="UnSelectTexture" Value="GamePlaza/LoginScene/agree_kuang.png"/>
 			<Property Key="SelectTexture" Value="GamePlaza/LoginScene/agree.png"/>
 			<UserInfo Key="Idex" Value="1"/>
-			<Property Key="Pos" Value="-245 -250"/>	
+			<Property Key="Pos" Value="-245 -250"/>
 		</Widget>
  		<Widget Name="Button_UserXieYi" SkinTempName="ButtonEmpty">
 			<Property Key="NomalTexture" Value="GamePlaza/LoginScene/wenzi.png"/>

@@ -396,6 +396,9 @@
     <ClInclude Include="..\Classes\GDEFINE.h">
       <Filter>common</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Plaza\LoginScene\UserProtocol.h">
+      <Filter>Plaza\LoginScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\Game\NN\NNCalculate.cpp">
@@ -802,6 +805,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Game\NN\NNGameRules.cpp">
       <Filter>Game\NN</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Plaza\LoginScene\UserProtocol.cpp">
+      <Filter>Plaza\LoginScene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

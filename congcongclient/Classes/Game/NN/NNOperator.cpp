@@ -493,7 +493,6 @@ void NNOperator::hideSplitCalculate()
 
 void NNOperator::updateSplitCalculate()
 {
-
     if(NNGameScene::Instance().getGameStatus() == TTLNN::NNGameStatus_SplitCard) {
         showSplitCalculate();
     } else {

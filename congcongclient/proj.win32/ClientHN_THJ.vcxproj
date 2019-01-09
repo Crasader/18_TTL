@@ -273,6 +273,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Plaza\HomeScene\GPHomeUserInfoPanel.h" />
     <ClInclude Include="..\Classes\Plaza\LoadingScene\GPLoadingScene.h" />
     <ClInclude Include="..\Classes\Plaza\LoginScene\GPLoginScene.h" />
+    <ClInclude Include="..\Classes\Plaza\LoginScene\UserProtocol.h" />
     <ClInclude Include="..\Classes\SCRIPT.h" />
     <ClInclude Include="..\Classes\UTILITY.h" />
     <ClInclude Include="..\Classes\WIDGET.h" />
@@ -413,6 +414,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Plaza\LoadingScene\GPLoadingScene.cpp" />
     <ClCompile Include="..\Classes\Plaza\LoginScene\GPLoginScene.cpp" />
     <ClCompile Include="..\Classes\Plaza\LoginScene\GPLoginScene_LoginSink.cpp" />
+    <ClCompile Include="..\Classes\Plaza\LoginScene\UserProtocol.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

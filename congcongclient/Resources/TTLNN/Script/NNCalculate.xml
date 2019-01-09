@@ -8,7 +8,6 @@
 <Widget Name="" SkinTempName="ImagicEmpty">
 	<Property Key="ImagicTexture" Value="TTLNN/Calculate/title.png"/>
 	<Property Key="Pos" Value="640 646"/>
-	<Property Key="Scale" Value="0.9"/>
 </Widget>
 
 <Widget Name="NNCalculate_ButtonShare" SkinTempName="ButtonEmpty">

@@ -1,6 +1,7 @@
 #include "GPLoginScene.h"
 #include "common.h"
 #include "constant.h"
+#include "UserProtocol.h"
 
 #include USERINFO
  
@@ -9,7 +10,7 @@ FV_SINGLETON_STORAGE(GPLoginScene);
 GPLoginScene::GPLoginScene()
     : m_kLoginMission(ScriptData<std::string>("address").Value().c_str(), ScriptData<int>("Port").Value())
     , m_kPopularizeMission(ScriptData<std::string>("address").Value().c_str(), ScriptData<int>("Port").Value())
-	, isChecked (true)
+	, bXieYiChecked (true)
 {
     MissionWeiXin::Instance().setMissionSink(this);
     m_kLoginMission.setMissionSink(this);
@@ -34,14 +35,22 @@ bool GPLoginScene::init()
     WidgetManager::addButtonCB("Button_WeiXinLogon", this, button_selector(GPLoginScene::Button_WeiXinLogon));
     WidgetManager::addButtonCB("Button_UserXieYiCheak", this, button_selector(GPLoginScene::Button_UserXieYiCheak));
     WidgetManager::addButtonCB("Button_UserXieYi", this, button_selector(GPLoginScene::Button_UserXieYi));
-	WidgetManager::addButtonCB("Button_BG", this, button_selector(GPLoginScene::Button_BG));
 	
-    WidgetFun::setEnable(this, "Button_WeiXinLogon", isChecked);
-	//if (bPlayLoginAni)
-	{
-		WidgetFun::setChecked(this, "Button_UserXieYiCheak", isChecked);
-	}
+    WidgetFun::setEnable(this, "Button_WeiXinLogon", bXieYiChecked);
+	WidgetFun::setChecked(this, "Button_UserXieYiCheak", bXieYiChecked);
+
+	this->addChild(UserProtocol::pInstance());
+	UserProtocol::pInstance()->hide();
+
     return true;
+}
+
+void GPLoginScene::setEnableButtons(bool flag)
+{
+	auto panel = WidgetFun::getChildWidget(this, "LogonScencePlane");
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(panel, "Button_WeiXinLogon"))->setTouchEnabled(flag);
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(panel, "Button_UserXieYi"))->setTouchEnabled(flag);
+	dynamic_cast<cocos2d::ui::CheckBox*>(WidgetFun::getChildWidget(panel, "Button_UserXieYiCheak"))->setTouchEnabled(flag);
 }
 
 void GPLoginScene::EnterScene()
@@ -176,7 +185,7 @@ std::string GPLoginScene::GetWxLoginWin32()
 
 	//account = "WeiXinoznOM0oURRnxOpbFnZdxsyxRU";
 	//std::string pass = "WeiXinPassword";
-	std::string pass = "111111";
+	std::string pass = "222222";
 
 	std::string tocken = utility::toString(account, ":",  pass);
 	return tocken;
@@ -196,17 +205,12 @@ void GPLoginScene::Button_WeiXinLogon(cocos2d::Ref*, WidgetUserInfo*)
 
 void GPLoginScene::Button_UserXieYiCheak(cocos2d::Ref*, WidgetUserInfo*)
 {
-    isChecked = !isChecked;
-    WidgetFun::setEnable(this, "Button_WeiXinLogon", isChecked);
+    bXieYiChecked = !bXieYiChecked;
+    WidgetFun::setEnable(this, "Button_WeiXinLogon", bXieYiChecked);
 }
 
 void GPLoginScene::Button_UserXieYi(cocos2d::Ref*, WidgetUserInfo*)
 {
-    WidgetFun::setVisible(this, "XieYiNode", true);
+	setEnableButtons(false);
+	UserProtocol::Instance().show();
 }
-
-void GPLoginScene::Button_BG(cocos2d::Ref *, WidgetUserInfo *)
-{
-	WidgetFun::setVisible(this, "XieYiNode", false);
-}
-

@@ -37,12 +37,12 @@ public:
 	void Button_WeiXinLogon(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_UserXieYiCheak(cocos2d::Ref*, WidgetUserInfo*);
 	void Button_UserXieYi(cocos2d::Ref*, WidgetUserInfo*);
-	void Button_BG(cocos2d::Ref*, WidgetUserInfo*);
+	void setEnableButtons(bool flag);
 private:
 	CGPLoginMission m_kLoginMission;
 	std::string m_kPssword;
 	WxUserInfo m_kWeiXinUserInfo;
 	CGPopularizeMission m_kPopularizeMission;
-	bool isChecked;
+	bool bXieYiChecked;
 };
 #endif // !__GPLOGIN_SCENE_H_
