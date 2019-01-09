@@ -58,7 +58,7 @@ void NNCalculate::hide()
 
 void NNCalculate::update(CMD_GF_Private_End_Info* pInfo)
 {
-	auto& room_info = NNRoomInfo::Instance().getRoomInfo();
+	auto room_info = NNRoomInfo::Instance().getRoomInfo();
 
 	WidgetFun::setText(this, "Txt_RoomNo", room_info.dwRoomNum);
 	WidgetFun::setText(this, "Txt_BaseScore", room_info.dwBaseScore);
