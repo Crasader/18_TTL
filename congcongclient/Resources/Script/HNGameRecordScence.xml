@@ -61,8 +61,6 @@
 				<Widget Name="" SkinTempName="GameReocrdListItem">
 				</Widget>
 			</Widget>
-			
-			
 		</Widget>
 	
 		<Widget Name="RecordTotalPlane" SkinTempName="Empty">

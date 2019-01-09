@@ -8,7 +8,7 @@
 	<WidgetNode Name="Empty">
 	</WidgetNode>
 	
-	<Widget9Sprite Name="public_9sprite" BackTexture="public/9Scale.png" Size="100 100" InsetsRect="0 0 1 1">
+	<Widget9Sprite Name="public_9sprite" BackTexture="public/9Scale1.png" Size="100 100" InsetsRect="0 0 1 1">
 	</Widget9Sprite>
 	
 	<WidgetCheckBox Name="public_CheckBox" UnSelectTexture="UI/Empty.png" SelectTexture="UI/Empty.png">	

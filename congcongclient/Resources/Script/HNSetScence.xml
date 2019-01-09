@@ -36,7 +36,7 @@
 					<Property Key="Pos" Value="100 170"/>
 				</Widget>
 				<Widget Name="HeadImagic" SkinTempName="ImagicEmpty">
-					<Property Key="ImagicTexture" Value="Head/Head0.png"/>
+					<Property Key="ImagicTexture" Value="public/head_img_male.png"/>
 					<Property Key="Pos" Value="100 170"/>
 					<Property Key="Scale" Value="0.9"/>
 				</Widget> -->

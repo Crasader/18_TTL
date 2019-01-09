@@ -285,7 +285,7 @@ void SRLFGameScence::showJieSuanInfo(const SRLF::AllEndInfo& kEndInfo)
 		WidgetFun::setText(pRootNode, utility::toString("GoldTxt", i), "");
 		WidgetFun::setVisible(pRootNode, utility::toString("head_", i), false);
 		auto pHead = WidgetFun::getChildWidget(pRootNode,utility::toString("head_", i));
-		WidgetFun::setImagic(pHead,"HeadImagic","Head/Head0.png");
+		//WidgetFun::setImagic(pHead,"HeadImagic","Head/Head0.png");
 		cocos2d::Node* p_node = WidgetFun::getChildWidget(pRootNode, utility::toString("JiesuanCard", i));
 		p_node->removeAllChildren();
 	}

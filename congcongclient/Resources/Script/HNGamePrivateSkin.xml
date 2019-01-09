@@ -1,6 +1,6 @@
 ﻿ <root>
 	<WidgetNode Name="PrivateEndPlayerInfo" >
-		<WidgetImagic Name="Head" TextureInfo="Head/Head0.png">
+		<WidgetImagic Name="Head" TextureInfo="public/head_img_male.png">
 			<Property Key="Pos" Value="-8 210"/>
 			<Property Key="Scale" Value="0.7"/>
 		</WidgetImagic>
@@ -81,7 +81,7 @@
 	</WidgetNode>
 	
 		<WidgetNode Name="PrivateEndPlayerInfo33" >
-		<WidgetImagic Name="Head" TextureInfo="Head/Head0.png">
+		<WidgetImagic Name="Head" TextureInfo="public/head_img_male.png">
 			<Property Key="Pos" Value="-8 210"/>
 			<Property Key="Scale" Value="0.7"/>
 		</WidgetImagic>
@@ -162,7 +162,7 @@
 	</WidgetNode>
 	
 	<WidgetNode Name="PrivateEndPlayerInfo_2" >
-		<WidgetImagic Name="Head" TextureInfo="Head/Head0.png">
+		<WidgetImagic Name="Head" TextureInfo="public/head_img_male.png">
 			<Property Key="Pos" Value="-80 210"/>
 			<Property Key="Scale" Value="0.7"/>
 		</WidgetImagic>
