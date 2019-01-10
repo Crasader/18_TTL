@@ -1,7 +1,7 @@
 ﻿ <root>
 	<LoadSkin Skin="TTLNN/Script/NNGameTalkSkin.xml"/>
 	<Widget Name="NNGameTalkPlane" SkinTempName="Empty">
-		<Property Key="Pos" Value="640 400"/>
+		<Property Key="Pos" Value="1053.5 360"/>
 		<Property Key="Visible" Value="false"/>
 		<Widget  SkinTempName="BtnFullEmpty">
 			<Action Key="Hide" Value="NNGameTalkPlane"/>
@@ -11,97 +11,83 @@
 			<Property Key="NomalTexture" Value="Talk/chat_bg.png"/>
 			<Property Key="PressTexture" Value="AutoPress"/>
 			<Property Key="Scale9" Value="true"/>
-			<Property Key="Size" Value="630 520"/>
+			<Property Key="Size" Value="453 720"/>
 		</Widget>
 		<Widget  SkinTempName="public_9sprite">
 			<Property Key="ImagicTexture" Value="Talk/chat_bg.png"/>
-			<Property Key="Size" Value="630 520"/>
-			<Property Key="Pos" Value="0 -0"/>
+			<Property Key="Size" Value="453 720"/>
+			<Property Key="Pos" Value="0 0"/>
 		</Widget>
 		<Widget Name="Button_TalkType_List" SkinTempName="ButtonEmpty">
-			<Property Key="NomalTexture" Value="Talk/chat_btn_select.png"/>
-			<Property Key="PressTexture" Value="Talk/chat_btn_normal.png"/>
-			<Property Key="DisableTexture" Value="Talk/chat_btn_normal.png"/>
-			<Property Key="Pos" Value="-150 220"/>
+			<Property Key="NomalTexture" Value="Talk/liaotian_yuyin2.png"/>
+			<Property Key="PressTexture" Value="Talk/liaotian_yuyin1.png"/>
+			<Property Key="DisableTexture" Value="Talk/liaotian_yuyin1.png"/>
+			<Property Key="Pos" Value="-62.5 300"/>
 			<Property Key="Enable" Value="false"/>
 			<Action Key="Able" Value="Button_TalkType_BiaoQing"/>
 			<Action Key="Disable" Value="Button_TalkType_List"/>
-			<!-- <Action Key="Show" Value="TalkTypePlane0"/> -->
-			<!-- <Action Key="Hide" Value="TalkTypePlane1"/> -->
 		</Widget>
-		
 		<Widget Name="Button_TalkType_BiaoQing" SkinTempName="ButtonEmpty">
-			<Property Key="NomalTexture" Value="Talk/chat_btn_select.png"/>
-			<Property Key="PressTexture" Value="Talk/chat_btn_normal.png"/>
-			<Property Key="DisableTexture" Value="Talk/chat_btn_normal.png"/>
-			<Property Key="Pos" Value="150 220"/>
+			<Property Key="NomalTexture" Value="Talk/liaotian_biaoq2.png"/>
+			<Property Key="PressTexture" Value="Talk/liaotian_biaoq1.png"/>
+			<Property Key="DisableTexture" Value="Talk/liaotian_biaoq1.png"/>
+			<Property Key="Pos" Value="102.5 300"/>
 			<Action Key="Able" Value="Button_TalkType_List"/>
 			<Action Key="Disable" Value="Button_TalkType_BiaoQing"/>
-			<!-- <Action Key="Show" Value="TalkTypePlane1"/> -->
-			<!-- <Action Key="Hide" Value="TalkTypePlane0"/> -->
-		</Widget>
-		<Widget Name="" SkinTempName="TxtEmpty">
-			<Property Key="FontSize" Value="40"/>
-			<Property Key="ShowTxt" Value="常用语"/>
-			<Property Key="Pos" Value="-150 220"/>
-			<Property Key="Color" Value="200 200 100"/>
-		</Widget>
-		<Widget Name="" SkinTempName="TxtEmpty">
-			<Property Key="FontSize" Value="40"/>
-			<Property Key="ShowTxt" Value="表情"/>
-			<Property Key="Pos" Value="150 220"/>
-			<Property Key="Color" Value="200 200 100"/>
 		</Widget>
 		<Widget Name="TalkTypePlane0" SkinTempName="Empty">
 			<Widget Name="GameTalkList" SkinTempName="List">
-				<!-- 			
-				<Property Key="Size" Value="600 350"/>
-				<Property Key="Pos" Value="-300 -160"/>
-				 -->
-				<Property Key="Size" Value="600 430"/>
-				<Property Key="Pos" Value="-300 -240"/>
+				<Property Key="Size" Value="453 600"/>
+				<Property Key="Pos" Value="0 -60"/>
 				<Property Key="HideBack" Value="true"/>
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
 			</Widget>
 			<Widget Name="" SkinTempName="Empty">
-				<Property Key="Pos" Value="0 -210"/>
-				<!--
-				<Widget Name="" SkinTempName="ImagicEmpty">
-					<Property Key="ImagicTexture" Value="Talk/chat_input_bg.png"/>
-					<Property Key="Pos" Value="-80 0"/>
-				</Widget>
-				<Widget  Name="GameTalkEdit" SkinTempName="HNMJGameTalkEdit">
-					<Property Key="Pos" Value="-80 0"/>
-				</Widget>
-				<Widget Name="Button_Send_TalkStr" SkinTempName="ButtonEmpty">
-					<Property Key="NomalTexture" Value="Talk/chat_btn_send.png"/>
-					<Property Key="PressTexture" Value="AutoPress"/>
-					<Property Key="Pos" Value="220 0"/>
-					<Property Key="Scale" Value="0.9"/>
-				</Widget>
-				-->
+				<Property Key="Pos" Value="0 0"/>
 			</Widget>
 		</Widget>
 		<Widget Name="TalkTypePlane1" SkinTempName="Empty">
 			<Property Key="Visible" Value="false"/>
 			<Widget Name="BiaoQing0" SkinTempName="HNMJTalkBiaoQing">
-				<Property Key="Pos" Value="0 150"/>
+				<Property Key="Pos" Value="0 225"/>
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
 			</Widget>
 			<Widget Name="BiaoQing1" SkinTempName="HNMJTalkBiaoQing">
-				<Property Key="Pos" Value="0 80"/>
+				<Property Key="Pos" Value="0 165"/>
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
 			</Widget>
 			<Widget Name="BiaoQing2" SkinTempName="HNMJTalkBiaoQing">
-				<Property Key="Pos" Value="0 10"/>
+				<Property Key="Pos" Value="0 105"/>
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
 			</Widget>
 			<Widget Name="BiaoQing3" SkinTempName="HNMJTalkBiaoQing">
-				<Property Key="Pos" Value="0 -60"/>
+				<Property Key="Pos" Value="0 45"/>
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
 			</Widget>
 			<Widget Name="BiaoQing4" SkinTempName="HNMJTalkBiaoQing">
-				<Property Key="Pos" Value="0 -130"/>
+				<Property Key="Pos" Value="0 -15"/>
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
 			</Widget>
 			<Widget Name="BiaoQing5" SkinTempName="HNMJTalkBiaoQing">
-				<Property Key="Pos" Value="0 -200"/>
+				<Property Key="Pos" Value="0 -75"/>
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
 			</Widget>
-			
+			<Widget Name="BiaoQing6" SkinTempName="HNMJTalkBiaoQing">
+				<Property Key="Pos" Value="0 -135"/>
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
+			</Widget>
+			<Widget Name="BiaoQing7" SkinTempName="HNMJTalkBiaoQing">
+				<Property Key="Pos" Value="0 -195"/>
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
+			</Widget>
+			<Widget Name="BiaoQing8" SkinTempName="HNMJTalkBiaoQing">
+				<Property Key="Pos" Value="0 -255"/>
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
+			</Widget>
+			<Widget Name="BiaoQing9" SkinTempName="HNMJTalkBiaoQing">
+				<Property Key="Pos" Value="0 -315"/>
+				<Property Key="AnchorPos" Value="0.5 0.5"/>
+			</Widget>
 		</Widget>
 	</Widget>
  </root>

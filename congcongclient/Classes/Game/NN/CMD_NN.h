@@ -25,7 +25,7 @@ namespace TTLNN
 
 #define TIME_FOR_SNATCH_BANKER 6//20
 #define TIME_FOR_USER_CALL 6//20
-#define TIME_FOR_USER_SPLIT_CARD 6//20
+#define TIME_FOR_USER_SPLIT_CARD 8//20
 
 //游戏配置
 #define MAX_HAND_CARD 5 //最大手牌数

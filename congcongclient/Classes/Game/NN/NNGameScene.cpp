@@ -70,9 +70,12 @@ void NNGameScene::initTalkSence()
 	if (WidgetFun::getChildWidget(this, "GameTalkList")) {
 		widget::ListViewEx* pTalkList = WidgetFun::getListViewWidget(this, "GameTalkList");
 		pTalkList->removeAllChildren();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 99; i++) {
+			std::string kTxt = script::getStr(utility::toString("GameTalkTxt", i), false);
+			if (kTxt == "") {
+				continue;
+			}
 			cocos2d::Node* pItem = WidgetManager::Instance().createWidget("NNHNMJGameTalkListItem", pTalkList);
-			std::string kTxt = script::getStr(utility::toString("GameTalkTxt", i));
 			WidgetFun::setText(pItem, "TalkListItemTxt", kTxt);
 			WidgetFun::setWidgetUserInfo(pItem, "NNButton_TalkDefine", "Idex", utility::toString(i));
 			WidgetFun::setWidgetUserInfo(pItem, "NNButton_TalkDefine", "Txt", utility::toString(kTxt));
@@ -80,12 +83,25 @@ void NNGameScene::initTalkSence()
 		pTalkList->forceDoLayout();
 	}
 
-	for (int m = 0; m < 6; m++) {
-		cocos2d::Node* pNode = WidgetFun::getChildWidget(this, utility::toString("BiaoQing", m));
-		for (int n = 0; n < 8; n++) {
-			std::string kFileName = utility::toString("Talk/EE", m * 8 + n, ".png");
-			WidgetFun::setButtonImagic(pNode, utility::toString("HNMJButton_BiaoQing", n), kFileName, true);
-			WidgetFun::setWidgetUserInfo(pNode, utility::toString("HNMJButton_BiaoQing", n), "File", kFileName);
+	int idx = 0;
+	for (int m = 0; m < 99; m++) {
+		auto BiaoQingRow = WidgetFun::getChildWidget(this, utility::toString("BiaoQing", m));
+		if (!BiaoQingRow) {
+			continue;
+		}
+		for (int n = 0; n < 99; n++) {
+			auto BiaoQing = WidgetFun::getChildWidget(BiaoQingRow, utility::toString("HNMJButton_BiaoQing", n));
+			if (!BiaoQing) {
+				continue;
+			}
+			std::string kFileName = utility::toString("Talk/EE", idx, ".png");
+			if (CCFileUtils::sharedFileUtils()->isFileExist(kFileName)) {
+				WidgetFun::setButtonImagic(BiaoQing, utility::toString("HNMJButton_BiaoQing", n), kFileName, true);
+				WidgetFun::setWidgetUserInfo(BiaoQing, utility::toString("HNMJButton_BiaoQing", n), "File", kFileName);
+				idx++;
+			} else {
+				BiaoQing->setVisible(false);
+			}
 		}
 	}
 }
@@ -498,9 +514,6 @@ void NNGameScene::setButtonsEnable(bool flag)
 	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "HNMJButton_BiaoQing2"))->setTouchEnabled(flag);
 	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "HNMJButton_BiaoQing3"))->setTouchEnabled(flag);
 	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "HNMJButton_BiaoQing4"))->setTouchEnabled(flag);
-	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "HNMJButton_BiaoQing5"))->setTouchEnabled(flag);
-	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "HNMJButton_BiaoQing6"))->setTouchEnabled(flag);
-	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "HNMJButton_BiaoQing7"))->setTouchEnabled(flag);
 	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "NNGameScene_ButtonShare"))->setTouchEnabled(flag);
 }
 

@@ -1,14 +1,15 @@
 ﻿ <root>
 	<WidgetNodeUI Name="NNHNMJGameTalkListItem">
-		<Property Key="Size" Value="500 65"/>
+		<Property Key="Size" Value="453 80"/>
 		<WidgetButton Name="NNButton_TalkDefine" NomalTexture="Talk/chat_fix_msg_bar.png" PressTexture="AutoPress">
-			<Property Key="Pos" Value="300 30"/>
-		</WidgetButton>
-		<WidgetTxt Name="TalkListItemTxt" ShowTxt="1000" FontName="" FontSize="30">
-			<Property Key="ShowTxt" Value="这是什么手咯，简直是.."/>
-			<Property Key="Pos" Value="30 30"/>
-			<Property Key="Color" Value="70 20 20"/>
+			<Property Key="Pos" Value="35 30"/>
 			<Property Key="AnchorPos" Value="0 0.5"/>
+		</WidgetButton>
+		<WidgetTxt Name="TalkListItemTxt" ShowTxt="1000" FontName="Font/true_type.ttf" FontSize="20">
+			<Property Key="ShowTxt" Value="这是什么手咯，简直是.."/>
+			<Property Key="Pos" Value="244 30"/>
+			<Property Key="Color" Value="247 199 115"/>
+			<Property Key="AnchorPos" Value="0.5 0.5"/>
 		</WidgetTxt>
 	</WidgetNodeUI>
 	<WidgetEdit Name="HNMJGameTalkEdit" BackTexture="UI/Empty.png" Size="400 60" ShowTxt="输入内容">
@@ -16,28 +17,19 @@
 	</WidgetEdit>
 	<WidgetNode Name="HNMJTalkBiaoQing">
 		<WidgetButton Name="HNMJButton_BiaoQing0" NomalTexture="Talk/EE0.png" PressTexture="AutoPress">
-			<Property Key="Pos" Value="-245 0"/>
+			<Property Key="Pos" Value="-120 0"/>
 		</WidgetButton>
 		<WidgetButton Name="HNMJButton_BiaoQing1" NomalTexture="Talk/EE0.png" PressTexture="AutoPress">
-			<Property Key="Pos" Value="-175 0"/>
+			<Property Key="Pos" Value="-50 0"/>
 		</WidgetButton>
 		<WidgetButton Name="HNMJButton_BiaoQing2" NomalTexture="Talk/EE0.png" PressTexture="AutoPress">
-			<Property Key="Pos" Value="-105 0"/>
+			<Property Key="Pos" Value="20 0"/>
 		</WidgetButton>
 		<WidgetButton Name="HNMJButton_BiaoQing3" NomalTexture="Talk/EE0.png" PressTexture="AutoPress">
-			<Property Key="Pos" Value="-35 0"/>
+			<Property Key="Pos" Value="90 0"/>
 		</WidgetButton>
 		<WidgetButton Name="HNMJButton_BiaoQing4" NomalTexture="Talk/EE0.png" PressTexture="AutoPress">
-			<Property Key="Pos" Value="35 0"/>
-		</WidgetButton>
-		<WidgetButton Name="HNMJButton_BiaoQing5" NomalTexture="Talk/EE0.png" PressTexture="AutoPress">
-			<Property Key="Pos" Value="105 0"/>
-		</WidgetButton>
-		<WidgetButton Name="HNMJButton_BiaoQing6" NomalTexture="Talk/EE0.png" PressTexture="AutoPress">
-			<Property Key="Pos" Value="175 0"/>
-		</WidgetButton>
-		<WidgetButton Name="HNMJButton_BiaoQing7" NomalTexture="Talk/EE0.png" PressTexture="AutoPress">
-			<Property Key="Pos" Value="245 0"/>
+			<Property Key="Pos" Value="160 0"/>
 		</WidgetButton>
 	</WidgetNode>
  </root>

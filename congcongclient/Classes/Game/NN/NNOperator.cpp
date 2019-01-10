@@ -291,7 +291,7 @@ void NNOperator::showReady()
 void NNOperator::hideReady()
 {
     WidgetFun::setVisible(this, "NNOperator_SitDown", false);
-	hideTimes();
+	//hideTimes();
 }
 
 void NNOperator::showContinue()
@@ -306,7 +306,7 @@ void NNOperator::showContinue()
 void NNOperator::hideContinue()
 {
 	WidgetFun::setVisible(this, "NNOperator_ButtonContinue", false);
-	hideTimes();
+	//hideTimes();
 }
 
 void NNOperator::showWeiXin()
@@ -482,7 +482,7 @@ void NNOperator::hideSplitButton()
 
 void NNOperator::showSplitCalculate()
 {
-    show();
+    //show();
    //WidgetFun::setVisible(this, "NNOperator_CalculateNode", false);//不显示拆牌界面
 }
 

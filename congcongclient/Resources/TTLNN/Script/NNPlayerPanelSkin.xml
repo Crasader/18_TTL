@@ -70,7 +70,7 @@
 		</WidgetNode>
 
 		<WidgetNode Name="NNPlayer_TalkAction">
-			<Property Key="Pos" Value="150 87"/>
+			<Property Key="Pos" Value="135 87"/>
 			<UserInfo Key="Imagic" Value="TTLNN/Player/Talk"/>
 			<Visible Name="Start" Visible="true" SaveAction="true">
 				<CallAction OtherNodeName="NNPlayer_TalkAnimation" OtherActionName="Start">
@@ -89,39 +89,38 @@
 			<Property Key="Pos" Value="200 145"/>
 			<UserInfo Key="Pos_2" Value="-200 145"/>
 			<Property Key="Visible" Value="false"/>
-			<Widget9Sprite Name="public_9sprite" BackTexture="Talk/msg_bubble_btm.png" Size="300 60" InsetsRect="35 46 5 5">	
-				<!-- <Property Key="InsetsRect" Value="35 46 5 5"/> -->
+			<Widget9Sprite Name="public_9sprite" BackTexture="Talk/msg_bubble_btm.png" Size="233 40" InsetsRect="0 0 233 40">
 			</Widget9Sprite>
 			<WidgetLayout Name="NNPlayer_LayoutNode">
 				<Property Key="ClippingEnabled" Value="true"/>
-				<Property Key="Size" Value="280 32"/>
+				<Property Key="Size" Value="226 40"/>
 				<Property Key="Pos" Value="0 10"/>
 				<Property Key="HideBack"/>
 				<Property Key="AnchorPos" Value="0.5 0.5"/>
 				<WidgetNode Name="">
-					<Property Key="Pos" Value="5 20"/>
-					<WidgetTxt Name="NNPlayer_TalkTxt" ShowTxt="1000" FontName="Font/true_type.ttf" FontSize="28">
+					<Property Key="Pos" Value="7 14"/>
+					<WidgetTxt Name="NNPlayer_TalkTxt" ShowTxt="1000" FontName="Font/true_type.ttf" FontSize="16">
 						<Property Key="ShowTxt" Value="TalkTxt"/>
 						<Property Key="AnchorPos" Value="0 0.5"/>
-						<Property Key="Color" Value="137 53 25"/>
+						<Property Key="Color" Value="251 222 104"/>
 					</WidgetTxt>
 				</WidgetNode>
 			</WidgetLayout>
 		</WidgetNode>
-		
+
 		<WidgetNode Name="NNPlayer_BiaoQingNode">
-			<Property Key="Pos" Value="280 80"/>
+			<Property Key="Pos" Value="240 80"/>
 			<UserInfo Key="Pos_2" Value="-80 80"/>
 			<Property Key="Visible" Value="false"/>
 			<WidgetImagic Name="NNPlayer_BiaoQingPic" TextureInfo="Talk/EE5.png">
 			</WidgetImagic>
 		</WidgetNode>
 	</WidgetNode>
-	
+
 	<WidgetNode Name="NNPlayer_RightSkin">
 		<Property Key="Size" Value="300 150"/>
 		<Property Key="AnchorPos" Value="0 0"/>
-		
+
 		<!-- 半透明背景 -->
 		<WidgetImagic Name="" TextureInfo="TTLNN/Player/NNPlayer_BG_H.png">
 			<Property Key="Pos" Value="150 75"/>
@@ -190,47 +189,46 @@
 		</WidgetNode>
 
 		<WidgetNode Name="NNPlayer_TalkAction">
-			<Property Key="Pos" Value="130 75"/>
-			<Property Key="Visible" Value="false"/>
+			<Property Key="Pos" Value="135 75"/>
 			<UserInfo Key="Imagic" Value="TTLNN/Player/Talk"/>
-			<Visible Name="XueHuaAnimationStart" Visible="true" SaveAction="true">
+			<Visible Name="Start" Visible="true" SaveAction="true">
 				<CallAction OtherNodeName="NNPlayer_TalkAnimation" OtherActionName="Start">
 				</CallAction>
 			</Visible>
 			<WidgetAnimation Name="NNPlayer_TalkAnimation">
-				<Property Key="Time" Value="0.08"/>
-				<Property Key="Loop" Value="true"/>
+				<Property Key="Time" Value="0.3"/>
+				<Property Key="Loop" Value="false"/>
 				<Property Key="AnchorPos" Value="0 0.5"/>
 				<RunAnim Name="Start" AnimName="TTLNN/Player/Talk/:1:8:.png" SaveAction="true">
 				</RunAnim>
 			</WidgetAnimation>
 		</WidgetNode>
-	
+
 		<WidgetNode Name="NNPlayer_TalkTxtNode">
 			<Property Key="Pos" Value="200 145"/>
 			<UserInfo Key="Pos_2" Value="-200 145"/>
 			<Property Key="Visible" Value="false"/>
-			<Widget9Sprite Name="public_9sprite" BackTexture="Talk/msg_bubble_btm.png" Size="300 60" InsetsRect="35 46 5 5">	
+			<Widget9Sprite Name="public_9sprite" BackTexture="Talk/msg_bubble_btm.png" Size="233 40" InsetsRect="0 0 233 40">
 			</Widget9Sprite>
 			<WidgetLayout Name="NNPlayer_LayoutNode">
 				<Property Key="ClippingEnabled" Value="true"/>
-				<Property Key="Size" Value="280 50"/>
+				<Property Key="Size" Value="226 40"/>
 				<Property Key="Pos" Value="0 10"/>
 				<Property Key="HideBack"/>
 				<Property Key="AnchorPos" Value="0.5 0.5"/>
 				<WidgetNode Name="">
-					<Property Key="Pos" Value="5 20"/>
-					<WidgetTxt Name="NNPlayer_TalkTxt" ShowTxt="1000" FontName="" FontSize="35">
+					<Property Key="Pos" Value="7 14"/>
+					<WidgetTxt Name="NNPlayer_TalkTxt" ShowTxt="1000" FontName="Font/true_type.ttf" FontSize="16">
 						<Property Key="ShowTxt" Value="TalkTxt"/>
 						<Property Key="AnchorPos" Value="0 0.5"/>
-						<Property Key="Color" Value="137 53 25"/>
+						<Property Key="Color" Value="251 222 104"/>
 					</WidgetTxt>
 				</WidgetNode>
 			</WidgetLayout>
 		</WidgetNode>
-		
+
 		<WidgetNode Name="NNPlayer_BiaoQingNode">
-			<Property Key="Pos" Value="280 80"/>
+			<Property Key="Pos" Value="240 80"/>
 			<UserInfo Key="Pos_2" Value="-80 80"/>
 			<Property Key="Visible" Value="false"/>
 			<WidgetImagic Name="NNPlayer_BiaoQingPic" TextureInfo="Talk/EE5.png">
