@@ -580,10 +580,14 @@ void NNGameScene::Button_TalkBegin(cocos2d::Ref*, WidgetUserInfo*)
 	if (_dwSpeak_time_begin == 0) {
 		_dwSpeak_time_begin = time(nullptr);
 	}
+	//测试代码
+#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
 	auto player = getSelf();
 	CMD_GR_C_TableTalk cmd_talk;
 	cmd_talk.cbType = CMD_GR_C_TableTalk::TYPE_FILE;
 	NNPlayerPanel::Instance().playerTalk(*player, &cmd_talk);
+#endif
+
 	SoundFun::Instance().PaseBackMusic();
 	JniFun::startSoundRecord();
 	//最大时间到了自动结束说话
