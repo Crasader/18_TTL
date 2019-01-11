@@ -565,7 +565,10 @@ void NNGameScene::Button_Setting(cocos2d::Ref*, WidgetUserInfo*)
 	GPHomeSettingPanel::Instance().hideOrShowQuitBtn(false);
 }
 
+//≤‚ ‘¥˙¬Î
+#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
 #include "NNPlayerPanel.h"
+#endif
 
 void NNGameScene::Button_TalkBegin(cocos2d::Ref*, WidgetUserInfo*)
 {
