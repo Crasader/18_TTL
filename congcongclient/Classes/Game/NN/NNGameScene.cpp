@@ -206,6 +206,7 @@ void NNGameScene::initNet()
 #pragma endregion 初始化
 
 #pragma region 显示与隐藏
+
 void NNGameScene::show()
 {
 	initPublicPanel();
@@ -214,6 +215,12 @@ void NNGameScene::show()
 
 	GPHomeSettingPanel::Instance().hide();
 	GPHomeSettingPanel::Instance().hideOrShowQuitBtn(false);
+
+	if (m_RoomInfo.bStartGame) {
+		WidgetFun::setVisible(this, "NNGameScene_ButtonShare", false);
+	} else {
+		WidgetFun::setVisible(this, "NNGameScene_ButtonShare", true);
+	}
 
     setVisible(true);
 }

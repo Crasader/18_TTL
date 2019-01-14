@@ -6,6 +6,10 @@
 		<WidgetImagic Name="" TextureInfo="TTLNN/Player/NNPlayer_BG.png">
 			<Property Key="Pos" Value="150 75"/>
 		</WidgetImagic>
+		<!-- 庄家 -->
+		<WidgetImagic Name="NNPlayer_BankerBG" TextureInfo="TTLNN/Player/NNPlayer_BankerBG.png">
+			<Property Key="Pos" Value="150 75"/>
+		</WidgetImagic>
 		<!-- 头像 -->
 		<WidgetImagic Name="NNPlayer_Avatar" TextureInfo="TTLNN/Player/NNPlayer_Avatar.png">
 			<Property Key="Pos" Value="150 87"/>
@@ -34,9 +38,6 @@
 			<property Key="Visible" Value="false"/>
 		</WidgetTxt>
 		<!-- 庄家 -->
-		<WidgetImagic Name="NNPlayer_BankerBG" TextureInfo="TTLNN/Player/NNPlayer_BankerBG.png">
-			<Property Key="Pos" Value="150 75"/>
-		</WidgetImagic>
 		<WidgetImagic Name="NNPlayer_Banker" TextureInfo="TTLNN/Player/NNPlayer_Banker.png">
 			<Property Key="Pos" Value="190 125.5"/>
 		</WidgetImagic>
@@ -125,6 +126,10 @@
 		<WidgetImagic Name="" TextureInfo="TTLNN/Player/NNPlayer_BG_H.png">
 			<Property Key="Pos" Value="150 75"/>
 		</WidgetImagic>
+		<!-- 庄家 -->
+		<WidgetImagic Name="NNPlayer_BankerBG" TextureInfo="TTLNN/Player/NNPlayer_BankerBG_H.png">
+			<Property Key="Pos" Value="150 75"/>
+		</WidgetImagic>
 		<!-- 头像 -->
 		<WidgetImagic Name="NNPlayer_Avatar" TextureInfo="TTLNN/Player/NNPlayer_Avatar.png">
 			<Property Key="Pos" Value="130 75"/>
@@ -141,9 +146,6 @@
 			<Property Key="Pos" Value="130 87"/>
 		</WidgetImagic>
 		<!-- 庄家 -->
-		<WidgetImagic Name="NNPlayer_BankerBG" TextureInfo="TTLNN/Player/NNPlayer_BankerBG_H.png">
-			<Property Key="Pos" Value="150 75"/>
-		</WidgetImagic>
 		<WidgetImagic Name="NNPlayer_Banker" TextureInfo="TTLNN/Player/NNPlayer_Banker.png">
 			<Property Key="Pos" Value="212 115"/>
 		</WidgetImagic>

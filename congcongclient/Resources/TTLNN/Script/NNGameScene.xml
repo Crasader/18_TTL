@@ -123,7 +123,7 @@
 		<Property Key="Index" Value="-1"/>
 		<Property Key="NomalTexture" Value="TTLNN/GameScene/NNGameScene_ButtonMenu.png"/>
 		<Property Key="PressTexture" Value="AutoPress"/>
-		<Property Key="Pos" Value="1220 660"/>
+		<Property Key="Pos" Value="1241 677"/>
 	</Widget>
 
 </Widget>

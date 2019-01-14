@@ -101,7 +101,7 @@
 <Widget Name="NNOperator_CalculateResult" SkinTempName="ImagicEmpty">
 	<UserInfo Key="Image" Value="TTLNN/Operator/NNOperator_"/>
 	<Property Key="ImagicTexture" Value="TTLNN/Operator/NNOperator_Win.png"/>
-	<Property Key="Pos" Value="480 160"/>
+	<Property Key="Pos" Value="460 180"/>
 	<Property Key="Scale" Value="0.75"/>
 </Widget>
 
