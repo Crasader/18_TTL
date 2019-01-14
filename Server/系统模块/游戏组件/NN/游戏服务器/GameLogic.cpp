@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+#include "stdafx.h"
 #include "FvMask.h"
 #include "GameLogic.h"
 #include "math.h"
@@ -32,17 +32,26 @@ void CGameLogic::initCard(BYTE cbCardData[], BYTE cbMaxCount) {
 }
 
 void CGameLogic::RandCardData(BYTE cbCardData[], BYTE cbMaxCount) {
-    std::vector<BYTE> cardTemp;
+    //std::vector<BYTE> cardTemp;
 
-    for (int index = 0; index < cbMaxCount; ++index) {
-        cardTemp.push_back(cbCardData[index]);
-    }
+    //for (int index = 0; index < cbMaxCount; ++index) {
+    //    cardTemp.push_back(cbCardData[index]);
+    //}
 
-    for (int index = 0; index < cbMaxCount; ++index) {
-        int random = rand() % cardTemp.size();
-        cbCardData[index] = cardTemp.at(random);
-        cardTemp.erase(find(cardTemp.begin(), cardTemp.end(), cardTemp.at(random)));
-    }
+    //for (int index = 0; index < cbMaxCount; ++index) {
+    //    int random = rand() % cardTemp.size();
+    //    cbCardData[index] = cardTemp.at(random);
+    //    cardTemp.erase(find(cardTemp.begin(), cardTemp.end(), cardTemp.at(random)));
+    //}
+
+	//每次确定最后一个位置的牌
+	for (int idx = 0; idx < cbMaxCount - 1; idx++) {
+		int target = (cbMaxCount - 1) - idx;
+		int random = rand() % target;
+		auto tmp = cbCardData[target];
+		cbCardData[target] = cbCardData[random];
+		cbCardData[random] = tmp;
+	}
 }
 
 NNCardType_Result CGameLogic::checkNNType(BYTE cbCardData[], DWORD gameRules) {

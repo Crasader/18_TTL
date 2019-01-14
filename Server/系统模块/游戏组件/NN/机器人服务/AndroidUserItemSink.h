@@ -3,8 +3,8 @@
 
 #pragma once
 
-#include "Stdafx.h"
-#include "..\游戏服务器\GameLogic.h"
+#include "../游戏服务器/stdafx.h"
+#include "../游戏服务器/GameLogic.h"
 
 //////////////////////////////////////////////////////////////////////////
 

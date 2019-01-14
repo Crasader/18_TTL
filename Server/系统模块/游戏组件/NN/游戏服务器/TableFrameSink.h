@@ -164,10 +164,15 @@ public:
     //接口查询
     virtual void * QueryInterface(const IID & Guid, DWORD dwQueryVer);
 
+	//牌库
+public:
+
+	static void InitPaiKu();
+
     //管理接口
 public:
     //初始化
-    virtual bool Initialization(IUnknownEx * pIUnknownEx);
+    virtual bool Initialization(IUnknownEx * pIUnknownEx) override;
     //复位桌子
     virtual VOID RepositionSink() override;
 	//复位

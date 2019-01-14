@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "AndroidServiceManager.h"
 #include "AndroidUserItemSink.h"
 

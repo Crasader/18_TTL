@@ -1,13 +1,11 @@
+#include <stdlib.h>
+#include <stdio.h>
+
 #include "StdAfx.h"
 #include "TableFrameSink.h"
 #include "FvMask.h"
 #include "DlgCustomRule.h"
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <io.h>
-#include <windows.h>
-#include <fcntl.h>
+#include "../PaiKu/zhadan.hpp"
 
 //////////////////////////////////////////////////////////////////////////
 //抢庄
@@ -33,10 +31,21 @@
 #define TIME_CALCULATE_SHOW 5 * 1000
 #define TIMER_ALL_USER_READY 12 * 1000
 
+//////////////////////////////////////////////////////////////////////////
+
 static int ANDROID_WIN_RATIO = 50;
 static int ADMINUSER_WIN_RATIO = 50;
 static std::vector<unsigned int> g_AdminUserVec;
+
+//////////////////////////////////////////////////////////////////////////
+
 static WORD g_TuiZhuRatio[MAX_TuiZhu_INDEX];
+
+//////////////////////////////////////////////////////////////////////////
+
+std::vector<handcard> vct_zhadan;
+
+//////////////////////////////////////////////////////////////////////////
 
 //构造函数
 CTableFrameSink::CTableFrameSink() 
@@ -60,6 +69,8 @@ CTableFrameSink::CTableFrameSink()
     //游戏变量
     RepositionSink();
 	RepositionSinkGloabals();
+
+	InitPaiKu();
 
     //wcb
 #if defined TEST_CONSOLE
@@ -183,12 +194,19 @@ void CTableFrameSink::rationCardForUser(WORD cardCount) {
     std::vector<BYTE> cardList;
 
 #if defined TEST_CODE
+	handcard& card = vct_zhadan[0];
+
 	//DONE:手牌配牌
 	//0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, //方块
 	m_GameCards[0] = 0x22;
 	m_GameCards[2] = 0x04;
 	m_GameCards[4] = 0x03;
 	m_GameCards[6] = 0x06;
+
+	m_GameCards[0] = card[0];
+	m_GameCards[2] = card[1];
+	m_GameCards[4] = card[2];
+	m_GameCards[6] = card[3];
 
 	m_GameCards[1] = 0x22;
 	m_GameCards[3] = 0x04;

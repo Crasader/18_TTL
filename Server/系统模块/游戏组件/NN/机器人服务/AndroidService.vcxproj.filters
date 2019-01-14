@@ -24,10 +24,10 @@
     <ClCompile Include="..\游戏服务器\GameLogic.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Stdafx.cpp">
+    <ClCompile Include="AndroidServiceManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="AndroidServiceManager.cpp">
+    <ClCompile Include="..\游戏服务器\stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,13 +41,13 @@
     <ClInclude Include="Resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Stdafx.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\消息定义\CMD_NN.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="AndroidServiceManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\游戏服务器\stdafx.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
