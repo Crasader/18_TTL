@@ -11,7 +11,7 @@
 		<Property Key="Pos" Value="640 560"/>
 	</Widget>
 	<Widget Name="UpDataNoticeMsg1" SkinTempName="TxtEmpty">
-		<Property Key="ShowTxt" Value="果酱棋牌版本更新"/>
+		<Property Key="ShowTxt" Value="悠闲牛请求更新"/>
 		<Property Key="Pos" Value="640 370"/>
 		<Property Key="FontName" Value="Font/true_type"/>
 		<Property Key="FontSize" Value="48"/>
