@@ -32,11 +32,11 @@
 </Widget>
 
 <Widget Name="NNPlayer_6" SkinTempName="NNPlayer_RightSkin">
-	<Property Key="Pos" Value="400 630"/>
+	<Property Key="Pos" Value="450 630"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
 </Widget>
 
 <Widget Name="NNPlayer_7" SkinTempName="NNPlayer_RightSkin">
-	<Property Key="Pos" Value="700 630"/>
+	<Property Key="Pos" Value="750 630"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
 </Widget>

@@ -9,7 +9,7 @@
 
 	<Widget Name="" SkinTempName="ImagicEmpty">
 		<Property Key="ImagicTexture" Value="TTLNN/GameScene/logo.png"/>
-		<Property Key="Pos" Value="1080 70"/>
+		<Property Key="Pos" Value="640 440"/>
 	</Widget>
 
 	<!-- 税收提示 -->

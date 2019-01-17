@@ -55,11 +55,6 @@ void GPLoginScene::setEnableButtons(bool flag)
 
 void GPLoginScene::EnterScene()
 {
-	//bool bPlayLoginAni = ScriptData<bool>("PlayLoginAnimation").Value();
-	//if (bPlayLoginAni)
-	{
-		//WidgetFun::runWidgetAction(this, "GameNameTitleAniNode", "LoginActionStart");
-	}
 	float sound_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("sound_volume", Constant::DEFAULT_SOUND);
 	CocosDenshion::SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(sound_volume);
 	SoundFun::Instance().SetSoundBackground(sound_volume);
@@ -90,7 +85,6 @@ void GPLoginScene::EnterScene()
 		onWxLoginSuccess(m_kWeiXinUserInfo);
     }
 #endif
-
 }
 
 void GPLoginScene::RegisterAccount()
