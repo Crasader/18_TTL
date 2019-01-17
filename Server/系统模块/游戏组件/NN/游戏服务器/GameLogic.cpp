@@ -32,18 +32,6 @@ void CGameLogic::initCard(BYTE cbCardData[], BYTE cbMaxCount) {
 }
 
 void CGameLogic::RandCardData(BYTE cbCardData[], BYTE cbMaxCount) {
-    //std::vector<BYTE> cardTemp;
-
-    //for (int index = 0; index < cbMaxCount; ++index) {
-    //    cardTemp.push_back(cbCardData[index]);
-    //}
-
-    //for (int index = 0; index < cbMaxCount; ++index) {
-    //    int random = rand() % cardTemp.size();
-    //    cbCardData[index] = cardTemp.at(random);
-    //    cardTemp.erase(find(cardTemp.begin(), cardTemp.end(), cardTemp.at(random)));
-    //}
-
 	//每次确定最后一个位置的牌
 	for (int idx = 0; idx < cbMaxCount - 1; idx++) {
 		int target = (cbMaxCount - 1) - idx;
@@ -51,6 +39,33 @@ void CGameLogic::RandCardData(BYTE cbCardData[], BYTE cbMaxCount) {
 		auto tmp = cbCardData[target];
 		cbCardData[target] = cbCardData[random];
 		cbCardData[random] = tmp;
+	}
+}
+
+void CGameLogic::AddCardData(BYTE cbCardData[], BYTE cbCardLen, const BYTE cbDesData[], BYTE cbDesLen, BYTE cbUserIndex, BYTE cbUserCount)
+{
+	//先放入牌库牌到末尾
+	for (int idxDes = 0; idxDes < cbDesLen; idxDes++) {
+		int target = (cbCardLen - 1) - idxDes;
+		for (int idx = 0; idx < cbCardLen; idx++) {
+			if (cbCardData[idx] == cbDesData[idxDes]) {
+				auto tmp = cbCardData[target];
+				cbCardData[target] = cbCardData[idx];
+				cbCardData[idx] = tmp;
+				break;
+			}
+		}
+	}
+
+	//混乱前面的牌
+	RandCardData(cbCardData, cbCardLen - cbDesLen);
+
+	//把后面的n张牌放到对应的序号
+	for (int idx = cbUserIndex; idx < cbCardLen && idx < cbUserCount * cbDesLen; idx+= cbUserCount) {
+		int target = (cbCardLen - 1) - ((idx - cbUserIndex) / cbUserCount);
+		auto tmp = cbCardData[idx];
+		cbCardData[idx] = cbCardData[target];
+		cbCardData[target] = tmp;
 	}
 }
 

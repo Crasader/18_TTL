@@ -34,9 +34,10 @@ public:
 
     //混乱扑克
     void RandCardData(BYTE cbCardData[], BYTE cbMaxCount);
+	//加入指定的牌
+	void AddCardData(BYTE cbCardData[], BYTE cbCardLen, const BYTE cbDesData[], BYTE cbDesLen, BYTE cbUserIndex, BYTE cbUserCount);
 
 	NNCardType_Result checkNNType(BYTE cbCardData[], DWORD GameRules);
-
 
 	BOOL comparePlayerCards(NNCardType_Result result_1, NNCardType_Result result_2);
 

@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <stdio.h>
-
 #include "StdAfx.h"
 #include "TableFrameSink.h"
 #include "FvMask.h"
@@ -43,7 +42,11 @@ static WORD g_TuiZhuRatio[MAX_TuiZhu_INDEX];
 
 //////////////////////////////////////////////////////////////////////////
 
+//!!!!!!!!!全局数据, 在多线程下访问切忌用迭代器, 切忌增删等导致重新分配内存的操作!!!!!!!!!
+
 std::vector<handcard> vct_zhadan;
+int ZHA_DAN_LEN = 0;
+BYTE** ZHADAN_DATA = nullptr;
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -145,6 +148,34 @@ void CTableFrameSink::RepositionSinkGloabals()
 	_MasterUserID = 0;
 	_pCreateUser = nullptr;
 	_dwCreateUserID = 0;
+
+	int random_len = ARRAYSIZE(_paiku_random);
+
+	for (int idx = 0; idx < random_len; idx++) {
+		_paiku_random[idx] = idx;
+	}
+
+	if (g_AdminUserVec.size() == 0) {
+		TCHAR szPath[MAX_PATH] = TEXT("");
+		GetCurrentDirectory(CountArray(szPath), szPath);
+		TCHAR szConfigFileName[MAX_PATH] = TEXT("");
+		_sntprintf(szConfigFileName, sizeof(szConfigFileName), TEXT("%s\\NNServer.ini"), szPath);
+		ANDROID_WIN_RATIO = GetPrivateProfileInt(_T("NN"), _T("AndroidWinRatio"), 50, szConfigFileName);
+		g_AdminUserVec.clear();
+		ADMINUSER_WIN_RATIO = GetPrivateProfileInt(_T("NN"), _T("AdminUserWinRatio"), 50, szConfigFileName);
+		char adminConfig[1024] = { 0 };
+		GetPrivateProfileString(_T("NN"), _T("AdminUserList"), "", adminConfig, 1024, szConfigFileName);
+		char *delim = ",";
+		char *p;
+		p = strtok(adminConfig, delim);
+		_paiku_ratio = GetPrivateProfileInt(_T("NN"), _T("PaiKuRatio"), 10, szConfigFileName);
+		if (p != nullptr) {
+			g_AdminUserVec.push_back(std::atoi(p));
+		}
+		while (p = strtok(NULL, delim)) {
+			g_AdminUserVec.push_back(std::atoi(p));
+		}
+	}
 }
 
 //游戏开始
@@ -185,13 +216,51 @@ bool CTableFrameSink::OnEventGameStart() {
 }
 
 void CTableFrameSink::Shuffle() {
-    m_GameLogic.initCard(m_GameCards, MAX_CARD_COUNT);
+
+	m_GameLogic.initCard(m_GameCards, MAX_CARD_COUNT);
+
+#ifdef USE_PAIKU
+
+	bool bpaiku = false;
+	if (_dwCurrentPlayRound >= 0 && _dwCurrentPlayRound < ARRAYSIZE(_paiku_random)) {
+		float cur_ratio = (100.f * _paiku_random[_dwCurrentPlayRound]) / _dwTotalPlayRound;
+		if (cur_ratio >= 100.f - _paiku_ratio) {
+			bpaiku = true;
+		}
+	}
+
+	if (!bpaiku) {
+		m_GameLogic.RandCardData(m_GameCards, MAX_CARD_COUNT);
+	} else {
+		BYTE cbPlayerCount = 0;
+		for (int index = 0; index < NN_GAME_PLAYER; ++index) {
+			if (NULL == m_pITableFrame->GetTableUserItem(index)) {
+				continue;
+			}
+			cbPlayerCount++;
+		}
+		//随机一位玩家
+		int user_idx = rand() % cbPlayerCount;
+		//随机一副牌
+		int pai_idx = rand() % ZHA_DAN_LEN;
+
+		byte zhadan[5] = { 0 };
+		memcpy(zhadan, ZHADAN_DATA[pai_idx], sizeof(zhadan));
+		m_GameLogic.RandCardData(zhadan, 5);
+		m_GameLogic.AddCardData(m_GameCards, ARRAYSIZE(m_GameCards), zhadan, 5, user_idx, cbPlayerCount);
+	}
+
+#else
+
     m_GameLogic.RandCardData(m_GameCards, MAX_CARD_COUNT);
+
+#endif
+
     m_CardLeftCount = MAX_CARD_COUNT;
 }
 
 void CTableFrameSink::rationCardForUser(WORD cardCount) {
-    std::vector<BYTE> cardList;
+    std::vector<BYTE> cardList(m_CardLeftCount);
 
 #if defined TEST_CODE
 	handcard& card = vct_zhadan[0];
@@ -215,7 +284,7 @@ void CTableFrameSink::rationCardForUser(WORD cardCount) {
 #endif
 
     for (int cardIndex = 0; cardIndex < m_CardLeftCount; ++cardIndex) {
-        cardList.push_back(m_GameCards[cardIndex]);
+        cardList[cardIndex] = m_GameCards[cardIndex];
     }
 
     float androidWinRatio = (ANDROID_WIN_RATIO - 50) * 2;
@@ -283,7 +352,7 @@ void CTableFrameSink::rationCardForUser(WORD cardCount) {
         for (int cardIndex = 0; cardIndex < cardCount; ++cardIndex) {
             for (int playerIndex = 0; playerIndex < NN_GAME_PLAYER; ++playerIndex) {
                 if (m_PlayerStatus[playerIndex] == NNPlayerStatus_Playing) {
-                    m_PlayerCards[playerIndex][cardIndex] = cardList.at(0);
+                    m_PlayerCards[playerIndex][cardIndex] = cardList[0];
                     BYTE cardValue = m_PlayerCards[playerIndex][cardIndex];
                     m_PlayerCardsName[playerIndex][cardIndex] = std::string(CGameLogic::GAME_CARDS_NAME[((cardValue & MASK_COLOR) >> 4) * (CARD_INDEX_MAX - CARD_INDEX_MIN + 1) + (cardValue & MASK_VALUE) - CARD_INDEX_MIN].c_str());
                     cardList.erase(cardList.begin());
@@ -295,10 +364,9 @@ void CTableFrameSink::rationCardForUser(WORD cardCount) {
         m_CardLeftCount -= rationCount;
 
         ZeroMemory(m_GameCards, sizeof(m_GameCards));
-
-        for (int index = 0; index < m_CardLeftCount; ++index) {
-            m_GameCards[index] = cardList.at(index);
-        }
+		if (m_CardLeftCount > 0 && cardList.size() > 0) {
+			memcpy(m_GameCards, &cardList[0], sizeof(BYTE) * m_CardLeftCount);
+		}
     }
 
     switch (m_GameTypeIdex) {
@@ -406,9 +474,12 @@ void CTableFrameSink::rationCardForUser_Add() {
 	m_GameCards[3] = 0x27;
 #endif // DEBUG
 
-    std::vector<BYTE> cardList;
+	//先入先出队列
+    //std::deque<BYTE> cardList(m_CardLeftCount);
+	//vector还是要快一点
+	std::vector<BYTE> cardList(m_CardLeftCount);
     for (int cardIndex = 0; cardIndex < m_CardLeftCount; ++cardIndex) {
-        cardList.push_back(m_GameCards[cardIndex]);
+        cardList[cardIndex] = m_GameCards[cardIndex];
     }
 
     ZeroMemory(m_PlayerCardsAdd, sizeof(m_PlayerCardsAdd));
@@ -417,9 +488,10 @@ void CTableFrameSink::rationCardForUser_Add() {
         int rationCount = 0;
         for (int playerIndex = 0; playerIndex < NN_GAME_PLAYER; ++playerIndex) {
             if (m_PlayerStatus[playerIndex] == NNPlayerStatus_Playing) {
-                m_PlayerCards[playerIndex][MAX_HAND_CARD - 1] = cardList.at(0);
-                m_PlayerCardsAdd[playerIndex] = cardList.at(0);
-                cardList.erase(cardList.begin());
+                m_PlayerCards[playerIndex][MAX_HAND_CARD - 1] = cardList[0];
+				m_PlayerCardsAdd[playerIndex] = cardList[0];
+				cardList.erase(cardList.begin());
+                //cardList.pop_front();
                 rationCount++;
             }
         }
@@ -427,7 +499,7 @@ void CTableFrameSink::rationCardForUser_Add() {
 
         ZeroMemory(m_GameCards, sizeof(m_GameCards));
         for (int index = 0; index < m_CardLeftCount; ++index) {
-            m_GameCards[index] = cardList.at(index);
+            m_GameCards[index] = cardList[index];
         }
     } 
 	else 
@@ -438,7 +510,6 @@ void CTableFrameSink::rationCardForUser_Add() {
             }
         }
     }
-
 
     for (int index = 0; index < NN_GAME_PLAYER; ++index) {
         if (NULL == m_pITableFrame->GetTableUserItem(index)) {
@@ -460,26 +531,6 @@ void CTableFrameSink::rationCardForUser_Add() {
 }
 
 void CTableFrameSink::startGame() {
-	TCHAR szPath[MAX_PATH] = TEXT("");
-	GetCurrentDirectory(CountArray(szPath), szPath);
-	TCHAR szConfigFileName[MAX_PATH] = TEXT("");
-	_sntprintf(szConfigFileName, sizeof(szConfigFileName), TEXT("%s\\NNServer.ini"), szPath);
-	ANDROID_WIN_RATIO = GetPrivateProfileInt(_T("NN"), _T("AndroidWinRatio"), 50, szConfigFileName);
-
-	g_AdminUserVec.clear();
-	ADMINUSER_WIN_RATIO = GetPrivateProfileInt(_T("NN"), _T("AdminUserWinRatio"), 50, szConfigFileName);
-	char adminConfig[1024] = { 0 };
-	GetPrivateProfileString(_T("NN"), _T("AdminUserList"), "", adminConfig, 1024, szConfigFileName);
-	char *delim = ",";
-	char *p;
-	p = strtok(adminConfig, delim);
-
-	if (p != nullptr) {
-		g_AdminUserVec.push_back(std::atoi(p));
-	}
-	while (p = strtok(NULL, delim)) {
-		g_AdminUserVec.push_back(std::atoi(p));
-	}
 
     startGameRecord();
     Shuffle();
@@ -1701,6 +1752,8 @@ void CTableFrameSink::SetPrivateInfo(BYTE bGameTypeIdex, DWORD bGameRuleIdex, VO
 
 	auto pPri = static_cast<PrivateInfo*>(pData);
 	_dwTotalPlayRound = pPri->PlayCount;
+
+	m_GameLogic.RandCardData(_paiku_random, _dwTotalPlayRound);
 
 	ZeroMemory(m_PlayerSingleResultRecord, sizeof(m_PlayerSingleResultRecord));
     for (int index = 0; index < NN_GAME_PLAYER; ++index) {

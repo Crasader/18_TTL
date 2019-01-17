@@ -167,7 +167,13 @@ public:
 	//牌库
 public:
 
+	//每局的随机数, 确定是否要发牌库的特殊牌
+	BYTE _paiku_random[MAX_ROUND_INDEX];
+	//使用牌库牌的概率
+	float _paiku_ratio;
+	//初始化牌库
 	static void InitPaiKu();
+	static void ReadZhaDanArray();
 
     //管理接口
 public:
