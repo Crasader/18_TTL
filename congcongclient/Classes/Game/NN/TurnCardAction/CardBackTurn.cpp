@@ -1,3 +1,5 @@
+#include <math.h>
+
 #include "CardBackTurn.h"
 #include "CardTurnTouch.h"
 
@@ -22,7 +24,7 @@ CardBackTurn::CardBackTurn(Node* scene, TouchMathine* state, std::string imgPath
 	, _touch(state)
     , _materialPath(imgPath)
     , _basePos(basePos)
-    , _clipColor(1, 0, 0, 1)
+    , _clipColor(0, 1, 1, 0.2)
     , _scaleSize(scaleSize)
     , _cp_moved_offset(0.0f)
     , _useTime(0.0f)
@@ -32,6 +34,8 @@ CardBackTurn::CardBackTurn(Node* scene, TouchMathine* state, std::string imgPath
 }
 
 //////////////////////////////////////////////////////////////////////////
+
+#define hand_code_adjust_cb_1 40.f
 
 void CardBackTurn::init()
 {
@@ -55,8 +59,8 @@ void CardBackTurn::init()
 				_fRadius = _CardRect.size.width / (2 * PI);
 
 				//向后移动圆柱体的直径+牌背和牌正面的宽度
-				float diameter = _CardRect.size.width / PI + 2;
-				_cardBack->setPosition3D(Vec3(0.0f, 2.0f, -diameter));
+				float diameter = _fRadius + 2;
+				_cardBack->setPosition3D(Vec3(0.0f, _fRadius / 2 + 2, -diameter + hand_code_adjust_cb_1));
 				_cardBack->setForce2DQueue(true);
 
 				ceateClipShape(_touch->getDirection());
@@ -81,6 +85,8 @@ void CardBackTurn::init()
 				
 				CCASSERT(_pScene, "Initalize card back sence failed.");
 				_pScene->addChild(_pClipper);
+
+				//_pScene->addChild(_pDrawNode);
 
 				break;
 			}
@@ -202,6 +208,7 @@ void CardBackTurn::onTouchMove(Touch* touch, Event* ev)
 		{
 			if (_touch->setMoveDistance(touch->getLocation())) {
 				float distance = _touch->getMovedTotalDistance();
+				//CCLOG("card back move distance = %f", distance);
 				doMove(distance < 0 ? 0 : distance);
 			}
 			break;

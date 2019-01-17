@@ -3,9 +3,9 @@
 #include "CardFrontTurn.h"
 #include "CardMidTurn.h"
 #include "CardTurnTouch.h"
-#include "Game/Script/WindowInfo.h"
+//#include "Game/Script/WindowInfo.h"
 
-using namespace script;
+//using namespace script;
 using namespace cocos2d;
 using namespace cardturn;
 
@@ -51,7 +51,7 @@ void CardTurnAction::init(cocos2d::Node* pSenceNode,
 
 	_onComplete = completeFuc;
 
-	Size visibleSize = WindowInfo::Instance().getUseSize(); //Director::getInstance()->getVisibleSize();
+	//Size visibleSize = WindowInfo::Instance().getUseSize(); //Director::getInstance()->getVisibleSize();
 	//_camera = Camera::createPerspective(90, visibleSize.width / visibleSize.height, 0.1, 100);
 	//_camera->setCameraFlag(CameraFlag::USER1);
 	//Vec3 pos = _camera->getPosition3D();

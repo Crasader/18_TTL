@@ -26,7 +26,7 @@ CardMidTurn::CardMidTurn(Node* scene,
 	, _touch(state)
     , _materialPath(material)
     , _basePos(basePos)
-    , _clipColor(1, 0, 0, 1)
+    , _clipColor(1,1, 0, 0.2)
     , _scaleSize(scaleSize)
     , _cp_moved_offset(0)
     , _useTime(0)
@@ -36,6 +36,8 @@ CardMidTurn::CardMidTurn(Node* scene,
 }
 
 //////////////////////////////////////////////////////////////////////////
+
+#define hand_code_adjust_cm_1 35.f
 
 void CardMidTurn::init()
 {
@@ -76,33 +78,45 @@ void CardMidTurn::init()
 	_pClipper->addChild(_cylinderCard);
 
 	_clipPos = _basePos;
+	_clipPos.y += hand_code_adjust_cm_1;
 	_pClipper->setPosition(_clipPos);
 
 	_pScene->addChild(_pClipper);
 
 	_touch->setMaxMoveDistance(_CardRect.size.width + _fRadius);
+	//_pScene->addChild(_pDrawNodeCylinder);
+	//_pClipper->setVisible(false);
 }
+
+#define hand_code_adjust_md_2 8.f
 
 void cardturn::CardMidTurn::doMove(float fmove)
 {
 	//cocos2d::log("CardMidTurn fmove = %f\n", fmove);
 	if (fmove <= _CardRect.size.width + _fRadius) {
-		_cylinder_texture_offset = fmove / _CardRect.size.width + 0.33;
+		_cylinder_texture_offset = fmove / _CardRect.size.width + 0.327;
 		_cylinder_texture_offset = _cylinder_texture_offset - static_cast<int>(_cylinder_texture_offset);
 		_state->setUniformFloat("offset", _cylinder_texture_offset);
 		ceateClipShape(_touch->getDirection());
-		 if (fmove < _fRadius) {
-			 _clipRect[2].y = _CardRect.getMidY() - 2;
-			 _clipRect[3].y = _CardRect.getMidY() - 2;
+		 if (fmove < _fRadius) {//只有圆柱体卷牌
+			 //实际卷牌速度其实大于圆柱体形状的卷牌速度
+			 float adjust_value = fmove / _fRadius * hand_code_adjust_md_2;
+			 _clipRect[2].y = _CardRect.getMidY() - adjust_value;
+			 _clipRect[3].y = _CardRect.getMidY() - adjust_value;
 			 _pDrawNodeCylinder->clear();
 			 _pDrawNodeCylinder->drawPolygon(_clipRect, CLIP_VERTEXT_SIZE, _clipColor, 0, _clipColor);
-			 _pDrawNodeCylinder->setPosition(_DrawNodeCylinderPos.x, _DrawNodeCylinderPos.y + fmove - 2);
+			 _pDrawNodeCylinder->setPosition(_DrawNodeCylinderPos.x, _DrawNodeCylinderPos.y + fmove);
 		} else if (fmove > _CardRect.size.width) {//结束圆柱体卷牌
 			_clipRect[0].y = -(_CardRect.size.width - fmove);
 			_clipRect[1].y = -(_CardRect.size.width - fmove);
 			_pDrawNodeCylinder->clear();
 			_pDrawNodeCylinder->drawPolygon(_clipRect, CLIP_VERTEXT_SIZE, _clipColor, 0, _clipColor);
-		} else if (fmove > _fRadius) {//圆柱体和牌面同时卷牌
+		} else if (fmove >= _fRadius) {//圆柱体和牌面同时卷牌
+			CCLOG("MidTurn 1111");
+			//实际卷牌速度其实大于圆柱体形状的卷牌速度, 这里用hardcode微调解决
+			float adjust_value = (_fRadius / fmove) * (_fRadius / fmove) * hand_code_adjust_md_2;
+			_clipRect[2].y = _CardRect.getMidY() - adjust_value;
+			_clipRect[3].y = _CardRect.getMidY() - adjust_value;
 			_pDrawNodeCylinder->clear();
 			_pDrawNodeCylinder->drawPolygon(_clipRect, CLIP_VERTEXT_SIZE, _clipColor, 0, _clipColor);
 			_pDrawNodeCylinder->setPosition(_DrawNodeCylinderPos.x, _DrawNodeCylinderPos.y + _fRadius);

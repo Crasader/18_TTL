@@ -89,16 +89,16 @@ void NNTurnCard::createTurnCard(int cardIndex)
 		strFrontPoker,
 		strFrontPokerEnd,
 		strCylinderPoker,
-		Vec2(visibleSize.width/2 ,visibleSize.height/2),
-		8,
+		Vec2(visibleSize.width/2 ,visibleSize.height/2 - 440),
+		16.7,
 		glTurnCardFinish);
-		NNPlayerCard_Entity playerCards = NNGameScene::Instance().getSelf()->getPlayerCards();
-		for (int index=0;index<4;index++)
-		{
-			auto pTempNode =WidgetFun::getChildWidgetByName(this,utility::toString("CardImg_",index));
-			WidgetFun::setImagic(pTempNode,utility::toString(WidgetFun::getWidgetUserInfo(pTempNode, "Image"), NNGameLogic::getCardIndex(playerCards.cards[index]), ".png"),false);
-			pTempNode->setVisible(false);
-		}
+	NNPlayerCard_Entity playerCards = NNGameScene::Instance().getSelf()->getPlayerCards();
+	for (int index=0;index<4;index++)
+	{
+		auto pTempNode =WidgetFun::getChildWidgetByName(this,utility::toString("CardImg_",index));
+		WidgetFun::setImagic(pTempNode,utility::toString(WidgetFun::getWidgetUserInfo(pTempNode, "Image"), NNGameLogic::getCardIndex(playerCards.cards[index]), ".png"),false);
+		pTempNode->setVisible(false);
+	}
 }
 
 void NNTurnCard::delayHide()

@@ -9,7 +9,7 @@ namespace cardturn {
 //强制移动时的移动距离
 #define FORCE_STEP_VALUE 8.0f
 //每一步移动像素大小
-#define ROLL_BACK_STEP_VALUE 4.0f
+#define ROLL_BACK_STEP_VALUE 6.0f
 //圆周率
 #define PI 3.14159265
 

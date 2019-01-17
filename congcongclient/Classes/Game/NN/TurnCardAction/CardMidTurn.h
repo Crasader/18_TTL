@@ -93,7 +93,7 @@ protected:
 	std::string _materialPath;
 	//材质
 	Sprite3DMaterial* _mat;
-	//贴图的便宜量,用于shader计算，值0到1
+	//贴图的偏移量,用于shader计算，值0到1
 	float _cylinder_texture_offset;
 	//阴影的深度
 	float _shadow_alpha;

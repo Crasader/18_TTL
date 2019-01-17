@@ -29,7 +29,7 @@ CardFrontTurn::CardFrontTurn(Node* scene,
     , _imagePath(imgPath)
 	, _imagePathEnd(imgPathEnd)
     , _basePos(basePos)
-	, _clipColor(1, 0, 0, 1)
+	, _clipColor(1, 0, 1, 0.2)
     , _offsetPos(0, 0)
     , _RealPos(0, 0)
     , _scaleSize(scaleSize)
@@ -42,6 +42,8 @@ CardFrontTurn::CardFrontTurn(Node* scene,
 }
 
 //////////////////////////////////////////////////////////////////////////
+
+#define hand_code_adjust_cf_1 35.f
 
 void CardFrontTurn::init()
 {
@@ -66,7 +68,7 @@ void CardFrontTurn::init()
 				_sp3DCardFront->setScale(_scaleSize);
 				_sp3DCardFront->setRotation(90);
 				//旋转之后要调整位置,并且与锚点无关,坑
-				_sp3DCardFront->setPosition(-_CardRect.size.width * _scaleSize / 2, _CardRect.size.height * _scaleSize / 2);
+				_sp3DCardFront->setPosition3D(cocos2d::Vec3(-_CardRect.size.width * _scaleSize / 2, _CardRect.size.height * _scaleSize / 2, -4));
 				_sp3DCardFront->setForce2DQueue(true);
 
 				ceateClipCardShape(_touch->getDirection());
@@ -82,6 +84,7 @@ void CardFrontTurn::init()
 				_cardBasePos = _basePos;
 				_cardBasePos.y -= _CardRect.size.height * CARD_PROPOTION;
 				_cardBasePos.y +=  _fRadius * ( 2 * CARD_PROPOTION - 1);
+				_cardBasePos.y += hand_code_adjust_cf_1;
 				_cpCard->setPosition(_cardBasePos.x, _cardBasePos.y);
 
 				_cpCard->setStencil(_pDrawNodeCard);
@@ -90,6 +93,9 @@ void CardFrontTurn::init()
 				CCASSERT(_pScene, "Initalize card front sence failed.");
 				_pScene->addChild(_cpCard);
 
+				//_cpCard->setInverted(true);
+				//_pScene->addChild(_pDrawNodeCard);
+				//_cpCard->setVisible(false);
 				break;
 			case CTD_BoomRight_To_TopLeft:
 				break;
@@ -104,6 +110,9 @@ void CardFrontTurn::setOnCompleteFun(cardTurnCompleteFunc* onCompleteFun)
 	_onComplete = onCompleteFun;
 }
 
+#define  hand_code_adjust_1 1.2f
+#define hand_code_adjust_2 8.f
+
 void CardFrontTurn::doMove(float fmove)
 {
 	//cocos2d::log("CardFrontTurn fmove = %f\n", fmove);
@@ -116,7 +125,26 @@ void CardFrontTurn::doMove(float fmove)
 				if (fmove <_fRadius) {//等待圆筒卷牌
 					_pDrawNodeCard->setPosition(Vec2(_clipBasePos.x, _clipBasePos.y));
 					_cpCard->setPosition(_cardBasePos.x, _cardBasePos.y);
-				} else {
+				} else if(fmove > _fRadius) {
+					if (fmove > _fRadius + 120) {
+						CCLOG("FrontTurn 3333");
+						_cpCardRect[0].y = _CardRect.getMinY() + hand_code_adjust_2;
+						_cpCardRect[1].y = _CardRect.getMinY() + hand_code_adjust_2;
+						_cpCardRect[2].y = _CardRect.getMinY() + fmove - _fRadius;
+						_cpCardRect[3].y = _CardRect.getMinY() + fmove - _fRadius;
+					} else if (fmove > _fRadius + 20) {
+						CCLOG("FrontTurn 2222");
+						_cpCardRect[0].y = _CardRect.getMinY() + hand_code_adjust_1;
+						_cpCardRect[1].y = _CardRect.getMinY() + hand_code_adjust_1;
+						_cpCardRect[2].y = _CardRect.getMinY() + fmove - _fRadius;
+						_cpCardRect[3].y = _CardRect.getMinY() + fmove - _fRadius;
+					} else {
+						CCLOG("FrontTurn 1111");
+						_cpCardRect[2].y = _CardRect.getMinY() + hand_code_adjust_1;
+						_cpCardRect[3].y = _CardRect.getMinY() + hand_code_adjust_1;
+					}
+					_pDrawNodeCard->clear();
+					_pDrawNodeCard->drawPolygon(_cpCardRect, CLIP_VERTEXT_SIZE, _clipColor, 0, _clipColor);
 					_pDrawNodeCard->setPosition(Vec2(_clipBasePos.x, _clipBasePos.y - fmove));
 					_cpCard->setPosition(_cardBasePos.x, _cardBasePos.y + (_cp_moved_offset + 2 * fmove) * CARD_PROPOTION);
 				}
@@ -188,10 +216,10 @@ void CardFrontTurn::ceateClipCardShape(CardTurn_Direction direction)
 	switch (direction) {
 	case CTD_Boom_To_Up:
 		_CardRect = _sp3DCardFront->getBoundingBox();
-		_cpCardRect[0] = Vec2(_CardRect.getMinX(), _CardRect.getMinY());
-		_cpCardRect[1] = Vec2(_CardRect.getMaxX(), _CardRect.getMinY());
-		_cpCardRect[2] = Vec2(_CardRect.getMaxX(), _CardRect.getMaxY());
-		_cpCardRect[3] = Vec2(_CardRect.getMinX(), _CardRect.getMaxY());
+		_cpCardRect[0] = Vec2(_CardRect.getMinX() - 1, _CardRect.getMinY() + hand_code_adjust_1);
+		_cpCardRect[1] = Vec2(_CardRect.getMaxX() + 1, _CardRect.getMinY() + hand_code_adjust_1);
+		_cpCardRect[2] = Vec2(_CardRect.getMaxX() - 1, _CardRect.getMinY() + hand_code_adjust_1);
+		_cpCardRect[3] = Vec2(_CardRect.getMinX() + 1, _CardRect.getMinY() + hand_code_adjust_1);
 		break;
 	case CTD_BoomRight_To_TopLeft:
 		break;
