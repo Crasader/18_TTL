@@ -131,6 +131,7 @@
     <ClInclude Include="..\消息定义\CMD_NN.h" />
     <ClInclude Include="..\游戏服务器\GameLogic.h" />
     <ClInclude Include="..\游戏服务器\stdafx.h" />
+    <ClInclude Include="allniu.hpp" />
     <ClInclude Include="handcard.h" />
     <ClInclude Include="zhadan.hpp" />
   </ItemGroup>

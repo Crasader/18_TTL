@@ -4,7 +4,7 @@
 #include "TableFrameSink.h"
 #include "FvMask.h"
 #include "DlgCustomRule.h"
-#include "../PaiKu/zhadan.hpp"
+#include "../PaiKu/allniu.hpp"
 
 //////////////////////////////////////////////////////////////////////////
 //抢庄
@@ -44,11 +44,43 @@ static WORD g_TuiZhuRatio[MAX_TuiZhu_INDEX];
 
 //!!!!!!!!!全局数据, 在多线程下访问切忌用迭代器, 切忌增删等导致重新分配内存的操作!!!!!!!!!
 
+//牛1牌组
+std::vector<handcard> vct_niu1;
+//牛2牌组
+std::vector<handcard> vct_niu2;
+//牛3牌组
+std::vector<handcard> vct_niu3;
+//牛4牌组
+std::vector<handcard> vct_niu4;
+//牛5牌组
+std::vector<handcard> vct_niu5;
+//牛6牌组
+std::vector<handcard> vct_niu6;
+//牛7牌组
+std::vector<handcard> vct_niu7;
+//牛8牌组
+std::vector<handcard> vct_niu8;
+//牛9牌组
+std::vector<handcard> vct_niu9;
+//牛牛牌组
+std::vector<handcard> vct_niu10;
+
+//顺子牛牌组
+std::vector<handcard> vct_shunzi;
+//五花牛牌组
+std::vector<handcard> vct_wuhua;
+//同花牛牌组
+std::vector<handcard> vct_tonghua;
+//葫芦牛牌组
+std::vector<handcard> vct_hulu;
+//炸弹牌组
 std::vector<handcard> vct_zhadan;
-int ZHA_DAN_LEN = 0;
-BYTE** ZHADAN_DATA = nullptr;
+//五小牛牌组
+std::vector<handcard> vct_wuxiao;
 
 //////////////////////////////////////////////////////////////////////////
+
+bool paiku_readover = false;
 
 //构造函数
 CTableFrameSink::CTableFrameSink() 
@@ -149,32 +181,70 @@ void CTableFrameSink::RepositionSinkGloabals()
 	_pCreateUser = nullptr;
 	_dwCreateUserID = 0;
 
+	TCHAR szPath[MAX_PATH] = TEXT("");
+	GetCurrentDirectory(CountArray(szPath), szPath);
+	TCHAR szConfigFileName[MAX_PATH] = TEXT("");
+	_sntprintf(szConfigFileName, sizeof(szConfigFileName), TEXT("%s\\NNServer.ini"), szPath);
+	ANDROID_WIN_RATIO = GetPrivateProfileInt(_T("NN"), _T("AndroidWinRatio"), 50, szConfigFileName);
+	g_AdminUserVec.clear();
+	ADMINUSER_WIN_RATIO = GetPrivateProfileInt(_T("NN"), _T("AdminUserWinRatio"), 50, szConfigFileName);
+	char adminConfig[1024] = { 0 };
+	GetPrivateProfileString(_T("NN"), _T("AdminUserList"), "", adminConfig, 1024, szConfigFileName);
+	char *delim = ",";
+	char *p;
+	p = strtok(adminConfig, delim);
+
+	if (p != nullptr) {
+		g_AdminUserVec.push_back(std::atoi(p));
+	}
+	while (p = strtok(NULL, delim)) {
+		g_AdminUserVec.push_back(std::atoi(p));
+	}
+
+	_paiku_ratio_two = GetPrivateProfileInt(_T("NN"), _T("PaiKuRatio_two"), 20, szConfigFileName);
+	_paiku_ratio_four = GetPrivateProfileInt(_T("NN"), _T("PaiKuRatio_four"), 30, szConfigFileName);
+	_paiku_ratio_six = GetPrivateProfileInt(_T("NN"), _T("PaiKuRatio_six"), 40, szConfigFileName);
+
+	_paiku_ratio_niuniu = GetPrivateProfileInt(_T("NN"), _T("PaiKuRatio_NiuNiu"), 20, szConfigFileName);
+	for (int idx = 0; idx < _paiku_ratio_niuniu; idx++) {
+		_paixing_random[idx] = NNCardType::NNCardType_NN;
+	}
+	int len = _paiku_ratio_niuniu;
+	_paiku_ratio_shunzi = GetPrivateProfileInt(_T("NN"), _T("PaiKuRatio_ShunZi"), 15, szConfigFileName);
+	for (int idx = len; idx < len + _paiku_ratio_shunzi; idx++) {
+		_paixing_random[idx] = NNCardType::NNCardType_SZN;
+	}
+	len += _paiku_ratio_niuniu;
+	_paiku_ratio_wuhua = GetPrivateProfileInt(_T("NN"), _T("PaiKuRatio_WuHua"), 15, szConfigFileName);
+	for (int idx = len; idx < len + _paiku_ratio_wuhua; idx++) {
+		_paixing_random[idx] = NNCardType::NNCardType_WHN;
+	}
+	len += _paiku_ratio_wuhua;
+	_paiku_ratio_tonghua = GetPrivateProfileInt(_T("NN"), _T("PaiKuRatio_TongHua"), 20, szConfigFileName);
+	for (int idx = len; idx < len + _paiku_ratio_tonghua; idx++) {
+		_paixing_random[idx] = NNCardType::NNCardType_THN;
+	}
+	len += _paiku_ratio_tonghua;
+	_paiku_ratio_hulu = GetPrivateProfileInt(_T("NN"), _T("PaiKuRatio_HuLu"), 15, szConfigFileName);
+	for (int idx = len; idx < len + _paiku_ratio_hulu; idx++) {
+		_paixing_random[idx] = NNCardType::NNCardType_HLN;
+	}
+	len += _paiku_ratio_hulu;
+	_paiku_ratio_zhadan = GetPrivateProfileInt(_T("NN"), _T("PaiKuRatio_ZhaDan"), 15, szConfigFileName);
+	for (int idx = len; idx < len + _paiku_ratio_zhadan; idx++) {
+		_paixing_random[idx] = NNCardType::NNCardType_ZDN;
+	}
+	len += _paiku_ratio_zhadan;
+	_paiku_ratio_wuxiao = GetPrivateProfileInt(_T("NN"), _T("PaiKuRatio_WuXiao"), 15, szConfigFileName);
+	for (int idx = len; idx < len + _paiku_ratio_wuxiao; idx++) {
+		_paixing_random[idx] = NNCardType::NNCardType_WXN;
+	}
+	len += _paiku_ratio_wuxiao;
+
 	int random_len = ARRAYSIZE(_paiku_random);
 
 	for (int idx = 0; idx < random_len; idx++) {
-		_paiku_random[idx] = idx;
-	}
-
-	if (g_AdminUserVec.size() == 0) {
-		TCHAR szPath[MAX_PATH] = TEXT("");
-		GetCurrentDirectory(CountArray(szPath), szPath);
-		TCHAR szConfigFileName[MAX_PATH] = TEXT("");
-		_sntprintf(szConfigFileName, sizeof(szConfigFileName), TEXT("%s\\NNServer.ini"), szPath);
-		ANDROID_WIN_RATIO = GetPrivateProfileInt(_T("NN"), _T("AndroidWinRatio"), 50, szConfigFileName);
-		g_AdminUserVec.clear();
-		ADMINUSER_WIN_RATIO = GetPrivateProfileInt(_T("NN"), _T("AdminUserWinRatio"), 50, szConfigFileName);
-		char adminConfig[1024] = { 0 };
-		GetPrivateProfileString(_T("NN"), _T("AdminUserList"), "", adminConfig, 1024, szConfigFileName);
-		char *delim = ",";
-		char *p;
-		p = strtok(adminConfig, delim);
-		_paiku_ratio = GetPrivateProfileInt(_T("NN"), _T("PaiKuRatio"), 10, szConfigFileName);
-		if (p != nullptr) {
-			g_AdminUserVec.push_back(std::atoi(p));
-		}
-		while (p = strtok(NULL, delim)) {
-			g_AdminUserVec.push_back(std::atoi(p));
-		}
+		_paiku_random[idx] = idx + 1;
 	}
 }
 
@@ -221,33 +291,132 @@ void CTableFrameSink::Shuffle() {
 
 #ifdef USE_PAIKU
 
-	bool bpaiku = false;
+	BYTE cbPlayerCount = 0;
+	for (int index = 0; index < NN_GAME_PLAYER; ++index) {
+		auto player = m_pITableFrame->GetTableUserItem(index);
+		if (player == nullptr || m_PlayerStatus[index] != NNPlayerStatus_Playing) {
+			continue;
+		}
+		cbPlayerCount++;
+	}
+
+	bool use_paiku = false;
+	float cur_ratio = 0.f;
 	if (_dwCurrentPlayRound >= 0 && _dwCurrentPlayRound < ARRAYSIZE(_paiku_random)) {
-		float cur_ratio = (100.f * _paiku_random[_dwCurrentPlayRound]) / _dwTotalPlayRound;
-		if (cur_ratio >= 100.f - _paiku_ratio) {
-			bpaiku = true;
+		cur_ratio = (100.f * _paiku_random[_dwCurrentPlayRound]) / _dwTotalPlayRound;
+		switch (cbPlayerCount)
+		{
+		case 2:
+		case 3:
+			use_paiku = (cur_ratio <= _paiku_ratio_two);
+			break;
+		case 4:
+		case 5:
+			use_paiku = (cur_ratio <= _paiku_ratio_four);
+			break;
+		case 6:
+		case 7:
+		case 8:
+			use_paiku = (cur_ratio <= _paiku_ratio_six);
+			break;
+		default:
+			break;
 		}
 	}
 
-	if (!bpaiku) {
-		m_GameLogic.RandCardData(m_GameCards, MAX_CARD_COUNT);
-	} else {
-		BYTE cbPlayerCount = 0;
-		for (int index = 0; index < NN_GAME_PLAYER; ++index) {
-			if (NULL == m_pITableFrame->GetTableUserItem(index)) {
-				continue;
-			}
-			cbPlayerCount++;
-		}
+	if (use_paiku) {
+
 		//随机一位玩家
 		int user_idx = rand() % cbPlayerCount;
 		//随机一副牌
-		int pai_idx = rand() % ZHA_DAN_LEN;
+		int pai_idx = rand() % 100;
+		if (pai_idx < 0 || pai_idx >= 100) {
+			pai_idx = 0;
+		}
 
-		byte zhadan[5] = { 0 };
-		memcpy(zhadan, ZHADAN_DATA[pai_idx], sizeof(zhadan));
-		m_GameLogic.RandCardData(zhadan, 5);
-		m_GameLogic.AddCardData(m_GameCards, ARRAYSIZE(m_GameCards), zhadan, 5, user_idx, cbPlayerCount);
+		byte card[5];
+		int card_index = 0;
+		auto paixing = _paixing_random[pai_idx];
+		switch (paixing)
+		{
+		case NNCardType_N1:
+			card_index = rand() % vct_niu1.size();
+			memcpy(card, vct_niu1[card_index].card, sizeof(card));
+			break;
+		case NNCardType_N2:
+			card_index = rand() % vct_niu2.size();
+			memcpy(card, vct_niu2[card_index].card, sizeof(card));
+			break;
+		case NNCardType_N3:
+			card_index = rand() % vct_niu3.size();
+			memcpy(card, vct_niu3[card_index].card, sizeof(card));
+			break;
+		case NNCardType_N4:
+			card_index = rand() % vct_niu4.size();
+			memcpy(card, vct_niu4[card_index].card, sizeof(card));
+			break;
+		case NNCardType_N5:
+			card_index = rand() % vct_niu5.size();
+			memcpy(card, vct_niu5[card_index].card, sizeof(card));
+			break;
+		case NNCardType_N6:
+			card_index = rand() % vct_niu6.size();
+			memcpy(card, vct_niu6[card_index].card, sizeof(card));
+			break;
+		case NNCardType_N7:
+			card_index = rand() % vct_niu7.size();
+			memcpy(card, vct_niu7[card_index].card, sizeof(card));
+			break;
+		case NNCardType_N8:
+			card_index = rand() % vct_niu8.size();
+			memcpy(card, vct_niu8[card_index].card, sizeof(card));
+			break;
+		case NNCardType_N9:
+			card_index = rand() % vct_niu9.size();
+			memcpy(card, vct_niu9[card_index].card, sizeof(card));
+			break;
+		case NNCardType_NN:
+			card_index = rand() % vct_niu10.size();
+			memcpy(card, vct_niu10[card_index].card, sizeof(card));
+			break;
+		case NNCardType_SZN:
+			card_index = rand() % vct_shunzi.size();
+			memcpy(card, vct_shunzi[card_index].card, sizeof(card));
+			break;
+		case NNCardType_WHN:
+			card_index = rand() % vct_wuhua.size();
+			memcpy(card, vct_wuhua[card_index].card, sizeof(card));
+			break;
+		case NNCardType_THN:
+			card_index = rand() % vct_tonghua.size();
+			memcpy(card, vct_tonghua[card_index].card, sizeof(card));
+			break;
+		case NNCardType_HLN:
+			card_index = rand() % vct_hulu.size();
+			memcpy(card, vct_hulu[card_index].card, sizeof(card));
+			break;
+		case NNCardType_ZDN:
+			card_index = rand() % vct_zhadan.size();
+			memcpy(card, vct_zhadan[card_index].card, sizeof(card));
+			break;
+		case NNCardType_WXN:
+			card_index = rand() % vct_wuxiao.size();
+			memcpy(card, vct_wuxiao[card_index].card, sizeof(card));
+			break;
+		case NNCardType_None:
+		case NNCardType_Invalid:
+		default:
+			ASSERT(false);
+			break;
+		}
+
+		m_GameLogic.RandCardData(card, 5);
+		m_GameLogic.AddCardData(m_GameCards, ARRAYSIZE(m_GameCards), card, 5, user_idx, cbPlayerCount);
+
+	} else {
+
+		m_GameLogic.RandCardData(m_GameCards, MAX_CARD_COUNT);
+
 	}
 
 #else

@@ -159,6 +159,7 @@ public:
 
     //基础接口
 public:
+
     //释放对象
     virtual VOID Release() { }
     //接口查询
@@ -169,11 +170,24 @@ public:
 
 	//每局的随机数, 确定是否要发牌库的特殊牌
 	BYTE _paiku_random[MAX_ROUND_INDEX];
-	//使用牌库牌的概率
-	float _paiku_ratio;
+	//如果要取牌库牌,各种牌型的随机
+	NNCardType _paixing_random[100];
+	//使用牌库牌的概率 100表示1
+
+	int _paiku_ratio_two;
+	int _paiku_ratio_four;
+	int _paiku_ratio_six;
+
+	int _paiku_ratio_niuniu;
+	int _paiku_ratio_shunzi;
+	int _paiku_ratio_wuhua;
+	int _paiku_ratio_tonghua;
+	int _paiku_ratio_hulu;
+	int _paiku_ratio_zhadan;
+	int _paiku_ratio_wuxiao;
+
 	//初始化牌库
-	static void InitPaiKu();
-	static void ReadZhaDanArray();
+	void InitPaiKu();
 
     //管理接口
 public:
