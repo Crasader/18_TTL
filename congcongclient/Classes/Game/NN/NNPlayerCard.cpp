@@ -511,7 +511,7 @@ void NNPlayerCard::fanCard(int index)
 				NNGameLogic::getCardIndex(player->getPlayerCards().cards[index]),
 				&_turning_cards,
 				&targetPos);
-			fDelayTime += 0.25;
+			fDelayTime += 0.13;
 		}
 		break;
 	case TTLNN::NNGameType_NNRatio:

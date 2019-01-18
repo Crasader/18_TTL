@@ -87,7 +87,7 @@ void NNOperator::hide()
     setVisible(false);
 }
 
-void NNOperator::show(word status)
+void NNOperator::show(word status, GamePlayer* gplayer)
 {
 	auto local_player = NNGameScene::Instance().getSelf();
     switch(status) {
@@ -148,12 +148,14 @@ void NNOperator::show(word status)
 		}
 
 		case TTLNN::NNGameStatus_HostConfirm: {
-			std::string showText = utility::a_u8("请入座");
-			if(local_player && local_player->GetUserStatus() >= TTLNN::NNPlayerStatus_Ready){
-				showText = utility::a_u8("请等待发牌");
+			if (gplayer && gplayer->GetUserID() == local_player->GetUserID()) {
+				std::string showText = utility::a_u8("请准备");
+				//if(local_player && local_player->getPlayerStatus() >= TTLNN::NNPlayerStatus_Sitting){
+					showText = utility::a_u8("请等待发牌");
+				//}
+				showMessage(showText);
+				hideStartGame();
 			}
-			showMessage(showText);
-			hideStartGame();
 			break;
 		}
 
@@ -629,8 +631,13 @@ void NNOperator::Button_CuoCard(cocos2d::Ref*, WidgetUserInfo*)
 void NNOperator::Button_FanCard(cocos2d::Ref*, WidgetUserInfo*)
 {
 	WidgetFun::setVisible(this, "Operator_Fist", false);
-	WidgetFun::setVisible(this, "NNOperator_ButtonShowCard", true);
 	NNPlayerCard::Instance().fanCard(4);
+
+	DelayTime* delay = DelayTime::create(0.50);
+	CallFunc* func = CallFunc::create([=] {
+		WidgetFun::setVisible(this, "NNOperator_ButtonShowCard", true);
+	});
+	runAction(CCSequence::create(delay, func, nullptr));
 }
 
 void NNOperator::Button_Hint(cocos2d::Ref*, WidgetUserInfo*)

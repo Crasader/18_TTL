@@ -15,7 +15,7 @@
 <Widget Name="PlayerCard_2" SkinTempName="PlayerCardNode_Other">
 	<Property Key="Scale" Value="0.5"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
-	<Property Key="Pos" Value="1015 545"/>
+	<Property Key="Pos" Value="1015 530"/>
 </Widget>
 
 <Widget Name="PlayerCard_3" SkinTempName="PlayerCardNode_Other">
@@ -39,13 +39,13 @@
 <Widget Name="PlayerCard_6" SkinTempName="PlayerCardNode_Other">
 	<Property Key="Scale" Value="0.5"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
-	<Property Key="Pos" Value="500 545"/>
+	<Property Key="Pos" Value="500 530"/>
 </Widget>
 
 <Widget Name="PlayerCard_7" SkinTempName="PlayerCardNode_Other">
 	<Property Key="Scale" Value="0.5"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
-	<Property Key="Pos" Value="750 545"/>
+	<Property Key="Pos" Value="750 530"/>
 </Widget>
 
 <Widget Name="PlayerCardResultNone_0" SkinTempName="PlayerCardNode_Other">
@@ -63,7 +63,7 @@
 <Widget Name="PlayerCardResultNone_2" SkinTempName="PlayerCardNode_Other">
 	<Property Key="Scale" Value="0.5"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
-	<Property Key="Pos" Value="1015 545"/>
+	<Property Key="Pos" Value="1015 530"/>
 </Widget>
 
 <Widget Name="PlayerCardResultNone_3" SkinTempName="PlayerCardNode_Other">
@@ -87,13 +87,13 @@
 <Widget Name="PlayerCardResultNone_6" SkinTempName="PlayerCardNode_Other">
 	<Property Key="Scale" Value="0.5"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
-	<Property Key="Pos" Value="500 545"/>
+	<Property Key="Pos" Value="500 530"/>
 </Widget>
 
 <Widget Name="PlayerCardResultNone_7" SkinTempName="PlayerCardNode_Other">
 	<Property Key="Scale" Value="0.5"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
-	<Property Key="Pos" Value="750 545"/>
+	<Property Key="Pos" Value="750 530"/>
 </Widget>
 
 <Widget Name="PlayerCardResultHasNiu_0" SkinTempName="PlayerCardNode_SpiltResult">
@@ -111,7 +111,7 @@
 <Widget Name="PlayerCardResultHasNiu_2" SkinTempName="PlayerCardNode_SpiltResult">
 	<Property Key="Scale" Value="0.5"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
-	<Property Key="Pos" Value="1015 545"/>
+	<Property Key="Pos" Value="1015 530"/>
 </Widget>
 
 <Widget Name="PlayerCardResultHasNiu_3" SkinTempName="PlayerCardNode_SpiltResult">
@@ -135,11 +135,11 @@
 <Widget Name="PlayerCardResultHasNiu_6" SkinTempName="PlayerCardNode_SpiltResult">
 	<Property Key="Scale" Value="0.5"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
-	<Property Key="Pos" Value="500 545"/>
+	<Property Key="Pos" Value="500 530"/>
 </Widget>
 
 <Widget Name="PlayerCardResultHasNiu_7" SkinTempName="PlayerCardNode_SpiltResult">
 	<Property Key="Scale" Value="0.5"/>
 	<Property Key="AnchorPos" Value="0.5 0.5"/>
-	<Property Key="Pos" Value="750 545"/>
+	<Property Key="Pos" Value="750 530"/>
 </Widget>

@@ -1025,7 +1025,8 @@ void NNGameScene::sendShowCard()
 
 void NNGameScene::OnEventUserStatus(GamePlayer * pPlayer)
 {
-	NNOperator::Instance().show(m_GameStatus);
+	auto self = getSelf();
+	NNOperator::Instance().show(m_GameStatus, pPlayer);
 }
 
 void NNGameScene::onGameStart(const void * pBuffer, word wDataSize)

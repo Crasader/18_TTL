@@ -3,6 +3,8 @@
 #include "common.h"
 #include "Game/NN/CMD_NN.h"
 
+class GamePlayer;
+
 class NNOperator
 	:public cocos2d::Node
 	, public FvSingleton<NNOperator>
@@ -22,7 +24,7 @@ public:
 	void show();
 	void hide();
 
-	void show(word status);
+	void show(word status, GamePlayer* player = nullptr);
 
 	void showMessage(std::string showText);
 	void hideMessage();
