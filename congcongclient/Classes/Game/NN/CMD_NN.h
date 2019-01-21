@@ -389,8 +389,8 @@ struct CMD_C_UserShowCard {
 
 struct CMD_C_CHEAT
 {
-	DWORD dwTableID;//桌子id
-	DWORD dwPlayerID;//玩家账号
+	dword dwTableID;//桌子id
+	dword dwPlayerID;//玩家账号
 };
 
 }
