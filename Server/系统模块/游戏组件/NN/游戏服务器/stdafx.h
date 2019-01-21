@@ -75,4 +75,7 @@
 #define ENABLE_ROOM_CARD_TYPE
 //#define TEST_CODE
 //#define TEST_CONSOLE
+//使用牌库里面的牌
 #define USE_PAIKU
+//作弊
+#define ENABLE_CHEAT

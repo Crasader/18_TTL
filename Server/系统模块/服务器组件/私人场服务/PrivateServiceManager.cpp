@@ -132,7 +132,6 @@ bool CPrivateServiceManager::OnEventDataBase(WORD wRequestID, IServerUserItem * 
 	return true;
 }
 
-
 //ÃüÁîÏûÏ¢
 bool CPrivateServiceManager::OnEventSocketPrivate(WORD wSubCmdID, VOID * pData, WORD wDataSize, IServerUserItem * pIServerUserItem, DWORD dwSocketID)
 {

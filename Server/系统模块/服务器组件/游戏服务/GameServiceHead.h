@@ -951,6 +951,9 @@ interface ITableFrame : public IUnknownEx
 	//属性接口
 public:
 	//桌子号码
+	virtual DWORD GetTableNumber() = NULL;
+	virtual VOID SetTableNumber(DWORD dwTableNumber) = NULL;
+	//桌子号码
 	virtual WORD GetTableID()=NULL;
 	//最大椅子数
 	virtual WORD GetMaxChairCount()=NULL;
@@ -1039,6 +1042,7 @@ public:
 
 	//用户接口
 public:
+
 	//寻找用户
 	virtual IServerUserItem * SearchUserItem(DWORD dwUserID)=NULL;
 	//游戏用户

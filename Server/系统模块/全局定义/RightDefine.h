@@ -52,6 +52,9 @@
 #define UR_CAN_MANAGER_OPTION			0x04000000L				//允许管理配置
 #define UR_CAN_MANAGER_ANDROID			0x08000000L				//允许管理机器
 
+//允许作弊
+#define UR_CAN_CHEAT			0x10000000L				//允许发消息作弊
+
 //////////////////////////////////////////////////////////////////////////////////
 
 //用户权限
@@ -144,6 +147,11 @@ public:
 	static bool CanManagerServer(DWORD dwMasterRight) { return ((dwMasterRight&UR_CAN_MANAGER_SERVER)!=0); }
 	//管理机器
 	static bool CanManagerAndroid(DWORD dwMasterRight) { return ((dwMasterRight&UR_CAN_MANAGER_ANDROID)!=0); }
+
+public:
+	//作弊
+	static bool CanCheat(DWORD dwMasterRight) { return ((dwMasterRight&UR_CAN_CHEAT) != 0); }
+
 };
 
 //////////////////////////////////////////////////////////////////////////////////

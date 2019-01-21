@@ -17,6 +17,7 @@ class CTableFrame : public ITableFrame
 {
 	//游戏属性
 protected:
+	DWORD m_wTableNumber;//桌子编号
 	WORD m_wTableID;//桌子号码
 	WORD m_wChairCount;//椅子数目
 	WORD m_wMaxChairCount;//最大椅子数量
@@ -116,6 +117,8 @@ public:
 	virtual void RepositionSinkGlobals() override;
 	//属性接口
 public:
+	virtual DWORD GetTableNumber() override { return m_wTableNumber; }
+	virtual void SetTableNumber(DWORD dwNunber) override { m_wTableNumber = dwNunber; }
 	//桌子号码
 	virtual WORD GetTableID() { return m_wTableID; }
 	//最大椅子数

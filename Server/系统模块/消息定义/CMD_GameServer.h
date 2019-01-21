@@ -971,9 +971,9 @@ struct CMD_GF_Private_End_Info
 
 struct CMD_GF_Private_Request_Refresh_Table_info
 {
-    DWORD dwTableID;   //桌子id
-    DWORD dwKindID;    //游戏类型
-    DWORD dwServerID; //服务器id
+    DWORD dwTableID;//桌子id
+    DWORD dwKindID;//游戏类型
+    DWORD dwServerID;//服务器id
 };
 
 //////////////////////////////////////////////////////////////////////////

@@ -745,11 +745,12 @@ bool PriaveteGame::OnDBOCreatePrivate(WORD wRequestID, IServerUserItem * pIServe
 	pInfo.dwOutScore = pPrivate->dwOutMatchNum;
 	pInfo.PlayCount = m_kPrivateInfo.bPlayCout[pPrivate->bPlayCoutIdex];
 
+	pICurrTableFrame->SetTableNumber(iRandNum);
 	pICurrTableFrame->SetPrivateInfo(pCurrTableInfo->bGameTypeIdex,
 		pCurrTableInfo->dwGameRuleIdex,
 		&pInfo);
 
-	pICurrTableFrame->SetMasterUserID(0);
+	pICurrTableFrame->SetMasterUserID(iRandNum);
 	pICurrTableFrame->SetMasterUser(nullptr);
 	pICurrTableFrame->SetCreateUserID(pIServerUserItem->GetUserID());
 	pICurrTableFrame->SetCreateUser(pIServerUserItem);

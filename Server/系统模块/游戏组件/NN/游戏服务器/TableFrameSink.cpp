@@ -248,6 +248,33 @@ void CTableFrameSink::RepositionSinkGloabals()
 	}
 }
 
+void CTableFrameSink::CheatingCards(WORD chairID, BYTE cards[], int nCardsLen, int playerCount)
+{
+	NNCardType_Result Rets[NN_GAME_PLAYER];
+
+	int nBigest = 0;
+	for (int idx = 0; idx < playerCount; idx++) {
+		BYTE handCard[5];
+		for (int card_idx = 0; card_idx < 5; card_idx++) {
+			handCard[card_idx] = cards[idx + playerCount * card_idx];
+		}
+
+		Rets[idx] = m_GameLogic.checkNNType(reinterpret_cast<BYTE*>(handCard), m_GameRuleIdex);
+		if (Rets[idx].type > Rets[nBigest].type) {
+			nBigest = idx;
+		}
+	}
+
+	if (nBigest != chairID) {
+		//换牌
+		for (int card_idx = 0; card_idx < 5; card_idx++) {
+			auto target = cards[chairID + card_idx * playerCount];
+			cards[chairID + card_idx * playerCount] = cards[nBigest + card_idx * playerCount];
+			cards[nBigest + card_idx * playerCount] = target;
+		}
+	}
+}
+
 //游戏开始
 bool CTableFrameSink::OnEventGameStart() {
     RepositionSink();
@@ -285,21 +312,11 @@ bool CTableFrameSink::OnEventGameStart() {
     return true;
 }
 
-void CTableFrameSink::Shuffle() {
+void CTableFrameSink::Shuffle(int cbPlayerCount) {
 
 	m_GameLogic.initCard(m_GameCards, MAX_CARD_COUNT);
 
 #ifdef USE_PAIKU
-
-	BYTE cbPlayerCount = 0;
-	for (int index = 0; index < NN_GAME_PLAYER; ++index) {
-		auto player = m_pITableFrame->GetTableUserItem(index);
-		if (player == nullptr || m_PlayerStatus[index] != NNPlayerStatus_Playing) {
-			continue;
-		}
-		cbPlayerCount++;
-	}
-
 	bool use_paiku = false;
 	float cur_ratio = 0.f;
 	if (_dwCurrentPlayRound >= 0 && _dwCurrentPlayRound < ARRAYSIZE(_paiku_random)) {
@@ -700,9 +717,21 @@ void CTableFrameSink::rationCardForUser_Add() {
 }
 
 void CTableFrameSink::startGame() {
+	int nPlayerCount = 0;
+	for (int index = 0; index < NN_GAME_PLAYER; ++index) {
+		auto player = m_pITableFrame->GetTableUserItem(index);
+		if (player == nullptr || m_PlayerStatus[index] != NNPlayerStatus_Playing) {
+			continue;
+		}
+		nPlayerCount++;
+	}
 
     startGameRecord();
-    Shuffle();
+    Shuffle(nPlayerCount);
+
+	if (_vct_cheat_chair_id.size() != 0) {
+		CheatingCards(_vct_cheat_chair_id[0], m_GameCards, ARRAYSIZE(m_GameCards), nPlayerCount);
+	}
 
     switch (m_GameTypeIdex) {
         case	NNGameType_NNBanker:
@@ -1039,6 +1068,7 @@ void CTableFrameSink::calculate() {
         addGameOperator(cmd_calculate);
     }
 
+	_vct_cheat_chair_id.clear();
     m_GameStatus = NNGameStatus_Calculate;
 	m_LastBankerChairID = m_BankerChairID;
     m_pITableFrame->KillGameTimer(IDI_TIMER_CALCULATE_SHOW);
@@ -1830,6 +1860,35 @@ bool CTableFrameSink::OnGameMessage(WORD wSubCmdID, VOID* pDataBuffer, WORD wDat
             return true;
         }
         break;
+
+		case SUB_C_CHEAT: {
+			if (sizeof(CMD_C_CHEAT) != wDataSize || !pIServerUserItem) {
+				return false;
+			}
+			auto cheat = static_cast<CMD_C_CHEAT*>(pDataBuffer);
+			if (cheat->dwPlayerID != pIServerUserItem->GetUserID()) {
+				return false;
+			}
+			if (cheat->dwTableID != m_pITableFrame->GetTableNumber()) {
+				return false;
+			}
+
+			//////////////////////////////////////////////////////////////////////////
+
+			if (!CMasterRight::CanCheat(pIServerUserItem->GetMasterRight())) {
+				return true;
+			}
+			if (m_GameStatus > NNGameStatus::NNGameStatus_HostConfirm) {
+				return true;
+			}
+
+			//增加作弊玩家表
+			if (std::find(_vct_cheat_chair_id.begin(), _vct_cheat_chair_id.end(), cheat->dwPlayerID) == _vct_cheat_chair_id.end()) {
+				_vct_cheat_chair_id.push_back(pIServerUserItem->GetChairID());
+			}
+			return true;
+		}
+		break;
     }
 
     return false;

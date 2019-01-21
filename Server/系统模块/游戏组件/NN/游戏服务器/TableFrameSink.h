@@ -189,6 +189,14 @@ public:
 	//初始化牌库
 	void InitPaiKu();
 
+	//作弊玩家
+public:
+
+	//作弊玩家列表
+	std::vector<DWORD> _vct_cheat_chair_id;
+	//调用作弊
+	void CheatingCards(WORD chairID, BYTE cards[], int nCardsLen, int playerCount);
+
     //管理接口
 public:
     //初始化
@@ -231,7 +239,7 @@ public:
 
 	//////////////////////////////////////////////////////////////////////////
     //洗牌
-    void Shuffle();
+    void Shuffle(int playerCount);
     //配牌
     void rationCardForUser(WORD cardCount);
     //补牌

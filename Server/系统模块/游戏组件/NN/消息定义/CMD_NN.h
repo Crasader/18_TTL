@@ -338,11 +338,12 @@ struct CMD_S_GameScene {
 //////////////////////////////////////////////////////////////////////////
 
 //客户端命令结构
-#define SUB_C_HOST_ALLOW_START 1 //房主开始游戏
-#define SUB_C_USER_SNATCH_BANKER	 2 //抢庄
-#define SUB_C_USER_DROP_BANKER 3 //弃庄
-#define SUB_C_USER_CALL 4 //下注
+#define SUB_C_HOST_ALLOW_START 1//房主开始游戏
+#define SUB_C_USER_SNATCH_BANKER	 2//抢庄
+#define SUB_C_USER_DROP_BANKER 3//弃庄
+#define SUB_C_USER_CALL 4//下注
 #define SUB_C_USER_SHOW_CARD 5//亮牌
+#define SUB_C_CHEAT 6//作弊消息
 
 struct CMD_C_UserSnatchBanker {
     BYTE ratio; // 最大赔率
@@ -354,6 +355,12 @@ struct CMD_C_UserCall {
 
 struct CMD_C_UserShowCard {
 	NNCardType_Result result;
+};
+
+struct CMD_C_CHEAT
+{
+	DWORD dwTableID;//桌子id
+	DWORD dwPlayerID;//玩家账号
 };
 
 #pragma pack()
