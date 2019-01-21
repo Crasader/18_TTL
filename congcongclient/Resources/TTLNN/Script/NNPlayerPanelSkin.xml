@@ -26,9 +26,9 @@
 			<Property Key="Pos" Value="150 87"/>
 		</WidgetImagic>
 		<!-- 头像框 -->
-		<WidgetImagic Name="" TextureInfo="TTLNN/Player/NNPlayer_AvatarBG.png">
+		<WidgetButton Name="Btn_Head" NomalTexture="TTLNN/Player/NNPlayer_AvatarBG.png" PressTexture="TTLNN/Player/NNPlayer_AvatarBG.png">
 			<Property Key="Pos" Value="153 83"/>
-		</WidgetImagic>
+		</WidgetButton>
 		<WidgetImagic Name="Img_TuiZhu" TextureInfo="TTLNN/Player/tuizhu.png">
 			<Property Key="Pos" Value="150 108"/>
 			<property Key="Visible" Value="false"/>

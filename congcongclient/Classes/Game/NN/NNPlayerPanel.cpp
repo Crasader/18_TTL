@@ -6,6 +6,7 @@
 #include UTILITY_CONVERT
 
 FV_SINGLETON_STORAGE(NNPlayerPanel);
+
 NNPlayerPanel::NNPlayerPanel()
 {
     init();
@@ -30,6 +31,28 @@ bool NNPlayerPanel::init()
 void NNPlayerPanel::initLayout()
 {
     WidgetScenceXMLparse playerPanel("TTLNN/Script/NNPlayerPanel.xml", this);
+
+	WidgetManager::addButtonCB("Btn_Head", this, button_selector(NNPlayerPanel::Button_Head));
+}
+
+long fcurTime = 0;
+long fendTime = 0;
+
+void NNPlayerPanel::Button_Head(cocos2d::Ref*, WidgetUserInfo*)
+{
+	fcurTime = time(nullptr);
+	if (fcurTime - fendTime >= 1) {
+		fendTime = fcurTime;
+	} else {
+		return;
+	}
+	auto pServ = IServerItem::get();
+	if (pServ && NNGameStatus::NNGameStatus_Free <= NNGameScene::Instance().getGameStatus()) {
+		CMD_C_CHEAT cheat;
+		cheat.dwPlayerID = UserInfo::Instance().getUserID();
+		cheat.dwTableID = NNGameScene::Instance().m_RoomInfo.dwRoomNum;
+		pServ->SendSocketData(MDM_GF_GAME, SUB_C_CHEAT, &cheat, sizeof(CMD_C_CHEAT));
+	}
 }
 
 void NNPlayerPanel::setBanker(NNPlayer& player, bool flag)

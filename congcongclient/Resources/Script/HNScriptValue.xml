@@ -21,5 +21,5 @@
 	<ScriptValueInt Key="IndexMax" Value="10"/>
 	<ScriptValueInt Key="Account" Value="1"/>
 	<ScriptValueBool Key="AccountLocked" Value="false"/>
-	<ScriptValueInt Key="PlazaVersion" Value="2003"/>
+	<ScriptValueInt Key="PlazaVersion" Value="2004"/>
  </root>

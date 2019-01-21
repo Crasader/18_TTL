@@ -15,6 +15,9 @@ public:
 public:
 	bool init();
 	void initLayout();
+
+	void Button_Head(cocos2d::Ref*, WidgetUserInfo*);
+
 #pragma endregion 初始化
 
 #pragma region 显示与隐藏对应玩家信息

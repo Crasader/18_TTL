@@ -457,7 +457,7 @@ struct CMD_GF_Private_Room_Info
 	dword dwBaseScore;//底分
 	dword dwEnterMatchNum;//入场限制
 	dword dwOutMatchNum; //离场限制
-	std::vector<int>	kWinLoseScore;
+	std::vector<int> kWinLoseScore;
 
 	CMD_GF_Private_Room_Info& operator=(CMD_GF_Private_Room_Info& val) {
 		this->bPlayCoutIdex = val.bPlayCoutIdex;

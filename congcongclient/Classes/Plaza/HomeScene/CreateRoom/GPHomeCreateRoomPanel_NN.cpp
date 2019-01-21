@@ -28,7 +28,7 @@ GPHomeCreateRoomPanel_NN::GPHomeCreateRoomPanel_NN()
 
 	_nRoundIndex = cocos2d::UserDefault::getInstance()->getIntegerForKey("roundIndex", 0);
 	_nGameType = cocos2d::UserDefault::getInstance()->getIntegerForKey("gametype", TTLNN::NNGameType::NNGameType_SnatchBankerShowCard);
-	std::string strRoomRules = cocos2d::UserDefault::getInstance()->getStringForKey("CreateRoomRules", "0");
+	std::string strRoomRules = cocos2d::UserDefault::getInstance()->getStringForKey("CreateRoomRules", "545226816");
 	_nGameRuleIndex = utility::parseInt(strRoomRules);
 
 }
@@ -101,7 +101,7 @@ void GPHomeCreateRoomPanel_NN::initData()
 
 void GPHomeCreateRoomPanel_NN::resetGameData()
 {
-	std::string strRoomRules = cocos2d::UserDefault::getInstance()->getStringForKey("CreateRoomRules", "0");
+	std::string strRoomRules = cocos2d::UserDefault::getInstance()->getStringForKey("CreateRoomRules", "545226816");
 	_nGameRuleIndex = utility::parseInt(strRoomRules);
 
 	_bAllowedStrangerJoin = false;
@@ -113,7 +113,7 @@ void GPHomeCreateRoomPanel_NN::show()
 {
 	auto qiangzhuang = WidgetFun::getChildWidget(this, "qiangzhuang");
 	auto tuizhu = WidgetFun::getChildWidget(this, "tuizhu");
-	std::string strRoomRules = cocos2d::UserDefault::getInstance()->getStringForKey("CreateRoomRules", "0");
+	std::string strRoomRules = cocos2d::UserDefault::getInstance()->getStringForKey("CreateRoomRules", "545226816");
 
 	switch (_nGameType)
 	{

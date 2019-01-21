@@ -6,6 +6,7 @@
 #include <vector>
 #include "types.h"
 
+#pragma pack(1)
 
 #define Stream_VALUE_SIZE(Name,Length)\
 if (bSend)			\
@@ -327,3 +328,5 @@ public:
 		return *this;
 	}
 };
+
+#pragma pack()
