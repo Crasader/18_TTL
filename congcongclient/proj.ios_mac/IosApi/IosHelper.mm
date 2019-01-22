@@ -8,8 +8,6 @@
 
 #include "IosHelper.h"
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import <UIKit/UIDevice.h>
@@ -27,8 +25,6 @@
 
 NSString* appId =@"wx3cadb286cad49c5d";
 NSString* app_Key =@"b298e9fafabc890e69a35eb88e24cb74";
-
-#endif//
 
 void IosHelper::sendAuthRequest()
 { 
@@ -266,4 +262,9 @@ const char * IosHelper::endRecord()
     if (recorder.isRecording)
         [recorder stop];
 	return "";
+}
+
+bool IosHelper::isWinXinInstalled()
+{
+    return [WXApi isWXAppInstalled];
 }

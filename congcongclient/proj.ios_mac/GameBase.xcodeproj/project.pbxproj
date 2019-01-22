@@ -449,7 +449,6 @@
 		3CED989821C2107D001B4E2B /* public in Resources */ = {isa = PBXBuildFile; fileRef = 3CED988C21C2107B001B4E2B /* public */; };
 		3CED989921C2107D001B4E2B /* bgplay.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3CED988D21C2107B001B4E2B /* bgplay.mp3 */; };
 		3CED989A21C2107D001B4E2B /* Talk in Resources */ = {isa = PBXBuildFile; fileRef = 3CED988E21C2107B001B4E2B /* Talk */; };
-		3CED989B21C2107D001B4E2B /* Head in Resources */ = {isa = PBXBuildFile; fileRef = 3CED988F21C2107B001B4E2B /* Head */; };
 		3CED989C21C2107D001B4E2B /* sound in Resources */ = {isa = PBXBuildFile; fileRef = 3CED989021C2107C001B4E2B /* sound */; };
 		3CED989D21C2107D001B4E2B /* UI in Resources */ = {isa = PBXBuildFile; fileRef = 3CED989121C2107C001B4E2B /* UI */; };
 		3CED989E21C2107D001B4E2B /* GamePlaza in Resources */ = {isa = PBXBuildFile; fileRef = 3CED989221C2107C001B4E2B /* GamePlaza */; };
@@ -483,6 +482,7 @@
 		3CED98DA21C210CE001B4E2B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CED98BD21C210CE001B4E2B /* main.m */; };
 		3CED98DB21C210CE001B4E2B /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3CED98C021C210CE001B4E2B /* RootViewController.mm */; };
 		3CED98DC21C210CE001B4E2B /* SignFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CED98C221C210CE001B4E2B /* SignFile.m */; };
+		3CEEE84E21E5E83700A6A286 /* UserProtocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CEEE84D21E5E83700A6A286 /* UserProtocol.cpp */; };
 		3CFF0D9E21D47EAA001B319F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CFF0D9D21D47EA9001B319F /* libz.tbd */; };
 		3CFF0DA021D47EB9001B319F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CFF0D9F21D47EB8001B319F /* libc++.tbd */; };
 		3CFF0DA221D47ECB001B319F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CFF0DA121D47ECB001B319F /* libsqlite3.tbd */; };
@@ -1399,7 +1399,6 @@
 		3CED988C21C2107B001B4E2B /* public */ = {isa = PBXFileReference; lastKnownFileType = folder; name = public; path = ../../Resources/public; sourceTree = "<group>"; };
 		3CED988D21C2107B001B4E2B /* bgplay.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bgplay.mp3; path = ../../Resources/bgplay.mp3; sourceTree = "<group>"; };
 		3CED988E21C2107B001B4E2B /* Talk */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Talk; path = ../../Resources/Talk; sourceTree = "<group>"; };
-		3CED988F21C2107B001B4E2B /* Head */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Head; path = ../../Resources/Head; sourceTree = "<group>"; };
 		3CED989021C2107C001B4E2B /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sound; path = ../../Resources/sound; sourceTree = "<group>"; };
 		3CED989121C2107C001B4E2B /* UI */ = {isa = PBXFileReference; lastKnownFileType = folder; name = UI; path = ../../Resources/UI; sourceTree = "<group>"; };
 		3CED989221C2107C001B4E2B /* GamePlaza */ = {isa = PBXFileReference; lastKnownFileType = folder; name = GamePlaza; path = ../../Resources/GamePlaza; sourceTree = "<group>"; };
@@ -1437,6 +1436,8 @@
 		3CED98C021C210CE001B4E2B /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootViewController.mm; sourceTree = "<group>"; };
 		3CED98C121C210CE001B4E2B /* SignFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignFile.h; sourceTree = "<group>"; };
 		3CED98C221C210CE001B4E2B /* SignFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignFile.m; sourceTree = "<group>"; };
+		3CEEE84A21E5E83700A6A286 /* UserProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProtocol.h; sourceTree = "<group>"; };
+		3CEEE84D21E5E83700A6A286 /* UserProtocol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserProtocol.cpp; sourceTree = "<group>"; };
 		3CFF0D9B21D47D8B001B319F /* libiconv.2.4.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.4.0.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.1.sdk/usr/lib/libiconv.2.4.0.tbd; sourceTree = DEVELOPER_DIR; };
 		3CFF0D9D21D47EA9001B319F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.1.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		3CFF0D9F21D47EB8001B319F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.1.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
@@ -2784,6 +2785,8 @@
 		3C1E024221BF48FD001F27C8 /* LoginScene */ = {
 			isa = PBXGroup;
 			children = (
+				3CEEE84D21E5E83700A6A286 /* UserProtocol.cpp */,
+				3CEEE84A21E5E83700A6A286 /* UserProtocol.h */,
 				3C1E024321BF48FD001F27C8 /* GPLoginScene.cpp */,
 				3C1E024421BF48FD001F27C8 /* GPLoginScene.h */,
 				3C1E024521BF48FD001F27C8 /* GPLoginScene_LoginSink.cpp */,
@@ -2816,7 +2819,6 @@
 				3CED989321C2107C001B4E2B /* bgroom.mp3 */,
 				3CED988B21C2107B001B4E2B /* Font */,
 				3CED989221C2107C001B4E2B /* GamePlaza */,
-				3CED988F21C2107B001B4E2B /* Head */,
 				3CED988C21C2107B001B4E2B /* public */,
 				3CED989521C2107C001B4E2B /* RoomDetail */,
 				3CED989621C2107D001B4E2B /* Script */,
@@ -3024,7 +3026,6 @@
 				3CED98D321C210CE001B4E2B /* Icon-57.png in Resources */,
 				18062D171F594DC500F5763B /* LICENSE in Resources */,
 				3CED98C521C210CE001B4E2B /* Default-667h@2x.png in Resources */,
-				3CED989B21C2107D001B4E2B /* Head in Resources */,
 				3CED98CA21C210CE001B4E2B /* Icon-100.png in Resources */,
 				3CED98D121C210CE001B4E2B /* Icon-40.png in Resources */,
 				3CED989721C2107D001B4E2B /* Font in Resources */,
@@ -3151,6 +3152,7 @@
 				1804306B1F57DEAE0025CC22 /* l_comp.cpp in Sources */,
 				18062D191F594DC500F5763B /* README.mdown in Sources */,
 				180430E81F57DEAE0025CC22 /* SocketMainUser.cpp in Sources */,
+				3CEEE84E21E5E83700A6A286 /* UserProtocol.cpp in Sources */,
 				1804305B1F57DEAE0025CC22 /* gains_tbl.cpp in Sources */,
 				180430691F57DEAE0025CC22 /* inv_sqrt_tbl.cpp in Sources */,
 				18062D181F594DC500F5763B /* MBProgressHUD.m in Sources */,
@@ -3564,7 +3566,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Automatic;
 				COMPRESS_PNG_FILES = NO;
 				DEVELOPMENT_TEAM = "";

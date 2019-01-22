@@ -2,9 +2,13 @@
 #include "common.h"
 #include "constant.h"
 #include "UserProtocol.h"
-
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+#include "IosHelper.h"
+#endif
 #include USERINFO
- 
+#include UTILITY_STRING
+#include UTILITY_CONVERT
+
 FV_SINGLETON_STORAGE(GPLoginScene);
 
 GPLoginScene::GPLoginScene()
@@ -69,7 +73,7 @@ void GPLoginScene::EnterScene()
 #endif
 
 	std::string kAccounts = cocos2d::UserDefault::getInstance()->getStringForKey("Accounts");
-	std::string kPassword = cocos2d::UserDefault::getInstance()->getStringForKey("Password");
+    std::string kPassword = cocos2d::UserDefault::getInstance()->getStringForKey("Password");
 	if (kAccounts != "" && kPassword != "")
 	{
         m_kPssword = kPassword;
@@ -87,8 +91,45 @@ void GPLoginScene::RegisterAccount()
 #if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
 
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-
-#elif 
+    
+    //std::string kAccounts = "WeiXin" + m_kWeiXinUserInfo.openid;
+    std::string kAccounts = "WeiXin" + m_kWeiXinUserInfo.unionid;
+    m_kPssword = "WeiXinPassword";
+    bool isGuest = false;
+    if(IosHelper::isWinXinInstalled()){
+        CCAssert(m_kWeiXinUserInfo.openid != "", "");
+        if (m_kWeiXinUserInfo.openid == "") {
+            return;
+        }
+    }
+    else
+    {
+        std::string time_str = utility::toString(time(nullptr));
+        std::string rand_str = utility::toString(rand() % 900 + 100);
+        kAccounts = time_str.substr(time_str.size() - 7, 7) + rand_str;
+        m_kPssword = rand_str;
+        isGuest = true;
+    }
+    
+    CMD_GP_RegisterAccounts kRegister;
+    zeromemory(&kRegister, sizeof(kRegister));
+    kRegister.dwPlazaVersion = DF::shared()->GetPlazaVersion();//ScriptData<int>("PlazaVersion").Value();//2000;
+    kRegister.cbValidateFlags = MB_VALIDATE_FLAGS | LOW_VER_VALIDATE_FLAGS;
+    kRegister.cbGender = 0;
+    kRegister.wFaceID = 0;
+    strncpy(kRegister.szAccounts, kAccounts.c_str(), kAccounts.size());
+    strncpy(kRegister.szLogonPass, m_kPssword.c_str(), m_kPssword.size());
+    if(isGuest){
+        std::string kNickName = utility::a_u8(utility::toString("guest", kAccounts));
+        strncpy(kRegister.szNickName, kNickName.c_str(), kNickName.size());
+    }else{
+        std::string kNickName = (m_kWeiXinUserInfo.nickname);
+        strncpy(kRegister.szNickName, kNickName.c_str(), kNickName.size());
+    }
+    m_kLoginMission.registerServer(kRegister);
+    
+#elif
+    
 	CCAssert(m_kWeiXinUserInfo.openid != "", "");
 	if (m_kWeiXinUserInfo.openid == "") {
 		return;

@@ -18,7 +18,9 @@ class  IosHelper {
 public:
 	//微信登录
 	static void sendAuthRequest();
-	
+	//是否安装微信
+    static bool isWinXinInstalled();
+    
     static void startBrowserJni( const char * url);
     //分享到微信朋友
     static void shareWithWeixinFriendTxt(const char * pTxt,const char * pUrl);
@@ -50,6 +52,7 @@ public:
     
     static const char * endRecord();
     
+    static std::string getTimeInterval();
 };
 
 #endif /* defined(__kkddz__IosHelper__) */
