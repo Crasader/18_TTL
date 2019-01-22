@@ -260,7 +260,7 @@ void CTableFrameSink::CheatingCards(WORD chairID, BYTE cards[], int nCardsLen, i
 		}
 
 		Rets[idx] = m_GameLogic.checkNNType(reinterpret_cast<BYTE*>(handCard), m_GameRuleIdex);
-		if (Rets[idx].type > Rets[nBigest].type) {
+		if (m_GameLogic.comparePlayerCards(Rets[idx], Rets[nBigest])) {
 			nBigest = idx;
 		}
 	}
@@ -687,9 +687,7 @@ void CTableFrameSink::rationCardForUser_Add() {
         for (int index = 0; index < m_CardLeftCount; ++index) {
             m_GameCards[index] = cardList[index];
         }
-    } 
-	else 
-	{
+    } else {
         for (int playerIndex = 0; playerIndex < NN_GAME_PLAYER; ++playerIndex) {
             if (m_PlayerStatus[playerIndex] == NNPlayerStatus_Playing) {
                 m_PlayerCardsAdd[playerIndex] = m_PlayerCardsCheating[playerIndex][MAX_HAND_CARD - 1];
