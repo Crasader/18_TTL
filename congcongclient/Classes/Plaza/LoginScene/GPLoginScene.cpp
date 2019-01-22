@@ -62,15 +62,16 @@ void GPLoginScene::EnterScene()
 	CocosDenshion::SimpleAudioEngine::getInstance()->setEffectsVolume(effect_volume);
 	SoundFun::Instance().SetSoundEffect(effect_volume);
 	SoundFun::Instance().playBackMusic("bgplay.mp3");
+
+#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
+	onWxLoginSuccess(m_kWeiXinUserInfo);
+	return;
+#endif
+
 	std::string kAccounts = cocos2d::UserDefault::getInstance()->getStringForKey("Accounts");
 	std::string kPassword = cocos2d::UserDefault::getInstance()->getStringForKey("Password");
-	if (kAccounts != "" && kPassword != "") 
+	if (kAccounts != "" && kPassword != "")
 	{
-#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
-		std::string result = GetWxLoginWin32();
-		kAccounts = "WeiXinoef1Y1jKLussTDkIAaMpdXHdH";// utility::split(result, ":")[0];
-		kPassword = "WeixinPassword";//utility::split(result,":")[1];
-#endif
         m_kPssword = kPassword;
         CMD_GP_LogonAccounts loginAccount;
         loginAccount.dwPlazaVersion = DF::shared()->GetPlazaVersion();//ScriptData<int>("PlazaVersion").Value();//2000;
@@ -79,45 +80,46 @@ void GPLoginScene::EnterScene()
         strcpy(loginAccount.szPassword, kPassword.c_str());
         m_kLoginMission.loginAccount(loginAccount);
 	}
-#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
-    else
-    {
-		onWxLoginSuccess(m_kWeiXinUserInfo);
-    }
-#endif
 }
 
 void GPLoginScene::RegisterAccount()
 {
-	#if CC_TARGET_PLATFORM != CC_PLATFORM_WIN32
-		CCAssert(m_kWeiXinUserInfo.openid != "", "");
-		if (m_kWeiXinUserInfo.openid == "") {
-			return;
-		}
+#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
 
-		//std::string kAccounts = "WeiXin" + m_kWeiXinUserInfo.openid;
-		std::string kAccounts = "WeiXin" + m_kWeiXinUserInfo.unionid;
-		m_kPssword = "WeiXinPassword";
-		CMD_GP_RegisterAccounts kRegister;
-		zeromemory(&kRegister, sizeof(kRegister));
-		kRegister.dwPlazaVersion = DF::shared()->GetPlazaVersion();//ScriptData<int>("PlazaVersion").Value();//2000;
-		kRegister.cbValidateFlags = MB_VALIDATE_FLAGS | LOW_VER_VALIDATE_FLAGS;
-		kRegister.cbGender = 0;
-		kRegister.wFaceID = 0;
-		strncpy(kRegister.szAccounts, kAccounts.c_str(), kAccounts.size());
-		strncpy(kRegister.szLogonPass, m_kPssword.c_str(), m_kPssword.size());
-		std::string kNickName = (m_kWeiXinUserInfo.nickname);
-		strncpy(kRegister.szNickName, kNickName.c_str(), kNickName.size());
-		m_kLoginMission.registerServer(kRegister);
-	#endif
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+
+#elif 
+	CCAssert(m_kWeiXinUserInfo.openid != "", "");
+	if (m_kWeiXinUserInfo.openid == "") {
+		return;
+	}
+	//std::string kAccounts = "WeiXin" + m_kWeiXinUserInfo.openid;
+	std::string kAccounts = "WeiXin" + m_kWeiXinUserInfo.unionid;
+	m_kPssword = "WeiXinPassword";
+	CMD_GP_RegisterAccounts kRegister;
+	zeromemory(&kRegister, sizeof(kRegister));
+	kRegister.dwPlazaVersion = DF::shared()->GetPlazaVersion();//ScriptData<int>("PlazaVersion").Value();//2000;
+	kRegister.cbValidateFlags = MB_VALIDATE_FLAGS | LOW_VER_VALIDATE_FLAGS;
+	kRegister.cbGender = 0;
+	kRegister.wFaceID = 0;
+	strncpy(kRegister.szAccounts, kAccounts.c_str(), kAccounts.size());
+	strncpy(kRegister.szLogonPass, m_kPssword.c_str(), m_kPssword.size());
+	std::string kNickName = (m_kWeiXinUserInfo.nickname);
+	strncpy(kRegister.szNickName, kNickName.c_str(), kNickName.size());
+	m_kLoginMission.registerServer(kRegister);
+#endif
 }
 
 void GPLoginScene::onWxLoginSuccess(WxUserInfo kWxUserInfo)
 {
 #if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
 	std::string result = GetWxLoginWin32();
-    std::string kAccounts = utility::split(result,":")[0];
-	std::string kPssword  = utility::split(result,":")[1];
+	auto tocken = utility::split(result, ":");
+	if (tocken.size() != 2) {
+		return;
+	}
+    std::string kAccounts = tocken[0];
+	std::string kPssword  = tocken[1];
 	CMD_GP_LogonAccounts loginAccount;
 	loginAccount.dwPlazaVersion = DF::shared()->GetPlazaVersion();//ScriptData<int>("PlazaVersion").Value();//2000;
 	loginAccount.cbValidateFlags = LOW_VER_VALIDATE_FLAGS;
@@ -181,6 +183,9 @@ std::string GPLoginScene::GetWxLoginWin32()
 
 	//account = "WeiXinoznOM0oURRnxOpbFnZdxsyxRU";
 	//pass = "WeiXinPassword";
+	
+	account = "test011";
+	pass = "111111";
 
 	std::string tocken = utility::toString(account, ":",  pass);
 	return tocken;

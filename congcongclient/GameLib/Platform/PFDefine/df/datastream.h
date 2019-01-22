@@ -128,8 +128,8 @@ public:
 		{
 			return *this;
 		}
-		assert(size() >= nSize);
-		if (nSize > (int)size())
+		assert(size() >= static_cast<size_t>(nSize));
+		if (static_cast<size_t>(nSize) > size())
 		{
 			return *this;
 		}
@@ -180,8 +180,8 @@ public:
 		{
 			return *this;
 		}
-		assert(size() >= nSize);
-		if ((int)size() < nSize)
+		assert(static_cast<size_t>(nSize) <= size());
+		if (static_cast<size_t>(nSize) > size())
 		{
 			return *this;
 		}
