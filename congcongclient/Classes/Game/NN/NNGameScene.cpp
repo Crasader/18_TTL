@@ -1154,39 +1154,48 @@ void NNGameScene::onBankerInfo(const void * pBuffer, word wDataSize)
 		}
 	}
 
-	switch (NNRoomInfo::Instance().getRoomInfo().bGameTypeIdex) {
-	case TTLNN::NNGameType_AllCompare:
-		for (int index = 0; index < MAX_PLAYER; ++index) {
-			m_Players[index]->setPlayerBets(m_AllBets[0]);
-		}
-		break;
-	case TTLNN::NNGameType_SnatchBanker:
-		int count = 0;
-		vct_snach_banker.clear();
-		for (int i = 0; i < NN_GAME_PLAYER; i++) {
-			if (pInfo->cbSanch[i] != 0) {
-				vct_snach_banker.push_back(i);
+	switch (m_RoomInfo.bGameTypeIdex)
+	{
+		case TTLNN::NNGameType_AllCompare: {
+			for (int index = 0; index < MAX_PLAYER; ++index) {
+				m_Players[index]->setPlayerBets(m_AllBets[0]);
 			}
-		}
-		if (vct_snach_banker.size() >= 2) {
-			float fDelayTime = playZhuanZhuangAni();
-			DelayTime* delay = DelayTime::create(fDelayTime);
-			CallFunc* func = CallFunc::create([=] {
-				updateUserInfo();
-				NNOperator::Instance().show(m_GameStatus);
-				NNOperator::Instance().showTimes(TIME_FOR_USER_CALL);
-				NNSound::playEffect(NNSound::START_BET);
-			});
-			runAction(CCSequence::create(delay, func, nullptr));
+			updateUserInfo();
+			NNOperator::Instance().show(m_GameStatus);
+			NNOperator::Instance().showTimes(TIME_FOR_USER_CALL);
 			return;
 		}
 		break;
+		case TTLNN::NNGameType_SnatchBanker: {
+			int count = 0;
+			vct_snach_banker.clear();
+			for (int i = 0; i < NN_GAME_PLAYER; i++) {
+				if (pInfo->cbSanch[i] != 0) {
+					vct_snach_banker.push_back(i);
+				}
+			}
+			if (vct_snach_banker.size() >= 2) {
+				float fDelayTime = playZhuanZhuangAni();
+				DelayTime* delay = DelayTime::create(fDelayTime);
+				CallFunc* func = CallFunc::create([=] {
+					updateUserInfo();
+					NNOperator::Instance().show(m_GameStatus);
+					NNOperator::Instance().showTimes(TIME_FOR_USER_CALL);
+					NNSound::playEffect(NNSound::START_BET);
+				});
+				runAction(CCSequence::create(delay, func, nullptr));
+				return;
+			}
+		}
+		break;
+		default: {
+			updateUserInfo();
+			NNOperator::Instance().show(m_GameStatus);
+			NNOperator::Instance().showTimes(TIME_FOR_USER_CALL);
+			NNSound::playEffect(NNSound::START_BET);
+		}
+		break;
 	}
-
-	updateUserInfo();
-	NNOperator::Instance().show(m_GameStatus);
-	NNOperator::Instance().showTimes(TIME_FOR_USER_CALL);
-	NNSound::playEffect(NNSound::START_BET);
 }
 
 void NNGameScene::onUserCall(const void* pBuffer, word wDataSize)
@@ -1227,9 +1236,15 @@ void NNGameScene::onSendCardAll(const void* pBuffer, word wDataSize)
 		}
 	}
 
-	NNSound::playEffect(NNSound::START_BET);
+	switch (m_RoomInfo.bGameTypeIdex)
+	{
+	case TTLNN::NNGameType_AllCompare:
+		break;
+	default:
+		NNSound::playEffect(NNSound::START_BET);
+		break;
+	}
 	m_GameStatus = TTLNN::NNGameStatus_SplitCard;
-
 	NNPlayerCard::Instance().onSendPlayerCard();
 }
 

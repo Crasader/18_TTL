@@ -617,7 +617,7 @@ struct CMD_GF_Private_End_Info
 	std::vector<SCORE> lPlayerWinLose;
 	std::vector<byte> lPlayerAction;
 
-	void StreamValue(datastream& kData,bool bSend)
+	void StreamValue(datastream& kData, bool bSend)
 	{
 		Stream_VECTOR(lPlayerWinLose);
 		Stream_VECTOR(lPlayerAction);

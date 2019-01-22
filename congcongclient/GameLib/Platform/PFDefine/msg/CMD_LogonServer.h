@@ -553,6 +553,7 @@ struct tagPrivateRandTotalRecord
 		Stream_VALUE(dwVersion);
 	}
 };
+
 struct tagPrivateRandTotalRecordList
 {
 	dword		dwUserID;

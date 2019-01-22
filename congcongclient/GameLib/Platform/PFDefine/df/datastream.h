@@ -6,84 +6,83 @@
 #include <vector>
 #include "types.h"
 
-#pragma pack(1)
-
 #define Stream_VALUE_SIZE(Name,Length)\
-if (bSend)			\
-{                           \
+if (bSend)\
+{\
 	kData.pushValue((void*)Name, Length); \
 }\
 else\
 {\
 	kData.popValue((void*)Name, Length); \
-}\
+}
 
 #define Stream_VALUE(Name)	\
-	if(bSend)			\
-{                           \
+if(bSend)\
+{\
 	kData.pushValue(Name);\
 }\
 else\
 {\
 	kData.popValue(Name);\
-}\
-
+}
 
 #define Stream_VECTOR(Name)	\
-	if(bSend)			\
+if(bSend)			\
 {                           \
 	kData.pushValueVector(Name);\
 }		\
 else\
 {\
 	kData.popValueVector(Name);\
-}\
-
+}
 
 #define Stream_DATA(Name)	\
-	if(bSend)			\
+if(bSend)			\
 {                           \
 	kData.pushValueData(Name);\
 }		\
 else\
 {\
 	kData.popValueData(Name);\
-}\
+}
 
-
-#define Stream_VALUE_SYSTEMTIME(Name)	\
-	if(bSend)			\
-{                           \
-	kData.pushValue(&Name,sizeof(systemtime));\
-}	\
-	else\
+#define Stream_VALUE_SYSTEMTIME(Name)\
 {\
-	kData.popValue(&Name,sizeof(systemtime));\
-}\
+	if (bSend)\
+	{\
+		kData.pushValue(&Name, sizeof(systemtime)); \
+	}\
+	else\
+	{\
+		kData.popValue(&Name, sizeof(systemtime)); \
+	}\
+}
 
 #define StructVecotrMember(TypeMem,Member)\
 {\
 	if (!bSend)\
-{\
-	int iCout = 0;\
-	kData.popValue(iCout);\
-	for (int i = 0;i<iCout;i++)\
-{\
-	TypeMem kTempValue;\
-	kTempValue.StreamValue(kData,bSend);\
-	this->Member.push_back(kTempValue);\
-}\
-}\
+	{\
+		int iCout = 0;\
+		kData.popValue(iCout);\
+		for (int i = 0;i<iCout;i++)\
+		{\
+			TypeMem kTempValue;\
+			kTempValue.StreamValue(kData,bSend);\
+			this->Member.push_back(kTempValue);\
+		}\
+	}\
 	else\
-{\
-	int iCout = this->Member.size();\
-	kData.pushValue(iCout);\
-	for (int i = 0;i<iCout;i++)\
-{\
-	this->Member[i].StreamValue(kData,bSend);\
-}\
-}\
+	{\
+		int iCout = this->Member.size();\
+		kData.pushValue(iCout);\
+		for (int i = 0;i<iCout;i++)\
+		{\
+			this->Member[i].StreamValue(kData,bSend);\
+		}\
+	}\
 }
+
+#pragma pack(1)
 
 class datastream:public std::vector<char>
 {
@@ -93,19 +92,23 @@ public:
 	{
 		pushValue((char*)pData,dSize);
 	}
+
 	char* data()
 	{
 		return &((*this)[0]);
 	}
+
 	datastream& pushValue(unsigned short value)
 	{
 		push(value);
 		return *this;
-	}  
+	}
+
 	datastream& popValue(unsigned short& value)
 	{
 		return pop(value);
-	} 
+	}
+
 	datastream& pushValueData(datastream& value)
 	{
 		push(int(value.size()));
@@ -115,7 +118,8 @@ public:
 		}
 		memcpy(inc_size(value.size()), (void*)&value[0], value.size());
 		return *this;
-	}  
+	}
+
 	datastream& popValueData(datastream& value)
 	{
 		int nSize = 0;
@@ -124,6 +128,7 @@ public:
 		{
 			return *this;
 		}
+		assert(size() >= nSize);
 		if (nSize > (int)size())
 		{
 			return *this;
@@ -132,12 +137,14 @@ public:
 		value.assign(first, last);
 		erase(first, last);
 		return *this;
-	} 
+	}
+
 	datastream& pushValue(unsigned int value)
 	{
 		push(value);
 		return *this;
-	}  
+	}
+
 	datastream& popValue(unsigned int& value)
 	{
 		return pop(value);
@@ -147,7 +154,8 @@ public:
 	{
 		push(value);
 		return *this;
-	}  
+	}
+
 	datastream& popValue(int& value)
 	{
 		return pop(value);
@@ -160,9 +168,10 @@ public:
 		{
 			return *this;
 		}
-		memcpy(inc_size(data.size()), (void*)&data[0], data.size());
+		memcpy(inc_size(data.size()), &data[0], data.size());
 		return *this;
-	}    
+	}
+
 	datastream& popValue(std::string& data)
 	{
 		int nSize = 0;
@@ -171,6 +180,7 @@ public:
 		{
 			return *this;
 		}
+		assert(size() >= nSize);
 		if ((int)size() < nSize)
 		{
 			return *this;
@@ -180,11 +190,13 @@ public:
 		erase(first, last);
 		return *this;
 	}
+
 	datastream& pushValue(long long value)
 	{
 		push(value);
 		return *this;
-	}  
+	}
+
 	datastream& popValue(long long& value)
 	{
 		return pop(value);
@@ -194,24 +206,29 @@ public:
 	{
 		push(value);
 		return *this;
-	}  
+	}
+
 	datastream& popValue(unsigned long long& value)
 	{
 		return pop(value);
-	} 
+	}
+
 	datastream& pushValue(float value)
 	{
 		return push(value);
-	}  
+	}
+
 	datastream& popValue(float& value)
 	{
 		return pop(value);
-	} 
+	}
+
 	datastream& pushValue(unsigned long value)
 	{
 		push(value);
 		return *this;
 	}
+
 	datastream& popValue(unsigned long& value)
 	{
 		unsigned long kTempValue = 0;
@@ -219,22 +236,27 @@ public:
 		value = kTempValue;
 		return *this;
 	}
+
 	datastream& pushValue(unsigned char value)
 	{
 		return push(value);
-	}  
+	}
+
 	datastream& popValue(unsigned char& value)
 	{
 		return pop(value);
 	}
+
 	datastream& pushValue(char value)
 	{
 		return push(value);
-	}  
+	}
+
 	datastream& popValue(char& value)
 	{
 		return pop(value);
 	}
+
 	datastream& pushValue(void* value,int iSize)
 	{
 		if (iSize == 0)
@@ -243,9 +265,11 @@ public:
 		}
 		memcpy(inc_size(iSize), value, iSize);
 		return *this;
-	}  
+	}
+
 	datastream& popValue(void* value,unsigned int iSize)
 	{
+		assert(size() >= iSize);
 		if (size() < iSize)
 		{
 			return *this;
@@ -254,10 +278,12 @@ public:
 		erase(begin(), begin()+iSize);
 		return *this;
 	}
+
 	datastream& pushValue(bool value)
 	{
 		return push(value);
-	}  
+	}
+
 	datastream& popValue(bool& value)
 	{
 		return pop(value);
@@ -275,6 +301,7 @@ public:
 		}
 		return *this;
 	}
+
 	template<typename C>
 	datastream& popValueVector(std::vector<C>& data)
 	{
@@ -293,22 +320,24 @@ public:
 	char* inc_size(size_t delta_size)
 	{
 		size_t last_size=size();
-		resize(last_size+delta_size);
+		resize(last_size + delta_size);
 		return &operator[](last_size);
 	}
-	datastream& popSize(int iSize)
+
+	datastream& popSize(size_t iSize)
 	{
 		if (iSize<=0)
 		{
 			return *this;
 		}
-		if (iSize>(int)size())
+		if (iSize>size())
 		{
 			return *this;
 		}
 		erase(begin(), begin()+iSize);
 		return *this;
 	}
+
 	template<typename C>
 	datastream& push(C data)
 	{
@@ -319,6 +348,7 @@ public:
 	template<typename C>
 	datastream& pop(C& data)
 	{
+		assert(size() >= sizeof(data));
 		if (size() < sizeof(data))
 		{
 			return *this;
