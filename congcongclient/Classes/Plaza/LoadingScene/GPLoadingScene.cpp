@@ -1,7 +1,9 @@
 #include "GPLoadingScene.h"
-
+#include "constant.h"
 #include "../Gamemanager/GPSceneManager.h"
-
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+#include "IosHelper.h"
+#endif
  
  
 
