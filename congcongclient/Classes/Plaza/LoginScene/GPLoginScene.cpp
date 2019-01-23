@@ -140,7 +140,7 @@ void GPLoginScene::RegisterAccount()
 	strncpy(kRegister.szAccounts, kAccounts.c_str(), kAccounts.size());
 	strncpy(kRegister.szLogonPass, m_kPssword.c_str(), m_kPssword.size());
 	if (isGuest) {
-		std::string kNickName = utility::a_u8(utility::toString("玩家", kAccounts));
+		std::string kNickName = utility::a_u8("玩家") + kAccounts;
 		strncpy(kRegister.szNickName, kNickName.c_str(), kNickName.size());
 	} else {
 		std::string kNickName = (m_kWeiXinUserInfo.nickname);
