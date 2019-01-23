@@ -156,7 +156,7 @@ void GPLoginScene::RegisterAccount()
     bool isGuest = false;
     if(IosHelper::isWinXinInstalled())
 	{
-        CCAssert(m_kWeiXinUserInfo.unionid != "", "");
+        //CCAssert(m_kWeiXinUserInfo.unionid != "", "");
         if (m_kWeiXinUserInfo.unionid == "") {
             return;
         }
