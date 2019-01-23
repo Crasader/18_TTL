@@ -83,7 +83,7 @@ void GPLoginScene::EnterScene()
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32 || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 
-		//×¢²áÍæ¼Ò
+		//×¢ï¿½ï¿½ï¿½ï¿½ï¿½
 		RegisterAccount();
 		return;
 
@@ -130,7 +130,7 @@ void GPLoginScene::RegisterAccount()
 	strncpy(kRegister.szAccounts, kAccounts.c_str(), kAccounts.size());
 	strncpy(kRegister.szLogonPass, m_kPssword.c_str(), m_kPssword.size());
 	if (isGuest) {
-		std::string kNickName = utility::a_u8(utility::toString("ÓÎ¿Í", kAccounts));
+		std::string kNickName = utility::a_u8(utility::toString("ï¿½Î¿ï¿½", kAccounts));
 		strncpy(kRegister.szNickName, kNickName.c_str(), kNickName.size());
 	} else {
 		std::string kNickName = (m_kWeiXinUserInfo.nickname);
@@ -167,7 +167,7 @@ void GPLoginScene::RegisterAccount()
     strncpy(kRegister.szAccounts, kAccounts.c_str(), kAccounts.size());
     strncpy(kRegister.szLogonPass, m_kPssword.c_str(), m_kPssword.size());
     if(isGuest){
-        std::string kNickName = utility::a_u8(utility::toString("ÓÎ¿Í", kAccounts));
+        std::string kNickName = utility::a_u8(utility::toString("ï¿½Î¿ï¿½", kAccounts));
         strncpy(kRegister.szNickName, kNickName.c_str(), kNickName.size());
     }else{
         std::string kNickName = (m_kWeiXinUserInfo.nickname);
@@ -229,7 +229,7 @@ void GPLoginScene::onWxLoginSuccess(WxUserInfo kWxUserInfo)
 
 	CGlobalUserInfo * pGlobalUserInfo=CGlobalUserInfo::GetInstance();
 	tagGlobalUserData * pGlobalUserData=pGlobalUserInfo->GetGlobalUserData();
-	// Î¢ÐÅÐÔ±ð
+	// Î¢ï¿½ï¿½ï¿½Ô±ï¿½
 	pGlobalUserData->cbGender = kWxUserInfo.sex;
 	strncpy(pGlobalUserData->szHeadHttp,kWxUserInfo.headimgurl.c_str(), countarray(pGlobalUserData->szHeadHttp));
 

@@ -96,7 +96,8 @@ void GPHomeSettingPanel::Button_ChangeAccount(cocos2d::Ref*, WidgetUserInfo*)
 {
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-	//exit(0);
+	exit(0);
+    
 	MissionWeiXin::Instance().restWeiXin();
 	cocos2d::UserDefault::getInstance()->setStringForKey("Accounts","");
 	cocos2d::UserDefault::getInstance()->setStringForKey("Password","");
