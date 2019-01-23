@@ -16,7 +16,11 @@ using namespace experimental;
 void GPHomeScene::initButton()
 {
 	//WidgetManager::addButtonCB("Button_Header", this, button_selector(GPHomeScene::Button_Header));
+#ifdef ENABLE_WEIXIN
 	WidgetManager::addButtonCB("Button_Share", this, button_selector(GPHomeScene::Button_Share));
+#else
+	WidgetFun::setVisible(this, "Button_Share", false);
+#endif
 	WidgetManager::addButtonCB("Button_ADDGOLD", this, button_selector(GPHomeScene::Button_Mall));
 	//WidgetManager::addButtonCB("Btn_Mall", this, button_selector(GPHomeScene::Button_Mall));
 	WidgetManager::addButtonCB("Button_Setting", this, button_selector(GPHomeScene::Button_Setting));
@@ -35,7 +39,9 @@ void GPHomeScene::initButton()
 
 void GPHomeScene::setButtonsEnable(bool flag)
 {
+#ifdef ENABLE_WEIXIN
 	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "Button_Share"))->setTouchEnabled(flag);
+#endif
 	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "Button_ADDGOLD"))->setTouchEnabled(flag);
 	//dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "Btn_Mall"))->setTouchEnabled(flag);
 	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "Button_Setting"))->setTouchEnabled(flag);

@@ -135,7 +135,16 @@ void NNGameScene::initButton()
 	WidgetManager::addButtonCB("HNMJButton_BiaoQing6",this,button_selector(NNGameScene::HNMJButton_BiaoQing));
 	WidgetManager::addButtonCB("HNMJButton_BiaoQing7",this,button_selector(NNGameScene::HNMJButton_BiaoQing));
 	//WidgetManager::addButtonCB("NNGameScene_ChongZhi",this,button_selector(NNGameScene::Button_ChongZhi));
+
+#ifdef ENABLE_WEIXIN
+
 	WidgetManager::addButtonCB("NNGameScene_ButtonShare",this,button_selector(NNGameScene::Button_Share));
+
+#else
+
+	WidgetFun::setVisible(this, "NNGameScene_ButtonShare", false);
+
+#endif
 	
 }
 
@@ -216,11 +225,15 @@ void NNGameScene::show()
 	GPHomeSettingPanel::Instance().hide();
 	GPHomeSettingPanel::Instance().hideOrShowQuitBtn(false);
 
+#ifdef ENABLE_WEIXIN
+
 	if (m_RoomInfo.bStartGame) {
 		WidgetFun::setVisible(this, "NNGameScene_ButtonShare", false);
 	} else {
 		WidgetFun::setVisible(this, "NNGameScene_ButtonShare", true);
 	}
+
+#endif
 
     setVisible(true);
 }
@@ -521,7 +534,13 @@ void NNGameScene::setButtonsEnable(bool flag)
 	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "HNMJButton_BiaoQing2"))->setTouchEnabled(flag);
 	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "HNMJButton_BiaoQing3"))->setTouchEnabled(flag);
 	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "HNMJButton_BiaoQing4"))->setTouchEnabled(flag);
+
+#ifdef ENABLE_WEIXIN
+
 	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "NNGameScene_ButtonShare"))->setTouchEnabled(flag);
+
+#endif
+
 }
 
 void NNGameScene::Button_Menu(cocos2d::Ref*, WidgetUserInfo*)
@@ -1046,7 +1065,11 @@ void NNGameScene::onGameStart(const void * pBuffer, word wDataSize)
 	NNPlayer* pLocalPlayer = getPlayerByChairID(m_pSelfPlayer->GetChairID());
 	pLocalPlayer->setPlayCount(pLocalPlayer->getPlayCount()+1);
 
+ #ifdef ENABLE_WEIXIN
+
 	WidgetFun::setVisible(this, "NNGameScene_ButtonShare", false);
+
+#endif
 
 #ifdef SHOW_SERVICE_CORE
 	//扣税收显示(仅首局显示)

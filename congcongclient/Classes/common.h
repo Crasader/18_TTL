@@ -19,6 +19,9 @@
 #define UTILITY_WIDGET "Tools/utilityWidget.h"
 #define UTILITY_CONVERT "Tools/utilityConvert.h"
 
+//启用微信登录模块
+//#define ENABLE_WEIXIN
+
 //////////////////////////////////////////////////////////////////////////
 //C&C++类库
 #include <STD.h>

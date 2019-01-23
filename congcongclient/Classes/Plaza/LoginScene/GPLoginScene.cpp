@@ -67,15 +67,10 @@ void GPLoginScene::EnterScene()
 	SoundFun::Instance().SetSoundEffect(effect_volume);
 	SoundFun::Instance().playBackMusic("bgplay.mp3");
 
-#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
-	onWxLoginSuccess(m_kWeiXinUserInfo);
-	return;
-#endif
-
 	std::string kAccounts = cocos2d::UserDefault::getInstance()->getStringForKey("Accounts");
     std::string kPassword = cocos2d::UserDefault::getInstance()->getStringForKey("Password");
-	if (kAccounts != "" && kPassword != "")
-	{
+	if (kAccounts != "" || kPassword != "") {
+
         m_kPssword = kPassword;
         CMD_GP_LogonAccounts loginAccount;
         loginAccount.dwPlazaVersion = DF::shared()->GetPlazaVersion();//ScriptData<int>("PlazaVersion").Value();//2000;
@@ -83,13 +78,65 @@ void GPLoginScene::EnterScene()
         strcpy(loginAccount.szAccounts, kAccounts.c_str());
         strcpy(loginAccount.szPassword, kPassword.c_str());
         m_kLoginMission.loginAccount(loginAccount);
+
+	} else {
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32 || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+
+		//注册玩家
+		RegisterAccount();
+		return;
+
+#endif
+
 	}
+
+#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
+
+	onWxLoginSuccess(m_kWeiXinUserInfo);
+
+#endif
+
 }
 
 void GPLoginScene::RegisterAccount()
 {
 #if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
+	//std::string kAccounts = "WeiXin" + m_kWeiXinUserInfo.openid;
+	std::string kAccounts = "WeiXin" + m_kWeiXinUserInfo.unionid;
+	m_kPssword = "WeiXinPassword";
+	bool isGuest = false;
+	//if (IosHelper::isWinXinInstalled()) {
+	//	CCAssert(m_kWeiXinUserInfo.openid != "", "");
+	//	if (m_kWeiXinUserInfo.openid == "") {
+	//		return;
+	//	}
+	//}
+	//else
+	{
+		std::string time_str = utility::toString(time(nullptr));
+		std::string rand_str = utility::toString(rand() % 900 + 100);
+		kAccounts = time_str.substr(time_str.size() - 7, 7) + rand_str;
+		m_kPssword = rand_str;
+		isGuest = true;
+	}
 
+	CMD_GP_RegisterAccounts kRegister;
+	zeromemory(&kRegister, sizeof(kRegister));
+	kRegister.dwPlazaVersion = DF::shared()->GetPlazaVersion();//ScriptData<int>("PlazaVersion").Value();//2000;
+	kRegister.cbValidateFlags = MB_VALIDATE_FLAGS | LOW_VER_VALIDATE_FLAGS;
+	kRegister.cbGender = 0;
+	kRegister.wFaceID = 0;
+	strncpy(kRegister.szAccounts, kAccounts.c_str(), kAccounts.size());
+	strncpy(kRegister.szLogonPass, m_kPssword.c_str(), m_kPssword.size());
+	if (isGuest) {
+		std::string kNickName = utility::a_u8(utility::toString("游客", kAccounts));
+		strncpy(kRegister.szNickName, kNickName.c_str(), kNickName.size());
+	} else {
+		std::string kNickName = (m_kWeiXinUserInfo.nickname);
+		strncpy(kRegister.szNickName, kNickName.c_str(), kNickName.size());
+	}
+	m_kLoginMission.registerServer(kRegister);
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     
     //std::string kAccounts = "WeiXin" + m_kWeiXinUserInfo.openid;
@@ -120,7 +167,7 @@ void GPLoginScene::RegisterAccount()
     strncpy(kRegister.szAccounts, kAccounts.c_str(), kAccounts.size());
     strncpy(kRegister.szLogonPass, m_kPssword.c_str(), m_kPssword.size());
     if(isGuest){
-        std::string kNickName = utility::a_u8(utility::toString("guest", kAccounts));
+        std::string kNickName = utility::a_u8(utility::toString("游客", kAccounts));
         strncpy(kRegister.szNickName, kNickName.c_str(), kNickName.size());
     }else{
         std::string kNickName = (m_kWeiXinUserInfo.nickname);

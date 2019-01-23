@@ -41,7 +41,7 @@ long fendTime = 0;
 void NNPlayerPanel::Button_Head(cocos2d::Ref*, WidgetUserInfo*)
 {
 	fcurTime = time(nullptr);
-	if (fcurTime - fendTime >= 1) {
+	if (fcurTime - fendTime >= 2) {
 		fendTime = fcurTime;
 	} else {
 		return;

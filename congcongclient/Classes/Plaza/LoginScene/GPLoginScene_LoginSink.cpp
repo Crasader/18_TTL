@@ -15,7 +15,7 @@ void GPLoginScene::onGPLoginSuccess()
 
 void GPLoginScene::onGPLoginComplete()
 {
-	
+
 }
 
 void GPLoginScene::onGPLoginFailure(unsigned int iErrorCode, const char* szDescription)
