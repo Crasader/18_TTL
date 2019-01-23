@@ -46,7 +46,9 @@ bool GPLoadingScene::init_2()
 	script::ScriptXMLparse kScriptXml1("Script/HNScriptValue.xml");
 	script::ScriptXMLparse kScriptXml2("Script/HNScriptValueStr.xml");
 	//cocos2d::ScriptXMLparse kScriptXml3("Script/HNScriptValueSame.xml");
-
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+	Constant::WEIXIN_INSTALL = IosHelper::isWinXinInstalled();
+#endif
     this->scheduleUpdate();
     this->setTouchEnabled(true);
     this->setTouchMode(Touch::DispatchMode::ALL_AT_ONCE);

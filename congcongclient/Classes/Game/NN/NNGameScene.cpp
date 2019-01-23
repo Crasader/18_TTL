@@ -1,3 +1,4 @@
+#include "constant.h"
 #include "Game/NN/CMD_NN.h"
 #include "Plaza/HomeScene/GPHomeSettingPanel.h"
 #include "Plaza/HomeScene/GPHomeMallPanel.h"
@@ -15,7 +16,7 @@
 #include "Game/NN/NNDismissRoom.h"
 #include "Game/NN/NNCalculate.h"
 #include "Game/NN/TurnCardAction/TurnCardNode.h"
- 
+
 #include "UTILITY.h"
 #include USERINFO
 #include JNI
@@ -138,7 +139,10 @@ void NNGameScene::initButton()
 
 #ifdef ENABLE_WEIXIN
 
-	WidgetManager::addButtonCB("NNGameScene_ButtonShare",this,button_selector(NNGameScene::Button_Share));
+	if(Constant::WEIXIN_INSTALL)
+		WidgetManager::addButtonCB("NNGameScene_ButtonShare",this,button_selector(NNGameScene::Button_Share));
+	else
+		WidgetFun::setVisible(this, "NNGameScene_ButtonShare", false);
 
 #else
 
@@ -227,10 +231,13 @@ void NNGameScene::show()
 
 #ifdef ENABLE_WEIXIN
 
-	if (m_RoomInfo.bStartGame) {
-		WidgetFun::setVisible(this, "NNGameScene_ButtonShare", false);
-	} else {
-		WidgetFun::setVisible(this, "NNGameScene_ButtonShare", true);
+	if(Constant::WEIXIN_INSTALL)
+	{
+		if (m_RoomInfo.bStartGame) {
+			WidgetFun::setVisible(this, "NNGameScene_ButtonShare", false);
+		} else {
+			WidgetFun::setVisible(this, "NNGameScene_ButtonShare", true);
+		}
 	}
 
 #endif
@@ -537,7 +544,8 @@ void NNGameScene::setButtonsEnable(bool flag)
 
 #ifdef ENABLE_WEIXIN
 
-	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "NNGameScene_ButtonShare"))->setTouchEnabled(flag);
+	if (Constant::WEIXIN_INSTALL)
+		dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "NNGameScene_ButtonShare"))->setTouchEnabled(flag);
 
 #endif
 
@@ -1067,7 +1075,8 @@ void NNGameScene::onGameStart(const void * pBuffer, word wDataSize)
 
  #ifdef ENABLE_WEIXIN
 
-	WidgetFun::setVisible(this, "NNGameScene_ButtonShare", false);
+	if (Constant::WEIXIN_INSTALL)
+		WidgetFun::setVisible(this, "NNGameScene_ButtonShare", false);
 
 #endif
 

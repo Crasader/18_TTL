@@ -20,7 +20,7 @@
 #define UTILITY_CONVERT "Tools/utilityConvert.h"
 
 //启用微信登录模块
-//#define ENABLE_WEIXIN
+#define ENABLE_WEIXIN
 
 //////////////////////////////////////////////////////////////////////////
 //C&C++类库

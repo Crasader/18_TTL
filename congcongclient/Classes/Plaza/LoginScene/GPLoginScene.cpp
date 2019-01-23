@@ -28,20 +28,27 @@ GPLoginScene::~GPLoginScene()
 
 bool GPLoginScene::init()
 {
-    if(!cocos2d::CCNode::init()) {
-        return false;
-    };
+	if (!cocos2d::CCNode::init()) {
+		return false;
+	};
 
 	//bool bPlayLoginAni = ScriptData<bool>("PlayLoginAnimation").Value();
 
-    WidgetScenceXMLparse xmlScenceLogin("GamePlaza/Script/GPLoginScene.xml", this);
+	WidgetScenceXMLparse xmlScenceLogin("GamePlaza/Script/GPLoginScene.xml", this);
 
-    WidgetManager::addButtonCB("Button_WeiXinLogon", this, button_selector(GPLoginScene::Button_WeiXinLogon));
-    WidgetManager::addButtonCB("Button_UserXieYiCheak", this, button_selector(GPLoginScene::Button_UserXieYiCheak));
-    WidgetManager::addButtonCB("Button_UserXieYi", this, button_selector(GPLoginScene::Button_UserXieYi));
-	
-    WidgetFun::setEnable(this, "Button_WeiXinLogon", bXieYiChecked);
-	WidgetFun::setChecked(this, "Button_UserXieYiCheak", bXieYiChecked);
+#ifdef ENABLE_WEIXIN
+	if (Constant::WEIXIN_INSTALL) {
+		WidgetManager::addButtonCB("Button_WeiXinLogon", this, button_selector(GPLoginScene::Button_WeiXinLogon));
+		WidgetFun::setEnable(this, "Button_WeiXinLogon", bXieYiChecked);
+		WidgetFun::setChecked(this, "Button_UserXieYiCheak", bXieYiChecked);
+		WidgetManager::addButtonCB("Button_UserXieYiCheak", this, button_selector(GPLoginScene::Button_UserXieYiCheak));
+		WidgetManager::addButtonCB("Button_UserXieYi", this, button_selector(GPLoginScene::Button_UserXieYi));
+	} else {
+		WidgetFun::setVisible(this, "Button_WeiXinLogon", false);
+		WidgetFun::setVisible(this, "Button_UserXieYiCheak", false);
+		WidgetFun::setVisible(this, "Button_UserXieYi", false);
+	}
+#endif
 
 	this->addChild(UserProtocol::pInstance());
 	UserProtocol::pInstance()->hide();
@@ -52,16 +59,16 @@ bool GPLoginScene::init()
 void GPLoginScene::setEnableButtons(bool flag)
 {
 	auto panel = WidgetFun::getChildWidget(this, "LogonScencePlane");
-	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(panel, "Button_WeiXinLogon"))->setTouchEnabled(flag);
+#ifdef ENABLE_WEIXIN
+	if(Constant::WEIXIN_INSTALL)
+		dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(panel, "Button_WeiXinLogon"))->setTouchEnabled(flag);
+#endif
 	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(panel, "Button_UserXieYi"))->setTouchEnabled(flag);
 	dynamic_cast<cocos2d::ui::CheckBox*>(WidgetFun::getChildWidget(panel, "Button_UserXieYiCheak"))->setTouchEnabled(flag);
 }
 
 void GPLoginScene::EnterScene()
 {
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32 || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    Constant::WEIXIN_INSTALL =  IosHelper::isWinXinInstalled();
-#endif
 	float sound_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("sound_volume", Constant::DEFAULT_SOUND);
 	CocosDenshion::SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(sound_volume);
 	SoundFun::Instance().SetSoundBackground(sound_volume);
@@ -109,12 +116,12 @@ void GPLoginScene::RegisterAccount()
 	std::string kAccounts = "WeiXin" + m_kWeiXinUserInfo.unionid;
 	m_kPssword = "WeiXinPassword";
 	bool isGuest = false;
-	//if (IosHelper::isWinXinInstalled()) {
+	//if (Constant::WEIXIN_INSTALL) {
 	//	CCAssert(m_kWeiXinUserInfo.openid != "", "");
 	//	if (m_kWeiXinUserInfo.openid == "") {
 	//		return;
 	//	}
-	//}
+	//} 
 	//else
 	{
 		std::string time_str = utility::toString(time(nullptr));
@@ -133,22 +140,24 @@ void GPLoginScene::RegisterAccount()
 	strncpy(kRegister.szAccounts, kAccounts.c_str(), kAccounts.size());
 	strncpy(kRegister.szLogonPass, m_kPssword.c_str(), m_kPssword.size());
 	if (isGuest) {
-		std::string kNickName = utility::a_u8(utility::toString("�ο�", kAccounts));
+		std::string kNickName = utility::a_u8(utility::toString("玩家", kAccounts));
 		strncpy(kRegister.szNickName, kNickName.c_str(), kNickName.size());
 	} else {
 		std::string kNickName = (m_kWeiXinUserInfo.nickname);
 		strncpy(kRegister.szNickName, kNickName.c_str(), kNickName.size());
 	}
 	m_kLoginMission.registerServer(kRegister);
+
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     
     //std::string kAccounts = "WeiXin" + m_kWeiXinUserInfo.openid;
     std::string kAccounts = "WeiXin" + m_kWeiXinUserInfo.unionid;
     m_kPssword = "WeiXinPassword";
     bool isGuest = false;
-    if(IosHelper::isWinXinInstalled()){
-        CCAssert(m_kWeiXinUserInfo.openid != "", "");
-        if (m_kWeiXinUserInfo.openid == "") {
+    if(IosHelper::isWinXinInstalled())
+	{
+        CCAssert(m_kWeiXinUserInfo.unionid != "", "");
+        if (m_kWeiXinUserInfo.unionid == "") {
             return;
         }
     }
@@ -198,7 +207,9 @@ void GPLoginScene::RegisterAccount()
 	std::string kNickName = (m_kWeiXinUserInfo.nickname);
 	strncpy(kRegister.szNickName, kNickName.c_str(), kNickName.size());
 	m_kLoginMission.registerServer(kRegister);
+
 #endif
+
 }
 
 void GPLoginScene::onWxLoginSuccess(WxUserInfo kWxUserInfo)
@@ -271,12 +282,13 @@ std::string GPLoginScene::GetWxLoginWin32()
 	cocos2d::UserDefault::getInstance()->flush();
 
 	std::string pass = "111111";
+	//account = cocos2d::UserDefault::getInstance()->getStringForKey("Accounts");
+	//pass = cocos2d::UserDefault::getInstance()->getStringForKey("Password");
 
 	//account = "WeiXinoznOM0oURRnxOpbFnZdxsyxRU";
 	//pass = "WeiXinPassword";
-	
-	account = "test011";
-	pass = "111111";
+
+	//account = "test011";
 
 	std::string tocken = utility::toString(account, ":",  pass);
 	return tocken;

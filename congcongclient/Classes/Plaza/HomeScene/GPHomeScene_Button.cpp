@@ -1,3 +1,4 @@
+#include "constant.h"
 #include "GPHomeScene.h"
 #include "Plaza/GameManager/GPGameLink.h"
 #include "Game/NN/NNGameScene.h"
@@ -17,7 +18,10 @@ void GPHomeScene::initButton()
 {
 	//WidgetManager::addButtonCB("Button_Header", this, button_selector(GPHomeScene::Button_Header));
 #ifdef ENABLE_WEIXIN
-	WidgetManager::addButtonCB("Button_Share", this, button_selector(GPHomeScene::Button_Share));
+	if (Constant::WEIXIN_INSTALL)
+		WidgetManager::addButtonCB("Button_Share", this, button_selector(GPHomeScene::Button_Share));
+	else
+		WidgetFun::setVisible(this, "Button_Share", false);
 #else
 	WidgetFun::setVisible(this, "Button_Share", false);
 #endif
@@ -40,7 +44,8 @@ void GPHomeScene::initButton()
 void GPHomeScene::setButtonsEnable(bool flag)
 {
 #ifdef ENABLE_WEIXIN
-	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "Button_Share"))->setTouchEnabled(flag);
+	if (Constant::WEIXIN_INSTALL)
+		dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "Button_Share"))->setTouchEnabled(flag);
 #endif
 	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "Button_ADDGOLD"))->setTouchEnabled(flag);
 	//dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "Btn_Mall"))->setTouchEnabled(flag);
