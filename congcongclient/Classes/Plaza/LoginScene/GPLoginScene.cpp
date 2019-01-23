@@ -59,6 +59,9 @@ void GPLoginScene::setEnableButtons(bool flag)
 
 void GPLoginScene::EnterScene()
 {
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32 || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    Constant::WEIXIN_INSTALL =  IosHelper::isWinXinInstalled();
+#endif
 	float sound_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("sound_volume", Constant::DEFAULT_SOUND);
 	CocosDenshion::SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(sound_volume);
 	SoundFun::Instance().SetSoundBackground(sound_volume);
