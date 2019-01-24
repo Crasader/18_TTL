@@ -36,21 +36,16 @@ bool GPLoginScene::init()
 
 	WidgetScenceXMLparse xmlScenceLogin("GamePlaza/Script/GPLoginScene.xml", this);
 
-#ifdef ENABLE_WEIXIN
-	if (Constant::WEIXIN_INSTALL) {
-		WidgetManager::addButtonCB("Button_WeiXinLogon", this, button_selector(GPLoginScene::Button_WeiXinLogon));
-		WidgetFun::setEnable(this, "Button_WeiXinLogon", bXieYiChecked);
-		WidgetFun::setChecked(this, "Button_UserXieYiCheak", bXieYiChecked);
-		WidgetManager::addButtonCB("Button_UserXieYiCheak", this, button_selector(GPLoginScene::Button_UserXieYiCheak));
-		WidgetManager::addButtonCB("Button_UserXieYi", this, button_selector(GPLoginScene::Button_UserXieYi));
-	} else {
-		WidgetFun::setVisible(this, "Button_WeiXinLogon", false);
-		WidgetFun::setVisible(this, "Button_UserXieYiCheak", false);
-		WidgetFun::setVisible(this, "Button_UserXieYi", false);
-	}
-#endif
+	WidgetManager::addButtonCB("Button_WeiXinLogon", this, button_selector(GPLoginScene::Button_WeiXinLogon));
+	WidgetFun::setEnable(this, "Button_WeiXinLogon", bXieYiChecked);
+
+	WidgetManager::addButtonCB("Button_UserXieYiCheak", this, button_selector(GPLoginScene::Button_UserXieYiCheak));
+	WidgetFun::setChecked(this, "Button_UserXieYiCheak", bXieYiChecked);
+
+	WidgetManager::addButtonCB("Button_UserXieYi", this, button_selector(GPLoginScene::Button_UserXieYi));
 
 	this->addChild(UserProtocol::pInstance());
+
 	UserProtocol::pInstance()->hide();
 
     return true;
@@ -69,6 +64,19 @@ void GPLoginScene::setEnableButtons(bool flag)
 
 void GPLoginScene::EnterScene()
 {
+#if  CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+	Constant::WEIXIN_INSTALL = IosHelper::isWinXinInstalled();
+#endif
+	if (Constant::WEIXIN_INSTALL) {
+		WidgetFun::setVisible(this, "Button_WeiXinLogon", true);
+		WidgetFun::setVisible(this, "Button_UserXieYiCheak", true);
+		WidgetFun::setVisible(this, "Button_UserXieYi", true);
+	}
+	else {
+		WidgetFun::setVisible(this, "Button_WeiXinLogon", false);
+		WidgetFun::setVisible(this, "Button_UserXieYiCheak", false);
+		WidgetFun::setVisible(this, "Button_UserXieYi", false);
+	}
 	float sound_volume = cocos2d::UserDefault::getInstance()->getFloatForKey("sound_volume", Constant::DEFAULT_SOUND);
 	CocosDenshion::SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(sound_volume);
 	SoundFun::Instance().SetSoundBackground(sound_volume);
@@ -77,52 +85,44 @@ void GPLoginScene::EnterScene()
 	SoundFun::Instance().SetSoundEffect(effect_volume);
 	SoundFun::Instance().playBackMusic("bgplay.mp3");
 
-	std::string kAccounts = cocos2d::UserDefault::getInstance()->getStringForKey("Accounts");
-    std::string kPassword = cocos2d::UserDefault::getInstance()->getStringForKey("Password");
-	if (kAccounts != "" || kPassword != "") {
-
-        m_kPssword = kPassword;
-        CMD_GP_LogonAccounts loginAccount;
-        loginAccount.dwPlazaVersion = DF::shared()->GetPlazaVersion();//ScriptData<int>("PlazaVersion").Value();//2000;
-        loginAccount.cbValidateFlags = LOW_VER_VALIDATE_FLAGS;
-        strcpy(loginAccount.szAccounts, kAccounts.c_str());
-        strcpy(loginAccount.szPassword, kPassword.c_str());
-        m_kLoginMission.loginAccount(loginAccount);
-
-	} else {
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32 || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-
-		//ע�����
-		RegisterAccount();
-		return;
-
-#endif
-
-	}
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
 
 	onWxLoginSuccess(m_kWeiXinUserInfo);
 
-#endif
+#else
 
+	std::string kAccounts = cocos2d::UserDefault::getInstance()->getStringForKey("Accounts");
+	std::string kPassword = "222";// cocos2d::UserDefault::getInstance()->getStringForKey("Password");
+	if (kAccounts != "" || kPassword != "") {
+
+		m_kPssword = kPassword;
+		CMD_GP_LogonAccounts loginAccount;
+		loginAccount.dwPlazaVersion = DF::shared()->GetPlazaVersion();//ScriptData<int>("PlazaVersion").Value();//2000;
+		loginAccount.cbValidateFlags = LOW_VER_VALIDATE_FLAGS;
+		strcpy(loginAccount.szAccounts, kAccounts.c_str());
+		strcpy(loginAccount.szPassword, kPassword.c_str());
+		m_kLoginMission.loginAccount(loginAccount);
+
+	} else {
+
+		RegisterAccount();
+
+	}
+
+#endif
 }
 
 void GPLoginScene::RegisterAccount()
 {
 #if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
+
+	return;
+
 	//std::string kAccounts = "WeiXin" + m_kWeiXinUserInfo.openid;
 	std::string kAccounts = "WeiXin" + m_kWeiXinUserInfo.unionid;
 	m_kPssword = "WeiXinPassword";
 	bool isGuest = false;
-	//if (Constant::WEIXIN_INSTALL) {
-	//	CCAssert(m_kWeiXinUserInfo.openid != "", "");
-	//	if (m_kWeiXinUserInfo.openid == "") {
-	//		return;
-	//	}
-	//} 
-	//else
 	{
 		std::string time_str = utility::toString(time(nullptr));
 		std::string rand_str = utility::toString(rand() % 900 + 100);
@@ -148,21 +148,18 @@ void GPLoginScene::RegisterAccount()
 	}
 	m_kLoginMission.registerServer(kRegister);
 
-#elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-    
-    //std::string kAccounts = "WeiXin" + m_kWeiXinUserInfo.openid;
+#else
+
+	//std::string kAccounts = "WeiXin" + m_kWeiXinUserInfo.openid;
     std::string kAccounts = "WeiXin" + m_kWeiXinUserInfo.unionid;
     m_kPssword = "WeiXinPassword";
     bool isGuest = false;
-    if(IosHelper::isWinXinInstalled())
-	{
-        //CCAssert(m_kWeiXinUserInfo.unionid != "", "");
+    if(Constant::WEIXIN_INSTALL) {
+        CCAssert(m_kWeiXinUserInfo.unionid != "", "");
         if (m_kWeiXinUserInfo.unionid == "") {
             return;
         }
-    }
-    else
-    {
+    } else {
         std::string time_str = utility::toString(time(nullptr));
         std::string rand_str = utility::toString(rand() % 900 + 100);
         kAccounts = time_str.substr(time_str.size() - 7, 7) + rand_str;
@@ -178,35 +175,14 @@ void GPLoginScene::RegisterAccount()
     kRegister.wFaceID = 0;
     strncpy(kRegister.szAccounts, kAccounts.c_str(), kAccounts.size());
     strncpy(kRegister.szLogonPass, m_kPssword.c_str(), m_kPssword.size());
-    if(isGuest){
+    if(isGuest) {
 		std::string kNickName = utility::a_u8("玩家") + kAccounts;
         strncpy(kRegister.szNickName, kNickName.c_str(), kNickName.size());
-    }else{
+    } else {
         std::string kNickName = (m_kWeiXinUserInfo.nickname);
         strncpy(kRegister.szNickName, kNickName.c_str(), kNickName.size());
     }
     m_kLoginMission.registerServer(kRegister);
-    
-#elif
-    
-	CCAssert(m_kWeiXinUserInfo.openid != "", "");
-	if (m_kWeiXinUserInfo.openid == "") {
-		return;
-	}
-	//std::string kAccounts = "WeiXin" + m_kWeiXinUserInfo.openid;
-	std::string kAccounts = "WeiXin" + m_kWeiXinUserInfo.unionid;
-	m_kPssword = "WeiXinPassword";
-	CMD_GP_RegisterAccounts kRegister;
-	zeromemory(&kRegister, sizeof(kRegister));
-	kRegister.dwPlazaVersion = DF::shared()->GetPlazaVersion();//ScriptData<int>("PlazaVersion").Value();//2000;
-	kRegister.cbValidateFlags = MB_VALIDATE_FLAGS | LOW_VER_VALIDATE_FLAGS;
-	kRegister.cbGender = 0;
-	kRegister.wFaceID = 0;
-	strncpy(kRegister.szAccounts, kAccounts.c_str(), kAccounts.size());
-	strncpy(kRegister.szLogonPass, m_kPssword.c_str(), m_kPssword.size());
-	std::string kNickName = (m_kWeiXinUserInfo.nickname);
-	strncpy(kRegister.szNickName, kNickName.c_str(), kNickName.size());
-	m_kLoginMission.registerServer(kRegister);
 
 #endif
 

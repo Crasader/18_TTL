@@ -224,6 +224,10 @@ void GPHomeScene::onEnterScene()
 	WidgetFun::runWidgetAction(this, "Ani_XueHua", "XueHuaAnimationStart");
 	
 	SoundFun::Instance().playBackMusic("bgplay.mp3");
+
+	if (!Constant::WEIXIN_INSTALL) {
+		WidgetFun::setVisible(this, "Button_Share", false);
+	}
 }
 
 bool GPHomeScene::initPublicPanel()

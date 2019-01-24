@@ -137,19 +137,8 @@ void NNGameScene::initButton()
 	WidgetManager::addButtonCB("HNMJButton_BiaoQing7",this,button_selector(NNGameScene::HNMJButton_BiaoQing));
 	//WidgetManager::addButtonCB("NNGameScene_ChongZhi",this,button_selector(NNGameScene::Button_ChongZhi));
 
-#ifdef ENABLE_WEIXIN
+	WidgetManager::addButtonCB("NNGameScene_ButtonShare",this,button_selector(NNGameScene::Button_Share));
 
-	if(Constant::WEIXIN_INSTALL)
-		WidgetManager::addButtonCB("NNGameScene_ButtonShare",this,button_selector(NNGameScene::Button_Share));
-	else
-		WidgetFun::setVisible(this, "NNGameScene_ButtonShare", false);
-
-#else
-
-	WidgetFun::setVisible(this, "NNGameScene_ButtonShare", false);
-
-#endif
-	
 }
 
 void NNGameScene::initPublicPanel()
@@ -229,18 +218,16 @@ void NNGameScene::show()
 	GPHomeSettingPanel::Instance().hide();
 	GPHomeSettingPanel::Instance().hideOrShowQuitBtn(false);
 
-#ifdef ENABLE_WEIXIN
-
-	if(Constant::WEIXIN_INSTALL)
+	if (!Constant::WEIXIN_INSTALL)
 	{
+		WidgetFun::setVisible(this, "NNGameScene_ButtonShare", false);
+	} else {
 		if (m_RoomInfo.bStartGame) {
 			WidgetFun::setVisible(this, "NNGameScene_ButtonShare", false);
 		} else {
 			WidgetFun::setVisible(this, "NNGameScene_ButtonShare", true);
 		}
 	}
-
-#endif
 
     setVisible(true);
 }
@@ -541,13 +528,7 @@ void NNGameScene::setButtonsEnable(bool flag)
 	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "HNMJButton_BiaoQing2"))->setTouchEnabled(flag);
 	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "HNMJButton_BiaoQing3"))->setTouchEnabled(flag);
 	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "HNMJButton_BiaoQing4"))->setTouchEnabled(flag);
-
-#ifdef ENABLE_WEIXIN
-
-	if (Constant::WEIXIN_INSTALL)
-		dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "NNGameScene_ButtonShare"))->setTouchEnabled(flag);
-
-#endif
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(this, "NNGameScene_ButtonShare"))->setTouchEnabled(flag);
 
 }
 
@@ -1073,12 +1054,7 @@ void NNGameScene::onGameStart(const void * pBuffer, word wDataSize)
 	NNPlayer* pLocalPlayer = getPlayerByChairID(m_pSelfPlayer->GetChairID());
 	pLocalPlayer->setPlayCount(pLocalPlayer->getPlayCount()+1);
 
- #ifdef ENABLE_WEIXIN
-
-	if (Constant::WEIXIN_INSTALL)
-		WidgetFun::setVisible(this, "NNGameScene_ButtonShare", false);
-
-#endif
+	WidgetFun::setVisible(this, "NNGameScene_ButtonShare", false);
 
 #ifdef SHOW_SERVICE_CORE
 	//扣税收显示(仅首局显示)
