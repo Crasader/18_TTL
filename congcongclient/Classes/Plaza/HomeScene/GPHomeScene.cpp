@@ -225,7 +225,7 @@ void GPHomeScene::onEnterScene()
 	
 	SoundFun::Instance().playBackMusic("bgplay.mp3");
 
-	if (!Constant::WEIXIN_INSTALL) {
+	if (Constant::WEIXIN_INSTALL == false) {
 		WidgetFun::setVisible(this, "Button_Share", false);
 	}
 }
