@@ -54,10 +54,7 @@ bool GPLoginScene::init()
 void GPLoginScene::setEnableButtons(bool flag)
 {
 	auto panel = WidgetFun::getChildWidget(this, "LogonScencePlane");
-#ifdef ENABLE_WEIXIN
-	if(Constant::WEIXIN_INSTALL)
-		dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(panel, "Button_WeiXinLogon"))->setTouchEnabled(flag);
-#endif
+	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(panel, "Button_WeiXinLogon"))->setTouchEnabled(flag);
 	dynamic_cast<cocos2d::ui::Button*>(WidgetFun::getChildWidget(panel, "Button_UserXieYi"))->setTouchEnabled(flag);
 	dynamic_cast<cocos2d::ui::CheckBox*>(WidgetFun::getChildWidget(panel, "Button_UserXieYiCheak"))->setTouchEnabled(flag);
 }
