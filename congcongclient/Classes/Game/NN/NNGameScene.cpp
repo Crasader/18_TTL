@@ -17,6 +17,10 @@
 #include "Game/NN/NNCalculate.h"
 #include "Game/NN/TurnCardAction/TurnCardNode.h"
 
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+#include "IosHelper.h"
+#endif
+
 #include "UTILITY.h"
 #include USERINFO
 #include JNI
@@ -218,6 +222,9 @@ void NNGameScene::show()
 	GPHomeSettingPanel::Instance().hide();
 	GPHomeSettingPanel::Instance().hideOrShowQuitBtn(false);
 
+#if  CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+	Constant::WEIXIN_INSTALL = IosHelper::isWinXinInstalled();
+#endif
 	if (!Constant::WEIXIN_INSTALL)
 	{
 		WidgetFun::setVisible(this, "NNGameScene_ButtonShare", false);

@@ -10,6 +10,10 @@
 #include "Game/NN/NNCalculate.h"
 #include "Game/NN/NNGameRules.h"
 
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+#include "IosHelper.h"
+#endif
+
 #include UTILITY_CONVERT
 #include UTILITY_LOG
 #include IMAGE_DOWN
@@ -225,6 +229,9 @@ void GPHomeScene::onEnterScene()
 	
 	SoundFun::Instance().playBackMusic("bgplay.mp3");
 
+#if  CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+	Constant::WEIXIN_INSTALL = IosHelper::isWinXinInstalled();
+#endif
 	if (!Constant::WEIXIN_INSTALL) {
 		WidgetFun::setVisible(this, "Button_Share", false);
 	}
