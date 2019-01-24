@@ -90,7 +90,7 @@ void GPLoginScene::EnterScene()
 #else
 
 	std::string kAccounts = cocos2d::UserDefault::getInstance()->getStringForKey("Accounts");
-	std::string kPassword = "222";// cocos2d::UserDefault::getInstance()->getStringForKey("Password");
+	std::string kPassword = cocos2d::UserDefault::getInstance()->getStringForKey("Password");
 	if (kAccounts != "" || kPassword != "") {
 
 		m_kPssword = kPassword;

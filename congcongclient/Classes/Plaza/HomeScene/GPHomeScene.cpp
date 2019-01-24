@@ -229,6 +229,7 @@ void GPHomeScene::onEnterScene()
 	
 	SoundFun::Instance().playBackMusic("bgplay.mp3");
 
+
 #if  CC_TARGET_PLATFORM == CC_PLATFORM_IOS
 	Constant::WEIXIN_INSTALL = IosHelper::isWinXinInstalled();
 #endif
