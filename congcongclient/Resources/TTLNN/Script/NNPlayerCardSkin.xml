@@ -95,22 +95,6 @@
 		<Property Key="Pos" Value="295 80"/>
 	</WidgetImagic>
 	
-	<!-- <WidgetNode Name="PlayerCardReultAnim"> -->
-		<!-- <Property Key="Pos" Value="135 75"/> -->
-		<!-- <UserInfo Key="Imagic" Value="TTLNN/Player/Talk"/> -->
-		<!-- <Visible Name="Start" Visible="true" SaveAction="true"> -->
-			<!-- <CallAction OtherNodeName="NNPlayer_TalkAnimation" OtherActionName="Start"> -->
-			<!-- </CallAction> -->
-		<!-- </Visible> -->
-		<!-- <WidgetAnimation Name="NNPlayer_TalkAnimation"> -->
-			<!-- <Property Key="Time" Value="0.3"/> -->
-			<!-- <Property Key="Loop" Value="false"/> -->
-			<!-- <Property Key="AnchorPos" Value="0 0.5"/> -->
-			<!-- <RunAnim Name="Start" AnimName="TTLNN/Player/Talk/:1:8:.png" SaveAction="true"> -->
-			<!-- </RunAnim> -->
-		<!-- </WidgetAnimation> -->
-	<!-- </WidgetNode> -->
-	
 	<WidgetNode Name="PlayerCardReultNode">
 		<WidgetImagic Name="" TextureInfo="TTLNN/PlayerCard/NNPlayerCard_ResultBG.png">
 			<Property Key="Pos" Value="175 53"/>
@@ -125,5 +109,5 @@
 		<UserInfo Key="WinColor" Value="255 255 0"/>
 		<UserInfo Key="LoseColor" Value="191 191 191"/>
 		<Property Key="Pos" Value="175 175"/>
-	</WidgetTxt>
+	</WidgetTxt>	
 </WidgetNode>

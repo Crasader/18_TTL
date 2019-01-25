@@ -65,7 +65,7 @@ void NNGameRules::initView()
 	TitleConfig.glyphs = GlyphCollection::DYNAMIC;
 	TitleConfig.customGlyphs = nullptr;
 	TitleConfig.distanceFieldEnabled = false;
-	TitleConfig.outlineSize = 1;
+	TitleConfig.outlineSize = 0;
 
 	TTFConfig ContentConfig;
 	ContentConfig.fontFilePath = strFontNameContent;

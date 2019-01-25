@@ -370,10 +370,9 @@ void NNPlayerCard::onSendPlayerCard()
 	}
 
 	//翻拍动作
-	//如果不是同比牛牛, 则翻牌
+	//如果不是通比牛牛, 则翻牌
 	if (game_type != NNGameType::NNGameType_AllCompare &&
-		game_type != NNGameType::NNGameType_SnatchBanker
-		) {
+		game_type != NNGameType::NNGameType_SnatchBanker ) {
 		totalDelay = singleDelay * cardCount + 0.5;
 		NNPlayer* player = NNGameScene::Instance().getSelf();
 		if (player->isValid() && player->getPlayerCards().isValid) {

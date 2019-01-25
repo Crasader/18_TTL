@@ -144,3 +144,7 @@
 		<Property Key="Scale" Value="0.95"/>
 	</Widget>
 </Widget>
+
+<Widget Name="PlayerCardReultAnim" SkinTempName="CardReultAnim">
+	<Property Key="Pos" Value="570 80"/>
+</Widget>

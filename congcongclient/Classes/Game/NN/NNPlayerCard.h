@@ -30,6 +30,7 @@ public:
 	void showPlayer(NNPlayer& player);
 	void hidePlayer(word visioChairID);
 	void calculatePlayer(NNPlayer& player);
+
 #pragma endregion 显示与隐藏
 
 #pragma region 发牌动作

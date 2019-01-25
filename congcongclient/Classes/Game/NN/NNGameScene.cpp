@@ -1181,7 +1181,8 @@ void NNGameScene::onBankerInfo(const void * pBuffer, word wDataSize)
 			return;
 		}
 		break;
-		case TTLNN::NNGameType_SnatchBanker: {
+		case TTLNN::NNGameType_SnatchBanker:
+		case TTLNN::NNGameType_SnatchBankerShowCard: {
 			int count = 0;
 			vct_snach_banker.clear();
 			for (int i = 0; i < NN_GAME_PLAYER; i++) {
@@ -1199,8 +1200,13 @@ void NNGameScene::onBankerInfo(const void * pBuffer, word wDataSize)
 					NNSound::playEffect(NNSound::START_BET);
 				});
 				runAction(CCSequence::create(delay, func, nullptr));
-				return;
+			} else {
+				updateUserInfo();
+				NNOperator::Instance().show(m_GameStatus);
+				NNOperator::Instance().showTimes(TIME_FOR_USER_CALL);
+				NNSound::playEffect(NNSound::START_BET);
 			}
+			return;
 		}
 		break;
 		default: {
@@ -1293,9 +1299,11 @@ void NNGameScene::onUserShowCard(const void* pBuffer, word wDataSize)
 	m_Players[pInfo->chairID]->setPlayerCards(pInfo->playerCards, MAX_HAND_CARD);
 	m_Players[pInfo->chairID]->setPlayerCardType(pInfo->result);
 	m_Players[pInfo->chairID]->upPlayerInfo();
-	if(m_Players[pInfo->chairID]->GetUserID() == getSelf()->GetUserID()) {	
+	if(m_Players[pInfo->chairID]->GetUserID() == getSelf()->GetUserID()) {
 		NNTurnCard::Instance().hide();
 		NNOperator::Instance().show(m_GameStatus);
+		NNOperator::Instance().showCardType(pInfo->result.type);
+		CCLOG("NNGameScene::onUserShowCard type = %d", pInfo->result.type);
 	}
 	NNSound::playNN(pInfo->result.type,m_Players[pInfo->chairID]);
 }

@@ -24,6 +24,7 @@ public:
 	void show();
 	void hide();
 
+	void showCardType(byte cbCardType);
 	void show(word status, GamePlayer* player = nullptr);
 
 	void showMessage(std::string showText);

@@ -87,6 +87,17 @@ void NNOperator::hide()
     setVisible(false);
 }
 
+void NNOperator::showCardType(byte cbCardType)
+{
+	if (cbCardType < NNCardType::NNCardType_N1 ||
+		cbCardType >NNCardType::NNCardType_WXN ||
+		cbCardType == NNCardType::NNCardType_SZN) {
+		return;
+	}
+	std::string anmi_name = utility::toString("Result_Anmi_", static_cast<int>(cbCardType));
+	WidgetFun::runWidgetAction(this, "PlayerCardReultAnim", anmi_name);
+}
+
 void NNOperator::show(word status, GamePlayer* gplayer)
 {
 	auto local_player = NNGameScene::Instance().getSelf();

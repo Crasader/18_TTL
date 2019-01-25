@@ -18,8 +18,8 @@
 		<UserInfo Key="LineInterval" Value="10"/>
 		<UserInfo Key="LineWidthContent" Value="1120"/>
 		<UserInfo Key="FontSizeContent" Value="24"/>
-		<UserInfo Key="FontSizeTitle" Value="32"/>
-		<UserInfo Key="FontColorTilte" Value="82 40 2"/>
+		<UserInfo Key="FontSizeTitle" Value="64"/>
+		<UserInfo Key="FontColorTilte" Value="40 20 2"/>
 		<UserInfo Key="FontColorContent" Value="82 40 2"/>
 		<UserInfo Key="FontNameTitle" Value="Font/true_type.ttf"/>
 		<UserInfo Key="FontNameContent" Value="Font/true_type.ttf"/>

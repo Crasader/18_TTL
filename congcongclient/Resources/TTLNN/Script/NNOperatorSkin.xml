@@ -3,4 +3,189 @@
 	</WidgetButton>
 	<WidgetButton Name="NNOperator_Call" NomalTexture="TTLNN/Operator/NNOperator_ButtonCall_1.png" PressTexture="AutoPress">
 	</WidgetButton>
+
+	<WidgetNode Name="CardReultAnim">
+		<Property Key="Pos" Value="100 100"/>
+		<Visible Name="Result_Anmi_2" Visible="true" SaveAction="true">
+			<CallAction OtherNodeName="Niu1Animation" OtherActionName="Start">
+			</CallAction>
+		</Visible>
+		<WidgetAnimation Name="Niu1Animation">
+			<Property Key="Time" Value="0.08"/>
+			<Property Key="Pos" Value="70 200"/>
+			<Property Key="Scale" Value="2.2"/>
+			<Property Key="Loop" Value="false"/>
+			<RunAnim Name="Start" AnimName="TTLNN/PlayerCard/niu1/:1:29:.png" SaveAction="true">
+			</RunAnim>
+		</WidgetAnimation>
+		<Visible Name="Result_Anmi_3" Visible="true" SaveAction="true">
+			<CallAction OtherNodeName="Niu2Animation" OtherActionName="Start">
+			</CallAction>
+		</Visible>
+		<WidgetAnimation Name="Niu2Animation">
+			<Property Key="Time" Value="0.08"/>
+			<Property Key="Pos" Value="70 200"/>
+			<Property Key="Scale" Value="2.2"/>
+			<Property Key="Loop" Value="false"/>
+			<RunAnim Name="Start" AnimName="TTLNN/PlayerCard/niu2/:1:29:.png" SaveAction="true">
+			</RunAnim>
+		</WidgetAnimation>
+		<Visible Name="Result_Anmi_4" Visible="true" SaveAction="true">
+			<CallAction OtherNodeName="Niu3Animation" OtherActionName="Start">
+			</CallAction>
+		</Visible>
+		<WidgetAnimation Name="Niu3Animation">
+			<Property Key="Time" Value="0.08"/>
+			<Property Key="Pos" Value="70 200"/>
+			<Property Key="Scale" Value="2.2"/>
+			<Property Key="Loop" Value="false"/>
+			<RunAnim Name="Start" AnimName="TTLNN/PlayerCard/niu3/:1:29:.png" SaveAction="true">
+			</RunAnim>
+		</WidgetAnimation>
+		<Visible Name="Result_Anmi_5" Visible="true" SaveAction="true">
+			<CallAction OtherNodeName="Niu4Animation" OtherActionName="Start">
+			</CallAction>
+		</Visible>
+		<WidgetAnimation Name="Niu4Animation">
+			<Property Key="Time" Value="0.08"/>
+			<Property Key="Pos" Value="70 200"/>
+			<Property Key="Scale" Value="2.2"/>
+			<Property Key="Loop" Value="false"/>
+			<RunAnim Name="Start" AnimName="TTLNN/PlayerCard/niu4/:1:29:.png" SaveAction="true">
+			</RunAnim>
+		</WidgetAnimation>
+		<Visible Name="Result_Anmi_6" Visible="true" SaveAction="true">
+			<CallAction OtherNodeName="Niu5Animation" OtherActionName="Start">
+			</CallAction>
+		</Visible>
+		<WidgetAnimation Name="Niu5Animation">
+			<Property Key="Time" Value="0.08"/>
+			<Property Key="Pos" Value="70 200"/>
+			<Property Key="Scale" Value="2.2"/>
+			<Property Key="Loop" Value="false"/>
+			<RunAnim Name="Start" AnimName="TTLNN/PlayerCard/niu5/:1:29:.png" SaveAction="true">
+			</RunAnim>
+		</WidgetAnimation>
+		<Visible Name="Result_Anmi_7" Visible="true" SaveAction="true">
+			<CallAction OtherNodeName="Niu6Animation" OtherActionName="Start">
+			</CallAction>
+		</Visible>
+		<WidgetAnimation Name="Niu6Animation">
+			<Property Key="Time" Value="0.08"/>
+			<Property Key="Pos" Value="70 200"/>
+			<Property Key="Scale" Value="2.2"/>
+			<Property Key="Loop" Value="false"/>
+			<RunAnim Name="Start" AnimName="TTLNN/PlayerCard/niu6/:1:29:.png" SaveAction="true">
+			</RunAnim>
+		</WidgetAnimation>
+		<Visible Name="Result_Anmi_8" Visible="true" SaveAction="true">
+			<CallAction OtherNodeName="Niu7Animation" OtherActionName="Start">
+			</CallAction>
+		</Visible>
+		<WidgetAnimation Name="Niu7Animation">
+			<Property Key="Time" Value="0.08"/>
+			<Property Key="Pos" Value="70 200"/>
+			<Property Key="Scale" Value="2.2"/>
+			<Property Key="Loop" Value="false"/>
+			<RunAnim Name="Start" AnimName="TTLNN/PlayerCard/niu7/:1:29:.png" SaveAction="true">
+			</RunAnim>
+		</WidgetAnimation>
+		<Visible Name="Result_Anmi_9" Visible="true" SaveAction="true">
+			<CallAction OtherNodeName="Niu8Animation" OtherActionName="Start">
+			</CallAction>
+		</Visible>
+		<WidgetAnimation Name="Niu8Animation">
+			<Property Key="Time" Value="0.08"/>
+			<Property Key="Pos" Value="70 200"/>
+			<Property Key="Scale" Value="2.2"/>
+			<Property Key="Loop" Value="false"/>
+			<RunAnim Name="Start" AnimName="TTLNN/PlayerCard/niu8/:1:29:.png" SaveAction="true">
+			</RunAnim>
+		</WidgetAnimation>
+		<Visible Name="Result_Anmi_10" Visible="true" SaveAction="true">
+			<CallAction OtherNodeName="Niu9Animation" OtherActionName="Start">
+			</CallAction>
+		</Visible>
+		<WidgetAnimation Name="Niu9Animation">
+			<Property Key="Time" Value="0.08"/>
+			<Property Key="Pos" Value="70 200"/>
+			<Property Key="Scale" Value="2.2"/>
+			<Property Key="Loop" Value="false"/>
+			<RunAnim Name="Start" AnimName="TTLNN/PlayerCard/niu9/:1:29:.png" SaveAction="true">
+			</RunAnim>
+		</WidgetAnimation>
+		<Visible Name="Result_Anmi_11" Visible="true" SaveAction="true">
+			<CallAction OtherNodeName="NiuNiuAnimation" OtherActionName="Start">
+			</CallAction>
+		</Visible>
+		<WidgetAnimation Name="NiuNiuAnimation">
+			<Property Key="Time" Value="0.08"/>
+			<Property Key="Pos" Value="70 200"/>
+			<Property Key="Scale" Value="2.2"/>
+			<Property Key="Loop" Value="false"/>
+			<RunAnim Name="Start" AnimName="TTLNN/PlayerCard/niu10/:1:29:.png" SaveAction="true">
+			</RunAnim>
+		</WidgetAnimation>
+		<Visible Name="Result_Anmi_13" Visible="true" SaveAction="true">
+			<CallAction OtherNodeName="WuHuaAnimation" OtherActionName="Start">
+			</CallAction>
+		</Visible>
+		<WidgetAnimation Name="WuHuaAnimation">
+			<Property Key="Time" Value="0.1"/>
+			<Property Key="Pos" Value="70 220"/>
+			<Property Key="Scale" Value="2.2"/>
+			<Property Key="Loop" Value="false"/>
+			<RunAnim Name="Start" AnimName="TTLNN/PlayerCard/wuhua/:1:59:.png" SaveAction="true">
+			</RunAnim>
+		</WidgetAnimation>
+		<Visible Name="Result_Anmi_14" Visible="true" SaveAction="true">
+			<CallAction OtherNodeName="TongHuaAnimation" OtherActionName="Start">
+			</CallAction>
+		</Visible>
+		<WidgetAnimation Name="TongHuaAnimation">
+			<Property Key="Time" Value="0.1"/>
+			<Property Key="Pos" Value="70 200"/>
+			<Property Key="Scale" Value="2.2"/>
+			<Property Key="Loop" Value="false"/>
+			<RunAnim Name="Start" AnimName="TTLNN/PlayerCard/tonghua/:1:59:.png" SaveAction="true">
+			</RunAnim>
+		</WidgetAnimation>
+		<Visible Name="Result_Anmi_15" Visible="true" SaveAction="true">
+			<CallAction OtherNodeName="HuLuAnimation" OtherActionName="Start">
+			</CallAction>
+		</Visible>
+		<WidgetAnimation Name="HuLuAnimation">
+			<Property Key="Time" Value="0.1"/>
+			<Property Key="Pos" Value="70 200"/>
+			<Property Key="Loop" Value="false"/>
+			<Property Key="Scale" Value="2.2"/>
+			<RunAnim Name="Start" AnimName="TTLNN/PlayerCard/hulu/:1:29:.png" SaveAction="true">
+			</RunAnim>
+		</WidgetAnimation>
+		<Visible Name="Result_Anmi_16" Visible="true" SaveAction="true">
+			<CallAction OtherNodeName="ZhaDanAnimation" OtherActionName="Start">
+			</CallAction>
+		</Visible>
+		<WidgetAnimation Name="ZhaDanAnimation">
+			<Property Key="Pos" Value="0 100"/>
+			<Property Key="Time" Value="0.1"/>
+			<Property Key="Pos" Value="70 200"/>
+			<Property Key="Scale" Value="2.2"/>
+			<Property Key="Loop" Value="false"/>
+			<RunAnim Name="Start" AnimName="TTLNN/PlayerCard/zhadan/:1:29:.png" SaveAction="true">
+			</RunAnim>
+		</WidgetAnimation>
+		<Visible Name="Result_Anmi_17" Visible="true" SaveAction="true">
+			<CallAction OtherNodeName="WuXiaoAnimation" OtherActionName="Start">
+			</CallAction>
+		</Visible>
+		<WidgetAnimation Name="WuXiaoAnimation">
+			<Property Key="Time" Value="0.1"/>
+			<Property Key="Pos" Value="70 130"/>
+			<Property Key="Scale" Value="2.2"/>
+			<Property Key="Loop" Value="false"/>
+			<RunAnim Name="Start" AnimName="TTLNN/PlayerCard/wuxiao/:1:29:.png" SaveAction="true">
+			</RunAnim>
+		</WidgetAnimation>
+	</WidgetNode>
 </root>
